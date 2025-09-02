@@ -4,10 +4,11 @@
   "description": "SVASAMM Business Process Automation Solutions Website",
   "main": "index.html",
   "scripts": {
-    "dev": "live-server --host=0.0.0.0 --port=3000 --open=index.html --watch=.",
-    "build": "npm run clean && npm run copy && npm run minify && npm run optimize",
+    "dev": "gulp dev",
+    "dev:old": "live-server --host=0.0.0.0 --port=3000 --open=index.html --watch=.",
+    "build": "npm run clean && gulp build && npm run minify && npm run optimize",
     "clean": "rm -rf dist && mkdir -p dist",
-    "copy": "cp index.html dist/ && cp -r styles dist/ && cp -r scripts dist/ && (cp -r assets dist/ 2>/dev/null || true)",
+    "copy": "echo 'Files copied by gulp build task'",
     "minify": "npm run minify:css && npm run minify:js && npm run minify:html",
     "minify:css": "cleancss -o dist/styles/styles.min.css dist/styles/styles.css && npm run update-css-ref",
     "minify:js": "terser dist/scripts/script.js -o dist/scripts/script.min.js --compress --mangle && npm run update-js-ref",
@@ -32,7 +33,11 @@
     "html-minifier": "^4.0.0",
     "imagemin": "^8.0.1",
     "html-validate": "^8.7.0",
-    "stylelint": "^15.11.0"
+    "stylelint": "^15.11.0",
+    "gulp": "^4.0.2",
+    "gulp-file-include": "^2.3.0",
+    "gulp-livereload": "^4.0.2",
+    "gulp-connect": "^5.7.0"
   },
   "keywords": [
     "business-automation",
