@@ -232,56 +232,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Contact Form Handling
-// const contactForm = document.getElementById('contactForm');
-// if (contactForm) {
-//     contactForm.addEventListener('submit', function(e) {
-//         e.preventDefault();
-
-//         // Get form data
-//         const formData = new FormData(contactForm);
-//         const data = {
-//             firstName: formData.get('firstName'),
-//             lastName: formData.get('lastName'),
-//             email: formData.get('email'),
-//             company: formData.get('company'),
-//             phone: formData.get('phone'),
-//             message: formData.get('message')
-//         };
-
-//         // Basic validation
-//         if (!data.firstName || !data.lastName || !data.email || !data.company || !data.message) {
-//             alert('Please fill in all required fields.');
-//             return;
-//         }
-
-//         // Email validation
-//         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//         if (!emailRegex.test(data.email)) {
-//             alert('Please enter a valid email address.');
-//             return;
-//         }
-
-//         // Simulate form submission
-//         const submitButton = contactForm.querySelector('button[type="submit"]');
-//         const originalText = submitButton.innerHTML;
-
-//         submitButton.innerHTML = 'Sending...';
-//         submitButton.disabled = true;
-
-//         // Simulate API call
-//         setTimeout(() => {
-//             contactForm.reset();
-//             submitButton.innerHTML = originalText;
-//             submitButton.disabled = false;
-//             alert('Thank you for your interest! We will contact you within 24 hours.');
-//         }, 2000);
-
-//         // In a real application, you would send this data to your server
-//         console.log('Form submitted with data:', data);
-//     });
-// }
-
 // Newsletter Form Handling
 const newsletterEmail = document.getElementById('newsletterEmail');
 const newsletterButton = newsletterEmail?.nextElementSibling;
