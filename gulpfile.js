@@ -58,10 +58,22 @@ gulp.task('assets', function() {
 });
 
 // Copy images
+// gulp.task('images', function() {
+//     return gulp.src(paths.src.images, { allowEmpty: true })
+//         .pipe(gulp.dest(paths.dist.images));
+// });
 gulp.task('images', function() {
-    return gulp.src(paths.src.images, { allowEmpty: true })
+    return gulp.src(paths.src.images, {
+        allowEmpty: true,
+        encoding: false  // This preserves binary files
+    })
         .pipe(gulp.dest(paths.dist.images));
 });
+
+// gulp.task('images', function() {
+//     return gulp.src(paths.src.images)
+//         .pipe(gulp.dest(paths.dist.images));
+// });
 
 // Development server
 gulp.task('serve', function() {
