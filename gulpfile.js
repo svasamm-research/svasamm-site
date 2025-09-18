@@ -57,11 +57,6 @@ gulp.task('assets', function() {
         .pipe(gulp.dest(paths.dist.assets));
 });
 
-// Copy images
-// gulp.task('images', function() {
-//     return gulp.src(paths.src.images, { allowEmpty: true })
-//         .pipe(gulp.dest(paths.dist.images));
-// });
 gulp.task('images', function() {
     return gulp.src(paths.src.images, {
         allowEmpty: true,
@@ -69,11 +64,6 @@ gulp.task('images', function() {
     })
         .pipe(gulp.dest(paths.dist.images));
 });
-
-// gulp.task('images', function() {
-//     return gulp.src(paths.src.images)
-//         .pipe(gulp.dest(paths.dist.images));
-// });
 
 // Development server
 gulp.task('serve', function() {
