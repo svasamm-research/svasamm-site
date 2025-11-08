@@ -18,7 +18,7 @@
     "optimize": "npm run optimize:images",
     "optimize:images": "(imagemin dist/assets/images/* --out-dir=dist/assets/images 2>/dev/null || true)",
     "preview": "npm run build && live-server --host=0.0.0.0 --port=3001 --open=dist/index.html",
-    "docker:build": "docker build -t svasamm-website -f ./deployment/docker/Dockerfile .",
+    "docker:build": "docker build --platform linux/amd64 -t svasamm-website -f ./deployment/docker/Dockerfile .",
     "docker:run": "docker run -p 80:80 svasamm-website",
     "docker:dev": "docker-compose up --build",
     "validate": "npm run validate:html && npm run validate:css",
