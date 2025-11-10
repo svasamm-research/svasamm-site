@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVASAMM - Business Process Automation Solutions</title>
+    <title>Svasamm - Business Process Automation Solutions</title>
     <meta name="description" content="Transform your medium to large-scale business operations with cutting-edge automation solutions. Increase productivity by up to 300%.">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,9 +13,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/180.png">
     <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
     <!-- SEO Meta Tags -->
-    <meta property="og:title" content="SVASAMM - Business Process Automation Solutions">
+    <meta property="og:title" content="Svasamm - Business Process Automation Solutions">
     <meta property="og:description" content="Leading provider of business automation solutions for enterprises. 50+ successful implementations.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -42,12 +43,13 @@
         }
     }
     </script>
+    <script>lucide.createIcons();</script>
 </head>
 <body>
     <!-- Include Header Component -->
     @@include('components/header.html')
 
-        <!-- Hero Section -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -67,18 +69,18 @@
                     </p>
 
                     <div class="hero-buttons">
-                        <button class="btn btn-primary btn-large" onclick="location.href='#contact'">
+                        <button class="btn btn-primary btn-large" onclick="location.href='pages/contact.html'">
                             Start Free Trial
                             <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </button>
-                        <button class="btn btn-outline btn-large" onclick="location.href='#contact'">
+                        <!-- <button class="btn btn-outline btn-large" onclick="location.href='pages/contact.html'">
                             <svg class="btn-icon-left" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polygon points="5,3 19,12 5,21"/>
                             </svg>
                             Watch Demo
-                        </button>
+                        </button> -->
                     </div>
 
                     <div class="hero-stats">
@@ -106,138 +108,118 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Overview Section -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Our Solutions</div>
-                <h2 class="section-title">Comprehensive Automation Platform</h2>
+                <h2 class="section-title">Complete Business Automation Platform</h2>
                 <p class="section-description">
-                    From process automation to data analytics, our integrated platform delivers
-                    everything you need to transform your business operations.
+                    Enterprise-grade solutions designed to transform your business operations across all departments.
                 </p>
             </div>
 
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                            <path d="M8 12h8M12 8v8"/>
-                        </svg>
+                        <img src="/images/icons/erp.svg" alt="ERP Icon" width="24" height="24">
                     </div>
-                    <h3 class="service-title">Process Automation</h3>
+                    <h3 class="service-title">ERP System</h3>
                     <p class="service-description">
-                        Streamline repetitive tasks and complex workflows with intelligent automation that adapts to your business needs.
+                        Unified platform integrating finance, supply chain, manufacturing, and operations for complete business visibility.
                     </p>
-                    <ul class="service-features">
-                        <li>Workflow Designer</li>
-                        <li>Task Scheduling</li>
-                        <li>Rule Engine</li>
-                        <li>Multi-system Integration</li>
-                    </ul>
+                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                        Learn More
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 3v18h18"/>
-                            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
-                        </svg>
+                        <img src="/images/icons/hrms.svg" alt="HRMS Icon" width="24" height="24">
                     </div>
-                    <h3 class="service-title">Analytics & Insights</h3>
+                    <h3 class="service-title">HRMS Solution</h3>
                     <p class="service-description">
-                        Transform your data into actionable insights with real-time dashboards and predictive analytics.
+                        Complete HR management from recruitment to retirement with payroll, attendance, and performance tracking.
                     </p>
-                    <ul class="service-features">
-                        <li>Real-time Dashboards</li>
-                        <li>Predictive Analytics</li>
-                        <li>Custom Reports</li>
-                        <li>KPI Tracking</li>
-                    </ul>
+                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                        Learn More
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <ellipse cx="12" cy="5" rx="9" ry="3"/>
-                            <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/>
-                            <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/>
-                        </svg>
+                        <img src="/images/icons/crm.svg" alt="CRM Icon" width="24" height="24">
                     </div>
-                    <h3 class="service-title">Data Integration</h3>
+                    <h3 class="service-title">CRM Platform</h3>
                     <p class="service-description">
-                        Connect all your systems seamlessly. Our platform integrates with 20+ enterprise applications.
+                        Powerful customer relationship management with sales automation, marketing, and support tools.
                     </p>
-                    <ul class="service-features">
-                        <li>API Integrations</li>
-                        <li>Data Synchronization</li>
-                        <li>ETL Processes</li>
-                        <li>Cloud Migration</li>
-                    </ul>
+                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                        Learn More
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
-                        </svg>
+                        <img src="/images/icons/health.svg" alt="ERP Icon" width="24" height="24">
                     </div>
-                    <h3 class="service-title">Security & Compliance</h3>
+                    <h3 class="service-title">Healthcare HIMS</h3>
                     <p class="service-description">
-                        Enterprise-grade security with compliance frameworks including GDPR, and HIPAA.
+                        HIPAA-compliant healthcare information management with EHR, patient records, and billing integration.
                     </p>
-                    <ul class="service-features">
-                        <li>End-to-end Encryption</li>
-                        <li>Access Controls</li>
-                        <li>Audit Trails</li>
-                        <li>Compliance Monitoring</li>
-                    </ul>
+                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                        Learn More
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
+                        <img src="/images/icons/service-desk.svg" alt="Service Desk Icon" width="24" height="24">
                     </div>
-                    <h3 class="service-title">Team Collaboration</h3>
+                    <h3 class="service-title">Service Desk</h3>
                     <p class="service-description">
-                        Enhance team productivity with collaborative tools and automated communication workflows.
+                        Comprehensive IT service management with ticket tracking, incident management, and knowledge base.
                     </p>
-                    <ul class="service-features">
-                        <li>Team Communication</li>
-                        <li>Automated Notifications</li>
-                        <li>Task Management</li>
-                        <li>Resource Planning</li>
-                    </ul>
+                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                        Learn More
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
-                        </svg>
+                        <img src="/images/icons/loan.svg" alt="Loan Management Icon" width="24" height="24">
                     </div>
-                    <h3 class="service-title">Performance Optimization</h3>
+                    <h3 class="service-title">Loan Management</h3>
                     <p class="service-description">
-                        Continuously optimize your processes with AI-driven recommendations and performance monitoring.
+                        End-to-end loan processing system with application tracking, approval workflow, and portfolio management.
                     </p>
-                    <ul class="service-features">
-                        <li>Performance Metrics</li>
-                        <li>Bottleneck Detection</li>
-                        <li>AI Recommendations</li>
-                        <li>Resource Optimization</li>
-                    </ul>
+                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                        Learn More
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
 
             <div class="section-cta">
-                <button class="btn btn-primary btn-large" onclick="location.href='#contact'">
-                    Explore All Features
+                <button class="btn btn-primary btn-large" onclick="location.href='pages/services.html'">
+                    Explore All Services
                     <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
@@ -246,32 +228,121 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- Industries Section -->
+    <section class="industries" style="padding: 5rem 0; background: var(--background);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Industries We Serve</div>
+                <h2 class="section-title">Trusted Across Multiple Industries</h2>
+                <p class="section-description">
+                    Our flexible automation solutions are designed to meet the unique needs of businesses across diverse sectors.
+                </p>
+            </div>
+
+            <div class="industries-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="industry-card" style="background: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <img src="/images/icons/erp.svg" alt="Manufacturing Icon" width="30" height="30">
+                    </div>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Manufacturing</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Production planning, inventory management, quality control, multi-warehouse operations, and supply chain optimization.</p>
+                </div>
+
+                <div class="industry-card" style="background: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <img src="/images/icons/heartbeat.svg" alt="Healthcare Icon" width="30" height="30">
+                    </div>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Healthcare</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Patient records, appointment scheduling, billing, pharmacy management, lab management, and compliance tracking.</p>
+                </div>
+
+                <div class="industry-card" style="background: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <img src="/images/icons/store.svg" alt="Store Icon" width="30" height="30">
+                    </div>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Retail & E-commerce</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Point of sale, inventory tracking, customer loyalty programs, and omnichannel sales management.</p>
+                </div>
+
+                <div class="industry-card" style="background: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <img src="/images/icons/finance.svg" alt="Finance Icon" width="30" height="30">
+                    </div>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Finance & Banking</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Financial reporting, compliance management, risk assessment, and transaction processing automation.</p>
+                </div>
+
+                <div class="industry-card" style="background: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <img src="/images/icons/school.svg" alt="School Icon" width="30" height="30">
+                    </div>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Education</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Student information systems, attendance tracking, fee management, and academic administration.</p>
+                </div>
+
+                <div class="industry-card" style="background: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <img src="/images/icons/trade-distribution.svg" alt="Distribution Icon" width="30" height="30">
+                    </div>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Distribution</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Warehouse management, logistics tracking, order fulfillment, and distributor network management.</p>
+                </div>
+
+                <div class="industry-card" style="background: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <img src="/images/icons/construction.svg" alt="Real Estate Icon" width="30" height="30">
+                    </div>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Real Estate</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Property management, tenant tracking, lease administration, and maintenance scheduling.</p>
+                </div>
+
+                <div class="industry-card" style="background: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <img src="/images/icons/services.svg" alt="Services Icon" width="30" height="30">
+                    </div>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Professional Services</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Project management, time tracking, billing, client relationship management, and resource allocation.</p>
+                </div>
+
+                <!-- Your Industry Card -->
+                <div class="industry-card industry-card-cta" style="background: linear-gradient(135deg, var(--primary) 0%, #1a1a2e 100%); border: 1px solid var(--primary); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s ease; color: var(--primary-foreground); cursor: pointer;" onclick="location.href='pages/contact.html'">
+                    <div class="industry-icon" style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <img src="/images/icons/oops.svg" alt="Question Icon" width="30" height="30">
+                    </div>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--primary-foreground);">Don't see your industry ?</h3>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem;">We work with businesses across all sectors. Let's discuss your specific needs.</p>
+                    <button class="btn btn-secondary" style="width: 100%;" onclick="event.stopPropagation(); location.href='pages/contact.html'">
+                        Contact Us
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-cta" style="margin-top: 3rem;">
+                <p style="text-align: center; color: var(--muted-foreground); margin-bottom: 1.5rem; font-size: 1rem;">
+                    Our solutions are highly customizable for any business vertical.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="about" style="background: rgba(236, 236, 240, 0.3);">
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1557425631-f132f06f4aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NTYzODg4NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                          alt="Team collaboration workspace"
                          class="about-img">
-                    <div class="stats-overlay">
-                        <div class="stats-number">$1.5B+</div>
-                        <div class="stats-text">Cost savings delivered to clients</div>
-                    </div>
                 </div>
 
                 <div class="about-text">
-                    <div class="section-badge">About Svasamm</div>
-                    <h2 class="section-title">Leading the Future of Business Automation</h2>
+                    <div class="section-badge">Why Choose Svasamm</div>
+                    <h2 class="section-title">Built for Enterprise Success</h2>
                     <p class="about-description">
-                        For over 3 years, Svasamm has been at the forefront of business process
-                        automation, helping medium and large-scale enterprises transform their
-                        operations and achieve unprecedented growth.
-                    </p>
-                    <p class="about-subdescription">
-                        Our team of automation experts, data scientists, and industry specialists
-                        work closely with your organization to design, implement, and optimize
-                        solutions that deliver measurable results.
+                        For over 3 years, we've been transforming businesses with intelligent automation solutions that deliver real results.
                     </p>
 
                     <div class="achievements">
@@ -280,21 +351,14 @@
                                 <path d="M9 12l2 2 4-4"/>
                                 <circle cx="12" cy="12" r="10"/>
                             </svg>
-                            <span>15+ years of enterprise automation experience</span>
+                            <span>ISO 27001 certified security practices</span>
                         </div>
                         <div class="achievement">
                             <svg class="achievement-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M9 12l2 2 4-4"/>
                                 <circle cx="12" cy="12" r="10"/>
                             </svg>
-                            <span>50+ successful implementations</span>
-                        </div>
-                        <div class="achievement">
-                            <svg class="achievement-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 12l2 2 4-4"/>
-                                <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <span>99.9% uptime across all client deployments</span>
+                            <span>99.9% uptime across all deployments</span>
                         </div>
                         <div class="achievement">
                             <svg class="achievement-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -308,48 +372,28 @@
                                 <path d="M9 12l2 2 4-4"/>
                                 <circle cx="12" cy="12" r="10"/>
                             </svg>
-                            <span>ISO 27001 certified security practices</span>
-                        </div>
-                        <div class="achievement">
-                            <svg class="achievement-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 12l2 2 4-4"/>
-                                <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <span>ROI average of 300% within first year</span>
+                            <span>300% average ROI within first year</span>
                         </div>
                     </div>
 
-                    <div class="certifications">
-                        <p class="certifications-title">Trusted Certifications & Partners</p>
-                        <div class="badges">
-                            <span class="badge">ISO 27001</span>
-                            <span class="badge">SOC 2 Type II</span>
-                            <span class="badge">GDPR Compliant</span>
-                            <span class="badge">Microsoft Partner</span>
-                            <span class="badge">AWS Advanced</span>
-                            <span class="badge">Google Cloud</span>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary btn-large" onclick="location.href='#contact'">Learn More About Us</button>
+                    <button class="btn btn-primary btn-large" onclick="location.href='pages/about.html'">Learn More About Us</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
+    <!-- Social Proof Section -->
+    <section class="testimonials">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Client Success Stories</div>
+                <div class="section-badge">Success Stories</div>
                 <h2 class="section-title">Trusted by Industry Leaders</h2>
                 <p class="section-description">
-                    See how leading companies have transformed their operations and achieved
-                    remarkable growth with our automation solutions.
+                    Join 50+ companies that have transformed their operations with Svasamm.
                 </p>
             </div>
 
-            <div class="testimonials-grid">
+            <div class="testimonials-grid" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="testimonial-card">
                     <div class="rating">
                         <span class="star">★</span>
@@ -359,7 +403,7 @@
                         <span class="star">★</span>
                     </div>
                     <blockquote class="testimonial-text">
-                        "Svasamm transformed our operations completely. We've seen a 250% increase in productivity and reduced our processing time by 80%. The ROI was evident within the first quarter."
+                        "Svasamm transformed our operations completely. We've seen a 250% increase in productivity."
                     </blockquote>
                     <div class="testimonial-author">
                         <div class="author-avatar">SC</div>
@@ -379,7 +423,7 @@
                         <span class="star">★</span>
                     </div>
                     <blockquote class="testimonial-text">
-                        "The automation solutions provided by Svasamm have streamlined our entire supply chain. We've eliminated manual errors and improved our delivery times by 40%."
+                        "The automation solutions streamlined our entire supply chain. Delivery times improved by 40%."
                     </blockquote>
                     <div class="testimonial-author">
                         <div class="author-avatar">VJ</div>
@@ -399,241 +443,47 @@
                         <span class="star">★</span>
                     </div>
                     <blockquote class="testimonial-text">
-                        "Implementation was seamless and the support team is exceptional. Our compliance reporting now takes minutes instead of days, and accuracy has improved significantly."
+                        "Implementation was seamless. Our compliance reporting now takes minutes instead of days."
                     </blockquote>
                     <div class="testimonial-author">
                         <div class="author-avatar">SK</div>
                         <div class="author-info">
                             <div class="author-name">Somkant Kushwaha</div>
-                            <div class="author-title">FinQPlus Consultants Pvt Ltd</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <blockquote class="testimonial-text">
-                        "Svasamm's analytics platform gives us insights we never had before. We can now predict market trends and optimize our inventory with unprecedented accuracy."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SA</div>
-                        <div class="author-info">
-                            <div class="author-name">Sunit Agarwal</div>
-                            <div class="author-title">Partner, Agarwal Marble Agency</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <blockquote class="testimonial-text">
-                        "The security and compliance features are outstanding. We handle sensitive patient data with complete confidence, knowing Svasamm meets all regulatory requirements."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">DA</div>
-                        <div class="author-info">
-                            <div class="author-name">Drishti Agarwal</div>
-                            <div class="author-title">Partner, Indoriv Clinical</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <blockquote class="testimonial-text">
-                        "What impressed us most was how quickly Svasamm understood our complex workflows. The customization options are endless, and performance has been flawless."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">KB</div>
-                        <div class="author-info">
-                            <div class="author-name">Keshav Bhatter</div>
-                            <div class="author-title">Partner, Bhatter Silver & Jewels</div>
+                            <div class="author-title">FinQPlus Consultants</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="trust-indicators">
-                <p class="trust-text">Trusted by 50+ companies, from mid to large market</p>
-                <div class="company-logos">
-                    <div class="logo-placeholder"></div>
-                    <div class="logo-placeholder"></div>
-                    <div class="logo-placeholder"></div>
-                    <div class="logo-placeholder"></div>
-                    <div class="logo-placeholder"></div>
-                    <div class="logo-placeholder"></div>
-                </div>
+            <div class="section-cta">
+                <button class="btn btn-outline btn-large" onclick="location.href='pages/testimonials.html'">
+                    View All Success Stories
+                    <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Get Started Today</div>
-                <h2 class="section-title">Ready to Transform Your Business?</h2>
-                <p class="section-description">
-                    Let's discuss how Svasamm can automate your processes, increase productivity,
-                    and drive revenue growth for your organization.
-                </p>
-            </div>
-
-            <div class="contact-content">
-                <div class="contact-form-container">
-                    <div class="form-header">
-                        <h3>Start Your Free Consultation</h3>
-                        <p>Fill out the form below and our automation experts will contact you within 24 hours.</p>
-                    </div>
-
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" placeholder="John" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Work Email *</label>
-                            <input type="email" id="email" name="email" placeholder="john.doe@company.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="company">Company *</label>
-                            <input type="text" id="company" name="company" placeholder="Your Company Name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+91 (777) 123-4567">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">How can we help you? *</label>
-                            <textarea id="message" name="message" placeholder="Tell us about your automation needs and current challenges..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-full">
-                            Get Free Consultation
-                            <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </button>
-
-                        <p class="form-disclaimer">
-                            By submitting this form, you agree to our privacy policy. We'll never share your information.
-                        </p>
-                    </form>
-                </div>
-
-                <div class="contact-info">
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                    <polyline points="22,6 12,13 2,6"/>
-                                </svg>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Email Us</h4>
-                                <p>mithun@svasamm.com</p>
-                                <span>Get a response within 2 hours</span>
-                            </div>
-                        </div>
-
-                        <div class="contact-method">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Call Us</h4>
-                                <p>+91 (821) 782-0249</p>
-                                <span>Mon-Sat, 9AM-8PM IST</span>
-                            </div>
-                        </div>
-
-                        <div class="contact-method">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Visit Us</h4>
-                                <p>Nabagram, Konnagar, Hooghly, WB 712246</p>
-                                <span>Schedule an office visit</span>
-                            </div>
-                        </div>
-
-                        <div class="contact-method">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="16" y1="2" x2="16" y2="6"/>
-                                    <line x1="8" y1="2" x2="8" y2="6"/>
-                                    <line x1="3" y1="10" x2="21" y2="10"/>
-                                </svg>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Book Demo</h4>
-                                <p>Schedule a personalized demo</p>
-                                <span>30-minute consultation</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="office-image">
-                        <img src="https://images.unsplash.com/photo-1694702740570-0a31ee1525c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBidWlsZGluZ3xlbnwxfHx8fDE3NTYyNzUxMjh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                             alt="Modern office building">
-                        <div class="office-overlay">
-                            <p class="office-title">Headquarters</p>
-                            <p class="office-subtitle">Open for client visits</p>
-                        </div>
-                    </div>
-
-                    <div class="quick-stats">
-                        <h4>Why Choose Svasamm?</h4>
-                        <div class="stat-row">
-                            <span>Average Implementation Time</span>
-                            <strong>6-8 weeks</strong>
-                        </div>
-                        <div class="stat-row">
-                            <span>Client Satisfaction Rate</span>
-                            <strong>98%</strong>
-                        </div>
-                        <div class="stat-row">
-                            <span>Support Response Time</span>
-                            <strong>&lt; 2 hours</strong>
-                        </div>
-                    </div>
-                </div>
+    <!-- CTA Section -->
+    <section class="contact" style="padding: 5rem 0; background: var(--primary); color: var(--primary-foreground);">
+        <div class="container" style="text-align: center;">
+            <div class="section-badge" style="background: rgba(255, 255, 255, 0.2); color: var(--secondary-background);">Get Started Today</div>
+            <h2 class="section-title" style="color: var(--primary-foreground); margin-bottom: 1rem;">Ready to Transform Your Business?</h2>
+            <p class="section-description" style="color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem;">
+                Let's discuss how Svasamm can automate your processes and drive growth.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-secondary btn-large" onclick="location.href='pages/contact.html'">
+                    Get Free Consultation
+                    <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+                <button class="btn btn-outline btn-large" onclick="location.href='pages/services.html'" style="background: transparent; color: var(--primary-foreground); border-color: var(--primary-foreground);">
+                    Explore Services
+                </button>
             </div>
         </div>
     </section>
@@ -642,5 +492,39 @@
 
     <!-- Scripts -->
     <script src="scripts/script.js"></script>
+    <script>
+        // Industry cards hover effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const industryCards = document.querySelectorAll('.industry-card');
+            industryCards.forEach(card => {
+                // Skip the CTA card from regular hover effects
+                if (card.classList.contains('industry-card-cta')) return;
+
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                    this.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.15)';
+                    this.style.borderColor = 'var(--primary)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                    this.style.borderColor = 'var(--border)';
+                });
+            });
+
+            // Special hover effect for CTA card
+            const ctaCard = document.querySelector('.industry-card-cta');
+            if (ctaCard) {
+                ctaCard.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                    this.style.boxShadow = '0 16px 32px rgba(3, 2, 19, 0.3)';
+                });
+                ctaCard.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

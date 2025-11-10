@@ -6,6 +6,7 @@ const connect = require('gulp-connect');
 const paths = {
     src: {
         html: 'src/*.html',
+        pages: 'src/pages/**/*.html',
         components: 'src/components/*.html',
         styles: 'src/styles/**/*',
         scripts: 'src/scripts/**/*',
@@ -14,6 +15,7 @@ const paths = {
     },
     dist: {
         base: 'dist/',
+        pages: 'dist/pages/',
         styles: 'dist/styles/',
         scripts: 'dist/scripts/',
         assets: 'dist/assets/',
@@ -34,6 +36,21 @@ gulp.task('html', function() {
             }
         }))
         .pipe(gulp.dest(paths.dist.base))
+        .pipe(connect.reload());
+});
+
+// HTML processing for pages subdirectory
+gulp.task('pages', function() {
+    return gulp.src(paths.src.pages)
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file',
+            context: {
+                siteName: 'SVASAMM',
+                year: new Date().getFullYear()
+            }
+        }))
+        .pipe(gulp.dest(paths.dist.pages))
         .pipe(connect.reload());
 });
 
@@ -78,6 +95,7 @@ gulp.task('serve', function() {
 // Watch files for changes
 gulp.task('watch', function() {
     gulp.watch([paths.src.html, paths.src.components], gulp.series('html'));
+    gulp.watch([paths.src.pages, paths.src.components], gulp.series('pages'));
     gulp.watch(paths.src.styles, gulp.series('styles'));
     gulp.watch(paths.src.scripts, gulp.series('scripts'));
     gulp.watch(paths.src.assets, gulp.series('assets'));
@@ -85,7 +103,7 @@ gulp.task('watch', function() {
 });
 
 // Build all assets
-gulp.task('build', gulp.parallel('html', 'styles', 'scripts', 'assets', 'images'));
+gulp.task('build', gulp.parallel('html', 'pages', 'styles', 'scripts', 'assets', 'images'));
 
 // Development workflow
 gulp.task('dev', gulp.series('build', gulp.parallel('serve', 'watch')));
