@@ -1,17 +1,20 @@
 # Svasamm
 
 > Svasamm (legal name: Svasamm Research Pvt Ltd, founded 2022) is a business process
-> automation software vendor based in Konnagar, West Bengal, India. We build ERP, HRMS,
-> CRM, Healthcare Information Management System (HIMS), Service Desk, and Loan Management
-> software for medium and large-scale enterprises across manufacturing, healthcare,
-> retail, finance, education, distribution, real estate, and professional services.
+> automation software vendor based in Konnagar, West Bengal, India. Alongside generic
+> ERP, HRMS, and CRM, Svasamm builds vertical products: Lucoze (hospital & clinic
+> management / HIMS, at lucoze.com), Millingo (a rice-mill ERP), and DMS (a distributor
+> management system for OEM manufacturers). We serve medium and large-scale enterprises
+> across manufacturing, healthcare, retail, finance, distribution, and rice milling.
 
 ## Products
 
 - [Enterprise Resource Planning (ERP)](https://svasamm.com/pages/erp.html): Unified platform integrating finance, supply chain, manufacturing, procurement, and multi-location/multi-currency operations with real-time analytics.
+- [Millingo — Rice Mill ERP](https://svasamm.com/pages/millingo.html): ERP built specifically for rice mills — paddy procurement and quality grading (butta/moisture deductions), milling yield and by-products (bran/husk/broken), gunny-bag accounting, and government FCI/state levy (CMR) procurement and compliance.
 - [Human Resource Management System (HRMS)](https://svasamm.com/pages/hrms.html): Employee lifecycle management — recruitment, onboarding, attendance, payroll, tax compliance, performance appraisals, and self-service portals.
 - [Customer Relationship Management (CRM)](https://svasamm.com/pages/crm.html): Lead and opportunity management, sales pipeline forecasting, support ticketing, and marketing automation.
-- [Healthcare Information Management System (HIMS)](https://svasamm.com/pages/hims.html): HIPAA-compliant EHR, patient registration, lab/radiology management, pharmacy inventory, and insurance billing for hospitals, clinics, and diagnostic centers.
+- [Lucoze — Healthcare Information Management System (HIMS)](https://svasamm.com/pages/hims.html): India-first hospital & clinic management system (HMS/EMR) — appointments, EMR, billing, lab, pharmacy, and HR on one ABDM-ready, DPDP-compliant platform. Live product at https://lucoze.com.
+- [DMS — Distributor Management System](https://svasamm.com/pages/dms.html): Configurable platform for OEM manufacturers to run their independent-distributor network — distributor-scoped sales, OEM-to-distributor stock push, slab commissions, territory control, installed base, and field service.
 - [Service Desk](https://svasamm.com/pages/services.html): IT service management with ticket tracking, incident management, and knowledge base.
 - [Loan Management](https://svasamm.com/pages/services.html): End-to-end loan processing with application tracking, approval workflow, and portfolio management.
 
