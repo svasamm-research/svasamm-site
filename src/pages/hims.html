@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('../components/head.html', {
+        "title": "Healthcare HIMS Software - Health Information Management | Svasamm",
+        "description": "Svasamm HIMS is a HIPAA-compliant healthcare information management system with EHR, patient registration, lab, pharmacy, and billing for hospitals and clinics.",
+        "canonical": "https://svasamm.com/pages/hims.html",
+        "ogType": "website"
+    })
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Healthcare Information Management System (HIMS)",
+        "serviceType": "Healthcare Information Management Software",
+        "description": "HIPAA-compliant HIMS that digitizes healthcare operations: EHR, patient registration, lab and radiology, pharmacy, and insurance billing.",
+        "provider": { "@type": "Organization", "name": "Svasamm", "url": "https://svasamm.com" },
+        "areaServed": "IN"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://svasamm.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://svasamm.com/pages/services.html" },
+            { "@type": "ListItem", "position": 3, "name": "Healthcare HIMS", "item": "https://svasamm.com/pages/hims.html" }
+        ]
+    }
+    </script>
+</head>
+<body>
+    @@include('../components/header.html')
+
+    <section class="product-hero">
+        <div class="container">
+            <div class="section-badge">Healthcare HIMS</div>
+            <h1>Healthcare Information Management System (HIMS)</h1>
+            <p>Digitize and streamline healthcare operations with a secure, HIPAA-compliant platform.</p>
+        </div>
+    </section>
+
+    <section class="product-main">
+        <div class="container">
+            <p class="product-intro">Improve patient care, ensure regulatory compliance, and optimize clinical workflows with Svasamm HIMS. Purpose-built for hospitals, clinics, and diagnostic centers that need a single, secure system across departments.</p>
+
+            <ul class="product-features">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Electronic Health Records (EHR)</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Patient Registration &amp; Appointments</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Laboratory &amp; Radiology Management</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Pharmacy &amp; Inventory Management</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Billing &amp; Insurance Claims</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>HIPAA Compliance &amp; Data Security</span></li>
+            </ul>
+
+            <div class="product-industries">
+                <h2>Healthcare Sectors</h2>
+                <div class="product-tags">
+                    <span class="product-tag">Hospitals</span>
+                    <span class="product-tag">Clinics / Poly-clinics</span>
+                    <span class="product-tag">Diagnostic Centers</span>
+                    <span class="product-tag">Pharmacies</span>
+                    <span class="product-tag">Nursing Homes</span>
+                    <span class="product-tag">Telemedicine</span>
+                </div>
+            </div>
+
+            <div class="product-cta">
+                <button class="btn btn-primary btn-large" onclick="location.href='/pages/contact.html'">Get a Free Consultation</button>
+                <button class="btn btn-outline btn-large" onclick="location.href='/pages/services.html'">View All Solutions</button>
+            </div>
+        </div>
+    </section>
+
+    @@include('../components/footer.html')
+
+    <script src="/scripts/script.js"></script>
+</body>
+</html>

@@ -7,8 +7,10 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN yarn install --production --silent
+# Install ALL dependencies (the gulp build chain lives in devDependencies, so
+# --production would omit it and `yarn build` below would fail). The final image is a
+# separate nginx stage, so these build deps never ship to production.
+RUN yarn install --frozen-lockfile --silent
 
 # Copy source code
 COPY . .

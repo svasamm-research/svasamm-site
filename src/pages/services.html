@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Svasamm</title>
-    <meta name="description" content="Comprehensive business automation solutions including ERP, HRMS, CRM, and Healthcare Information Management Systems for all industries.">
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/180.png">
-    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    @@include('../components/head.html', {
+        "title": "Our Services - Svasamm",
+        "description": "Comprehensive business automation solutions including ERP, HRMS, CRM, and Healthcare Information Management Systems for all industries.",
+        "canonical": "https://svasamm.com/pages/services.html",
+        "ogType": "website"
+    })
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Business Process Automation Software",
+        "provider": {
+            "@type": "Organization",
+            "name": "Svasamm",
+            "url": "https://svasamm.com"
+        },
+        "areaServed": "IN",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Svasamm Solutions",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Enterprise Resource Planning (ERP)", "url": "https://svasamm.com/pages/erp.html" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Human Resource Management System (HRMS)", "url": "https://svasamm.com/pages/hrms.html" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Customer Relationship Management (CRM)", "url": "https://svasamm.com/pages/crm.html" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Healthcare Information Management System (HIMS)", "url": "https://svasamm.com/pages/hims.html" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service Desk" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Loan Management" } }
+            ]
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://svasamm.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://svasamm.com/pages/services.html" }
+        ]
+    }
+    </script>
     <style>
         .services-hero {
             padding: 8rem 0 4rem 0;
@@ -223,7 +254,7 @@
             <div class="service-detail-card">
                 <div class="service-detail-icon-wrapper">
                     <div class="service-detail-icon">
-                        <img src="/images/icons/precision-manufacturing.svg" alt="HRMS Icon" width="90" height="90">
+                        <img src="/images/icons/precision-manufacturing.svg" alt="ERP Icon" width="90" height="90">
                     </div>
                 </div>
                 <div class="service-detail-content">
@@ -286,6 +317,7 @@
                             <span class="industry-tag">Food & Beverage</span>
                         </div>
                     </div>
+                    <a href="/pages/erp.html" class="btn btn-outline" style="margin-top: 1.5rem;">Explore ERP in detail</a>
                 </div>
             </div>
 
@@ -356,6 +388,7 @@
                             <span class="industry-tag">All Industries</span>
                         </div>
                     </div>
+                    <a href="/pages/hrms.html" class="btn btn-outline" style="margin-top: 1.5rem;">Explore HRMS in detail</a>
                 </div>
             </div>
 
@@ -426,6 +459,7 @@
                             <span class="industry-tag">B2B Services</span>
                         </div>
                     </div>
+                    <a href="/pages/crm.html" class="btn btn-outline" style="margin-top: 1.5rem;">Explore CRM in detail</a>
                 </div>
             </div>
 
@@ -433,7 +467,7 @@
             <div class="service-detail-card">
                 <div class="service-detail-icon-wrapper">
                     <div class="service-detail-icon">
-                        <img src="/images/icons/hospital.svg" alt="HRMS Icon" width="90" height="90">
+                        <img src="/images/icons/hospital.svg" alt="Healthcare HIMS Icon" width="90" height="90">
                     </div>
                 </div>
                 <div class="service-detail-content">
@@ -496,6 +530,7 @@
                             <span class="industry-tag">Telemedicine</span>
                         </div>
                     </div>
+                    <a href="/pages/hims.html" class="btn btn-outline" style="margin-top: 1.5rem;">Explore Healthcare HIMS in detail</a>
                 </div>
             </div>
 
@@ -509,13 +544,13 @@
                 Let's discuss how Svasamm can automate your processes and drive growth.
             </p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <button class="btn btn-secondary btn-large" onclick="location.href='pages/contact.html'">
+                <button class="btn btn-secondary btn-large" onclick="location.href='/pages/contact.html'">
                     Get Free Consultation
                     <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </button>
-                <button class="btn btn-outline btn-large" onclick="location.href='pages/services.html'" style="background: transparent; color: var(--primary-foreground); border-color: var(--primary-foreground);">
+                <button class="btn btn-outline btn-large" onclick="location.href='/pages/services.html'" style="background: transparent; color: var(--primary-foreground); border-color: var(--primary-foreground);">
                     Explore Services
                 </button>
             </div>

@@ -82,6 +82,13 @@ gulp.task('images', function() {
         .pipe(gulp.dest(paths.dist.images));
 });
 
+// Copy root static files (robots.txt, sitemap.xml, llms.txt) to dist root
+gulp.task('static', function() {
+    return gulp.src(['src/robots.txt', 'src/sitemap.xml', 'src/llms.txt'], { allowEmpty: true })
+        .pipe(gulp.dest(paths.dist.base))
+        .pipe(connect.reload());
+});
+
 // Development server
 gulp.task('serve', function() {
     connect.server({
@@ -100,10 +107,11 @@ gulp.task('watch', function() {
     gulp.watch(paths.src.scripts, gulp.series('scripts'));
     gulp.watch(paths.src.assets, gulp.series('assets'));
     gulp.watch(paths.src.images, gulp.series('images'));
+    gulp.watch(['src/robots.txt', 'src/sitemap.xml', 'src/llms.txt'], gulp.series('static'));
 });
 
 // Build all assets
-gulp.task('build', gulp.parallel('html', 'pages', 'styles', 'scripts', 'assets', 'images'));
+gulp.task('build', gulp.parallel('html', 'pages', 'styles', 'scripts', 'assets', 'images', 'static'));
 
 // Development workflow
 gulp.task('dev', gulp.series('build', gulp.parallel('serve', 'watch')));

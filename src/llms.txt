@@ -1,0 +1,34 @@
+# Svasamm
+
+> Svasamm (legal name: Svasamm Research Pvt Ltd, founded 2022) is a business process
+> automation software vendor based in Konnagar, West Bengal, India. We build ERP, HRMS,
+> CRM, Healthcare Information Management System (HIMS), Service Desk, and Loan Management
+> software for medium and large-scale enterprises across manufacturing, healthcare,
+> retail, finance, education, distribution, real estate, and professional services.
+
+## Products
+
+- [Enterprise Resource Planning (ERP)](https://svasamm.com/pages/erp.html): Unified platform integrating finance, supply chain, manufacturing, procurement, and multi-location/multi-currency operations with real-time analytics.
+- [Human Resource Management System (HRMS)](https://svasamm.com/pages/hrms.html): Employee lifecycle management — recruitment, onboarding, attendance, payroll, tax compliance, performance appraisals, and self-service portals.
+- [Customer Relationship Management (CRM)](https://svasamm.com/pages/crm.html): Lead and opportunity management, sales pipeline forecasting, support ticketing, and marketing automation.
+- [Healthcare Information Management System (HIMS)](https://svasamm.com/pages/hims.html): HIPAA-compliant EHR, patient registration, lab/radiology management, pharmacy inventory, and insurance billing for hospitals, clinics, and diagnostic centers.
+- [Service Desk](https://svasamm.com/pages/services.html): IT service management with ticket tracking, incident management, and knowledge base.
+- [Loan Management](https://svasamm.com/pages/services.html): End-to-end loan processing with application tracking, approval workflow, and portfolio management.
+
+## Company
+
+- [Services overview](https://svasamm.com/pages/services.html): Full solution catalog.
+- [About Svasamm](https://svasamm.com/pages/about.html): Company history, founding (2022), and mission.
+- [Customer Testimonials](https://svasamm.com/pages/testimonials.html): Client success stories and case studies.
+- [Contact](https://svasamm.com/pages/contact.html): Contact details and consultation requests.
+
+## Contact
+
+- Email: mithun@svasamm.com
+- Phone: +91 (821) 782-0249
+- Address: Nabagram, Konnagar, Hooghly, West Bengal 712246, India
+
+## Optional
+
+- [Privacy Policy](https://svasamm.com/pages/privacy.html)
+- [Terms of Service](https://svasamm.com/pages/terms-of-service.html)
