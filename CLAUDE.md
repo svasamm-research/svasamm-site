@@ -56,6 +56,17 @@ a dedicated `/pages/*.html`):
 - `service-desk.html` / `loan-management.html` are `noindex` stubs (thin) and **excluded
   from `sitemap.xml`** until real copy is added (see their `TODO`).
 
+## Growth / marketing
+
+- **`docs/growth-plan.md`** — the SEO / Local SEO / GEO / content / backlinks / ads
+  strategy + a novice-friendly learning guide. Read it before doing SEO or ads work.
+  Current gaps (as of the plan): no GBP, no backlinks, no keyword targeting, no ongoing
+  content, analytics (GSC/GA4/Bing) not wired. Local SEO (West Bengal → UP/Bihar/Odisha/
+  Jharkhand) and content are the biggest levers; Millingo is the best organic bet.
+- Paid ads run through the **`claude-ads`** plugin (`/ads plan`, `/ads math`,
+  `/ads landing`, per-platform audits) — planning/creation only; needs a real ad account
+  + budget to spend.
+
 ## Guardrails
 
 - Don't fabricate metrics/claims ("300% ROI", "50+ clients", "ISO 27001") — flagged,
