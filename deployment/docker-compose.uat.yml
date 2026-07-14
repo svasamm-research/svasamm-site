@@ -1,71 +1,20 @@
-# UAT / staging compose (uat.svasamm.com).
-# Same image as production, but: single subdomain host (no www), and an X-Robots-Tag:
-# noindex header at the edge so staging is NEVER indexed (it would be duplicate content
-# competing with svasamm.com). Optionally protect with basic auth (see uat-auth below).
-# Deployed on a `uat-v*` tag via .github/workflows/deploy.yml. See docs/deployment.md.
-version: '3.8'
-
+# UAT / staging compose (uat.svasamm.com). Same image as prod, uat-latest tag.
+# Domain + HTTPS in the Dokploy **Domains** tab; add the X-Robots-Tag noindex + security
+# middlewares per deployment/dokploy-seo.md. Staging MUST be noindex (duplicate-content
+# risk) and should NOT be added to Google Search Console or the sitemap.
 services:
-  svasamm-website-uat:
-    image: ghcr.io/svasamm-research/svasamm-site:${IMAGE_TAG:-uat-latest}
-    container_name: svasamm-uat
+  svasamm-website:
+    image: ${CUSTOM_IMAGE:-svasamm/svasamm-website}:${CUSTOM_TAG:-uat-latest}
+    pull_policy: ${PULL_POLICY:-always}
+    ports:
+      - mode: ingress
+        host_ip: ${AGENT_PRIVATE_IP}
+        target: 80
+        published: "${BENCH_PORT}"
+        protocol: tcp
     restart: unless-stopped
-    expose:
-      - "80"
-    environment:
-      - NODE_ENV=production
-      - DOMAIN_NAME=${DOMAIN_NAME:-uat.svasamm.com}
-    volumes:
-      - nginx-logs-uat:/var/log/nginx
-    networks:
-      - dokploy-network
-    labels:
-      - "traefik.enable=true"
-
-      # --- HTTPS router (subdomain only; no www variant) ---
-      - "traefik.http.routers.svasamm-uat.rule=Host(`${DOMAIN_NAME:-uat.svasamm.com}`)"
-      - "traefik.http.routers.svasamm-uat.entrypoints=websecure"
-      - "traefik.http.routers.svasamm-uat.tls=true"
-      - "traefik.http.routers.svasamm-uat.tls.certresolver=letsencrypt"
-      # noindex is required; add uat-auth to the chain to also password-protect staging.
-      - "traefik.http.routers.svasamm-uat.middlewares=uat-noindex,security-headers-uat"
-      - "traefik.http.services.svasamm-uat.loadbalancer.server.port=80"
-
-      # --- HTTP -> HTTPS (301) ---
-      - "traefik.http.routers.svasamm-uat-http.rule=Host(`${DOMAIN_NAME:-uat.svasamm.com}`)"
-      - "traefik.http.routers.svasamm-uat-http.entrypoints=web"
-      - "traefik.http.routers.svasamm-uat-http.middlewares=redirect-to-https-uat"
-      - "traefik.http.middlewares.redirect-to-https-uat.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.redirect-to-https-uat.redirectscheme.permanent=true"
-
-      # --- Keep staging OUT of the index (critical: avoids duplicate content) ---
-      - "traefik.http.middlewares.uat-noindex.headers.customresponseheaders.X-Robots-Tag=noindex, nofollow"
-
-      # --- Security headers (no HSTS preload on a subdomain) ---
-      - "traefik.http.middlewares.security-headers-uat.headers.contentTypeNosniff=true"
-      - "traefik.http.middlewares.security-headers-uat.headers.browserXssFilter=true"
-      - "traefik.http.middlewares.security-headers-uat.headers.referrerPolicy=strict-origin-when-cross-origin"
-      - "traefik.http.middlewares.security-headers-uat.headers.customFrameOptionsValue=SAMEORIGIN"
-
-      # --- OPTIONAL: password-protect staging. Generate with `htpasswd -nb user pass`,
-      #     escape every $ as $$, then add uat-auth to the router middlewares chain above.
-      # - "traefik.http.middlewares.uat-auth.basicauth.users=user:$$apr1$$....."
-
-      # --- Health check ---
-      - "traefik.http.services.svasamm-uat.loadbalancer.healthcheck.path=/health"
-      - "traefik.http.services.svasamm-uat.loadbalancer.healthcheck.interval=30s"
-
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      test: ["CMD", "wget", "-qO-", "http://localhost/health"]
       interval: 30s
-      timeout: 10s
+      timeout: 5s
       retries: 3
-      start_period: 10s
-
-volumes:
-  nginx-logs-uat:
-    driver: local
-
-networks:
-  dokploy-network:
-    external: true
