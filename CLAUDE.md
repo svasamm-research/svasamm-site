@@ -39,11 +39,24 @@ Deployed on Hetzner, migrating to Hostinger via Dokploy.
   that was a soft-404 crawl trap). Security headers (CSP/X-Frame/nosniff/Referrer) live
   here; cache `location`s use `expires` only (an `add_header` in a `location` cancels
   inherited headers). `error_page 404 /404.html`; `/index.html` 301s to `/`.
-- `docker-compose.yml` — **Traefik labels Dokploy consumes**: HTTP→HTTPS 301
-  (`permanent=true`), www→apex 301, **HSTS** (edge, not nginx). Keep in sync with the
-  Dokploy UI config; `www.<domain>` must resolve + be in the TLS cert.
-- `docker/Dockerfile` — builder runs `yarn install --frozen-lockfile` (the gulp build
-  chain is in **devDependencies**; `--production` would break `yarn build`).
+- `docker-compose.yml` (PROD) / `docker-compose.uat.yml` (UAT) — **minimal Dokploy Compose**
+  (lucoze pattern): image `${CUSTOM_IMAGE:-svasamm/svasamm-website}:${CUSTOM_TAG}`, Dokploy
+  `ports` (`AGENT_PRIVATE_IP`/`BENCH_PORT`), healthcheck. **No Traefik router labels** — the
+  domain + HTTPS are set in the Dokploy **Domains UI**, and www→apex / HSTS / **UAT noindex**
+  are middleware labels documented in **`deployment/dokploy-seo.md`**. (UAT must stay
+  `X-Robots-Tag: noindex` — never add uat to GSC or the sitemap.)
+- `docker/Dockerfile` — builder runs `yarn install --frozen-lockfile` (gulp build chain is
+  in **devDependencies**; `--production` breaks `yarn build`).
+
+### Release model — full runbook in `docs/deployment.md`, edge config in `deployment/dokploy-seo.md`
+- Flow: `feature/*` → **develop** → **uat** → **main**. Mirrors `lucoze-website`.
+- **A published GitHub Release deploys** (`.github/workflows/deploy.yml`): `uat-vX.Y.Z`
+  (target `uat`) → UAT; `vX.Y.Z` (target `main`) → PROD. Workflow tests → builds/pushes to
+  **Docker Hub `svasamm/svasamm-website`** (`:<tag>` + `:latest`|`:uat-latest`) → POSTs the
+  Dokploy webhook (gated by the `DOKPLOY_DEPLOY_ENABLED` variable).
+- **Same version number across envs** (validate `uat-v0.0.5`, release `v0.0.5`).
+- Secrets: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`, `DOKPLOY_SVASAMM_WEBSITE_UAT_WEBHOOK`,
+  `DOKPLOY_SVASAMM_WEBSITE_WEBHOOK`. Var: `DOKPLOY_DEPLOY_ENABLED`.
 
 ## Products (solutions)
 

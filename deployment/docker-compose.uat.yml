@@ -1,0 +1,20 @@
+# UAT / staging compose (uat.svasamm.com). Same image as prod, uat-latest tag.
+# Domain + HTTPS in the Dokploy **Domains** tab; add the X-Robots-Tag noindex + security
+# middlewares per deployment/dokploy-seo.md. Staging MUST be noindex (duplicate-content
+# risk) and should NOT be added to Google Search Console or the sitemap.
+services:
+  svasamm-website:
+    image: ${CUSTOM_IMAGE:-svasamm/svasamm-website}:${CUSTOM_TAG:-uat-latest}
+    pull_policy: ${PULL_POLICY:-always}
+    ports:
+      - mode: ingress
+        host_ip: ${AGENT_PRIVATE_IP}
+        target: 80
+        published: "${BENCH_PORT}"
+        protocol: tcp
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
