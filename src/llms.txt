@@ -18,6 +18,13 @@
 - [Service Desk](https://svasamm.com/pages/services.html): IT service management with ticket tracking, incident management, and knowledge base.
 - [Loan Management](https://svasamm.com/pages/services.html): End-to-end loan processing with application tracking, approval workflow, and portfolio management.
 
+## Rice-mill guides (Millingo)
+
+- [Custom Milled Rice (CMR) explained](https://svasamm.com/pages/custom-milled-rice-cmr-process.html): The CMR process for millers — 67% + 1% FRK obligation, delivery schedule, and state portals (WB e-Paddy, UP e-Kray, Odisha OSCSC).
+- [Rice mill yield & milling recovery](https://svasamm.com/pages/rice-mill-yield-recovery.html): How to calculate milling recovery and paddy-to-rice conversion (67–72% total, 60–66% head rice) and track it per batch.
+- [Rice mill by-product accounting](https://svasamm.com/pages/rice-mill-byproduct-accounting.html): Accounting for bran, husk, and broken rice and computing true cost per ton.
+- [Rice mill software for West Bengal](https://svasamm.com/pages/rice-mill-software-west-bengal.html): Rice-mill ERP built for WB e-Paddy / WBECSC / BENFED CMR workflow.
+
 ## Company
 
 - [Services overview](https://svasamm.com/pages/services.html): Full solution catalog.
