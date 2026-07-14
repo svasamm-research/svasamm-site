@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('../components/head.html', {
+        "title": "Loan Management Software - Loan Origination & Servicing | Svasamm",
+        "description": "Svasamm Loan Management offers end-to-end loan processing with application tracking, approval workflow, and portfolio management.",
+        "canonical": "https://svasamm.com/pages/loan-management.html",
+        "ogType": "website"
+    })
+    <!-- TODO(content): expand with full feature list, use cases, and industries, then
+         remove the noindex below and add this URL to sitemap.xml. Kept out of the index
+         for now to avoid shipping a thin page. -->
+    <meta name="robots" content="noindex, follow">
+</head>
+<body>
+    @@include('../components/header.html')
+
+    <section class="product-hero">
+        <div class="container">
+            <div class="section-badge">Loan Management</div>
+            <h1>Loan Management</h1>
+            <p>End-to-end loan processing with application tracking, approval workflow, and portfolio management.</p>
+        </div>
+    </section>
+
+    <section class="product-main">
+        <div class="container">
+            <p class="product-intro">Svasamm Loan Management streamlines the full lending lifecycle — from application capture and approval workflows to disbursement and portfolio monitoring. Detailed capabilities and industry use cases are being added.</p>
+
+            <ul class="product-features">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Application Tracking &amp; Origination</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Approval Workflow &amp; Underwriting</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Portfolio &amp; Repayment Management</span></li>
+            </ul>
+
+            <div class="product-cta">
+                <button class="btn btn-primary btn-large" onclick="location.href='/pages/contact.html'">Get a Free Consultation</button>
+                <button class="btn btn-outline btn-large" onclick="location.href='/pages/services.html'">View All Solutions</button>
+            </div>
+        </div>
+    </section>
+
+    @@include('../components/footer.html')
+
+    <script src="/scripts/script.js"></script>
+</body>
+</html>

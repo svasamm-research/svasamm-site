@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Svasamm</title>
-    <meta name="description" content="Learn about Svasamm's journey, mission, and commitment to transforming businesses through innovative automation solutions.">
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/180.png">
-    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    @@include('../components/head.html', {
+        "title": "About Us - Svasamm",
+        "description": "Learn about Svasamm's journey, mission, and commitment to transforming businesses through innovative automation solutions.",
+        "canonical": "https://svasamm.com/pages/about.html",
+        "ogType": "website"
+    })
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://svasamm.com/" },
+            { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://svasamm.com/pages/about.html" }
+        ]
+    }
+    </script>
     <style>
         .about-hero {
             padding: 8rem 0 4rem 0;
@@ -333,13 +339,13 @@
                     <p>Today, we serve clients across multiple industries, from manufacturing and healthcare to retail and professional services, helping them achieve unprecedented levels of efficiency and growth.</p>
                 </div>
                 <div class="story-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Team collaboration">
+                    <img src="/images/about-story.jpg" alt="Svasamm team collaboration" width="1080" height="720" loading="lazy">
                 </div>
             </div>
 
             <div class="story-grid" style="direction: rtl;">
                 <div class="story-image" style="direction: ltr;">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Innovation and technology">
+                    <img src="/images/about-mission.jpg" alt="Innovation and technology at Svasamm" width="1080" height="720" loading="lazy">
                 </div>
                 <div class="story-content" style="direction: ltr;">
                     <div class="section-badge">Our Mission</div>

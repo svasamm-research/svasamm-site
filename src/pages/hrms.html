@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('../components/head.html', {
+        "title": "HRMS Software - Human Resource Management System | Svasamm",
+        "description": "Svasamm HRMS automates the full employee lifecycle: recruitment, onboarding, attendance, payroll, tax compliance, and performance management.",
+        "canonical": "https://svasamm.com/pages/hrms.html",
+        "ogType": "website"
+    })
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Human Resource Management System (HRMS)",
+        "serviceType": "HRMS Software",
+        "description": "Intelligent HRMS platform that automates the employee lifecycle from recruitment to retirement while ensuring compliance and enhancing employee experience.",
+        "provider": { "@type": "Organization", "name": "Svasamm", "url": "https://svasamm.com" },
+        "areaServed": "IN"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://svasamm.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://svasamm.com/pages/services.html" },
+            { "@type": "ListItem", "position": 3, "name": "HRMS", "item": "https://svasamm.com/pages/hrms.html" }
+        ]
+    }
+    </script>
+</head>
+<body>
+    @@include('../components/header.html')
+
+    <section class="product-hero">
+        <div class="container">
+            <div class="section-badge">HRMS Solution</div>
+            <h1>Human Resource Management System (HRMS)</h1>
+            <p>Automate your HR operations from recruitment to retirement while ensuring compliance and enhancing employee experience.</p>
+        </div>
+    </section>
+
+    <section class="product-main">
+        <div class="container">
+            <p class="product-intro">Transform your HR operations with an intelligent HRMS platform. Svasamm HRMS manages the complete employee lifecycle, reduces manual paperwork, and keeps you compliant with attendance, payroll, and tax requirements.</p>
+
+            <ul class="product-features">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Recruitment &amp; Onboarding Automation</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Attendance &amp; Leave Management</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Payroll Processing &amp; Tax Compliance</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Performance Management &amp; Appraisals</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Employee Self-Service Portal</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Training &amp; Development Tracking</span></li>
+            </ul>
+
+            <div class="product-industries">
+                <h2>Industries We Serve</h2>
+                <div class="product-tags">
+                    <span class="product-tag">IT &amp; Technology</span>
+                    <span class="product-tag">Healthcare</span>
+                    <span class="product-tag">Education</span>
+                    <span class="product-tag">Banking &amp; Finance</span>
+                    <span class="product-tag">Hospitality</span>
+                    <span class="product-tag">All Industries</span>
+                </div>
+            </div>
+
+            <div class="product-cta">
+                <button class="btn btn-primary btn-large" onclick="location.href='/pages/contact.html'">Get a Free Consultation</button>
+                <button class="btn btn-outline btn-large" onclick="location.href='/pages/services.html'">View All Solutions</button>
+            </div>
+        </div>
+    </section>
+
+    @@include('../components/footer.html')
+
+    <script src="/scripts/script.js"></script>
+</body>
+</html>

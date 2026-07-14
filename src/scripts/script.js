@@ -3,6 +3,7 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwxLbMvQsb2Ew
 
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return; // contact form only exists on the contact page
 
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();

@@ -1,25 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Svasamm - Business Process Automation Solutions</title>
-    <meta name="description" content="Transform your medium to large-scale business operations with cutting-edge automation solutions. Increase productivity by up to 300%.">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/180.png">
-    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-    <!-- SEO Meta Tags -->
-    <meta property="og:title" content="Svasamm - Business Process Automation Solutions">
-    <meta property="og:description" content="Leading provider of business automation solutions for enterprises. 50+ successful implementations.">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
+    @@include('components/head.html', {
+        "title": "Svasamm - Business Process Automation Solutions",
+        "description": "Transform your medium to large-scale business operations with cutting-edge automation solutions. Increase productivity by up to 300%.",
+        "canonical": "https://svasamm.com/",
+        "ogType": "website"
+    })
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -27,23 +14,29 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Svasamm",
+        "legalName": "Svasamm Research Pvt Ltd",
         "url": "https://svasamm.com",
+        "logo": "https://svasamm.com/images/logo-512.png",
+        "image": "https://svasamm.com/images/hero-dashboard.jpg",
+        "description": "Svasamm builds business process automation software (ERP, HRMS, CRM, Healthcare HIMS, Service Desk, Loan Management) for medium and large-scale enterprises.",
+        "foundingDate": "2022",
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+91-821-782-0249",
             "contactType": "customer service",
-            "email": "mithun@svasamm.com"
+            "email": "mithun@svasamm.com",
+            "areaServed": "IN"
         },
         "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Konnagar",
+            "streetAddress": "Nabagram, Konnagar",
+            "addressLocality": "Hooghly",
             "addressRegion": "West Bengal",
             "postalCode": "712246",
             "addressCountry": "IN"
         }
     }
     </script>
-    <script>lucide.createIcons();</script>
 </head>
 <body>
     <!-- Include Header Component -->
@@ -100,9 +93,10 @@
                 </div>
 
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGF1dG9tYXRpb24lMjBkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MXx8fHwxNzU2NDM1Mjg2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                         alt="Business automation dashboard"
-                         class="hero-img">
+                    <img src="/images/hero-dashboard.jpg"
+                         alt="Business automation analytics dashboard"
+                         width="1200" height="800"
+                         class="hero-img" fetchpriority="high">
                 </div>
             </div>
         </div>
@@ -128,7 +122,23 @@
                     <p class="service-description">
                         Unified platform integrating finance, supply chain, manufacturing, and operations for complete business visibility.
                     </p>
-                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                    <button class="btn btn-outline" onclick="location.href='/pages/erp.html'" style="margin-top: 1rem; width: 100%;">
+                        Learn More
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/images/icons/warehouse.svg" alt="Rice Mill ERP Icon" width="24" height="24">
+                    </div>
+                    <h3 class="service-title">Millingo &mdash; Rice Mill ERP</h3>
+                    <p class="service-description">
+                        ERP built specifically for rice mills: paddy procurement, quality grading, milling yield &amp; by-products, and FCI/levy (CMR) compliance.
+                    </p>
+                    <button class="btn btn-outline" onclick="location.href='/pages/millingo.html'" style="margin-top: 1rem; width: 100%;">
                         Learn More
                         <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -144,7 +154,7 @@
                     <p class="service-description">
                         Complete HR management from recruitment to retirement with payroll, attendance, and performance tracking.
                     </p>
-                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                    <button class="btn btn-outline" onclick="location.href='/pages/hrms.html'" style="margin-top: 1rem; width: 100%;">
                         Learn More
                         <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -160,7 +170,7 @@
                     <p class="service-description">
                         Powerful customer relationship management with sales automation, marketing, and support tools.
                     </p>
-                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                    <button class="btn btn-outline" onclick="location.href='/pages/crm.html'" style="margin-top: 1rem; width: 100%;">
                         Learn More
                         <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -170,13 +180,29 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="/images/icons/health.svg" alt="ERP Icon" width="24" height="24">
+                        <img src="/images/icons/health.svg" alt="Healthcare HIMS Icon" width="24" height="24">
                     </div>
-                    <h3 class="service-title">Healthcare HIMS</h3>
+                    <h3 class="service-title">Lucoze &mdash; Healthcare HIMS</h3>
                     <p class="service-description">
-                        HIPAA-compliant healthcare information management with EHR, patient records, and billing integration.
+                        Our India-first hospital &amp; clinic management system: appointments, EMR, billing, lab, pharmacy, and HR on one ABDM-ready platform.
                     </p>
-                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                    <button class="btn btn-outline" onclick="location.href='/pages/hims.html'" style="margin-top: 1rem; width: 100%;">
+                        Learn More
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/images/icons/trade-distribution.svg" alt="DMS Icon" width="24" height="24">
+                    </div>
+                    <h3 class="service-title">DMS &mdash; Distributor Management</h3>
+                    <p class="service-description">
+                        Run your entire independent-distributor network on one platform: distributor-scoped sales, tiered stock, commissions, and territory control.
+                    </p>
+                    <button class="btn btn-outline" onclick="location.href='/pages/dms.html'" style="margin-top: 1rem; width: 100%;">
                         Learn More
                         <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -192,7 +218,7 @@
                     <p class="service-description">
                         Comprehensive IT service management with ticket tracking, incident management, and knowledge base.
                     </p>
-                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                    <button class="btn btn-outline" onclick="location.href='/pages/service-desk.html'" style="margin-top: 1rem; width: 100%;">
                         Learn More
                         <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -208,7 +234,7 @@
                     <p class="service-description">
                         End-to-end loan processing system with application tracking, approval workflow, and portfolio management.
                     </p>
-                    <button class="btn btn-outline" onclick="location.href='pages/services.html'" style="margin-top: 1rem; width: 100%;">
+                    <button class="btn btn-outline" onclick="location.href='/pages/loan-management.html'" style="margin-top: 1rem; width: 100%;">
                         Learn More
                         <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -260,7 +286,7 @@
                     <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                         <img src="/images/icons/store.svg" alt="Store Icon" width="30" height="30">
                     </div>
-                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Retail & E-commerce</h3>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Retail &amp; E-commerce</h3>
                     <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Point of sale, inventory tracking, customer loyalty programs, and omnichannel sales management.</p>
                 </div>
 
@@ -268,7 +294,7 @@
                     <div class="industry-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(3, 2, 19, 0.1) 0%, rgba(3, 2, 19, 0.05) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                         <img src="/images/icons/finance.svg" alt="Finance Icon" width="30" height="30">
                     </div>
-                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Finance & Banking</h3>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Finance &amp; Banking</h3>
                     <p style="color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.6;">Financial reporting, compliance management, risk assessment, and transaction processing automation.</p>
                 </div>
 
@@ -333,9 +359,10 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1557425631-f132f06f4aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NTYzODg4NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                         alt="Team collaboration workspace"
-                         class="about-img">
+                    <img src="/images/team-collaboration.jpg"
+                         alt="Svasamm team collaborating in a workspace"
+                         width="1080" height="749"
+                         class="about-img" loading="lazy">
                 </div>
 
                 <div class="about-text">

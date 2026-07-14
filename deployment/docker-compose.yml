@@ -2,42 +2,58 @@ version: '3.8'
 
 services:
   svasamm-website:
-    image: ghcr.io/your-username/svasamm-website:latest
+    image: ghcr.io/svasamm/website:latest
     container_name: svasamm-web
     restart: unless-stopped
     expose:
       - "80"
     environment:
       - NODE_ENV=production
-      - DOMAIN_NAME=${DOMAIN_NAME:-svasamm.yourdomain.com}
+      - DOMAIN_NAME=${DOMAIN_NAME:-svasamm.com}
     volumes:
       - nginx-logs:/var/log/nginx
     networks:
       - dokploy
     labels:
-      # Traefik labels for Dokploy integration
+      # Traefik labels for Dokploy integration.
+      # NOTE: Dokploy may manage some of these via its UI — keep the domain and these
+      # middlewares in sync with the Dokploy service config. www.<domain> must resolve
+      # to this server and be included in the TLS cert for the www->apex redirect.
       - "traefik.enable=true"
-      - "traefik.http.routers.svasamm.rule=Host(`${DOMAIN_NAME:-svasamm.yourdomain.com}`)"
+
+      # --- Primary HTTPS router (apex + www) ---
+      - "traefik.http.routers.svasamm.rule=Host(`${DOMAIN_NAME:-svasamm.com}`) || Host(`www.${DOMAIN_NAME:-svasamm.com}`)"
       - "traefik.http.routers.svasamm.entrypoints=websecure"
+      - "traefik.http.routers.svasamm.tls=true"
       - "traefik.http.routers.svasamm.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.svasamm.middlewares=www-to-apex,security-headers"
       - "traefik.http.services.svasamm.loadbalancer.server.port=80"
 
-      # HTTP to HTTPS redirect
-      - "traefik.http.routers.svasamm-http.rule=Host(`${DOMAIN_NAME:-svasamm.yourdomain.com}`)"
+      # --- HTTP -> HTTPS (permanent 301, not 302) ---
+      - "traefik.http.routers.svasamm-http.rule=Host(`${DOMAIN_NAME:-svasamm.com}`) || Host(`www.${DOMAIN_NAME:-svasamm.com}`)"
       - "traefik.http.routers.svasamm-http.entrypoints=web"
       - "traefik.http.routers.svasamm-http.middlewares=redirect-to-https"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
 
-      # Health check configuration
+      # --- www -> apex (permanent 301) so one canonical host is indexed ---
+      - "traefik.http.middlewares.www-to-apex.redirectregex.regex=^https?://www\\.(.*)"
+      - "traefik.http.middlewares.www-to-apex.redirectregex.replacement=https://$${1}"
+      - "traefik.http.middlewares.www-to-apex.redirectregex.permanent=true"
+
+      # --- Security headers + HSTS (HSTS lives here at the TLS edge, not in nginx) ---
+      - "traefik.http.middlewares.security-headers.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.security-headers.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.security-headers.headers.stsPreload=true"
+      - "traefik.http.middlewares.security-headers.headers.forceSTSHeader=true"
+      - "traefik.http.middlewares.security-headers.headers.contentTypeNosniff=true"
+      - "traefik.http.middlewares.security-headers.headers.browserXssFilter=true"
+      - "traefik.http.middlewares.security-headers.headers.referrerPolicy=strict-origin-when-cross-origin"
+      - "traefik.http.middlewares.security-headers.headers.customFrameOptionsValue=SAMEORIGIN"
+
+      # --- Health check ---
       - "traefik.http.services.svasamm.loadbalancer.healthcheck.path=/health"
       - "traefik.http.services.svasamm.loadbalancer.healthcheck.interval=30s"
-
-      # Security headers middleware
-      - "traefik.http.routers.svasamm.middlewares=security-headers"
-      - "traefik.http.middlewares.security-headers.headers.customRequestHeaders.X-Forwarded-Proto=https"
-      - "traefik.http.middlewares.security-headers.headers.sslRedirect=true"
-      - "traefik.http.middlewares.security-headers.headers.sslTemporaryRedirect=true"
-      - "traefik.http.middlewares.security-headers.headers.sslHost=${DOMAIN_NAME:-svasamm.yourdomain.com}"
 
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/health"]
