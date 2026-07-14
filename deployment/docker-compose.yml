@@ -16,7 +16,7 @@ services:
     volumes:
       - nginx-logs:/var/log/nginx
     networks:
-      - dokploy
+      - dokploy-network
     labels:
       # Traefik labels for Dokploy integration.
       # NOTE: Dokploy may manage some of these via its UI — keep the domain and these
@@ -70,5 +70,5 @@ volumes:
     driver: local
 
 networks:
-  dokploy:
+  dokploy-network:
     external: true

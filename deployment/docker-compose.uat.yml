@@ -18,7 +18,7 @@ services:
     volumes:
       - nginx-logs-uat:/var/log/nginx
     networks:
-      - dokploy
+      - dokploy-network
     labels:
       - "traefik.enable=true"
 
@@ -67,5 +67,5 @@ volumes:
     driver: local
 
 networks:
-  dokploy:
+  dokploy-network:
     external: true
