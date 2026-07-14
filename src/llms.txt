@@ -27,6 +27,11 @@
 - [Rice mill software for Uttar Pradesh](https://svasamm.com/pages/rice-mill-software-uttar-pradesh.html): Rice-mill ERP for UP procurement (fcs.up.gov.in, E-PoP) and CMR.
 - [Best rice mill software: how to choose](https://svasamm.com/pages/best-rice-mill-software.html): Buyer's guide — software categories and a must-have checklist.
 - [Rice mill software price](https://svasamm.com/pages/rice-mill-software-price.html): Pricing models and cost drivers for rice-mill software.
+- [GST for rice mills](https://svasamm.com/pages/gst-for-rice-mills.html): GST on paddy (exempt), pre-packaged rice (5%), husk/bran, milling charges, and input tax credit.
+- [Rice mill software for Odisha](https://svasamm.com/pages/rice-mill-software-odisha.html): Rice-mill ERP for OSCSC procurement and CMR.
+- [Rice mill software for Bihar](https://svasamm.com/pages/rice-mill-software-bihar.html): Rice-mill ERP for PACS/SFC procurement (esahkari.bihar.gov.in) and CMR.
+- [Millingo vs Dataman Rice Soft](https://svasamm.com/pages/millingo-vs-dataman.html): Factual comparison with Dataman's Rice Soft / AAHAAR.
+- [Millingo vs Samadhan Rice Mill ERP](https://svasamm.com/pages/millingo-vs-samadhan.html): Factual comparison with Samadhan Rice Mill ERP.
 
 ## Company
 

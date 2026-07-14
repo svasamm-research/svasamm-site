@@ -67,11 +67,34 @@ a dedicated `/pages/*.html`):
   `/ads landing`, per-platform audits) — planning/creation only; needs a real ad account
   + budget to spend.
 
+## Content cluster (Millingo)
+
+`docs/millingo-keyword-cluster.md` is the plan; the built cluster lives in `src/pages/`:
+pillar `millingo.html` + guides (`rice-mill-yield-recovery`, `custom-milled-rice-cmr-process`,
+`rice-mill-byproduct-accounting`, `gst-for-rice-mills`, `best-rice-mill-software`,
+`rice-mill-software-price`), per-state pages (`rice-mill-software-{west-bengal,uttar-pradesh,
+odisha,bihar}`), and comparisons (`millingo-vs-{dataman,samadhan}`). Guides/articles use the
+`.article-*` / `.faq-*` / `.cta-box` CSS in `styles.css` (reuse it; no per-page `<style>`).
+Off-page/listing plan: `docs/directory-listings.md`.
+
 ## Guardrails
 
 - Don't fabricate metrics/claims ("300% ROI", "50+ clients", "ISO 27001") — flagged,
   needs real substantiation before stating as fact.
+- **Never list a business as a customer/testimonial unless it's a real, consented
+  client.** No prospects or aspirational names (e.g. a mill we hope to win) — that's
+  misrepresentation (Consumer Protection Act) and passing-off risk. Regions/districts are
+  fine; named proof must be real + permissioned.
+- **Competitor "vs" pages must stay factual and neutral:** compare positioning + verifiable
+  features, use "stated / not stated on their public site" (never absolute "no"), add a
+  "public info as of <date>, verify directly" disclaimer, and no competitor logos.
+- **Guides carry a real author byline + `Article` schema** (E-E-A-T). Any guide stating
+  tax/legal/regulatory facts includes a "general information, verify with your CA/lawyer"
+  note and cites official sources; keep season-specific figures (CMR schedule, GST rates)
+  dated and caveated. Don't assert unverified specifics (e.g. the UP portal is
+  `fcs.up.gov.in`/E-PoP — "e-Kray" was NOT verified).
 - Every indexable page: one canonical, OG/Twitter (via head partial), and page-specific
-  JSON-LD (`Organization`/`Service`/`Review`/`BreadcrumbList`). Validate JSON-LD parses.
+  JSON-LD (`Organization`/`Service`/`Review`/`Article`/`FAQPage`/`BreadcrumbList`). Validate
+  JSON-LD parses (`npm test` + the JSON.parse sweep).
 - Product-page layout reuses global `.product-*` classes in `styles/styles.css` — reuse
   them, don't add per-page `<style>` blocks.
