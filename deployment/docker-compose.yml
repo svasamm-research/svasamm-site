@@ -1,8 +1,11 @@
+# PRODUCTION compose (svasamm.com). UAT uses deployment/docker-compose.uat.yml.
+# Image is built + pushed to GHCR by .github/workflows/deploy.yml on a `v*` tag;
+# a Dokploy webhook then pulls this tag and redeploys. See docs/deployment.md.
 version: '3.8'
 
 services:
   svasamm-website:
-    image: ghcr.io/svasamm/website:latest
+    image: ghcr.io/svasamm-research/svasamm-site:${IMAGE_TAG:-latest}
     container_name: svasamm-web
     restart: unless-stopped
     expose:

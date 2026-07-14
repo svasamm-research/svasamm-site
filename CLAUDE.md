@@ -39,11 +39,20 @@ Deployed on Hetzner, migrating to Hostinger via Dokploy.
   that was a soft-404 crawl trap). Security headers (CSP/X-Frame/nosniff/Referrer) live
   here; cache `location`s use `expires` only (an `add_header` in a `location` cancels
   inherited headers). `error_page 404 /404.html`; `/index.html` 301s to `/`.
-- `docker-compose.yml` — **Traefik labels Dokploy consumes**: HTTP→HTTPS 301
-  (`permanent=true`), www→apex 301, **HSTS** (edge, not nginx). Keep in sync with the
-  Dokploy UI config; `www.<domain>` must resolve + be in the TLS cert.
+- `docker-compose.yml` (PROD, svasamm.com) / `docker-compose.uat.yml` (UAT,
+  uat.svasamm.com) — **Traefik labels Dokploy consumes**: HTTP→HTTPS 301, www→apex 301,
+  **HSTS** (edge, not nginx). **UAT adds `X-Robots-Tag: noindex`** (the `uat-noindex`
+  middleware) so staging never gets indexed — do NOT add uat to GSC or the sitemap.
 - `docker/Dockerfile` — builder runs `yarn install --frozen-lockfile` (the gulp build
   chain is in **devDependencies**; `--production` would break `yarn build`).
+
+### Release model (tag-based) — full runbook in `docs/deployment.md`
+- Flow: `feature/*` → **develop** → **uat** → **main**.
+- **Only tags deploy** (`.github/workflows/deploy.yml`): `uat-vX.Y.Z` (cut on `uat`) →
+  UAT; `vX.Y.Z` (cut on `main`) → PROD. The workflow tests, builds+pushes the image to
+  `ghcr.io/svasamm-research/svasamm-site`, then POSTs the Dokploy webhook to redeploy.
+- GitHub secrets: `DOKPLOY_UAT_WEBHOOK`, `DOKPLOY_PROD_WEBHOOK`.
+- Migration Hetzner→Hostinger + DNS cutover + verification checklist: `docs/deployment.md`.
 
 ## Products (solutions)
 
