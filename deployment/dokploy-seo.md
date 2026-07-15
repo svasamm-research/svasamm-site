@@ -29,35 +29,22 @@ shows "Services not found"). Then, in **Domains → Add Domain**:
 1. Host `uat.svasamm.com` → Service `svasamm-website` → Container Port `80` → **HTTPS: on**,
    Let's Encrypt. (No `www` for the subdomain.)
 
-## 2. www → apex, HSTS, and UAT noindex (Traefik middleware labels)
+## 2. www → apex, HSTS, and UAT noindex — handled in nginx.conf
 
-Add these under the service in Dokploy: **Advanced → Docker/Compose labels** (or add them
-to the compose service and redeploy). Note the doubled `$$` — Compose eats a single `$`.
+These are done **in-app (`deployment/nginx/nginx.conf`)**, NOT as Traefik middlewares —
+the Dokploy/Traefik label route did **not** apply reliably (same lesson as lucoze), and
+nginx sees the forwarded `Host` header so it can do all three deterministically:
 
-**Production** — `www` → apex + HSTS:
-```yaml
-labels:
-  - "traefik.http.middlewares.svasamm-www.redirectregex.regex=^https?://www\\.svasamm\\.com/(.*)"
-  - "traefik.http.middlewares.svasamm-www.redirectregex.replacement=https://svasamm.com/$${1}"
-  - "traefik.http.middlewares.svasamm-www.redirectregex.permanent=true"
-  - "traefik.http.middlewares.svasamm-hsts.headers.stsSeconds=31536000"
-  - "traefik.http.middlewares.svasamm-hsts.headers.stsIncludeSubdomains=true"
-  - "traefik.http.middlewares.svasamm-hsts.headers.stsPreload=true"
-  # attach both to this app's router (use the router name Dokploy generated, or add them
-  # via the UI's middleware field):
-  - "traefik.http.routers.<router>.middlewares=svasamm-www,svasamm-hsts"
-```
+- **www → apex 301**: `if ($host = www.svasamm.com) { return 301 https://svasamm.com$request_uri; }`
+- **HSTS**: `add_header Strict-Transport-Security "max-age=31536000" always;`
+- **UAT noindex**: a `map $host $robots_tag` sets `noindex, nofollow` only for
+  `uat.svasamm.com`, emitted via `add_header X-Robots-Tag $robots_tag always;` (prod sends
+  nothing — nginx omits an empty add_header).
 
-**UAT** — noindex (mandatory) + HSTS:
-```yaml
-labels:
-  - "traefik.http.middlewares.svasamm-uat-noindex.headers.customresponseheaders.X-Robots-Tag=noindex, nofollow"
-  - "traefik.http.middlewares.svasamm-uat-hsts.headers.stsSeconds=31536000"
-  - "traefik.http.routers.<router>.middlewares=svasamm-uat-noindex,svasamm-uat-hsts"
-```
-> Find `<router>` in the Traefik dashboard (usually the app/service name). If Dokploy
-> manages the router, prefer attaching the middlewares via the UI's middleware field.
-> **Recommended for UAT:** also enable Basic Auth so staging isn't publicly browsable.
+So in the Dokploy **Domains** tab you only add the hosts + HTTPS/Let's Encrypt (§1). No
+middleware labels needed. To change any of the above, edit `nginx.conf` and ship a release.
+> **Recommended for UAT:** still enable Basic Auth in Dokploy so staging isn't publicly
+> browsable (noindex keeps it out of Google, auth keeps it out of everyone's sight).
 
 ## 3. Verify after deploy
 
