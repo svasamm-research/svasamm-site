@@ -1,3 +1,6 @@
 node_modules/
 .DS_STORE
 dist/
+
+# deployment env files (keep only *.env.example)
+deployment/*.env

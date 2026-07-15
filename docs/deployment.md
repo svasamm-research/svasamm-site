@@ -75,8 +75,12 @@ Create **two Compose apps** (as you already did), one per environment:
 For each:
 1. **Registry access** — if the Docker Hub repo is private: Dokploy → **Registry** → add
    Docker Hub with the `svasamm` username + a read token; the app then pulls it.
-2. **Environment** (Dokploy app → Environment): optionally set `CUSTOM_TAG` (defaults are
-   `latest` / `uat-latest`). `AGENT_PRIVATE_IP` and `BENCH_PORT` are provided by Dokploy.
+2. **Environment** (Dokploy app → Environment) — set these (see
+   `deployment/svasamm-website*.env.example`):
+   - `AGENT_PRIVATE_IP` — the VPS **private** IP (Hostinger console → server → Network tab).
+   - `BENCH_PORT` — an unused host port, **unique per app** on that server (e.g. `3001` for
+     UAT, `3000` for prod). Traefik routes the domain → `AGENT_PRIVATE_IP:BENCH_PORT`.
+   - `CUSTOM_TAG` is optional (defaults `latest` / `uat-latest`).
 3. **Deploy the compose once** so the `svasamm-website` service exists.
 4. **Domains + HTTPS + SEO middlewares** → follow **`deployment/dokploy-seo.md`**
    (Domains tab: host + port 80 + Let's Encrypt; then www→apex/HSTS/noindex labels).
