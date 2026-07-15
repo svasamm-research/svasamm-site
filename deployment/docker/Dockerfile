@@ -42,9 +42,10 @@ RUN chown -R nginx:nginx /var/cache/nginx \
     && chown -R nginx:nginx /usr/share/nginx/html \
     && chmod -R 755 /usr/share/nginx/html
 
-# Add health check
+# Add health check (IPv4 explicitly; `localhost` may resolve to ::1 while nginx only
+# listens on IPv4, which would mark the container unhealthy and make Traefik drop it).
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost/ || exit 1
+    CMD curl -f http://127.0.0.1/health || exit 1
 
 # Expose port
 EXPOSE 80
