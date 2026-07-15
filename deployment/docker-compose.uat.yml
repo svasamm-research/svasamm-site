@@ -14,7 +14,9 @@ services:
         protocol: tcp
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost/health"]
+      # IPv4 explicitly — `localhost` can resolve to ::1 and nginx only `listen 80;` (IPv4),
+      # which made the container report unhealthy and Traefik drop it (→ 404).
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/health"]
       interval: 30s
       timeout: 5s
       retries: 3
