@@ -1,55 +1,20 @@
-version: '3.8'
-
+# PRODUCTION compose (svasamm.com). UAT: docker-compose.uat.yml.
+# Dokploy pulls the Docker Hub image and runs this. Domain + HTTPS (Let's Encrypt) are set
+# in the Dokploy **Domains** tab; www->apex + HSTS are middleware labels — see
+# deployment/dokploy-seo.md. Image is built/pushed by .github/workflows/deploy.yml.
 services:
   svasamm-website:
-    image: ghcr.io/your-username/svasamm-website:latest
-    container_name: svasamm-web
+    image: ${CUSTOM_IMAGE:-svasamm/svasamm-website}:${CUSTOM_TAG:-latest}
+    pull_policy: ${PULL_POLICY:-always}
+    ports:
+      - mode: ingress
+        host_ip: ${AGENT_PRIVATE_IP}
+        target: 80
+        published: "${BENCH_PORT}"
+        protocol: tcp
     restart: unless-stopped
-    expose:
-      - "80"
-    environment:
-      - NODE_ENV=production
-      - DOMAIN_NAME=${DOMAIN_NAME:-svasamm.yourdomain.com}
-    volumes:
-      - nginx-logs:/var/log/nginx
-    networks:
-      - dokploy
-    labels:
-      # Traefik labels for Dokploy integration
-      - "traefik.enable=true"
-      - "traefik.http.routers.svasamm.rule=Host(`${DOMAIN_NAME:-svasamm.yourdomain.com}`)"
-      - "traefik.http.routers.svasamm.entrypoints=websecure"
-      - "traefik.http.routers.svasamm.tls.certresolver=letsencrypt"
-      - "traefik.http.services.svasamm.loadbalancer.server.port=80"
-
-      # HTTP to HTTPS redirect
-      - "traefik.http.routers.svasamm-http.rule=Host(`${DOMAIN_NAME:-svasamm.yourdomain.com}`)"
-      - "traefik.http.routers.svasamm-http.entrypoints=web"
-      - "traefik.http.routers.svasamm-http.middlewares=redirect-to-https"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-
-      # Health check configuration
-      - "traefik.http.services.svasamm.loadbalancer.healthcheck.path=/health"
-      - "traefik.http.services.svasamm.loadbalancer.healthcheck.interval=30s"
-
-      # Security headers middleware
-      - "traefik.http.routers.svasamm.middlewares=security-headers"
-      - "traefik.http.middlewares.security-headers.headers.customRequestHeaders.X-Forwarded-Proto=https"
-      - "traefik.http.middlewares.security-headers.headers.sslRedirect=true"
-      - "traefik.http.middlewares.security-headers.headers.sslTemporaryRedirect=true"
-      - "traefik.http.middlewares.security-headers.headers.sslHost=${DOMAIN_NAME:-svasamm.yourdomain.com}"
-
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      test: ["CMD", "wget", "-qO-", "http://localhost/health"]
       interval: 30s
-      timeout: 10s
+      timeout: 5s
       retries: 3
-      start_period: 10s
-
-volumes:
-  nginx-logs:
-    driver: local
-
-networks:
-  dokploy:
-    external: true

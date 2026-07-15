@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('../components/head.html', {
+        "title": "Lucoze - Hospital & Clinic Management System (HIMS) | Svasamm",
+        "description": "Lucoze is Svasamm's India-first hospital and clinic management system (HMS/EMR): appointments, EMR, billing, lab, pharmacy, and HR on one ABDM-ready, DPDP-compliant platform. Live in 14 days.",
+        "canonical": "https://svasamm.com/pages/hims.html",
+        "ogType": "website"
+    })
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Lucoze - Healthcare Information Management System (HIMS)",
+        "serviceType": "Hospital and Clinic Management System",
+        "description": "India-first HMS/EMR that runs an entire healthcare facility - appointments, patient records, billing, lab, pharmacy, and HR - on one ABDM-ready, DPDP-compliant platform.",
+        "url": "https://lucoze.com",
+        "provider": { "@type": "Organization", "name": "Svasamm", "url": "https://svasamm.com" },
+        "areaServed": "IN"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://svasamm.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://svasamm.com/pages/services.html" },
+            { "@type": "ListItem", "position": 3, "name": "Lucoze - Healthcare HIMS", "item": "https://svasamm.com/pages/hims.html" }
+        ]
+    }
+    </script>
+</head>
+<body>
+    @@include('../components/header.html')
+
+    <section class="product-hero">
+        <div class="container">
+            <div class="section-badge">Healthcare HIMS &middot; Lucoze</div>
+            <h1>Lucoze - Hospital &amp; Clinic Management System</h1>
+            <p>Run your entire healthcare facility on one platform - appointments, records, billing, lab, pharmacy, and HR. Built India-first, live in as little as 14 days.</p>
+            <div class="product-cta" style="margin-top: 2rem;">
+                <a href="https://lucoze.com" target="_blank" rel="noopener" class="btn btn-primary btn-large">Visit lucoze.com &rarr;</a>
+                <button class="btn btn-outline btn-large" onclick="location.href='/pages/contact.html'">Get a Free Consultation</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-main">
+        <div class="container">
+            <p class="product-intro"><strong>Lucoze</strong> is Svasamm's India-first Hospital &amp; Clinic Management System (HMS/EMR). It runs an entire facility &mdash; appointments, patient records, billing, lab, pharmacy, and HR &mdash; on one platform, built around Indian workflows and compliance (ABDM/ABHA, DPDP 2023, GST e-invoicing) with all patient data hosted in India and a Hindi-first interface. Clinics and small hospitals go live in as little as 14 days, with no data lock-in.</p>
+
+            <ul class="product-features">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>One platform, every department &mdash; appointments, EMR, billing, lab, pharmacy, and HR on a single patient timeline and ledger</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>ABDM-ready &mdash; ABHA-linked records with HPR/HFR and consent-manager integration</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>India data residency &amp; DPDP 2023 &mdash; every byte in Indian data centres, consent and breach flows built in</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>GST-compliant billing &mdash; CGST/SGST/IGST invoicing and e-invoicing, pharmacy and OPD on one ledger</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Lab &amp; pharmacy done right &mdash; barcoded sample-to-report chain of custody; FEFO expiry-first dispensing with Schedule-H registers</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Live in 14 days, Hindi-first UI &mdash; fast implementation, no six-month rollout, no proprietary lock-in</span></li>
+            </ul>
+
+            <div class="product-industries">
+                <h2>Who Lucoze Is For</h2>
+                <div class="product-tags">
+                    <span class="product-tag">Clinics (1&ndash;15 doctors)</span>
+                    <span class="product-tag">Hospitals (20&ndash;100 beds)</span>
+                    <span class="product-tag">Diagnostic Centers / Labs</span>
+                    <span class="product-tag">Pharmacies</span>
+                    <span class="product-tag">Polyclinics</span>
+                    <span class="product-tag">Multi-specialty Practices</span>
+                </div>
+            </div>
+
+            <div class="product-cta">
+                <a href="https://lucoze.com" target="_blank" rel="noopener" class="btn btn-primary btn-large">Explore Lucoze at lucoze.com &rarr;</a>
+                <button class="btn btn-outline btn-large" onclick="location.href='/pages/services.html'">View All Solutions</button>
+            </div>
+        </div>
+    </section>
+
+    @@include('../components/footer.html')
+
+    <script src="/scripts/script.js"></script>
+</body>
+</html>

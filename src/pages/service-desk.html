@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('../components/head.html', {
+        "title": "Service Desk Software - IT Service Management | Svasamm",
+        "description": "Svasamm Service Desk provides IT service management with ticket tracking, incident management, and a knowledge base.",
+        "canonical": "https://svasamm.com/pages/service-desk.html",
+        "ogType": "website"
+    })
+    <!-- TODO(content): expand with full feature list, use cases, and industries, then
+         remove the noindex below and add this URL to sitemap.xml. Kept out of the index
+         for now to avoid shipping a thin page. -->
+    <meta name="robots" content="noindex, follow">
+</head>
+<body>
+    @@include('../components/header.html')
+
+    <section class="product-hero">
+        <div class="container">
+            <div class="section-badge">Service Desk</div>
+            <h1>Service Desk</h1>
+            <p>Comprehensive IT service management with ticket tracking, incident management, and a knowledge base.</p>
+        </div>
+    </section>
+
+    <section class="product-main">
+        <div class="container">
+            <p class="product-intro">Svasamm Service Desk gives your IT and support teams a single place to log, route, and resolve requests — with incident management, SLA tracking, and a self-service knowledge base. Detailed capabilities and industry use cases are being added.</p>
+
+            <ul class="product-features">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Ticket Tracking &amp; Routing</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Incident &amp; Problem Management</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span>Knowledge Base &amp; Self-Service</span></li>
+            </ul>
+
+            <div class="product-cta">
+                <button class="btn btn-primary btn-large" onclick="location.href='/pages/contact.html'">Get a Free Consultation</button>
+                <button class="btn btn-outline btn-large" onclick="location.href='/pages/services.html'">View All Solutions</button>
+            </div>
+        </div>
+    </section>
+
+    @@include('../components/footer.html')
+
+    <script src="/scripts/script.js"></script>
+</body>
+</html>
