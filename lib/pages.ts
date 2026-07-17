@@ -1,5 +1,5 @@
 // SEO + JSON-LD for the two non-product/article pages that live under /pages/*.html
-// (Solutions and Contact). Copied verbatim from the prototype wrapper helmets.
+// (Solutions, Contact and About). Copied verbatim from the prototype wrapper helmets.
 import type { Seo } from "./types";
 
 export type CorePage = { kind: "solutions" | "contact" | "about"; seo: Seo; jsonLd: object[] };
@@ -42,7 +42,7 @@ export const CORE_BY_SLUG: Record<string, CorePage> = {
       ogDescription: "Vertical ERPs and business platforms, built in West Bengal for Indian operations.",
     },
     jsonLd: [
-      { "@context": "https://schema.org", "@type": "AboutPage", name: "About Svasamm", url: "https://svasamm.com/pages/about.html", mainEntity: { "@type": "Organization", name: "Svasamm Research Pvt Ltd", alternateName: "Svasamm", url: "https://svasamm.com", email: "query@svasamm.com", telephone: "+91-91471-44638", foundingDate: "2022", founder: { "@type": "Person", name: "Mithun K. Singh", jobTitle: "Founder" }, address: { "@type": "PostalAddress", streetAddress: "Nabagram, Konnagar", addressLocality: "Hooghly", addressRegion: "West Bengal", postalCode: "712246", addressCountry: "IN" } }, areaServed: "IN" },
+      { "@context": "https://schema.org", "@type": "AboutPage", name: "About Svasamm", url: "https://svasamm.com/pages/about.html", mainEntity: { "@type": "Organization", name: "Svasamm Research Pvt Ltd", alternateName: "Svasamm", url: "https://svasamm.com", email: "query@svasamm.com", telephone: "+91-91471-44638", foundingDate: "2022", founder: { "@type": "Person", name: "Mithun K. Singh", jobTitle: "Founder" }, address: { "@type": "PostalAddress", streetAddress: "Nabagram, Konnagar", addressLocality: "Hooghly", addressRegion: "West Bengal", postalCode: "712246", addressCountry: "IN" }, areaServed: "IN" } },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "About", item: "https://svasamm.com/pages/about.html" }] },
     ],
   },
