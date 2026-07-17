@@ -6,6 +6,7 @@ import ProductPage from "@/components/ProductPage";
 import ArticleView from "@/components/Article";
 import SolutionsPage from "@/components/SolutionsPage";
 import ContactPage from "@/components/ContactPage";
+import AboutPage from "@/components/AboutPage";
 import JsonLd from "@/components/JsonLd";
 import { PRODUCT_BY_SLUG } from "@/lib/products";
 import { ARTICLE_BY_SLUG } from "@/lib/articles";
@@ -49,7 +50,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const { product, article, core, jsonLd } = lookup(slug);
   if (!product && !article && !core) notFound();
 
-  const active = core?.kind === "solutions" ? "solutions" : core?.kind === "contact" ? "contact" : "products";
+  const active = core?.kind === "solutions" ? "solutions" : core?.kind === "contact" ? "contact" : core?.kind === "about" ? "about" : "products";
 
   return (
     <>
@@ -60,6 +61,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         {article && <ArticleView article={article} />}
         {core?.kind === "solutions" && <SolutionsPage />}
         {core?.kind === "contact" && <ContactPage />}
+        {core?.kind === "about" && <AboutPage />}
       </main>
       <SiteFooter />
     </>

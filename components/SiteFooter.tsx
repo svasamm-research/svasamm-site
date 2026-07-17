@@ -37,6 +37,7 @@ export default function SiteFooter() {
             <div style={kicker}>Company</div>
             <div className="flex flex-col gap-[9px]">
               <Link href="/pages/services.html" className="svf-link">All solutions</Link>
+              <Link href="/pages/about.html" className="svf-link">About</Link>
               <Link href="/#why" className="svf-link">Why Svasamm</Link>
               <Link href="/#regions" className="svf-link">Regions</Link>
               <Link href="/pages/contact.html" className="svf-link">Contact</Link>
