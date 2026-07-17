@@ -4,6 +4,22 @@
 <meta name="description" content="@@description">
 <link rel="canonical" href="@@canonical">
 
+<!-- Google Analytics 4. Set GA_ID to your Measurement ID (e.g. 'G-XXXXXXXXXX') to enable.
+     Empty = analytics OFF (no script loaded, no cookies). -->
+<script>
+  window.GA_ID = '';
+  if (window.GA_ID) {
+    var _ga = document.createElement('script');
+    _ga.async = true;
+    _ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_ID;
+    document.head.appendChild(_ga);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', window.GA_ID);
+  }
+</script>
+
 <link rel="stylesheet" href="/styles/styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

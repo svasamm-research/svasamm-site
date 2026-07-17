@@ -62,6 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Handle success (assume success after submission)
         setTimeout(() => {
             showMessage('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+
+            // GA4 lead conversion (fires only if GA is enabled via GA_ID in head.html).
+            if (window.gtag) {
+                gtag('event', 'generate_lead', { form: 'contact', page_location: location.href });
+            }
+
             contactForm.reset();
 
             // Reset button
