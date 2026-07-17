@@ -1,55 +1,27 @@
 {
-  "name": "svasamm-website",
-  "version": "1.0.0",
-  "description": "SVASAMM Business Process Automation Solutions Website",
-  "main": "index.html",
+  "name": "svasamm-web",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "gulp dev",
-    "dev:old": "live-server --host=0.0.0.0 --port=3000 --open=index.html --watch=.",
-    "build": "npm run clean && gulp build && npm run minify && npm run optimize",
-    "clean": "rm -rf dist && mkdir -p dist",
-    "copy": "echo 'Files copied by gulp build task'",
-    "minify": "npm run minify:css && npm run minify:js && npm run minify:html",
-    "minify:css": "cleancss -o dist/styles/styles.min.css dist/styles/styles.css && npm run update-css-ref",
-    "minify:js": "terser dist/scripts/script.js -o dist/scripts/script.min.js --compress --mangle && npm run update-js-ref",
-    "minify:html": "html-minifier --collapse-whitespace --remove-comments --remove-redundant-attributes --remove-script-type-attributes --use-short-doctype --minify-css true --minify-js true -o dist/index.min.html dist/index.html && mv dist/index.min.html dist/index.html",
-    "update-css-ref": "node -e \"const fs=require('fs'); let html=fs.readFileSync('dist/index.html','utf8'); html=html.replace(/styles\\.css/g,'styles.min.css'); fs.writeFileSync('dist/index.html',html);\"",
-    "update-js-ref": "node -e \"const fs=require('fs'); let html=fs.readFileSync('dist/index.html','utf8'); html=html.replace(/script\\.js/g,'script.min.js'); fs.writeFileSync('dist/index.html',html);\"",
-    "optimize": "npm run optimize:images",
-    "optimize:images": "(imagemin dist/assets/images/* --out-dir=dist/assets/images 2>/dev/null || true)",
-    "preview": "npm run build && live-server --host=0.0.0.0 --port=3001 --open=dist/index.html",
-    "docker:build": "docker build --platform linux/amd64 -t svasamm-website -f ./deployment/docker/Dockerfile .",
-    "docker:run": "docker run -p 80:80 svasamm-website",
-    "docker:dev": "docker-compose up --build",
-    "validate": "npm run validate:html && npm run validate:css",
-    "validate:html": "html-validate dist/index.html",
-    "validate:css": "stylelint dist/styles/*.css",
-    "test": "echo 'Running basic validation tests...' && npm run validate"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "live-server": "^1.2.2",
-    "clean-css-cli": "^5.6.2",
-    "terser": "^5.19.2",
-    "html-minifier": "^4.0.0",
-    "imagemin": "^8.0.1",
-    "html-validate": "^8.7.0",
-    "stylelint": "^15.11.0",
-    "gulp": "^4.0.2",
-    "gulp-file-include": "^2.3.0",
-    "gulp-livereload": "^4.0.2",
-    "gulp-connect": "^5.7.0"
-  },
-  "keywords": [
-    "business-automation",
-    "website",
-    "static-site",
-    "docker",
-    "nginx"
-  ],
-  "author": "SVASAMM",
-  "license": "MIT",
-  "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
