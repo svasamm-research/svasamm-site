@@ -90,9 +90,13 @@ the growth plan's "content/E-E-A-T is the #1 weak area." The five deltas:
 - Add "About" to the footer Company column; add `/pages/about.html` to the sitemap.
 
 **Carry-overs**
-- **GA4:** gated `gtag` via `next/script` in `app/layout.tsx` (loads only if a
-  `NEXT_PUBLIC_GA_ID` is set — off by default, same as today). The `ContactForm` island
-  fires `generate_lead` on successful submit (mirrors current `script.js` behavior).
+- **GA4:** ENABLED with Measurement ID **`G-EPFCF5F117`**, loaded via `next/script` in
+  `app/layout.tsx`. Because the same image serves UAT and prod, gtag init is **suppressed
+  when `location.hostname` is `uat.svasamm.com` or `localhost`/`127.0.0.1`** so UAT/dev
+  traffic never pollutes analytics (mirrors the nginx Host-based UAT-noindex). The ID lives
+  in a small config constant (`NEXT_PUBLIC_GA_ID` may override for flexibility). The
+  `ContactForm` island fires `generate_lead` on successful submit (mirrors current
+  `script.js` behavior).
 - **llms.txt:** regenerate for the new content set → `public/llms.txt`.
 - **Favicons:** copy the favicon set (16/32/108/180 + `favicon.ico`) into `public/`; wire
   `icons` in Next metadata (incl. apple-touch-icon).
