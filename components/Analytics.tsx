@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Script from "next/script";
 import { GA_ID } from "@/lib/site";
 
@@ -8,7 +9,14 @@ import { GA_ID } from "@/lib/site";
 const BLOCKED = new Set(["uat.svasamm.com", "localhost", "127.0.0.1"]);
 
 export default function Analytics() {
-  if (typeof window !== "undefined" && BLOCKED.has(window.location.hostname)) return null;
+  // Gate behind client mount: <Script src> triggers ReactDOM.preload() at render time,
+  // which would bake a gtag.js preload <link> into the exported static HTML (served to
+  // UAT/localhost too). Returning null until mounted keeps preload out of the export and
+  // lets the runtime hostname check below actually suppress UAT/localhost.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+  if (BLOCKED.has(window.location.hostname)) return null;
   if (!GA_ID) return null;
   return (
     <>
