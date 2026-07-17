@@ -1,5 +1,8 @@
 export const SITE_URL = "https://svasamm.com";
 
+// GA4 Measurement ID. Enabled in prod; the Analytics component suppresses it on UAT/localhost.
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-EPFCF5F117";
+
 export const BUSINESS = {
   legalName: "Svasamm Research Pvt Ltd",
   name: "Svasamm",

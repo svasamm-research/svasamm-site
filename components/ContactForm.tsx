@@ -1,5 +1,9 @@
 "use client";
 
+declare global {
+  interface Window { gtag?: (...args: unknown[]) => void }
+}
+
 import { useState } from "react";
 import { Icon } from "./IconClient";
 
@@ -40,6 +44,9 @@ export default function ContactForm() {
     if (!f.name.trim() || !validEmail(f.email) || f.message.trim().length < 3) return;
     setSentName(f.name.trim().split(" ")[0]);
     setSent(true);
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "generate_lead", { form: "contact", page_location: location.href });
+    }
   }
 
   function reset() {
