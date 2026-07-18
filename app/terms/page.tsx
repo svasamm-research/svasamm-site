@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "The terms governing your use of svasamm.com and its enquiry services, operated by Svasamm Research Pvt Ltd.",
   alternates: { canonical: "/terms" },
   robots: { index: true, follow: true },
-  openGraph: { type: "website", title: "Terms of Service | Svasamm", url: "/terms" },
+  openGraph: { type: "website", title: "Terms of Service | Svasamm", url: "/terms", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Svasamm — vertical ERPs & business platforms" }] },
 };
 
 export default function Terms() {

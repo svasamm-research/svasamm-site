@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "How Svasamm Research Pvt Ltd collects, uses, and protects your information across svasamm.com and its products.",
   alternates: { canonical: "/privacy" },
   robots: { index: true, follow: true },
-  openGraph: { type: "website", title: "Privacy Policy | Svasamm", url: "/privacy" },
+  openGraph: { type: "website", title: "Privacy Policy | Svasamm", url: "/privacy", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Svasamm — vertical ERPs & business platforms" }] },
 };
 
 export default function Privacy() {

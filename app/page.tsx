@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     title: "Svasamm — Vertical ERPs & Business Software",
     description: "Purpose-built vertical ERPs and platform modules for Indian operations. Millingo, Lucoze, DMS and more.",
     url: "/",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Svasamm — vertical ERPs & business platforms" }],
   },
-  twitter: { card: "summary_large_image" },
 };
 
 // Home — ports Svasamm.dc.html. Everything server-rendered except the product filter island.

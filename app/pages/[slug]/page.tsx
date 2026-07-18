@@ -41,6 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: seo.ogTitle ?? seo.metaTitle,
       description: seo.ogDescription ?? seo.metaDescription,
       url: seo.canonical,
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "Svasamm — vertical ERPs & business platforms" }],
     },
   };
 }
