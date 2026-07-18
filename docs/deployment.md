@@ -26,9 +26,11 @@ GitHub Release (tag uat-vX.Y.Z or vX.Y.Z)
 ```
 
 The site is a static build served by nginx in the image (`deployment/docker/Dockerfile`).
-Nginx (`:80`) handles the crawl-trap fix / 404 / `/index.html`→`/` / CSP headers. **Traefik
-(Dokploy) handles TLS, HTTP→HTTPS 301, www→apex 301, HSTS, and UAT noindex** — configured
-in the Dokploy UI + middleware labels (see `deployment/dokploy-seo.md`).
+**Nginx (`:80`) handles www→apex 301, HSTS, UAT noindex (`X-Robots-Tag` by `Host`), the
+crawl-trap fix / 404 / `/index.html`→`/`, and CSP headers** (see
+`deployment/nginx/nginx.conf` and `CLAUDE.md` § Deployment). **Traefik (Dokploy) handles
+only TLS termination and HTTP→HTTPS 301** — configured in the Dokploy UI (see
+`deployment/dokploy-seo.md`).
 
 ## Branch & release model
 

@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "yarn typecheck",
     "docker:build": "docker build --platform linux/amd64 -t svasamm-website -f ./deployment/docker/Dockerfile .",

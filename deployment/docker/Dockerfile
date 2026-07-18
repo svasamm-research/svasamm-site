@@ -5,11 +5,11 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
+COPY package.json yarn.lock ./
 
-# Install ALL dependencies (the gulp build chain lives in devDependencies, so
-# --production would omit it and `yarn build` below would fail). The final image is a
-# separate nginx stage, so these build deps never ship to production.
+# Install ALL deps (Next's build toolchain is in devDependencies, so --production
+# would break `yarn build`). The final image is a separate nginx stage, so build
+# deps never ship.
 RUN yarn install --frozen-lockfile --silent
 
 # Copy source code
@@ -53,7 +53,7 @@ EXPOSE 80
 # Add labels for better organization
 LABEL maintainer="SVASAMM Team" \
       description="SVASAMM Business Automation Website" \
-      version="1.0.0" \
+      version="0.1.0" \
       org.opencontainers.image.source="https://github.com/svasamm/website"
 
 # Start nginx
