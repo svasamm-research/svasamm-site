@@ -1,113 +1,127 @@
-# Svasamm marketing website
+@AGENTS.md
 
-Static marketing site for **Svasamm Research Pvt Ltd** (svasamm.com), built with a
-gulp + `gulp-file-include` pipeline, served by **nginx behind Traefik/Dokploy**.
-Deployed on Hetzner, migrating to Hostinger via Dokploy.
+# Svasamm website (redesign) — Next.js
 
-## Build & run
+The SEO/GEO-first marketing site for **Svasamm Research Pvt Ltd**, rebuilt in Next.js from
+the Nocturne redesign at `~/Downloads/svasamm-website-redesign` (README.md +
+content-and-seo-map.md + design-tokens.css + `prototypes/*.dc.html` = source of truth for
+tokens, copy, structure, and per-page SEO/JSON-LD). Replaces the live gulp site at cutover
+(this repo — the gulp source was removed when the migration landed; see `## Deployment`
+below for what actually ships).
 
-- `npm run dev` — gulp build + connect server on **:3000** (serves `dist/`) + watch.
-- `npm run build` — `clean → gulp build → minify (css/js/html) → optimize`. **This is
-  the real build** (the Dockerfile runs `yarn build`). Edit **`src/`**, never `dist/`.
-- `npm test` — `html-validate dist/index.html` + `stylelint dist/styles/*.css`.
-  Configs: `.htmlvalidate.json`, `.stylelintrc.json`. Keep this green.
+> **Heed AGENTS.md above: this is Next 16 — read `node_modules/next/dist/docs/` before
+> writing Next code.** Key: `params` is a `Promise` (await it); `generateMetadata` async;
+> `sitemap.ts`/`robots.ts` return `MetadataRoute.*`; JSON-LD via a `<script type="application/ld+json">`.
 
-## Structure & conventions
+## Stack
+Next 16 (App Router, **SSG** — every page static HTML for SEO) · React 19 · TypeScript ·
+Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
+`@phosphor-icons/react/dist/ssr`. Package manager: **yarn**. `yarn dev` / `yarn build`.
 
-- **`src/components/head.html`** — shared `<head>` partial. Every page includes it with
-  per-page vars: `@@include('.../head.html', {title, description, canonical, ogType})`.
-  It owns canonical + OG/Twitter + favicons. **Add head/meta changes here once**, not
-  per page (the old per-page `<head>` duplication caused drift like the missing
-  `180.png`). Pages then add page-specific JSON-LD after the include.
-- **`src/components/header.html` / `footer.html`** — shared nav/footer partials.
-- Asset paths are **absolute** (`/styles/...`, `/images/...`, `/pages/...`) so they work
-  from any depth. Nav already used absolute paths.
-- **Root files** (`robots.txt`, `sitemap.xml`, `llms.txt`) live in `src/` and are copied
-  to `dist/` root by the gulp **`static`** task (the default `html`/`pages` tasks don't
-  copy them). `src/404.html` is built to `dist/404.html` by the `html` task.
-- **Logo**: `/images/logo.svg` (navy squircle + white "S", `#030213` = `--primary`);
-  raster set in `images/favicon/` (32, 180) + `images/logo-512.png` (schema logo).
-- `src/scripts/script.js` loads on every page — **guard element lookups** (e.g.
-  `#contactForm` only exists on contact.html; unguarded `.addEventListener` threw on
-  every other page). Service/testimonial cards use an IntersectionObserver fade-in
-  (`opacity:0` until scrolled into view) — a full-page screenshot shows them blank; the
-  DOM content is present (fine for SEO).
+## Design system (Nocturne — match exactly)
+- `app/nocturne.css` = the redesign's `design-tokens.css` verbatim (minus the Google-Fonts
+  `@import`; `--font-heading/body` point at the `next/font` `--font-inter`). Single source
+  for `:root` vars + base styles + component classes (`.btn`, `.card`, `.tag`, `.table`,
+  `.hr`, `.input`, …).
+- `app/globals.css` = `@import "tailwindcss"` + nocturne + an `@theme` block that mirrors the
+  core tokens so utilities exist (`bg-bg`, `text-accent`, `border-neutral-800`, `rounded-lg`,
+  `shadow-md`, `mob:` = 860px breakpoint).
+- Core: bg `#161826`, surface `#232532`, text `#e9e9ed`, accent `#9184d9` (blurple).
+  Heading weight **500** (never bolder). Primary buttons are **outlined**, not filled.
+- Icons: `components/Icon.tsx` maps `ph-*` names → curated Phosphor SSR components (add
+  names there as pages need them — don't import the whole library).
+- Logo: `public/assets/logo.svg` (logo-nocturne).
 
-## Deploy (deployment/)
+## Architecture (mirror the prototypes)
+- Shared components: `SiteHeader` (client — mega-menu + mobile), `SiteFooter` (server),
+  `ProductPage` (reusable product body), `Article` (reusable long-form body). Keep interactive
+  bits (mega-menu, FAQ, product filter, contact form) as the ONLY client islands; everything
+  else is server-rendered.
+- `app/not-found.tsx` — branded 404 (Nocturne header/footer + a link home). Owning this
+  route matters: without it, Next's built-in not-found boundary renders its own default
+  title alongside the root layout's, producing two `<title>` tags in `out/404.html`.
+- Data: **in-repo typed data** in `lib/` (`types.ts` shaped to the planned Sanity schemas;
+  `site.ts` = SITE_URL/BUSINESS/PRODUCTS registry). Fetch at build time only — migrate to
+  Sanity later via a data-access layer without touching components.
 
-- `nginx/nginx.conf` — the container server. `try_files ... =404` (NOT `/index.html` —
-  that was a soft-404 crawl trap). Security headers (CSP/X-Frame/nosniff/Referrer) live
-  here; cache `location`s use `expires` only (an `add_header` in a `location` cancels
-  inherited headers). `error_page 404 /404.html`; `/index.html` 301s to `/`.
-- `docker-compose.yml` (PROD) / `docker-compose.uat.yml` (UAT) — **minimal Dokploy Compose**
-  (lucoze pattern): image `${CUSTOM_IMAGE:-svasamm/svasamm-website}:${CUSTOM_TAG}`, Dokploy
-  `ports` (`AGENT_PRIVATE_IP`/`BENCH_PORT`), healthcheck. **No Traefik router labels** — the
-  domain + HTTPS are set in the Dokploy **Domains UI**, and www→apex / HSTS / **UAT noindex**
-  are middleware labels documented in **`deployment/dokploy-seo.md`**. (UAT must stay
-  `X-Robots-Tag: noindex` — never add uat to GSC or the sitemap.)
-- `docker/Dockerfile` — builder runs `yarn install --frozen-lockfile` (gulp build chain is
-  in **devDependencies**; `--production` breaks `yarn build`).
+## Routing / SEO (README §Routing + §SEO)
+- Preserve the canonical `/pages/*.html` scheme so indexed URLs carry over.
+- `/` home; `/privacy`, `/terms`; `/pages/[slug]` dispatcher (slug includes `.html`) → decides
+  Solutions / Contact / About / ProductPage / Article by slug.
+- Per page: unique title+description, `<link rel=canonical>` to `/pages/*.html`,
+  `robots index,follow`, OG tags, and the **exact JSON-LD** copied from the `.dc.html` helmet
+  (Organization/WebSite home; Service+BreadcrumbList+FAQPage products; Article+…+FAQPage
+  guides/compare; Service(areaServed/audience)+… industry/state; ContactPage). `sitemap.ts` +
+  `robots.ts` from the same slug list. One `<h1>`/page; keep FAQs (GEO).
 
-### Release model — full runbook in `docs/deployment.md`, edge config in `deployment/dokploy-seo.md`
-- Flow: `feature/*` → **develop** → **uat** → **main**. Mirrors `lucoze-website`.
-- **A published GitHub Release deploys** (`.github/workflows/deploy.yml`): `uat-vX.Y.Z`
-  (target `uat`) → UAT; `vX.Y.Z` (target `main`) → PROD. Workflow tests → builds/pushes to
-  **Docker Hub `svasamm/svasamm-website`** (`:<tag>` + `:latest`|`:uat-latest`) → POSTs the
-  Dokploy webhook (gated by the `DOKPLOY_DEPLOY_ENABLED` variable).
-- **Same version number across envs** (validate `uat-v0.0.5`, release `v0.0.5`).
-- Secrets: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`, `DOKPLOY_SVASAMM_WEBSITE_UAT_WEBHOOK`,
-  `DOKPLOY_SVASAMM_WEBSITE_WEBHOOK`. Var: `DOKPLOY_DEPLOY_ENABLED`.
+## Business facts (verbatim — CHANGED from the old site)
+- Svasamm Research Pvt Ltd · Nabagram, Konnagar, Hooghly, West Bengal 712246, India
+- Email **query@svasamm.com** · Phone **+91 91471 44638**
+- Do NOT state unverified metrics (no "300% ROI / 50+ clients / ISO 27001"); no "Videozjet".
 
-## Products (solutions)
+## Key files
+- `lib/products.ts` — 7 products (Service+Breadcrumb verbatim from helmets; **FAQPage
+  generated for every product** from its visible `faqs` via `faqPageLd()` for GEO) ·
+  `lib/articles.ts` —
+  **AUTO-GENERATED** by `scratchpad/extract-articles.mjs` (evals Article.dc.html `data()` +
+  merges each wrapper helmet); re-run the extractor, don't hand-edit · `lib/home.ts` —
+  home cards/regions/whys · `lib/pages.ts` — Solutions/Contact/About SEO+JSON-LD ·
+  `lib/routes.ts` — `PROTO_TO_ROUTE` (every `.dc.html`→route) + `toRoute()`.
+- Components: `ProductPage`, `Article`, `SolutionsPage`, `ContactPage`, `AboutPage` (server
+  bodies) · `SiteHeader`, `ProductFilter`, `FaqAccordion`, `ContactForm` (client islands) ·
+  `JsonLd`, `LegalPage`. Dispatcher: `app/pages/[slug]/page.tsx` (slug incl. `.html`).
+- **Icons: two maps.** `Icon.tsx` = full set for **server** components; `IconClient.tsx` =
+  ~16-icon subset that the **client islands** import — keeps the other ~45 server-only
+  Phosphor icons out of the client bundle (cut first-load JS ~34KB gzip). Add island-used
+  icons to BOTH; server-only icons to `Icon.tsx` only.
+- **Analytics**: `components/Analytics.tsx` loads GA4 (`GA_ID` in `lib/site.ts`,
+  `G-EPFCF5F117`) behind a client mount, host-gated off (skips fetching gtag.js on
+  `uat.svasamm.com` / `localhost`). Fires `generate_lead` on contact-form submit.
 
-Generic: ERP, HRMS, CRM, Service Desk, Loan Management. **Vertical products** (each has
-a dedicated `/pages/*.html`):
-- **Lucoze** (`hims.html`) — India-first HMS/EMR, live at **lucoze.com** (link out).
-- **Millingo** (`millingo.html`) — rice-mill ERP (no public site yet).
-- **DMS** (`dms.html`) — distributor management for OEM manufacturers. **Keep the
-  Videojet client OFF this page** — DMS is positioned as generic/configurable.
-- `service-desk.html` / `loan-management.html` are `noindex` stubs (thin) and **excluded
-  from `sitemap.xml`** until real copy is added (see their `TODO`).
+## Progress
+- ✅ **All 51 crawlable pages built + verified locally** (home, 7 products, 38 articles,
+  Solutions, Contact, About, Privacy, Terms) + `sitemap.ts` (51 URLs) + `robots.ts`. `yarn
+  build` green, every page prerenders static. Design matches Nocturne (screenshot-verified
+  desktop + mobile). SEO: unique title/canonical/OG + verbatim JSON-LD per page; one `<h1>`;
+  FAQs. Islands verified (mega-menu, filter, FAQ accordion, contact form validation+success).
+  GA4 wired + host-gated. Migrated to a Docker/nginx static-export deploy (see `##
+  Deployment`), favicons/llms.txt/OG image carried over, CI green (Node 20, build + typecheck).
+- ⏭️ **Contact form backend** (Route Handler POST → email query@svasamm.com — currently
+  client-only success state; see `ponytail:` note in `ContactForm.tsx`) · migrate `lib/`
+  data to **Sanity** · resume the **paused SEO plan** · post-merge UAT validation + prod
+  cutover (see `## Deployment`).
 
-## Growth / marketing
+## Deployment
 
-- **`docs/growth-plan.md`** — the SEO / Local SEO / GEO / content / backlinks / ads
-  strategy + a novice-friendly learning guide. Read it before doing SEO or ads work.
-  Current gaps (as of the plan): no GBP, no backlinks, no keyword targeting, no ongoing
-  content, analytics (GSC/GA4/Bing) not wired. Local SEO (West Bengal → UP/Bihar/Odisha/
-  Jharkhand) and content are the biggest levers; Millingo is the best organic bet.
-- Paid ads run through the **`claude-ads`** plugin (`/ads plan`, `/ads math`,
-  `/ads landing`, per-platform audits) — planning/creation only; needs a real ad account
-  + budget to spend.
+The redesign no longer ships via the old gulp pipeline — it's a Next.js **static export**
+(`output: 'export'` in `next.config.ts` → `out/`), built with `yarn build` and served by
+**nginx** in the Docker image (no Node runtime in prod).
 
-## Content cluster (Millingo)
-
-`docs/millingo-keyword-cluster.md` is the plan; the built cluster lives in `src/pages/`:
-pillar `millingo.html` + guides (`rice-mill-yield-recovery`, `custom-milled-rice-cmr-process`,
-`rice-mill-byproduct-accounting`, `gst-for-rice-mills`, `best-rice-mill-software`,
-`rice-mill-software-price`), per-state pages (`rice-mill-software-{west-bengal,uttar-pradesh,
-odisha,bihar}`), and comparisons (`millingo-vs-{dataman,samadhan}`). Guides/articles use the
-`.article-*` / `.faq-*` / `.cta-box` CSS in `styles.css` (reuse it; no per-page `<style>`).
-Off-page/listing plan: `docs/directory-listings.md`.
-
-## Guardrails
-
-- Don't fabricate metrics/claims ("300% ROI", "50+ clients", "ISO 27001") — flagged,
-  needs real substantiation before stating as fact.
-- **Never list a business as a customer/testimonial unless it's a real, consented
-  client.** No prospects or aspirational names (e.g. a mill we hope to win) — that's
-  misrepresentation (Consumer Protection Act) and passing-off risk. Regions/districts are
-  fine; named proof must be real + permissioned.
-- **Competitor "vs" pages must stay factual and neutral:** compare positioning + verifiable
-  features, use "stated / not stated on their public site" (never absolute "no"), add a
-  "public info as of <date>, verify directly" disclaimer, and no competitor logos.
-- **Guides carry a real author byline + `Article` schema** (E-E-A-T). Any guide stating
-  tax/legal/regulatory facts includes a "general information, verify with your CA/lawyer"
-  note and cites official sources; keep season-specific figures (CMR schedule, GST rates)
-  dated and caveated. Don't assert unverified specifics (e.g. the UP portal is
-  `fcs.up.gov.in`/E-PoP — "e-Kray" was NOT verified).
-- Every indexable page: one canonical, OG/Twitter (via head partial), and page-specific
-  JSON-LD (`Organization`/`Service`/`Review`/`Article`/`FAQPage`/`BreadcrumbList`). Validate
-  JSON-LD parses (`npm test` + the JSON.parse sweep).
-- Product-page layout reuses global `.product-*` classes in `styles/styles.css` — reuse
-  them, don't add per-page `<style>` blocks.
+- **Static serving**: `out/` → `/usr/share/nginx/html`. nginx `try_files $uri.html $uri
+  $uri/ =404` on both `location /` and the `\.(html|htm)$` regex location — Next's export
+  emits, per route, a directory (RSC prefetch payload) *and* the real file at `$uri.html`,
+  so `$uri.html` has to be tried first or nginx's default directory handling wins and
+  301s to a trailing slash instead of serving the page.
+- **Docker**: multi-stage build — `node:20` builder (`yarn install --frozen-lockfile`,
+  `yarn build`) → nginx runtime stage that only copies `out/` + `deployment/nginx/nginx.conf`.
+  `.dockerignore` excludes `node_modules`/`.next`/`out` from the build context.
+- **CI/CD (`.github/workflows/deploy.yml`)**: a published GitHub Release deploys — tag
+  `uat-vX.Y.Z` (target `uat`) → UAT, tag `vX.Y.Z` (target `main`) → PROD. Workflow: test
+  (`yarn build` + `tsc` typecheck) → build/push `svasamm/svasamm-website:<tag>` (+
+  `:latest`|`:uat-latest`) to Docker Hub → if `DOKPLOY_DEPLOY_ENABLED=true`, POST the
+  matching Dokploy webhook, which pulls and redeploys the app.
+- **Edge behavior now lives in nginx** (`deployment/nginx/nginx.conf`), not Traefik:
+  - `www.svasamm.com` → `https://svasamm.com$request_uri` (301, path preserved).
+  - `Strict-Transport-Security: max-age=31536000` on every response.
+  - `X-Robots-Tag: noindex, nofollow` keyed off `Host: uat.svasamm.com` only (same image
+    serves prod + UAT; the header is empty — and so omitted — on prod).
+  - Four legacy-URL 301s preserving link equity from the old indexed paths:
+    `/pages/privacy.html` → `/privacy`, `/pages/terms-of-service.html` → `/terms`,
+    `/pages/testimonials.html` → `/` (page removed, no replacement), `/pages/hims.html` →
+    `https://lucoze.com/` (product now lives on its own domain).
+  - Real `404` status + branded page: `error_page 404 /404.html` (see `app/not-found.tsx`
+    above — it exists specifically so `out/404.html` has exactly one `<title>`).
+- **GA4** `G-EPFCF5F117`, host-gated off `uat.svasamm.com`/`localhost` (see `## Key files`
+  above).
+- Full release runbook (branch flow, one-time GitHub/Dokploy setup, Hetzner→Hostinger DNS
+  cutover, rollback) is in `docs/deployment.md`.

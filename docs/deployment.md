@@ -3,6 +3,15 @@
 How svasamm.com and uat.svasamm.com are built, released, and deployed — matching the
 lucoze-website setup (Docker Hub + Dokploy). Includes the **Hetzner → Hostinger migration**.
 
+## Build: Next.js static export (as of v0.1.0)
+
+As of v0.1.0 the site is a Next.js static export (`output: 'export'` in `next.config.ts` →
+`out/`), **not gulp**. Build = `yarn build`; the image serves `out/` via nginx (no Node
+runtime in prod). Redirects for the old `/pages/{privacy,terms-of-service,hims,
+testimonials}.html` URLs live in `deployment/nginx/nginx.conf`, not Traefik middleware (see
+`CLAUDE.md` § Deployment for the full current edge-behavior list — www→apex, HSTS,
+UAT noindex, and the branded 404 also moved into nginx).
+
 ## Architecture
 
 ```
