@@ -1,5 +1,5 @@
 # Multi-stage build for optimized production image
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -28,7 +28,7 @@ RUN apk add --no-cache curl
 COPY ./deployment/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Copy built application from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/out /usr/share/nginx/html
 
 # Create nginx cache directories
 RUN mkdir -p /var/cache/nginx/client_temp \
