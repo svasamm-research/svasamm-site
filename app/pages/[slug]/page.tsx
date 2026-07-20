@@ -9,7 +9,7 @@ import ContactPage from "@/components/ContactPage";
 import AboutPage from "@/components/AboutPage";
 import JsonLd from "@/components/JsonLd";
 import { PRODUCT_BY_SLUG } from "@/lib/products";
-import { ARTICLE_BY_SLUG } from "@/lib/articles";
+import { ARTICLE_BY_SLUG } from "@/lib/article-registry";
 import { CORE_BY_SLUG } from "@/lib/pages";
 
 // Dispatcher for the canonical /pages/*.html scheme. The [slug] segment includes the

@@ -78,6 +78,29 @@ export const DIGITAL_PRODUCT: Product = {
     "Multi-doctor practices",
     "West Bengal & East India",
   ],
+  // Content cluster (lib/digital-articles.ts). Hrefs are plain routes — toRoute() passes
+  // anything starting with "/" straight through.
+  resources: {
+    title: "Guides & honest comparisons",
+    intro: "In-depth, indexable pages for the questions healthcare owners actually search — each is its own page for search & AI discovery.",
+    grid: "1.4fr 1fr",
+    columns: [
+      {
+        heading: "Healthcare digital guides", icon: "ph-file-text", links: [
+          { title: "Clinic SEO in West Bengal: how patients actually find a clinic", href: "/pages/clinic-seo-west-bengal.html" },
+          { title: "Hospital and clinic website design: what a facility site actually needs", href: "/pages/hospital-website-design.html" },
+          { title: "Google Business Profile for clinics and nursing homes", href: "/pages/google-business-profile-for-clinics.html" },
+          { title: "Healthcare advertising rules in India: what a facility can and cannot say", href: "/pages/healthcare-advertising-rules-india.html" },
+        ],
+      },
+      {
+        heading: "Compare", icon: "ph-scales", links: [
+          { title: "Svasamm Digital vs hiring in-house", href: "/pages/digital-healthcare-vs-in-house.html" },
+          { title: "Svasamm Digital vs a general digital agency", href: "/pages/digital-healthcare-vs-general-agency.html" },
+        ],
+      },
+    ],
+  },
   faqs: [
     {
       q: "Will you work with my competitor?",

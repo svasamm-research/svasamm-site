@@ -1,7 +1,7 @@
 export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
 import { PRODUCT_BY_SLUG } from "@/lib/products";
-import { ARTICLE_BY_SLUG } from "@/lib/articles";
+import { ARTICLE_BY_SLUG } from "@/lib/article-registry";
 import { CORE_BY_SLUG } from "@/lib/pages";
 import { SITE_URL } from "@/lib/site";
 
