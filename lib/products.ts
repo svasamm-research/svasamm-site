@@ -3,6 +3,7 @@
 // ServiceDesk .dc.html). Shaped to `Product` so it can move to Sanity later.
 
 import type { Faq, Product } from "./types";
+import { DIGITAL_PRODUCT } from "./digital";
 
 // FAQPage from the product's visible on-page FAQs — matches the accordion content Google
 // requires to be visible, and gives every product a FAQPage for GEO/AI-answer coverage.
@@ -360,6 +361,7 @@ export const PRODUCTS: Product[] = [
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://svasamm.com/pages/services.html" }, { "@type": "ListItem", position: 3, name: "Service Desk", item: "https://svasamm.com/pages/service-desk.html" }] },
     ],
   },
+  DIGITAL_PRODUCT,
 ];
 
 // Append a FAQPage (built from each product's visible FAQs) to every product's JSON-LD.
@@ -373,4 +375,5 @@ export const PRODUCT_BY_SLUG: Record<string, Product> = {
   "hrms.html": PRODUCTS[3],
   "crm.html": PRODUCTS[4],
   "service-desk.html": PRODUCTS[5],
+  "digital.html": PRODUCTS[6],
 };
