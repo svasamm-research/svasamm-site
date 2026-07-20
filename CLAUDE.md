@@ -66,13 +66,24 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 - Do NOT state unverified metrics (no "300% ROI / 50+ clients / ISO 27001"); no "Videozjet".
 
 ## Key files
-- `lib/products.ts` — 6 products (Service+Breadcrumb verbatim from helmets; **FAQPage
+- `lib/products.ts` — 7 solutions (6 products + Svasamm Digital; Service+Breadcrumb verbatim from helmets; **FAQPage
   generated for every product** from its visible `faqs` via `faqPageLd()` for GEO) ·
   `lib/articles.ts` —
   **AUTO-GENERATED** by `scratchpad/extract-articles.mjs` (evals Article.dc.html `data()` +
   merges each wrapper helmet); re-run the extractor, don't hand-edit · `lib/home.ts` —
   home cards/regions/whys · `lib/pages.ts` — Solutions/Contact/About SEO+JSON-LD ·
   `lib/routes.ts` — `PROTO_TO_ROUTE` (every `.dc.html`→route) + `toRoute()`.
+- **Svasamm Digital** (`/pages/digital.html`): healthcare-digitisation **service**, modelled as
+  a solution — `lib/digital.ts` holds the `Product` record (**all copy lives there**) and
+  `lib/products.ts` registers it, so it renders through the shared `ProductPage` and appears in
+  the mega-menu, footer, home grid, Solutions page and sitemap automatically. It uses the third
+  nav category **`service`** (alongside `vertical`/`platform`) so a delivered service is not
+  presented as software. **Guardrails:** publish tier scope but never prices (CTA "Request a
+  proposal"); no case studies/testimonials/client logos/result metrics (no clients yet); never
+  promise patient volume, revenue or clinical outcomes; never emit
+  `MedicalOrganization`/`Physician` for Svasamm — it is a provider *to* healthcare. Published
+  delivery timeline is ~4 weeks from content + GBP-access handover. Spec:
+  `docs/superpowers/specs/2026-07-19-svasamm-digital-service-design.md`.
 - Components: `ProductPage`, `Article`, `SolutionsPage`, `ContactPage`, `AboutPage` (server
   bodies) · `SiteHeader`, `ProductFilter`, `FaqAccordion`, `ContactForm` (client islands) ·
   `JsonLd`, `LegalPage`. Dispatcher: `app/pages/[slug]/page.tsx` (slug incl. `.html`).
@@ -92,8 +103,8 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   `uat.svasamm.com` / `localhost`). Fires `generate_lead` on contact-form submit.
 
 ## Progress
-- ✅ **All 50 crawlable pages built + verified locally** (home, 6 products, 38 articles,
-  Solutions, Contact, About, Privacy, Terms) + `sitemap.ts` (50 URLs) + `robots.ts`. `yarn
+- ✅ **All 51 crawlable pages built + verified locally** (home, 7 solutions, 38 articles,
+  Solutions, Contact, About, Privacy, Terms) + `sitemap.ts` (51 URLs) + `robots.ts`. `yarn
   build` green, every page prerenders static. Design matches Nocturne (screenshot-verified
   desktop + mobile). SEO: unique title/canonical/OG + verbatim JSON-LD per page; one `<h1>`;
   FAQs. Islands verified (mega-menu, filter, FAQ accordion, contact form validation+success).
