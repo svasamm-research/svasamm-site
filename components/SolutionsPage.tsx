@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeroBackground from "./HeroBackground";
 import { Icon } from "./Icon";
 import { HOME_PRODUCTS, type HomeProduct } from "@/lib/home";
 import { toRoute } from "@/lib/routes";
@@ -17,15 +18,16 @@ function ProductAnchor({ p, children, className, style }: { p: HomeProduct; chil
 export default function SolutionsPage() {
   return (
     <>
-      <section className="pp-glow" style={{ borderBottom: "1px solid var(--color-divider)" }}>
-        <div className="pp-wrap" style={{ padding: "30px 24px 0" }}>
+      <section className="pp-glow sv-hero" style={{ borderBottom: "1px solid var(--color-divider)" }}>
+        <HeroBackground slug="services" />
+        <div className="pp-wrap sv-hero-content" style={{ padding: "30px 24px 0" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "var(--color-neutral-500)" }}>
             <Link href="/" style={{ color: "var(--color-neutral-400)" }}>Home</Link>
             <Icon name="ph-caret-right" style={{ fontSize: 11 }} />
             <span style={{ color: "var(--color-text)" }}>Solutions</span>
           </div>
         </div>
-        <div className="pp-wrap" style={{ padding: "40px 24px 56px", maxWidth: 760 }}>
+        <div className="pp-wrap sv-hero-content" style={{ padding: "40px 24px 56px", maxWidth: 760 }}>
           <div className="tag tag-outline" style={{ marginBottom: 20 }}>All solutions</div>
           <h1 style={{ fontSize: 44, lineHeight: 1.08, letterSpacing: "-.025em", margin: "0 0 16px", color: "var(--color-text)" }}>Every Svasamm product, in one place</h1>
           <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: 0 }}>Vertical products carry an entire industry&apos;s workflow inside; platform modules are the horizontal systems every operation runs. Open any product for the full detail.</p>

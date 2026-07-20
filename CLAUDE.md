@@ -40,6 +40,12 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 - `app/not-found.tsx` — branded 404 (Nocturne header/footer + a link home). Owning this
   route matters: without it, Next's built-in not-found boundary renders its own default
   title alongside the root layout's, producing two `<title>` tags in `out/404.html`.
+- **Hero images**: `components/HeroBackground.tsx` renders `/hero/<slug>.webp` + scrim for
+  every hero (home, Solutions, product, article). **Layering contract:** image+scrim sit at
+  `z-index:0` inside `.sv-hero`; the content wrapper MUST carry `.sv-hero-content`
+  (`z-index:1`) or the photo paints over the text. Which slugs have a photo is
+  `lib/heroes.ts` — **auto-generated**, don't hand-edit. Contact/About/Privacy/Terms
+  deliberately have no photo (plain gradient hero).
 - Data: **in-repo typed data** in `lib/` (`types.ts` shaped to the planned Sanity schemas;
   `site.ts` = SITE_URL/BUSINESS/PRODUCTS registry). Fetch at build time only — migrate to
   Sanity later via a data-access layer without touching components.
@@ -60,7 +66,7 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 - Do NOT state unverified metrics (no "300% ROI / 50+ clients / ISO 27001"); no "Videozjet".
 
 ## Key files
-- `lib/products.ts` — 7 products (Service+Breadcrumb verbatim from helmets; **FAQPage
+- `lib/products.ts` — 6 products (Service+Breadcrumb verbatim from helmets; **FAQPage
   generated for every product** from its visible `faqs` via `faqPageLd()` for GEO) ·
   `lib/articles.ts` —
   **AUTO-GENERATED** by `scratchpad/extract-articles.mjs` (evals Article.dc.html `data()` +
@@ -71,16 +77,23 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   bodies) · `SiteHeader`, `ProductFilter`, `FaqAccordion`, `ContactForm` (client islands) ·
   `JsonLd`, `LegalPage`. Dispatcher: `app/pages/[slug]/page.tsx` (slug incl. `.html`).
 - **Icons: two maps.** `Icon.tsx` = full set for **server** components; `IconClient.tsx` =
-  ~16-icon subset that the **client islands** import — keeps the other ~45 server-only
+  ~15-icon subset that the **client islands** import — keeps the other ~45 server-only
   Phosphor icons out of the client bundle (cut first-load JS ~34KB gzip). Add island-used
   icons to BOTH; server-only icons to `Icon.tsx` only.
+- **Hero image pipeline**: `scripts/optimize-hero-images.py` is the single source of truth
+  for source-photo → page-slug mapping. It downscales the design originals to ~1600px WebP
+  q80 into `public/hero/<slug>.webp` and regenerates `lib/heroes.ts`. Static export sets
+  `images.unoptimized`, so **next/image does no resizing/conversion** — whatever is in
+  `public/` is what ships. Re-run after adding a photo (idempotent; skips up-to-date files):
+  `python3 scripts/optimize-hero-images.py [SRC_DIR]`. Heroes use `priority` (they're the
+  LCP); 46 photos total ≈ 5.9MB (from 116MB of originals).
 - **Analytics**: `components/Analytics.tsx` loads GA4 (`GA_ID` in `lib/site.ts`,
   `G-EPFCF5F117`) behind a client mount, host-gated off (skips fetching gtag.js on
   `uat.svasamm.com` / `localhost`). Fires `generate_lead` on contact-form submit.
 
 ## Progress
-- ✅ **All 51 crawlable pages built + verified locally** (home, 7 products, 38 articles,
-  Solutions, Contact, About, Privacy, Terms) + `sitemap.ts` (51 URLs) + `robots.ts`. `yarn
+- ✅ **All 50 crawlable pages built + verified locally** (home, 6 products, 38 articles,
+  Solutions, Contact, About, Privacy, Terms) + `sitemap.ts` (50 URLs) + `robots.ts`. `yarn
   build` green, every page prerenders static. Design matches Nocturne (screenshot-verified
   desktop + mobile). SEO: unique title/canonical/OG + verbatim JSON-LD per page; one `<h1>`;
   FAQs. Islands verified (mega-menu, filter, FAQ accordion, contact form validation+success).
@@ -115,10 +128,11 @@ The redesign no longer ships via the old gulp pipeline — it's a Next.js **stat
   - `Strict-Transport-Security: max-age=31536000` on every response.
   - `X-Robots-Tag: noindex, nofollow` keyed off `Host: uat.svasamm.com` only (same image
     serves prod + UAT; the header is empty — and so omitted — on prod).
-  - Four legacy-URL 301s preserving link equity from the old indexed paths:
+  - Five legacy-URL 301s preserving link equity from the old indexed paths:
     `/pages/privacy.html` → `/privacy`, `/pages/terms-of-service.html` → `/terms`,
     `/pages/testimonials.html` → `/` (page removed, no replacement), `/pages/hims.html` →
-    `https://lucoze.com/` (product now lives on its own domain).
+    `https://lucoze.com/` (product now lives on its own domain),
+    `/pages/loan-management.html` → `/pages/services.html` (product dropped in handoff-2).
   - Real `404` status + branded page: `error_page 404 /404.html` (see `app/not-found.tsx`
     above — it exists specifically so `out/404.html` has exactly one `<title>`).
 - **GA4** `G-EPFCF5F117`, host-gated off `uat.svasamm.com`/`localhost` (see `## Key files`

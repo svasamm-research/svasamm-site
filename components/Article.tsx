@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeroBackground from "./HeroBackground";
 import { Icon } from "./Icon";
 import FaqAccordion from "./FaqAccordion";
 import { toRoute } from "@/lib/routes";
@@ -67,8 +68,9 @@ export default function ArticleView({ article: a }: { article: Article }) {
   return (
     <div>
       {/* Header */}
-      <section className="pp-glow" style={{ borderBottom: "1px solid var(--color-divider)" }}>
-        <div className="pp-wrap" style={{ padding: "30px 24px 0" }}>
+      <section className="pp-glow sv-hero" style={{ borderBottom: "1px solid var(--color-divider)" }}>
+        <HeroBackground slug={a.slug} />
+        <div className="pp-wrap sv-hero-content" style={{ padding: "30px 24px 0" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "var(--color-neutral-500)", flexWrap: "wrap" }}>
             {crumbs.map((c, i) => {
               const isLast = i === crumbs.length - 1;
@@ -87,7 +89,7 @@ export default function ArticleView({ article: a }: { article: Article }) {
             })}
           </div>
         </div>
-        <div className="pp-wrap ar-body" style={{ maxWidth: 820, padding: "40px 24px 52px" }}>
+        <div className="pp-wrap ar-body sv-hero-content" style={{ maxWidth: 820, padding: "40px 24px 52px" }}>
           <div className="tag tag-outline" style={{ marginBottom: 20 }}>{a.eyebrow}</div>
           <h1 style={{ fontSize: 40, lineHeight: 1.1, letterSpacing: "-.025em", margin: "0 0 14px", color: "var(--color-text)" }}>{a.title}</h1>
           <p style={{ fontSize: 14, color: "var(--color-neutral-500)", margin: 0 }}>{a.byline}</p>

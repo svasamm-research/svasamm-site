@@ -27,7 +27,6 @@ export const HOME_PRODUCTS: HomeProduct[] = [
   { id: "hrms", name: "HRMS", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-users-three", short: "Recruit to retire", href: toRoute("HRMS.dc.html"), external: false, blurb: "HR from recruitment to retirement — payroll, attendance and performance tracking.", cta: "Explore HRMS", ctaIcon: "ph-arrow-right" },
   { id: "crm", name: "CRM Platform", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-handshake", short: "Sales & support", href: toRoute("CRM.dc.html"), external: false, blurb: "Customer relationships with sales automation, marketing and support tools.", cta: "Explore CRM", ctaIcon: "ph-arrow-right" },
   { id: "service-desk", name: "Service Desk", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-headset", short: "IT service management", href: toRoute("ServiceDesk.dc.html"), external: false, blurb: "IT service management with ticketing, incident management and a knowledge base.", cta: "Explore Service Desk", ctaIcon: "ph-arrow-right" },
-  { id: "loan", name: "Loan Management", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-bank", short: "Origination to servicing", href: toRoute("LoanManagement.dc.html"), external: false, blurb: "End-to-end loan processing — application tracking, approval workflow and portfolio management.", cta: "Explore Loan Mgmt", ctaIcon: "ph-arrow-right" },
 ];
 
 export const REGIONS = [

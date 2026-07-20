@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import HeroBackground from "@/components/HeroBackground";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ProductFilter from "@/components/ProductFilter";
@@ -15,7 +16,7 @@ const vertical = HOME_PRODUCTS.filter((p) => p.kind === "vertical");
 export const metadata: Metadata = {
   title: { absolute: "Svasamm — Vertical ERPs & Business Software for Rice Mills, Hospitals & Distributors" },
   description:
-    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, Lucoze healthcare HIMS, distributor management, CRM, HRMS, service desk and loan management. API-first, self-hostable, India-first.",
+    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, Lucoze healthcare HIMS, distributor management, ERP, HRMS, CRM and service desk. API-first, self-hostable, India-first.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
@@ -36,11 +37,12 @@ export default function Home() {
       <SiteHeader active="home" />
       <main className="flex-1">
         {/* HERO */}
-        <section className="pp-glow" style={{ borderBottom: "1px solid var(--color-divider)" }}>
-          <div className="pp-wrap sv-hero-grid" style={{ display: "grid", gridTemplateColumns: "1.05fr .95fr", gap: 56, alignItems: "center", padding: "76px 24px 84px" }}>
-            <div>
+        <section className="pp-glow sv-hero" style={{ borderBottom: "1px solid var(--color-divider)" }}>
+          <HeroBackground slug="home" />
+          <div className="pp-wrap sv-hero-content" style={{ padding: "76px 24px 84px" }}>
+            <div style={{ maxWidth: "56ch" }}>
               <div className="tag tag-outline" style={{ marginBottom: 22 }}>Svasamm Research Pvt Ltd · India</div>
-              <h1 style={{ fontSize: 52, lineHeight: 1.06, letterSpacing: "-.025em", margin: "0 0 20px", color: "var(--color-text)" }}>Business software that fits how your operation actually runs.</h1>
+              <h1 style={{ fontSize: 52, lineHeight: 1.06, letterSpacing: "-.025em", margin: "0 0 20px", color: "var(--color-text)", maxWidth: "16ch" }}>Business software that fits how your operation actually runs.</h1>
               <p style={{ fontSize: 17.5, lineHeight: 1.6, color: "var(--color-neutral-300)", maxWidth: "34em", margin: "0 0 30px" }}>Svasamm builds vertical ERPs and business platforms — running rice mills, hospitals and distributor networks. API-first, self-hostable, and configured to your workflow instead of forcing you into someone else&apos;s.</p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 34 }}>
                 <Link href={SOLUTIONS} className="btn btn-primary btn-large" style={{ fontSize: 15, padding: "11px 22px" }}>Explore solutions <Icon name="ph-arrow-right" weight="bold" style={{ fontSize: 14 }} /></Link>
@@ -53,43 +55,6 @@ export default function Home() {
                     <div style={{ fontSize: 12.5, color: "var(--color-neutral-500)" }}>{s}</div>
                   </div>
                 ))}
-              </div>
-            </div>
-            {/* product-suite mock card */}
-            <div style={{ position: "relative" }}>
-              <div style={{ border: "1px solid var(--color-neutral-800)", borderRadius: 16, background: "var(--color-surface)", boxShadow: "var(--shadow-lg)", overflow: "hidden" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 7, padding: "12px 15px", borderBottom: "1px solid var(--color-divider)" }}>
-                  {[0, 1, 2].map((i) => <span key={i} style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--color-neutral-700)" }} />)}
-                  <span style={{ marginLeft: 8, fontSize: 11, color: "var(--color-neutral-500)" }}>app.svasamm.com</span>
-                  <span className="tag tag-accent" style={{ marginLeft: "auto", fontSize: 9 }}>One platform</span>
-                </div>
-                <div style={{ padding: 18, display: "flex", flexDirection: "column", gap: 13 }}>
-                  <div style={{ fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--color-accent)" }}>Your product suite</div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 9 }}>
-                    {HOME_PRODUCTS.map((p) => {
-                      const inner = (
-                        <>
-                          <span style={{ width: 30, height: 30, flex: "none", borderRadius: 8, display: "grid", placeItems: "center", background: "var(--color-accent-900)", color: "var(--color-accent-300)" }}>
-                            <Icon name={p.icon} style={{ fontSize: 16 }} />
-                          </span>
-                          <span style={{ minWidth: 0 }}>
-                            <span style={{ display: "block", fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: 12.5, color: "var(--color-text)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</span>
-                            <span style={{ display: "block", fontSize: 10.5, color: "var(--color-neutral-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.short}</span>
-                          </span>
-                        </>
-                      );
-                      const st: React.CSSProperties = { display: "flex", alignItems: "center", gap: 10, padding: "10px 11px", borderRadius: 10, background: "var(--color-bg)", border: "1px solid var(--color-neutral-800)" };
-                      return p.external
-                        ? <a key={p.id} href={p.href} target="_blank" rel="noopener" style={st}>{inner}</a>
-                        : <Link key={p.id} href={p.href} style={st}>{inner}</Link>;
-                    })}
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "space-between", gap: 8, paddingTop: 11, borderTop: "1px solid var(--color-divider)", fontSize: 11.5, color: "var(--color-neutral-400)" }}>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}><Icon name="ph-key" style={{ color: "var(--color-accent-300)" }} /> One login</span>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}><Icon name="ph-plugs-connected" style={{ color: "var(--color-accent-300)" }} /> API-first</span>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}><Icon name="ph-hard-drives" style={{ color: "var(--color-accent-300)" }} /> Self-hostable</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

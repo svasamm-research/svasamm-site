@@ -16,7 +16,6 @@ const PRODUCT_OPTIONS = [
   "HRMS",
   "CRM Platform",
   "Service Desk",
-  "Loan Management",
 ];
 
 const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);

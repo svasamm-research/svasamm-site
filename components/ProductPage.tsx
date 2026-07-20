@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeroBackground from "./HeroBackground";
 import { Icon } from "./Icon";
 import FaqAccordion from "./FaqAccordion";
 import { toRoute } from "@/lib/routes";
@@ -13,8 +14,9 @@ export default function ProductPage({ product: d }: { product: Product }) {
   return (
     <div>
       {/* Hero */}
-      <section className="pp-glow" style={{ borderBottom: "1px solid var(--color-divider)" }}>
-        <div className="pp-wrap" style={{ padding: "30px 24px 0" }}>
+      <section className="pp-glow sv-hero" style={{ borderBottom: "1px solid var(--color-divider)" }}>
+        <HeroBackground slug={d.id} />
+        <div className="pp-wrap sv-hero-content" style={{ padding: "30px 24px 0" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "var(--color-neutral-500)" }}>
             <Link href="/" style={{ color: "var(--color-neutral-400)" }}>Home</Link>
             <Icon name="ph-caret-right" style={{ fontSize: 11 }} />
@@ -23,25 +25,14 @@ export default function ProductPage({ product: d }: { product: Product }) {
             <span style={{ color: "var(--color-text)" }}>{d.name}</span>
           </div>
         </div>
-        <div className="pp-wrap pp-hero" style={{ display: "grid", gridTemplateColumns: "1.1fr .9fr", gap: 48, alignItems: "center", padding: "48px 24px 64px" }}>
-          <div>
+        <div className="pp-wrap sv-hero-content" style={{ padding: "48px 24px 64px" }}>
+          <div style={{ maxWidth: "56ch" }}>
             <div className="tag tag-outline" style={{ marginBottom: 20 }}>{d.badge}</div>
-            <h1 style={{ fontSize: 44, lineHeight: 1.08, letterSpacing: "-.025em", margin: "0 0 18px", color: "var(--color-text)" }}>{d.tagline}</h1>
+            <h1 style={{ fontSize: 44, lineHeight: 1.08, letterSpacing: "-.025em", margin: "0 0 18px", color: "var(--color-text)", maxWidth: "18ch" }}>{d.tagline}</h1>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--color-neutral-300)", maxWidth: "36em", margin: "0 0 28px" }}>{d.blurb}</p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <Link href={CONTACT} className="btn btn-primary btn-large" style={{ fontSize: 15, padding: "11px 22px" }}>{d.ctaPrimary}</Link>
               <a href="#pp-features" className="btn btn-secondary btn-large" style={{ fontSize: 15, padding: "11px 22px" }}>See capabilities</a>
-            </div>
-          </div>
-          <div style={{ border: "1px solid var(--color-neutral-800)", borderRadius: 16, background: "var(--color-surface)", boxShadow: "var(--shadow-lg)", padding: 20 }}>
-            <div style={{ fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 14 }}>{d.statTitle}</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {d.stats.map((s, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 14px", borderRadius: 10, background: "var(--color-bg)", border: "1px solid var(--color-neutral-800)" }}>
-                  <span style={{ fontSize: 13, color: "var(--color-neutral-400)" }}>{s.label}</span>
-                  <span style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: 16, color: s.color ?? "var(--color-text)" }}>{s.value}</span>
-                </div>
-              ))}
             </div>
           </div>
         </div>

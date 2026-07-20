@@ -15,7 +15,6 @@ export const PROTO_TO_ROUTE: Record<string, string> = {
   "HRMS.dc.html": "/pages/hrms.html",
   "CRM.dc.html": "/pages/crm.html",
   "ServiceDesk.dc.html": "/pages/service-desk.html",
-  "LoanManagement.dc.html": "/pages/loan-management.html",
   // Millingo cluster
   "Guide-CMR.dc.html": "/pages/custom-milled-rice-cmr-process.html",
   "Guide-YieldRecovery.dc.html": "/pages/rice-mill-yield-recovery.html",

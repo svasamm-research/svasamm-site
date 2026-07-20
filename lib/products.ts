@@ -1,6 +1,6 @@
-// All 7 product records — data from prototypes/ProductPage.dc.html data(), SEO + JSON-LD
+// All 6 product records — data from prototypes/ProductPage.dc.html data(), SEO + JSON-LD
 // copied verbatim from each product's wrapper helmet (Millingo/DMS/ERP/HRMS/CRM/
-// ServiceDesk/LoanManagement .dc.html). Shaped to `Product` so it can move to Sanity later.
+// ServiceDesk .dc.html). Shaped to `Product` so it can move to Sanity later.
 
 import type { Faq, Product } from "./types";
 
@@ -23,13 +23,6 @@ export const PRODUCTS: Product[] = [
     blurb:
       "Millingo runs the whole mill: paddy procurement and quality grading, milling yield and by-products, gunny-bag accounting, and full government FCI / state levy (CMR) compliance — from a single seasonal mill to multi-unit government-supplying operations.",
     ctaPrimary: "Get a free consultation",
-    statTitle: "Batch P&L · today",
-    stats: [
-      { label: "Rice recovery", value: "67.4%", color: "var(--color-accent-300)" },
-      { label: "Bran booked", value: "8.2 MT", color: "var(--color-text)" },
-      { label: "Broken rice", value: "4.1 MT", color: "var(--color-text)" },
-      { label: "Batch margin", value: "₹ 1.9L", color: "var(--color-accent-300)" },
-    ],
     featuresTitle: "Gate to godown, and the government cycle end to end",
     features: [
       { icon: "ph-scroll", title: "Paddy procurement, gate to godown", body: "Purchase agreements (Sauda), gate receipts, and stock that posts only after quality approval." },
@@ -105,13 +98,6 @@ export const PRODUCTS: Product[] = [
     blurb:
       "DMS gives every distributor a scoped workspace while you keep central control — tiered stock allocation, order-to-delivery, commission and incentive calculation, and territory-level visibility across the whole network.",
     ctaPrimary: "Book a walkthrough",
-    statTitle: "Network · today",
-    stats: [
-      { label: "Active distributors", value: "128", color: "var(--color-text)" },
-      { label: "Orders today", value: "342", color: "var(--color-accent-300)" },
-      { label: "Order fill rate", value: "96%", color: "var(--color-text)" },
-      { label: "Commission run", value: "₹ 4.2L", color: "var(--color-accent-300)" },
-    ],
     featuresTitle: "Central control, distributor-level detail",
     features: [
       { icon: "ph-user-focus", title: "Distributor-scoped access", body: "Each distributor sees only their own orders, stock and ledger — one system, cleanly partitioned." },
@@ -174,13 +160,6 @@ export const PRODUCTS: Product[] = [
     blurb:
       "A unified ERP for finance, inventory, procurement, manufacturing and sales — so a single source of truth drives your accounting, your warehouse and your shop floor, with Indian GST and statutory returns built in.",
     ctaPrimary: "Book a walkthrough",
-    statTitle: "This month",
-    stats: [
-      { label: "Open orders", value: "214", color: "var(--color-text)" },
-      { label: "Inventory turns", value: "6.1x", color: "var(--color-accent-300)" },
-      { label: "GST filed", value: "On time", color: "var(--color-accent-300)" },
-      { label: "Entities", value: "4", color: "var(--color-text)" },
-    ],
     featuresTitle: "The whole operation, one source of truth",
     features: [
       { icon: "ph-book-open", title: "Finance & accounting", body: "General ledger, receivables/payables, cost centres and multi-entity consolidation." },
@@ -233,13 +212,6 @@ export const PRODUCTS: Product[] = [
     blurb:
       "A single HR system for the whole employee lifecycle — recruitment and onboarding, attendance and shifts, payroll with Indian statutory compliance, leave, performance and employee self-service.",
     ctaPrimary: "Book a walkthrough",
-    statTitle: "This cycle",
-    stats: [
-      { label: "Headcount", value: "186", color: "var(--color-text)" },
-      { label: "Attendance", value: "97.2%", color: "var(--color-accent-300)" },
-      { label: "Payroll", value: "Processed", color: "var(--color-accent-300)" },
-      { label: "Open roles", value: "7", color: "var(--color-text)" },
-    ],
     featuresTitle: "The whole employee lifecycle",
     features: [
       { icon: "ph-user-plus", title: "Recruitment & onboarding", body: "Job openings, applicant pipeline and structured onboarding into the employee record." },
@@ -292,13 +264,6 @@ export const PRODUCTS: Product[] = [
     blurb:
       "A CRM that connects sales, marketing and support on one record — lead capture and pipeline, sales automation, campaigns, quotations, and a shared view of every customer conversation.",
     ctaPrimary: "Book a walkthrough",
-    statTitle: "This quarter",
-    stats: [
-      { label: "Open pipeline", value: "₹ 1.4Cr", color: "var(--color-text)" },
-      { label: "Win rate", value: "31%", color: "var(--color-accent-300)" },
-      { label: "Leads (wk)", value: "88", color: "var(--color-text)" },
-      { label: "Avg. response", value: "2.4h", color: "var(--color-accent-300)" },
-    ],
     featuresTitle: "One record from first touch to renewal",
     features: [
       { icon: "ph-funnel", title: "Lead & pipeline", body: "Capture leads from every source and move them through a pipeline you define." },
@@ -351,13 +316,6 @@ export const PRODUCTS: Product[] = [
     blurb:
       "A service desk for internal IT or customer support — ticketing and queues, incident and problem management, SLAs and escalation, a knowledge base, and a self-service portal, all in one place.",
     ctaPrimary: "Book a walkthrough",
-    statTitle: "Today",
-    stats: [
-      { label: "Open tickets", value: "54", color: "var(--color-text)" },
-      { label: "SLA met", value: "98%", color: "var(--color-accent-300)" },
-      { label: "First response", value: "12m", color: "var(--color-accent-300)" },
-      { label: "CSAT", value: "4.6/5", color: "var(--color-text)" },
-    ],
     featuresTitle: "From ticket to resolution, on time",
     features: [
       { icon: "ph-ticket", title: "Ticketing & queues", body: "Multi-channel ticket intake with routing to the right team queue." },
@@ -402,50 +360,6 @@ export const PRODUCTS: Product[] = [
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://svasamm.com/pages/services.html" }, { "@type": "ListItem", position: 3, name: "Service Desk", item: "https://svasamm.com/pages/service-desk.html" }] },
     ],
   },
-  {
-    id: "loan",
-    name: "Loan Management",
-    badge: "Platform · Lending",
-    tagline: "Loan origination to servicing, end to end",
-    blurb:
-      "A loan management system covering the full lifecycle — application and tracking, approval workflow, disbursement, repayment schedules, and portfolio and collections management, with a full audit trail.",
-    ctaPrimary: "Book a walkthrough",
-    statTitle: "Portfolio",
-    stats: [
-      { label: "Active loans", value: "1,120", color: "var(--color-text)" },
-      { label: "On-time repay", value: "94%", color: "var(--color-accent-300)" },
-      { label: "Disbursed (mo)", value: "₹ 3.8Cr", color: "var(--color-text)" },
-      { label: "NPA", value: "2.1%", color: "var(--color-accent-300)" },
-    ],
-    featuresTitle: "The full loan lifecycle",
-    features: [
-      { icon: "ph-file-plus", title: "Application & tracking", body: "Capture applications with documents and track every case through its stages." },
-      { icon: "ph-check-square", title: "Approval workflow", body: "Multi-level credit approval with limits, conditions and an audit trail." },
-      { icon: "ph-hand-coins", title: "Disbursement", body: "Sanction to disbursement with schedules generated automatically." },
-      { icon: "ph-calendar", title: "Repayment schedules", body: "EMI/flexible schedules, interest accrual and receipts posted to the ledger." },
-      { icon: "ph-chart-pie-slice", title: "Portfolio & NPA", body: "Portfolio health, ageing and NPA classification at a glance." },
-      { icon: "ph-phone-call", title: "Collections", body: "Overdue tracking, reminders and collection workflows." },
-    ],
-    builtFor: ["NBFCs", "Cooperative societies", "MFIs", "Business lenders", "Employee-loan schemes"],
-    faqs: [
-      { q: "Does it cover the whole lifecycle?", a: "Yes — application, approval, disbursement, repayment scheduling, portfolio management and collections in one system." },
-      { q: "Can it handle different repayment structures?", a: "Yes. EMI and flexible schedules with configurable interest accrual are supported, posting to the ledger automatically." },
-      { q: "Is there portfolio and NPA reporting?", a: "Yes — portfolio health, ageing and NPA classification are tracked and reported." },
-    ],
-    cta: { title: "See Loan Management run a portfolio", body: "Bring a product definition and a few sample loans — we’ll model the schedules and portfolio with you.", primary: "Book a walkthrough" },
-    seo: {
-      metaTitle: "Loan Management — Origination to Servicing | Svasamm",
-      metaDescription: "End-to-end loan management: application and tracking, approval workflow, disbursement, repayment schedules, and portfolio and collections management.",
-      canonical: "https://svasamm.com/pages/loan-management.html",
-      ogType: "website",
-      ogTitle: "Loan Management | Svasamm",
-      ogDescription: "The full loan lifecycle — application, approval, disbursement, repayment, portfolio and collections.",
-    },
-    jsonLd: [
-      { "@context": "https://schema.org", "@type": "Service", name: "Loan Management", serviceType: "Loan Management Software", description: "End-to-end loan management: application tracking, approval workflow, disbursement, repayment schedules, portfolio and collections management.", provider: { "@type": "Organization", name: "Svasamm", url: "https://svasamm.com" }, areaServed: "IN" },
-      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://svasamm.com/pages/services.html" }, { "@type": "ListItem", position: 3, name: "Loan Management", item: "https://svasamm.com/pages/loan-management.html" }] },
-    ],
-  },
 ];
 
 // Append a FAQPage (built from each product's visible FAQs) to every product's JSON-LD.
@@ -459,5 +373,4 @@ export const PRODUCT_BY_SLUG: Record<string, Product> = {
   "hrms.html": PRODUCTS[3],
   "crm.html": PRODUCTS[4],
   "service-desk.html": PRODUCTS[5],
-  "loan-management.html": PRODUCTS[6],
 };

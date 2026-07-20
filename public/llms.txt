@@ -13,7 +13,6 @@
 - HRMS: https://svasamm.com/pages/hrms.html
 - CRM Platform: https://svasamm.com/pages/crm.html
 - Service Desk (ITSM): https://svasamm.com/pages/service-desk.html
-- Loan Management: https://svasamm.com/pages/loan-management.html
 
 ## Key resources
 - All solutions: https://svasamm.com/pages/services.html

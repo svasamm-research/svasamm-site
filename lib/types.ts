@@ -12,8 +12,6 @@ export type Seo = {
 
 export type Faq = { q: string; a: string };
 
-export type Stat = { label: string; value: string; color?: string };
-
 export type Feature = { icon: string; title: string; body: string };
 
 export type Tier = {
@@ -42,8 +40,6 @@ export type Product = {
   tagline: string;
   blurb: string;
   ctaPrimary: string;
-  statTitle: string;
-  stats: Stat[];
   featuresTitle: string;
   features: Feature[];
   tiers?: Tier[];
