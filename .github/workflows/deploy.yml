@@ -20,6 +20,11 @@ name: Build & Publish Docker Image
 on:
   release:
     types: [published]
+  # Validate PRs too: without this the build/typecheck only ran at release time, so a
+  # broken build surfaced at deploy instead of at review. PRs run the `test` job ONLY —
+  # the image build/push and Dokploy deploys stay release-triggered (see `build` job's if).
+  pull_request:
+    branches: [develop, uat, main]
   workflow_dispatch:
     inputs:
       version:
@@ -48,6 +53,7 @@ jobs:
   build:
     name: Build & push image
     needs: test
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     outputs:
       image_tag: ${{ steps.meta.outputs.version }}
