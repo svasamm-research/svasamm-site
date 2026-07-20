@@ -24,7 +24,7 @@ QUALITY = 80
 # source filename (in SRC_DIR)            -> page slug (output basename)
 SOURCES = {
     # core
-    "home.jpg": "home",
+    "home-v2.jpg": "home",   # replaced the original home.jpg on 2026-07-20
     "home->solutions.jpg": "services",
     # products  (millingo pending: drop in `rice-mill-factory.jpg` -> "millingo")
     "rice-mill-factory.jpg": "millingo",
@@ -81,7 +81,8 @@ SOURCES = {
 
 # Deliberately unused: the design drop had two photos for three guides. Kept here so a
 # future reader knows they were considered, not missed.
-SPARES = ("dms-oem-guide.jpg", "hrms-payroll.jpg", "crm-pipeline.jpg")
+SPARES = ("dms-oem-guide.jpg", "hrms-payroll.jpg", "crm-pipeline.jpg",
+          "home.jpg")  # superseded by home-v2.jpg
 
 
 def main() -> int:
