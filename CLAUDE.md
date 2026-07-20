@@ -73,14 +73,23 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   merges each wrapper helmet); re-run the extractor, don't hand-edit · `lib/home.ts` —
   home cards/regions/whys · `lib/pages.ts` — Solutions/Contact/About SEO+JSON-LD ·
   `lib/routes.ts` — `PROTO_TO_ROUTE` (every `.dc.html`→route) + `toRoute()`.
-- **Svasamm Digital** (`/pages/digital.html`): healthcare-digitisation **service**, modelled as
-  a solution — `lib/digital.ts` holds the `Product` record (**all copy lives there**) and
-  `lib/products.ts` registers it, so it renders through the shared `ProductPage` and appears in
-  the mega-menu, footer, home grid, Solutions page and sitemap automatically. It is categorised **`vertical`** (it is
-  healthcare-specific, like Lucoze) rather than getting its own nav category — but its card
-  carries the tag **"Service"** and the nav description says "Healthcare digitisation service",
-  so a delivered service is never mistaken for software you run. Its schema is `Service`, not a
-  product type. **Guardrails:** publish tier scope but never prices (CTA "Request a
+- **Svasamm Digital for Healthcare** (`/pages/digital-healthcare.html`, id `digital-healthcare`):
+  healthcare-digitisation **service**, modelled as a solution — `lib/digital.ts` holds the
+  `Product` record (**all copy lives there**) and `lib/products.ts` registers it, so it renders
+  through the shared `ProductPage` and appears in the mega-menu, footer, home grid, Solutions
+  page and sitemap automatically. It is categorised **`vertical`** (it is healthcare-specific,
+  like Lucoze) rather than getting its own nav category — but its card carries the tag
+  **"Service"** and the nav description says "Healthcare digitisation service", so a delivered
+  service is never mistaken for software you run. Its schema is `Service`, not a product type.
+  Named "…for Healthcare" (not bare "Digital") because a **Svasamm Digital for Schools** line is
+  planned — future verticals take `digital-schools` etc.
+  - **Content cluster:** 6 hand-authored articles in `lib/digital-articles.ts` (4 guides + 2
+    approach-comparisons — no named competitors, per the medical-ad guardrails), surfaced via a
+    Resources block on the product page. `lib/articles.ts` is the **frozen auto-generated** set
+    (the extractor lived in the old `svasamm-web` scratchpad and is not in this repo — do not
+    hand-edit it); **`lib/article-registry.ts` is the single merge point** — routing and the
+    sitemap import `ARTICLE_BY_SLUG` from the registry, never from `articles.ts` directly. Add a
+    future article source there. **Guardrails:** publish tier scope but never prices (CTA "Request a
   proposal"); no case studies/testimonials/client logos/result metrics (no clients yet); never
   promise patient volume, revenue or clinical outcomes; never emit
   `MedicalOrganization`/`Physician` for Svasamm — it is a provider *to* healthcare. Published
@@ -101,6 +110,10 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   `public/` is what ships. Re-run after adding a photo (idempotent; skips up-to-date files):
   `python3 scripts/optimize-hero-images.py [SRC_DIR]`. Heroes use `priority` (they're the
   LCP); 46 photos total ≈ 5.9MB (from 116MB of originals).
+- **Favicon**: the real icons (`favicon.ico`, `favicon-32/16.png`, `apple-touch-icon.png`)
+  live in `public/`. Do NOT add `app/favicon.ico` — Next's file-based metadata auto-detects it
+  and emits a `<link rel="icon">` that OUTRANKS the `public/` set (this is how the create-next-app
+  default Next.js logo leaked into the tab; removed in this branch).
 - **Analytics**: `components/Analytics.tsx` loads GA4 (`GA_ID` in `lib/site.ts`,
   `G-EPFCF5F117`) behind a client mount, host-gated off (skips fetching gtag.js on
   `uat.svasamm.com` / `localhost`). Fires `generate_lead` on contact-form submit.

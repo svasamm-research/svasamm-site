@@ -659,6 +659,17 @@ Applied after the final review; the tasks above describe the original build.
    (Original defect: "Most popular" on a pre-pilot service with no clients — spec §8.)
 3. **Exclusivity radius is 5 km** (was "5–8 km, or a pincode cluster"), matching Google's
    nearby-results proximity. Spec §5 amended to match.
+4. **Renamed to "Svasamm Digital for Healthcare"**; id `digital` → `digital-healthcare`, URL
+   `/pages/digital.html` → `/pages/digital-healthcare.html`, hero slug likewise. Done because a
+   *Svasamm Digital for Schools* line is planned and the healthcare page must not sit on the
+   ambiguous `digital` slug. **The task bodies above still say `/pages/digital.html` — that is
+   the original build; the live URL is `digital-healthcare`.** Free to do now: the page was
+   never published, so there is no indexed URL to 301.
+5. **Content cluster added** (not in the original plan): 6 hand-authored articles in
+   `lib/digital-articles.ts` (4 guides + 2 approach-comparisons), merged through a new
+   `lib/article-registry.ts` (the auto-generated `lib/articles.ts` stays frozen and is no longer
+   imported directly by routing/sitemap), surfaced via a Resources block on the product page.
+   Sitemap 51 → 57.
 
 ## Out of scope (spec §8) — do not build
 
