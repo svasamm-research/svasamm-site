@@ -14,8 +14,8 @@ import { SITE_URL } from "./site";
 import type { Product } from "./types";
 
 export const DIGITAL_PRODUCT: Product = {
-  id: "digital",
-  name: "Svasamm Digital",
+  id: "digital-healthcare",
+  name: "Svasamm Digital for Healthcare",
   badge: "Svasamm Digital · Healthcare",
   tagline: "Digital presence for healthcare, done properly",
   blurb:
@@ -121,9 +121,9 @@ export const DIGITAL_PRODUCT: Product = {
     metaTitle: "Healthcare Digital Marketing & Clinic SEO in West Bengal | Svasamm Digital",
     metaDescription:
       "Websites, Google Business Profile, local SEO and digital marketing for clinics, nursing homes and small hospitals in West Bengal and East India. Fixed tiers, category exclusivity in your catchment. Request a proposal.",
-    canonical: `${SITE_URL}/pages/digital.html`,
+    canonical: `${SITE_URL}/pages/digital-healthcare.html`,
     ogType: "website",
-    ogTitle: "Svasamm Digital — healthcare digitisation",
+    ogTitle: "Svasamm Digital for Healthcare",
     ogDescription:
       "Website, Google Business Profile, local SEO and marketing for clinics, nursing homes and small hospitals. Category exclusivity in your catchment.",
   },
@@ -135,7 +135,7 @@ export const DIGITAL_PRODUCT: Product = {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Svasamm Digital — healthcare digitisation",
+      name: "Svasamm Digital for Healthcare",
       serviceType: "Digital marketing and web development for healthcare facilities",
       description:
         "Website build, Google Business Profile setup and optimisation, local SEO, schema and AI-visibility, and ongoing digital marketing for clinics, nursing homes and small hospitals.",
@@ -159,7 +159,7 @@ export const DIGITAL_PRODUCT: Product = {
         { "@type": "Country", name: "India" },
       ],
       audience: { "@type": "BusinessAudience", name: "Clinics, nursing homes and small hospitals" },
-      url: `${SITE_URL}/pages/digital.html`,
+      url: `${SITE_URL}/pages/digital-healthcare.html`,
     },
     {
       "@context": "https://schema.org",
@@ -167,7 +167,7 @@ export const DIGITAL_PRODUCT: Product = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
         { "@type": "ListItem", position: 2, name: "Solutions", item: `${SITE_URL}/pages/services.html` },
-        { "@type": "ListItem", position: 3, name: "Svasamm Digital", item: `${SITE_URL}/pages/digital.html` },
+        { "@type": "ListItem", position: 3, name: "Svasamm Digital for Healthcare", item: `${SITE_URL}/pages/digital-healthcare.html` },
       ],
     },
   ],

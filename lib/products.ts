@@ -375,5 +375,5 @@ export const PRODUCT_BY_SLUG: Record<string, Product> = {
   "hrms.html": PRODUCTS[3],
   "crm.html": PRODUCTS[4],
   "service-desk.html": PRODUCTS[5],
-  "digital.html": PRODUCTS[6],
+  "digital-healthcare.html": PRODUCTS[6],
 };
