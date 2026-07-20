@@ -1,15 +1,15 @@
 # Multi-stage build for optimized production image
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 # Set working directory
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
+COPY package.json yarn.lock ./
 
-# Install ALL dependencies (the gulp build chain lives in devDependencies, so
-# --production would omit it and `yarn build` below would fail). The final image is a
-# separate nginx stage, so these build deps never ship to production.
+# Install ALL deps (Next's build toolchain is in devDependencies, so --production
+# would break `yarn build`). The final image is a separate nginx stage, so build
+# deps never ship.
 RUN yarn install --frozen-lockfile --silent
 
 # Copy source code
@@ -28,7 +28,7 @@ RUN apk add --no-cache curl
 COPY ./deployment/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Copy built application from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/out /usr/share/nginx/html
 
 # Create nginx cache directories
 RUN mkdir -p /var/cache/nginx/client_temp \
@@ -53,7 +53,7 @@ EXPOSE 80
 # Add labels for better organization
 LABEL maintainer="SVASAMM Team" \
       description="SVASAMM Business Automation Website" \
-      version="1.0.0" \
+      version="0.1.0" \
       org.opencontainers.image.source="https://github.com/svasamm/website"
 
 # Start nginx

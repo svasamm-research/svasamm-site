@@ -3,6 +3,15 @@
 How svasamm.com and uat.svasamm.com are built, released, and deployed — matching the
 lucoze-website setup (Docker Hub + Dokploy). Includes the **Hetzner → Hostinger migration**.
 
+## Build: Next.js static export (as of v0.1.0)
+
+As of v0.1.0 the site is a Next.js static export (`output: 'export'` in `next.config.ts` →
+`out/`), **not gulp**. Build = `yarn build`; the image serves `out/` via nginx (no Node
+runtime in prod). Redirects for the old `/pages/{privacy,terms-of-service,hims,
+testimonials}.html` URLs live in `deployment/nginx/nginx.conf`, not Traefik middleware (see
+`CLAUDE.md` § Deployment for the full current edge-behavior list — www→apex, HSTS,
+UAT noindex, and the branded 404 also moved into nginx).
+
 ## Architecture
 
 ```
@@ -17,9 +26,11 @@ GitHub Release (tag uat-vX.Y.Z or vX.Y.Z)
 ```
 
 The site is a static build served by nginx in the image (`deployment/docker/Dockerfile`).
-Nginx (`:80`) handles the crawl-trap fix / 404 / `/index.html`→`/` / CSP headers. **Traefik
-(Dokploy) handles TLS, HTTP→HTTPS 301, www→apex 301, HSTS, and UAT noindex** — configured
-in the Dokploy UI + middleware labels (see `deployment/dokploy-seo.md`).
+**Nginx (`:80`) handles www→apex 301, HSTS, UAT noindex (`X-Robots-Tag` by `Host`), the
+crawl-trap fix / 404 / `/index.html`→`/`, and CSP headers** (see
+`deployment/nginx/nginx.conf` and `CLAUDE.md` § Deployment). **Traefik (Dokploy) handles
+only TLS termination and HTTP→HTTPS 301** — configured in the Dokploy UI (see
+`deployment/dokploy-seo.md`).
 
 ## Branch & release model
 

@@ -396,7 +396,7 @@ without re-auditing.
 ### Phase 1 — Aim + fix (weeks 2–6)
 5. **Keyword research** (GSC + tools) → a keyword→page map; rewrite titles/H1s to target
    real terms. → *Indicator: impressions rise for target queries in GSC.*
-6. **Fill thin pages**: finish Service Desk / Loan copy (remove `noindex`, add to
+6. **Fill thin pages**: finish Service Desk copy (remove `noindex`, add to
    sitemap); deepen Millingo/DMS/Lucoze with FAQs + real screenshots.
 7. **Local citations** (Justdial, Sulekha, IndiaMART, G2/Capterra/SoftwareSuggest) with
    consistent NAP. → *Indicator: referring domains climb.*
