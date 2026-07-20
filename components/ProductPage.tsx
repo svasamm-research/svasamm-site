@@ -70,7 +70,7 @@ export default function ProductPage({ product: d }: { product: Product }) {
             <div className="pp-two" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 18 }}>
               {d.tiers.map((t, i) => (
                 <div key={i} style={{ display: "flex", flexDirection: "column", padding: 26, borderRadius: 16, background: "var(--color-bg)", border: `1px solid ${t.featured ? "var(--color-accent)" : "var(--color-neutral-800)"}`, position: "relative" }}>
-                  {t.featured && <span className="tag tag-accent" style={{ position: "absolute", top: -10, left: 26, fontSize: 9 }}>Most popular</span>}
+                  {t.featured && <span className="tag tag-accent" style={{ position: "absolute", top: -10, left: 26, fontSize: 9 }}>{t.featuredLabel ?? "Most popular"}</span>}
                   <h3 style={{ fontSize: 20, margin: "0 0 6px", color: "var(--color-text)" }}>{t.name}</h3>
                   <p style={{ fontSize: 13, color: "var(--color-neutral-400)", margin: "0 0 18px", minHeight: 40 }}>{t.for}</p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 9, flex: 1 }}>

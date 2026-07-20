@@ -19,7 +19,7 @@ export const DIGITAL_PRODUCT: Product = {
   badge: "Svasamm Digital · Healthcare",
   tagline: "Digital presence for healthcare, done properly",
   blurb:
-    "Websites, Google Business Profile, local SEO and marketing built specifically for clinics, nursing homes and small hospitals across West Bengal and East India. Fixed scope, a small number of clients, and category exclusivity in your catchment — we won't take your direct competitor.",
+    "Websites, Google Business Profile, local SEO and marketing built specifically for clinics, nursing homes and small hospitals across West Bengal and East India. Fixed scope, we take only a small number of clients, and category exclusivity in your catchment — we won't take your direct competitor.",
   ctaPrimary: "Request a proposal",
   featuresTitle: "What the engagement covers",
   features: [
@@ -57,6 +57,7 @@ export const DIGITAL_PRODUCT: Product = {
       ],
       cta: "Request a proposal",
       featured: true,
+      featuredLabel: "Recommended",
     },
     {
       name: "Full",

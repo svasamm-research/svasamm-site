@@ -1,4 +1,4 @@
-// All 6 product records — data from prototypes/ProductPage.dc.html data(), SEO + JSON-LD
+// All 7 product records — data from prototypes/ProductPage.dc.html data(), SEO + JSON-LD
 // copied verbatim from each product's wrapper helmet (Millingo/DMS/ERP/HRMS/CRM/
 // ServiceDesk .dc.html). Shaped to `Product` so it can move to Sanity later.
 
