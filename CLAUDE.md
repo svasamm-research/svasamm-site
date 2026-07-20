@@ -76,13 +76,16 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 - **Svasamm Digital** (`/pages/digital.html`): healthcare-digitisation **service**, modelled as
   a solution — `lib/digital.ts` holds the `Product` record (**all copy lives there**) and
   `lib/products.ts` registers it, so it renders through the shared `ProductPage` and appears in
-  the mega-menu, footer, home grid, Solutions page and sitemap automatically. It uses the third
-  nav category **`service`** (alongside `vertical`/`platform`) so a delivered service is not
-  presented as software. **Guardrails:** publish tier scope but never prices (CTA "Request a
+  the mega-menu, footer, home grid, Solutions page and sitemap automatically. It is categorised **`vertical`** (it is
+  healthcare-specific, like Lucoze) rather than getting its own nav category — but its card
+  carries the tag **"Service"** and the nav description says "Healthcare digitisation service",
+  so a delivered service is never mistaken for software you run. Its schema is `Service`, not a
+  product type. **Guardrails:** publish tier scope but never prices (CTA "Request a
   proposal"); no case studies/testimonials/client logos/result metrics (no clients yet); never
   promise patient volume, revenue or clinical outcomes; never emit
   `MedicalOrganization`/`Physician` for Svasamm — it is a provider *to* healthcare. Published
-  delivery timeline is ~4 weeks from content + GBP-access handover. Spec:
+  delivery timeline is ~4 weeks from content + GBP-access handover; published exclusivity
+  radius is ~5 km (matching Google's nearby-results proximity). Spec:
   `docs/superpowers/specs/2026-07-19-svasamm-digital-service-design.md`.
 - Components: `ProductPage`, `Article`, `SolutionsPage`, `ContactPage`, `AboutPage` (server
   bodies) · `SiteHeader`, `ProductFilter`, `FaqAccordion`, `ContactForm` (client islands) ·

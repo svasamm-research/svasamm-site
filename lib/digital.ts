@@ -28,7 +28,7 @@ export const DIGITAL_PRODUCT: Product = {
     { icon: "ph-map-trifold", title: "Local SEO & NAP consistency", body: "On-page optimisation for the searches your catchment actually makes, and your name, address and phone made consistent across the listings that carry them." },
     { icon: "ph-file-text", title: "Schema & AI visibility", body: "Structured data so search engines and AI assistants can read what your facility is, where it is and what it treats — increasingly how patients find care." },
     { icon: "ph-chart-bar", title: "Monthly reporting", body: "On Growth and Full, a plain-language monthly report of the work done and what local ranking and traffic look like. No dashboard to log into." },
-    { icon: "ph-handshake", title: "Category exclusivity", body: "One client per facility category per catchment. If a direct competitor inside your catchment approaches us, we decline — and it is written into the agreement." },
+    { icon: "ph-handshake", title: "Category exclusivity", body: "One client per facility category within about 5 km. If a direct competitor inside that radius approaches us, we decline — and it is written into the agreement." },
   ],
   tiersTitle: "Three fixed tiers — scope published, price quoted per facility",
   tiers: [
@@ -57,7 +57,6 @@ export const DIGITAL_PRODUCT: Product = {
       ],
       cta: "Request a proposal",
       featured: true,
-      featuredLabel: "Recommended",
     },
     {
       name: "Full",
@@ -82,7 +81,7 @@ export const DIGITAL_PRODUCT: Product = {
   faqs: [
     {
       q: "Will you work with my competitor?",
-      a: "No. You get category exclusivity in your catchment — we won't take your direct competitor. One client per facility category per catchment (roughly a 5–8 km radius, or a pincode cluster where density is high), and it is written into the agreement. If a direct competitor inside that catchment approaches us, we decline. This applies to Svasamm Digital services only — it never applies to Lucoze, our hospital management software, which any facility can buy.",
+      a: "No. You get category exclusivity in your catchment — we won't take your direct competitor. One client per facility category per catchment (roughly a 5 km radius — the range Google’s nearby results actually draw from), and it is written into the agreement. If a direct competitor inside that catchment approaches us, we decline. This applies to Svasamm Digital services only — it never applies to Lucoze, our hospital management software, which any facility can buy.",
     },
     {
       q: "Why does exclusivity matter for local search?",

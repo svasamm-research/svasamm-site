@@ -645,6 +645,21 @@ reintroduce prices, fabricated proof or medical-provider markup."
 4. **Lead routing** — the contact form is still client-only (no Route Handler yet); when it lands, the `interest` field already carries the Digital marker.
 5. **Footer heading** — if Digital under a "Products" heading reads wrong, splitting the footer column into Products/Services is a small follow-up (flagged in Task 4 Step 4).
 
+## Post-implementation amendments (2026-07-20, founder)
+
+Applied after the final review; the tasks above describe the original build.
+1. **No separate `service` nav category.** Svasamm Digital is categorised `vertical`
+   (healthcare-specific, like Lucoze) with a **"Service"** card tag and a
+   "Healthcare digitisation service" nav description. Task 2's third category, its mega-menu
+   row, filter chip and Solutions section were removed — one taxonomy, everything under
+   Products, honesty carried by the tag. This also dissolved the Products/Services heading
+   inconsistency the final review flagged.
+2. **No "Most popular" badge anywhere.** The shared `ProductPage` badge default is now
+   **"Recommended"**; `Tier.featuredLabel` remains for a future substantiated override.
+   (Original defect: "Most popular" on a pre-pilot service with no clients — spec §8.)
+3. **Exclusivity radius is 5 km** (was "5–8 km, or a pincode cluster"), matching Google's
+   nearby-results proximity. Spec §5 amended to match.
+
 ## Out of scope (spec §8) — do not build
 
 Published prices · "all industries" / generic agency pages · client portal, dashboards or automated reporting · case studies, testimonials, client logos, result metrics · bespoke scope-builder or custom quoting UI.

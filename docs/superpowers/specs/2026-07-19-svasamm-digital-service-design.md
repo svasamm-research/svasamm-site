@@ -69,8 +69,10 @@ Published **scope**, unpublished **price**.
 Two competing hospitals in one catchment cannot both be ranked #1 for the same query.
 Rather than hide that, we make it the offer:
 
-- **One client per facility category × catchment.** Catchment ≈ 5–8 km radius, or a pincode
-  cluster where density is high.
+- **One client per facility category × catchment.** Catchment ≈ **5 km radius** — chosen to
+  match the proximity range Google's nearby/local results actually draw from.
+  *(Amended 2026-07-20 by founder decision; was "≈ 5–8 km radius, or a pincode cluster where
+  density is high". The site copy states 5 km.)*
 - **Contractual.** If a direct competitor inside that catchment approaches us, we decline.
 - **Applies to Svasamm Digital services only — never to Lucoze HIMS.** Software has no
   zero-sum conflict; Lucoze may be sold to any facility, including two rivals.

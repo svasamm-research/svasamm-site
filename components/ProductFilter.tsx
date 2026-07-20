@@ -5,12 +5,11 @@ import Link from "next/link";
 import { Icon } from "./IconClient";
 import type { HomeProduct } from "@/lib/home";
 
-type Filter = "all" | "vertical" | "platform" | "service";
+type Filter = "all" | "vertical" | "platform";
 const OPTS: { key: Filter; label: string }[] = [
   { key: "all", label: "All" },
   { key: "vertical", label: "Vertical" },
   { key: "platform", label: "Platform" },
-  { key: "service", label: "Services" },
 ];
 
 // Home "Our solutions" grid with a client-side All/Vertical/Platform filter (the only

@@ -8,7 +8,6 @@ import { PRODUCTS, type NavProduct } from "@/lib/site";
 
 const vertical = PRODUCTS.filter((p) => p.category === "vertical");
 const platform = PRODUCTS.filter((p) => p.category === "platform");
-const service = PRODUCTS.filter((p) => p.category === "service");
 
 function ProductLink({
   p,
@@ -106,22 +105,6 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                   <Link href="/pages/services.html" className="inline-flex items-center gap-1.5 mt-3.5" style={{ fontSize: 13, fontWeight: 500, color: accent }}>
                     View all solutions <Icon name="ph-arrow-right" weight="bold" size={12} />
                   </Link>
-                </div>
-                <div style={{ gridColumn: "1 / -1", borderTop: "1px solid var(--color-divider)", paddingTop: 16 }}>
-                  <div style={{ fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase", color: accent, marginBottom: 12 }}>Services</div>
-                  <div className="flex flex-col gap-1">
-                    {service.map((p) => (
-                      <ProductLink key={p.id} p={p} className="svh-mega-item flex gap-3 p-2.5" style={{ borderRadius: 9 }}>
-                        <span className="flex-none grid place-items-center" style={{ width: 34, height: 34, borderRadius: 8, background: "var(--color-accent-900)", color: "var(--color-accent-300)" }}>
-                          <Icon name={p.icon} size={18} />
-                        </span>
-                        <span className="block">
-                          <span className="block" style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: 14, color: "var(--color-text)" }}>{p.name}{p.external ? " ↗" : ""}</span>
-                          <span className="block" style={{ fontSize: 12, color: "var(--color-neutral-500)", lineHeight: 1.4 }}>{p.desc}</span>
-                        </span>
-                      </ProductLink>
-                    ))}
-                  </div>
                 </div>
               </div>
             )}
