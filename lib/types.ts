@@ -20,6 +20,7 @@ export type Tier = {
   items: string[];
   cta: string;
   featured?: boolean;
+  featuredLabel?: string;   // badge text; defaults to "Recommended" in ProductPage
 };
 
 // A single link in a product's Resources block or an article's Related list.

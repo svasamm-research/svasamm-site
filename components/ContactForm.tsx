@@ -16,6 +16,7 @@ const PRODUCT_OPTIONS = [
   "HRMS",
   "CRM Platform",
   "Service Desk",
+  "Svasamm Digital for Healthcare",
 ];
 
 const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -44,7 +45,7 @@ export default function ContactForm() {
     setSentName(f.name.trim().split(" ")[0]);
     setSent(true);
     if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "generate_lead", { form: "contact", page_location: location.href });
+      window.gtag("event", "generate_lead", { form: "contact", interest: f.product, page_location: location.href });
     }
   }
 

@@ -25,6 +25,7 @@ QUALITY = 80
 SOURCES = {
     # core
     "home-v2.jpg": "home",   # replaced the original home.jpg on 2026-07-20
+    "digital.jpg": "digital-healthcare",
     "home->solutions.jpg": "services",
     # products  (millingo pending: drop in `rice-mill-factory.jpg` -> "millingo")
     "rice-mill-factory.jpg": "millingo",
