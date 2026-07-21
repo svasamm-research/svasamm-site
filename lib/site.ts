@@ -38,6 +38,7 @@ export const PRODUCTS: NavProduct[] = [
   { id: "hrms", name: "HRMS", desc: "HR & payroll", category: "platform", href: "/pages/hrms.html", icon: "ph-users-three" },
   { id: "crm", name: "CRM Platform", desc: "Sales & pipeline", category: "platform", href: "/pages/crm.html", icon: "ph-handshake" },
   { id: "service-desk", name: "Service Desk", desc: "IT service management", category: "platform", href: "/pages/service-desk.html", icon: "ph-headset" },
+  { id: "digital-healthcare", name: "Svasamm Digital for Healthcare", desc: "Healthcare digitisation service", category: "vertical", href: "/pages/digital-healthcare.html", icon: "ph-megaphone" },
 ];
 
 export const NAV_LINKS = [

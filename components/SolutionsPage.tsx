@@ -30,7 +30,7 @@ export default function SolutionsPage() {
         <div className="pp-wrap sv-hero-content" style={{ padding: "40px 24px 56px", maxWidth: 760 }}>
           <div className="tag tag-outline" style={{ marginBottom: 20 }}>All solutions</div>
           <h1 style={{ fontSize: 44, lineHeight: 1.08, letterSpacing: "-.025em", margin: "0 0 16px", color: "var(--color-text)" }}>Every Svasamm product, in one place</h1>
-          <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: 0 }}>Vertical products carry an entire industry&apos;s workflow inside; platform modules are the horizontal systems every operation runs. Open any product for the full detail.</p>
+          <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: 0 }}>Vertical products carry an entire industry&apos;s workflow inside; platform modules are the horizontal systems every operation runs. Open any of them for the full detail.</p>
         </div>
       </section>
 
@@ -72,6 +72,7 @@ export default function SolutionsPage() {
           </div>
         </div>
       </section>
+
 
       {/* CTA */}
       <section style={{ padding: "20px 0 88px" }}>
