@@ -6,6 +6,7 @@ declare global {
 
 import { useState } from "react";
 import { Icon } from "./IconClient";
+import { CONTACT_ENDPOINT } from "@/lib/site";
 
 const PRODUCT_OPTIONS = [
   "Not sure yet — help me choose",
@@ -27,8 +28,11 @@ const ERR = "#e88";
 // (POST → email query@svasamm.com) when the form goes live.
 export default function ContactForm() {
   const [f, setF] = useState({ name: "", email: "", company: "", product: PRODUCT_OPTIONS[0], message: "" });
+  const [website, setWebsite] = useState(""); // honeypot — real users never fill this
   const [touched, setTouched] = useState(false);
+  const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [sentName, setSentName] = useState("");
 
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
@@ -38,10 +42,31 @@ export default function ContactForm() {
   const errEmail = touched && !validEmail(f.email);
   const errMsg = touched && f.message.trim().length < 3;
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
     setTouched(true);
+    setFailed(false);
     if (!f.name.trim() || !validEmail(f.email) || f.message.trim().length < 3) return;
+
+    // Only claim success once the enquiry is actually sent. Without a configured endpoint the
+    // form keeps its old optimistic behaviour so previews aren't broken before it's wired up.
+    if (CONTACT_ENDPOINT) {
+      setSending(true);
+      try {
+        const res = await fetch(CONTACT_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...f, website }),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+      } catch {
+        setSending(false);
+        setFailed(true);
+        return;
+      }
+      setSending(false);
+    }
+
     setSentName(f.name.trim().split(" ")[0]);
     setSent(true);
     if (typeof window !== "undefined" && window.gtag) {
@@ -51,8 +76,10 @@ export default function ContactForm() {
 
   function reset() {
     setF({ name: "", email: "", company: "", product: PRODUCT_OPTIONS[0], message: "" });
+    setWebsite("");
     setTouched(false);
     setSent(false);
+    setFailed(false);
   }
 
   return (
@@ -95,8 +122,20 @@ export default function ContactForm() {
             <textarea className="input" value={f.message} onChange={set("message")} placeholder="A sentence or two about your workflow" />
             {errMsg && <span style={{ fontSize: 11, color: ERR }}>Tell us a little about your needs</span>}
           </div>
-          <button type="submit" className="btn btn-primary btn-block" style={{ fontSize: 15, padding: 11 }}>
-            Request a walkthrough <Icon name="ph-arrow-right" weight="bold" style={{ fontSize: 14 }} />
+          {/* Honeypot: off-screen, hidden from users and assistive tech; bots fill it. */}
+          <div aria-hidden style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+            <label>Leave this field empty
+              <input tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
+            </label>
+          </div>
+          {failed && (
+            <span style={{ fontSize: 12.5, color: ERR }}>
+              Something went wrong sending your message. Please email us directly at{" "}
+              <a href="mailto:query@svasamm.com" style={{ color: "var(--color-accent-300)" }}>query@svasamm.com</a>.
+            </span>
+          )}
+          <button type="submit" disabled={sending} className="btn btn-primary btn-block" style={{ fontSize: 15, padding: 11, opacity: sending ? 0.7 : 1 }}>
+            {sending ? "Sending…" : "Request a walkthrough"} <Icon name="ph-arrow-right" weight="bold" style={{ fontSize: 14 }} />
           </button>
         </form>
       )}

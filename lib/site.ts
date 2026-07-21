@@ -3,6 +3,12 @@ export const SITE_URL = "https://svasamm.com";
 // GA4 Measurement ID. Enabled in prod; the Analytics component suppresses it on UAT/localhost.
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-EPFCF5F117";
 
+// Contact-form backend: the AWS Lambda Function URL (SES) that emails enquiries to the team.
+// Public by design (the browser calls it). Set once the Lambda is deployed —
+// see serverless/contact-lambda/README.md. Empty = form keeps its optimistic success and
+// captures NO lead, so setting this is what turns lead capture on.
+export const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? "";
+
 export const BUSINESS = {
   legalName: "Svasamm Research Pvt Ltd",
   name: "Svasamm",
