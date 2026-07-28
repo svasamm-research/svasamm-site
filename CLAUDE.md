@@ -13,6 +13,23 @@ below for what actually ships).
 > writing Next code.** Key: `params` is a `Promise` (await it); `generateMetadata` async;
 > `sitemap.ts`/`robots.ts` return `MetadataRoute.*`; JSON-LD via a `<script type="application/ld+json">`.
 
+## SEO/GEO — active initiative (from 2026-07-27)
+Goal: bring **svasamm.com to lucoze.com's SEO level** so Google ranks it. Two payoffs: inbound leads for
+**Svasamm Digital** (the web/SEO service) **and** a live "we rank our own site" proof-point for that sales
+pitch. **Workflow: assistant runs the audit READ-ONLY (claude-seo `/seo audit`, `/seo geo`) + hands the
+founder a prioritized fix list; the FOUNDER executes writes** (this repo is founder-owned; coordinate before
+editing). Don't touch UAT indexing (stays `noindex`).
+
+**Status (2026-07-28):** audit done (~83/100 — site is strong; bottleneck is authority + indexation, not
+on-page). GSC connected (`sc-domain:svasamm.com`, service account = **Owner**); 57/57 URLs pushed to the
+Indexing API; sitemap processed. **Winning clusters (GSC):** 🏆 rice-mill/Millingo at **pos ~8** (the quick
+page-1 win) · 💰 healthcare/Svasamm-Digital at **pos ~59** (revenue-relevant, slow — needs GBP + reviews).
+**Drafts to implement live in `~/Projects/web-dev/svasamm.com-audit/`** (NOT in this repo): full audit,
+`cluster-plan-rice-mill.md`, `cluster-plan-healthcare.md`, `connecting-pages-rice-mill.md` (internal-link
+matrix), and publish-ready copy in `content/` (moisture-shortfall new page; front-loaded CMR/yield intros).
+**Do the rice-mill quick wins first** (front-load intros + moisture page + the connecting-pages links).
+Facts come from the marketing-vault (cited). Body links via `next/link` with keyword anchors, not just nav.
+
 ## Stack
 Next 16 (App Router, **SSG** — every page static HTML for SEO) · React 19 · TypeScript ·
 Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
@@ -62,7 +79,7 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 
 ## Business facts (verbatim — CHANGED from the old site)
 - Svasamm Research Pvt Ltd · Nabagram, Konnagar, Hooghly, West Bengal 712246, India
-- Email **query@svasamm.com** · Phone **+91 91471 44638**
+- Email **query@svasamm.com** · Phone **+91 90077 93575**
 - Do NOT state unverified metrics (no "300% ROI / 50+ clients / ISO 27001"); no "Videozjet".
 
 ## Key files

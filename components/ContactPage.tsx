@@ -24,9 +24,9 @@ export default function ContactPage() {
               <span style={{ width: 40, height: 40, borderRadius: 10, display: "grid", placeItems: "center", background: "var(--color-accent-900)", color: "var(--color-accent-300)" }}><Icon name="ph-envelope-simple" style={{ fontSize: 19 }} /></span>
               <span><span style={{ display: "block", fontSize: 12, color: "var(--color-neutral-500)" }}>Email</span>query@svasamm.com</span>
             </a>
-            <a href="tel:+919147144638" style={{ display: "flex", alignItems: "center", gap: 12, color: "var(--color-text)" }}>
+            <a href="tel:+919007793575" style={{ display: "flex", alignItems: "center", gap: 12, color: "var(--color-text)" }}>
               <span style={{ width: 40, height: 40, borderRadius: 10, display: "grid", placeItems: "center", background: "var(--color-accent-900)", color: "var(--color-accent-300)" }}><Icon name="ph-phone" style={{ fontSize: 19 }} /></span>
-              <span><span style={{ display: "block", fontSize: 12, color: "var(--color-neutral-500)" }}>Phone</span>+91 91471 44638</span>
+              <span><span style={{ display: "block", fontSize: 12, color: "var(--color-neutral-500)" }}>Phone</span>+91 90077 93575</span>
             </a>
             <div style={{ display: "flex", alignItems: "center", gap: 12, color: "var(--color-text)" }}>
               <span style={{ width: 40, height: 40, borderRadius: 10, display: "grid", placeItems: "center", background: "var(--color-accent-900)", color: "var(--color-accent-300)" }}><Icon name="ph-map-pin" style={{ fontSize: 19 }} /></span>

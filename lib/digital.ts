@@ -167,7 +167,7 @@ export const DIGITAL_PRODUCT: Product = {
         name: "Svasamm Research Pvt Ltd",
         url: SITE_URL,
         email: "query@svasamm.com",
-        telephone: "+91-91471-44638",
+        telephone: "+91-90077-93575",
         address: {
           "@type": "PostalAddress",
           streetAddress: "Nabagram, Konnagar",

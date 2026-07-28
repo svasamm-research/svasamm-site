@@ -3,7 +3,7 @@
 > Svasamm builds vertical ERPs and business platforms for Indian operations —
 > systems that carry an industry's workflow, terminology and compliance inside them.
 > Founded 2022 in Konnagar, Hooghly, West Bengal. API-first, self-hostable, India-first.
-> Contact: query@svasamm.com · +91 91471 44638.
+> Contact: query@svasamm.com · +91 90077 93575.
 
 ## Products
 - Millingo — Rice Mill ERP (paddy procurement, quality grading, milling yield & by-products, FCI/levy CMR compliance): https://svasamm.com/pages/millingo.html
