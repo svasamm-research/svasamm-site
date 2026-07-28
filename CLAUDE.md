@@ -24,11 +24,20 @@ editing). Don't touch UAT indexing (stays `noindex`).
 on-page). GSC connected (`sc-domain:svasamm.com`, service account = **Owner**); 57/57 URLs pushed to the
 Indexing API; sitemap processed. **Winning clusters (GSC):** 🏆 rice-mill/Millingo at **pos ~8** (the quick
 page-1 win) · 💰 healthcare/Svasamm-Digital at **pos ~59** (revenue-relevant, slow — needs GBP + reviews).
-**Drafts to implement live in `~/Projects/web-dev/svasamm.com-audit/`** (NOT in this repo): full audit,
-`cluster-plan-rice-mill.md`, `cluster-plan-healthcare.md`, `connecting-pages-rice-mill.md` (internal-link
-matrix), and publish-ready copy in `content/` (moisture-shortfall new page; front-loaded CMR/yield intros).
-**Do the rice-mill quick wins first** (front-load intros + moisture page + the connecting-pages links).
-Facts come from the marketing-vault (cited). Body links via `next/link` with keyword anchors, not just nav.
+**Adding/editing SEO content — the workflow (the extractor is GONE):** `lib/articles.ts` is the frozen
+generated set — do NOT try to regenerate it. **New articles** go in a **hand-authored source file**
+(`lib/rice-mill-articles.ts`, `lib/digital-articles.ts`) merged in `lib/article-registry.ts` ("add a future
+source in this file only") — this auto-routes (`app/pages/[slug]`) and auto-sitemaps (`app/sitemap.ts`).
+**Small edits to existing generated articles** = minimal hand-edits in `articles.ts` (safe — nothing
+regenerates it). New pages need **no hero** (gradient fallback when the slug isn't in the auto-gen
+`heroes.ts`); section `text` is **plain** (no inline links) — cross-link via the `related[]` array whose
+`href` is a `PROTO_TO_ROUTE` key in `lib/routes.ts`; breadcrumbs render from the `BreadcrumbList` JSON-LD.
+Always `yarn typecheck` + `yarn build` before committing. Facts come from the marketing-vault (cited).
+
+**Done (branch `feature/svasamm-seo-nap`, committed, NOT deployed):** rice-mill quick wins — new
+`cmr-out-turn-shortfall-moisture` page + front-loaded CMR/yield/GST intros + cross-links (build-verified,
+62 pages). NAP: svasamm phone → 9007793575. **Next:** healthcare cluster + more Millingo content
+(plans in `~/Projects/web-dev/svasamm.com-audit/`). No deploy without the founder's explicit go.
 
 ## Stack
 Next 16 (App Router, **SSG** — every page static HTML for SEO) · React 19 · TypeScript ·
