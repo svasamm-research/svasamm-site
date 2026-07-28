@@ -18,6 +18,7 @@ export const PROTO_TO_ROUTE: Record<string, string> = {
   // Millingo cluster
   "Guide-CMR.dc.html": "/pages/custom-milled-rice-cmr-process.html",
   "Guide-YieldRecovery.dc.html": "/pages/rice-mill-yield-recovery.html",
+  "Guide-CMRShortfall.dc.html": "/pages/cmr-out-turn-shortfall-moisture.html", // hand-authored (lib/rice-mill-articles.ts)
   "Guide-ByproductAccounting.dc.html": "/pages/rice-mill-byproduct-accounting.html",
   "Guide-GST.dc.html": "/pages/gst-for-rice-mills.html",
   "Guide-BestSoftware.dc.html": "/pages/best-rice-mill-software.html",
