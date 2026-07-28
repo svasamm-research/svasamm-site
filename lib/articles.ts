@@ -705,7 +705,7 @@ export const ARTICLES: Article[] = [
     "eyebrow": "Rice Mill Guide",
     "title": "GST for Rice Mills: Paddy, Rice, Bran & Milling",
     "byline": "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
-    "intro": "GST for rice mills is deceptively tricky: the same grain is exempt as paddy, exempt as loose rice, but taxable as a branded packet — and your by-products each have their own treatment. This guide lays out the landscape so you can bill correctly.",
+    "intro": "GST on rice comes down to one thing: loose or packed. Paddy and loose, unbranded rice are nil-rated, but rice sold \"pre-packaged and labelled\" attracts 5% GST — the rule in force since 18 July 2022 — and by-products like bran and husk each have their own treatment. This guide lays out the full landscape so you can bill correctly.",
     "sections": [
       {
         "type": "note",
