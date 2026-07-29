@@ -39,7 +39,7 @@ export default function Privacy() {
       <p>You may request access to, correction of, or deletion of your personal information, and object to certain processing. To exercise any of these, contact us at <a href="mailto:query@svasamm.com">query@svasamm.com</a>.</p>
 
       <h2>Contact</h2>
-      <p>Svasamm Research Pvt Ltd, Nabagram, Konnagar, Hooghly, West Bengal 712246, India. Email <a href="mailto:query@svasamm.com">query@svasamm.com</a> · Phone <a href="tel:+919147144638">+91 91471 44638</a>.</p>
+      <p>Svasamm Research Pvt Ltd, Nabagram, Konnagar, Hooghly, West Bengal 712246, India. Email <a href="mailto:query@svasamm.com">query@svasamm.com</a> · Phone <a href="tel:+919007793575">+91 90077 93575</a>.</p>
       <p style={{ marginTop: 22, fontSize: 13, color: "var(--color-neutral-500)" }}>This template is a starting point and not legal advice. Please have your final policy reviewed against DPDP Act, 2023 and any other applicable law before publishing.</p>
     </LegalPage>
   );

@@ -12,7 +12,7 @@ export const ARTICLES: Article[] = [
     "eyebrow": "Rice Mill Guide",
     "title": "Custom Milled Rice (CMR) Explained: The Complete Process for Millers",
     "byline": "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
-    "intro": "For thousands of rice mills across India, government custom milling is the backbone of the business — and its paperwork is the biggest operational headache. This guide explains the CMR process end to end: what it is, what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
+    "intro": "CMR stands for Custom Milled Rice — the rice a mill produces when it mills paddy that the government procured from farmers at MSP, and returns to the procuring agency (FCI or a state agency). The miller doesn't buy the paddy; they mill it for a milling charge and must return rice at the fixed out-turn ratio of 67% for raw rice (68% parboiled) per 100 kg of paddy. This guide explains the CMR process end to end: what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
     "sections": [
       {
         "type": "p",
@@ -139,6 +139,10 @@ export const ARTICLES: Article[] = [
         "href": "Guide-YieldRecovery.dc.html"
       },
       {
+        "title": "Why CMR out-turn drops below 67% (moisture & shortfall)",
+        "href": "Guide-CMRShortfall.dc.html"
+      },
+      {
         "title": "Rice-mill software for West Bengal (e-Paddy & CMR)",
         "href": "State-WestBengal.dc.html"
       },
@@ -247,7 +251,7 @@ export const ARTICLES: Article[] = [
     "eyebrow": "Rice Mill Guide",
     "title": "Rice Mill Yield & Milling Recovery: How to Calculate It",
     "byline": "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
-    "intro": "Recovery is the single number that decides whether a rice mill makes money. A one-percent gain on a mill processing thousands of quintals is real profit — and a one-percent unexplained loss is money walking out of the gate. Here is how to calculate yield and recovery, what a good figure is, and why tracking it per batch is where mills find their margin.",
+    "intro": "Milling recovery — the out-turn ratio — is how much sellable rice you get from paddy: under government procurement it's a fixed 67% for raw rice and 68% for parboiled, per 100 kg of paddy. It is also the single number that decides whether a mill makes money — a one-percent gain on thousands of quintals is real profit, and a one-percent unexplained loss is money walking out of the gate. Here is how to calculate yield and recovery, what a good figure is, and why tracking it per batch is where mills find their margin.",
     "sections": [
       {
         "type": "p",
@@ -385,6 +389,10 @@ export const ARTICLES: Article[] = [
       {
         "title": "Custom Milled Rice (CMR): the complete process",
         "href": "Guide-CMR.dc.html"
+      },
+      {
+        "title": "Why CMR out-turn drops below 67% (moisture & shortfall)",
+        "href": "Guide-CMRShortfall.dc.html"
       },
       {
         "title": "By-product accounting: bran, husk & broken rice",
@@ -697,7 +705,7 @@ export const ARTICLES: Article[] = [
     "eyebrow": "Rice Mill Guide",
     "title": "GST for Rice Mills: Paddy, Rice, Bran & Milling",
     "byline": "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
-    "intro": "GST for rice mills is deceptively tricky: the same grain is exempt as paddy, exempt as loose rice, but taxable as a branded packet — and your by-products each have their own treatment. This guide lays out the landscape so you can bill correctly.",
+    "intro": "GST on rice comes down to one thing: loose or packed. Paddy and loose, unbranded rice are nil-rated, but rice sold \"pre-packaged and labelled\" attracts 5% GST — the rule in force since 18 July 2022 — and by-products like bran and husk each have their own treatment. This guide lays out the full landscape so you can bill correctly.",
     "sections": [
       {
         "type": "note",

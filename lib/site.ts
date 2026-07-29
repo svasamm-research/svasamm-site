@@ -15,7 +15,7 @@ export const BUSINESS = {
     country: "IN",
   },
   email: "query@svasamm.com",
-  phone: "+91 91471 44638",
+  phone: "+91 90077 93575",
 } as const;
 
 export type NavProduct = {
