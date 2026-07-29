@@ -6,11 +6,13 @@
 // there are two sources — add a future source in this file only.
 import { ARTICLE_BY_SLUG as GENERATED } from "./articles";
 import { DIGITAL_ARTICLE_BY_SLUG } from "./digital-articles";
+import { SCHOOLS_ARTICLE_BY_SLUG } from "./schools-articles";
 import { RICE_MILL_ARTICLE_BY_SLUG } from "./rice-mill-articles";
 import type { Article } from "./types";
 
 export const ARTICLE_BY_SLUG: Record<string, Article> = {
   ...GENERATED,
   ...DIGITAL_ARTICLE_BY_SLUG,
+  ...SCHOOLS_ARTICLE_BY_SLUG,
   ...RICE_MILL_ARTICLE_BY_SLUG,
 };
