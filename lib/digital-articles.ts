@@ -1,4 +1,4 @@
-// Svasamm Digital for Healthcare — content cluster (4 guides + 2 comparisons).
+// Svasamm Digital for Healthcare — content cluster (6 guides + 2 comparisons).
 // Parent solution: lib/digital.ts (id "digital-healthcare", /pages/digital-healthcare.html).
 // Mirrors the shape/tone of lib/articles.ts (AUTO-GENERATED, do not edit) but is hand-written
 // and lives in its own file so it isn't touched by the article extractor.
@@ -594,6 +594,194 @@ export const DIGITAL_ARTICLES: Article[] = [
       faqs: [
         { q: "Isn't a specialist narrower than a general agency?", a: "Yes, deliberately — narrower scope in exchange for depth in one vertical and exclusivity in your catchment." },
         { q: "Can we use a general agency for some things and Svasamm Digital for others?", a: "Some facilities do — just agree who owns what upfront so responsibilities don't overlap." },
+      ],
+    }),
+  },
+
+  // 7. Facility-type page — nursing homes (GSC-validated demand). Differentiated from the clinic-generic guides.
+  {
+    slug: "digital-marketing-for-nursing-homes",
+    type: "guide",
+    parentProduct: "digital-healthcare",
+    eyebrow: "Nursing Home Marketing",
+    title: "Digital marketing for nursing homes: what actually brings admissions",
+    byline: BYLINE,
+    intro:
+      "A nursing home's marketing problem is not a clinic's. The person searching is usually a son or daughter deciding where to place an ageing parent — anxious, doing it for the first time, choosing on trust as much as on facilities. What brings admissions is being findable at that moment, and being reassuring the instant they land on you.",
+    sections: [
+      {
+        type: "p",
+        h: "The family decides, not the patient",
+        text: "In almost every nursing-home enquiry, the person searching and the person who will live there are different people. An adult child — often working, often not local — is comparing two or three options for a parent. That changes what the marketing has to do: it is not selling a service to the user, it is reassuring a worried relative that this is a safe, capable, humane place. Every decision below follows from that.",
+      },
+      {
+        type: "p",
+        h: "Where admissions actually start",
+        text: "Three sources dominate: a local search (\"nursing home near [locality]\", \"old age home in [area]\"), a Google Business Profile the family scans before anything else, and a referral — from a treating doctor, a hospital discharge desk, or another family. The first two you can influence directly; the third is fed by reputation, which the first two also shape. A facility that is hard to find locally, or whose profile looks thin, loses the enquiry before its actual quality of care is ever considered.",
+      },
+      {
+        type: "list",
+        h: "What the family needs answered — fast, on a phone",
+        items: [
+          { b: "What level of care do you provide —", t: "assisted living, full nursing, dementia care, post-operative recovery? Families search by need, not by facility type." },
+          { b: "Who looks after my parent —", t: "trained nursing staff, doctor visits and night cover are the reassurance a family is actually scanning for." },
+          { b: "What does a day look like —", t: "room types, meals, visiting, safety. Photographs of the real place do more here than any adjective." },
+          { b: "How do I enquire or visit —", t: "a phone number that is answered and a plain way to arrange a visit, above the fold, not buried in a form." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Reviews are the deciding signal",
+        text: "For a family choosing care for a vulnerable relative, other families' experiences carry more weight than anything the facility says about itself. A steady flow of genuine reviews, and considered replies to them, is the single strongest trust signal a nursing home can build — and it also feeds local ranking. What you cannot do is buy, incentivise or fabricate them; healthcare advertising rules and platform policies both prohibit it, and families can tell. Our advertising-rules guide covers where the line sits.",
+      },
+      {
+        type: "p",
+        h: "Why proximity shapes the whole game",
+        text: "Families overwhelmingly want a home they can reach — close to where they or the parent live. Local search reflects that: results are filtered by where the searcher is. So a nursing home's real competition is the handful of facilities in the same locality, and the effort that pays off is being unmistakably present and complete for searches made near you, in the specific area names families actually use.",
+      },
+      {
+        type: "p",
+        h: "A realistic first step",
+        text: "Before a rebuild or any ad spend, most nursing homes gain the most from finishing the fundamentals: a complete, photographed Google Business Profile with the right care categories, a website that answers a family's questions in the first screen, consistent contact details everywhere, and a genuine review habit. Those carry more of the admissions outcome than a larger project usually does.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How do families usually find a nursing home online?",
+        a: "Most start with a local search for a nearby facility and a specific need (\"nursing home near [locality]\", \"dementia care in [area]\"), then scan the Google Business Profile and reviews before the website. Referrals from doctors and hospitals are the other major source.",
+      },
+      {
+        q: "What matters most on a nursing home's website?",
+        a: "Answering a worried family's questions fast on a phone: what level of care you provide, who the staff are, what daily life and safety look like (with real photos), and an easy, answered way to enquire or arrange a visit.",
+      },
+      {
+        q: "Can we ask residents' families to leave reviews?",
+        a: "You can invite genuine reviews, but you cannot incentivise, buy or fabricate them — healthcare advertising rules and platform policies both prohibit it. Honest reviews and considered replies are the strongest trust signal you can build.",
+      },
+      {
+        q: "Is a separate page worth it for each type of care?",
+        a: "Usually yes. Families search by need — assisted living, nursing, dementia, post-operative — so a clear page per care type matches how they look and helps search engines understand what you offer.",
+      },
+    ],
+    related: [
+      { title: "Google Business Profile for clinics and nursing homes", href: "/pages/google-business-profile-for-clinics.html" },
+      { title: "Healthcare digital marketing in Kolkata: how facilities get found", href: "/pages/healthcare-digital-marketing-kolkata.html" },
+      { title: "Clinic SEO in West Bengal: how patients actually find a clinic", href: "/pages/clinic-seo-west-bengal.html" },
+      PARENT_RELATED,
+    ],
+    cta: cta(
+      "See what this looks like for your nursing home",
+      "Tell us your locality and the levels of care you offer, and we'll walk through what's realistic to fix first.",
+    ),
+    seo: {
+      metaTitle: "Digital Marketing for Nursing Homes: What Brings Admissions | Svasamm Digital",
+      metaDescription:
+        "How families actually find and choose a nursing home online — local search, Google Business Profile, reviews and a reassuring site — and what to fix first.",
+      canonical: `${SITE_URL}/pages/digital-marketing-for-nursing-homes.html`,
+      ogType: "article",
+      ogTitle: "Digital marketing for nursing homes: what actually brings admissions",
+      ogDescription: "Why family-facing trust, local search and reviews decide nursing-home admissions — and a realistic first step.",
+    },
+    jsonLd: articleJsonLd({
+      slug: "digital-marketing-for-nursing-homes",
+      headline: "Digital Marketing for Nursing Homes: What Actually Brings Admissions",
+      description: "How families find and choose a nursing home online, and what a facility should fix first.",
+      title: "Digital marketing for nursing homes",
+      faqs: [
+        { q: "How do families usually find a nursing home online?", a: "Most start with a local search for a nearby facility and a specific need, then scan the Google Business Profile and reviews before the website. Doctor and hospital referrals are the other major source." },
+        { q: "What matters most on a nursing home's website?", a: "Answering a worried family's questions fast on a phone: level of care, who the staff are, what daily life and safety look like with real photos, and an easy, answered way to enquire." },
+      ],
+    }),
+  },
+
+  // 8. Location page — Kolkata (GSC-validated "in kolkata"). Genuinely local, not a doorway page.
+  {
+    slug: "healthcare-digital-marketing-kolkata",
+    type: "guide",
+    parentProduct: "digital-healthcare",
+    eyebrow: "Healthcare Marketing — Kolkata",
+    title: "Healthcare digital marketing in Kolkata: how facilities get found",
+    byline: BYLINE,
+    intro:
+      "Kolkata is dense, and its healthcare search reflects that. Patients and families don't search \"Kolkata\" — they search their own locality: a nursing home in Salt Lake, a dentist near Behala, a diagnostic centre in Garia. For a facility, getting found here is less about the city as a whole and more about owning the specific neighbourhood you actually serve.",
+    sections: [
+      {
+        type: "p",
+        h: "How search works in a dense metro",
+        text: "In a city with facilities on every arterial road, Google's local results lean heavily on where the searcher is standing. A clinic in Salt Lake and one in Behala are barely competing — they answer different people's \"near me\" searches. So the useful question is not \"how do we rank in Kolkata\", it is \"are we unmistakably present for the searches made in our own pocket of the city\".",
+      },
+      {
+        type: "p",
+        h: "Locality beats 'Kolkata' as one blob",
+        text: "Greater Kolkata is really a set of catchments — Salt Lake, New Town, Behala, Garia, Tollygunge, Howrah, and the Hooghly belt out through Serampore and Konnagar. Patients name these areas when they search. A facility's content and Google Business Profile are stronger when they speak to the specific localities served, in the area names people actually use, rather than claiming the whole city generically.",
+      },
+      {
+        type: "p",
+        h: "Mixed Bengali and English search",
+        text: "A large share of health searches here mix languages and scripts — colloquial phrasing alongside formal clinical English. Content that includes the plain terms patients type, next to the correct clinical ones, matches more of the real search volume than English-only pages do.",
+      },
+      {
+        type: "list",
+        h: "What a Kolkata facility should get right",
+        items: [
+          { b: "A complete Google Business Profile per location —", t: "correct categories, services, hours, photos and the right locality — this is what most patients see first." },
+          { b: "Locality-specific content —", t: "pages and profile detail that name the areas you serve, not a generic 'serving all of Kolkata'." },
+          { b: "Consistent name, address and phone —", t: "identical across your site, profile and every directory, so the signals reinforce rather than fragment." },
+          { b: "A review habit —", t: "genuine reviews from real patients, replied to — the strongest local signal, within advertising rules." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Working with a team based in the region",
+        text: "Svasamm Research is based in Konnagar, in the Hooghly belt of Greater Kolkata — not a distant agency running West Bengal from another metro. That matters less for the mechanics of SEO and more for context: the localities, the mixed-language search and how care is actually chosen here are things we work in, not things we have read about.",
+      },
+      {
+        type: "p",
+        h: "A realistic first step",
+        text: "For most Kolkata facilities the fastest gains come from finishing the fundamentals before any larger project: a complete, correctly-localised Google Business Profile, a site that answers patients' questions on a phone and names the areas served, and consistent contact details everywhere. Ads and rebuilds are worth considering only once those are in place.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How do patients in Kolkata search for healthcare?",
+        a: "Overwhelmingly by locality and need — \"nursing home in Salt Lake\", \"dentist near Behala\" — often mixing Bengali and English. Results are filtered by where the searcher is, so neighbourhood presence matters more than city-wide claims.",
+      },
+      {
+        q: "Should a facility target 'Kolkata' or specific areas?",
+        a: "Specific areas. Greater Kolkata is a set of catchments; content and profiles that speak to the localities you actually serve match how patients search better than a generic 'all of Kolkata' page.",
+      },
+      {
+        q: "Does being outside central Kolkata hurt a facility?",
+        a: "Not for the searches made near it. Local results are proximity-filtered, so a facility in the Hooghly belt or the suburbs competes for its own catchment's searches, not the city centre's — which is why local presence, not a central address, is what counts.",
+      },
+    ],
+    related: [
+      { title: "Digital marketing for nursing homes: what actually brings admissions", href: "/pages/digital-marketing-for-nursing-homes.html" },
+      { title: "Clinic SEO in West Bengal: how patients actually find a clinic", href: "/pages/clinic-seo-west-bengal.html" },
+      { title: "Google Business Profile for clinics and nursing homes", href: "/pages/google-business-profile-for-clinics.html" },
+      PARENT_RELATED,
+    ],
+    cta: cta(
+      "See what this looks like for your Kolkata facility",
+      "Tell us your locality and specialty, and we'll walk through what's realistic to fix first.",
+    ),
+    seo: {
+      metaTitle: "Healthcare Digital Marketing in Kolkata: How Facilities Get Found | Svasamm Digital",
+      metaDescription:
+        "How patients and families in Kolkata actually search for care — by locality, in mixed Bengali and English — and what a facility should get right to be found.",
+      canonical: `${SITE_URL}/pages/healthcare-digital-marketing-kolkata.html`,
+      ogType: "article",
+      ogTitle: "Healthcare digital marketing in Kolkata: how facilities get found",
+      ogDescription: "Why locality beats 'Kolkata' as a whole, mixed-language search, and what a facility should fix first.",
+    },
+    jsonLd: articleJsonLd({
+      slug: "healthcare-digital-marketing-kolkata",
+      headline: "Healthcare Digital Marketing in Kolkata: How Facilities Get Found",
+      description: "How patients in Kolkata search by locality and mixed language, and what a facility should get right.",
+      title: "Healthcare digital marketing in Kolkata",
+      faqs: [
+        { q: "How do patients in Kolkata search for healthcare?", a: "By locality and need — 'nursing home in Salt Lake', 'dentist near Behala' — often mixing Bengali and English. Results are proximity-filtered, so neighbourhood presence matters more than city-wide claims." },
+        { q: "Should a facility target 'Kolkata' or specific areas?", a: "Specific areas. Greater Kolkata is a set of catchments; content that speaks to the localities you serve matches how patients search better than a generic city page." },
       ],
     }),
   },
