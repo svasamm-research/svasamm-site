@@ -13,6 +13,32 @@ below for what actually ships).
 > writing Next code.** Key: `params` is a `Promise` (await it); `generateMetadata` async;
 > `sitemap.ts`/`robots.ts` return `MetadataRoute.*`; JSON-LD via a `<script type="application/ld+json">`.
 
+## SEO/GEO — active initiative (from 2026-07-27)
+Goal: bring **svasamm.com to lucoze.com's SEO level** so Google ranks it. Two payoffs: inbound leads for
+**Svasamm Digital** (the web/SEO service) **and** a live "we rank our own site" proof-point for that sales
+pitch. **Workflow: assistant runs the audit READ-ONLY (claude-seo `/seo audit`, `/seo geo`) + hands the
+founder a prioritized fix list; the FOUNDER executes writes** (this repo is founder-owned; coordinate before
+editing). Don't touch UAT indexing (stays `noindex`).
+
+**Status (2026-07-28):** audit done (~83/100 — site is strong; bottleneck is authority + indexation, not
+on-page). GSC connected (`sc-domain:svasamm.com`, service account = **Owner**); 57/57 URLs pushed to the
+Indexing API; sitemap processed. **Winning clusters (GSC):** 🏆 rice-mill/Millingo at **pos ~8** (the quick
+page-1 win) · 💰 healthcare/Svasamm-Digital at **pos ~59** (revenue-relevant, slow — needs GBP + reviews).
+**Adding/editing SEO content — the workflow (the extractor is GONE):** `lib/articles.ts` is the frozen
+generated set — do NOT try to regenerate it. **New articles** go in a **hand-authored source file**
+(`lib/rice-mill-articles.ts`, `lib/digital-articles.ts`) merged in `lib/article-registry.ts` ("add a future
+source in this file only") — this auto-routes (`app/pages/[slug]`) and auto-sitemaps (`app/sitemap.ts`).
+**Small edits to existing generated articles** = minimal hand-edits in `articles.ts` (safe — nothing
+regenerates it). New pages need **no hero** (gradient fallback when the slug isn't in the auto-gen
+`heroes.ts`); section `text` is **plain** (no inline links) — cross-link via the `related[]` array whose
+`href` is a `PROTO_TO_ROUTE` key in `lib/routes.ts`; breadcrumbs render from the `BreadcrumbList` JSON-LD.
+Always `yarn typecheck` + `yarn build` before committing. Facts come from the marketing-vault (cited).
+
+**Done (branch `feature/svasamm-seo-nap`, committed, NOT deployed):** rice-mill quick wins — new
+`cmr-out-turn-shortfall-moisture` page + front-loaded CMR/yield/GST intros + cross-links (build-verified,
+62 pages). NAP: svasamm phone → 9007793575. **Next:** healthcare cluster + more Millingo content
+(plans in `~/Projects/web-dev/svasamm.com-audit/`). No deploy without the founder's explicit go.
+
 ## Stack
 Next 16 (App Router, **SSG** — every page static HTML for SEO) · React 19 · TypeScript ·
 Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
@@ -62,7 +88,7 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 
 ## Business facts (verbatim — CHANGED from the old site)
 - Svasamm Research Pvt Ltd · Nabagram, Konnagar, Hooghly, West Bengal 712246, India
-- Email **query@svasamm.com** · Phone **+91 91471 44638**
+- Email **query@svasamm.com** · Phone **+91 90077 93575**
 - Do NOT state unverified metrics (no "300% ROI / 50+ clients / ISO 27001"); no "Videozjet".
 
 ## Key files

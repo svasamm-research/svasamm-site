@@ -47,6 +47,6 @@ export const WHYS = [
 ];
 
 export const HOME_JSONLD = [
-  { "@context": "https://schema.org", "@type": "Organization", name: "Svasamm Research Pvt Ltd", alternateName: "Svasamm", url: "https://svasamm.com", email: "query@svasamm.com", telephone: "+91-91471-44638", address: { "@type": "PostalAddress", streetAddress: "Nabagram, Konnagar", addressLocality: "Hooghly", addressRegion: "West Bengal", postalCode: "712246", addressCountry: "IN" }, areaServed: "IN", description: "Vertical ERPs and business platforms for rice mills, hospitals, distributor networks and more." },
+  { "@context": "https://schema.org", "@type": "Organization", name: "Svasamm Research Pvt Ltd", alternateName: "Svasamm", url: "https://svasamm.com", email: "query@svasamm.com", telephone: "+91-90077-93575", address: { "@type": "PostalAddress", streetAddress: "Nabagram, Konnagar", addressLocality: "Hooghly", addressRegion: "West Bengal", postalCode: "712246", addressCountry: "IN" }, areaServed: "IN", description: "Vertical ERPs and business platforms for rice mills, hospitals, distributor networks and more." },
   { "@context": "https://schema.org", "@type": "WebSite", name: "Svasamm", url: "https://svasamm.com" },
 ];
