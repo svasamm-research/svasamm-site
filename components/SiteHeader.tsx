@@ -4,10 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "./IconClient";
-import { PRODUCTS, type NavProduct } from "@/lib/site";
+import { PRODUCTS, RESOURCE_GROUPS, type NavProduct } from "@/lib/site";
 
 const vertical = PRODUCTS.filter((p) => p.category === "vertical");
 const platform = PRODUCTS.filter((p) => p.category === "platform");
+const service = PRODUCTS.filter((p) => p.category === "service");
 
 function ProductLink({
   p,
@@ -34,8 +35,24 @@ function ProductLink({
   );
 }
 
+// A left-column mega-menu item (icon tile + name + desc), shared by Vertical products & Services.
+function MegaItem({ p }: { p: NavProduct }) {
+  return (
+    <ProductLink p={p} className="svh-mega-item flex gap-3 p-2.5" style={{ borderRadius: 9 }}>
+      <span className="flex-none grid place-items-center" style={{ width: 34, height: 34, borderRadius: 8, background: "var(--color-accent-900)", color: "var(--color-accent-300)" }}>
+        <Icon name={p.icon} size={18} />
+      </span>
+      <span className="block">
+        <span className="block" style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: 14, color: "var(--color-text)" }}>{p.name}{p.external ? " ↗" : ""}</span>
+        <span className="block" style={{ fontSize: 12, color: "var(--color-neutral-500)", lineHeight: 1.4 }}>{p.desc}</span>
+      </span>
+    </ProductLink>
+  );
+}
+
 export default function SiteHeader({ active = "" }: { active?: string }) {
   const [mega, setMega] = useState(false);
+  const [res, setRes] = useState(false);
   const [mobile, setMobile] = useState(false);
 
   const solActive = mega || active === "solutions" || active === "products";
@@ -79,17 +96,11 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                 <div>
                   <div style={{ fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase", color: accent, marginBottom: 12 }}>Vertical products</div>
                   <div className="flex flex-col gap-1">
-                    {vertical.map((p) => (
-                      <ProductLink key={p.id} p={p} className="svh-mega-item flex gap-3 p-2.5" style={{ borderRadius: 9 }}>
-                        <span className="flex-none grid place-items-center" style={{ width: 34, height: 34, borderRadius: 8, background: "var(--color-accent-900)", color: "var(--color-accent-300)" }}>
-                          <Icon name={p.icon} size={18} />
-                        </span>
-                        <span className="block">
-                          <span className="block" style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: 14, color: "var(--color-text)" }}>{p.name}{p.external ? " ↗" : ""}</span>
-                          <span className="block" style={{ fontSize: 12, color: "var(--color-neutral-500)", lineHeight: 1.4 }}>{p.desc}</span>
-                        </span>
-                      </ProductLink>
-                    ))}
+                    {vertical.map((p) => <MegaItem key={p.id} p={p} />)}
+                  </div>
+                  <div style={{ fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase", color: accent, margin: "16px 0 12px" }}>Services</div>
+                  <div className="flex flex-col gap-1">
+                    {service.map((p) => <MegaItem key={p.id} p={p} />)}
                   </div>
                 </div>
                 <div>
@@ -111,6 +122,34 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
           </div>
           <Link href="/#regions" className="svh-link" style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: 14 }}>Regions</Link>
           <Link href="/#why" className="svh-link" style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: 14 }}>Why Svasamm</Link>
+          <div className="relative" onMouseEnter={() => setRes(true)} onMouseLeave={() => setRes(false)}>
+            <button
+              onClick={(e) => { e.preventDefault(); setRes((v) => !v); }}
+              className="inline-flex items-center gap-1.5 border-0 bg-transparent cursor-pointer py-2"
+              style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: 14, color: res ? accent : neutral300 }}
+              aria-expanded={res}
+            >
+              Resources
+              <Icon name="ph-caret-down" weight="bold" size={12} style={{ transition: "transform .2s ease", transform: res ? "rotate(180deg)" : "rotate(0deg)" }} />
+            </button>
+            {res && (
+              <div
+                className="svh-mega grid"
+                style={{ position: "absolute", top: "100%", left: -16, width: 720, padding: 20, background: "var(--color-surface)", border: "1px solid var(--color-neutral-800)", borderRadius: 14, boxShadow: "var(--shadow-lg)", gridTemplateColumns: "1fr 1fr 1fr", gap: 26 }}
+              >
+                {RESOURCE_GROUPS.map((g) => (
+                  <div key={g.heading}>
+                    <div style={{ fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase", color: accent, marginBottom: 12 }}>{g.heading}</div>
+                    <div className="flex flex-col gap-1">
+                      {g.links.map((l) => (
+                        <Link key={l.href} href={l.href} className="svh-mega-item" style={{ display: "block", padding: "6px 8px", borderRadius: 8, fontSize: 13, color: "var(--color-neutral-300)", lineHeight: 1.35 }}>{l.title}</Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <Link href="/pages/contact.html" style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: 14, color: active === "contact" ? accent : neutral300 }}>Contact</Link>
         </nav>
 
@@ -136,6 +175,16 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
           <Link href="/pages/services.html" style={{ padding: "9px 0", color: "var(--color-text)", fontSize: 15 }}>All solutions</Link>
           <Link href="/#regions" style={{ padding: "9px 0", color: "var(--color-text)", fontSize: 15 }}>Regions</Link>
           <Link href="/#why" style={{ padding: "9px 0", color: "var(--color-text)", fontSize: 15 }}>Why Svasamm</Link>
+          <div className="hr" />
+          <div style={{ fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase", color: accent, margin: "6px 0 2px" }}>Resources</div>
+          {RESOURCE_GROUPS.map((g) => (
+            <div key={g.heading}>
+              <div style={{ fontSize: 11, color: "var(--color-neutral-500)", margin: "8px 0 2px" }}>{g.heading}</div>
+              {g.links.map((l) => (
+                <Link key={l.href} href={l.href} style={{ display: "block", padding: "7px 0", color: "var(--color-neutral-300)", fontSize: 14 }}>{l.title}</Link>
+              ))}
+            </div>
+          ))}
           <Link href="/pages/contact.html" className="btn btn-primary btn-block" style={{ marginTop: 10 }}>Talk to us</Link>
         </div>
       )}

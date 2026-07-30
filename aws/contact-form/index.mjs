@@ -20,7 +20,7 @@ const ALLOW_ORIGIN = (process.env.ALLOW_ORIGIN || "https://svasamm.com").split("
 
 const ses = new SESv2Client({ region: REGION });
 
-const MAX = { name: 120, email: 160, company: 160, product: 120, message: 4000 };
+const MAX = { name: 120, email: 160, company: 160, phone: 40, product: 120, message: 4000 };
 // Strict enough to reject anything that could break HTML/attribute context (no quotes/brackets).
 const validEmail = (v) => typeof v === "string" && v.length <= MAX.email && /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(v);
 const clip = (v, n) => (typeof v === "string" ? v.trim().slice(0, n) : "");
@@ -58,11 +58,13 @@ export const handler = async (event) => {
   const name = clip(data.name, MAX.name);
   const email = clip(data.email, MAX.email);
   const company = clip(data.company, MAX.company);
+  const phone = clip(data.phone, MAX.phone);
   const product = clip(data.product, MAX.product);
-  const message = clip(data.message, MAX.message);
+  const message = clip(data.message, MAX.message); // optional — the form no longer collects it
   const source = clip(data.source, 60) || "svasamm-contact";
 
-  if (!name || !validEmail(email) || message.length < 3) {
+  // name + email + a reachable phone are required; message is optional (we call to scope needs).
+  if (!name || !validEmail(email) || phone.replace(/\D/g, "").length < 8) {
     return reply(422, { ok: false, error: "Missing or invalid fields" }, origin);
   }
 
@@ -70,20 +72,20 @@ export const handler = async (event) => {
   const lines = [
     `Name:    ${name}`,
     `Email:   ${email}`,
+    `Phone:   ${phone}`,
     company ? `Company: ${company}` : null,
     `Product: ${product || "(not specified)"}`,
     `Source:  ${source}`,
-    "",
-    "Message:",
-    message,
+    ...(message ? ["", "Message:", message] : []),
   ].filter((l) => l !== null);
   const text = lines.join("\n");
   const html =
     `<h2 style="margin:0 0 12px">New svasamm.com enquiry</h2>` +
     `<table style="border-collapse:collapse;font:14px/1.5 system-ui,sans-serif">` +
     [
-      ["Name", name],
+      ["Name", esc(name)],
       ["Email", `<a href="mailto:${esc(email)}">${esc(email)}</a>`],
+      ["Phone", `<a href="tel:${esc(phone.replace(/[^\d+]/g, ""))}">${esc(phone)}</a>`],
       company ? ["Company", esc(company)] : null,
       ["Product", esc(product || "(not specified)")],
       ["Source", esc(source)],
@@ -91,7 +93,7 @@ export const handler = async (event) => {
       .filter(Boolean)
       .map(([k, v]) => `<tr><td style="padding:2px 12px 2px 0;color:#666">${k}</td><td>${v}</td></tr>`)
       .join("") +
-    `</table><p style="font:14px/1.6 system-ui,sans-serif;white-space:pre-wrap;margin-top:16px">${esc(message)}</p>`;
+    `</table>${message ? `<p style="font:14px/1.6 system-ui,sans-serif;white-space:pre-wrap;margin-top:16px">${esc(message)}</p>` : ""}`;
 
   try {
     await ses.send(

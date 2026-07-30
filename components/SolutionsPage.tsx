@@ -7,6 +7,7 @@ import { toRoute } from "@/lib/routes";
 const CONTACT = toRoute("Contact.dc.html");
 const vertical = HOME_PRODUCTS.filter((p) => p.kind === "vertical");
 const platform = HOME_PRODUCTS.filter((p) => p.kind === "platform");
+const service = HOME_PRODUCTS.filter((p) => p.kind === "service");
 
 function ProductAnchor({ p, children, className, style }: { p: HomeProduct; children: React.ReactNode; className: string; style: React.CSSProperties }) {
   return p.external
@@ -30,7 +31,7 @@ export default function SolutionsPage() {
         <div className="pp-wrap sv-hero-content" style={{ padding: "40px 24px 56px", maxWidth: 760 }}>
           <div className="tag tag-outline" style={{ marginBottom: 20 }}>All solutions</div>
           <h1 style={{ fontSize: 44, lineHeight: 1.08, letterSpacing: "-.025em", margin: "0 0 16px", color: "var(--color-text)" }}>Every Svasamm product, in one place</h1>
-          <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: 0 }}>Vertical products carry an entire industry&apos;s workflow inside; platform modules are the horizontal systems every operation runs. Open any of them for the full detail.</p>
+          <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: 0 }}>Vertical products carry an entire industry&apos;s workflow inside; platform modules are the horizontal systems every operation runs; and Svasamm Digital services get your facility found online. Open any of them for the full detail.</p>
         </div>
       </section>
 
@@ -73,6 +74,24 @@ export default function SolutionsPage() {
         </div>
       </section>
 
+      {/* Services */}
+      <section style={{ padding: "24px 0 56px" }}>
+        <div className="pp-wrap">
+          <div style={{ fontSize: 11, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 18 }}>Services</div>
+          <div className="sv-two" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))", gap: 18 }}>
+            {service.map((p) => (
+              <ProductAnchor key={p.id} p={p} className="sv-card-hover" style={{ display: "flex", flexDirection: "column", padding: 24, borderRadius: 14, background: "var(--color-surface)", border: "1px solid var(--color-neutral-800)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 14 }}>
+                  <span style={{ width: 48, height: 48, flex: "none", borderRadius: 12, display: "grid", placeItems: "center", background: "var(--color-accent-900)", color: "var(--color-accent-300)" }}><Icon name={p.icon} style={{ fontSize: 25 }} /></span>
+                  <div><h2 style={{ fontSize: 19, margin: 0, color: "var(--color-text)" }}>{p.name}</h2><span className={`tag ${p.tagClass}`} style={{ fontSize: 9, marginTop: 5 }}>{p.tag}</span></div>
+                </div>
+                <p style={{ fontSize: 14, lineHeight: 1.55, color: "var(--color-neutral-400)", flex: 1, margin: "0 0 18px" }}>{p.blurb}</p>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: 14, color: "var(--color-accent)" }}>{p.cta} <Icon name={p.ctaIcon} weight="bold" style={{ fontSize: 13 }} /></span>
+              </ProductAnchor>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section style={{ padding: "20px 0 88px" }}>
