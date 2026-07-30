@@ -17,17 +17,24 @@ const PRODUCT_OPTIONS = [
   "CRM Platform",
   "Service Desk",
   "Svasamm Digital for Healthcare",
+  "Svasamm Digital for Schools",
 ];
+
+// Contact-form backend: Lambda Function URL that emails the enquiry via SES.
+// Deploy runbook + handler: aws/contact-form/. Set this to the Function URL once deployed;
+// while empty, submit falls back to an error state pointing at query@svasamm.com (never a
+// silent fake-success). Public URL — safe to commit; the browser calls it directly.
+const CONTACT_ENDPOINT: string = "";
 
 const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 const ERR = "#e88";
 
-// Contact form island. Client-side validation + success state, matching the prototype.
-// ponytail: submit only shows the success state — no backend yet. Wire a Route Handler
-// (POST → email query@svasamm.com) when the form goes live.
+// Contact form island. Client-side validation, then POST to the SES-backed endpoint.
 export default function ContactForm() {
   const [f, setF] = useState({ name: "", email: "", company: "", product: PRODUCT_OPTIONS[0], message: "" });
+  const [website, setWebsite] = useState(""); // honeypot — real users leave this empty
   const [touched, setTouched] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
   const [sent, setSent] = useState(false);
   const [sentName, setSentName] = useState("");
 
@@ -38,20 +45,40 @@ export default function ContactForm() {
   const errEmail = touched && !validEmail(f.email);
   const errMsg = touched && f.message.trim().length < 3;
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
     setTouched(true);
     if (!f.name.trim() || !validEmail(f.email) || f.message.trim().length < 3) return;
-    setSentName(f.name.trim().split(" ")[0]);
-    setSent(true);
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "generate_lead", { form: "contact", interest: f.product, page_location: location.href });
+    setStatus("sending");
+    try {
+      if (!CONTACT_ENDPOINT) throw new Error("endpoint not configured");
+      const res = await fetch(CONTACT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: f.name.trim(),
+          email: f.email.trim(),
+          company: f.company.trim(),
+          product: f.product,
+          message: f.message.trim(),
+          source: "svasamm-contact",
+          website, // honeypot
+        }),
+      });
+      if (!res.ok) throw new Error(`status ${res.status}`);
+      setSentName(f.name.trim().split(" ")[0]);
+      setSent(true);
+      window.gtag?.("event", "generate_lead", { form: "contact", interest: f.product, page_location: location.href });
+    } catch {
+      setStatus("error");
     }
   }
 
   function reset() {
     setF({ name: "", email: "", company: "", product: PRODUCT_OPTIONS[0], message: "" });
+    setWebsite("");
     setTouched(false);
+    setStatus("idle");
     setSent(false);
   }
 
@@ -68,6 +95,17 @@ export default function ContactForm() {
         </div>
       ) : (
         <form onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: 15 }} noValidate>
+          {/* honeypot — hidden from people, bots fill it and the server drops the submit */}
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+          />
           <div className="ct-two" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 15 }}>
             <div className="field">
               <label>Name</label>
@@ -95,8 +133,28 @@ export default function ContactForm() {
             <textarea className="input" value={f.message} onChange={set("message")} placeholder="A sentence or two about your workflow" />
             {errMsg && <span style={{ fontSize: 11, color: ERR }}>Tell us a little about your needs</span>}
           </div>
-          <button type="submit" className="btn btn-primary btn-block" style={{ fontSize: 15, padding: 11 }}>
-            Request a walkthrough <Icon name="ph-arrow-right" weight="bold" style={{ fontSize: 14 }} />
+          {status === "error" && (
+            <span style={{ fontSize: 13, color: ERR }}>
+              Sorry — that didn&apos;t send. Please email us at{" "}
+              <a href="mailto:query@svasamm.com" style={{ color: "var(--color-text)", textDecoration: "underline" }}>
+                query@svasamm.com
+              </a>
+              .
+            </span>
+          )}
+          <button
+            type="submit"
+            className="btn btn-primary btn-block"
+            disabled={status === "sending"}
+            style={{ fontSize: 15, padding: 11, opacity: status === "sending" ? 0.6 : 1 }}
+          >
+            {status === "sending" ? (
+              "Sending…"
+            ) : (
+              <>
+                Request a walkthrough <Icon name="ph-arrow-right" weight="bold" style={{ fontSize: 14 }} />
+              </>
+            )}
           </button>
         </form>
       )}
