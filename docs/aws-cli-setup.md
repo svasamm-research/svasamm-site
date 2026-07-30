@@ -75,6 +75,12 @@ Don't use your root login or the existing `listmonk` user. Make a purpose-built,
       "Resource": "*"
     },
     {
+      "Sid": "ApiGatewayManage",
+      "Effect": "Allow",
+      "Action": ["apigateway:GET", "apigateway:POST", "apigateway:PATCH", "apigateway:PUT", "apigateway:DELETE"],
+      "Resource": "arn:aws:apigateway:us-east-1::/*"
+    },
+    {
       "Sid": "ReadLogs",
       "Effect": "Allow",
       "Action": ["logs:GetLogEvents", "logs:DescribeLogGroups", "logs:DescribeLogStreams", "logs:FilterLogEvents"],

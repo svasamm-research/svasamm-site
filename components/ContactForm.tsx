@@ -20,11 +20,11 @@ const PRODUCT_OPTIONS = [
   "Svasamm Digital for Schools",
 ];
 
-// Contact-form backend: Lambda Function URL that emails the enquiry via SES.
-// Deploy runbook + handler: aws/contact-form/. Set this to the Function URL once deployed;
-// while empty, submit falls back to an error state pointing at query@svasamm.com (never a
-// silent fake-success). Public URL — safe to commit; the browser calls it directly.
-const CONTACT_ENDPOINT: string = "";
+// Contact-form backend: API Gateway HTTP API → Lambda → SES. Handler + runbook: aws/contact-form/.
+// (Function URLs are blocked by the AWS-org guardrail, so we front the Lambda with API Gateway.)
+// While empty, submit falls back to an error state pointing at query@svasamm.com (never a silent
+// fake-success). Public URL — safe to commit; the browser calls it directly.
+const CONTACT_ENDPOINT: string = "https://p5ld0swl76.execute-api.us-east-1.amazonaws.com/";
 
 const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 const ERR = "#e88";

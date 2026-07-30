@@ -66,21 +66,25 @@ else
 fi
 aws lambda wait function-updated --function-name "$FN"
 
-# ── 4. Public Function URL + CORS ────────────────────────────────────────────
-CORS="{\"AllowOrigins\":[\"${ALLOW_ORIGIN}\"],\"AllowMethods\":[\"POST\"],\"AllowHeaders\":[\"content-type\"],\"MaxAge\":86400}"
-if aws lambda get-function-url-config --function-name "$FN" >/dev/null 2>&1; then
-  say "Updating Function URL CORS"
-  aws lambda update-function-url-config --function-name "$FN" --auth-type NONE --cors "$CORS" >/dev/null
+# ── 4. Public API Gateway HTTP API ───────────────────────────────────────────
+# NOTE: Lambda *Function URLs* are blocked by the AWS-org guardrail on this account, so we
+# front the Lambda with an HTTP API instead. CORS + OPTIONS are handled by the Lambda itself
+# (it returns the CORS headers and answers preflight), so no API-level CORS config is needed.
+API_NAME="${API_NAME:-svasamm-contact}"
+LAMBDA_ARN="$(aws lambda get-function --function-name "$FN" --query Configuration.FunctionArn --output text)"
+API_ID="$(aws apigatewayv2 get-apis --query "Items[?Name=='${API_NAME}'].ApiId | [0]" --output text)"
+if [ "$API_ID" = "None" ] || [ -z "$API_ID" ]; then
+  say "Creating HTTP API $API_NAME"
+  API_ID="$(aws apigatewayv2 create-api --name "$API_NAME" --protocol-type HTTP --target "$LAMBDA_ARN" --query ApiId --output text)"
+  aws lambda add-permission --function-name "$FN" --statement-id apigw-invoke \
+    --action lambda:InvokeFunction --principal apigateway.amazonaws.com \
+    --source-arn "arn:aws:execute-api:${REGION}:${ACCOUNT}:${API_ID}/*" >/dev/null 2>&1 || true
 else
-  say "Creating Function URL"
-  aws lambda create-function-url-config --function-name "$FN" --auth-type NONE --cors "$CORS" >/dev/null
-  # public invoke permission for the Function URL
-  aws lambda add-permission --function-name "$FN" --statement-id fnurl-public \
-    --action lambda:InvokeFunctionUrl --principal '*' --function-url-auth-type NONE >/dev/null 2>&1 || true
+  say "HTTP API $API_NAME exists ($API_ID)"
 fi
 
-URL="$(aws lambda get-function-url-config --function-name "$FN" --query FunctionUrl --output text)"
-say "Done. Function URL:"
+URL="$(aws apigatewayv2 get-api --api-id "$API_ID" --query ApiEndpoint --output text)/"
+say "Done. Contact endpoint:"
 echo "  $URL"
 echo
 echo "Test it:"
