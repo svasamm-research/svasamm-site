@@ -8,6 +8,7 @@ export const HERO_SLUGS = new Set([
   "crm-for-services-firms",
   "custom-milled-rice-cmr-process",
   "digital-healthcare",
+  "digital-schools",
   "dms",
   "dms-agri-farm-equipment-oem",
   "dms-automotive-aftermarket-oem",
