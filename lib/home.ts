@@ -5,7 +5,7 @@ import { toRoute } from "./routes";
 export type HomeProduct = {
   id: string;
   name: string;
-  kind: "vertical" | "platform";
+  kind: "vertical" | "platform" | "service";
   tag: string;
   tagClass: string;
   icon: string;
@@ -27,8 +27,8 @@ export const HOME_PRODUCTS: HomeProduct[] = [
   { id: "hrms", name: "HRMS", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-users-three", short: "Recruit to retire", href: toRoute("HRMS.dc.html"), external: false, blurb: "HR from recruitment to retirement — payroll, attendance and performance tracking.", cta: "Explore HRMS", ctaIcon: "ph-arrow-right" },
   { id: "crm", name: "CRM Platform", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-handshake", short: "Sales & support", href: toRoute("CRM.dc.html"), external: false, blurb: "Customer relationships with sales automation, marketing and support tools.", cta: "Explore CRM", ctaIcon: "ph-arrow-right" },
   { id: "service-desk", name: "Service Desk", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-headset", short: "IT service management", href: toRoute("ServiceDesk.dc.html"), external: false, blurb: "IT service management with ticketing, incident management and a knowledge base.", cta: "Explore Service Desk", ctaIcon: "ph-arrow-right" },
-  { id: "digital-healthcare", name: "Svasamm Digital for Healthcare", kind: "vertical", tag: "Service", tagClass: "tag-neutral", icon: "ph-megaphone", short: "Healthcare digitisation", href: "/pages/digital-healthcare.html", external: false, blurb: "Website, Google Business Profile, local SEO and marketing for clinics, nursing homes and small hospitals — with category exclusivity in your catchment.", cta: "Explore Digital for Healthcare", ctaIcon: "ph-arrow-right" },
-  { id: "digital-schools", name: "Svasamm Digital for Schools", kind: "vertical", tag: "Service", tagClass: "tag-neutral", icon: "ph-graduation-cap", short: "School digitisation", href: "/pages/digital-schools.html", external: false, blurb: "Website, Google Business Profile, local SEO and admissions marketing for schools, pre-schools and coaching institutes — with category exclusivity in your catchment.", cta: "Explore Digital for Schools", ctaIcon: "ph-arrow-right" },
+  { id: "digital-healthcare", name: "Svasamm Digital for Healthcare", kind: "service", tag: "Service", tagClass: "tag-neutral", icon: "ph-megaphone", short: "Healthcare digitisation", href: "/pages/digital-healthcare.html", external: false, blurb: "Ongoing organic growth for clinics, nursing homes and small hospitals — website, Google Business Profile, local SEO and monthly optimisation, with category exclusivity. We don't build and leave.", cta: "Explore Digital for Healthcare", ctaIcon: "ph-arrow-right" },
+  { id: "digital-schools", name: "Svasamm Digital for Schools", kind: "service", tag: "Service", tagClass: "tag-neutral", icon: "ph-graduation-cap", short: "School digitisation", href: "/pages/digital-schools.html", external: false, blurb: "Ongoing organic growth for schools, pre-schools and coaching institutes — website, Google Business Profile, local SEO and monthly optimisation, with category exclusivity. We don't build and leave.", cta: "Explore Digital for Schools", ctaIcon: "ph-arrow-right" },
 ];
 
 export const REGIONS = [

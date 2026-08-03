@@ -7,6 +7,8 @@ import type { Product } from "@/lib/types";
 
 const CONTACT = toRoute("Contact.dc.html");
 const SOLUTIONS = toRoute("Solutions.dc.html");
+// Product-page contact CTAs carry the product id so the contact form pre-selects "Which solution?".
+const CONTACT_FOR = (id: string) => `${CONTACT}?solution=${encodeURIComponent(id)}`;
 
 // Reusable product-page body. Mirrors prototypes/ProductPage.dc.html. Server-rendered
 // except the FAQ accordion (client island). SEO/JSON-LD live on the route, not here.
@@ -31,7 +33,7 @@ export default function ProductPage({ product: d }: { product: Product }) {
             <h1 style={{ fontSize: 44, lineHeight: 1.08, letterSpacing: "-.025em", margin: "0 0 18px", color: "var(--color-text)", maxWidth: "18ch" }}>{d.tagline}</h1>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--color-neutral-300)", maxWidth: "36em", margin: "0 0 28px" }}>{d.blurb}</p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link href={CONTACT} className="btn btn-primary btn-large" style={{ fontSize: 15, padding: "11px 22px" }}>{d.ctaPrimary}</Link>
+              <Link href={CONTACT_FOR(d.id)} className="btn btn-primary btn-large" style={{ fontSize: 15, padding: "11px 22px" }}>{d.ctaPrimary}</Link>
               <a href="#pp-features" className="btn btn-secondary btn-large" style={{ fontSize: 15, padding: "11px 22px" }}>See capabilities</a>
             </div>
           </div>
@@ -80,7 +82,7 @@ export default function ProductPage({ product: d }: { product: Product }) {
                       </div>
                     ))}
                   </div>
-                  <Link href={CONTACT} className={`btn ${t.featured ? "btn-primary" : "btn-secondary"} btn-block`} style={{ marginTop: 22 }}>{t.cta}</Link>
+                  <Link href={CONTACT_FOR(d.id)} className={`btn ${t.featured ? "btn-primary" : "btn-secondary"} btn-block`} style={{ marginTop: 22 }}>{t.cta}</Link>
                 </div>
               ))}
             </div>
@@ -140,7 +142,7 @@ export default function ProductPage({ product: d }: { product: Product }) {
             <h2 style={{ fontSize: 30, letterSpacing: "-.02em", margin: "0 0 12px", color: "var(--color-text)" }}>{d.cta.title}</h2>
             <p style={{ fontSize: 16, color: "var(--color-neutral-300)", margin: "0 auto 26px", maxWidth: "34em" }}>{d.cta.body}</p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href={CONTACT} className="btn btn-primary btn-large" style={{ fontSize: 15, padding: "11px 24px" }}>{d.cta.primary}</Link>
+              <Link href={CONTACT_FOR(d.id)} className="btn btn-primary btn-large" style={{ fontSize: 15, padding: "11px 24px" }}>{d.cta.primary}</Link>
               <Link href={SOLUTIONS} className="btn btn-secondary btn-large" style={{ fontSize: 15, padding: "11px 24px" }}>{d.cta.secondary ?? "Back to all solutions"}</Link>
             </div>
           </div>
