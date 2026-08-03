@@ -17,17 +17,19 @@ export const DIGITAL_PRODUCT: Product = {
   id: "digital-healthcare",
   name: "Svasamm Digital for Healthcare",
   badge: "Svasamm Digital · Healthcare",
-  tagline: "Digital presence for healthcare, done properly",
+  tagline: "Healthcare presence that grows, not just launches",
   blurb:
-    "Websites, Google Business Profile, local SEO and marketing built specifically for clinics, nursing homes and small hospitals across West Bengal and East India. Fixed scope, we take only a small number of clients, and category exclusivity in your catchment — we won't take your direct competitor.",
+    "Not a build-and-disappear website. We get your clinic, nursing home or small hospital properly online, then keep working every month — watching what patients actually search in Search Console, Analytics and Plausible, targeting the long-tail keywords you can realistically win, and adapting as Google changes — so your organic presence compounds instead of going stale. West Bengal and East India, a small number of clients, category exclusivity in your catchment.",
   ctaPrimary: "Request a proposal",
-  featuresTitle: "What the engagement covers",
+  featuresTitle: "What the ongoing engagement covers",
   features: [
+    { icon: "ph-chart-line-up", title: "Ongoing organic growth — we don't build and leave", body: "The website is the starting line, not the finish. On Growth and Full we keep working every month so your presence compounds — the right pages added over time, local signals strengthened, steady improvement — instead of a site that launches and then goes stale." },
+    { icon: "ph-chart-bar", title: "We watch the data and act on it", body: "Search Console, Analytics and Plausible, read every month — what patients actually search, what is ranking and what is not, where enquiries come from. Each month's work is a decision from the data, not a guess." },
+    { icon: "ph-funnel", title: "Long-tail keyword strategy", body: "We find the specific, winnable searches your catchment makes — by specialty, symptom and locality — and build the pages that answer them, rather than chasing head terms the big aggregators already own." },
+    { icon: "ph-shield-check", title: "Built to hold through algorithm updates", body: "We work on the fundamentals Google has rewarded for years — genuine relevant content, a complete and accurate local presence, technical health, real reviews — and adjust as it changes. That is what survives an update instead of being reset by one." },
     { icon: "ph-desktop", title: "A website built for the facility", body: "Services, departments, doctors, timings and directions — structured the way patients actually look for them, and easy for your staff to keep current." },
     { icon: "ph-map-pin", title: "Google Business Profile", body: "Set up or claimed, categories and services filled in properly, hours and photos correct — the listing most patients see before they ever reach your site." },
-    { icon: "ph-map-trifold", title: "Local SEO & NAP consistency", body: "On-page optimisation for the searches your catchment actually makes, and your name, address and phone made consistent across the listings that carry them." },
-    { icon: "ph-file-text", title: "Schema & AI visibility", body: "Structured data so search engines and AI assistants can read what your facility is, where it is and what it treats — increasingly how patients find care." },
-    { icon: "ph-chart-bar", title: "Monthly reporting", body: "On Growth and Full, a plain-language monthly report of the work done and what local ranking and traffic look like. No dashboard to log into." },
+    { icon: "ph-map-trifold", title: "Local SEO, schema & AI visibility", body: "On-page optimisation for the searches your catchment makes, name-address-phone consistent across every listing, and structured data so search engines and AI assistants can read what your facility is and treats." },
     { icon: "ph-handshake", title: "Category exclusivity", body: "One client per facility category within about 5 km. If a direct competitor inside that radius approaches us, we decline — and it is written into the agreement." },
   ],
   tiersTitle: "Three fixed tiers — scope published, price quoted per facility",
@@ -104,6 +106,14 @@ export const DIGITAL_PRODUCT: Product = {
     ],
   },
   faqs: [
+    {
+      q: "Do you just build the website and disappear?",
+      a: "No — that is the opposite of how this works. The build is the starting point. On Growth and Full we work every month: reading Search Console, Analytics and Plausible to see what patients search and what is ranking, publishing pages around the long-tail keywords you can win, keeping the Google Business Profile and listings current, and helping earn reviews. Organic presence compounds when it is tended and goes stale when it is not — so the ongoing monthly work is the real product, not the website alone.",
+    },
+    {
+      q: "How do you keep us visible when Google changes its algorithm?",
+      a: "We don't chase tactics a single update can wipe out. We build on the fundamentals Google has rewarded for years — genuine, relevant content that answers real patient questions, a complete and accurate local presence, technical health, and real reviews — and we adjust as the algorithm shifts, watching the data after every major update and responding. We will not promise a specific ranking on a specific day, because no honest agency can — but this is the approach that holds through updates rather than being reset by them.",
+    },
     {
       q: "Will you work with my competitor?",
       a: "No. You get category exclusivity in your catchment — we won't take your direct competitor. One client per facility category per catchment (roughly a 5 km radius — the range Google’s nearby results actually draw from), and it is written into the agreement. If a direct competitor inside that catchment approaches us, we decline. This applies to Svasamm Digital services only — it never applies to Lucoze, our hospital management software, which any facility can buy.",

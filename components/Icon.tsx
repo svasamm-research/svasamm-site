@@ -7,7 +7,7 @@ import {
   MapPin, Lightning, Buildings, Package, ChartLineUp, // product features + resources
   Scroll, Scales, DeviceMobile, UserFocus, Percent, MapTrifold, BookOpen,
   Warehouse, ShoppingCart, Factory, Receipt, FileText, UserPlus, Clock, Money,
-  CalendarCheck, ChartBar, Funnel, Megaphone, GraduationCap, ChatCircleDots, Ticket, Warning,
+  CalendarCheck, ChartBar, Funnel, Megaphone, GraduationCap, ShieldCheck, ChatCircleDots, Ticket, Warning,
   Timer, BookBookmark, Desktop, UserCircle, // home
   PlugsConnected, HardDrives, SlidersHorizontal, Flag,
 } from "@phosphor-icons/react/dist/ssr";
@@ -28,7 +28,7 @@ const MAP: Record<string, React.ComponentType<IconProps>> = {
   "ph-book-open": BookOpen, "ph-warehouse": Warehouse, "ph-shopping-cart": ShoppingCart,
   "ph-factory": Factory, "ph-receipt": Receipt, "ph-file-text": FileText, "ph-user-plus": UserPlus,
   "ph-clock": Clock, "ph-money": Money, "ph-calendar-check": CalendarCheck, "ph-chart-bar": ChartBar,
-  "ph-funnel": Funnel, "ph-megaphone": Megaphone, "ph-graduation-cap": GraduationCap, "ph-chat-circle-dots": ChatCircleDots,
+  "ph-funnel": Funnel, "ph-megaphone": Megaphone, "ph-graduation-cap": GraduationCap, "ph-shield-check": ShieldCheck, "ph-chat-circle-dots": ChatCircleDots,
   "ph-ticket": Ticket, "ph-warning": Warning, "ph-timer": Timer, "ph-book-bookmark": BookBookmark,
   "ph-desktop": Desktop, "ph-user-circle": UserCircle, "ph-plugs-connected": PlugsConnected, "ph-hard-drives": HardDrives,
   "ph-sliders-horizontal": SlidersHorizontal, "ph-flag": Flag,
