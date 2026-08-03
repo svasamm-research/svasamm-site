@@ -12,7 +12,7 @@ export const ARTICLES: Article[] = [
     "eyebrow": "Rice Mill Guide",
     "title": "Custom Milled Rice (CMR) Explained: The Complete Process for Millers",
     "byline": "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
-    "intro": "CMR stands for Custom Milled Rice — the rice a mill produces when it mills paddy that the government procured from farmers at MSP, and returns to the procuring agency (FCI or a state agency). The miller doesn't buy the paddy; they mill it for a milling charge and must return rice at the fixed out-turn ratio of 67% for raw rice (68% parboiled) per 100 kg of paddy. This guide explains the CMR process end to end: what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
+    "intro": "CMR (Custom Milled Rice) is the rice a mill produces from government-procured paddy and returns to FCI or a state agency at a fixed out-turn ratio — 67% for raw rice, 68% for parboiled, per 100 kg of paddy. The miller doesn't own the paddy; they earn a milling charge. This guide explains the CMR process end to end: what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
     "sections": [
       {
         "type": "p",
