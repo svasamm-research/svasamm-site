@@ -14,7 +14,7 @@ const CONTACT = toRoute("Contact.dc.html");
 const vertical = HOME_PRODUCTS.filter((p) => p.kind === "vertical");
 
 export const metadata: Metadata = {
-  title: { absolute: "Svasamm — Vertical ERPs & Business Software for Rice Mills, Hospitals & Distributors" },
+  title: { absolute: "Vertical ERPs for Rice Mills, Hospitals & Distributors | Svasamm" },
   description:
     "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, Lucoze healthcare HIMS, distributor management, ERP, HRMS, CRM and service desk. API-first, self-hostable, India-first.",
   alternates: { canonical: "/" },
