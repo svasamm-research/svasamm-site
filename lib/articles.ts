@@ -195,8 +195,8 @@ export const ARTICLES: Article[] = [
       },
     ],
     cta: {
-      title: "Run your entire CMR obligation on one system",
-      body: "Millingo tracks levy memos, camp pickups, CMR deliveries and release orders, and does the 7.1 out-turn reconciliation — with state-specific workflow for West Bengal and beyond built in.",
+      title: "Get a free CMR out-turn review",
+      body: "Send us a season's paddy-in and rice-out for a few lots and we'll show you where your out-turn is leaking against the 67% norm — and how Millingo tracks it lot by lot, so a shortfall surfaces daily instead of at reconciliation. No cost, no obligation.",
       productHref: "Millingo.dc.html",
       productLabel: "Explore Millingo",
     },
@@ -495,8 +495,8 @@ export const ARTICLES: Article[] = [
       },
     ],
     cta: {
-      title: "Track recovery on every batch, automatically",
-      body: "Millingo computes recovery for each milling batch from your gate weights and outputs, books bran/husk/broken as separate stock, and flags lots running below target — so a 1% loss shows up the same day, not at audit.",
+      title: "Get a free milling-recovery review",
+      body: "Share a test batch's numbers — paddy in, head rice, broken, bran, husk — and we'll break down where your recovery is slipping and what it's costing you, plus how Millingo tracks yield per lot, machine and shift automatically. Free, no obligation.",
       productHref: "Millingo.dc.html",
       productLabel: "Explore Millingo",
     },
