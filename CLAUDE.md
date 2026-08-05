@@ -103,15 +103,22 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   healthcare-digitisation **service**, modelled as a solution — `lib/digital.ts` holds the
   `Product` record (**all copy lives there**) and `lib/products.ts` registers it, so it renders
   through the shared `ProductPage` and appears in the mega-menu, footer, home grid, Solutions
-  page and sitemap automatically. It is categorised **`vertical`** (it is healthcare-specific,
-  like Lucoze) rather than getting its own nav category — but its card carries the tag
-  **"Service"** and the nav description says "Healthcare digitisation service", so a delivered
-  service is never mistaken for software you run. Its schema is `Service`, not a product type.
-  Named "…for Healthcare" (not bare "Digital") because a **Svasamm Digital for Schools** line is
-  planned — future verticals take `digital-schools` etc.
-  - **Content cluster:** 6 hand-authored articles in `lib/digital-articles.ts` (4 guides + 2
-    approach-comparisons — no named competitors, per the medical-ad guardrails), surfaced via a
-    Resources block on the product page. `lib/articles.ts` is the **frozen auto-generated** set
+  page and sitemap automatically. **Both Digital lines are categorised `service`** (a distinct
+  nav/home/filter category — `category`/`kind` union now `vertical | platform | service`), so the
+  mega-menu (`SiteHeader`), Solutions page and home `ProductFilter` render a separate **Services**
+  group and the "vertical products" spotlight excludes them; cards keep the **"Service"** tag.
+  Schema is `Service`, not a product type. **Svasamm Digital for Schools is LIVE** alongside
+  Healthcare (`/pages/digital-schools.html`, id `digital-schools`, `lib/digital-schools.ts` +
+  `lib/schools-articles.ts`) — same structure/guardrails, education wording.
+  - **Positioning (founder, 2026-08-03): ongoing organic-growth PARTNERSHIP, not build-and-leave.**
+    Both hubs lead with continuous monitoring (Search Console / Analytics / Plausible), long-tail
+    keyword strategy, and algorithm-resilience — NOT a one-time build. Keep the honesty guardrail:
+    describe the ongoing work, never promise a specific ranking.
+  - **Content cluster:** hand-authored articles — healthcare **8** in `lib/digital-articles.ts`
+    (6 guides incl. nursing-home + Kolkata pages + 2 approach-comparisons), schools **6** in
+    `lib/schools-articles.ts` — no named competitors, per the medical-ad guardrails; surfaced via a
+    Resources block on the product page **and** a curated **`RESOURCE_GROUPS`** dropdown in the
+    header (`site.ts` → rice-mill / healthcare / school guides). `lib/articles.ts` is the **frozen auto-generated** set
     (the extractor lived in the old `svasamm-web` scratchpad and is not in this repo — do not
     hand-edit it); **`lib/article-registry.ts` is the single merge point** — routing and the
     sitemap import `ARTICLE_BY_SLUG` from the registry, never from `articles.ts` directly. Add a
@@ -131,7 +138,9 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   icons to BOTH; server-only icons to `Icon.tsx` only.
 - **Hero image pipeline**: `scripts/optimize-hero-images.py` is the single source of truth
   for source-photo → page-slug mapping. It downscales the design originals to ~1600px WebP
-  q80 into `public/hero/<slug>.webp` and regenerates `lib/heroes.ts`. Static export sets
+  q80 into `public/hero/<slug>.webp` and regenerates `lib/heroes.ts` **from the `.webp` files on
+  disk** (so processing one new image never drops the others — safe for single-image runs). Image
+  prompts + the add-a-hero workflow: **`docs/hero-image-prompts.md`**. Static export sets
   `images.unoptimized`, so **next/image does no resizing/conversion** — whatever is in
   `public/` is what ships. Re-run after adding a photo (idempotent; skips up-to-date files):
   `python3 scripts/optimize-hero-images.py [SRC_DIR]`. Heroes use `priority` (they're the
@@ -152,10 +161,15 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   FAQs. Islands verified (mega-menu, filter, FAQ accordion, contact form validation+success).
   GA4 wired + host-gated. Migrated to a Docker/nginx static-export deploy (see `##
   Deployment`), favicons/llms.txt/OG image carried over, CI green (Node 20, build + typecheck).
-- ⏭️ **Contact form backend** (Route Handler POST → email query@svasamm.com — currently
-  client-only success state; see `ponytail:` note in `ContactForm.tsx`) · migrate `lib/`
-  data to **Sanity** · resume the **paused SEO plan** · post-merge UAT validation + prod
-  cutover (see `## Deployment`).
+- ✅ **Contact form backend DONE (v0.2.4).** Static export can't run a Route Handler, so the
+  form POSTs to an off-site **AWS Lambda + API Gateway HTTP API → SES** (from `no-reply@svasamm.com`
+  → `query@svasamm.com`, Reply-To enquirer; honeypot + validation). Handler + runbook + idempotent
+  deploy script in **`aws/contact-form/`**; endpoint in `ContactForm.tsx` `CONTACT_ENDPOINT`. The
+  form pre-selects "Which solution?" from `?solution=<product-id>` (product-page CTAs pass it;
+  home/Solutions omit it), collects a **phone** (message field removed — we call to scope). AWS
+  account/CLI + org-guardrail notes in memory `reference-svasamm-aws.md`. ⏭️ still open: migrate
+  `lib/` data to **Sanity**; content roadmap (expand thin rice-mill guides ~1500w; new healthcare/
+  school gap pages); hero image for new pages via `docs/hero-image-prompts.md`.
 
 ## Deployment
 
