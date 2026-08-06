@@ -9,7 +9,8 @@ export const RICE_MILL_ARTICLES: Article[] = [
     type: "guide",
     parentProduct: "millingo",
     eyebrow: "Rice Mill Guide",
-    title: "Why CMR Out-Turn Drops Below 67%: Moisture, Drying & Defending the Shortfall",
+    title:
+      "Why CMR Out-Turn Drops Below 67%: Moisture, Drying & Defending the Shortfall",
     byline: "By Mithun K. Singh, Founder, Svasamm Research · 28 July 2026",
     intro:
       "A miller under CMR must return 67 kg of raw rice (or 68 kg parboiled) for every 100 kg of paddy — the prescribed out-turn ratio. When paddy arrives wet, above the 17% moisture limit, drying it down for milling removes weight, so the actual out-turn can fall toward 62%. That gap is what triggers a shortfall notice — and this guide explains why it happens and how to defend it with data.",
@@ -42,10 +43,22 @@ export const RICE_MILL_ARTICLES: Article[] = [
         type: "list",
         h: "What a defensible CMR record captures per lot",
         items: [
-          { b: "Moisture at intake", t: "— dated, at the gate, before anything else." },
-          { b: "Drying step", t: "— what the lot was brought down to before milling." },
-          { b: "Paddy in / rice out", t: "— the actual weights for that specific batch." },
-          { b: "Out-turn vs norm", t: "— computed against the 67% / 68% obligation, automatically." },
+          {
+            b: "Moisture at intake",
+            t: "— dated, at the gate, before anything else.",
+          },
+          {
+            b: "Drying step",
+            t: "— what the lot was brought down to before milling.",
+          },
+          {
+            b: "Paddy in / rice out",
+            t: "— the actual weights for that specific batch.",
+          },
+          {
+            b: "Out-turn vs norm",
+            t: "— computed against the 67% / 68% obligation, automatically.",
+          },
         ],
       },
       {
@@ -73,21 +86,29 @@ export const RICE_MILL_ARTICLES: Article[] = [
       },
     ],
     related: [
-      { title: "Custom Milled Rice (CMR): the complete process", href: "Guide-CMR.dc.html" },
-      { title: "How to calculate rice-mill yield & milling recovery", href: "Guide-YieldRecovery.dc.html" },
+      {
+        title: "Custom Milled Rice (CMR): the complete process",
+        href: "Guide-CMR.dc.html",
+      },
+      {
+        title: "How to calculate rice-mill yield & milling recovery",
+        href: "Guide-YieldRecovery.dc.html",
+      },
       { title: "Millingo — rice-mill ERP", href: "Millingo.dc.html" },
     ],
     cta: {
-      title: "Turn CMR shortfalls into evidence, not disputes",
-      body: "Millingo records moisture, drying and per-lot out-turn as you work, so when a shortfall notice arrives you have the batch-level record ready to defend it — with state-specific CMR workflow built in.",
+      title: "Get a free out-turn shortfall review",
+      body: "Tell us where your out-turn is landing and we'll walk through what's driving the shortfall — moisture, drying, variety — and how Millingo records moisture and per-lot out-turn as you work, so you can defend a notice with batch-level evidence. Free, no obligation.",
       productHref: "Millingo.dc.html",
       productLabel: "Explore Millingo",
     },
     seo: {
-      metaTitle: "Why CMR Out-Turn Drops Below 67%: Moisture & Shortfall Explained | Millingo",
+      metaTitle:
+        "Why CMR Out-Turn Drops Below 67%: Moisture & Shortfall Explained | Millingo",
       metaDescription:
         "High paddy moisture drives CMR out-turn below the 67% norm and triggers shortfall notices. Why it happens — and how to document and defend the shortfall with data.",
-      canonical: "https://svasamm.com/pages/cmr-out-turn-shortfall-moisture.html",
+      canonical:
+        "https://svasamm.com/pages/cmr-out-turn-shortfall-moisture.html",
       ogType: "article",
       ogTitle: "Why CMR Out-Turn Drops Below 67% — Moisture & the Shortfall",
       ogDescription:
@@ -97,25 +118,35 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        headline: "Why CMR Out-Turn Drops Below 67%: Moisture, Drying & Defending the Shortfall",
+        headline:
+          "Why CMR Out-Turn Drops Below 67%: Moisture, Drying & Defending the Shortfall",
         description:
           "Why high paddy moisture lowers CMR out-turn below the 67% norm, and how to document and defend the shortfall.",
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
           jobTitle: "Founder",
-          worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
+          worksFor: {
+            "@type": "Organization",
+            name: "Svasamm Research Pvt Ltd",
+          },
         },
         publisher: { "@type": "Organization", name: "Svasamm" },
         datePublished: "2026-07-28",
         dateModified: "2026-07-28",
-        mainEntityOfPage: "https://svasamm.com/pages/cmr-out-turn-shortfall-moisture.html",
+        mainEntityOfPage:
+          "https://svasamm.com/pages/cmr-out-turn-shortfall-moisture.html",
       },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://svasamm.com/",
+          },
           {
             "@type": "ListItem",
             position: 2,
@@ -172,6 +203,5 @@ export const RICE_MILL_ARTICLES: Article[] = [
   },
 ];
 
-export const RICE_MILL_ARTICLE_BY_SLUG: Record<string, Article> = Object.fromEntries(
-  RICE_MILL_ARTICLES.map((a) => [a.slug, a]),
-);
+export const RICE_MILL_ARTICLE_BY_SLUG: Record<string, Article> =
+  Object.fromEntries(RICE_MILL_ARTICLES.map((a) => [a.slug, a]));
