@@ -70,7 +70,7 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
     >
       <div className="mx-auto flex items-center gap-5 px-6" style={{ maxWidth: 1180, height: 64 }}>
         <Link href="/" className="flex items-center gap-[11px]">
-          <Image src="/assets/logo.svg" alt="Svasamm" width={34} height={34} style={{ borderRadius: 9 }} priority />
+          <Image src="/assets/logo-svasamm.svg" alt="Svasamm" width={34} height={34} style={{ borderRadius: 9 }} priority />
           <span style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: 19, letterSpacing: "-.01em", color: "var(--color-text)" }}>
             Svasamm
           </span>

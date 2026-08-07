@@ -10,7 +10,7 @@ export default function LegalPage({ title, updated, children }: { title: string;
       <header style={{ borderBottom: "1px solid var(--color-divider)", background: "var(--color-bg)" }}>
         <div className="lg-wrap" style={{ maxWidth: 1180, display: "flex", alignItems: "center", gap: 14, height: 64 }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 11 }}>
-            <Image src="/assets/logo.svg" alt="Svasamm" width={34} height={34} style={{ borderRadius: 9 }} />
+            <Image src="/assets/logo-svasamm.svg" alt="Svasamm" width={34} height={34} style={{ borderRadius: 9 }} />
             <span style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: 19, letterSpacing: "-.01em", color: "var(--color-text)" }}>Svasamm</span>
           </Link>
           <Link href="/" className="lg-link" style={{ marginLeft: "auto", fontSize: 14, display: "inline-flex", alignItems: "center", gap: 6 }}>
