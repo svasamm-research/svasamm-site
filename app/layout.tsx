@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
 import Analytics from "@/components/Analytics";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Svasamm design system typography (IBM Plex). Exposed as CSS vars that both
+// nocturne.css (--font-plex) and svasamm.css (--sv-font, remapped in globals.css) use.
+const plex = IBM_Plex_Sans({
+  variable: "--font-plex",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["500", "600"],
   display: "swap",
 });
 
@@ -39,8 +47,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
+    <html lang="en" className={`${plex.variable} ${plexMono.variable} antialiased`}>
       <body className="min-h-screen bg-bg text-text flex flex-col">
+        <a className="sv-skip" href="#main">Skip to content</a>
         {children}
         <Analytics />
       </body>

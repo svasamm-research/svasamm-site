@@ -154,8 +154,8 @@ export default function ContactForm() {
               display: "grid",
               placeItems: "center",
               margin: "0 auto 18px",
-              background: "var(--color-accent-900)",
-              color: "var(--color-accent-200)",
+              background: "var(--color-accent-100)",
+              color: "var(--color-accent)",
             }}
           >
             <Icon name="ph-check" weight="bold" style={{ fontSize: 30 }} />
@@ -211,30 +211,44 @@ export default function ContactForm() {
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 15 }}
           >
             <div className="field">
-              <label>Name</label>
+              <label htmlFor="cf-name">Name</label>
               <input
+                id="cf-name"
                 className="input"
                 value={f.name}
                 onChange={set("name")}
                 placeholder="Your name"
+                aria-invalid={errName || undefined}
+                aria-describedby={errName ? "cf-name-err" : undefined}
               />
               {errName && (
-                <span style={{ fontSize: 11, color: ERR }}>
+                <span
+                  id="cf-name-err"
+                  role="alert"
+                  style={{ fontSize: 11, color: ERR }}
+                >
                   Please enter your name
                 </span>
               )}
             </div>
             <div className="field">
-              <label>Work email</label>
+              <label htmlFor="cf-email">Work email</label>
               <input
+                id="cf-email"
                 className="input"
                 type="email"
                 value={f.email}
                 onChange={set("email")}
                 placeholder="you@company.com"
+                aria-invalid={errEmail || undefined}
+                aria-describedby={errEmail ? "cf-email-err" : undefined}
               />
               {errEmail && (
-                <span style={{ fontSize: 11, color: ERR }}>
+                <span
+                  id="cf-email-err"
+                  role="alert"
+                  style={{ fontSize: 11, color: ERR }}
+                >
                   Enter a valid email
                 </span>
               )}
@@ -245,23 +259,31 @@ export default function ContactForm() {
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 15 }}
           >
             <div className="field">
-              <label>Phone</label>
+              <label htmlFor="cf-phone">Phone</label>
               <input
+                id="cf-phone"
                 className="input"
                 type="tel"
                 value={f.phone}
                 onChange={set("phone")}
                 placeholder="+91 9XXXXXXXXX"
+                aria-invalid={errPhone || undefined}
+                aria-describedby={errPhone ? "cf-phone-err" : undefined}
               />
               {errPhone && (
-                <span style={{ fontSize: 11, color: ERR }}>
+                <span
+                  id="cf-phone-err"
+                  role="alert"
+                  style={{ fontSize: 11, color: ERR }}
+                >
                   Enter a number we can call you on
                 </span>
               )}
             </div>
             <div className="field">
-              <label>Company / operation</label>
+              <label htmlFor="cf-company">Company / operation</label>
               <input
+                id="cf-company"
                 className="input"
                 value={f.company}
                 onChange={set("company")}
@@ -270,8 +292,9 @@ export default function ContactForm() {
             </div>
           </div>
           <div className="field">
-            <label>Which solution?</label>
+            <label htmlFor="cf-product">Which solution?</label>
             <select
+              id="cf-product"
               className="input"
               value={f.product}
               onChange={set("product")}
@@ -284,7 +307,7 @@ export default function ContactForm() {
             </select>
           </div>
           {status === "error" && (
-            <span style={{ fontSize: 13, color: ERR }}>
+            <span role="alert" style={{ fontSize: 13, color: ERR }}>
               Sorry — that didn&apos;t send. Please email us at{" "}
               <a
                 href="mailto:query@svasamm.com"
