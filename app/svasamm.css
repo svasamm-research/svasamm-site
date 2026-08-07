@@ -3,7 +3,11 @@
    Enterprise software credibility, modern product polish.
    Single source of truth — every page links this one file.
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;450;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+/* Fonts (IBM Plex Sans/Mono) are loaded via next/font in app/layout.tsx and exposed as
+   --font-plex / --font-plex-mono; globals.css remaps --sv-font / --sv-mono onto those. The
+   original `@import url(fonts.googleapis…)` was removed here: once this file is inlined via
+   `@import "./svasamm.css"` in globals.css it lands mid-file, which violates the CSS rule that
+   @import must precede all other rules (Turbopack errors in dev). It was redundant either way. */
 
 :root {
   /* — Ground & surface: paper-white product ground with a cool cast — */
