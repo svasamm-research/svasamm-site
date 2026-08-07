@@ -190,6 +190,10 @@ export const ARTICLES: Article[] = [
         href: "State-WestBengal.dc.html",
       },
       {
+        title: "Rice-mill software for Uttar Pradesh (CMR & E-PoP)",
+        href: "State-UttarPradesh.dc.html",
+      },
+      {
         title: "Millingo — rice-mill ERP",
         href: "Millingo.dc.html",
       },
@@ -488,6 +492,14 @@ export const ARTICLES: Article[] = [
       {
         title: "By-product accounting: bran, husk & broken rice",
         href: "Guide-ByproductAccounting.dc.html",
+      },
+      {
+        title: "Rice-mill software for West Bengal (e-Paddy & CMR)",
+        href: "State-WestBengal.dc.html",
+      },
+      {
+        title: "Rice-mill software for Uttar Pradesh (CMR & E-PoP)",
+        href: "State-UttarPradesh.dc.html",
       },
       {
         title: "Millingo — rice-mill ERP",
@@ -1152,6 +1164,14 @@ export const ARTICLES: Article[] = [
         href: "Compare-Dataman.dc.html",
       },
       {
+        title: "Rice-mill software for West Bengal (e-Paddy & CMR)",
+        href: "State-WestBengal.dc.html",
+      },
+      {
+        title: "Rice-mill software for Uttar Pradesh (CMR & E-PoP)",
+        href: "State-UttarPradesh.dc.html",
+      },
+      {
         title: "Millingo — rice-mill ERP",
         href: "Millingo.dc.html",
       },
@@ -1517,8 +1537,50 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
+        h: "Who a West Bengal miller deals with",
+        text: "It helps to know the bodies. On the farmer side, primary societies — PACS, PAMS, LAMPS, SHGs and FPOs — buy paddy at MSP through e-Paddy. On the miller side, you deliver your finished CMR to state agencies such as WBECSC, BENFED, CONFED, NAFED and PBAMCL. Knowing which agency issued your allotment and which one receives your rice is the difference between a clean delivery and a rejected consignment — exactly the kind of state-specific detail generic software ignores.",
+      },
+      {
+        type: "p",
+        h: "Registering your mill in West Bengal",
+        text: "Before any paddy moves, a WB mill must be registered online at procurement.wbfood.in, with the mill's location, capacity and miller details. Once empanelled, you receive paddy against allotment memos through the Kharif Marketing Season (KMS), each memo tied to a specific rice-delivery obligation. The discipline the whole season rests on is simple to state and hard to do by hand: for every memo, know exactly how much paddy came in, how much rice has gone back, and how much is still owed. Millingo keeps that running total for you.",
+      },
+      {
+        type: "p",
+        h: "The jute-bag rule that trips up generic software",
+        text: "West Bengal has an operational rule most software never accounts for: WBECSC arranges the jute gunny bags, and millers must deliver CMR in those supplied bags. That turns bardana into its own ledger — bags issued, filled and returned — which has to reconcile alongside the rice. Multiply a per-bag discrepancy across a season's tonnage and the end-of-season gap between bag count and rice count becomes a real problem. Millingo tracks bag issue, fill and empty returns against each delivery, so the two always tie out.",
+      },
+      {
+        type: "list",
+        h: "Why generic rice-mill software struggles in West Bengal",
+        items: [
+          {
+            b: "It doesn't speak e-Paddy —",
+            t: "no WBECSC/BENFED delivery flow, and no allotment-to-delivery tracking against each memo.",
+          },
+          {
+            b: "It misses the butta norm —",
+            t: "WB quality deductions are taken on value, not quantity; generic QC modules get this wrong.",
+          },
+          {
+            b: "It ignores the jute-bag rule —",
+            t: "bardana supplied by WBECSC isn't a line item in software built for other states.",
+          },
+          {
+            b: "It's English-only —",
+            t: "gate and production staff who work in Bengali end up bypassing it.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        h: "Why daily out-turn visibility matters in the KMS season",
+        text: "WB's Kharif Marketing Season is large and deadline-driven — the state procures from tens of lakhs of farmers, and rice is delivered back in staged instalments across the season, not in one lot. Miss a milestone and you risk penalties and a smaller allotment next year. That is why the mills that stay out of trouble watch out-turn daily against the 67% norm, rather than discovering a shortfall at the year-end 7.1 reconciliation. Millingo computes out-turn per lot as you mill, so a shortfall shows up the same day — while you can still act on it.",
+      },
+      {
+        type: "p",
         h: "Millingo for West Bengal mills",
-        text: "Millingo covers the full mill — procurement gate-to-godown (stock posts only after QC), quality grading with automatic butta deductions, milling batches with yield and by-product tracking, gunny-bag (bardana) accounting, market sales, and the complete government FCI/levy (CMR) cycle. One system for both your open-market business and your CMR obligation.",
+        text: "Millingo covers the full mill — procurement gate-to-godown (stock posts only after QC), quality grading with automatic butta deductions, milling batches with yield and by-product tracking, gunny-bag (bardana) accounting, market sales, and the complete government FCI/levy (CMR) cycle. One system for both your open-market business and your CMR obligation — built by a West Bengal company that knows the WB miller's world.",
       },
     ],
     faqs: [
@@ -1534,11 +1596,23 @@ export const ARTICLES: Article[] = [
         q: "Can Millingo handle both CMR and open-market sales?",
         a: "Yes. It runs your government CMR obligation and your open-market paddy/rice business on the same system, including GST-compliant billing.",
       },
+      {
+        q: "How do I register my rice mill in West Bengal?",
+        a: "West Bengal mill registration is done online at procurement.wbfood.in, capturing the mill's location, capacity and miller details. Once empanelled, you receive paddy against allotment memos through the Kharif Marketing Season, each tied to a rice-delivery obligation.",
+      },
+      {
+        q: "Which agencies do West Bengal millers deliver CMR to?",
+        a: "CMR is delivered to state agencies such as WBECSC, BENFED, CONFED, NAFED and PBAMCL, while farmer-side procurement runs through primary societies (PACS, PAMS, LAMPS, SHGs, FPOs) on the e-Paddy portal.",
+      },
     ],
     related: [
       {
         title: "Custom Milled Rice (CMR): the complete process",
         href: "Guide-CMR.dc.html",
+      },
+      {
+        title: "How to calculate rice-mill yield & milling recovery",
+        href: "Guide-YieldRecovery.dc.html",
       },
       {
         title: "Rice-mill software for Uttar Pradesh",
@@ -1629,6 +1703,22 @@ export const ARTICLES: Article[] = [
               text: "Millingo is designed for West Bengal mills with local-language support in mind, so gate, QC and production staff can work in Bengali rather than English-only screens.",
             },
           },
+          {
+            "@type": "Question",
+            name: "How do I register my rice mill in West Bengal?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "West Bengal mill registration is done online at procurement.wbfood.in, capturing the mill's location, capacity and miller details. Once empanelled, you receive paddy against allotment memos through the Kharif Marketing Season.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Which agencies do West Bengal millers deliver CMR to?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "CMR is delivered to state agencies such as WBECSC, BENFED, CONFED, NAFED and PBAMCL, while farmer-side procurement runs through primary societies (PACS, PAMS, LAMPS, SHGs, FPOs) on the e-Paddy portal.",
+            },
+          },
         ],
       },
     ],
@@ -1680,8 +1770,45 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
+        h: "Who a Uttar Pradesh miller deals with",
+        text: "Procurement in UP runs through the Food & Civil Supplies Department alongside several procurement agencies — bodies such as PCF (Pradeshik Cooperative Federation), PCU, UPSS, Mandi Parishad and the central agencies NAFED, NCCF and Kendriya Bhandar — with rice ultimately delivered into the FCI-backed central pool. Which agency issues your allotment and which one receives your rice shapes your paperwork, and it changes by centre. Generic software that doesn't model UP's procurement chain leaves that mapping to memory and spreadsheets.",
+      },
+      {
+        type: "p",
+        h: "Registration, purchase centres and E-PoP",
+        text: "Farmers register on fcs.up.gov.in and sell at purchase centres (kray kendra) where paddy is bought against biometric E-PoP devices, with payments routed through PFMS. Empanelled mills are allotted that paddy for custom milling and must return rice on the season's staged schedule. For a UP mill, the season is a stream of allotment memos, gate receipts and deliveries that all have to reconcile — memo by memo — against the out-turn obligation.",
+      },
+      {
+        type: "p",
+        h: "In UP, volume is exactly why reconciliation goes wrong",
+        text: "UP mills carry some of the largest CMR volumes in the country, and that's the trap: across hundreds of lots and dozens of memos, a small out-turn slip on each compounds into a large shortfall by settlement — and it only surfaces at the year-end 7.1 reconciliation, when it's too late to explain. The fix isn't more milling; it's seeing out-turn per lot, daily, against the 67% norm. Millingo computes it as you mill, so the gap shows up the same day, batch by batch, with the record to defend it.",
+      },
+      {
+        type: "list",
+        h: "Why generic rice-mill software struggles in Uttar Pradesh",
+        items: [
+          {
+            b: "It doesn't map the UP procurement chain —",
+            t: "no allotment-to-delivery tracking across PCF/PCU/UPSS and the central agencies.",
+          },
+          {
+            b: "It buckles at volume —",
+            t: "per-lot recovery across hundreds of batches is where generic tools fall back to Excel.",
+          },
+          {
+            b: "It's English-only —",
+            t: "gate and production staff who work in Hindi end up bypassing it.",
+          },
+          {
+            b: "It treats CMR as an add-on —",
+            t: "the 7.1 reconciliation and FRK obligation aren't native, so they're done by hand.",
+          },
+        ],
+      },
+      {
+        type: "p",
         h: "Millingo for Uttar Pradesh mills",
-        text: "Millingo runs the full mill — procurement gate-to-godown (stock posts only after QC), quality grading with automatic deductions, milling batches with yield and by-product tracking, gunny-bag accounting, market sales, and the complete CMR cycle — with the Enterprise tier built for the government milling business and the volume UP mills carry.",
+        text: "Millingo runs the full mill — procurement gate-to-godown (stock posts only after QC), quality grading with automatic deductions, milling batches with yield and by-product tracking, gunny-bag accounting, market sales, and the complete CMR cycle — built for the government milling business and the high volume UP mills carry, so reconciliation is ready rather than reconstructed.",
       },
     ],
     faqs: [
@@ -1697,11 +1824,23 @@ export const ARTICLES: Article[] = [
         q: "Can it handle both CMR and open-market business?",
         a: "Yes — government CMR and open-market paddy/rice run on the same system, with GST-compliant billing.",
       },
+      {
+        q: "How does paddy procurement registration work in Uttar Pradesh?",
+        a: "Farmers register on fcs.up.gov.in and sell at purchase centres (kray kendra) using biometric E-PoP devices, with payments via PFMS. Empanelled mills are then allotted paddy for custom milling and deliver rice back on the season's staged schedule.",
+      },
+      {
+        q: "Which agencies handle rice procurement in Uttar Pradesh?",
+        a: "UP procurement runs through the Food & Civil Supplies Department with agencies such as PCF, PCU, UPSS and Mandi Parishad, plus central agencies NAFED, NCCF and Kendriya Bhandar, feeding the FCI-backed central pool.",
+      },
     ],
     related: [
       {
         title: "Custom Milled Rice (CMR): the complete process",
         href: "Guide-CMR.dc.html",
+      },
+      {
+        title: "How to calculate rice-mill yield & milling recovery",
+        href: "Guide-YieldRecovery.dc.html",
       },
       {
         title: "Rice-mill software for West Bengal",
@@ -1790,6 +1929,22 @@ export const ARTICLES: Article[] = [
             acceptedAnswer: {
               "@type": "Answer",
               text: "Millingo is built with local-language support in mind, so UP staff at the gate, QC and production can work in Hindi.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How does paddy procurement registration work in Uttar Pradesh?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Farmers register on fcs.up.gov.in and sell at purchase centres using biometric E-PoP devices, with payments via PFMS. Empanelled mills are allotted paddy for custom milling and deliver rice back on the season's staged schedule.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Which agencies handle rice procurement in Uttar Pradesh?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "UP procurement runs through the Food & Civil Supplies Department with agencies such as PCF, PCU, UPSS and Mandi Parishad, plus central agencies NAFED, NCCF and Kendriya Bhandar, feeding the FCI-backed central pool.",
             },
           },
         ],
