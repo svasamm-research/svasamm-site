@@ -66,7 +66,13 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   (founder decision): same-page anchors carry no indexable URL / link-equity and were permanently blue (they
   lacked the explicit neutral colour siblings set → fell back to `a{color:accent}`). The homepage `#regions`/
   `#why` sections stay (content); the **footer still links them** (not yet removed — flag if consistency wanted).
-  The dead unused `NAV_LINKS` array in `lib/site.ts` was deleted.
+  The dead unused `NAV_LINKS` array in `lib/site.ts` was deleted. (3) **ProductPage section order = Hero →
+  Capabilities → Built-for → Resources → Tiers → FAQ → CTA** (Tiers moved *below* Built-for/Resources). (4)
+  Product-page **resource links use `.pp-reslink`** (hover highlight + slide-in arrow) for click affordance;
+  `.pp-link` gains hover-underline. **IA/SEO decisions (founder-confirmed, don't re-raise):** capabilities
+  stay **static info cards** — NO per-capability pages (2-sentence blurbs = thin/duplicate → SEO-negative; the
+  mapped guides are already linked in Resources). **NO Lucoze-style Locations grid** for Svasamm (national,
+  multi-product; the only geo-relevant product, Millingo, already has state pages WB/UP/Odisha/Bihar linked).
 - **🐛 GOTCHA (hard-won):** `svasamm.css` shipped with a leading `@import url(fonts.googleapis…)`. Once it's
   inlined via `@import "./svasamm.css"` in `globals.css` that line lands **mid-file** → violates
   "**@import must precede all rules**" → **Turbopack (`yarn dev`) errors**, though the prod build hoisted it
