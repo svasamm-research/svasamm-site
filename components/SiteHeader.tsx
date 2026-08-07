@@ -252,28 +252,6 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
               </div>
             )}
           </div>
-          <Link
-            href="/#regions"
-            className="svh-link"
-            style={{
-              fontFamily: "var(--font-heading)",
-              fontWeight: 500,
-              fontSize: 14,
-            }}
-          >
-            Regions
-          </Link>
-          <Link
-            href="/#why"
-            className="svh-link"
-            style={{
-              fontFamily: "var(--font-heading)",
-              fontWeight: 500,
-              fontSize: 14,
-            }}
-          >
-            Why Svasamm
-          </Link>
           <div
             className="relative"
             onMouseEnter={() => setRes(true)}
@@ -441,26 +419,6 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
             }}
           >
             All solutions
-          </Link>
-          <Link
-            href="/#regions"
-            style={{
-              padding: "9px 0",
-              color: "var(--color-text)",
-              fontSize: 15,
-            }}
-          >
-            Regions
-          </Link>
-          <Link
-            href="/#why"
-            style={{
-              padding: "9px 0",
-              color: "var(--color-text)",
-              fontSize: 15,
-            }}
-          >
-            Why Svasamm
           </Link>
           <div className="hr" />
           <div
