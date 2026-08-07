@@ -173,6 +173,120 @@ export default function ProductPage({ product: d }: { product: Product }) {
         </div>
       </section>
 
+      {/* Built for */}
+      <section style={{ padding: "64px 0 40px" }}>
+        <div className="pp-wrap">
+          <h2
+            style={{
+              fontSize: 24,
+              margin: "0 0 18px",
+              color: "var(--color-text)",
+            }}
+          >
+            Built for
+          </h2>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            {d.builtFor.map((b, i) => (
+              <span
+                key={i}
+                className="tag tag-neutral"
+                style={{ fontSize: 12.5, padding: "6px 14px" }}
+              >
+                {b}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Resources (optional) */}
+      {d.resources && (
+        <section style={{ padding: "16px 0 56px" }}>
+          <div className="pp-wrap">
+            <div
+              style={{
+                fontSize: 11,
+                letterSpacing: ".12em",
+                textTransform: "uppercase",
+                color: "var(--color-accent)",
+                marginBottom: 12,
+              }}
+            >
+              Resources
+            </div>
+            <h2
+              style={{
+                fontSize: 28,
+                letterSpacing: "-.02em",
+                margin: "0 0 8px",
+                color: "var(--color-text)",
+              }}
+            >
+              {d.resources.title}
+            </h2>
+            <p
+              style={{
+                fontSize: 15,
+                color: "var(--color-neutral-300)",
+                margin: "0 0 30px",
+                maxWidth: "44em",
+              }}
+            >
+              {d.resources.intro}
+            </p>
+            <div
+              className="pp-two"
+              style={{
+                display: "grid",
+                gridTemplateColumns: d.resources.grid,
+                gap: 26,
+              }}
+            >
+              {d.resources.columns.map((col, i) => (
+                <div key={i}>
+                  <div
+                    style={{
+                      fontSize: 11,
+                      letterSpacing: ".08em",
+                      textTransform: "uppercase",
+                      color: "var(--color-neutral-500)",
+                      marginBottom: 14,
+                    }}
+                  >
+                    {col.heading}
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 11,
+                    }}
+                  >
+                    {col.links.map((g, j) => (
+                      <Link
+                        key={j}
+                        href={toRoute(g.href)}
+                        className="pp-reslink"
+                      >
+                        <Icon
+                          name={col.icon}
+                          style={{
+                            color: "var(--color-accent-300)",
+                            flex: "none",
+                            marginTop: 2,
+                          }}
+                        />
+                        {g.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Tiers (optional) */}
       {d.tiers && d.tiers.length > 0 && (
         <section
@@ -300,126 +414,6 @@ export default function ProductPage({ product: d }: { product: Product }) {
                   >
                     {t.cta}
                   </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Built for */}
-      <section style={{ padding: "64px 0 40px" }}>
-        <div className="pp-wrap">
-          <h2
-            style={{
-              fontSize: 24,
-              margin: "0 0 18px",
-              color: "var(--color-text)",
-            }}
-          >
-            Built for
-          </h2>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-            {d.builtFor.map((b, i) => (
-              <span
-                key={i}
-                className="tag tag-neutral"
-                style={{ fontSize: 12.5, padding: "6px 14px" }}
-              >
-                {b}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Resources (optional) */}
-      {d.resources && (
-        <section style={{ padding: "16px 0 56px" }}>
-          <div className="pp-wrap">
-            <div
-              style={{
-                fontSize: 11,
-                letterSpacing: ".12em",
-                textTransform: "uppercase",
-                color: "var(--color-accent)",
-                marginBottom: 12,
-              }}
-            >
-              Resources
-            </div>
-            <h2
-              style={{
-                fontSize: 28,
-                letterSpacing: "-.02em",
-                margin: "0 0 8px",
-                color: "var(--color-text)",
-              }}
-            >
-              {d.resources.title}
-            </h2>
-            <p
-              style={{
-                fontSize: 15,
-                color: "var(--color-neutral-300)",
-                margin: "0 0 30px",
-                maxWidth: "44em",
-              }}
-            >
-              {d.resources.intro}
-            </p>
-            <div
-              className="pp-two"
-              style={{
-                display: "grid",
-                gridTemplateColumns: d.resources.grid,
-                gap: 26,
-              }}
-            >
-              {d.resources.columns.map((col, i) => (
-                <div key={i}>
-                  <div
-                    style={{
-                      fontSize: 11,
-                      letterSpacing: ".08em",
-                      textTransform: "uppercase",
-                      color: "var(--color-neutral-500)",
-                      marginBottom: 14,
-                    }}
-                  >
-                    {col.heading}
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 11,
-                    }}
-                  >
-                    {col.links.map((g, j) => (
-                      <Link
-                        key={j}
-                        href={toRoute(g.href)}
-                        className="pp-link"
-                        style={{
-                          display: "flex",
-                          gap: 9,
-                          fontSize: 13.5,
-                          lineHeight: 1.4,
-                        }}
-                      >
-                        <Icon
-                          name={col.icon}
-                          style={{
-                            color: "var(--color-accent-300)",
-                            flex: "none",
-                            marginTop: 2,
-                          }}
-                        />
-                        {g.title}
-                      </Link>
-                    ))}
-                  </div>
                 </div>
               ))}
             </div>

@@ -59,6 +59,14 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   shadowed cards, light chips; Ken Burns/dark glow removed; new enterprise-blue logo (`public/assets/logo-svasamm.svg`);
   (f) a11y: skip link + `id="main"` (all `<main>`), full FAQ ARIA, contact-form label/aria/role=alert.
   **SEO byte-identical** (never touched `lib/*` data, metadata, or JSON-LD). Lucoze untouched.
+- **Rebrand refinements (post-review):** (1) **icon chips use the reusable `.sv-chip`/`.sv-chip-sm` class**
+  (svasamm.css — brand-50 bg, brand-100 border, brand icon), NOT inline `background:accent-900` (that was the
+  dark-theme chip); use `.sv-chip` for any new icon chip, don't re-inline. (2) **Header nav trimmed to
+  Solutions / Resources / Contact** — "Regions" (`/#regions`) and "Why Svasamm" (`/#why`) were removed
+  (founder decision): same-page anchors carry no indexable URL / link-equity and were permanently blue (they
+  lacked the explicit neutral colour siblings set → fell back to `a{color:accent}`). The homepage `#regions`/
+  `#why` sections stay (content); the **footer still links them** (not yet removed — flag if consistency wanted).
+  The dead unused `NAV_LINKS` array in `lib/site.ts` was deleted.
 - **🐛 GOTCHA (hard-won):** `svasamm.css` shipped with a leading `@import url(fonts.googleapis…)`. Once it's
   inlined via `@import "./svasamm.css"` in `globals.css` that line lands **mid-file** → violates
   "**@import must precede all rules**" → **Turbopack (`yarn dev`) errors**, though the prod build hoisted it
