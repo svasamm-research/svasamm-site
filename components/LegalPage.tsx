@@ -10,7 +10,7 @@ export default function LegalPage({ title, updated, children }: { title: string;
       <header style={{ borderBottom: "1px solid var(--color-divider)", background: "var(--color-bg)" }}>
         <div className="lg-wrap" style={{ maxWidth: 1180, display: "flex", alignItems: "center", gap: 14, height: 64 }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 11 }}>
-            <Image src="/assets/logo.svg" alt="Svasamm" width={34} height={34} style={{ borderRadius: 9 }} />
+            <Image src="/assets/logo-svasamm.svg" alt="Svasamm" width={34} height={34} style={{ borderRadius: 9 }} />
             <span style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: 19, letterSpacing: "-.01em", color: "var(--color-text)" }}>Svasamm</span>
           </Link>
           <Link href="/" className="lg-link" style={{ marginLeft: "auto", fontSize: 14, display: "inline-flex", alignItems: "center", gap: 6 }}>
@@ -19,7 +19,7 @@ export default function LegalPage({ title, updated, children }: { title: string;
         </div>
       </header>
 
-      <main style={{ flex: 1, padding: "56px 0 72px" }}>
+      <main id="main" style={{ flex: 1, padding: "56px 0 72px" }}>
         <div className="lg-wrap">
           <div className="tag tag-outline" style={{ marginBottom: 18 }}>Legal</div>
           <h1 style={{ fontSize: 40, letterSpacing: "-.025em", margin: "0 0 10px", color: "var(--color-text)" }}>{title}</h1>

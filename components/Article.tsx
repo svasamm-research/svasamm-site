@@ -265,7 +265,7 @@ export default function ArticleView({ article: a }: { article: Article }) {
             style={{
               fontSize: 17,
               lineHeight: 1.7,
-              color: "var(--color-neutral-200)",
+              color: "var(--color-neutral-300)",
               margin: "0 0 8px",
             }}
           >

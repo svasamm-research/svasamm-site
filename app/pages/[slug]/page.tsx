@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <>
       {jsonLd && jsonLd.length > 0 && <JsonLd data={jsonLd} />}
       <SiteHeader active={active} />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         {product && <ProductPage product={product} />}
         {article && <ArticleView article={article} />}
         {core?.kind === "solutions" && <SolutionsPage />}

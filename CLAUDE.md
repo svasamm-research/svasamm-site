@@ -44,7 +44,42 @@ Next 16 (App Router, **SSG** — every page static HTML for SEO) · React 19 · 
 Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 `@phosphor-icons/react/dist/ssr`. Package manager: **yarn**. `yarn dev` / `yarn build`.
 
-## Design system (Nocturne — match exactly)
+## Design system (⚠️ REBRAND in flight — branch `feat/svasamm-rebrand`)
+- **Nocturne dark → Svasamm light-enterprise rebrand** is built + verified on `feat/svasamm-rebrand`
+  (NOT yet deployed; awaiting founder review → v0.3.0). Source spec = `~/Projects/web-dev/claude-code-handoff/`
+  (`MIGRATION-svasamm-theme.md` + `svasamm.css` + reference `.dc.html`). Applied to the **Next.js app**
+  (the handoff assumed `.dc.html` files, which this repo doesn't have — 0 `.dc.html`). How it was done:
+  (a) **`app/svasamm.css`** = the design system, imported by `globals.css`; (b) **`nocturne.css` `:root`
+  re-pointed to the light palette** (role-flipped neutrals: `neutral-300/400/500`→dark secondary/muted
+  text, `neutral-700/800`→light borders; accent ramp→brand blues) so every `var(--color-*)` + Tailwind
+  utility recolours with no per-component churn; `@theme` in globals mirrors it; (c) **icons Phosphor→Lucide**
+  in `Icon.tsx`/`IconClient.tsx` — the `ph-*` names are KEPT (map re-points to Lucide, stroke 1.75) so
+  call-sites are untouched; (d) **IBM Plex Sans/Mono via next/font** (`--font-plex`/`--font-plex-mono`);
+  globals `:root` remaps `--sv-font`/`--sv-mono` onto those; (e) filled primary buttons, real bordered+
+  shadowed cards, light chips; Ken Burns/dark glow removed; new enterprise-blue logo (`public/assets/logo-svasamm.svg`);
+  (f) a11y: skip link + `id="main"` (all `<main>`), full FAQ ARIA, contact-form label/aria/role=alert.
+  **SEO byte-identical** (never touched `lib/*` data, metadata, or JSON-LD). Lucoze untouched.
+- **Rebrand refinements (post-review):** (1) **icon chips use the reusable `.sv-chip`/`.sv-chip-sm` class**
+  (svasamm.css — brand-50 bg, brand-100 border, brand icon), NOT inline `background:accent-900` (that was the
+  dark-theme chip); use `.sv-chip` for any new icon chip, don't re-inline. (2) **Header nav trimmed to
+  Solutions / Resources / Contact** — "Regions" (`/#regions`) and "Why Svasamm" (`/#why`) were removed
+  (founder decision): same-page anchors carry no indexable URL / link-equity and were permanently blue (they
+  lacked the explicit neutral colour siblings set → fell back to `a{color:accent}`). The homepage `#regions`/
+  `#why` sections stay (content); the **footer still links them** (not yet removed — flag if consistency wanted).
+  The dead unused `NAV_LINKS` array in `lib/site.ts` was deleted. (3) **ProductPage section order = Hero →
+  Capabilities → Built-for → Resources → Tiers → FAQ → CTA** (Tiers moved *below* Built-for/Resources). (4)
+  Product-page **resource links use `.pp-reslink`** (hover highlight + slide-in arrow) for click affordance;
+  `.pp-link` gains hover-underline. **IA/SEO decisions (founder-confirmed, don't re-raise):** capabilities
+  stay **static info cards** — NO per-capability pages (2-sentence blurbs = thin/duplicate → SEO-negative; the
+  mapped guides are already linked in Resources). **NO Lucoze-style Locations grid** for Svasamm (national,
+  multi-product; the only geo-relevant product, Millingo, already has state pages WB/UP/Odisha/Bihar linked).
+- **🐛 GOTCHA (hard-won):** `svasamm.css` shipped with a leading `@import url(fonts.googleapis…)`. Once it's
+  inlined via `@import "./svasamm.css"` in `globals.css` that line lands **mid-file** → violates
+  "**@import must precede all rules**" → **Turbopack (`yarn dev`) errors**, though the prod build hoisted it
+  (so `yarn build` passed but dev broke). Fix = **removed that `@import`** (fonts come from next/font anyway).
+  **Never add a remote `@import url(http…)` to any CSS that gets `@import`ed into `globals.css`** — load fonts
+  via `next/font` instead. The rebrand branch's `app/svasamm.css` already has it removed (documented in-file).
+- (below = the pre-rebrand Nocturne baseline on `develop`/`main`, still live until v0.3.0 ships)
 - `app/nocturne.css` = the redesign's `design-tokens.css` verbatim (minus the Google-Fonts
   `@import`; `--font-heading/body` point at the `next/font` `--font-inter`). Single source
   for `:root` vars + base styles + component classes (`.btn`, `.card`, `.tag`, `.table`,
