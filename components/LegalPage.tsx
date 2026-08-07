@@ -19,7 +19,7 @@ export default function LegalPage({ title, updated, children }: { title: string;
         </div>
       </header>
 
-      <main style={{ flex: 1, padding: "56px 0 72px" }}>
+      <main id="main" style={{ flex: 1, padding: "56px 0 72px" }}>
         <div className="lg-wrap">
           <div className="tag tag-outline" style={{ marginBottom: 18 }}>Legal</div>
           <h1 style={{ fontSize: 40, letterSpacing: "-.025em", margin: "0 0 10px", color: "var(--color-text)" }}>{title}</h1>

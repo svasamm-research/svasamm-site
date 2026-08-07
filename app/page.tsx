@@ -35,7 +35,7 @@ export default function Home() {
     <>
       <JsonLd data={HOME_JSONLD} />
       <SiteHeader active="home" />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         {/* HERO */}
         <section className="pp-glow sv-hero" style={{ borderBottom: "1px solid var(--color-divider)" }}>
           <HeroBackground slug="home" />
