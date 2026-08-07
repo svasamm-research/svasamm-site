@@ -154,8 +154,8 @@ export default function ContactForm() {
               display: "grid",
               placeItems: "center",
               margin: "0 auto 18px",
-              background: "var(--color-accent-900)",
-              color: "var(--color-accent-200)",
+              background: "var(--color-accent-100)",
+              color: "var(--color-accent)",
             }}
           >
             <Icon name="ph-check" weight="bold" style={{ fontSize: 30 }} />

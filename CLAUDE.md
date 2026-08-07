@@ -44,7 +44,28 @@ Next 16 (App Router, **SSG** — every page static HTML for SEO) · React 19 · 
 Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 `@phosphor-icons/react/dist/ssr`. Package manager: **yarn**. `yarn dev` / `yarn build`.
 
-## Design system (Nocturne — match exactly)
+## Design system (⚠️ REBRAND in flight — branch `feat/svasamm-rebrand`)
+- **Nocturne dark → Svasamm light-enterprise rebrand** is built + verified on `feat/svasamm-rebrand`
+  (NOT yet deployed; awaiting founder review → v0.3.0). Source spec = `~/Projects/web-dev/claude-code-handoff/`
+  (`MIGRATION-svasamm-theme.md` + `svasamm.css` + reference `.dc.html`). Applied to the **Next.js app**
+  (the handoff assumed `.dc.html` files, which this repo doesn't have — 0 `.dc.html`). How it was done:
+  (a) **`app/svasamm.css`** = the design system, imported by `globals.css`; (b) **`nocturne.css` `:root`
+  re-pointed to the light palette** (role-flipped neutrals: `neutral-300/400/500`→dark secondary/muted
+  text, `neutral-700/800`→light borders; accent ramp→brand blues) so every `var(--color-*)` + Tailwind
+  utility recolours with no per-component churn; `@theme` in globals mirrors it; (c) **icons Phosphor→Lucide**
+  in `Icon.tsx`/`IconClient.tsx` — the `ph-*` names are KEPT (map re-points to Lucide, stroke 1.75) so
+  call-sites are untouched; (d) **IBM Plex Sans/Mono via next/font** (`--font-plex`/`--font-plex-mono`);
+  globals `:root` remaps `--sv-font`/`--sv-mono` onto those; (e) filled primary buttons, real bordered+
+  shadowed cards, light chips; Ken Burns/dark glow removed; new enterprise-blue logo (`public/assets/logo-svasamm.svg`);
+  (f) a11y: skip link + `id="main"` (all `<main>`), full FAQ ARIA, contact-form label/aria/role=alert.
+  **SEO byte-identical** (never touched `lib/*` data, metadata, or JSON-LD). Lucoze untouched.
+- **🐛 GOTCHA (hard-won):** `svasamm.css` shipped with a leading `@import url(fonts.googleapis…)`. Once it's
+  inlined via `@import "./svasamm.css"` in `globals.css` that line lands **mid-file** → violates
+  "**@import must precede all rules**" → **Turbopack (`yarn dev`) errors**, though the prod build hoisted it
+  (so `yarn build` passed but dev broke). Fix = **removed that `@import`** (fonts come from next/font anyway).
+  **Never add a remote `@import url(http…)` to any CSS that gets `@import`ed into `globals.css`** — load fonts
+  via `next/font` instead. The rebrand branch's `app/svasamm.css` already has it removed (documented in-file).
+- (below = the pre-rebrand Nocturne baseline on `develop`/`main`, still live until v0.3.0 ships)
 - `app/nocturne.css` = the redesign's `design-tokens.css` verbatim (minus the Google-Fonts
   `@import`; `--font-heading/body` point at the `next/font` `--font-inter`). Single source
   for `:root` vars + base styles + component classes (`.btn`, `.card`, `.tag`, `.table`,
