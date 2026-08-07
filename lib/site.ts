@@ -114,12 +114,6 @@ export const PRODUCTS: NavProduct[] = [
   },
 ];
 
-export const NAV_LINKS = [
-  { label: "Regions", href: "/#regions" },
-  { label: "Why Svasamm", href: "/#why" },
-  { label: "Contact", href: "/pages/contact.html" },
-];
-
 // Header "Resources" dropdown — curated guide clusters (svasamm has no single blog index).
 // Keep to a few high-value entry points per topic; the full set lives on each product page.
 export const RESOURCE_GROUPS: {

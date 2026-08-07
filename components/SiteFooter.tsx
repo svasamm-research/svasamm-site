@@ -11,7 +11,7 @@ export default function SiteFooter() {
         <div className="grid grid-cols-2 gap-9 mob:[grid-template-columns:1.4fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5" style={{ marginBottom: 14 }}>
-              <Image src="/assets/logo.svg" alt="Svasamm" width={30} height={30} style={{ borderRadius: 8 }} />
+              <Image src="/assets/logo-svasamm.svg" alt="Svasamm" width={30} height={30} style={{ borderRadius: 8 }} />
               <span style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: 18, color: "var(--color-text)" }}>Svasamm</span>
             </div>
             <p style={{ fontSize: 13.5, lineHeight: 1.6, color: "var(--color-neutral-400)", margin: "0 0 12px", maxWidth: "26em" }}>

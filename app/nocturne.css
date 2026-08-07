@@ -1,51 +1,53 @@
 /* Nocturne — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
 
 :root {
-  --color-bg: #161826;
-  --color-surface: #232532;
-  --color-text: #e9e9ed;
-  --color-accent: #9184d9; /* review round 7 (Barron): the accent moves to
+  /* Svasamm light-enterprise theme — values re-pointed to the svasamm.css palette.
+     Token NAMES kept so existing components/utilities recolor without churn. */
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-text: #0b1b2b;
+  --color-accent: #1257c9; /* review round 7 (Barron): the accent moves to
      the product's blurple — OKLCH hue 289.2, the hue of the app's own Pro
      accent (#9a8fe0, --om-accent-pro) — at the same lightness the steel
      accent held (L 0.660, so the documented ratios survive) and chroma
      in the product blurple's own range (its token sits at C 0.118; the
      accent takes 0.125, from the old steel's 0.030):
      the accent now reads as an accent rather than another neutral. */
-  --color-accent-2: #a7a1db; /* the machine-derived stand-in follows: same
+  --color-accent-2: #2b6fe3; /* the machine-derived stand-in follows: same
      hue, same L 0.734, chroma at the same 2:3 proportion it held */
-  --color-divider: color-mix(in srgb, #e9e9ed 16%, transparent);
+  --color-divider: #e2e8f0;
 
   /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
      same step of any role matches the others in visual value. */
-  --color-neutral-100: #f3f5fe;
-  --color-neutral-200: #e4e7f5;
-  --color-neutral-300: #cfd3e5;
-  --color-neutral-400: #b2b6ca;
-  --color-neutral-500: #9397ab;
-  --color-neutral-600: #75798c;
-  --color-neutral-700: #595d6c;
-  --color-neutral-800: #3f424d;
-  --color-neutral-900: #292b31;
+  --color-neutral-100: #f5f7fa;
+  --color-neutral-200: #eef2f7;
+  --color-neutral-300: #45566e;
+  --color-neutral-400: #45566e;
+  --color-neutral-500: #59687d;
+  --color-neutral-600: #79879a;
+  --color-neutral-700: #cbd5e1;
+  --color-neutral-800: #e2e8f0;
+  --color-neutral-900: #0b1b2b;
 
-  --color-accent-100: #f5f4ff;
-  --color-accent-200: #e7e5fe;
-  --color-accent-300: #d2cefd;
-  --color-accent-400: #b5abfc;
-  --color-accent-500: #968ae0;
-  --color-accent-600: #796cbf;
-  --color-accent-700: #5d5294;
-  --color-accent-800: #423a6a;
-  --color-accent-900: #2b2741;
+  --color-accent-100: #eff5ff;
+  --color-accent-200: #dbe8ff;
+  --color-accent-300: #2b6fe3;
+  --color-accent-400: #1257c9;
+  --color-accent-500: #1257c9;
+  --color-accent-600: #0d449e;
+  --color-accent-700: #0b3579;
+  --color-accent-800: #0a2a5c;
+  --color-accent-900: #0a2a5c;
 
-  --color-accent-2-100: #f5f4ff;
-  --color-accent-2-200: #e7e5fe;
-  --color-accent-2-300: #d2cefd;
-  --color-accent-2-400: #b5afe8;
-  --color-accent-2-500: #9690c9;
-  --color-accent-2-600: #7972a9;
-  --color-accent-2-700: #5c5783;
-  --color-accent-2-800: #423e5d;
-  --color-accent-2-900: #2b293a;
+  --color-accent-2-100: #eff5ff;
+  --color-accent-2-200: #dbe8ff;
+  --color-accent-2-300: #2b6fe3;
+  --color-accent-2-400: #1257c9;
+  --color-accent-2-500: #1257c9;
+  --color-accent-2-600: #0d449e;
+  --color-accent-2-700: #0b3579;
+  --color-accent-2-800: #0a2a5c;
+  --color-accent-2-900: #0a2a5c;
 
   /* Deck section-divider ground — review round 3: saturation as presence.
      Dividers take a saturated deep indigo (hue 277, the neutral ramp's own
@@ -53,13 +55,13 @@
      round-7 blurple raised it past the ground's) with a lighter bloom and
      a ghost tint of the same hue, while the slide grounds stay
      desaturated. Deck-scale fills only — not interface colors. */
-  --color-section: #262a60;
-  --color-section-glow: #353b80;
-  --color-section-ghost: #4c5397;
+  --color-section: #eff5ff;
+  --color-section-glow: #dbe8ff;
+  --color-section-ghost: #eef2f7;
 
-  --font-heading: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-plex), "IBM Plex Sans", system-ui, sans-serif;
   --font-heading-weight: 500;
-  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-body: var(--font-plex), "IBM Plex Sans", system-ui, sans-serif;
 
   --space-1: 2.8px;
   --space-2: 5.6px;
@@ -74,9 +76,9 @@
 
   /* Elevation — derived from the ground: soft ink-tinted shadows on a
      light theme, a hairline edge + ambient darkness on a dark one. */
-  --shadow-sm: 0 0 0 1px #3f424d;
-  --shadow-md: 0 0 0 1px #595d6c, 0 6px 18px rgba(0,0,0,0.55);
-  --shadow-lg: 0 0 0 1px #9397ab, 0 16px 40px rgba(0,0,0,0.65);
+  --shadow-sm: 0 1px 2px rgba(11,27,43,.05), 0 1px 3px rgba(11,27,43,.07);
+  --shadow-md: 0 2px 4px rgba(11,27,43,.04), 0 6px 16px rgba(11,27,43,.08);
+  --shadow-lg: 0 8px 20px rgba(11,27,43,.10), 0 20px 44px rgba(11,27,43,.10);
 }
 
 body {
@@ -145,9 +147,9 @@ figcaption {
 }
 .btn svg { display: block; }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
-.btn-primary:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
-.btn-primary:active { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+.btn-primary { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+.btn-primary:hover { background: var(--color-accent-600); border-color: var(--color-accent-600); color: #fff; }
+.btn-primary:active { background: var(--color-accent-700); border-color: var(--color-accent-700); }
 .btn-secondary { border-color: var(--color-divider); }
 .btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
 .btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
@@ -201,7 +203,8 @@ textarea.input { min-height: 90px; resize: vertical; }
 /* — cards — */
 .card {
   display: flex; flex-direction: column; gap: var(--space-2);
-  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+  padding: var(--space-3); border-radius: var(--radius-lg); background: var(--color-surface);
+  border: 1px solid var(--color-divider); box-shadow: var(--shadow-sm);
 }
 .card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
 .card-title {
@@ -223,9 +226,9 @@ textarea.input { min-height: 90px; resize: vertical; }
   letter-spacing: 0.02em; padding: 3px 10px;
   border-radius: calc(var(--radius-md) * 0.75);
 }
-.tag-accent { background: var(--color-accent-800); color: var(--color-accent-100); }
-.tag-accent-2 { background: var(--color-accent-2-800); color: var(--color-accent-2-100); }
-.tag-neutral { background: var(--color-neutral-800); color: var(--color-neutral-100); }
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-700); }
+.tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-700); }
+.tag-neutral { background: var(--color-neutral-200); color: var(--color-neutral-500); }
 .tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
 
 /* — navigation — */
