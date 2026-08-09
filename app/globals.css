@@ -121,6 +121,19 @@
       transparent 72%
     );
 }
+/* Product-page hero: brand-50 radial wash (top-right) over a soft vertical fade —
+   ports ProductPage.dc.html's .pp-hero. The framed photo sits in the right column. */
+.pp-hero-wash {
+  background:
+    radial-gradient(58% 78% at 90% 0%, var(--sv-brand-50), transparent 62%),
+    linear-gradient(180deg, #fbfcfe 0%, var(--sv-bg) 72%);
+}
+.pp-hero {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: 60px;
+  align-items: center;
+}
 @media (max-width: 860px) {
   .pp-hero {
     grid-template-columns: 1fr !important;
