@@ -163,13 +163,21 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
               />
             </button>
             {mega && (
+              // Transparent bridge: keeps the 12px gap hoverable so the menu
+              // doesn't close while the pointer travels from trigger to panel.
+              <div
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  left: -18,
+                  paddingTop: 12,
+                  zIndex: 20,
+                }}
+              >
               <div
                 className="sv-card"
                 id="svh-solutions-menu"
                 style={{
-                  position: "absolute",
-                  top: "calc(100% + 12px)",
-                  left: -18,
                   width: 680,
                   padding: 10,
                   boxShadow: "var(--sv-sh-3)",
@@ -252,6 +260,7 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                   </Link>
                 </div>
               </div>
+              </div>
             )}
           </div>
           <div
@@ -288,12 +297,18 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
             </button>
             {res && (
               <div
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  left: -18,
+                  paddingTop: 12,
+                  zIndex: 20,
+                }}
+              >
+              <div
                 className="sv-card"
                 id="svh-resources-menu"
                 style={{
-                  position: "absolute",
-                  top: "calc(100% + 12px)",
-                  left: -18,
                   width: 720,
                   padding: 10,
                   boxShadow: "var(--sv-sh-3)",
@@ -328,6 +343,7 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                   </div>
                 ))}
               </div>
+              </div>
             )}
           </div>
           <Link
@@ -351,15 +367,13 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
             Talk to us
           </Link>
           <button
-            className="mob:hidden"
+            className="mob:hidden grid place-items-center"
             style={{
               background: "none",
               border: "1px solid var(--sv-line-strong)",
               borderRadius: "var(--sv-r-sm)",
               color: "var(--sv-ink)",
               cursor: "pointer",
-              display: "grid",
-              placeItems: "center",
               width: 42,
               height: 42,
             }}
