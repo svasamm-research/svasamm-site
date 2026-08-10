@@ -48,7 +48,14 @@ const CONTACT_ENDPOINT: string =
   "https://p5ld0swl76.execute-api.us-east-1.amazonaws.com/";
 
 const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-const ERR = "#e88";
+const ERR = "#b42318"; // design's .ct-err red
+// Ports the design's inline .ct-err rule (not a global class).
+const errStyle = {
+  fontSize: 12.5,
+  color: ERR,
+  marginTop: 5,
+  display: "block" as const,
+};
 
 // Contact form island. Client-side validation, then POST to the SES-backed endpoint.
 export default function ContactForm() {
@@ -135,58 +142,38 @@ export default function ContactForm() {
   }
 
   return (
-    <div
-      style={{
-        padding: 28,
-        borderRadius: 16,
-        background: "var(--color-surface)",
-        border: "1px solid var(--color-neutral-800)",
-        boxShadow: "var(--shadow-md)",
-      }}
-    >
+    <div className="sv-card" style={{ padding: 30, boxShadow: "var(--sv-sh-3)" }}>
       {sent ? (
-        <div style={{ textAlign: "center", padding: "36px 12px" }}>
-          <div
+        <div style={{ textAlign: "center", padding: "40px 12px" }}>
+          <span
+            className="sv-chip"
             style={{
               width: 60,
               height: 60,
-              borderRadius: "50%",
-              display: "grid",
-              placeItems: "center",
-              margin: "0 auto 18px",
-              background: "var(--color-accent-100)",
-              color: "var(--color-accent)",
+              margin: "0 auto 20px",
+              background: "var(--sv-teal-50)",
+              borderColor: "var(--sv-teal-50)",
+              color: "var(--sv-teal)",
             }}
           >
-            <Icon name="ph-check" weight="bold" style={{ fontSize: 30 }} />
-          </div>
-          <h2
-            style={{
-              fontSize: 21,
-              margin: "0 0 8px",
-              color: "var(--color-text)",
-            }}
-          >
-            Thanks, {sentName}
-          </h2>
+            <Icon name="ph-check" size={30} />
+          </span>
+          <h2 style={{ fontSize: 23, margin: "0 0 10px" }}>Thanks, {sentName}</h2>
           <p
-            style={{
-              fontSize: 14,
-              color: "var(--color-neutral-400)",
-              margin: "0 0 20px",
-            }}
+            className="sv-muted"
+            style={{ fontSize: 15, margin: "0 0 24px" }}
           >
             We&apos;ve got your details. We&apos;ll call you within one business
             day to understand what you need.
           </p>
-          <button onClick={reset} className="btn btn-secondary">
+          <button onClick={reset} className="sv-btn sv-btn-secondary">
             Send another
           </button>
         </div>
       ) : (
         <form
           onSubmit={submit}
-          style={{ display: "flex", flexDirection: "column", gap: 15 }}
+          style={{ display: "flex", flexDirection: "column", gap: 17 }}
           noValidate
         >
           {/* honeypot — hidden from people, bots fill it and the server drops the submit */}
@@ -207,14 +194,14 @@ export default function ContactForm() {
             }}
           />
           <div
-            className="ct-two"
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 15 }}
+            className="pp-two"
+            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 17 }}
           >
-            <div className="field">
+            <div className="sv-field">
               <label htmlFor="cf-name">Name</label>
               <input
                 id="cf-name"
-                className="input"
+                className="sv-input"
                 value={f.name}
                 onChange={set("name")}
                 placeholder="Your name"
@@ -222,20 +209,16 @@ export default function ContactForm() {
                 aria-describedby={errName ? "cf-name-err" : undefined}
               />
               {errName && (
-                <span
-                  id="cf-name-err"
-                  role="alert"
-                  style={{ fontSize: 11, color: ERR }}
-                >
+                <span id="cf-name-err" role="alert" style={errStyle}>
                   Please enter your name
                 </span>
               )}
             </div>
-            <div className="field">
+            <div className="sv-field">
               <label htmlFor="cf-email">Work email</label>
               <input
                 id="cf-email"
-                className="input"
+                className="sv-input"
                 type="email"
                 value={f.email}
                 onChange={set("email")}
@@ -244,25 +227,21 @@ export default function ContactForm() {
                 aria-describedby={errEmail ? "cf-email-err" : undefined}
               />
               {errEmail && (
-                <span
-                  id="cf-email-err"
-                  role="alert"
-                  style={{ fontSize: 11, color: ERR }}
-                >
+                <span id="cf-email-err" role="alert" style={errStyle}>
                   Enter a valid email
                 </span>
               )}
             </div>
           </div>
           <div
-            className="ct-two"
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 15 }}
+            className="pp-two"
+            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 17 }}
           >
-            <div className="field">
+            <div className="sv-field">
               <label htmlFor="cf-phone">Phone</label>
               <input
                 id="cf-phone"
-                className="input"
+                className="sv-input"
                 type="tel"
                 value={f.phone}
                 onChange={set("phone")}
@@ -271,31 +250,27 @@ export default function ContactForm() {
                 aria-describedby={errPhone ? "cf-phone-err" : undefined}
               />
               {errPhone && (
-                <span
-                  id="cf-phone-err"
-                  role="alert"
-                  style={{ fontSize: 11, color: ERR }}
-                >
+                <span id="cf-phone-err" role="alert" style={errStyle}>
                   Enter a number we can call you on
                 </span>
               )}
             </div>
-            <div className="field">
+            <div className="sv-field">
               <label htmlFor="cf-company">Company / operation</label>
               <input
                 id="cf-company"
-                className="input"
+                className="sv-input"
                 value={f.company}
                 onChange={set("company")}
                 placeholder="e.g. rice mill, school, hospital"
               />
             </div>
           </div>
-          <div className="field">
+          <div className="sv-field">
             <label htmlFor="cf-product">Which solution?</label>
             <select
               id="cf-product"
-              className="input"
+              className="sv-input"
               value={f.product}
               onChange={set("product")}
             >
@@ -312,7 +287,7 @@ export default function ContactForm() {
               <a
                 href="mailto:query@svasamm.com"
                 style={{
-                  color: "var(--color-text)",
+                  color: "var(--sv-ink)",
                   textDecoration: "underline",
                 }}
               >
@@ -323,24 +298,15 @@ export default function ContactForm() {
           )}
           <button
             type="submit"
-            className="btn btn-primary btn-block"
+            className="sv-btn sv-btn-primary sv-btn-block sv-btn-lg"
             disabled={status === "sending"}
-            style={{
-              fontSize: 15,
-              padding: 11,
-              opacity: status === "sending" ? 0.6 : 1,
-            }}
+            style={{ opacity: status === "sending" ? 0.6 : 1 }}
           >
             {status === "sending" ? (
               "Sending…"
             ) : (
               <>
-                Request a walkthrough{" "}
-                <Icon
-                  name="ph-arrow-right"
-                  weight="bold"
-                  style={{ fontSize: 14 }}
-                />
+                Request a walkthrough <Icon name="ph-arrow-right" size={17} />
               </>
             )}
           </button>

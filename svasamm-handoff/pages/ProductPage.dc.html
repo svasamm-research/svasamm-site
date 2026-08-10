@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="svasamm.css">
+  <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.js"></script>
+  <script src="icons.js"></script>
+  <style>
+    .pp-link { color: var(--sv-ink-2); transition: color .15s ease; }
+    .pp-link:hover { color: var(--sv-brand); }
+    .pp-hero { background: radial-gradient(58% 78% at 90% 0%, var(--sv-brand-50), transparent 62%), linear-gradient(180deg, #fbfcfe 0%, var(--sv-bg) 72%); }
+    .pp-faq { border-bottom: 1px solid var(--sv-line); }
+    @media (max-width: 980px) { .pp-split { grid-template-columns: 1fr !important; } }
+  </style>
+</helmet>
+<div>
+  <!-- HERO -->
+  <section class="pp-hero" style="border-bottom:1px solid var(--sv-line)">
+    <div class="sv-wrap" style="padding:22px 24px 0">
+      <div style="display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--sv-ink-3)">
+        <a href="Svasamm.dc.html" class="pp-link">Home</a>
+        <span class="sv-ic" data-icon="chevron-right" style="width:14px;height:14px"></span>
+        <a href="Solutions.dc.html" class="pp-link">Solutions</a>
+        <span class="sv-ic" data-icon="chevron-right" style="width:14px;height:14px"></span>
+        <span style="color:var(--sv-ink)">{{ name }}</span>
+      </div>
+    </div>
+    <div class="sv-wrap pp-split" style="display:grid;grid-template-columns:1.02fr .98fr;gap:60px;align-items:center;padding:52px 24px 72px">
+      <div>
+        <span class="sv-tag sv-tag-brand" style="margin-bottom:22px">{{ badge }}</span>
+        <h1 style="margin:0 0 20px;max-width:17ch;font-size:50px">{{ tagline }}</h1>
+        <p style="font-size:17.5px;line-height:1.62;color:var(--sv-ink-2);max-width:50ch;margin:0 0 32px">{{ blurb }}</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="Contact.dc.html" class="sv-btn sv-btn-primary sv-btn-lg">{{ ctaPrimary }}</a>
+          <a href="#pp-features" class="sv-btn sv-btn-secondary sv-btn-lg">See capabilities</a>
+        </div>
+      </div>
+      <figure class="sv-card" style="padding:10px;box-shadow:var(--sv-sh-3);overflow:hidden">
+        <img src="{{ heroImg }}" alt="" loading="eager" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--sv-r)">
+        <figcaption style="display:flex;align-items:center;gap:8px;padding:12px 8px 4px;font-family:var(--sv-mono);font-size:12px;color:var(--sv-ink-3)">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--sv-teal);flex:none"></span>{{ heroCaption }}
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section id="pp-features" style="padding:88px 0">
+    <div class="sv-wrap">
+      <div class="sv-eyebrow">Capabilities</div>
+      <h2 style="margin:0 0 40px;max-width:26ch">{{ featuresTitle }}</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+          <div class="sv-card" style="display:flex;gap:16px;padding:24px">
+            <span class="sv-chip sv-chip-sm"><span class="sv-ic" data-icon="{{ f.icon }}" style="width:19px;height:19px"></span></span>
+            <div>
+              <h3 style="font-size:17px;margin:0 0 7px">{{ f.title }}</h3>
+              <p style="font-size:14.5px;line-height:1.6;color:var(--sv-ink-2);margin:0">{{ f.body }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <sc-if value="{{ hasTiers }}" hint-placeholder-val="{{ false }}">
+    <section style="padding:88px 0;background:var(--sv-bg-subtle);border-top:1px solid var(--sv-line);border-bottom:1px solid var(--sv-line)">
+      <div class="sv-wrap">
+        <div style="max-width:60ch;margin-bottom:44px">
+          <div class="sv-eyebrow">Tiers</div>
+          <h2 style="margin:0">{{ tiersTitle }}</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;align-items:start">
+          <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="3">
+            <div class="sv-card" style="display:flex;flex-direction:column;padding:30px;position:relative;border-color:{{ t.border }};box-shadow:{{ t.shadow }}">
+              <sc-if value="{{ t.featured }}" hint-placeholder-val="{{ false }}">
+                <span class="sv-tag sv-tag-brand" style="position:absolute;top:-11px;left:30px">Most popular</span>
+              </sc-if>
+              <h3 style="font-size:22px;margin:0 0 8px">{{ t.name }}</h3>
+              <p style="font-size:14.5px;color:var(--sv-ink-2);margin:0 0 22px;min-height:44px">{{ t.for }}</p>
+              <div style="display:flex;flex-direction:column;gap:12px;flex:1">
+                <sc-for list="{{ t.items }}" as="it" hint-placeholder-count="4">
+                  <div style="display:flex;gap:10px;font-size:14.5px;color:var(--sv-ink);line-height:1.5">
+                    <span class="sv-ic" data-icon="check" style="width:16px;height:16px;color:var(--sv-teal);margin-top:3px"></span>{{ it.t }}
+                  </div>
+                </sc-for>
+              </div>
+              <a href="Contact.dc.html" class="sv-btn {{ t.btnClass }} sv-btn-block" style="margin-top:28px">{{ t.cta }}</a>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- BUILT FOR -->
+  <section style="padding:72px 0 48px">
+    <div class="sv-wrap">
+      <h2 style="font-size:24px;margin:0 0 20px">Built for</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ builtFor }}" as="b" hint-placeholder-count="6"><span class="sv-tag sv-tag-outline" style="font-size:13px;padding:7px 14px;text-transform:none;letter-spacing:0;font-family:var(--sv-font)">{{ b.t }}</span></sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <sc-if value="{{ hasResources }}" hint-placeholder-val="{{ false }}">
+    <section style="padding:16px 0 72px">
+      <div class="sv-wrap">
+        <div class="sv-card" style="padding:36px">
+          <div class="sv-eyebrow">Resources</div>
+          <h2 style="font-size:28px;margin:0 0 10px;max-width:30ch">{{ resTitle }}</h2>
+          <p style="font-size:16px;color:var(--sv-ink-2);margin:0 0 32px;max-width:64ch">{{ resIntro }}</p>
+          <div class="sv-collapse" style="display:grid;grid-template-columns:{{ resGrid }};gap:36px">
+            <sc-for list="{{ resColumns }}" as="col" hint-placeholder-count="3">
+              <div>
+                <div style="font-family:var(--sv-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--sv-ink-3);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--sv-line)">{{ col.heading }}</div>
+                <div style="display:flex;flex-direction:column;gap:13px">
+                  <sc-for list="{{ col.links }}" as="g" hint-placeholder-count="4">
+                    <a href="{{ g.href }}" class="pp-link" style="display:flex;gap:10px;font-size:15px;line-height:1.45">
+                      <span class="sv-ic" data-icon="{{ col.icon }}" style="width:16px;height:16px;color:var(--sv-brand);margin-top:3px"></span>{{ g.t }}
+                    </a>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- FAQ -->
+  <section style="padding:16px 0 88px">
+    <div class="sv-wrap" style="max-width:880px">
+      <h2 style="margin:0 0 28px">Frequently asked questions</h2>
+      <div style="border-top:1px solid var(--sv-line)">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+          <div class="pp-faq">
+            <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" aria-controls="{{ q.panelId }}" id="{{ q.btnId }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 4px;background:none;border:0;cursor:pointer;text-align:left;font-family:var(--sv-font);font-weight:600;font-size:17.5px;letter-spacing:-.015em;color:var(--sv-ink)">
+              {{ q.q }}<span class="sv-ic" data-icon="{{ q.icon }}" style="width:18px;height:18px;color:var(--sv-brand)"></span>
+            </button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <div id="{{ q.panelId }}" role="region" aria-labelledby="{{ q.btnId }}" style="padding:0 4px 24px;font-size:15.5px;line-height:1.68;color:var(--sv-ink-2);max-width:74ch">{{ q.a }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:0 0 88px">
+    <div class="sv-wrap">
+      <div class="sv-field-deep" style="padding:64px 48px;text-align:center">
+        <h2 style="margin:0 0 16px;max-width:24ch;margin-left:auto;margin-right:auto">{{ ctaTitle }}</h2>
+        <p style="font-size:17px;color:rgba(255,255,255,.72);margin:0 0 34px;max-width:56ch;margin-left:auto;margin-right:auto">{{ ctaBody }}</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="Contact.dc.html" class="sv-btn sv-btn-inv sv-btn-lg">{{ ctaPrimary }}</a>
+          <a href="Solutions.dc.html" class="sv-btn sv-btn-inv-outline sv-btn-lg">Back to all solutions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:1200},&quot;pid&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;millingo&quot;,&quot;dms&quot;,&quot;erp&quot;,&quot;hrms&quot;,&quot;crm&quot;,&quot;service-desk&quot;,&quot;loan&quot;],&quot;default&quot;:&quot;millingo&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { faq: -1 };
+  componentDidMount() { window.svIcons && window.svIcons(); }
+  componentDidUpdate() { window.svIcons && window.svIcons(); }
+  data() {
+    return {
+      millingo: {
+        name:'Millingo', badge:'Rice Mill ERP · Millingo', tagline:'The ERP built for rice mills — not bent to fit one',
+        blurb:'Millingo runs the whole mill: paddy procurement and quality grading, milling yield and by-products, gunny-bag accounting, and full government FCI / state levy (CMR) compliance — from a single seasonal mill to multi-unit government-supplying operations.',
+        ctaPrimary:'Get a free consultation',
+        statTitle:'Batch P&L · today',
+        stats:[{label:'Rice recovery',value:'67.4%',color:'var(--sv-brand)'},{label:'Bran booked',value:'8.2 MT',color:'var(--sv-ink)'},{label:'Broken rice',value:'4.1 MT',color:'var(--sv-ink)'},{label:'Batch margin',value:'₹ 1.9L',color:'var(--sv-brand)'}],
+        featuresTitle:'Gate to godown, and the government cycle end to end',
+        features:[
+          {icon:'scroll-text',title:'Paddy procurement, gate to godown',body:'Purchase agreements (Sauda), gate receipts, and stock that posts only after quality approval.'},
+          {icon:'scale',title:'Quality grading with butta deductions',body:'Multi-parameter QC (moisture, foreign matter, recovery) deducts value from the bill without touching quantity.'},
+          {icon:'trending-up',title:'Milling yield & by-products',body:'Every batch tracks recovery % plus bran, husk and broken rice, each with its own valuation and P&L.'},
+          {icon:'package',title:'Gunny-bag (bardana) accounting',body:'Bag-type conversions (jute/PP), packing and empty-bag returns tracked as stock.'},
+          {icon:'building-2',title:'Government FCI / levy & CMR',body:'Levy memos, GPS-geofenced camp pickups, CMR deliveries, release orders and 7.1 out-turn reconciliation.'},
+          {icon:'smartphone',title:'Roles, dashboards & field app',body:'Owner, purchase, QC, production and warehouse queues, plus a phone-based camp-pick app.'},
+        ],
+        tiersTitle:'Scales from one seasonal mill to multi-unit CMR operations',
+        tiers:[
+          {name:'Starter',for:'Small, seasonal, market-only mills.',border:'var(--sv-line)', shadow:'var(--sv-sh-1)',featured:false,btnClass:'sv-btn-secondary',cta:'Start here',items:['Paddy purchase & stock','Milling batches & recovery','Market sales & basic accounting','Single unit']},
+          {name:'Professional',for:'Full operations with financials & QC slabs.',border:'var(--sv-brand)', shadow:'var(--sv-sh-2)',featured:true,btnClass:'sv-btn-primary',cta:'Get a walkthrough',items:['Everything in Starter','Quality/moisture slabs & butta','By-product P&L','Gunny-bag accounting','Full financials']},
+          {name:'Enterprise',for:'Government CMR business, multi-unit.',border:'var(--sv-line)', shadow:'var(--sv-sh-1)',featured:false,btnClass:'sv-btn-secondary',cta:'Talk to us',items:['Everything in Professional','FCI / state levy & CMR cycle','Statutory returns','Multi-unit consolidation','Field camp-pick app']},
+        ],
+        builtFor:['Private Rice Mills','Paddy Processing','FCI / CMR Mills','Open-market Rice Sellers','Multi-unit Mills','Agri Processing'],
+        resources:{
+          guides:[
+            {t:'Custom Milled Rice (CMR) explained — process, 67% obligation & FRK',href:'Guide-CMR.dc.html'},
+            {t:'How to calculate rice-mill yield & milling recovery',href:'Guide-YieldRecovery.dc.html'},
+            {t:'By-product accounting: bran, husk & broken rice',href:'Guide-ByproductAccounting.dc.html'},
+            {t:'GST for rice mills: paddy, rice, bran & milling',href:'Guide-GST.dc.html'},
+            {t:"Best rice-mill software: how to choose (buyer's guide)",href:'Guide-BestSoftware.dc.html'},
+            {t:'Rice-mill software price: what it costs & why',href:'Guide-Pricing.dc.html'},
+          ],
+          states:[
+            {t:'West Bengal (e-Paddy & CMR)',href:'State-WestBengal.dc.html'},
+            {t:'Uttar Pradesh (procurement & CMR)',href:'State-UttarPradesh.dc.html'},
+            {t:'Odisha (OSCSC & CMR)',href:'State-Odisha.dc.html'},
+            {t:'Bihar (PACS & CMR)',href:'State-Bihar.dc.html'},
+          ],
+          compare:[
+            {t:'Millingo vs Dataman Rice Soft (AAHAAR)',href:'Compare-Dataman.dc.html'},
+            {t:'Millingo vs Samadhan Rice Mill ERP',href:'Compare-Samadhan.dc.html'},
+          ],
+        },
+        faqs:[
+          {q:'What is a rice mill ERP?',a:'Software built specifically for rice milling — paddy procurement and quality grading, milling production with yield and by-product tracking, packaging, sales, accounting, and government FCI/levy (CMR) compliance — on one system, rather than a generic ERP adapted to fit.'},
+          {q:'Does Millingo handle government CMR / levy procurement?',a:'Yes. Millingo covers the full CMR cycle — levy memos, camp pickups, CMR deliveries and release orders, and the 7.1 out-turn reconciliation — with state-specific workflow such as West Bengal e-Paddy.'},
+          {q:'Can Millingo track milling recovery and by-products?',a:'Yes. Each milling batch computes rice recovery and books bran, husk and broken rice as separate stock with their own valuation, so you see true profit per batch.'},
+          {q:'Which tiers does Millingo offer?',a:'Starter (small/seasonal, market-only mills), Professional (full operations, financials, quality/moisture slabs, by-product P&L), and Enterprise (government CMR business, statutory returns, multi-unit).'},
+        ],
+        ctaTitle:"See Millingo run your mill's numbers", ctaBody:'Bring one season of paddy purchases and CMR memos — we\u2019ll walk them through the system with you.',
+      },
+      dms: {
+        name:'DMS', badge:'Distributor Management', tagline:'Run your entire distributor network on one system',
+        blurb:'DMS gives every distributor a scoped workspace while you keep central control — tiered stock allocation, order-to-delivery, commission and incentive calculation, and territory-level visibility across the whole network.',
+        ctaPrimary:'Book a walkthrough',
+        statTitle:'Network · today',
+        stats:[{label:'Active distributors',value:'128',color:'var(--sv-ink)'},{label:'Orders today',value:'342',color:'var(--sv-brand)'},{label:'Order fill rate',value:'96%',color:'var(--sv-ink)'},{label:'Commission run',value:'₹ 4.2L',color:'var(--sv-brand)'}],
+        featuresTitle:'Central control, distributor-level detail',
+        features:[
+          {icon:'user-check',title:'Distributor-scoped access',body:'Each distributor sees only their own orders, stock and ledger — one system, cleanly partitioned.'},
+          {icon:'layers',title:'Tiered stock & allocation',body:'Central warehouse to distributor to sub-stockist, with allocation rules and stock transfers.'},
+          {icon:'package',title:'Order to delivery',body:'Order capture, approval, dispatch and proof-of-delivery, tracked end to end.'},
+          {icon:'percent',title:'Commissions & incentives',body:'Slab-based commissions and scheme payouts computed automatically per distributor.'},
+          {icon:'map',title:'Territory & beat control',body:'Geographies, beats and coverage mapped to distributors, with overlap prevention.'},
+          {icon:'scale',title:'Ledgers & reconciliation',body:'Distributor-wise outstanding, credit limits and statements, reconciled to the day.'},
+        ],
+        builtFor:['OEM channel networks','Coding & marking','Packaging machinery','Electrical & electronics','Pharma & med-devices','Automotive aftermarket','HVAC & equipment','Agri equipment'],
+        resources:{
+          title:'Guides, OEM-industry pages & comparisons',
+          intro:'In-depth, indexable pages for the channel questions OEMs actually search — each is its own page for search & AI discovery.',
+          grid:'1fr 1.4fr 1fr',
+          columns:[
+            {heading:'OEM channel guide',icon:'file-text',links:[
+              {t:'Distributor management for OEMs: the full channel lifecycle',href:'Guide-OEMDistributor.dc.html'},
+            ]},
+            {heading:'By OEM industry',icon:'factory',links:[
+              {t:'Coding & marking OEMs (inkjet/CIJ, inks & fluids)',href:'DMS-CodingMarking.dc.html'},
+              {t:'Packaging & industrial machinery OEMs',href:'DMS-PackagingMachinery.dc.html'},
+              {t:'Electrical & electronics equipment OEMs',href:'DMS-Electrical.dc.html'},
+              {t:'Pharma & medical device OEMs',href:'DMS-Pharma.dc.html'},
+              {t:'Automotive components & aftermarket OEMs',href:'DMS-Automotive.dc.html'},
+              {t:'HVAC & industrial equipment OEMs',href:'DMS-HVAC.dc.html'},
+              {t:'Agri & farm equipment OEMs',href:'DMS-Agri.dc.html'},
+            ]},
+            {heading:'Compare',icon:'scale',links:[
+              {t:'Svasamm DMS vs Bizom',href:'Compare-Bizom.dc.html'},
+              {t:'Svasamm DMS vs FieldAssist',href:'Compare-FieldAssist.dc.html'},
+            ]},
+          ],
+        },
+        faqs:[
+          {q:'Can each distributor log in and see only their data?',a:'Yes. Access is scoped per distributor — orders, stock and ledgers are partitioned so each party sees only their own, while head office sees the whole network.'},
+          {q:'Does DMS calculate commissions and scheme payouts?',a:'Yes. Slab-based commissions and promotional schemes are configured centrally and computed automatically on qualifying orders.'},
+          {q:'Can we run multiple stock tiers?',a:'Yes — central warehouse, distributor and sub-stockist tiers with allocation rules and inter-tier transfers.'},
+        ],
+        ctaTitle:'See DMS run your distribution network', ctaBody:'Bring one region and a distributor list — we\u2019ll model the tiers, commissions and territories with you.',
+      },
+      erp: {
+        name:'ERP System', badge:'Platform · ERP', tagline:'Finance, supply chain and operations on one connected system',
+        blurb:'A unified ERP for finance, inventory, procurement, manufacturing and sales — so a single source of truth drives your accounting, your warehouse and your shop floor, with Indian GST and statutory returns built in.',
+        ctaPrimary:'Book a walkthrough',
+        statTitle:'This month',
+        stats:[{label:'Open orders',value:'214',color:'var(--sv-ink)'},{label:'Inventory turns',value:'6.1x',color:'var(--sv-brand)'},{label:'GST filed',value:'On time',color:'var(--sv-brand)'},{label:'Entities',value:'4',color:'var(--sv-ink)'}],
+        featuresTitle:'The whole operation, one source of truth',
+        features:[
+          {icon:'book-open',title:'Finance & accounting',body:'General ledger, receivables/payables, cost centres and multi-entity consolidation.'},
+          {icon:'warehouse',title:'Inventory & warehouse',body:'Multi-warehouse stock, batches, serials and valuation, live with every transaction.'},
+          {icon:'shopping-cart',title:'Procurement',body:'Requisition to purchase order to receipt, with supplier scoring and approvals.'},
+          {icon:'factory',title:'Manufacturing',body:'Bills of material, work orders and production planning tied to stock and costs.'},
+          {icon:'receipt',title:'Sales & billing',body:'Quotation to invoice with GST, e-invoicing and e-way bill support.'},
+          {icon:'file-text',title:'GST & statutory',body:'GST returns, TDS and Indian statutory reporting handled in the product.'},
+        ],
+        builtFor:['Manufacturing','Trading & distribution','Services','Multi-entity groups','Project-based firms'],
+        faqs:[
+          {q:'Is Indian GST built in?',a:'Yes — GST-compliant invoicing, e-invoice and e-way bill support, and GST return preparation are part of the system, not a bolt-on.'},
+          {q:'Can it run multiple companies?',a:'Yes. Multiple legal entities with consolidation, inter-company transactions and per-entity books are supported.'},
+          {q:'Does it cover manufacturing?',a:'Yes — bills of material, work orders and production planning connect the shop floor to inventory and costing.'},
+        ],
+        ctaTitle:'See the ERP mapped to your books', ctaBody:'Bring a chart of accounts and a month of transactions — we\u2019ll walk them through the system with you.',
+        resources:{ title:'Guides & industry pages', intro:'In-depth, indexable pages for what ERP buyers actually search — each is its own page for search & AI discovery.', grid:'1fr 1.5fr', columns:[
+          {heading:'ERP guide',icon:'file-text',links:[{t:'ERP implementation for Indian businesses',href:'Guide-ERPImplementation.dc.html'}]},
+          {heading:'By industry',icon:'building-2',links:[
+            {t:'ERP for manufacturing',href:'ERP-Manufacturing.dc.html'},
+            {t:'ERP for trading & distribution',href:'ERP-Trading.dc.html'},
+            {t:'ERP for services & project firms',href:'ERP-Services.dc.html'},
+          ]},
+        ]},
+      },
+      hrms: {
+        name:'HRMS', badge:'Platform · HR', tagline:'HR from recruitment to retirement',
+        blurb:'A single HR system for the whole employee lifecycle — recruitment and onboarding, attendance and shifts, payroll with Indian statutory compliance, leave, performance and employee self-service.',
+        ctaPrimary:'Book a walkthrough',
+        statTitle:'This cycle',
+        stats:[{label:'Headcount',value:'186',color:'var(--sv-ink)'},{label:'Attendance',value:'97.2%',color:'var(--sv-brand)'},{label:'Payroll',value:'Processed',color:'var(--sv-brand)'},{label:'Open roles',value:'7',color:'var(--sv-ink)'}],
+        featuresTitle:'The whole employee lifecycle',
+        features:[
+          {icon:'user-plus',title:'Recruitment & onboarding',body:'Job openings, applicant pipeline and structured onboarding into the employee record.'},
+          {icon:'clock',title:'Attendance & shifts',body:'Shift rosters, biometric/geo check-in and overtime, feeding payroll directly.'},
+          {icon:'banknote',title:'Payroll & compliance',body:'Salary structures with PF, ESI, TDS and professional tax computed and filed.'},
+          {icon:'calendar-check',title:'Leave management',body:'Leave policies, balances, approvals and holiday calendars per location.'},
+          {icon:'bar-chart-3',title:'Performance',body:'Goals, appraisal cycles and feedback tied to each employee.'},
+          {icon:'smartphone',title:'Employee self-service',body:'Payslips, leave requests and details, self-served from any device.'},
+        ],
+        builtFor:['SMEs & mid-market','Manufacturing','Multi-location teams','Services firms','Hospitals & clinics'],
+        faqs:[
+          {q:'Does payroll handle Indian statutory compliance?',a:'Yes — PF, ESI, TDS and professional tax are computed within payroll, with the reports needed for filing.'},
+          {q:'Can employees self-serve?',a:'Yes. Employees access payslips, apply for leave and update details from a self-service portal on any device.'},
+          {q:'Does attendance connect to payroll?',a:'Yes — shifts, biometric/geo check-in and overtime flow straight into the payroll run.'},
+        ],
+        ctaTitle:'See HRMS run one payroll cycle', ctaBody:'Bring a salary structure and an employee list — we\u2019ll set up a sample cycle with you.',
+        resources:{ title:'Guides & industry pages', intro:'In-depth, indexable pages for what HR buyers actually search — each is its own page for search & AI discovery.', grid:'1fr 1.5fr', columns:[
+          {heading:'HR guide',icon:'file-text',links:[{t:'Payroll & statutory compliance in India',href:'Guide-PayrollCompliance.dc.html'}]},
+          {heading:'By industry',icon:'building-2',links:[
+            {t:'HRMS for manufacturing',href:'HRMS-Manufacturing.dc.html'},
+            {t:'HRMS for multi-location retail',href:'HRMS-Retail.dc.html'},
+            {t:'HRMS for hospitals & clinics',href:'HRMS-Healthcare.dc.html'},
+          ]},
+        ]},
+      },
+      crm: {
+        name:'CRM Platform', badge:'Platform · CRM', tagline:'Turn leads into customers, and customers into repeat business',
+        blurb:'A CRM that connects sales, marketing and support on one record — lead capture and pipeline, sales automation, campaigns, quotations, and a shared view of every customer conversation.',
+        ctaPrimary:'Book a walkthrough',
+        statTitle:'This quarter',
+        stats:[{label:'Open pipeline',value:'₹ 1.4Cr',color:'var(--sv-ink)'},{label:'Win rate',value:'31%',color:'var(--sv-brand)'},{label:'Leads (wk)',value:'88',color:'var(--sv-ink)'},{label:'Avg. response',value:'2.4h',color:'var(--sv-brand)'}],
+        featuresTitle:'One record from first touch to renewal',
+        features:[
+          {icon:'filter',title:'Lead & pipeline',body:'Capture leads from every source and move them through a pipeline you define.'},
+          {icon:'zap',title:'Sales automation',body:'Assignment rules, follow-up reminders and stage automation keep deals moving.'},
+          {icon:'megaphone',title:'Marketing campaigns',body:'Email campaigns and segments tied to the same contact records.'},
+          {icon:'file-text',title:'Quotations & orders',body:'Quote to order to invoice, connected to your catalogue and pricing.'},
+          {icon:'message-circle',title:'Support & tickets',body:'Customer issues logged against the account for a full relationship view.'},
+          {icon:'trending-up',title:'Analytics',body:'Pipeline, conversion and activity dashboards for reps and managers.'},
+        ],
+        builtFor:['B2B sales teams','Services firms','Distribution','SMEs','Agencies'],
+        faqs:[
+          {q:'Does it connect sales and support?',a:'Yes — leads, deals, quotes and support tickets all sit against the same customer record for one shared view.'},
+          {q:'Can I customise the pipeline?',a:'Yes. Stages, fields and automation rules are configured to match how your team actually sells.'},
+          {q:'Does it do quotations and orders?',a:'Yes — quote to order to invoice, connected to your catalogue and pricing.'},
+        ],
+        ctaTitle:'See the CRM shaped to your pipeline', ctaBody:'Bring your current stages and a sample of leads — we\u2019ll model your pipeline with you.',
+        resources:{ title:'Guides & industry pages', intro:'In-depth, indexable pages for what CRM buyers actually search — each is its own page for search & AI discovery.', grid:'1fr 1.5fr', columns:[
+          {heading:'CRM guide',icon:'file-text',links:[{t:'Building a sales pipeline that closes',href:'Guide-CRMSalesPipeline.dc.html'}]},
+          {heading:'By industry',icon:'building-2',links:[
+            {t:'CRM for B2B sales teams',href:'CRM-B2B.dc.html'},
+            {t:'CRM for services firms',href:'CRM-Services.dc.html'},
+            {t:'CRM for distribution businesses',href:'CRM-Distribution.dc.html'},
+          ]},
+        ]},
+      },
+      'service-desk': {
+        name:'Service Desk', badge:'Platform · ITSM', tagline:'IT service management your team will actually use',
+        blurb:'A service desk for internal IT or customer support — ticketing and queues, incident and problem management, SLAs and escalation, a knowledge base, and a self-service portal, all in one place.',
+        ctaPrimary:'Book a walkthrough',
+        statTitle:'Today',
+        stats:[{label:'Open tickets',value:'54',color:'var(--sv-ink)'},{label:'SLA met',value:'98%',color:'var(--sv-brand)'},{label:'First response',value:'12m',color:'var(--sv-brand)'},{label:'CSAT',value:'4.6/5',color:'var(--sv-ink)'}],
+        featuresTitle:'From ticket to resolution, on time',
+        features:[
+          {icon:'ticket',title:'Ticketing & queues',body:'Multi-channel ticket intake with routing to the right team queue.'},
+          {icon:'triangle-alert',title:'Incident & problem',body:'Link incidents to underlying problems and track root-cause resolution.'},
+          {icon:'timer',title:'SLA & escalation',body:'Response and resolution SLAs with automatic escalation before breach.'},
+          {icon:'book-marked',title:'Knowledge base',body:'Articles that deflect repeat tickets and speed up agents.'},
+          {icon:'monitor',title:'Assets / CMDB',body:'Track the assets and services tickets relate to.'},
+          {icon:'circle-user',title:'Self-service portal',body:'A branded portal where users raise and track their own requests.'},
+        ],
+        builtFor:['Internal IT teams','MSPs','Customer support','Facilities','Shared services'],
+        faqs:[
+          {q:'Does it enforce SLAs?',a:'Yes — response and resolution SLAs are tracked per ticket with automatic escalation before a breach.'},
+          {q:'Is there a self-service portal?',a:'Yes. Users raise and track requests through a branded portal, backed by a knowledge base that deflects repeat tickets.'},
+          {q:'Can we manage assets?',a:'Yes — a lightweight CMDB tracks the assets and services that tickets relate to.'},
+        ],
+        ctaTitle:'See the Service Desk handle your queues', ctaBody:'Bring your ticket categories and SLA targets — we\u2019ll configure a working queue with you.',
+        resources:{ title:'Guides & industry pages', intro:'In-depth, indexable pages for what service-desk buyers actually search — each is its own page for search & AI discovery.', grid:'1fr 1.5fr', columns:[
+          {heading:'ITSM guide',icon:'file-text',links:[{t:'ITSM fundamentals: tickets, SLAs & escalation',href:'Guide-ITSM.dc.html'}]},
+          {heading:'By industry',icon:'building-2',links:[
+            {t:'Service Desk for internal IT teams',href:'SD-InternalIT.dc.html'},
+            {t:'Service Desk for MSPs',href:'SD-MSP.dc.html'},
+            {t:'Service Desk for customer support teams',href:'SD-CustomerSupport.dc.html'},
+          ]},
+        ]},
+      },
+    };
+  }
+  renderVals() {
+    const d = this.data()[this.props.pid] || this.data().millingo;
+    const s = this.state;
+    const res = d.resources;
+    const pid = this.props.pid;
+    const heroMap = {
+      millingo:'assets/img/rice-mill-factory.jpg',
+      dms:'assets/img/dms-channel.jpg',
+      erp:'assets/img/erp.jpg',
+      hrms:'assets/img/hrms.jpg',
+      crm:'assets/img/crm.jpg',
+      'service-desk':'assets/img/service-desk.jpg'
+    };
+    const heroImg = heroMap[pid] || 'assets/img/network-plexus.jpg';
+    const capMap = { millingo:'Rice milling, in operation', dms:'Across the distributor & OEM channel', erp:'One connected system', hrms:'Your workforce, handled', crm:'Relationships that close', 'service-desk':'Support, on time' };
+    const heroCaption = capMap[pid] || '';
+    return {
+      heroImg, heroCaption,
+      name:d.name, badge:d.badge, tagline:d.tagline, blurb:d.blurb, ctaPrimary:d.ctaPrimary,
+      statTitle:d.statTitle, stats:d.stats,
+      featuresTitle:d.featuresTitle, features:d.features,
+      hasTiers: !!d.tiers, tiersTitle:d.tiersTitle||'', tiers:(d.tiers||[]).map(t=>({...t, items:t.items.map(x=>({t:x}))})),
+      builtFor: d.builtFor.map(t=>({t})),
+      hasResources: !!res,
+      resTitle: res ? (res.title || 'Guides, state-wise details & comparisons') : '',
+      resIntro: res ? (res.intro || 'In-depth, indexable pages for the questions buyers actually search — each is its own page for search & AI discovery.') : '',
+      resGrid: res ? (res.grid || '1.2fr 1fr 1fr') : '1fr',
+      resColumns: res ? (res.columns || [
+        {heading:'Rice-mill guides',icon:'file-text',links:res.guides||[]},
+        {heading:'By state',icon:'map-pin',links:res.states||[]},
+        {heading:'Compare',icon:'scale',links:res.compare||[]},
+      ]) : [],
+      faqs: d.faqs.map((f,i)=>({ q:f.q, a:f.a, open:s.faq===i, icon:s.faq===i?'minus':'plus', btnId:'faq-b-'+i, panelId:'faq-p-'+i, toggle:()=>this.setState({faq:s.faq===i?-1:i}) })),
+      ctaTitle:d.ctaTitle, ctaBody:d.ctaBody,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -13,8 +13,16 @@ const OPTS: { key: Filter; label: string }[] = [
   { key: "service", label: "Services" },
 ];
 
-// Home "Our solutions" grid with a client-side All/Vertical/Platform filter (the only
-// island in this section). Cards mirror Svasamm.dc.html.
+// Map the data's legacy tag classes to the --sv-* signal tags.
+const svTag = (cls: string) =>
+  cls.includes("accent")
+    ? "sv-tag-brand"
+    : cls.includes("outline")
+      ? "sv-tag-outline"
+      : "sv-tag";
+
+// Home "Our solutions" grid with a client-side All/Vertical/Platform/Services filter (the only
+// island in this section). Cards mirror the Products section of Svasamm.dc.html.
 export default function ProductFilter({
   products,
 }: {
@@ -31,47 +39,27 @@ export default function ProductFilter({
           display: "flex",
           alignItems: "flex-end",
           justifyContent: "space-between",
-          gap: 24,
+          gap: 28,
           flexWrap: "wrap",
-          marginBottom: 34,
+          marginBottom: 36,
         }}
       >
-        <div style={{ maxWidth: "38em" }}>
-          <div
-            style={{
-              fontSize: 11,
-              letterSpacing: ".12em",
-              textTransform: "uppercase",
-              color: "var(--color-accent)",
-              marginBottom: 12,
-            }}
-          >
-            Our solutions
-          </div>
-          <h2
-            style={{
-              fontSize: 36,
-              letterSpacing: "-.02em",
-              margin: "0 0 12px",
-              color: "var(--color-text)",
-            }}
-          >
+        <div style={{ maxWidth: "54ch" }}>
+          <div className="sv-eyebrow">Our solutions</div>
+          <h2 style={{ margin: "0 0 14px" }}>
             One platform, purpose-built products
           </h2>
           <p
-            style={{
-              fontSize: 16,
-              color: "var(--color-neutral-300)",
-              margin: 0,
-            }}
+            className="sv-muted"
+            style={{ fontSize: 17, margin: 0 }}
           >
             Deep vertical systems for specific industries, plus the platform
             modules every operation needs. Filter to find yours.
           </p>
         </div>
-        <div className="seg" role="tablist">
+        <div className="sv-seg" role="tablist">
           {OPTS.map((o) => (
-            <label key={o.key} className="seg-opt">
+            <label key={o.key} className="sv-seg-opt">
               <input
                 type="radio"
                 name="pf"
@@ -86,8 +74,8 @@ export default function ProductFilter({
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill,minmax(275px,1fr))",
-          gap: 18,
+          gridTemplateColumns: "repeat(auto-fill,minmax(290px,1fr))",
+          gap: 20,
         }}
       >
         {shown.map((p) => {
@@ -96,34 +84,24 @@ export default function ProductFilter({
               <div
                 style={{
                   display: "flex",
-                  alignItems: "center",
+                  alignItems: "flex-start",
                   justifyContent: "space-between",
-                  marginBottom: 16,
+                  marginBottom: 20,
                 }}
               >
                 <span className="sv-chip">
-                  <Icon name={p.icon} style={{ fontSize: 23 }} />
+                  <Icon name={p.icon} size={22} />
                 </span>
-                <span className={`tag ${p.tagClass}`} style={{ fontSize: 10 }}>
-                  {p.tag}
-                </span>
+                <span className={`sv-tag ${svTag(p.tagClass)}`}>{p.tag}</span>
               </div>
-              <h3
-                style={{
-                  fontSize: 18,
-                  margin: "0 0 7px",
-                  color: "var(--color-text)",
-                }}
-              >
-                {p.name}
-              </h3>
+              <h3 style={{ margin: "0 0 8px" }}>{p.name}</h3>
               <p
+                className="sv-muted"
                 style={{
-                  fontSize: 13.5,
-                  lineHeight: 1.55,
-                  color: "var(--color-neutral-400)",
+                  fontSize: 14.5,
+                  lineHeight: 1.6,
                   flex: 1,
-                  margin: "0 0 16px",
+                  margin: "0 0 18px",
                 }}
               >
                 {p.blurb}
@@ -132,26 +110,21 @@ export default function ProductFilter({
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: 6,
-                  fontFamily: "var(--font-heading)",
+                  gap: 7,
+                  fontSize: 14.5,
                   fontWeight: 500,
-                  fontSize: 13.5,
-                  color: "var(--color-accent)",
+                  color: "var(--sv-brand)",
                 }}
               >
-                {p.cta}{" "}
-                <Icon name={p.ctaIcon} weight="bold" style={{ fontSize: 13 }} />
+                {p.cta} <Icon name={p.ctaIcon} size={15} />
               </span>
             </>
           );
-          const cls = "sv-card-hover";
-          const style: React.CSSProperties = {
+          const st: React.CSSProperties = {
             display: "flex",
             flexDirection: "column",
-            padding: 22,
-            borderRadius: 14,
-            background: "var(--color-surface)",
-            border: "1px solid var(--color-neutral-800)",
+            padding: 26,
+            color: "var(--sv-ink)",
           };
           return p.external ? (
             <a
@@ -159,13 +132,18 @@ export default function ProductFilter({
               href={p.href}
               target="_blank"
               rel="noopener"
-              className={cls}
-              style={style}
+              className="sv-card sv-card-i"
+              style={st}
             >
               {inner}
             </a>
           ) : (
-            <Link key={p.id} href={p.href} className={cls} style={style}>
+            <Link
+              key={p.id}
+              href={p.href}
+              className="sv-card sv-card-i"
+              style={st}
+            >
               {inner}
             </Link>
           );

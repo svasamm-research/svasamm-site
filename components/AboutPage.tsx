@@ -13,42 +13,45 @@ const VALUES = [
 ];
 
 // About / Company page — verified facts only (no fabricated metrics). Founder byline is
-// an E-E-A-T signal. Ports the Nocturne look of the other core pages.
+// an E-E-A-T signal. Ported onto the --sv-* design system to match the other core pages.
 export default function AboutPage() {
   return (
     <>
-      <section className="pp-glow" style={{ borderBottom: "1px solid var(--color-divider)" }}>
-        <div className="pp-wrap" style={{ padding: "30px 24px 0" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "var(--color-neutral-500)" }}>
-            <Link href="/" style={{ color: "var(--color-neutral-400)" }}>Home</Link>
-            <Icon name="ph-caret-right" style={{ fontSize: 11 }} />
-            <span style={{ color: "var(--color-text)" }}>About</span>
+      <section style={{ borderBottom: "1px solid var(--sv-line)" }}>
+        <div className="sv-wrap" style={{ padding: "30px 24px 0", maxWidth: 860 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "var(--sv-mono)", fontSize: 12, color: "var(--sv-ink-3)" }}>
+            <Link href="/" style={{ color: "var(--sv-ink-3)" }}>Home</Link>
+            <Icon name="ph-caret-right" size={11} />
+            <span style={{ color: "var(--sv-ink-2)" }}>About</span>
           </div>
         </div>
-        <div className="pp-wrap" style={{ padding: "40px 24px 56px", maxWidth: 820 }}>
-          <div className="tag tag-outline" style={{ marginBottom: 20 }}>About Svasamm</div>
-          <h1 style={{ fontSize: 42, lineHeight: 1.1, letterSpacing: "-.025em", margin: "0 0 14px", color: "var(--color-text)" }}>Vertical software, built where the work happens</h1>
-          <p style={{ fontSize: 14, color: "var(--color-neutral-500)", margin: 0 }}>Svasamm Research Pvt Ltd · Founded 2022 · Konnagar, West Bengal</p>
+        <div className="sv-wrap" style={{ padding: "40px 24px 56px", maxWidth: 860 }}>
+          <span className="sv-tag sv-tag-brand" style={{ marginBottom: 20 }}>About Svasamm</span>
+          <h1 style={{ fontSize: 42, margin: "0 0 14px" }}>Vertical software, built where the work happens</h1>
+          <p style={{ fontFamily: "var(--sv-mono)", fontSize: 13, color: "var(--sv-ink-3)", margin: 0 }}>Svasamm Research Pvt Ltd · Founded 2022 · Konnagar, West Bengal</p>
         </div>
       </section>
 
       <section style={{ padding: "48px 0 8px" }}>
-        <div className="pp-wrap" style={{ maxWidth: 820 }}>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--color-neutral-300)", margin: "0 0 16px" }}>Svasamm Research Pvt Ltd is a software company based in Nabagram, Konnagar, in Hooghly, West Bengal. We build vertical ERPs and business platforms for Indian operations — systems that carry an industry&apos;s workflow, terminology and compliance inside them, instead of generic tools that have to be bent to fit.</p>
-          <p style={{ fontSize: 15.5, lineHeight: 1.7, color: "var(--color-neutral-300)", margin: "0 0 14px" }}>Founded in 2022 by Mithun K. Singh, Svasamm grew out of close work with businesses whose real processes never fit off-the-shelf software — rice mills running government custom-milling cycles, hospitals and clinics, and manufacturers selling through distributor networks. That is why our flagship products are vertical: <Link href={toRoute("Millingo.dc.html")} className="pp-link" style={{ color: "var(--color-accent-300)" }}>Millingo</Link> for rice mills, <a href="https://lucoze.com" target="_blank" rel="noopener" className="pp-link" style={{ color: "var(--color-accent-300)" }}>Lucoze</a> for healthcare, and a <Link href={toRoute("DMS.dc.html")} className="pp-link" style={{ color: "var(--color-accent-300)" }}>distributor management system</Link> for OEM channels — alongside the platform modules every operation needs: ERP, HRMS, CRM and service desk.</p>
-          <p style={{ fontSize: 15.5, lineHeight: 1.7, color: "var(--color-neutral-300)", margin: "0 0 8px" }}>Being rooted in West Bengal means we understand state-specific procurement and compliance first-hand — from e-Paddy and CMR obligations across the eastern belt to Indian GST — and we deploy pan-India and for global teams, on our infrastructure or yours.</p>
+        <div className="sv-wrap" style={{ maxWidth: 820 }}>
+          <p style={{ fontSize: 18, lineHeight: 1.7, color: "var(--sv-ink-2)", margin: "0 0 16px" }}>Svasamm Research Pvt Ltd is a software company based in Nabagram, Konnagar, in Hooghly, West Bengal. We build vertical ERPs and business platforms for Indian operations — systems that carry an industry&apos;s workflow, terminology and compliance inside them, instead of generic tools that have to be bent to fit.</p>
+          <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--sv-ink-2)", margin: "0 0 14px" }}>Founded in 2022 by Mithun K. Singh, Svasamm grew out of close work with businesses whose real processes never fit off-the-shelf software — rice mills running government custom-milling cycles, hospitals and clinics, and manufacturers selling through distributor networks. That is why our flagship products are vertical: <Link href={toRoute("Millingo.dc.html")} className="pp-link" style={{ color: "var(--sv-brand)" }}>Millingo</Link> for rice mills, <a href="https://lucoze.com" target="_blank" rel="noopener" className="pp-link" style={{ color: "var(--sv-brand)" }}>Lucoze</a> for healthcare, and a <Link href={toRoute("DMS.dc.html")} className="pp-link" style={{ color: "var(--sv-brand)" }}>distributor management system</Link> for OEM channels — alongside the platform modules every operation needs: ERP, HRMS, CRM and service desk.</p>
+          <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--sv-ink-2)", margin: "0 0 8px" }}>Being rooted in West Bengal means we understand state-specific procurement and compliance first-hand — from e-Paddy and CMR obligations across the eastern belt to Indian GST — and we deploy pan-India and for global teams, on our infrastructure or yours.</p>
         </div>
       </section>
 
       <section style={{ padding: "24px 0 24px" }}>
-        <div className="pp-wrap" style={{ maxWidth: 820 }}>
-          <h2 style={{ fontSize: 24, letterSpacing: "-.015em", margin: "0 0 18px", color: "var(--color-text)" }}>How we build</h2>
+        <div className="sv-wrap" style={{ maxWidth: 820 }}>
+          <div className="sv-eyebrow">How we work</div>
+          <h2 style={{ fontSize: 28, margin: "0 0 20px" }}>How we build</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: 18 }}>
             {VALUES.map((v) => (
-              <div key={v.title} style={{ padding: 22, borderRadius: 14, background: "var(--color-surface)", border: "1px solid var(--color-neutral-800)" }}>
-                <Icon name={v.icon} style={{ fontSize: 26, color: "var(--color-accent-300)" }} />
-                <h3 style={{ fontSize: 16, margin: "14px 0 7px", color: "var(--color-text)" }}>{v.title}</h3>
-                <p style={{ fontSize: 13.5, lineHeight: 1.55, color: "var(--color-neutral-400)", margin: 0 }}>{v.body}</p>
+              <div key={v.title} className="sv-card" style={{ padding: 24 }}>
+                <span className="sv-chip">
+                  <Icon name={v.icon} size={22} />
+                </span>
+                <h3 style={{ fontSize: 17, margin: "16px 0 7px" }}>{v.title}</h3>
+                <p className="sv-muted" style={{ fontSize: 14, lineHeight: 1.55, margin: 0 }}>{v.body}</p>
               </div>
             ))}
           </div>
@@ -56,13 +59,13 @@ export default function AboutPage() {
       </section>
 
       <section style={{ padding: "24px 0 88px" }}>
-        <div className="pp-wrap" style={{ maxWidth: 820 }}>
-          <div className="pp-glow" style={{ border: "1px solid var(--color-neutral-800)", borderRadius: 20, padding: "44px 40px", textAlign: "center", background: "var(--color-surface)" }}>
-            <h2 style={{ fontSize: 26, letterSpacing: "-.02em", margin: "0 0 12px", color: "var(--color-text)" }}>Work with the people who build it</h2>
-            <p style={{ fontSize: 15.5, color: "var(--color-neutral-300)", margin: "0 auto 24px", maxWidth: "34em" }}>Tell us what you run and we&apos;ll show you the fit — or tell you honestly if we&apos;re not it.</p>
+        <div className="sv-wrap" style={{ maxWidth: 820 }}>
+          <div className="sv-field-deep" style={{ padding: "56px 44px", textAlign: "center" }}>
+            <h2 style={{ margin: "0 0 12px" }}>Work with the people who build it</h2>
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,.72)", margin: "0 auto 26px", maxWidth: "34em" }}>Tell us what you run and we&apos;ll show you the fit — or tell you honestly if we&apos;re not it.</p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href={CONTACT} className="btn btn-primary btn-large" style={{ fontSize: 15, padding: "11px 24px" }}>Talk to us</Link>
-              <Link href={SOLUTIONS} className="btn btn-secondary btn-large" style={{ fontSize: 15, padding: "11px 24px" }}>Browse solutions</Link>
+              <Link href={CONTACT} className="sv-btn sv-btn-inv sv-btn-lg">Talk to us</Link>
+              <Link href={SOLUTIONS} className="sv-btn sv-btn-inv-outline sv-btn-lg">Browse solutions</Link>
             </div>
           </div>
         </div>
