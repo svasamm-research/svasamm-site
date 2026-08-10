@@ -41,7 +41,7 @@ export default function Terms() {
 
       <h2>Contact</h2>
       <p>Svasamm Research Pvt Ltd, Nabagram, Konnagar, Hooghly, West Bengal 712246, India. Email <a href="mailto:query@svasamm.com">query@svasamm.com</a> · Phone <a href="tel:+919007793575">+91 90077 93575</a>.</p>
-      <p style={{ marginTop: 22, fontSize: 13, color: "var(--color-neutral-500)" }}>This template is a starting point and not legal advice. Please have your final terms reviewed by a qualified professional before publishing.</p>
+      <p style={{ marginTop: 22, fontSize: 13, color: "var(--sv-ink-3)" }}>This template is a starting point and not legal advice. Please have your final terms reviewed by a qualified professional before publishing.</p>
     </LegalPage>
   );
 }

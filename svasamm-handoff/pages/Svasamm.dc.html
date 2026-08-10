@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Svasamm — Vertical ERPs &amp; Business Software for Rice Mills, Hospitals &amp; Distributors</title>
+  <meta name="description" content="Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, Lucoze healthcare HIMS, distributor management, CRM, HRMS and service desk. API-first, self-hostable, India-first.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://svasamm.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Svasamm">
+  <meta property="og:title" content="Svasamm — Vertical ERPs &amp; Business Software">
+  <meta property="og:description" content="Purpose-built vertical ERPs and platform modules for Indian operations. Millingo, Lucoze, DMS and more.">
+  <meta property="og:url" content="https://svasamm.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Svasamm Research Pvt Ltd","alternateName":"Svasamm","url":"https://svasamm.com","email":"query@svasamm.com","telephone":"+91-91471-44638","address":{"@type":"PostalAddress","streetAddress":"Nabagram, Konnagar","addressLocality":"Hooghly","addressRegion":"West Bengal","postalCode":"712246","addressCountry":"IN"},"areaServed":"IN","description":"Vertical ERPs and business platforms for rice mills, hospitals, distributor networks and more."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Svasamm","url":"https://svasamm.com"}</script>
+  <link rel="stylesheet" href="svasamm.css">
+  <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.js"></script>
+  <script src="icons.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .sv-hero {
+      background:
+        radial-gradient(60% 80% at 88% 0%, var(--sv-brand-50), transparent 62%),
+        linear-gradient(180deg, #fbfcfe 0%, var(--sv-bg) 70%);
+    }
+    @media (max-width: 980px) { .sv-hero-grid { grid-template-columns: 1fr !important; } }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <a class="sv-skip" href="#main">Skip to content</a>
+  <dc-import name="Header" active="home" hint-size="100%,68px"></dc-import>
+  <main id="main" style="flex:1">
+
+    <!-- HERO -->
+    <section class="sv-hero" style="border-bottom:1px solid var(--sv-line)">
+      <div class="sv-wrap sv-hero-grid" style="display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;padding:80px 24px 88px">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:9px;padding:6px 13px 6px 7px;border-radius:999px;background:var(--sv-surface);border:1px solid var(--sv-line);box-shadow:var(--sv-sh-1);margin-bottom:26px">
+            <span class="sv-tag sv-tag-brand" style="padding:3px 8px">Since 2019</span>
+            <span style="font-size:13.5px;color:var(--sv-ink-2)">Svasamm Research Pvt Ltd · West Bengal, India</span>
+          </div>
+          <h1 style="margin:0 0 22px;max-width:16ch">Business software that fits how your operation actually runs.</h1>
+          <p style="font-size:18px;line-height:1.62;color:var(--sv-ink-2);max-width:50ch;margin:0 0 34px">Svasamm builds vertical ERPs and business platforms — running rice mills, hospitals and distributor networks. API-first, self-hostable, and configured to your workflow instead of forcing you into someone else's.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px">
+            <a href="Solutions.dc.html" class="sv-btn sv-btn-primary sv-btn-lg">Explore solutions <span class="sv-ic" data-icon="arrow-right" style="width:17px;height:17px"></span></a>
+            <a href="Contact.dc.html" class="sv-btn sv-btn-secondary sv-btn-lg">Book a walkthrough</a>
+          </div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <sc-for list="{{ trust }}" as="t" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:9px">
+                <span class="sv-ic" data-icon="{{ t.icon }}" style="width:17px;height:17px;color:var(--sv-teal)"></span>
+                <span style="font-size:14px;color:var(--sv-ink-2)"><strong style="color:var(--sv-ink);font-weight:600">{{ t.title }}</strong> · {{ t.sub }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- product-suite panel: this is the "it's real software" signal -->
+        <div class="sv-card" style="padding:0;box-shadow:var(--sv-sh-3);overflow:hidden">
+          <div style="padding:16px 20px;border-bottom:1px solid var(--sv-line);display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--sv-bg-subtle)">
+            <span class="sv-eyebrow" style="margin:0">The Svasamm suite</span>
+            <span class="sv-tag sv-tag-teal">7 products</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <sc-for list="{{ suite }}" as="s" hint-placeholder-count="7">
+              <a href="{{ s.href }}" target="{{ s.target }}" style="display:flex;align-items:center;gap:11px;padding:15px 18px;color:var(--sv-ink);border-bottom:1px solid var(--sv-line);border-right:1px solid var(--sv-line)">
+                <span class="sv-ic" data-icon="{{ s.icon }}" style="width:18px;height:18px;color:var(--sv-brand)"></span>
+                <span style="min-width:0">
+                  <span style="display:block;font-size:14.5px;font-weight:500;line-height:1.25">{{ s.name }}</span>
+                  <span style="display:block;font-size:12.5px;color:var(--sv-ink-3)">{{ s.short }}</span>
+                </span>
+              </a>
+            </sc-for>
+          </div>
+          <div style="padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--sv-mono);font-size:12px;color:var(--sv-ink-3)">One login · API-first · Self-hostable</span>
+            <a href="Solutions.dc.html" style="font-size:13.5px;font-weight:500;display:inline-flex;align-items:center;gap:5px">All solutions <span class="sv-ic" data-icon="arrow-right" style="width:14px;height:14px"></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" style="padding:88px 0">
+      <div class="sv-wrap">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:36px">
+          <div style="max-width:54ch">
+            <div class="sv-eyebrow">Our solutions</div>
+            <h2 style="margin:0 0 14px">One platform, purpose-built products</h2>
+            <p style="font-size:17px;color:var(--sv-ink-2);margin:0">Deep vertical systems for specific industries, plus the platform modules every operation needs.</p>
+          </div>
+          <div class="sv-seg" role="tablist">
+            <label class="sv-seg-opt"><input type="radio" name="pf" checked="{{ filterAll }}" onChange="{{ setAll }}">All</label>
+            <label class="sv-seg-opt"><input type="radio" name="pf" checked="{{ filterVertical }}" onChange="{{ setVertical }}">Vertical</label>
+            <label class="sv-seg-opt"><input type="radio" name="pf" checked="{{ filterPlatform }}" onChange="{{ setPlatform }}">Platform</label>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px">
+          <sc-for list="{{ filteredProducts }}" as="p" hint-placeholder-count="7">
+            <a href="{{ p.href }}" target="{{ p.target }}" class="sv-card sv-card-i" style="display:flex;flex-direction:column;padding:26px;color:var(--sv-ink)">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px">
+                <span class="sv-chip"><span class="sv-ic" data-icon="{{ p.icon }}" style="width:22px;height:22px"></span></span>
+                <span class="sv-tag {{ p.tagClass }}">{{ p.tag }}</span>
+              </div>
+              <h3 style="margin:0 0 8px">{{ p.name }}</h3>
+              <p style="font-size:14.5px;line-height:1.6;color:var(--sv-ink-2);flex:1;margin:0 0 18px">{{ p.blurb }}</p>
+              <span style="display:inline-flex;align-items:center;gap:7px;font-size:14.5px;font-weight:500;color:var(--sv-brand)">{{ p.cta }} <span class="sv-ic" data-icon="{{ p.ctaIcon }}" style="width:15px;height:15px"></span></span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- VERTICAL SPOTLIGHT -->
+    <section style="padding:88px 0;background:var(--sv-bg-subtle);border-top:1px solid var(--sv-line);border-bottom:1px solid var(--sv-line)">
+      <div class="sv-wrap">
+        <div style="max-width:62ch;margin-bottom:44px">
+          <div class="sv-eyebrow">Vertical products</div>
+          <h2 style="margin:0 0 14px">Built for a single industry, not bent to fit</h2>
+          <p style="font-size:17px;color:var(--sv-ink-2);margin:0">Generic ERPs are configured until they almost work. Our vertical products ship with the workflow, terminology and compliance of the industry already inside.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px">
+          <sc-for list="{{ verticalProducts }}" as="p" hint-placeholder-count="3">
+            <a href="{{ p.href }}" target="{{ p.target }}" class="sv-card sv-card-i" style="display:flex;flex-direction:column;padding:0;overflow:hidden;color:var(--sv-ink)">
+              <div style="padding:26px 26px 0">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+                  <span class="sv-chip"><span class="sv-ic" data-icon="{{ p.icon }}" style="width:22px;height:22px"></span></span>
+                  <span class="sv-tag sv-tag-outline">{{ p.badge }}</span>
+                </div>
+                <h3 style="margin:0 0 8px;font-size:23px">{{ p.name }}</h3>
+                <p style="font-size:14.5px;line-height:1.6;color:var(--sv-ink-2);margin:0 0 20px">{{ p.long }}</p>
+              </div>
+              <div style="margin-top:auto;padding:16px 26px;border-top:1px solid var(--sv-line);background:var(--sv-bg-subtle);display:flex;align-items:center;justify-content:space-between">
+                <span style="font-size:14.5px;font-weight:500;color:var(--sv-brand)">{{ p.cta }}</span>
+                <span class="sv-ic" data-icon="{{ p.ctaIcon }}" style="width:16px;height:16px;color:var(--sv-brand)"></span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGIONS -->
+    <section id="regions" style="padding:88px 0">
+      <div class="sv-wrap sv-collapse" style="display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start">
+        <div>
+          <div class="sv-eyebrow">Where we work</div>
+          <h2 style="margin:0 0 16px;max-width:18ch">Rooted in West Bengal, deploying across India</h2>
+          <p style="font-size:16.5px;color:var(--sv-ink-2);margin:0 0 26px">Headquartered in Konnagar, Hooghly, we understand state-specific procurement and compliance first-hand — from West Bengal e-Paddy to CMR obligations across the eastern belt — and deploy pan-India and for global teams.</p>
+          <div class="sv-card" style="display:flex;align-items:center;gap:13px;padding:16px 18px">
+            <span class="sv-chip sv-chip-sm"><span class="sv-ic" data-icon="map-pin" style="width:18px;height:18px"></span></span>
+            <div>
+              <div style="font-size:15px;font-weight:600">Nabagram, Konnagar</div>
+              <div style="font-size:13.5px;color:var(--sv-ink-3)">Hooghly, West Bengal 712246</div>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card" style="padding:6px 8px">
+          <table class="sv-table">
+            <thead><tr><th>Region</th><th>Status</th><th>Coverage</th></tr></thead>
+            <tbody>
+              <sc-for list="{{ regions }}" as="r" hint-placeholder-count="6">
+                <tr>
+                  <td style="font-weight:600;white-space:nowrap">{{ r.name }}</td>
+                  <td><span class="sv-tag {{ r.tagClass }}">{{ r.status }}</span></td>
+                  <td style="font-size:14px;color:var(--sv-ink-2);line-height:1.5">{{ r.note }}</td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section id="why" style="padding:88px 0;background:var(--sv-bg-subtle);border-top:1px solid var(--sv-line);border-bottom:1px solid var(--sv-line)">
+      <div class="sv-wrap">
+        <div style="max-width:60ch;margin-bottom:44px">
+          <div class="sv-eyebrow">Why Svasamm</div>
+          <h2 style="margin:0 0 14px">Engineered for teams that evaluate carefully</h2>
+          <p style="font-size:17px;color:var(--sv-ink-2);margin:0">No black boxes and no per-seat traps — the properties technical buyers actually check.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:20px">
+          <sc-for list="{{ whys }}" as="w" hint-placeholder-count="4">
+            <div class="sv-card" style="padding:26px">
+              <span class="sv-chip" style="margin-bottom:18px"><span class="sv-ic" data-icon="{{ w.icon }}" style="width:22px;height:22px"></span></span>
+              <h3 style="margin:0 0 9px;font-size:19px">{{ w.title }}</h3>
+              <p style="font-size:14.5px;line-height:1.6;color:var(--sv-ink-2);margin:0">{{ w.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding:88px 0">
+      <div class="sv-wrap">
+        <div class="sv-field-deep" style="padding:66px 48px;text-align:center">
+          <h2 style="margin:0 0 16px;max-width:22ch;margin-left:auto;margin-right:auto">Tell us what you run. We'll show you the fit.</h2>
+          <p style="font-size:17px;color:rgba(255,255,255,.72);margin:0 0 34px;max-width:56ch;margin-left:auto;margin-right:auto">A short walkthrough with the people who build the software — not a sales script. We'll map your workflow to a product and be honest about where it fits.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="Contact.dc.html" class="sv-btn sv-btn-inv sv-btn-lg">Book a walkthrough <span class="sv-ic" data-icon="arrow-right" style="width:17px;height:17px"></span></a>
+            <a href="Solutions.dc.html" class="sv-btn sv-btn-inv-outline sv-btn-lg">Browse all solutions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <dc-import name="Footer" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { filter: 'all' };
+  componentDidMount() { window.svIcons && window.svIcons(); }
+  componentDidUpdate() { window.svIcons && window.svIcons(); }
+  products() {
+    return [
+      { id:'millingo', name:'Millingo', tag:'Vertical', kind:'vertical', tagClass:'sv-tag-brand', icon:'wheat', badge:'Rice Mill ERP', short:'Rice-mill ERP', href:'Millingo.dc.html', target:'',
+        blurb:'ERP for rice mills — paddy procurement, quality grading, milling yield & by-products, and FCI/levy (CMR) compliance.',
+        long:'Runs the whole mill: procurement, QC, milling recovery, gunny-bag accounting and the government CMR cycle.',
+        cta:'Explore Millingo', ctaIcon:'arrow-right' },
+      { id:'lucoze', name:'Lucoze', tag:'Vertical', kind:'vertical', tagClass:'sv-tag-brand', icon:'heart-pulse', badge:'Healthcare HIMS', short:'Healthcare HIMS', href:'https://lucoze.com', target:'_blank',
+        blurb:'India-first hospital & clinic management: appointments, EMR, billing, lab and pharmacy on one ABDM-ready platform.',
+        long:'India-first HMS/EMR — appointments, EMR, billing, lab, pharmacy and HR on one ABDM-ready platform. Live at lucoze.com.',
+        cta:'Visit lucoze.com', ctaIcon:'arrow-up-right' },
+      { id:'dms', name:'DMS', tag:'Vertical', kind:'vertical', tagClass:'sv-tag-brand', icon:'truck', badge:'Distributor Mgmt', short:'Distributor management', href:'DMS.dc.html', target:'',
+        blurb:'Run an independent-distributor network: distributor-scoped sales, tiered stock, commissions and territory control.',
+        long:'One platform for your whole distributor network — scoped sales, tiered stock, commissions and territory control.',
+        cta:'Explore DMS', ctaIcon:'arrow-right' },
+      { id:'erp', name:'ERP System', tag:'Platform', kind:'platform', tagClass:'sv-tag-outline', icon:'layers', short:'Finance to operations', href:'ERP.dc.html', target:'',
+        blurb:'Unified finance, supply chain, manufacturing and operations for complete business visibility.', cta:'Explore ERP', ctaIcon:'arrow-right' },
+      { id:'hrms', name:'HRMS', tag:'Platform', kind:'platform', tagClass:'sv-tag-outline', icon:'users', short:'Recruit to retire', href:'HRMS.dc.html', target:'',
+        blurb:'HR from recruitment to retirement — payroll, attendance and performance tracking.', cta:'Explore HRMS', ctaIcon:'arrow-right' },
+      { id:'crm', name:'CRM Platform', tag:'Platform', kind:'platform', tagClass:'sv-tag-outline', icon:'handshake', short:'Sales & support', href:'CRM.dc.html', target:'',
+        blurb:'Customer relationships with sales automation, marketing and support tools.', cta:'Explore CRM', ctaIcon:'arrow-right' },
+      { id:'service-desk', name:'Service Desk', tag:'Platform', kind:'platform', tagClass:'sv-tag-outline', icon:'headset', short:'IT service management', href:'ServiceDesk.dc.html', target:'',
+        blurb:'IT service management with ticketing, incident management and a knowledge base.', cta:'Explore Service Desk', ctaIcon:'arrow-right' },
+    ];
+  }
+  renderVals() {
+    const s = this.state;
+    const products = this.products();
+    const vertical = products.filter(p => p.kind === 'vertical');
+    const filtered = s.filter === 'all' ? products : products.filter(p => p.kind === s.filter);
+    return {
+      products, verticalProducts: vertical, filteredProducts: filtered,
+      suite: products.map(p=>({ name:p.name, short:p.short, icon:p.icon, href:p.href, target:p.target })),
+      filterAll: s.filter==='all', filterVertical: s.filter==='vertical', filterPlatform: s.filter==='platform',
+      setAll: ()=>this.setState({filter:'all'}), setVertical: ()=>this.setState({filter:'vertical'}), setPlatform: ()=>this.setState({filter:'platform'}),
+      trust: [
+        { icon:'settings-2', title:'Workflow-native', sub:'built per industry' },
+        { icon:'server', title:'Self-hostable', sub:'your infra or ours' },
+        { icon:'shield-check', title:'India-first', sub:'GST · ABDM · CMR' },
+      ],
+      regions: [
+        { name:'West Bengal', status:'HQ', tagClass:'sv-tag-brand', note:'Home base — e-Paddy & CMR workflow understood first-hand.' },
+        { name:'Uttar Pradesh', status:'Active', tagClass:'sv-tag-teal', note:'State procurement & CMR delivery workflow.' },
+        { name:'Bihar', status:'Active', tagClass:'sv-tag-teal', note:'PACS-linked procurement & CMR obligations.' },
+        { name:'Odisha', status:'Active', tagClass:'sv-tag-teal', note:'OSCSC procurement & custom-milled rice.' },
+        { name:'Jharkhand', status:'Expanding', tagClass:'sv-tag-amber', note:'Eastern-belt expansion in progress.' },
+        { name:'Pan-India & global', status:'Remote', tagClass:'sv-tag-outline', note:'Cloud or on-prem deployments anywhere.' },
+      ],
+      whys: [
+        { icon:'sliders-horizontal', title:'Configured to your workflow', body:'Vertical products ship with your industry\u2019s workflow, terminology and compliance already inside — not a generic tool you have to bend.' },
+        { icon:'server', title:'Self-hostable', body:'Run on your own infrastructure or ours. Your data stays where you decide it should.' },
+        { icon:'cable', title:'API-first', body:'Every module speaks REST. Integrate with what you already run instead of ripping it out.' },
+        { icon:'shield-check', title:'India-first compliance', body:'GST, ABDM and CMR handled in the product — not bolted on as an afterthought.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

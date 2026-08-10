@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="svasamm.css">
+  <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.js"></script>
+  <script src="icons.js"></script>
+  <style>
+    .ar-body { max-width: 800px; }
+    .ar-link { color: var(--sv-ink-2); transition: color .15s ease; }
+    .ar-link:hover { color: var(--sv-brand); }
+    .ar-hero { background: radial-gradient(56% 76% at 90% 0%, var(--sv-brand-50), transparent 62%), linear-gradient(180deg, #fbfcfe 0%, var(--sv-bg) 74%); }
+    .ar-body h2 { font-size: 27px; margin: 40px 0 14px; }
+    .ar-body h3 { font-size: 19px; margin: 26px 0 10px; }
+    .ar-faq { border-bottom: 1px solid var(--sv-line); }
+    @media (max-width: 980px) { .ar-split { grid-template-columns: 1fr !important; } }
+  </style>
+</helmet>
+<div>
+  <a class="sv-skip" href="#main">Skip to content</a>
+  <section class="ar-hero" style="border-bottom:1px solid var(--sv-line)">
+    <div class="sv-wrap" style="padding:22px 24px 0">
+      <div style="display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--sv-ink-3);flex-wrap:wrap">
+        <sc-for list="{{ crumbs }}" as="c" hint-placeholder-count="3">
+          <sc-if value="{{ c.href }}" hint-placeholder-val="x"><a href="{{ c.href }}" class="ar-link">{{ c.name }}</a><span class="sv-ic" data-icon="chevron-right" style="width:14px;height:14px"></span></sc-if>
+          <sc-if value="{{ c.last }}" hint-placeholder-val="{{ false }}"><span style="color:var(--sv-ink)">{{ c.name }}</span></sc-if>
+        </sc-for>
+      </div>
+    </div>
+    <div class="sv-wrap ar-split" style="display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:44px 24px 60px">
+      <div>
+        <span class="sv-tag sv-tag-brand" style="margin-bottom:20px">{{ eyebrow }}</span>
+        <h1 style="font-size:42px;margin:0 0 16px;max-width:20ch">{{ title }}</h1>
+        <p style="font-size:14.5px;color:var(--sv-ink-3);margin:0;font-family:var(--sv-mono)">{{ byline }}</p>
+      </div>
+      <figure class="sv-card" style="padding:10px;box-shadow:var(--sv-sh-3);overflow:hidden">
+        <img src="{{ heroImg }}" alt="" loading="eager" style="width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--sv-r)">
+        <figcaption style="display:flex;align-items:center;gap:8px;padding:12px 8px 4px;font-family:var(--sv-mono);font-size:12px;color:var(--sv-ink-3)">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--sv-teal);flex:none"></span>{{ heroCaption }}
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <main id="main">
+  <section style="padding:56px 0 40px">
+    <div class="sv-wrap ar-body">
+      <p style="font-size:19px;line-height:1.68;color:var(--sv-ink);margin:0 0 10px">{{ intro }}</p>
+      <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="4">
+        <sc-if value="{{ sec.h }}" hint-placeholder-val="x"><h2>{{ sec.h }}</h2></sc-if>
+        <sc-if value="{{ sec.sub }}" hint-placeholder-val="{{ false }}"><h3>{{ sec.subText }}</h3></sc-if>
+        <sc-for list="{{ sec.blocks }}" as="b" hint-placeholder-count="2">
+          <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ false }}"><p style="font-size:16.5px;line-height:1.72;color:var(--sv-ink-2);margin:0 0 16px">{{ b.text }}</p></sc-if>
+          <sc-if value="{{ b.isNote }}" hint-placeholder-val="{{ false }}"><div style="border-left:3px solid var(--sv-brand);background:var(--sv-brand-50);padding:16px 20px;border-radius:0 var(--sv-r) var(--sv-r) 0;margin:0 0 18px;font-size:15.5px;line-height:1.65;color:var(--sv-ink)">{{ b.text }}</div></sc-if>
+          <sc-if value="{{ b.isList }}" hint-placeholder-val="{{ false }}">
+            <ul style="margin:0 0 18px;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px">
+              <sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3">
+                <li style="display:flex;gap:11px;font-size:16px;line-height:1.65;color:var(--sv-ink-2)"><span class="sv-ic" data-icon="check" style="width:16px;height:16px;color:var(--sv-teal);margin-top:4px"></span><span><sc-if value="{{ it.hasB }}" hint-placeholder-val="{{ false }}"><span style="font-weight:600;color:var(--sv-ink)">{{ it.b }} </span></sc-if>{{ it.t }}</span></li>
+              </sc-for>
+            </ul>
+          </sc-if>
+          <sc-if value="{{ b.isTable }}" hint-placeholder-val="{{ false }}">
+            <div class="sv-card" style="overflow-x:auto;margin:0 0 20px;padding:6px 8px">
+              <table class="sv-table">
+                <thead><tr><sc-for list="{{ b.cols }}" as="c" hint-placeholder-count="3"><th>{{ c.v }}</th></sc-for></tr></thead>
+                <tbody><sc-for list="{{ b.rows }}" as="r" hint-placeholder-count="3"><tr><sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="3"><td style="font-size:14.5px;color:var(--sv-ink-2);line-height:1.55">{{ c.v }}</td></sc-for></tr></sc-for></tbody>
+              </table>
+            </div>
+          </sc-if>
+        </sc-for>
+      </sc-for>
+
+      <div class="sv-card" style="padding:30px;margin:40px 0 8px">
+        <h3 style="font-size:21px;margin:0 0 10px">{{ ctaTitle }}</h3>
+        <p style="font-size:15.5px;line-height:1.65;color:var(--sv-ink-2);margin:0 0 22px">{{ ctaBody }}</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="{{ ctaProductHref }}" class="sv-btn sv-btn-primary">{{ ctaProductLabel }} <span class="sv-ic" data-icon="arrow-right" style="width:16px;height:16px"></span></a>
+          <a href="Contact.dc.html" class="sv-btn sv-btn-secondary">Book a free consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:8px 0 72px">
+    <div class="sv-wrap ar-body">
+      <h2 style="font-size:28px;margin:0 0 22px">Frequently asked questions</h2>
+      <div style="border-top:1px solid var(--sv-line);margin-bottom:48px">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="3">
+          <div class="ar-faq">
+            <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" aria-controls="{{ q.panelId }}" id="{{ q.btnId }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 4px;background:none;border:0;cursor:pointer;text-align:left;font-family:var(--sv-font);font-weight:600;font-size:17px;letter-spacing:-.015em;color:var(--sv-ink)">
+              {{ q.q }}<span class="sv-ic" data-icon="{{ q.icon }}" style="width:18px;height:18px;color:var(--sv-brand)"></span>
+            </button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <div id="{{ q.panelId }}" role="region" aria-labelledby="{{ q.btnId }}" style="padding:0 4px 22px;font-size:15.5px;line-height:1.68;color:var(--sv-ink-2)">{{ q.a }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="border-top:1px solid var(--sv-line);padding-top:28px">
+        <div class="sv-eyebrow">Related</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ related }}" as="r" hint-placeholder-count="3"><a href="{{ r.href }}" class="ar-link" style="display:flex;gap:10px;font-size:15.5px;line-height:1.45"><span class="sv-ic" data-icon="arrow-right" style="width:16px;height:16px;color:var(--sv-brand);margin-top:3px"></span>{{ r.t }}</a></sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:1400},&quot;slug&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Guide-CMR&quot;,&quot;Guide-YieldRecovery&quot;,&quot;Guide-ByproductAccounting&quot;,&quot;Guide-GST&quot;,&quot;Guide-BestSoftware&quot;,&quot;Guide-Pricing&quot;,&quot;State-WestBengal&quot;,&quot;State-UttarPradesh&quot;,&quot;State-Odisha&quot;,&quot;State-Bihar&quot;,&quot;Compare-Dataman&quot;,&quot;Compare-Samadhan&quot;],&quot;default&quot;:&quot;Guide-CMR&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { faq: -1 };
+  componentDidMount() { window.svIcons && window.svIcons(); }
+  componentDidUpdate() { window.svIcons && window.svIcons(); }
+  data() {
+    const P = t => ({ t:'p', text:t });
+    const N = t => ({ t:'note', text:t });
+    const L = items => ({ t:'list', items });
+    const T = (cols, rows) => ({ t:'table', cols, rows });
+    const S = (h, blocks) => ({ h, blocks });
+    const li = (b, t) => ({ b, t });
+    const millCrumb = (name) => [ {name:'Home',href:'Svasamm.dc.html'}, {name:'Millingo',href:'Millingo.dc.html'}, {name} ];
+    const relMillingo = { t:'Millingo — rice-mill ERP', href:'Millingo.dc.html' };
+    const dmsCrumb = (name) => [ {name:'Home',href:'Svasamm.dc.html'}, {name:'DMS',href:'DMS.dc.html'}, {name} ];
+    const relDMS = { t:'DMS — distributor management for OEMs', href:'DMS.dc.html' };
+    const relOEMPillar = { t:'Distributor management for OEMs: the full channel lifecycle', href:'Guide-OEMDistributor.dc.html' };
+    const dmsByline = 'By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026';
+
+    return {
+      'Guide-CMR': {
+        eyebrow:'Rice Mill Guide', title:'Custom Milled Rice (CMR) Explained: The Complete Process for Millers',
+        byline:'By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026', crumbs: millCrumb('Custom Milled Rice (CMR)'),
+        intro:"For thousands of rice mills across India, government custom milling is the backbone of the business — and its paperwork is the biggest operational headache. This guide explains the CMR process end to end: what it is, what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
+        sections:[
+          S('What is Custom Milled Rice (CMR)?', [
+            P("Under CMR, the government — through the Food Corporation of India (FCI) and state agencies — buys paddy from farmers at the Minimum Support Price (MSP) and gives that paddy to selected private rice mills to mill on its behalf. The miller does not own the paddy; it mills the government's paddy and delivers finished rice back into the central pool, earning milling charges (and keeping by-products, subject to state rules)."),
+            P("This is fundamentally different from open-market milling, where the mill buys its own paddy and sells its own rice. Under CMR you handle someone else's grain against a strict obligation — so tracking allotment, milling and delivery accurately is not optional."),
+          ]),
+          S("The miller's core obligation: 67% + 1% FRK", [
+            P("For Kharif Marketing Season (KMS) 2024–25, a miller must deliver 67% rice against the total paddy allotted, of which 1% must be Fortified Rice Kernels (FRK). In plain terms: for every 100 quintals of paddy you receive, you owe 67 quintals of rice back to the pool."),
+            N("Obligation and out-turn rates are re-notified every marketing season and can differ by state and paddy grade — always work from the current KMS notification, not last year's."),
+          ]),
+          S('The delivery schedule', [
+            P("CMR delivery is staged across the season so the government receives rice steadily. For KMS 2024–25 the schedule ran roughly:"),
+            T(['By end of','Cumulative rice to be delivered'], [['November','15%'],['December','40% (a further 25%)'],['January','65% (a further 25%)'],['February','90% (a further 25%)'],['15 March','100% (final 10%)']]),
+            P("Missing a milestone risks penalties and affects future allotment, so mills need a live view of 'delivered vs due' at every checkpoint — not a spreadsheet reconciled after the fact."),
+          ]),
+          S('How CMR differs by state', [
+            P("The CMR concept is national, but procurement runs through state portals and agencies, and the rules differ in the detail:"),
+            L([ li('West Bengal —','procurement via the e-Paddy portal (epaddy.wb.gov.in), with agencies such as WBECSC and BENFED.'), li('Uttar Pradesh —','procurement through the Food & Civil Supplies Department (fcs.up.gov.in), using biometric E-PoP devices at purchase centres.'), li('Odisha —','procurement operated through OSCSC.'), li('Bihar —','PACS-based procurement via esahkari.bihar.gov.in with the SFC.') ]),
+          ]),
+          S('Where mills lose money and fall out of compliance', [
+            L([ li('Allotment vs delivery drift —','losing track of exactly how much paddy was allotted, milled, and delivered against each memo.'), li('Out-turn shortfall —','real recovery below the assumed rate, quietly funded by the miller.'), li('The 7.1 / out-turn reconciliation —','the final settlement that ties allotted paddy to delivered rice and by-products; errors here trigger recovery notices.'), li('Security deposit & physical verification —','staying audit-ready against stock checks.') ]),
+          ]),
+        ],
+        ctaTitle:'Run your entire CMR obligation on one system',
+        ctaBody:'Millingo tracks levy memos, camp pickups, CMR deliveries and release orders, and does the 7.1 out-turn reconciliation — with state-specific workflow for West Bengal and beyond built in.',
+        faqs:[
+          {q:'What is Custom Milled Rice (CMR)?',a:'CMR is rice a miller produces from government-supplied paddy. A state agency or FCI procures paddy from farmers at MSP and hands it to selected mills, which mill it and return finished rice to the central pool for milling charges.'},
+          {q:'How much rice must a miller deliver under CMR?',a:'For KMS 2024–25, 67% rice against allotted paddy, including 1% Fortified Rice Kernels (FRK), delivered on a staged schedule. The exact rate and dates are notified each season and vary by state.'},
+          {q:'What is FRK in CMR?',a:'Fortified Rice Kernels — rice kernels enriched with micronutrients (iron, folic acid, B12) blended into delivered rice (1% for KMS 2024–25) as part of the government fortification programme.'},
+        ],
+        related:[ {t:'How to calculate rice-mill yield & milling recovery', href:'Guide-YieldRecovery.dc.html'}, {t:'Rice-mill software for West Bengal (e-Paddy & CMR)', href:'State-WestBengal.dc.html'}, relMillingo ],
+      },
+
+      'Guide-YieldRecovery': {
+        eyebrow:'Rice Mill Guide', title:'Rice Mill Yield & Milling Recovery: How to Calculate It',
+        byline:'By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026', crumbs: millCrumb('Yield & Recovery'),
+        intro:'Recovery is the single number that decides whether a rice mill makes money. A one-percent gain on a mill processing thousands of quintals is real profit — and a one-percent unexplained loss is money walking out of the gate. Here is how to calculate yield and recovery, what a good figure is, and why tracking it per batch is where mills find their margin.',
+        sections:[
+          S('What "recovery" actually means', [
+            P('Milling recovery is the share of your paddy input that comes out as sellable rice. There are two figures every miller should track, and they are not the same:'),
+            L([ li('Total milling recovery —','all milled rice (whole + broken) as a percentage of paddy.'), li('Head rice recovery —','only the whole, unbroken grains as a percentage of paddy. Head rice sells for far more than broken, so this is your quality number.') ]),
+            P('The difference between the two is your broken-rice percentage. A mill can have healthy total recovery but poor head-rice if the paddy is over-dried or machines are misadjusted — and it quietly loses money on every batch.'),
+          ]),
+          S('The formulas', [
+            N('Total milling recovery (%) = (total white rice output ÷ paddy input) × 100.   Head rice recovery (%) = (whole-grain rice output ÷ paddy input) × 100.'),
+          ]),
+          S('A worked example', [
+            P('Feed 1,000 kg of paddy into a milling run and collect the output:'),
+            T(['Output','Weight','As % of paddy'], [['Head (whole) rice','620 kg','62% (head rice recovery)'],['Broken rice','60 kg','6%'],['Total milled rice','680 kg','68% (total recovery)'],['Bran','80 kg','8%'],['Husk','200 kg','20%'],['Moisture loss / dust','40 kg','4%']]),
+            P('Here total recovery is 68% and head rice is 62% — a broken-rice gap of 6%. The by-products (bran, husk, broken) are not waste; they are a second revenue stream to account for separately.'),
+          ]),
+          S('What is a good recovery?', [
+            L([ li('Total milled rice recovery:','67–72% on clean, correctly conditioned non-basmati paddy.'), li('Head rice recovery:','60–66%.'), 'Poorly fissured, cracked, or over-dried paddy can pull total yield below 60% — a large, avoidable loss.' ]),
+            P('Under CMR, millers must deliver a fixed out-turn (67% for KMS 2024–25). If your actual recovery runs below the assumed rate, you absorb the shortfall — which is exactly why measuring real recovery matters.'),
+          ]),
+          S('How to measure it accurately (not guess it)', [
+            L([ li('Run a controlled test batch','of a known, precisely weighed quantity (100 kg is practical) of a single paddy variety.'), li('Weigh every output stream:','head rice, broken, bran, husk, and the balance.'), li('Record moisture and variety —','the same machine gives very different recovery on 17% vs 22% moisture paddy.'), li('Compare planned vs actual','extraction per run, broken down by machine, shift, operator and lot.') ]),
+          ]),
+        ],
+        ctaTitle:'Track recovery on every batch, automatically',
+        ctaBody:'Millingo computes recovery for each milling batch from your gate weights and outputs, books bran/husk/broken as separate stock, and flags lots running below target — so a 1% loss shows up the same day, not at audit.',
+        faqs:[
+          {q:'What is a good milling recovery for a rice mill?',a:'On clean, correctly moisturised paddy, expect 67–72% total milled rice recovery and 60–66% head rice. Below 60% total usually signals moisture, fissuring, or machine-adjustment problems.'},
+          {q:'How do you calculate paddy-to-rice conversion ratio?',a:'Total recovery (%) = (total white rice ÷ paddy input) × 100. So 1,000 kg paddy yielding 680 kg rice is 68%.'},
+          {q:'Why is my head rice recovery low even when total recovery looks fine?',a:'A good total with low head rice means a high broken-rice share — usually over-dried or cracked paddy, or milling adjustment. Since head rice sells for much more than broken, this quietly erodes margin.'},
+        ],
+        related:[ {t:'Custom Milled Rice (CMR): the complete process', href:'Guide-CMR.dc.html'}, {t:'By-product accounting: bran, husk & broken rice', href:'Guide-ByproductAccounting.dc.html'}, relMillingo ],
+      },
+
+      'Guide-ByproductAccounting': {
+        eyebrow:'Rice Mill Guide', title:'Rice Mill By-Product Accounting: Bran, Husk & Broken Rice',
+        byline:'By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026', crumbs: millCrumb('By-Product Accounting'),
+        intro:"Ask a miller what they sell and they'll say 'rice.' But by weight, nearly a third of every quintal of paddy leaves the mill as something else — bran, husk, and broken rice. How well you track and sell those by-products often decides whether a milling run is profitable.",
+        sections:[
+          S('The main by-products', [
+            T(['By-product','Typical share of paddy','Where it\u2019s sold'], [['Head rice','60–66%','Your primary product'],['Broken rice','~5–10%','Lower-priced rice; food, brewing, feed'],['Bran','~8%','Rice-bran oil extraction, cattle feed'],['Husk','~20%','Boiler fuel, briquettes, board']]),
+          ]),
+          S('Account for by-products as separate stock and sales', [
+            P('The single biggest mistake is treating by-products as an afterthought. Each one should be:'),
+            L([ li('Booked as its own inventory item','the moment a milling batch completes (bran/husk by weight; broken rice by grade/bag).'), li('Sold and invoiced separately,','with its own price and GST treatment, so revenue is visible per by-product.'), li('Reconciled against the batch —','paddy in should equal head rice + broken + bran + husk + loss. If it doesn\u2019t, you have leakage.') ]),
+          ]),
+          S('Working out true cost per ton (or per bag)', [
+            L([ li('Paddy cost —','the purchase price, after quality/moisture (butta) deductions.'), li('Processing cost —','power, labour and transport attributable to the run.'), li('Less by-product income —','bran, husk and broken sales offset the cost of producing head rice.') ]),
+            N('Net cost of head rice = (paddy cost + processing cost) − (bran + husk + broken income), spread over head-rice output → cost per ton/bag.'),
+            P('Two mills with identical paddy cost and rice price can have very different profit — the difference is usually how completely they capture and sell by-products.'),
+          ]),
+        ],
+        ctaTitle:'See true profit per ton, by-products included',
+        ctaBody:'Millingo books bran, husk and broken rice as separate stock at batch completion, invoices each with its own price and GST, and computes cost per ton/bag after by-product income.',
+        faqs:[
+          {q:'What are the main by-products of rice milling?',a:'Bran (~8% of paddy, for oil and feed), husk (~20%, used as fuel), and broken rice (the non-head portion of milled rice, sold below head rice).'},
+          {q:'Why is by-product accounting important?',a:'By-products are a large share of paddy weight and a real revenue stream. Booked as separate stock and sales, they reveal true profit per ton; ignored, they leave money uncounted or unsold.'},
+          {q:'How do I calculate cost per ton of rice?',a:'Add paddy cost (after butta) and processing cost (power, labour, transport), subtract by-product income (bran, husk, broken), then divide by head-rice output to get net cost per ton or bag.'},
+        ],
+        related:[ {t:'How to calculate rice-mill yield & milling recovery', href:'Guide-YieldRecovery.dc.html'}, {t:'Custom Milled Rice (CMR) explained', href:'Guide-CMR.dc.html'}, relMillingo ],
+      },
+
+      'Guide-GST': {
+        eyebrow:'Rice Mill Guide', title:'GST for Rice Mills: Paddy, Rice, Bran & Milling',
+        byline:'By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026', crumbs: millCrumb('GST for Rice Mills'),
+        intro:'GST for rice mills is deceptively tricky: the same grain is exempt as paddy, exempt as loose rice, but taxable as a branded packet — and your by-products each have their own treatment. This guide lays out the landscape so you can bill correctly.',
+        sections:[
+          S('The quick reference table', [
+            N('This is general information, not tax advice. GST rates, HSN classifications and notifications change — always confirm the current position for your specific products with your chartered accountant.'),
+            T(['Item','HSN','GST (general position)'], [['Paddy (raw, in husk)','1006 10','Exempt (nil)'],['Brown / husked rice','1006 20','Nil-rated'],['Rice — loose / unbranded','1006 30','0% (nil)'],['Rice — pre-packaged & labelled','1006 30','5%'],['Broken rice — pre-packaged','1006 40','5%'],['Rice husk','2302','Exempt (generally)'],['Rice bran','2302 40','Taxable (commonly 5%; varies)']]),
+          ]),
+          S('The pre-packaged rule is the big one', [
+            P("Since July 2022, the GST line for rice isn't 'branded vs unbranded' — it's pre-packaged and labelled. Rice sold loose is nil-rated; the same rice in a pre-packaged, labelled pack attracts 5% GST. For a mill that sells both ways, the same product is taxed differently by how it's packed — your billing has to get this right per invoice."),
+          ]),
+          S('By-products: each has its own treatment', [
+            L([ li('Husk —','generally exempt.'), li('Bran —','taxable (commonly 5%); classification differs for de-oiled bran / cattle-feed grades.'), li('Broken rice —','follows the same pre-packaged/loose logic as rice.') ]),
+          ]),
+          S('Milling charges (custom milling / job work)', [
+            P('When you mill the government\u2019s paddy under CMR, you\u2019re supplying a service (job work, SAC 9988), and the milling charges generally attract GST (commonly 5%). Confirm the current position — it\u2019s separate from GST on rice you sell on your own account.'),
+          ]),
+          S('The input tax credit trap', [
+            P('If a large share of your output is exempt (loose/unbranded rice, husk), you generally cannot claim full input tax credit (ITC) — it has to be apportioned, and the exempt portion becomes a cost. Knowing your taxable-vs-exempt sales mix is essential for both compliance and pricing.'),
+          ]),
+        ],
+        ctaTitle:'Bill GST correctly across paddy, rice & by-products',
+        ctaBody:'Millingo carries the right HSN/rate per item, distinguishes pre-packaged from loose sales, books by-products separately, and keeps your CMR and open-market billing straight.',
+        faqs:[
+          {q:'Is there GST on paddy?',a:'Raw paddy (HSN 1006 10) is exempt (nil-rated), so it moves and stores without GST.'},
+          {q:'What is the GST rate on rice?',a:'Loose/unbranded rice is nil-rated; pre-packaged and labelled rice attracts 5% GST (the pre-packaged rule from July 2022).'},
+          {q:'Can a rice mill claim full input tax credit?',a:'Not if a large share of output is exempt. ITC must be apportioned between taxable and exempt sales, and the exempt portion becomes a cost. Confirm specifics with your CA.'},
+        ],
+        related:[ {t:'By-product accounting: bran, husk & broken rice', href:'Guide-ByproductAccounting.dc.html'}, {t:'Custom Milled Rice (CMR) explained', href:'Guide-CMR.dc.html'}, relMillingo ],
+      },
+
+      'Guide-BestSoftware': {
+        eyebrow:"Buyer's Guide", title:'Best Rice Mill Software: How to Choose',
+        byline:'By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026', crumbs: millCrumb("Best Rice Mill Software"),
+        intro:"Search 'rice mill software' and you'll find dozens of vendors, from one-person shops to SAP resellers. They are not the same kind of product, and the 'best' one depends on how your mill works — especially whether you do government custom milling. Here are the three categories mills actually buy, a must-have checklist, and the questions that separate a real fit from a good demo.",
+        sections:[
+          S('The three categories of rice-mill software', [
+            {t:'p', text:'1. Generic ERP / accounting (e.g. Tally-based). Strong on accounting, GST and inventory in general terms — but paddy quality grading, moisture/butta deductions, milling recovery, by-products and CMR obligations aren\u2019t native. Fine for a small market-only mill; usually outgrown by CMR mills.'},
+            {t:'p', text:'2. POS / billing software. Good for over-the-counter rice sales and GST invoicing, but a mill is a manufacturing operation, not a shop — procurement, milling batches and government milling need more than a billing tool.'},
+            {t:'p', text:'3. Purpose-built rice-mill ERP. Modelled on the actual workflow: Sauda → gate receipt → QC → milling batch → sales/CMR delivery → reconciliation. This fits mills that live and die by recovery and CMR compliance. Millingo sits here.'},
+          ]),
+          S('The must-have checklist', [
+            L([ li('CMR / levy procurement —','levy memos, camp pickups, CMR delivery, release orders, and the 7.1 out-turn reconciliation.'), li('Paddy QC with butta/moisture deductions —','value deducted from the supplier bill without touching quantity.'), li('Milling recovery per batch —','real yield tracked against the CMR out-turn.'), li('By-product accounting —','bran, husk and broken as separate stock and sales.'), li('Gunny-bag (bardana) accounting —','jute/PP conversions and empty-bag returns.'), li('Stock that posts only after QC','— a gate receipt shouldn\u2019t inflate stock before quality is confirmed.'), li('Local-language screens','so gate/QC/production staff aren\u2019t fighting English-only software.') ]),
+          ]),
+          S('Questions to ask any vendor', [
+            L([ 'Does it handle my state\u2019s CMR workflow (e.g. WB e-Paddy, UP fcs.up.gov.in) out of the box, or is that a customisation?', 'Can it compute milling recovery per batch and flag lots below target?', 'How does it book bran/husk/broken — separate stock, or lumped in?', 'Does it do the 7.1 / out-turn reconciliation, or do I still do that in Excel?', 'What does implementation cost and how long does go-live take?', 'Is support available in my language and time zone?' ]),
+          ]),
+          S('Where Millingo fits', [
+            P('Millingo is a purpose-built rice-mill ERP: it models the full mill workflow, computes recovery per batch, books by-products separately, handles gunny-bag accounting, and runs the complete CMR cycle with state-specific workflow. It comes in Starter, Professional and Enterprise tiers. It isn\u2019t the only good option — but if CMR and recovery are central, purpose-built beats generic.'),
+          ]),
+        ],
+        ctaTitle:'See a rice-mill ERP built for the job',
+        ctaBody:'Compare Millingo against your checklist. Book a free consultation and we\u2019ll walk your workflow.',
+        faqs:[
+          {q:'What should I look for in rice mill software?',a:'Mill-specific capabilities: CMR/levy support, paddy QC with butta/moisture, per-batch milling recovery, by-product accounting, gunny-bag handling, GST, and local-language screens. Generic accounting is table stakes.'},
+          {q:'Is a generic ERP like Tally enough for a rice mill?',a:'It covers accounting and GST but not paddy QC/butta, milling recovery, by-products, or CMR without heavy customisation. CMR-driven mills usually outgrow it.'},
+          {q:'How much does rice mill software cost?',a:'It depends on mill size, CMR vs market-only, users, and hardware integration — see our rice-mill software pricing guide.'},
+        ],
+        related:[ {t:'Rice-mill software price: what it costs & why', href:'Guide-Pricing.dc.html'}, {t:'Millingo vs Dataman Rice Soft (AAHAAR)', href:'Compare-Dataman.dc.html'}, relMillingo ],
+      },
+
+      'Guide-Pricing': {
+        eyebrow:'Pricing Guide', title:'Rice Mill Software Price: What It Costs & Why',
+        byline:'By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026', crumbs: millCrumb('Rice Mill Software Price'),
+        intro:"'What does rice mill software cost?' has no single answer, because a billing app and a full CMR-capable ERP are very different products. Here are the pricing models you'll encounter, what actually drives the cost, and how to compare offers fairly.",
+        sections:[
+          S("The pricing models you'll see", [
+            L([ li('One-time (perpetual) licence —','pay once, then pay for annual updates/support. Lower long-run cost if the software keeps up.'), li('Subscription (SaaS) —','annual or monthly, usually including updates and support. Lower upfront, and you always run the current version.'), li('Per-user —','priced by number of logins (gate, QC, production, accounts, owner).'), li('Tiered / module-based —','a package (Starter / Professional / Enterprise) that scales scope and price with what you use.') ]),
+            P('As a rough marker: simple billing/POS tools can start in the low tens of thousands of rupees, while a full ERP handling CMR, recovery and by-products is priced on your operation\u2019s size and scope.'),
+          ]),
+          S('What actually drives the price', [
+            T(['Cost driver','Why it matters'], [['Mill size & throughput','More volume, godowns and lots = more to configure and support.'],['CMR vs market-only','Government custom milling is far more than open-market billing.'],['Number of users','Per-user pricing scales with gate, QC, production and accounts logins.'],['Hardware integration','Weighbridge, E-PoP, barcode/printer integration adds setup.'],['Multi-unit / multi-state','Several mills or states multiplies configuration and compliance.'],['Implementation & training','Data migration, setup and staff training are real costs beyond the licence.']]),
+          ]),
+          S('Compare total cost of ownership, not the sticker', [
+            P('The cheapest licence is rarely the cheapest system. Add up licence/subscription + implementation + hardware integration + training + annual support. A tool that\u2019s ₹20,000 cheaper but doesn\u2019t handle your CMR reconciliation will cost far more in manual work and compliance risk over a season.'),
+          ]),
+          S('How Millingo is priced', [
+            L([ li('Starter —','small/seasonal, market-only mills: procurement, inventory, milling, basic sales, core GST invoicing.'), li('Professional —','full operations: financials/reports, weighbridge, gunny-bag accounting, broker/commission, quality slabs, by-product P&L.'), li('Enterprise —','government CMR business: levy/CMR procurement and sales, out-turn tracking, statutory returns, multi-unit.') ]),
+            P('Because the right tier depends on your mill\u2019s size and whether you do CMR, we quote after a short conversation rather than post a one-size number that would mislead.'),
+          ]),
+        ],
+        ctaTitle:'Get a straight quote for your mill',
+        ctaBody:"Tell us your throughput, whether you do CMR, and how many users — we'll scope the right tier.",
+        faqs:[
+          {q:'How much does rice mill software cost in India?',a:'It varies with scope. Entry-level billing tools can start in the low tens of thousands of rupees; a full CMR-capable ERP is priced on mill size, users and modules. Compare total cost of ownership, not just the sticker.'},
+          {q:'Is it a one-time cost or a subscription?',a:'Both exist. Perpetual licences charge once plus annual updates; subscriptions spread cost and include updates/support. Subscription lowers upfront cost and keeps you current.'},
+          {q:"Why won't vendors just post a price?",a:'Because a seasonal market-only mill and a multi-unit CMR operation need very different scope. A single posted number usually means you either overpay or find hidden add-ons later.'},
+        ],
+        related:[ {t:'Best rice-mill software: how to choose', href:'Guide-BestSoftware.dc.html'}, {t:'Custom Milled Rice (CMR) explained', href:'Guide-CMR.dc.html'}, relMillingo ],
+      },
+
+      'State-WestBengal': {
+        eyebrow:'West Bengal', title:'Rice Mill Software in West Bengal — Built for e-Paddy & CMR',
+        byline:'Millingo by Svasamm Research · Konnagar, West Bengal', crumbs: millCrumb('West Bengal'),
+        intro:"West Bengal is one of India's largest paddy-growing and rice-milling states, and its millers work under a procurement system with its own portal, agencies and rules. Most generic software isn't built for it. Millingo is — a rice-mill ERP made by a West Bengal company (Svasamm Research, Konnagar, Hooghly) around how WB mills actually operate.",
+        sections:[
+          S('How rice procurement works in West Bengal', [
+            P('WB paddy procurement runs through the state e-Paddy portal (epaddy.wb.gov.in), with procurement and milling handled via agencies such as WBECSC (West Bengal Essential Commodities Supply Corporation) and BENFED (the state cooperative marketing federation). Millers operate under the West Bengal Custom Milled Rice (Obligation & Control) framework, delivering rice back to the pool against allotted paddy each KMS.'),
+          ]),
+          S('What West Bengal millers need from software', [
+            L([ li('WB e-Paddy / CMR workflow —','levy memos, camp pickups, gate receipts, CMR delivery and the out-turn (7.1) reconciliation, mapped to WBECSC/BENFED procedures.'), li('Local QC and "butta" norms —','moisture and quality deductions calculated the WB way, as a value deduction that doesn\u2019t touch quantity.'), li('Bengali-friendly screens','so gate, QC and production staff aren\u2019t fighting English-only software.'), li('Milling recovery & by-products —','real recovery against the CMR out-turn, and bran/husk/broken booked as separate revenue.'), li('GST & accounting —','compliant billing for open-market sales alongside CMR.') ]),
+          ]),
+          S('Millingo for West Bengal mills', [
+            P('Millingo covers the full mill — procurement gate-to-godown (stock posts only after QC), quality grading with automatic butta deductions, milling batches with yield and by-product tracking, gunny-bag (bardana) accounting, market sales, and the complete government FCI/levy (CMR) cycle. One system for both your open-market business and your CMR obligation.'),
+          ]),
+        ],
+        ctaTitle:'Built in West Bengal, for West Bengal millers',
+        ctaBody:"See how Millingo handles WB e-Paddy and CMR end to end — we're based in Konnagar, Hooghly.",
+        faqs:[
+          {q:'Does Millingo support West Bengal e-Paddy and CMR rules?',a:'Yes — Millingo is built around the WB procurement workflow (e-Paddy, WBECSC/BENFED, KMS obligations, and the CMR out-turn reconciliation), so you can track allotment, milling and delivery in one place.'},
+          {q:'Is Millingo available in Bengali?',a:'Millingo is designed for WB mills with local-language support in mind, so gate, QC and production staff can work comfortably rather than in English-only screens.'},
+          {q:'Can Millingo handle both CMR and open-market sales?',a:'Yes. It runs your government CMR obligation and your open-market paddy/rice business on the same system, including GST-compliant billing.'},
+        ],
+        related:[ {t:'Custom Milled Rice (CMR): the complete process', href:'Guide-CMR.dc.html'}, {t:'Rice-mill software for Uttar Pradesh', href:'State-UttarPradesh.dc.html'}, relMillingo ],
+      },
+
+      'State-UttarPradesh': {
+        eyebrow:'Uttar Pradesh', title:'Rice Mill Software in Uttar Pradesh — Built for CMR & Procurement',
+        byline:'Millingo by Svasamm Research', crumbs: millCrumb('Uttar Pradesh'),
+        intro:'Uttar Pradesh is one of India\u2019s largest paddy-producing states, and its rice mills handle huge volumes of government custom milling every season — strict obligations, tight deadlines and a lot of reconciliation. Millingo is a rice-mill ERP built around how mills actually run, including the CMR cycle UP millers work under.',
+        sections:[
+          S('How paddy procurement works in Uttar Pradesh', [
+            P('UP paddy procurement is run by the state Food & Civil Supplies Department through its portal, fcs.up.gov.in. Farmers register online, and purchase happens at centres using biometric E-PoP (Electronic Point of Purchase) devices, with payments via PFMS; the Kharif season typically opens around 1 October. Paddy procured at MSP is custom-milled by empanelled mills, which deliver rice back to the central pool.'),
+          ]),
+          S('What Uttar Pradesh millers need from software', [
+            L([ li('CMR compliance —','track allotment vs delivery, the staged schedule, the 67% + FRK obligation, and the out-turn (7.1) reconciliation.'), li('Milling recovery —','measure real recovery against the assumed out-turn so shortfalls don\u2019t quietly eat margin.'), li('By-product accounting —','bran, husk and broken booked as separate revenue.'), li('Quality grading & moisture deductions','handled correctly at the gate.'), li('Hindi-friendly screens','so mill staff work in their own language.'), li('GST billing','for the open-market side of the business.') ]),
+          ]),
+          S('Millingo for Uttar Pradesh mills', [
+            P('Millingo runs the full mill — procurement gate-to-godown (stock posts only after QC), quality grading with automatic deductions, milling batches with yield and by-product tracking, gunny-bag accounting, market sales, and the complete CMR cycle — with the Enterprise tier built for the government milling business and the volume UP mills carry.'),
+          ]),
+        ],
+        ctaTitle:'Handle high-volume CMR without the spreadsheet chaos',
+        ctaBody:'See how Millingo tracks UP procurement and CMR end to end.',
+        faqs:[
+          {q:'Does Millingo support Uttar Pradesh procurement and CMR?',a:'Yes — it runs the CMR cycle (allotment, milling, delivery, out-turn reconciliation) and tracks procurement flowing through UP\u2019s Food & Civil Supplies system (fcs.up.gov.in, E-PoP centres), alongside open-market trade.'},
+          {q:'Is Millingo available in Hindi?',a:'Millingo is built with local-language support in mind, so UP gate, QC and production staff can work in Hindi rather than English-only screens.'},
+          {q:'Can it handle both CMR and open-market business?',a:'Yes — government CMR and open-market paddy/rice run on the same system, with GST-compliant billing.'},
+        ],
+        related:[ {t:'Custom Milled Rice (CMR): the complete process', href:'Guide-CMR.dc.html'}, {t:'Rice-mill software for West Bengal', href:'State-WestBengal.dc.html'}, relMillingo ],
+      },
+
+      'State-Odisha': {
+        eyebrow:'Odisha', title:'Rice Mill Software in Odisha — Built for OSCSC & CMR',
+        byline:'Millingo by Svasamm Research', crumbs: millCrumb('Odisha'),
+        intro:'Odisha is a major paddy state where custom milling for the government is central to most mills\u2019 business. Managing allotment, milling, delivery and reconciliation is exactly where generic software falls short. Millingo is a rice-mill ERP built around the way mills actually run, including the CMR cycle Odisha millers work under.',
+        sections:[
+          S('How paddy procurement works in Odisha', [
+            P('Odisha procurement is run by the Odisha State Civil Supplies Corporation (OSCSC), whose functions include procurement of paddy and the storage and distribution of Custom Milled Rice (CMR). Procurement and milling operate under the state\u2019s Food and Procurement Policy for each KMS, with custom-miller agreements and inter-district movement of paddy and CMR. Paddy procured at MSP is custom-milled by empanelled mills.'),
+          ]),
+          S('What Odisha millers need from software', [
+            L([ li('OSCSC / CMR compliance —','track allotment vs delivery, the delivery schedule, the out-turn obligation and the 7.1 reconciliation.'), li('Milling recovery —','real recovery against the assumed out-turn.'), li('By-product accounting —','bran, husk and broken as separate revenue.'), li('Quality grading & moisture deductions','at the gate.'), li('GST billing','for open-market sales.') ]),
+          ]),
+          S('Millingo for Odisha mills', [
+            P('Millingo runs the full mill — procurement gate-to-godown (stock posts only after QC), quality grading with automatic deductions, milling batches with yield and by-product tracking, gunny-bag accounting, market sales, and the complete CMR cycle — in one system, with the Enterprise tier built for the government milling business.'),
+          ]),
+        ],
+        ctaTitle:'Run OSCSC custom milling without the spreadsheet chaos',
+        ctaBody:'See how Millingo tracks Odisha procurement and CMR end to end.',
+        faqs:[
+          {q:'Does Millingo support Odisha OSCSC procurement and CMR?',a:'Yes — it runs the CMR cycle (allotment, milling, delivery, out-turn reconciliation) and is built to fit procurement flowing through OSCSC under the state\u2019s KMS policy, alongside open-market trade.'},
+          {q:'Can it handle both CMR and open-market business?',a:'Yes — government CMR and open-market paddy/rice run on one system, with GST-compliant billing.'},
+        ],
+        related:[ {t:'Custom Milled Rice (CMR): the complete process', href:'Guide-CMR.dc.html'}, {t:'Rice-mill software for Bihar', href:'State-Bihar.dc.html'}, relMillingo ],
+      },
+
+      'State-Bihar': {
+        eyebrow:'Bihar', title:'Rice Mill Software in Bihar — Built for PACS Procurement & CMR',
+        byline:'Millingo by Svasamm Research', crumbs: millCrumb('Bihar'),
+        intro:'Bihar is one of India\u2019s largest paddy-growing states, and its rice mills handle heavy government custom-milling volumes each season through a cooperative-led procurement system. Tracking allotment, milling and delivery under that system is where generic accounting software struggles. Millingo is built around how mills actually run, including Bihar\u2019s CMR cycle.',
+        sections:[
+          S('How paddy procurement works in Bihar', [
+            P('In Bihar, paddy procurement is largely run through PACS (Primary Agricultural Cooperative Societies) operating Paddy Purchase Centres, coordinated via the state cooperative portal esahkari.bihar.gov.in, with the State Food Corporation (SFC) and FCI in the supply chain. Rice mills register on the portal; custom millers accept paddy against portal-issued notes (T.P.-cum-A.C. Notes) and are responsible for the quality of the CMR they deliver back to the pool.'),
+          ]),
+          S('What Bihar millers need from software', [
+            L([ li('PACS/SFC CMR compliance —','track allotment against portal notes, delivery schedule, out-turn obligation and reconciliation.'), li('Milling recovery —','measure real recovery against the assumed out-turn.'), li('By-product accounting —','bran, husk and broken as separate revenue.'), li('Quality grading & moisture deductions','at the gate.'), li('Hindi-friendly screens','and GST billing for open-market sales.') ]),
+          ]),
+          S('Millingo for Bihar mills', [
+            P('Millingo runs the full mill — procurement gate-to-godown (stock posts only after QC), quality grading with automatic deductions, milling batches with yield and by-product tracking, gunny-bag accounting, market sales, and the complete CMR cycle — in one system, with the Enterprise tier built for the government milling business.'),
+          ]),
+        ],
+        ctaTitle:'Handle PACS/SFC custom milling in one system',
+        ctaBody:'See how Millingo tracks Bihar procurement and CMR end to end.',
+        faqs:[
+          {q:'Does Millingo support Bihar procurement and CMR?',a:'Yes — it runs the CMR cycle and is built to fit Bihar\u2019s PACS-based procurement (esahkari.bihar.gov.in) and SFC handling, where millers accept paddy against portal notes and are responsible for CMR quality.'},
+          {q:'Can it handle both CMR and open-market business?',a:'Yes — government CMR and open-market paddy/rice run on one system, with GST-compliant billing.'},
+        ],
+        related:[ {t:'Custom Milled Rice (CMR): the complete process', href:'Guide-CMR.dc.html'}, {t:'Rice-mill software for Odisha', href:'State-Odisha.dc.html'}, relMillingo ],
+      },
+
+      'Compare-Dataman': {
+        eyebrow:'Comparison', title:'Millingo vs Dataman Rice Soft (AAHAAR)',
+        byline:'By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026', crumbs: millCrumb('Millingo vs Dataman'),
+        intro:"If you're choosing rice-mill software, Dataman's Rice Soft (also marketed as AAHAAR) is one of the established options you'll come across, alongside Millingo. Both are built for Indian rice mills, but they emphasise different things. This is an honest, side-by-side look.",
+        sections:[
+          S('What Dataman Rice Soft (AAHAAR) is', [
+            N("Based on each vendor's publicly available information as of July 2026. Software changes — always confirm current features directly with the vendor before deciding."),
+            P('Rice Soft, by Dataman Computer Systems Pvt Ltd, is a long-standing rice-mill package. It emphasises core mill business management: purchase (bargain/bill entry, gate pass), sales, production entry and reporting, inventory/stock registers, financial accounting (ledgers, P&L, TDS), quality control with lab testing and quality deductions, multi-location support, and GST.'),
+          ]),
+          S('What Millingo is', [
+            P('Millingo, by Svasamm Research, is a rice-mill ERP built specifically around the full milling workflow — including the government CMR cycle. It computes milling recovery per batch, books bran/husk/broken as separate stock and sales, handles paddy QC with butta deductions, gunny-bag accounting, and state-specific CMR reconciliation (West Bengal, Uttar Pradesh, Odisha, Bihar). Offered in Starter, Professional and Enterprise tiers.'),
+          ]),
+          S('Side-by-side', [
+            P("'Stated' = listed on the vendor's public site; 'Not stated' means we didn't find it publicly (it may still exist — ask them)."),
+            T(['Capability','Millingo','Dataman Rice Soft'], [['Purchase / sales / accounting / GST','Yes','Stated'],['Quality control / deductions','Yes (butta/moisture)','Stated (lab testing)'],['Multi-location / multi-unit','Yes (Enterprise)','Stated'],['Government CMR / levy cycle','Yes (core focus)','Not stated publicly'],['Per-batch milling recovery','Yes','Not stated publicly'],['By-product (bran/husk/broken) accounting','Yes','Not stated publicly'],['Weighbridge / kata-slip capture','Yes','Not stated publicly']]),
+          ]),
+          S('Which should you choose?', [
+            P('If your priority is well-rounded mill accounting, purchase/sales and GST from an established vendor, Rice Soft is a credible option — verify with Dataman whether it covers your government-milling needs. If your mill lives and dies by CMR compliance, out-turn reconciliation and per-batch recovery/by-product profitability, that is exactly what Millingo is built around.'),
+          ]),
+        ],
+        ctaTitle:'See if Millingo fits your mill',
+        ctaBody: "Bring your CMR and recovery requirements and we'll show you exactly how Millingo handles them.",
+        faqs:[
+          {q:"What's the main difference between Millingo and Dataman Rice Soft?",a:'Rice Soft (AAHAAR) focuses on core mill accounting, purchase/sales, production and GST. Millingo is built specifically around the government CMR cycle plus per-batch recovery and by-product accounting. If CMR and recovery are central, that\u2019s the deciding difference.'},
+          {q:'Is this comparison up to date?',a:'It reflects each vendor\u2019s public information as of July 2026. Features change — confirm current capabilities directly with each vendor.'},
+        ],
+        related:[ {t:'Millingo vs Samadhan Rice Mill ERP', href:'Compare-Samadhan.dc.html'}, {t:'Best rice-mill software: how to choose', href:'Guide-BestSoftware.dc.html'}, relMillingo ],
+      },
+
+      'Compare-Samadhan': {
+        eyebrow:'Comparison', title:'Millingo vs Samadhan Rice Mill ERP',
+        byline:'By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026', crumbs: millCrumb('Millingo vs Samadhan'),
+        intro:"Samadhan Rice Mill ERP is another established option for Indian mills, so it's a fair one to weigh against Millingo. Both target rice milling, but they're built on different foundations and lead with different strengths. Here's an honest side-by-side.",
+        sections:[
+          S('What Samadhan Rice Mill ERP is', [
+            N("Based on each vendor's publicly available information as of July 2026. Confirm current features directly with the vendor before deciding."),
+            P('Samadhan Rice Mill ERP (by RITC Pvt Ltd) is built on Microsoft Dynamics 365 Business Central. It highlights automated daily paddy price entry, quality-based pricing that adjusts purchase orders from test results, contract-labour task management with wage calculation, multi-plant management with consolidated inventory, role-tailored dashboards, gate entry with digital weighbridge integration, QC (moisture, mix testing), and loading/dispatch and packing management. Being Dynamics-based, it sits at the enterprise end of the market.'),
+          ]),
+          S('What Millingo is', [
+            P('Millingo, by Svasamm Research, is a purpose-built rice-mill ERP centred on the government CMR cycle, per-batch milling recovery, and by-product (bran/husk/broken) accounting, with paddy QC/butta deductions, gunny-bag accounting, and state-specific CMR workflow. Delivered in Starter, Professional and Enterprise tiers so smaller mills aren\u2019t forced onto an enterprise platform.'),
+          ]),
+          S('Side-by-side', [
+            P("'Stated' = listed on the vendor's public site; 'Not stated' means we didn't find it publicly (it may still exist — ask them)."),
+            T(['Capability','Millingo','Samadhan Rice Mill ERP'], [['Paddy purchase & quality-based pricing','Yes (butta/moisture)','Stated'],['Weighbridge / gate integration','Yes','Stated'],['Multi-plant / multi-unit','Yes (Enterprise)','Stated'],['Contract-labour / wage tracking','Not a core focus','Stated'],['Government CMR / levy cycle & 7.1 reconciliation','Yes (core focus)','Not stated publicly'],['Per-batch milling recovery','Yes','Not stated publicly'],['By-product (bran/husk/broken) accounting','Yes','Not stated publicly'],['Platform','Purpose-built for rice mills','Microsoft Dynamics 365 BC'],['Tiered plans for smaller mills','Yes (Starter/Professional/Enterprise)','Not stated publicly']]),
+          ]),
+          S('Which should you choose?', [
+            P('If you specifically want a Microsoft Dynamics 365 platform, strong contract-labour management and are comfortable at the enterprise tier, Samadhan is worth evaluating. If you want CMR-first software with per-batch recovery and by-product profitability, and a tier that fits a smaller or seasonal mill, Millingo is built for that.'),
+          ]),
+        ],
+        ctaTitle:'Compare Millingo against your requirements',
+        ctaBody: "Tell us your CMR, recovery and mill-size needs and we'll show you exactly how Millingo fits.",
+        faqs:[
+          {q:'How does Millingo differ from Samadhan Rice Mill ERP?',a:'Samadhan is built on Microsoft Dynamics 365 BC and leads with quality-based pricing, contract labour, multi-plant and weighbridge. Millingo is purpose-built around CMR, per-batch recovery and by-products, with tiered plans. Choose based on whether you need a Dynamics enterprise platform or CMR-first, right-sized software.'},
+          {q:'Is this comparison current?',a:'It reflects public information as of July 2026. Features change — verify directly with each vendor.'},
+        ],
+        related:[ {t:'Millingo vs Dataman Rice Soft (AAHAAR)', href:'Compare-Dataman.dc.html'}, {t:'Best rice-mill software: how to choose', href:'Guide-BestSoftware.dc.html'}, relMillingo ],
+      },
+      'Guide-OEMDistributor': {
+        eyebrow:'OEM Channel Guide', title:'Distributor Management for OEMs: The Complete Channel Lifecycle',
+        byline:dmsByline, crumbs: dmsCrumb('Distributor Management for OEMs'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:"For an OEM that sells through distributors, the product is only half the business — the channel is the other half. Once a machine leaves your factory, a distributor books the deal, installs it, services it, and is the face the customer sees for years. If you can't see any of that, you're flying blind on your own revenue and your own reputation. This guide breaks the OEM–distributor relationship into its three stages — before sale, sale & installation, and after sale — and explains what to track at each.",
+        sections:[
+          S('Why OEMs need more than a generic DMS', [
+            P("Most software labelled 'distributor management' was built for FMCG: fast-moving goods, secondary sales, beat plans, and stock that turns over in days. An OEM's channel is a different animal."),
+            L([ li('The unit is a machine, not a carton —','a serial number, a warranty clock and a service history that lasts years, not a case of product that sells this week.'), li('The distributor installs and services —','sale, commissioning and after-sales work are done by the distributor\u2019s own engineers, in the field, away from the OEM.'), li('The sales cycle is long —','high-value equipment with quoted deals, not repeat reordering.'), li('The relationship outlives the sale —','warranty, spares, consumables and service are where the multi-year revenue and the customer relationship actually live.') ]),
+          ]),
+          S('Stage 1 — Before sale: distributor-booked leads, visible to the OEM', [
+            P('Deals start at the distributor, not at head office. Distributors register enquiries, leads and bookings; the OEM sees the whole pipeline across the network — which distributor, which customer, which machine, what stage — without waiting for a monthly phone call.'),
+            L([ li('Lead & deal registration','by each distributor, in one place.'), li('Network-wide pipeline visibility','for the OEM, in real time.'), li('Deal protection','so two distributors aren\u2019t chasing the same customer.'), li('Demand forecasting','from the aggregated pipeline.') ]),
+          ]),
+          S('Stage 2 — Sale, installation & warranty: the machine gets a record', [
+            P("When the deal closes, the distributor and its engineer handle the sale and installation — and that is exactly where most OEMs lose the thread. The lifecycle model keeps it: sale and install are logged against a serial-numbered machine, warranty starts on the clock, and the distributor's own stock and installed base become visible to the OEM."),
+            L([ li('Who sold, who installed, and when —','captured against the machine.'), li('Serial & warranty tracking','from the day of installation.'), li('Distributor inventory visible to the OEM —','channel stock and machine aging, not a black box.'), li('Analytics & reports','on installs, aging and warranty status across the network.') ]),
+          ]),
+          S('Stage 3 — After sale: from customer query to the right distributor, on an SLA', [
+            P("After the sale, the customer contacts the OEM — but the distributor does the work. A query raised to the OEM is intelligently assigned to the right distributor (by territory, product and load), tracked against an SLA, and escalated automatically if it slips. The OEM keeps ownership of the customer experience even though the field work is delegated."),
+            L([ li('Intelligent assignment','of each query to the right distributor/engineer.'), li('SLA tracking','on response and resolution.'), li('Automatic escalation','when an SLA is at risk.'), li('Full history','of every query, tied to the machine and the distributor.') ]),
+          ]),
+          S('What the OEM gets out of it', [
+            L([ 'One system of record across an arm\u2019s-length distributor network.', 'Demand, install and service analytics instead of monthly guesswork.', 'Channel inventory and installed-base visibility down to the serial.', 'A defensible, SLA-backed customer experience the OEM still owns.' ]),
+          ]),
+        ],
+        ctaTitle:'See a distributor lifecycle built for OEMs',
+        ctaBody:"Bring your channel model — how distributors book, install and service — and we'll map the before / sale / after flow with you.",
+        faqs:[
+          {q:'What is a distributor management system (DMS) for an OEM?',a:"For an OEM, a DMS gives visibility and control over an arm's-length distributor network across the full lifecycle — lead and deal registration before sale, sale/installation/warranty tracking with serial-level records, and after-sales query assignment with SLAs — rather than just secondary-sales reporting."},
+          {q:'How is an OEM DMS different from an FMCG DMS?',a:'FMCG DMS focuses on fast-moving stock, secondary sales and beat plans. An OEM DMS is built around high-value equipment: serial-tracked machines, installation by distributor engineers, warranty, and a multi-year service relationship.'},
+          {q:"Can the OEM see the distributor's inventory and installed machines?",a:'Yes — the model gives the OEM visibility of channel stock and the installed base (machines, serials, warranty status and aging) across the network, while each distributor sees only its own.'},
+        ],
+        related:[ {t:'Distributor management for coding & marking OEMs', href:'DMS-CodingMarking.dc.html'}, {t:'Distributor management for packaging machinery OEMs', href:'DMS-PackagingMachinery.dc.html'}, relDMS ],
+      },
+
+      'DMS-CodingMarking': {
+        eyebrow:'OEM Industry · Coding & Marking', title:'Distributor Management for Coding & Marking OEMs',
+        byline:dmsByline, crumbs: dmsCrumb('Coding & Marking OEMs'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:"Coding and marking OEMs — makers of continuous inkjet (CIJ), thermal inkjet, laser and thermal-transfer printers — live and die by uptime and consumables. A printer that stops on a packaging line stops the line, and the inks, make-up fluids and ribbons are a recurring revenue stream that flows through distributors. Managing that channel end to end is exactly what a DMS for OEMs is for.",
+        sections:[
+          S('What makes coding & marking channels hard', [
+            L([ li('Uptime is everything —','a coder down means the customer\u2019s production line is down; service response is measured in hours, not days.'), li('Recurring consumables —','inks, make-up fluids, cartridges and ribbons are ongoing revenue, and it leaks the moment a customer switches to third-party fluids.'), li('Distributors sell, install and service —','the OEM rarely touches the printer after it ships.'), li('High installed base —','thousands of serial-numbered printers across customer sites, each with its own warranty and service clock.') ]),
+          ]),
+          S('The full lifecycle, tracked', [
+            L([ li('Before sale —','distributors register printer deals; the OEM sees the pipeline across the whole network.'), li('Sale & install —','the distributor engineer installs on the customer line; serial and warranty are recorded, and the distributor\u2019s stock of printers and consumables is visible to the OEM.'), li('After sale —','a line-down query to the OEM is assigned to the nearest capable distributor engineer on a tight SLA, and escalated if it breaches.') ]),
+          ]),
+          S('What coding & marking OEMs get', [
+            L([ 'Printer installed-base and warranty visibility down to the serial.', 'Consumables demand and reorder signal per distributor — protecting genuine-fluid revenue.', 'Fast, SLA-bound service for uptime-critical customers.', 'Analytics on install aging and service load across the network.' ]),
+          ]),
+        ],
+        ctaTitle:'Built for uptime-critical coding & marking channels',
+        ctaBody:"Show us how your distributors sell printers and supply fluids, and we'll map the lifecycle with you.",
+        faqs:[
+          {q:'Can we track ink and consumable sales through distributors?',a:'Yes — recurring consumables (inks, make-up fluids, cartridges, ribbons) are tracked per distributor, with reorder visibility so the OEM sees demand and can protect genuine-fluid revenue.'},
+          {q:'How fast can a line-down service request reach an engineer?',a:'A query raised to the OEM is intelligently assigned to the nearest capable distributor engineer on an SLA, with automatic escalation if the SLA is at risk.'},
+        ],
+        related:[ relOEMPillar, {t:'Distributor management for packaging machinery OEMs', href:'DMS-PackagingMachinery.dc.html'}, relDMS ],
+      },
+
+      'DMS-PackagingMachinery': {
+        eyebrow:'OEM Industry · Packaging Machinery', title:'Distributor Management for Packaging & Industrial Machinery OEMs',
+        byline:dmsByline, crumbs: dmsCrumb('Packaging Machinery OEMs'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:'OEMs that build filling, sealing, labelling, cartoning and wrapping machines sell high-value equipment through distributors who commission it, stock spares and change parts, and carry the service relationship for the machine\u2019s long life. That whole channel needs to be visible to the OEM.',
+        sections:[
+          S('The channel challenge in packaging machinery', [
+            L([ li('Installation & commissioning','are done by distributor engineers, often over days.'), li('Spares & change parts','are a continuous aftermarket that flows through the channel.'), li('AMC & service contracts','recur and need to be tracked and renewed.'), li('Long service life —','machines run for years, so the installed base and its aging matter.') ]),
+          ]),
+          S('Before sale to after sale, on one system', [
+            L([ li('Before sale —','distributors book machine deals; the OEM sees the network pipeline.'), li('Sale & install —','commissioning is logged against a serial-numbered machine with warranty, and the distributor\u2019s spares stock and machine aging are visible to the OEM.'), li('After sale —','a breakdown or spare-part query is assigned to the right distributor on an SLA, and escalated if it slips.') ]),
+          ]),
+          S('What packaging machinery OEMs get', [
+            L([ 'Installed base with warranty and AMC-renewal visibility.', 'Spares and change-part demand across the channel.', 'Commissioning and service tracking down to the engineer.', 'SLA-backed breakdown response for production-critical customers.' ]),
+          ]),
+        ],
+        ctaTitle:'One system for machines, spares and service',
+        ctaBody:"Bring your distributor and AMC model, and we'll map commissioning-to-service with you.",
+        faqs:[
+          {q:'Can spares and change parts be tracked through distributors?',a:'Yes — the distributor\u2019s spares stock is visible to the OEM, and aftermarket demand is tracked across the channel.'},
+          {q:'Does it track AMC and service-contract renewals?',a:'Yes — AMC and service contracts are tracked against the installed machine so renewals aren\u2019t missed.'},
+        ],
+        related:[ relOEMPillar, {t:'Distributor management for HVAC & industrial equipment OEMs', href:'DMS-HVAC.dc.html'}, relDMS ],
+      },
+
+      'DMS-Electrical': {
+        eyebrow:'OEM Industry · Electrical & Electronics', title:'Distributor Management for Electrical & Electronics OEMs',
+        byline:dmsByline, crumbs: dmsCrumb('Electrical & Electronics OEMs'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:'OEMs making switchgear, drives, UPS systems, power electronics and test & measurement instruments sell a broad range through channel partners, with warranty registration at the end customer and a steady flow of repairs and returns. Keeping that visible is what an OEM DMS does.',
+        sections:[
+          S('The channel challenge in electrical & electronics', [
+            L([ li('Broad SKU range','across many product families and partners.'), li('Warranty registration','happens at the end customer, often invisibly to the OEM.'), li('RMA & repair returns','flow back through the channel and need tracking.'), li('Multi-tier partners —','distributors, resellers and service centres.') ]),
+          ]),
+          S('Before sale to after sale, on one system', [
+            L([ li('Before sale —','partners register deals; the OEM sees the pipeline network-wide.'), li('Sale & warranty —','serial and warranty registration are captured, and partner stock and aging are visible to the OEM.'), li('After sale —','a support or RMA query is assigned to the right partner or service centre on an SLA, with escalation.') ]),
+          ]),
+          S('What electrical & electronics OEMs get', [
+            L([ 'Warranty and RMA visibility down to the serial.', 'Channel stock across partners and tiers.', 'SLA-backed support and repair turnaround.', 'Product-wise analytics on sales and service.' ]),
+          ]),
+        ],
+        ctaTitle:'Warranty, RMA and channel stock in one place',
+        ctaBody:"Tell us how your partners register warranty and handle returns, and we'll map it with you.",
+        faqs:[
+          {q:'Can warranty registration and RMA be tracked through the channel?',a:'Yes — serial-level warranty registration and RMA/repair returns are tracked across partners, giving the OEM visibility it usually lacks.'},
+          {q:'Does each partner see only its own data?',a:'Yes — access is scoped per partner, while the OEM sees the whole network.'},
+        ],
+        related:[ relOEMPillar, {t:'Distributor management for automotive & aftermarket OEMs', href:'DMS-Automotive.dc.html'}, relDMS ],
+      },
+
+      'DMS-Pharma': {
+        eyebrow:'OEM Industry · Pharma & Medical Devices', title:'Distributor Management for Pharma & Medical Device OEMs',
+        byline:dmsByline, crumbs: dmsCrumb('Pharma & Medical Device OEMs'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:'OEMs selling lab, diagnostic and medical equipment through distributors carry obligations most channels don\u2019t: qualified installation, calibration schedules, reagent and consumable resupply, and serial-level traceability. An OEM DMS keeps that lifecycle visible and accountable.',
+        sections:[
+          S('The channel challenge in pharma & medical devices', [
+            N('This describes system capabilities for managing your channel — it is not a regulatory or quality-management certification. Confirm compliance requirements (e.g. IQ/OQ, calibration records) against your own quality system.'),
+            L([ li('Qualified installation','(IQ/OQ) performed by the distributor\u2019s engineers.'), li('Calibration & AMC schedules','that must be tracked against each instrument.'), li('Reagents & consumables','resupplied through the channel.'), li('Serial / lot traceability','for the installed base.') ]),
+          ]),
+          S('Before sale to after sale, on one system', [
+            L([ li('Before sale —','distributors register equipment deals; the OEM sees the pipeline.'), li('Sale & install —','installation qualification and calibration are recorded against a serial-numbered instrument with warranty, and distributor stock and reagent supply are visible to the OEM.'), li('After sale —','a service or calibration-due query is assigned to the right distributor engineer on an SLA, with escalation.') ]),
+          ]),
+          S('What pharma & medical device OEMs get', [
+            L([ 'Installed base with calibration and AMC due-dates.', 'Reagent and consumable demand across distributors.', 'Serial-level traceability of every instrument.', 'SLA-backed service for critical equipment.' ]),
+          ]),
+        ],
+        ctaTitle:'A traceable lifecycle for regulated equipment',
+        ctaBody:"Share how your distributors install and service instruments, and we'll map the lifecycle with you.",
+        faqs:[
+          {q:'Can calibration and AMC schedules be tracked per instrument?',a:'Yes — calibration and AMC due-dates are tracked against each serial-numbered instrument in the installed base.'},
+          {q:'Can reagents and consumables be tracked through distributors?',a:'Yes — reagent and consumable supply is tracked per distributor, so the OEM sees demand across the channel.'},
+        ],
+        related:[ relOEMPillar, {t:'Distributor management for electrical & electronics OEMs', href:'DMS-Electrical.dc.html'}, relDMS ],
+      },
+
+      'DMS-Automotive': {
+        eyebrow:'OEM Industry · Automotive & Aftermarket', title:'Distributor Management for Automotive Components & Aftermarket OEMs',
+        byline:dmsByline, crumbs: dmsCrumb('Automotive & Aftermarket OEMs'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:'Automotive component OEMs distribute through a multi-tier channel — distributor to retailer to garage — with high SKU counts, warranty claims coming back from the field, and a constant need to see secondary sales downstream. An OEM DMS brings that whole chain into view.',
+        sections:[
+          S('The channel challenge in automotive & aftermarket', [
+            L([ li('Multi-tier distribution —','distributor, retailer and workshop, each a step further from the OEM.'), li('High SKU count','across parts and variants.'), li('Warranty claims','raised from the field that need validation and tracking.'), li('Secondary-sales visibility —','knowing what actually sells through, not just what shipped to the distributor.') ]),
+          ]),
+          S('Before sale to after sale, on one system', [
+            L([ li('Before sale —','distributors and dealers book orders and schemes; the OEM sees demand.'), li('Sale & warranty —','batch/serial data supports warranty, and dealer and retailer stock plus secondary sales are visible to the OEM.'), li('After sale —','a warranty claim or query is assigned to the right distributor on an SLA, with escalation.') ]),
+          ]),
+          S('What automotive OEMs get', [
+            L([ 'Secondary sales and downstream stock visibility.', 'A tracked warranty-claim workflow from the field.', 'Scheme and commission management across tiers.', 'Analytics on sell-through by product and territory.' ]),
+          ]),
+        ],
+        ctaTitle:'See past the distributor to the whole chain',
+        ctaBody:"Tell us your tiers and warranty-claim flow, and we'll map the channel with you.",
+        faqs:[
+          {q:'Can we see secondary sales through the distributor to retailers?',a:'Yes — the multi-tier model gives the OEM visibility of downstream stock and secondary sales, not just primary dispatch to the distributor.'},
+          {q:'Are warranty claims from the field tracked?',a:'Yes — warranty claims are raised, validated and tracked through the channel with a full history.'},
+        ],
+        related:[ relOEMPillar, {t:'Distributor management for electrical & electronics OEMs', href:'DMS-Electrical.dc.html'}, relDMS ],
+      },
+
+      'DMS-HVAC': {
+        eyebrow:'OEM Industry · HVAC & Equipment', title:'Distributor Management for HVAC & Industrial Equipment OEMs',
+        byline:dmsByline, crumbs: dmsCrumb('HVAC & Equipment OEMs'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:'OEMs making chillers, compressors, pumps and cooling systems sell heavy equipment through a dealer network that installs it, holds spares, and carries AMC and service contracts across a long service life. An OEM DMS keeps that installed base and service channel visible.',
+        sections:[
+          S('The channel challenge in HVAC & industrial equipment', [
+            L([ li('Installation by dealers —','heavy equipment commissioned in the field.'), li('AMC & service contracts','that recur and drive aftermarket revenue.'), li('Spare parts','held and sold through the dealer network.'), li('Long life & seasonality —','installed base runs for years with seasonal service peaks.') ]),
+          ]),
+          S('Before sale to after sale, on one system', [
+            L([ li('Before sale —','dealers book equipment deals; the OEM sees the pipeline.'), li('Sale & install —','commissioning is logged against a serial-numbered unit with warranty, and dealer spares stock and machine aging are visible to the OEM.'), li('After sale —','a breakdown or service query is assigned to the right dealer on an SLA, with escalation.') ]),
+          ]),
+          S('What HVAC & equipment OEMs get', [
+            L([ 'Installed base with warranty and AMC-renewal visibility.', 'Spares demand across the dealer network.', 'SLA-backed breakdown and service response.', 'Analytics on installs, aging and service load.' ]),
+          ]),
+        ],
+        ctaTitle:'Installed base, spares and AMC in one view',
+        ctaBody:"Bring your dealer and AMC model, and we'll map install-to-service with you.",
+        faqs:[
+          {q:'Can AMC and service contracts be tracked and renewed?',a:'Yes — AMC and service contracts are tracked against each installed unit so renewals are visible and not missed.'},
+          {q:'Can spare-part stock be tracked through dealers?',a:'Yes — dealer spares stock is visible to the OEM, with demand tracked across the network.'},
+        ],
+        related:[ relOEMPillar, {t:'Distributor management for packaging machinery OEMs', href:'DMS-PackagingMachinery.dc.html'}, relDMS ],
+      },
+
+      'Guide-ERPImplementation': {
+        eyebrow:'ERP Guide', title:'ERP Implementation for Indian Businesses: A Practical Guide',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'ERP System',href:'ERP.dc.html'}, {name:'ERP Implementation Guide'} ],
+        ctaHref:'ERP.dc.html', ctaLabel:'Explore ERP',
+        intro:'An ERP replaces the patchwork of spreadsheets, Tally and disconnected tools with one system of record for finance, inventory, procurement and sales. The software matters, but implementation is what decides success or failure. This guide covers when you actually need an ERP, the phases of a rollout, and the mistakes that sink projects.',
+        sections:[
+          S('Signs you have outgrown spreadsheets and Tally', [
+            L([ li('Numbers never match —','stock, sales and accounts live in different files and disagree.'), li('Re-keying everywhere —','the same order typed into three systems.'), li('No live view —','you find out about a stockout or an overdue payment weeks late.'), li('GST is a scramble —','returns pulled together by hand each month.') ]),
+          ]),
+          S('The phases of an ERP rollout', [
+            L([ li('Discovery —','map your real processes before touching software.'), li('Configuration —','chart of accounts, warehouses, tax, roles.'), li('Data migration —','clean masters and opening balances in.'), li('Pilot & training —','one cycle end to end with real users.'), li('Go-live & stabilise —','cut over, then tighten.') ]),
+            N('Phase your rollout by module (finance first, then inventory, then manufacturing) rather than switching everything on at once — it de-risks go-live and gets value sooner.'),
+          ]),
+          S('What to standardise before you configure', [
+            L([ 'A single chart of accounts and cost-centre structure.', 'Item and customer/supplier master data, de-duplicated.', 'Tax setup (GST rates, HSN, e-invoice thresholds).', 'Approval and role matrix — who can do what.' ]),
+          ]),
+          S('Common mistakes that sink ERP projects', [
+            L([ li('Customising too early —','automating a broken process instead of fixing it.'), li('Dirty data —','migrating years of duplicates and errors.'), li('No process owner —','software with nobody accountable for the workflow.'), li('Big-bang go-live —','everything at once, no fallback.') ]),
+          ]),
+        ],
+        ctaTitle:'Plan an ERP rollout that actually lands',
+        ctaBody:"Tell us your current tools and pain points, and we'll map a phased implementation with you.",
+        faqs:[
+          {q:'When does a business need an ERP instead of Tally and spreadsheets?',a:'When data lives in disconnected tools that disagree, the same information is re-keyed across systems, and you lack a live view of stock, orders and cash — that fragmentation is the signal to move to a single system of record.'},
+          {q:'How long does an ERP implementation take?',a:'It depends on scope and data quality, but a phased rollout (finance first, then inventory, then manufacturing) de-risks go-live and delivers value sooner than switching everything on at once.'},
+          {q:'What is the biggest reason ERP projects fail?',a:'Usually people and process, not software — customising a broken process too early, migrating dirty data, or having no accountable process owner.'},
+        ],
+        related:[ {t:'ERP for manufacturing businesses', href:'ERP-Manufacturing.dc.html'}, {t:'ERP for trading & distribution', href:'ERP-Trading.dc.html'}, {t:'ERP System — overview', href:'ERP.dc.html'} ],
+      },
+      'ERP-Manufacturing': {
+        eyebrow:'ERP by Industry · Manufacturing', title:'ERP for Manufacturing Businesses',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'ERP System',href:'ERP.dc.html'}, {name:'Manufacturing'} ],
+        ctaHref:'ERP.dc.html', ctaLabel:'Explore ERP',
+        intro:'Manufacturers run on a chain that generic accounting can\u2019t see: bill of materials, work orders, shop-floor consumption and costing. An ERP built for manufacturing ties the floor to inventory and the ledger so you know true cost per unit.',
+        sections:[
+          S('What manufacturers need from an ERP', [
+            L([ li('Bills of material & routings','for every product and variant.'), li('Work orders & production planning','tied to stock availability.'), li('Material consumption & WIP','tracked as batches move through stages.'), li('Costing —','material, labour and overhead rolled into cost per unit.'), li('Quality checks','at inward, in-process and dispatch.') ]),
+          ]),
+          S('One connected flow', [
+            P('Sales order to production plan to purchase of shortfall materials to work order to finished goods to dispatch and invoice — with GST, e-invoice and e-way bill handled at the billing end. Every step posts to inventory and accounts, so cost and margin are visible per order.'),
+          ]),
+          S('What manufacturers get', [
+            L([ 'True cost per unit, not a guess.', 'Live stock of raw material, WIP and finished goods.', 'Production planned against real availability.', 'GST-compliant billing end to end.' ]),
+          ]),
+        ],
+        ctaTitle:'Connect your shop floor to your books',
+        ctaBody:"Bring a product BOM and a month of orders, and we'll map production-to-costing with you.",
+        faqs:[
+          {q:'Does the ERP handle bills of material and work orders?',a:'Yes — BOMs, routings, work orders and production planning connect the shop floor to inventory and costing.'},
+          {q:'Can it calculate true cost per unit?',a:'Yes — material, labour and overhead are rolled into per-unit cost, so you see real margin per order.'},
+        ],
+        related:[ {t:'ERP implementation guide', href:'Guide-ERPImplementation.dc.html'}, {t:'ERP for trading & distribution', href:'ERP-Trading.dc.html'}, {t:'ERP System — overview', href:'ERP.dc.html'} ],
+      },
+      'ERP-Trading': {
+        eyebrow:'ERP by Industry · Trading & Distribution', title:'ERP for Trading & Distribution Businesses',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'ERP System',href:'ERP.dc.html'}, {name:'Trading & Distribution'} ],
+        ctaHref:'ERP.dc.html', ctaLabel:'Explore ERP',
+        intro:'Traders and distributors live on stock accuracy, fast billing and tight receivables. An ERP gives them multi-warehouse inventory, quotation-to-invoice speed and a real handle on outstanding money.',
+        sections:[
+          S('What trading & distribution businesses need', [
+            L([ li('Multi-warehouse stock','with batches, serials and valuation.'), li('Quotation → order → invoice','without re-keying.'), li('Pricing & discount rules','by customer and quantity.'), li('Receivables & credit limits','tracked to the day.'), li('GST, e-invoice & e-way bill','built in.') ]),
+          ]),
+          S('Stock and cash, under control', [
+            P('Every dispatch updates stock and books the sale; every receipt clears the ledger. Reorder levels flag what to buy, and customer-wise outstanding and credit limits keep cash from leaking.'),
+          ]),
+          S('What traders get', [
+            L([ 'Accurate multi-location stock in real time.', 'Faster billing with fewer errors.', 'Receivables and credit under control.', 'GST compliance without month-end panic.' ]),
+          ]),
+        ],
+        ctaTitle:'Get stock and receivables under control',
+        ctaBody:"Tell us your warehouses and billing volume, and we'll map the flow with you.",
+        faqs:[
+          {q:'Can the ERP manage multiple warehouses?',a:'Yes — multi-warehouse stock with batches, serials and valuation, live with every transaction.'},
+          {q:'Does it track customer credit limits and outstanding?',a:'Yes — customer-wise receivables, credit limits and statements are tracked to the day.'},
+        ],
+        related:[ {t:'ERP implementation guide', href:'Guide-ERPImplementation.dc.html'}, {t:'ERP for manufacturing businesses', href:'ERP-Manufacturing.dc.html'}, {t:'ERP System — overview', href:'ERP.dc.html'} ],
+      },
+      'ERP-Services': {
+        eyebrow:'ERP by Industry · Services', title:'ERP for Services & Project-Based Firms',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'ERP System',href:'ERP.dc.html'}, {name:'Services'} ],
+        ctaHref:'ERP.dc.html', ctaLabel:'Explore ERP',
+        intro:'Services and project firms don\u2019t sell stock — they sell time and deliverables. Their ERP has to track projects, timesheets, billing milestones and project profitability, not just inventory.',
+        sections:[
+          S('What services firms need', [
+            L([ li('Projects & tasks','with budgets and timelines.'), li('Timesheets','feeding cost and billing.'), li('Milestone & retainer billing','with GST.'), li('Project profitability','— revenue vs cost per project.'), li('Receivables','tied to milestones.') ]),
+          ]),
+          S('From project to invoice', [
+            P('Estimate a project, staff it, log time and expenses against it, bill by milestone or retainer, and see profitability per project and per client — all in one system with compliant invoicing.'),
+          ]),
+          S('What services firms get', [
+            L([ 'Real project profitability, not just top-line revenue.', 'Time and expenses captured against the right project.', 'Milestone billing without spreadsheets.', 'A clean view of receivables by client.' ]),
+          ]),
+        ],
+        ctaTitle:'See profit per project, not just revenue',
+        ctaBody:"Bring a typical project structure, and we'll map estimate-to-invoice with you.",
+        faqs:[
+          {q:'Can the ERP track project profitability?',a:'Yes — revenue, time, expenses and cost are tracked per project so you see real profitability, not just billings.'},
+          {q:'Does it support milestone and retainer billing?',a:'Yes — milestone and retainer billing with GST-compliant invoices are supported, tied to receivables.'},
+        ],
+        related:[ {t:'ERP implementation guide', href:'Guide-ERPImplementation.dc.html'}, {t:'ERP for trading & distribution', href:'ERP-Trading.dc.html'}, {t:'ERP System — overview', href:'ERP.dc.html'} ],
+      },
+
+      'Guide-PayrollCompliance': {
+        eyebrow:'HR Guide', title:'Payroll & Statutory Compliance in India: A Practical Guide',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'HRMS',href:'HRMS.dc.html'}, {name:'Payroll Compliance Guide'} ],
+        ctaHref:'HRMS.dc.html', ctaLabel:'Explore HRMS',
+        intro:'Running payroll in India is more than paying salaries — it\u2019s PF, ESI, professional tax, TDS and the returns that go with each, on deadlines that don\u2019t move. This guide explains the core statutory components and how an HRMS keeps them right.',
+        sections:[
+          S('The core statutory components', [
+            N('This is general information, not tax or legal advice. Thresholds and rates change — confirm the current position for your establishment with a qualified professional.'),
+            L([ li('Provident Fund (PF) —','employee and employer contributions, filed with EPFO.'), li('ESI —','for employees below the wage threshold, filed with ESIC.'), li('Professional Tax —','state-specific, with its own slabs and returns.'), li('TDS on salary —','deducted per the income-tax slabs and deposited monthly.') ]),
+          ]),
+          S('Where payroll goes wrong', [
+            L([ li('Attendance not tied to pay —','manual entry causes errors and disputes.'), li('Missed deadlines —','late PF/ESI/TDS deposits attract penalties.'), li('Wrong slabs —','professional tax and TDS mis-computed.'), li('No audit trail —','payslips and returns not reconstructable.') ]),
+          ]),
+          S('How an HRMS keeps it right', [
+            P('Salary structures compute PF, ESI, PT and TDS automatically; attendance and shifts flow straight into the payroll run; and the reports needed for filing come out of the same system — with payslips and an audit trail for every cycle.'),
+          ]),
+        ],
+        ctaTitle:'Run compliant payroll without the deadline scramble',
+        ctaBody:"Bring a salary structure and headcount, and we'll set up a sample cycle with you.",
+        faqs:[
+          {q:'What statutory deductions apply to Indian payroll?',a:'Typically Provident Fund (PF), ESI (below the wage threshold), state professional tax, and TDS on salary — each with its own contribution rules and return deadlines.'},
+          {q:'How does an HRMS help with payroll compliance?',a:'It computes PF, ESI, PT and TDS from salary structures, pulls attendance into the run, and produces the payslips, returns and audit trail needed for filing.'},
+        ],
+        related:[ {t:'HRMS for manufacturing', href:'HRMS-Manufacturing.dc.html'}, {t:'HRMS for hospitals & clinics', href:'HRMS-Healthcare.dc.html'}, {t:'HRMS — overview', href:'HRMS.dc.html'} ],
+      },
+      'HRMS-Manufacturing': {
+        eyebrow:'HRMS by Industry · Manufacturing', title:'HRMS for Manufacturing',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'HRMS',href:'HRMS.dc.html'}, {name:'Manufacturing'} ],
+        ctaHref:'HRMS.dc.html', ctaLabel:'Explore HRMS',
+        intro:'Manufacturing HR runs on shifts, overtime and a mix of permanent and contract labour. An HRMS built for the floor ties biometric attendance and shift rosters straight to compliant payroll.',
+        sections:[
+          S('What manufacturers need from HRMS', [
+            L([ li('Shift rosters & overtime','across lines and plants.'), li('Biometric / geo attendance','feeding payroll directly.'), li('Contract-labour tracking','alongside permanent staff.'), li('PF/ESI/PT/TDS payroll','computed automatically.'), li('Multi-plant','headcount and reporting.') ]),
+          ]),
+          S('Attendance to payslip, one flow', [
+            P('Shifts and biometric check-in produce hours and overtime; payroll turns them into compliant pay with statutory deductions; employees self-serve payslips and leave — across every plant.'),
+          ]),
+          S('What manufacturers get', [
+            L([ 'Accurate shift and overtime pay.', 'Compliant statutory deductions.', 'Contract and permanent labour in one view.', 'Multi-plant headcount visibility.' ]),
+          ]),
+        ],
+        ctaTitle:'Tie the floor to compliant payroll',
+        ctaBody:"Tell us your shift and labour mix, and we'll map attendance-to-payroll with you.",
+        faqs:[
+          {q:'Does the HRMS handle shifts and overtime?',a:'Yes — shift rosters, biometric/geo check-in and overtime feed straight into payroll.'},
+          {q:'Can it track contract labour alongside permanent staff?',a:'Yes — contract and permanent workers are managed together, with compliant payroll for each.'},
+        ],
+        related:[ {t:'Payroll & compliance guide', href:'Guide-PayrollCompliance.dc.html'}, {t:'HRMS for multi-location retail', href:'HRMS-Retail.dc.html'}, {t:'HRMS — overview', href:'HRMS.dc.html'} ],
+      },
+      'HRMS-Retail': {
+        eyebrow:'HRMS by Industry · Retail', title:'HRMS for Multi-Location Retail',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'HRMS',href:'HRMS.dc.html'}, {name:'Retail'} ],
+        ctaHref:'HRMS.dc.html', ctaLabel:'Explore HRMS',
+        intro:'Retail chains manage a dispersed, high-churn workforce across many stores. An HRMS gives them store-wise rosters, fast onboarding and self-service that works from a phone.',
+        sections:[
+          S('What multi-location retail needs', [
+            L([ li('Store-wise rosters & attendance','with geo check-in.'), li('Fast onboarding','for high-turnover roles.'), li('Centralised, location-aware payroll','with state PT.'), li('Leave & holiday calendars','per store/state.'), li('Mobile self-service','for a deskless workforce.') ]),
+          ]),
+          S('Every store, one system', [
+            P('Each store runs its roster and attendance; head office sees consolidated headcount and runs one compliant payroll; staff apply for leave and get payslips from their phones.'),
+          ]),
+          S('What retail chains get', [
+            L([ 'Store-wise attendance and rosters.', 'Onboarding that keeps up with churn.', 'One payroll across states, with correct PT.', 'Self-service for a deskless workforce.' ]),
+          ]),
+        ],
+        ctaTitle:'Manage a dispersed retail workforce',
+        ctaBody:"Tell us your store count and states, and we'll map rosters-to-payroll with you.",
+        faqs:[
+          {q:'Can staff use the HRMS from a phone?',a:'Yes — mobile self-service lets a deskless workforce check in, apply for leave and get payslips from any device.'},
+          {q:'Does it handle payroll across multiple states?',a:'Yes — location-aware payroll applies the correct state professional tax and consolidates across stores.'},
+        ],
+        related:[ {t:'Payroll & compliance guide', href:'Guide-PayrollCompliance.dc.html'}, {t:'HRMS for manufacturing', href:'HRMS-Manufacturing.dc.html'}, {t:'HRMS — overview', href:'HRMS.dc.html'} ],
+      },
+      'HRMS-Healthcare': {
+        eyebrow:'HRMS by Industry · Healthcare', title:'HRMS for Hospitals & Clinics',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'HRMS',href:'HRMS.dc.html'}, {name:'Healthcare'} ],
+        ctaHref:'HRMS.dc.html', ctaLabel:'Explore HRMS',
+        intro:'Hospitals run 24/7 on rotating shifts across clinical and support staff, with credentials that must stay current. An HRMS keeps rosters, attendance and compliant payroll straight around the clock.',
+        sections:[
+          S('What hospitals & clinics need', [
+            L([ li('24/7 rotating shift rosters','across departments.'), li('Attendance & overtime','for round-the-clock staffing.'), li('Credential / license tracking','with expiry reminders.'), li('Compliant payroll','with PF/ESI/PT/TDS.'), li('Leave management','that protects coverage.') ]),
+          ]),
+          S('Around-the-clock staffing, handled', [
+            P('Rotating rosters cover every shift; attendance and overtime feed payroll; credential expiries are flagged before they lapse; and leave is approved without leaving a ward short.'),
+          ]),
+          S('What hospitals get', [
+            L([ 'Reliable 24/7 shift coverage.', 'Compliant payroll for clinical and support staff.', 'Credential expiry never missed.', 'Leave that protects coverage.' ]),
+          ]),
+        ],
+        ctaTitle:'Keep round-the-clock staffing compliant',
+        ctaBody:"Tell us your departments and shift pattern, and we'll map rostering-to-payroll with you.",
+        faqs:[
+          {q:'Can the HRMS manage 24/7 rotating shifts?',a:'Yes — rotating rosters across departments with attendance and overtime feeding payroll.'},
+          {q:'Does it track staff credentials and licenses?',a:'Yes — credential and license expiries are tracked with reminders so they don\u2019t lapse.'},
+        ],
+        related:[ {t:'Payroll & compliance guide', href:'Guide-PayrollCompliance.dc.html'}, {t:'HRMS for multi-location retail', href:'HRMS-Retail.dc.html'}, {t:'HRMS — overview', href:'HRMS.dc.html'} ],
+      },
+
+      'Guide-CRMSalesPipeline': {
+        eyebrow:'CRM Guide', title:'Building a Sales Pipeline That Actually Closes',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'CRM Platform',href:'CRM.dc.html'}, {name:'Sales Pipeline Guide'} ],
+        ctaHref:'CRM.dc.html', ctaLabel:'Explore CRM',
+        intro:'A CRM is only as good as the pipeline you run in it. This guide covers how to define stages that mean something, keep data clean, and use automation and analytics to close more without adding headcount.',
+        sections:[
+          S('Define stages that reflect the buyer, not your wishes', [
+            L([ li('Stages = buyer actions,','not internal steps (e.g. "demo done", not "sent email").'), li('Clear entry/exit criteria','for each stage so the pipeline is honest.'), li('One owner per deal','and a next action always set.'), li('Lost-reason capture','so you learn from what didn\u2019t close.') ]),
+          ]),
+          S('Keep the data clean', [
+            P('A pipeline full of stale, duplicated or ownerless deals lies to you. Capture leads from every source into one record, de-duplicate, and make "next action + date" mandatory so nothing rots silently.'),
+          ]),
+          S('Automate the follow-through', [
+            L([ li('Assignment rules','route leads to the right rep instantly.'), li('Follow-up reminders','so no deal goes cold.'), li('Stage automation','triggers tasks and emails.'), li('Quotations','generated from the same record.') ]),
+          ]),
+          S('Measure what matters', [
+            L([ 'Conversion rate by stage — where deals stall.', 'Win rate and average deal size.', 'Sales-cycle length.', 'Activity vs outcome per rep.' ]),
+          ]),
+        ],
+        ctaTitle:'Run a pipeline that tells the truth',
+        ctaBody:"Bring your current stages and a sample of deals, and we'll model your pipeline with you.",
+        faqs:[
+          {q:'How should I define CRM pipeline stages?',a:'Base stages on buyer actions with clear entry/exit criteria, one owner and a next action per deal, and a captured reason for every loss — so the pipeline reflects reality, not hope.'},
+          {q:'How does a CRM help close more deals?',a:'Assignment rules, follow-up reminders and stage automation keep deals moving, while conversion and win-rate analytics show where to focus.'},
+        ],
+        related:[ {t:'CRM for B2B sales teams', href:'CRM-B2B.dc.html'}, {t:'CRM for services firms', href:'CRM-Services.dc.html'}, {t:'CRM Platform — overview', href:'CRM.dc.html'} ],
+      },
+      'CRM-B2B': {
+        eyebrow:'CRM by Industry · B2B Sales', title:'CRM for B2B Sales Teams',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'CRM Platform',href:'CRM.dc.html'}, {name:'B2B Sales'} ],
+        ctaHref:'CRM.dc.html', ctaLabel:'Explore CRM',
+        intro:'B2B sales means long cycles, multiple stakeholders and quoted deals. A CRM built for it keeps every conversation, quote and decision-maker on one account record.',
+        sections:[
+          S('What B2B sales teams need', [
+            L([ li('Account & contact hierarchy','for multi-stakeholder deals.'), li('Long-cycle pipeline','with custom stages.'), li('Quotations & proposals','from the same record.'), li('Activity tracking','across the buying group.'), li('Forecasting','from weighted pipeline.') ]),
+          ]),
+          S('One record, whole relationship', [
+            P('Every email, meeting, quote and stakeholder sits on the account, so any rep can pick up the deal, and managers forecast from a pipeline that reflects reality.'),
+          ]),
+          S('What B2B teams get', [
+            L([ 'A full view of every account and stakeholder.', 'Faster, consistent quotes.', 'Reliable forecasting.', 'No deal knowledge trapped in one rep\u2019s head.' ]),
+          ]),
+        ],
+        ctaTitle:'Give every B2B deal one record',
+        ctaBody:"Bring your sales stages and quote process, and we'll model it with you.",
+        faqs:[
+          {q:'Can the CRM handle multi-stakeholder B2B deals?',a:'Yes — account and contact hierarchies keep every stakeholder, conversation and quote on one record.'},
+          {q:'Does it do quotations?',a:'Yes — quotes and proposals are generated from the same record and flow to order and invoice.'},
+        ],
+        related:[ {t:'Sales pipeline guide', href:'Guide-CRMSalesPipeline.dc.html'}, {t:'CRM for services firms', href:'CRM-Services.dc.html'}, {t:'CRM Platform — overview', href:'CRM.dc.html'} ],
+      },
+      'CRM-Services': {
+        eyebrow:'CRM by Industry · Services', title:'CRM for Services Firms',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'CRM Platform',href:'CRM.dc.html'}, {name:'Services'} ],
+        ctaHref:'CRM.dc.html', ctaLabel:'Explore CRM',
+        intro:'For services firms, the sale is a relationship and the pipeline is proposals and retainers. A CRM keeps enquiries, proposals and ongoing client relationships in one place.',
+        sections:[
+          S('What services firms need', [
+            L([ li('Enquiry-to-proposal pipeline','with clear stages.'), li('Proposal & retainer tracking','per client.'), li('Client relationship history','across engagements.'), li('Referral & repeat-business','tracking.'), li('Handoff to delivery','once won.') ]),
+          ]),
+          S('From enquiry to lasting client', [
+            P('Capture enquiries, send proposals, win the work, and keep the whole relationship — repeat business and referrals included — on one record that delivery can pick up cleanly.'),
+          ]),
+          S('What services firms get', [
+            L([ 'A clean enquiry-to-proposal pipeline.', 'Every client interaction in one place.', 'Repeat and referral business tracked.', 'A smooth handoff from sales to delivery.' ]),
+          ]),
+        ],
+        ctaTitle:'Keep client relationships in one place',
+        ctaBody:"Tell us how you win and keep clients, and we'll map the pipeline with you.",
+        faqs:[
+          {q:'Can the CRM track proposals and retainers?',a:'Yes — proposals and retainers are tracked per client alongside the full relationship history.'},
+          {q:'Does it help with repeat and referral business?',a:'Yes — repeat business and referrals are tracked on the same client record so nothing is lost.'},
+        ],
+        related:[ {t:'Sales pipeline guide', href:'Guide-CRMSalesPipeline.dc.html'}, {t:'CRM for B2B sales teams', href:'CRM-B2B.dc.html'}, {t:'CRM Platform — overview', href:'CRM.dc.html'} ],
+      },
+      'CRM-Distribution': {
+        eyebrow:'CRM by Industry · Distribution', title:'CRM for Distribution Businesses',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'CRM Platform',href:'CRM.dc.html'}, {name:'Distribution'} ],
+        ctaHref:'CRM.dc.html', ctaLabel:'Explore CRM',
+        intro:'Distribution businesses juggle many customer accounts, repeat orders and support in one relationship. A CRM keeps sales, reorders and service issues on a single account view.',
+        sections:[
+          S('What distribution businesses need', [
+            L([ li('Large account base','with reorder history.'), li('Quotation & order capture','tied to the catalogue.'), li('Support tickets','on the same account.'), li('Outstanding & credit visibility','for sales reps.'), li('Territory & rep assignment.') ]),
+          ]),
+          S('Sales and support on one account', [
+            P('Reps see order history, outstanding and open issues in one place, so they sell and serve the account without switching systems or losing context.'),
+          ]),
+          S('What distributors get', [
+            L([ 'One view per customer account.', 'Faster reorders and quotes.', 'Support issues visible to sales.', 'Territory-based ownership.' ]),
+          ]),
+        ],
+        ctaTitle:'Sell and serve from one account view',
+        ctaBody:"Tell us your account base and order pattern, and we'll map it with you.",
+        faqs:[
+          {q:'Can sales and support share one customer view?',a:'Yes — orders, quotes and support tickets all sit on the same account record.'},
+          {q:'Can reps see outstanding and credit?',a:'Yes — outstanding and credit visibility is available to reps on the account.'},
+        ],
+        related:[ {t:'Sales pipeline guide', href:'Guide-CRMSalesPipeline.dc.html'}, {t:'CRM for B2B sales teams', href:'CRM-B2B.dc.html'}, {t:'CRM Platform — overview', href:'CRM.dc.html'} ],
+      },
+
+      'Guide-ITSM': {
+        eyebrow:'Service Desk Guide', title:'ITSM Fundamentals: Tickets, SLAs & Escalation',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'Service Desk',href:'ServiceDesk.dc.html'}, {name:'ITSM Guide'} ],
+        ctaHref:'ServiceDesk.dc.html', ctaLabel:'Explore Service Desk',
+        intro:'A service desk succeeds or fails on a few fundamentals: getting tickets to the right person, holding to SLAs, and escalating before things break. This guide covers the core concepts and how to set them up so they actually work.',
+        sections:[
+          S('The building blocks', [
+            L([ li('Tickets & queues —','structured intake routed to the right team.'), li('Categories & priority','that drive routing and SLA.'), li('Incident vs problem —','fix the outage, then the root cause.'), li('Knowledge base','to deflect repeat questions.') ]),
+          ]),
+          S('SLAs that mean something', [
+            P('Set response and resolution targets by priority, measure against them per ticket, and make the clock visible to agents. An SLA nobody can see is an SLA nobody meets.'),
+            N('Define escalation before you need it: who gets notified, and when, as a ticket approaches its SLA — automatic, not a manual chase.'),
+          ]),
+          S('Escalation & self-service', [
+            L([ li('Automatic escalation','when an SLA is at risk.'), li('Self-service portal','so users raise and track their own requests.'), li('Knowledge articles','that cut ticket volume.'), li('Reporting','on SLA attainment and backlog.') ]),
+          ]),
+        ],
+        ctaTitle:'Stand up a service desk that holds its SLAs',
+        ctaBody:"Bring your ticket categories and SLA targets, and we'll configure a working queue with you.",
+        faqs:[
+          {q:'What is the difference between an incident and a problem in ITSM?',a:'An incident is a single disruption to fix now; a problem is the underlying root cause behind one or more incidents. Good practice resolves the incident, then tackles the problem.'},
+          {q:'How do SLAs and escalation work together?',a:'SLAs set response/resolution targets by priority; escalation automatically notifies the right people as a ticket approaches or breaches its SLA, so slips are caught early.'},
+        ],
+        related:[ {t:'Service Desk for internal IT teams', href:'SD-InternalIT.dc.html'}, {t:'Service Desk for MSPs', href:'SD-MSP.dc.html'}, {t:'Service Desk — overview', href:'ServiceDesk.dc.html'} ],
+      },
+      'SD-InternalIT': {
+        eyebrow:'Service Desk by Industry · Internal IT', title:'Service Desk for Internal IT Teams',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'Service Desk',href:'ServiceDesk.dc.html'}, {name:'Internal IT'} ],
+        ctaHref:'ServiceDesk.dc.html', ctaLabel:'Explore Service Desk',
+        intro:'Internal IT teams support employees across the business. A service desk gives them one place for requests, incidents and assets — with SLAs that keep the business running.',
+        sections:[
+          S('What internal IT teams need', [
+            L([ li('Employee self-service portal','for requests and issues.'), li('Ticket routing','to the right IT function.'), li('Asset / CMDB','tracking hardware and software.'), li('SLAs & escalation','for business-critical issues.'), li('Knowledge base','to deflect repeat tickets.') ]),
+          ]),
+          S('Support the whole business, tracked', [
+            P('Employees raise requests through a portal; tickets route to the right person on an SLA; assets and services are tracked; and a knowledge base cuts the repeat questions.'),
+          ]),
+          S('What internal IT gets', [
+            L([ 'One intake for the whole company.', 'SLA-backed response to critical issues.', 'A live asset/CMDB view.', 'Fewer repeat tickets via self-service.' ]),
+          ]),
+        ],
+        ctaTitle:'Give internal IT one system',
+        ctaBody:"Tell us your request types and assets, and we'll configure it with you.",
+        faqs:[
+          {q:'Does it include an employee self-service portal?',a:'Yes — employees raise and track requests through a portal, backed by a knowledge base.'},
+          {q:'Can it track IT assets?',a:'Yes — a CMDB tracks the hardware, software and services tickets relate to.'},
+        ],
+        related:[ {t:'ITSM fundamentals guide', href:'Guide-ITSM.dc.html'}, {t:'Service Desk for MSPs', href:'SD-MSP.dc.html'}, {t:'Service Desk — overview', href:'ServiceDesk.dc.html'} ],
+      },
+      'SD-MSP': {
+        eyebrow:'Service Desk by Industry · MSPs', title:'Service Desk for Managed Service Providers',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'Service Desk',href:'ServiceDesk.dc.html'}, {name:'MSPs'} ],
+        ctaHref:'ServiceDesk.dc.html', ctaLabel:'Explore Service Desk',
+        intro:'MSPs run service desks for many client organisations at once, each with its own SLA. A multi-tenant service desk keeps clients separated, SLAs honoured and work reportable per client.',
+        sections:[
+          S('What MSPs need', [
+            L([ li('Multi-client separation','so each client sees only their own.'), li('Per-client SLAs','and escalation rules.'), li('Client self-service portals','branded per client.'), li('Time & work tracking','for billing.'), li('Per-client reporting','on SLA attainment.') ]),
+          ]),
+          S('Many clients, one desk', [
+            P('Every client is a separated tenant with its own SLAs, portal and reports, while your team works one queue — so you scale support without one client\u2019s work bleeding into another\u2019s.'),
+          ]),
+          S('What MSPs get', [
+            L([ 'Clean client separation.', 'Per-client SLA compliance.', 'Branded client portals.', 'Billable-time and SLA reporting per client.' ]),
+          ]),
+        ],
+        ctaTitle:'Run every client from one service desk',
+        ctaBody:"Tell us your client count and SLA models, and we'll configure multi-tenant with you.",
+        faqs:[
+          {q:'Can the service desk keep multiple clients separated?',a:'Yes — each client is a separated tenant with its own SLAs, portal and reporting, while your team works one queue.'},
+          {q:'Can it apply different SLAs per client?',a:'Yes — per-client SLAs and escalation rules are supported, with reporting on attainment for each.'},
+        ],
+        related:[ {t:'ITSM fundamentals guide', href:'Guide-ITSM.dc.html'}, {t:'Service Desk for internal IT teams', href:'SD-InternalIT.dc.html'}, {t:'Service Desk — overview', href:'ServiceDesk.dc.html'} ],
+      },
+      'SD-CustomerSupport': {
+        eyebrow:'Service Desk by Industry · Customer Support', title:'Service Desk for Customer Support Teams',
+        byline:dmsByline, crumbs:[ {name:'Home',href:'Svasamm.dc.html'}, {name:'Service Desk',href:'ServiceDesk.dc.html'}, {name:'Customer Support'} ],
+        ctaHref:'ServiceDesk.dc.html', ctaLabel:'Explore Service Desk',
+        intro:'Customer support teams field issues across email, phone and portal, and are judged on speed and satisfaction. A service desk unifies channels, holds SLAs and surfaces CSAT.',
+        sections:[
+          S('What customer support teams need', [
+            L([ li('Multi-channel intake','into one queue.'), li('SLA & priority','on customer-facing issues.'), li('Knowledge base','for self-service and agents.'), li('CSAT capture','after resolution.'), li('Reporting','on response, resolution and satisfaction.') ]),
+          ]),
+          S('Every channel, one queue', [
+            P('Email, phone and portal issues land in one queue, routed and prioritised on SLA; a knowledge base deflects the easy ones; and CSAT after resolution shows how you\u2019re really doing.'),
+          ]),
+          S('What support teams get', [
+            L([ 'A unified multi-channel queue.', 'SLA-backed response times.', 'Self-service that cuts volume.', 'CSAT and performance visibility.' ]),
+          ]),
+        ],
+        ctaTitle:'Unify support and hold your SLAs',
+        ctaBody:"Tell us your channels and SLA targets, and we'll configure the desk with you.",
+        faqs:[
+          {q:'Can it bring email, phone and portal into one queue?',a:'Yes — multi-channel intake lands in one queue, routed and prioritised on SLA.'},
+          {q:'Does it measure customer satisfaction?',a:'Yes — CSAT is captured after resolution and reported alongside response and resolution times.'},
+        ],
+        related:[ {t:'ITSM fundamentals guide', href:'Guide-ITSM.dc.html'}, {t:'Service Desk for internal IT teams', href:'SD-InternalIT.dc.html'}, {t:'Service Desk — overview', href:'ServiceDesk.dc.html'} ],
+      },
+
+      'Compare-Bizom': {
+        eyebrow:'Comparison', title:'Svasamm DMS vs Bizom: For OEM Channels',
+        byline:dmsByline, crumbs: dmsCrumb('DMS vs Bizom'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:"Bizom (by Mobisy Technologies) is one of India's best-known channel platforms, so if you're an OEM comparing options it's a fair one to weigh against Svasamm DMS. Both manage distribution, but they're built for different shapes of channel. This is an honest side-by-side.",
+        sections:[
+          S('What Bizom is', [
+            N("Based on each vendor's publicly available information as of July 2026. Software changes — always confirm current features directly with the vendor before deciding."),
+            P('Bizom is a retail-intelligence and SFA (sales-force automation) platform aimed primarily at FMCG and consumer-goods brands. It emphasises the fast-moving side of distribution: field-force / beat management, retailer order-taking, secondary sales and stock, DMS for distributor claims and schemes, and merchandising / retail execution across large outlet networks.'),
+          ]),
+          S('What Svasamm DMS is', [
+            P('Svasamm DMS is built for OEMs that sell equipment through distributors — high-value, serial-numbered machines with a multi-year service life. It runs the full channel lifecycle: distributor-booked leads visible to the OEM (before sale), sale/installation/warranty with serial and installed-base tracking (sale), and customer queries routed to the right distributor on an SLA with escalation (after sale).'),
+          ]),
+          S('Side-by-side', [
+            P("'Stated' = listed on the vendor's public site; 'Not stated' means we didn't find it publicly (it may still exist — ask them)."),
+            T(['Capability','Svasamm DMS','Bizom'], [
+              ['Primary fit','OEM equipment channels','FMCG / consumer-goods brands'],
+              ['Field-force / beat automation (SFA)','Not a core focus','Stated (core strength)'],
+              ['Secondary sales & retail execution','Partial','Stated (core strength)'],
+              ['Distributor-booked lead/deal registration','Yes','Not stated publicly'],
+              ['Serial / installed-base & warranty tracking','Yes (core focus)','Not stated publicly'],
+              ['Installation & commissioning by distributor engineers','Yes','Not stated publicly'],
+              ['After-sales query routing with SLA & escalation','Yes (core focus)','Not stated publicly'],
+              ['OEM ERP / SAP integration','Yes (API-first)','Stated'],
+            ]),
+          ]),
+          S('Which should you choose?', [
+            P('If your channel is fast-moving consumer goods and your priority is beat plans, retail execution and secondary-sales intelligence across thousands of outlets, Bizom is purpose-built for that. If you\u2019re an OEM whose value lives in serial-tracked machines, installation, warranty and SLA-bound after-sales service through distributors, that is exactly what Svasamm DMS is built around.'),
+          ]),
+        ],
+        ctaTitle:'See if Svasamm DMS fits your channel',
+        ctaBody:"Bring your before/sale/after flow and we'll show you exactly how DMS handles it.",
+        faqs:[
+          {q:'What is the main difference between Svasamm DMS and Bizom?',a:'Bizom is built for FMCG channels — field-force automation, retail execution and secondary sales. Svasamm DMS is built for OEM equipment channels — serial/warranty tracking, installation, and after-sales SLA service through distributors.'},
+          {q:'Is this comparison up to date?',a:'It reflects each vendor\u2019s public information as of July 2026. Features change — confirm current capabilities directly with each vendor.'},
+        ],
+        related:[ {t:'Svasamm DMS vs FieldAssist', href:'Compare-FieldAssist.dc.html'}, relOEMPillar, relDMS ],
+      },
+
+      'Compare-FieldAssist': {
+        eyebrow:'Comparison', title:'Svasamm DMS vs FieldAssist: For OEM Channels',
+        byline:dmsByline, crumbs: dmsCrumb('DMS vs FieldAssist'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:"FieldAssist is a well-established route-to-market / SFA platform, so it's a reasonable one to compare against Svasamm DMS. Both help brands manage distribution, but they solve different problems. Here's an honest side-by-side.",
+        sections:[
+          S('What FieldAssist is', [
+            N("Based on each vendor's publicly available information as of July 2026. Confirm current features directly with the vendor before deciding."),
+            P('FieldAssist is a route-to-market (RTM) SaaS platform focused on CPG/FMCG brands. It leads with sales-force automation, distributor management (DMS), retail execution and merchandising, and analytics across the general-trade outlet universe — optimising the daily beat, order capture and secondary sales of fast-moving goods.'),
+          ]),
+          S('What Svasamm DMS is', [
+            P('Svasamm DMS is built for OEMs selling equipment through distributors. It centres on the full equipment lifecycle rather than daily FMCG beats: distributor-booked leads visible to the OEM, sale/installation/warranty with serial and installed-base tracking, and after-sales customer queries routed to the right distributor on an SLA with escalation.'),
+          ]),
+          S('Side-by-side', [
+            P("'Stated' = listed on the vendor's public site; 'Not stated' means we didn't find it publicly (it may still exist — ask them)."),
+            T(['Capability','Svasamm DMS','FieldAssist'], [
+              ['Primary fit','OEM equipment channels','CPG / FMCG route-to-market'],
+              ['Field-force automation & beat planning','Not a core focus','Stated (core strength)'],
+              ['Retail execution & merchandising','No','Stated (core strength)'],
+              ['Distributor-booked lead/deal registration','Yes','Not stated publicly'],
+              ['Serial / installed-base & warranty tracking','Yes (core focus)','Not stated publicly'],
+              ['Installation & commissioning tracking','Yes','Not stated publicly'],
+              ['After-sales query routing with SLA & escalation','Yes (core focus)','Not stated publicly'],
+              ['OEM ERP / SAP integration','Yes (API-first)','Stated'],
+            ]),
+          ]),
+          S('Which should you choose?', [
+            P('If you\u2019re a CPG/FMCG brand optimising general-trade route-to-market — beats, retail execution and secondary sales — FieldAssist is built for that world. If you\u2019re an OEM whose channel revolves around serial-tracked equipment, installation, warranty and SLA-bound after-sales service, Svasamm DMS is the closer fit.'),
+          ]),
+        ],
+        ctaTitle:'See if Svasamm DMS fits your channel',
+        ctaBody:"Tell us your OEM channel model and we'll map before/sale/after with you.",
+        faqs:[
+          {q:'What is the main difference between Svasamm DMS and FieldAssist?',a:'FieldAssist is a route-to-market/SFA platform for CPG/FMCG brands — beats, retail execution, secondary sales. Svasamm DMS is for OEM equipment channels — serial/warranty tracking, installation, and after-sales SLA service through distributors.'},
+          {q:'Is this comparison current?',a:'It reflects public information as of July 2026. Features change — verify directly with each vendor.'},
+        ],
+        related:[ {t:'Svasamm DMS vs Bizom', href:'Compare-Bizom.dc.html'}, relOEMPillar, relDMS ],
+      },
+
+      'DMS-Agri': {
+        eyebrow:'OEM Industry · Agri & Farm Equipment', title:'Distributor Management for Agri & Farm Equipment OEMs',
+        byline:dmsByline, crumbs: dmsCrumb('Agri & Farm Equipment OEMs'),
+        ctaHref:'DMS.dc.html', ctaLabel:'Explore DMS',
+        intro:'OEMs making tractors, implements, pumps and harvesters sell through a dispersed rural dealer network where service reach, spare-part logistics, warranty and finance/subsidy paperwork all matter. An OEM DMS brings that far-flung channel into one view.',
+        sections:[
+          S('The channel challenge in agri & farm equipment', [
+            L([ li('Dispersed rural dealers','spread across large geographies.'), li('Service reach —','breakdowns happen far from the OEM, handled by dealers and local mechanics.'), li('Spares logistics','over long distances.'), li('Warranty & finance/subsidy docs','that need capturing at the point of sale.') ]),
+          ]),
+          S('Before sale to after sale, on one system', [
+            L([ li('Before sale —','dealers register leads and capture finance/subsidy details; the OEM sees demand.'), li('Sale & warranty —','serial and warranty are recorded, and dealer stock and machine aging are visible to the OEM.'), li('After sale —','a service or warranty query is assigned to the right dealer or mechanic on an SLA, with escalation.') ]),
+          ]),
+          S('What agri equipment OEMs get', [
+            L([ 'Visibility of a dispersed rural dealer network.', 'Spares and warranty tracking across distances.', 'SLA-backed service reach into remote areas.', 'Analytics on sales, aging and service by territory.' ]),
+          ]),
+        ],
+        ctaTitle:'Bring a scattered rural channel into one view',
+        ctaBody:"Tell us how your dealers sell and service in the field, and we'll map the lifecycle with you.",
+        faqs:[
+          {q:'Can a dispersed rural dealer network be managed in one system?',a:'Yes — the model gives the OEM visibility across a scattered dealer network, with each dealer seeing only its own data.'},
+          {q:'Are spares and warranty tracked across distances?',a:'Yes — dealer spares stock, warranty and machine aging are visible to the OEM, with SLA-backed service assignment.'},
+        ],
+        related:[ relOEMPillar, {t:'Distributor management for HVAC & industrial equipment OEMs', href:'DMS-HVAC.dc.html'}, relDMS ],
+      },
+    };
+  }
+
+  norm(blocks) {
+    return blocks.map(b => {
+      if (b.t === 'p') return { isP:true, text:b.text };
+      if (b.t === 'note') return { isNote:true, text:b.text };
+      if (b.t === 'list') return { isList:true, items: b.items.map(it => typeof it === 'string' ? { hasB:false, b:'', t:it } : { hasB: !!it.b, b:it.b||'', t:it.t||'' }) };
+      if (b.t === 'table') return { isTable:true, cols: b.cols.map(v=>({v})), rows: b.rows.map(r=>({ cells: r.map(v=>({v})) })) };
+      return {};
+    });
+  }
+
+  renderVals() {
+    const d = this.data()[this.props.slug] || this.data()['Guide-CMR'];
+    const s = this.state;
+    const crumbs = d.crumbs.map((c, i) => ({ name:c.name, href:c.href || '', last: i === d.crumbs.length - 1 && !c.href }));
+    const sections = d.sections.map(sec => ({ h: sec.h || '', sub:false, subText:'', blocks: this.norm(sec.blocks) }));
+    const sl = this.props.slug || '';
+    const hf = (function(s){
+      // rice sub-types
+      if(/^State-/.test(s)) return ['assets/img/rice-planting-sunset.jpg','Rice country, on the ground'];
+      if(/^(Guide-Byproduct)/.test(s)) return ['assets/img/rice-grains.jpg','From paddy to by-product'];
+      if(/^(Guide-Yield)/.test(s)) return ['assets/img/rice-ears-golden.jpg','Yield in the field'];
+      if(/^(Guide-CMR|Guide-GST|Guide-BestSoftware|Guide-Pricing|Compare-Dataman|Compare-Samadhan)/.test(s)) return ['assets/img/rice-crop-closeup.jpg','Inside the rice mill'];
+      // OEM / DMS
+      if(/^(Guide-OEM|DMS-|Compare-Bizom|Compare-FieldAssist)/.test(s)) return ['assets/img/network-plexus.jpg','Across the OEM channel'];
+      // platform clusters
+      if(/^(Guide-ERPImpl|ERP-)/.test(s)) return ['assets/img/data-light.jpg','One connected system'];
+      if(/^(Guide-Payroll|HRMS-)/.test(s)) return ['assets/img/team-hands.jpg','Workforce, handled'];
+      if(/^(Guide-CRM|CRM-)/.test(s)) return ['assets/img/team-hands.jpg','Relationships that close'];
+      if(/^(Guide-ITSM|SD-)/.test(s)) return ['assets/img/data-light.jpg','Support, on time'];
+      return ['assets/img/lightbulb.jpg','Operations, live'];
+    })(sl);
+    const imgMap = {
+      'Guide-BestSoftware':'assets/img/g-best-software.jpg','Guide-GST':'assets/img/g-gst.jpg','Guide-ByproductAccounting':'assets/img/g-byproduct.jpg','Guide-CMR':'assets/img/g-cmr.jpg','Guide-Pricing':'assets/img/g-pricing.jpg','Guide-YieldRecovery':'assets/img/g-yield.jpg',
+      'State-WestBengal':'assets/img/s-wb.jpg','State-Bihar':'assets/img/s-bihar.jpg','State-Odisha':'assets/img/s-odisha.jpg','State-UttarPradesh':'assets/img/s-up.jpg',
+      'DMS-CodingMarking':'assets/img/dms-coding.jpg','DMS-PackagingMachinery':'assets/img/dms-packaging.jpg','DMS-Electrical':'assets/img/dms-electrical.jpg','DMS-Automotive':'assets/img/dms-automotive.jpg','DMS-Pharma':'assets/img/dms-pharma.jpg','DMS-HVAC':'assets/img/dms-hvac.jpg','DMS-Agri':'assets/img/dms-agri.jpg',
+      'Guide-OEMDistributor':'assets/img/dms-oem-guide.jpg',
+      'Guide-ERPImplementation':'assets/img/erp-implementation.jpg','ERP-Manufacturing':'assets/img/erp-manufacturing.jpg','ERP-Trading':'assets/img/erp-trading.jpg','ERP-Services':'assets/img/erp-services.jpg',
+      'Guide-PayrollCompliance':'assets/img/hrms-payroll.jpg','HRMS-Manufacturing':'assets/img/hrms-manufacturing.jpg','HRMS-Retail':'assets/img/hrms-retail.jpg','HRMS-Healthcare':'assets/img/hrms-healthcare.jpg',
+      'Guide-CRMSalesPipeline':'assets/img/crm-pipeline.jpg','CRM-B2B':'assets/img/crm-b2b.jpg','CRM-Services':'assets/img/crm-services.jpg','CRM-Distribution':'assets/img/crm-distribution.jpg',
+      'Guide-ITSM':'assets/img/sd-itsm.jpg','SD-InternalIT':'assets/img/sd-internal-it.jpg','SD-MSP':'assets/img/sd-msp.jpg','SD-CustomerSupport':'assets/img/sd-customer-support.jpg',
+      'Compare-Bizom':'assets/img/compare-bizom.jpg','Compare-FieldAssist':'assets/img/compare-fieldassist.jpg','Compare-Dataman':'assets/img/compare-dataman.jpg','Compare-Samadhan':'assets/img/compare-samadhan.jpg'
+    };
+    const heroImg = imgMap[sl] || hf[0];
+    const heroCaption = hf[1];
+    return {
+      heroImg, heroCaption,
+      eyebrow:d.eyebrow, title:d.title, byline:d.byline, intro:d.intro,
+      crumbs, sections,
+      faqs: d.faqs.map((f,i)=>({ q:f.q, a:f.a, open:s.faq===i, icon:s.faq===i?'minus':'plus', btnId:'faq-b-'+i, panelId:'faq-p-'+i, toggle:()=>this.setState({faq:s.faq===i?-1:i}) })),
+      related: d.related,
+      ctaTitle:d.ctaTitle, ctaBody:d.ctaBody,
+      ctaProductHref: d.ctaHref || 'Millingo.dc.html',
+      ctaProductLabel: d.ctaLabel || 'Explore Millingo',
+    };
+  }
+}
+</script>
+</body>
+</html>

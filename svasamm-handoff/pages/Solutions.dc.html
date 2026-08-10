@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Solutions — Vertical ERPs & Platform Modules | Svasamm</title>
+  <meta name="description" content="Every Svasamm product in one place: Millingo rice-mill ERP, Lucoze healthcare HIMS, distributor management, and platform modules — ERP, HRMS, CRM and service desk.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://svasamm.com/pages/services.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Solutions | Svasamm">
+  <meta property="og:description" content="Purpose-built vertical ERPs and horizontal platform modules for Indian operations.">
+  <meta property="og:url" content="https://svasamm.com/pages/services.html">
+  <link rel="stylesheet" href="svasamm.css">
+  <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.js"></script>
+  <script src="icons.js"></script>
+  <style>
+    .sl-hero { background: radial-gradient(58% 78% at 90% 0%, var(--sv-brand-50), transparent 62%), linear-gradient(180deg, #fbfcfe 0%, var(--sv-bg) 74%); }
+    @media (max-width: 900px) { .sl-two { grid-template-columns: 1fr !important; } }
+  </style>
+</helmet>
+<div style="background:var(--sv-bg);min-height:100vh;display:flex;flex-direction:column">
+  <a class="sv-skip" href="#main">Skip to content</a>
+  <dc-import name="Header" active="solutions" hint-size="100%,68px"></dc-import>
+  <main id="main" style="flex:1">
+    <section class="sl-hero" style="border-bottom:1px solid var(--sv-line)">
+      <div class="sv-wrap" style="padding:22px 24px 0">
+        <div style="display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--sv-ink-3)">
+          <a href="Svasamm.dc.html" style="color:var(--sv-ink-2)">Home</a>
+          <span class="sv-ic" data-icon="chevron-right" style="width:14px;height:14px"></span>
+          <span style="color:var(--sv-ink)">Solutions</span>
+        </div>
+      </div>
+      <div class="sv-wrap" style="padding:44px 24px 60px;max-width:820px">
+        <span class="sv-tag sv-tag-brand" style="margin-bottom:20px">All solutions</span>
+        <h1 style="margin:0 0 18px;font-size:48px;max-width:18ch">Every Svasamm product, in one place</h1>
+        <p style="font-size:18px;line-height:1.62;color:var(--sv-ink-2);margin:0;max-width:56ch">Vertical products carry an entire industry's workflow inside; platform modules are the horizontal systems every operation runs. Open any product for the full detail.</p>
+      </div>
+    </section>
+
+    <section style="padding:64px 0 36px">
+      <div class="sv-wrap">
+        <div class="sv-eyebrow">Vertical products</div>
+        <div class="sl-two" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px">
+          <sc-for list="{{ vertical }}" as="p" hint-placeholder-count="3">
+            <a href="{{ p.href }}" target="{{ p.target }}" class="sv-card sv-card-i" style="display:flex;flex-direction:column;padding:26px;color:var(--sv-ink)">
+              <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+                <span class="sv-chip"><span class="sv-ic" data-icon="{{ p.icon }}" style="width:22px;height:22px"></span></span>
+                <div><h2 style="font-size:21px;margin:0 0 5px">{{ p.name }}</h2><span class="sv-tag sv-tag-brand">{{ p.badge }}</span></div>
+              </div>
+              <p style="font-size:14.5px;line-height:1.6;color:var(--sv-ink-2);flex:1;margin:0 0 18px">{{ p.blurb }}</p>
+              <span style="display:inline-flex;align-items:center;gap:7px;font-size:14.5px;font-weight:500;color:var(--sv-brand)">{{ p.cta }} <span class="sv-ic" data-icon="{{ p.ctaIcon }}" style="width:15px;height:15px"></span></span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:28px 0 64px">
+      <div class="sv-wrap">
+        <div class="sv-eyebrow">Platform modules</div>
+        <div class="sl-two" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px">
+          <sc-for list="{{ platform }}" as="p" hint-placeholder-count="4">
+            <a href="{{ p.href }}" class="sv-card sv-card-i" style="display:flex;flex-direction:column;padding:24px;color:var(--sv-ink)">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px">
+                <span class="sv-chip"><span class="sv-ic" data-icon="{{ p.icon }}" style="width:22px;height:22px"></span></span>
+                <span class="sv-tag sv-tag-outline">Platform</span>
+              </div>
+              <h2 style="font-size:19px;margin:0 0 8px">{{ p.name }}</h2>
+              <p style="font-size:14px;line-height:1.6;color:var(--sv-ink-2);flex:1;margin:0 0 16px">{{ p.blurb }}</p>
+              <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;color:var(--sv-brand)">{{ p.cta }} <span class="sv-ic" data-icon="arrow-right" style="width:15px;height:15px"></span></span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:8px 0 88px">
+      <div class="sv-wrap">
+        <div class="sv-field-deep" style="padding:52px 44px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
+          <div style="max-width:52ch">
+            <h2 style="font-size:30px;margin:0 0 10px">Not sure which fits?</h2>
+            <p style="font-size:16.5px;color:rgba(255,255,255,.72);margin:0">Describe your operation and we'll point you to the right product — or tell you honestly if we're not the fit.</p>
+          </div>
+          <a href="Contact.dc.html" class="sv-btn sv-btn-inv sv-btn-lg">Talk to us <span class="sv-ic" data-icon="arrow-right" style="width:17px;height:17px"></span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <dc-import name="Footer" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount() { window.svIcons && window.svIcons(); }
+  componentDidUpdate() { window.svIcons && window.svIcons(); }
+  renderVals() {
+    return {
+      vertical: [
+        { name:'Millingo', badge:'Rice Mill ERP', icon:'wheat', href:'Millingo.dc.html', target:'', blurb:'ERP for rice mills — paddy procurement, quality grading, milling yield & by-products, and FCI/levy (CMR) compliance.', cta:'Explore Millingo', ctaIcon:'arrow-right' },
+        { name:'Lucoze', badge:'Healthcare HIMS', icon:'heart-pulse', href:'https://lucoze.com', target:'_blank', blurb:'India-first hospital & clinic management: appointments, EMR, billing, lab and pharmacy on one ABDM-ready platform.', cta:'Visit lucoze.com', ctaIcon:'arrow-up-right' },
+        { name:'DMS', badge:'Distributor Management', icon:'truck', href:'DMS.dc.html', target:'', blurb:'Run an independent-distributor network: distributor-scoped sales, tiered stock, commissions and territory control.', cta:'Explore DMS', ctaIcon:'arrow-right' },
+      ],
+      platform: [
+        { name:'ERP System', icon:'layers', href:'ERP.dc.html', blurb:'Unified finance, supply chain, manufacturing and operations for complete business visibility.', cta:'Explore ERP' },
+        { name:'HRMS', icon:'users', href:'HRMS.dc.html', blurb:'HR from recruitment to retirement — payroll, attendance and performance tracking.', cta:'Explore HRMS' },
+        { name:'CRM Platform', icon:'handshake', href:'CRM.dc.html', blurb:'Customer relationships with sales automation, marketing and support tools.', cta:'Explore CRM' },
+        { name:'Service Desk', icon:'headset', href:'ServiceDesk.dc.html', blurb:'IT service management with ticketing, incident management and a knowledge base.', cta:'Explore Service Desk' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

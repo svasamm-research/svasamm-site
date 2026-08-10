@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Contact Svasamm — Book a Product Walkthrough</title>
+  <meta name="description" content="Tell us what you run and we'll show you the fit. Book a walkthrough with the team that builds Svasamm's software. Email query@svasamm.com or call +91 91471 44638.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://svasamm.com/pages/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact Svasamm">
+  <meta property="og:description" content="Book a product walkthrough with the people who build the software.">
+  <meta property="og:url" content="https://svasamm.com/pages/contact.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact Svasamm","url":"https://svasamm.com/pages/contact.html","mainEntity":{"@type":"Organization","name":"Svasamm Research Pvt Ltd","email":"query@svasamm.com","telephone":"+91-91471-44638","address":{"@type":"PostalAddress","streetAddress":"Nabagram, Konnagar","addressLocality":"Hooghly","addressRegion":"West Bengal","postalCode":"712246","addressCountry":"IN"}}}</script>
+  <link rel="stylesheet" href="svasamm.css">
+  <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.js"></script>
+  <script src="icons.js"></script>
+  <style>
+    .ct-hero { background: radial-gradient(56% 74% at 8% 0%, var(--sv-brand-50), transparent 60%), linear-gradient(180deg, #fbfcfe 0%, var(--sv-bg) 76%); }
+    .ct-err { font-size: 12.5px; color: #b42318; margin-top: 5px; display: block; }
+    @media (max-width: 900px) { .ct-two { grid-template-columns: 1fr !important; } }
+  </style>
+</helmet>
+<div style="background:var(--sv-bg);min-height:100vh;display:flex;flex-direction:column">
+  <a class="sv-skip" href="#main">Skip to content</a>
+  <dc-import name="Header" active="contact" hint-size="100%,68px"></dc-import>
+  <main id="main" style="flex:1">
+    <section class="ct-hero" style="border-bottom:1px solid var(--sv-line)">
+      <div class="sv-wrap" style="padding:22px 24px 0">
+        <div style="display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--sv-ink-3)">
+          <a href="Svasamm.dc.html" style="color:var(--sv-ink-2)">Home</a>
+          <span class="sv-ic" data-icon="chevron-right" style="width:14px;height:14px"></span>
+          <span style="color:var(--sv-ink)">Contact</span>
+        </div>
+      </div>
+      <div class="sv-wrap ct-two" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:48px 24px 80px;align-items:start">
+        <div>
+          <span class="sv-tag sv-tag-brand" style="margin-bottom:20px">Get started</span>
+          <h1 style="margin:0 0 18px;font-size:46px;max-width:17ch">Tell us what you run. We'll show you the fit.</h1>
+          <p style="font-size:17.5px;line-height:1.62;color:var(--sv-ink-2);margin:0 0 34px;max-width:48ch">A short walkthrough with the people who build the software — not a sales script. We'll map your workflow to a product and be honest about where it fits.</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <a href="mailto:query@svasamm.com" class="sv-card" style="display:flex;align-items:center;gap:14px;padding:16px 18px;color:var(--sv-ink)">
+              <span class="sv-chip sv-chip-sm"><span class="sv-ic" data-icon="mail" style="width:18px;height:18px"></span></span>
+              <span><span style="display:block;font-size:12.5px;color:var(--sv-ink-3)">Email</span><span style="font-weight:500">query@svasamm.com</span></span>
+            </a>
+            <a href="tel:+919147144638" class="sv-card" style="display:flex;align-items:center;gap:14px;padding:16px 18px;color:var(--sv-ink)">
+              <span class="sv-chip sv-chip-sm"><span class="sv-ic" data-icon="phone" style="width:18px;height:18px"></span></span>
+              <span><span style="display:block;font-size:12.5px;color:var(--sv-ink-3)">Phone</span><span style="font-weight:500">+91 91471 44638</span></span>
+            </a>
+            <div class="sv-card" style="display:flex;align-items:center;gap:14px;padding:16px 18px;color:var(--sv-ink)">
+              <span class="sv-chip sv-chip-sm"><span class="sv-ic" data-icon="map-pin" style="width:18px;height:18px"></span></span>
+              <span><span style="display:block;font-size:12.5px;color:var(--sv-ink-3)">Office</span><span style="font-weight:500">Nabagram, Konnagar, Hooghly, WB 712246</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card" style="padding:30px;box-shadow:var(--sv-sh-3)">
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div style="text-align:center;padding:40px 12px">
+              <span class="sv-chip" style="width:60px;height:60px;margin:0 auto 20px;background:var(--sv-teal-50);border-color:var(--sv-teal-50);color:var(--sv-teal)"><span class="sv-ic" data-icon="check" style="width:30px;height:30px"></span></span>
+              <h2 style="font-size:23px;margin:0 0 10px">Thanks, {{ sentName }}</h2>
+              <p style="font-size:15px;color:var(--sv-ink-2);margin:0 0 24px">Your message is in. We'll reply to your email within one business day.</p>
+              <button onClick="{{ resetForm }}" class="sv-btn sv-btn-secondary">Send another</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:17px">
+              <div class="ct-two" style="display:grid;grid-template-columns:1fr 1fr;gap:17px">
+                <div class="sv-field">
+                  <label for="ct-name">Name</label>
+                  <input id="ct-name" class="sv-input" value="{{ fName }}" onInput="{{ onName }}" placeholder="Your name" aria-describedby="ct-name-err">
+                  <sc-if value="{{ errName }}" hint-placeholder-val="{{ false }}"><span id="ct-name-err" role="alert" class="ct-err">Please enter your name</span></sc-if>
+                </div>
+                <div class="sv-field">
+                  <label for="ct-email">Work email</label>
+                  <input id="ct-email" type="email" class="sv-input" value="{{ fEmail }}" onInput="{{ onEmail }}" placeholder="you@company.com" aria-describedby="ct-email-err">
+                  <sc-if value="{{ errEmail }}" hint-placeholder-val="{{ false }}"><span id="ct-email-err" role="alert" class="ct-err">Enter a valid email</span></sc-if>
+                </div>
+              </div>
+              <div class="sv-field">
+                <label for="ct-company">Company / operation</label>
+                <input id="ct-company" class="sv-input" value="{{ fCompany }}" onInput="{{ onCompany }}" placeholder="e.g. rice mill, hospital, distributor">
+              </div>
+              <div class="sv-field">
+                <label for="ct-product">Which solution?</label>
+                <select id="ct-product" class="sv-input" value="{{ fProduct }}" onChange="{{ onProduct }}">
+                  <sc-for list="{{ productOptions }}" as="o" hint-placeholder-count="5"><option value="{{ o.v }}">{{ o.v }}</option></sc-for>
+                </select>
+              </div>
+              <div class="sv-field">
+                <label for="ct-msg">What are you trying to solve?</label>
+                <textarea id="ct-msg" class="sv-input" value="{{ fMessage }}" onInput="{{ onMessage }}" placeholder="A sentence or two about your workflow" aria-describedby="ct-msg-err"></textarea>
+                <sc-if value="{{ errMsg }}" hint-placeholder-val="{{ false }}"><span id="ct-msg-err" role="alert" class="ct-err">Tell us a little about your needs</span></sc-if>
+              </div>
+              <button type="submit" class="sv-btn sv-btn-primary sv-btn-block sv-btn-lg">Request a walkthrough <span class="sv-ic" data-icon="arrow-right" style="width:17px;height:17px"></span></button>
+            </form>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+  </main>
+  <dc-import name="Footer" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  state = { name:'', email:'', company:'', product:'Not sure yet — help me choose', message:'', sent:false, sentName:'', touched:false };
+  componentDidMount() { window.svIcons && window.svIcons(); }
+  componentDidUpdate() { window.svIcons && window.svIcons(); }
+  validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  submit(e){
+    e && e.preventDefault();
+    this.setState({ touched:true });
+    const { name, email, message } = this.state;
+    if (!name.trim() || !this.validEmail(email) || message.trim().length < 3) return;
+    this.setState({ sent:true, sentName:name.trim().split(' ')[0] });
+  }
+  renderVals(){
+    const s = this.state;
+    const setField = (k) => (e) => this.setState({ [k]: e.target.value });
+    return {
+      sent:s.sent, notSent:!s.sent, sentName:s.sentName,
+      fName:s.name, fEmail:s.email, fCompany:s.company, fMessage:s.message, fProduct:s.product,
+      onName:setField('name'), onEmail:setField('email'), onCompany:setField('company'), onMessage:setField('message'), onProduct:setField('product'),
+      errName: s.touched && !s.name.trim(),
+      errEmail: s.touched && !this.validEmail(s.email),
+      errMsg: s.touched && s.message.trim().length < 3,
+      submit:(e)=>this.submit(e),
+      resetForm:()=>this.setState({sent:false,touched:false,name:'',email:'',company:'',message:'',product:'Not sure yet — help me choose'}),
+      productOptions: ['Not sure yet — help me choose','Millingo — Rice Mill ERP','Lucoze — Healthcare HIMS','DMS — Distributor Management','ERP System','HRMS','CRM Platform','Service Desk'].map(v=>({v})),
+    };
+  }
+}
+</script>
+</body>
+</html>
