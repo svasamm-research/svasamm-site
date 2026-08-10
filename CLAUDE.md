@@ -60,18 +60,23 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 > **For any new/ported UI use `var(--sv-*)` + `.sv-*` classes (`.sv-card`, `.sv-chip`, `.sv-btn*`, `.sv-tag*`,
 > `.sv-eyebrow`, `.sv-field-deep`), never `--color-*`.**
 >
-> **✅ PORTED so far (branch `feat/productpage-design-match`, off develop, build green, verified, NOT deployed):**
-> **`components/ProductPage.tsx`** (drives all 6 product pages) fully re-ported to `--sv-*`: two-column hero on a
-> **brand-50 radial wash** (`.pp-hero-wash` + `.pp-hero` grid in globals.css) with a **framed photo in a `.sv-card`**
-> (sv-sh-3) + mono **teal-dot `<figcaption>`** (wires the existing `/hero/<id>.webp`, caption from a local
-> `HERO_CAPTION` map); `.sv-card` capabilities w/ `.sv-chip` brand icon chips; `.sv-tag-brand/-outline`; tier
-> `.sv-card`s; **navy `.sv-field-deep` CTA band** (was a light card). Kept our IA (header Solutions/Resources/
-> Contact, phone 90077 93575) + our section order per founder — **"match visuals only, keep our IA"** (founder,
-> 2026-08-09). SEO/JSON-LD untouched (byte-identical). Verified desktop + 360px vs the design screenshots.
-> **⏭️ STILL TO PORT** (same pattern, awaiting founder review): **Home (`app/page.tsx`), `Article.tsx`
-> (guides/states/compares), `SolutionsPage.tsx`, `ContactPage.tsx`, `AboutPage.tsx`, Header/Footer polish** —
-> all still on nocturne `--color-*`. Hero images: products all have `/hero/<id>.webp`; Article/others use a
-> graceful fallback until per-page photos are supplied (founder swaps the exact Millingo photo too).
+> **✅ WHOLE SITE PORTED (branch `feat/productpage-design-match`, off develop, build green 71pg, verified, NOT deployed).**
+> **Every component now renders off `--sv-*` — ZERO `--color-*` left in `components/`/`app/`.** Pattern (follow it for
+> any new UI): `.sv-card`/`.sv-card-i` surfaces, `.sv-chip`/`.sv-chip-sm` brand icon chips, `.sv-btn*`, `.sv-tag*`
+> (incl. `sv-tag-teal`/`-amber` signal), `.sv-eyebrow`, `.sv-seg`, `.sv-table`, `.sv-field`/`.sv-input`, `.sv-field-deep`
+> (navy CTA band), `.sv-wrap`, `.sv-muted`; hero = `.pp-hero-wash` + `.pp-hero` grid with a **framed photo in a
+> `.sv-card`** (`sv-sh-3`) + mono teal-dot `<figcaption>` (products use `/hero/<id>.webp`; Article gates on a
+> `HERO_SLUGS` set with a copy-only fallback). Per component: **ProductPage** (6 product pages), **Home** (`app/page.tsx`
+> — suite panel, regions `.sv-table`), **Article** (34 guides/states/compares), **SolutionsPage** + **ProductFilter**
+> (`.sv-seg`), **ContactPage** + **ContactForm** (`.sv-field`/`.sv-input`, all AWS/a11y logic intact), **SiteHeader**
+> (white mega-menu `.sv-card` panels) + **SiteFooter** (navy `--sv-navy` ground, per `Footer.dc.html`; Company col
+> trimmed to All solutions/About/Contact), **AboutPage**, **LegalPage**. globals.css: all `.pp-*`/`.lg-*` helper
+> usages migrated to `--sv-*`; header/footer hover rules live in `.svh-item`/`.svf-link`. **Kept our IA + phone
+> 90077 93575 + section order; SEO/JSON-LD byte-identical** (founder: "match visuals only, keep our IA", 2026-08-09).
+> **⚠️ Open items:** (1) `components/HeroBackground.tsx` + its `.sv-hero` globals CSS are now **orphaned/dead** (safe to
+> delete). (2) **Footer is navy** per `Footer.dc.html` — founder's Millingo screenshot looked lighter; confirm navy vs
+> light (one-line flip). (3) Founder to swap the exact Millingo hero photo (`/hero/millingo.webp`). (4) `@theme` in
+> globals still carries the old `--color-*` ramp for any stray Tailwind utility — harmless, migrate if a util looks off.
 
 ## (historical) Rebrand v0.3.0 (⚠️ superseded by the handoff-2 port above — branch `feat/svasamm-rebrand`)
 - **Nocturne dark → Svasamm light-enterprise rebrand** is built + verified on `feat/svasamm-rebrand`
