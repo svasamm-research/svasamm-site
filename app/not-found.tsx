@@ -18,8 +18,8 @@ export default function NotFound() {
       <main id="main" className="flex-1" style={{ display: "grid", placeItems: "center", padding: "88px 24px" }}>
         <div style={{ textAlign: "center", maxWidth: "34em" }}>
           <div className="tag tag-outline" style={{ marginBottom: 20 }}>404</div>
-          <h1 style={{ fontSize: 42, lineHeight: 1.08, letterSpacing: "-.025em", margin: "0 0 16px", color: "var(--color-text)" }}>Page not found</h1>
-          <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: "0 0 30px" }}>The page you&apos;re looking for doesn&apos;t exist or has moved.</p>
+          <h1 style={{ fontSize: 42, lineHeight: 1.08, letterSpacing: "-.025em", margin: "0 0 16px", color: "var(--sv-ink)" }}>Page not found</h1>
+          <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--sv-ink-2)", margin: "0 0 30px" }}>The page you&apos;re looking for doesn&apos;t exist or has moved.</p>
           <Link href="/" className="btn btn-primary btn-large" style={{ fontSize: 15, padding: "11px 22px" }}>Back to home</Link>
         </div>
       </main>

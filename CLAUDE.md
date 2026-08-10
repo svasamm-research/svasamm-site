@@ -44,7 +44,36 @@ Next 16 (App Router, **SSG** — every page static HTML for SEO) · React 19 · 
 Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 `@phosphor-icons/react/dist/ssr`. Package manager: **yarn**. `yarn dev` / `yarn build`.
 
-## Design system (⚠️ REBRAND in flight — branch `feat/svasamm-rebrand`)
+## Design system
+
+> **⭐ CURRENT SOURCE OF TRUTH = `svasamm-handoff/` (dated 2026-08-09)** — a complete 53-page
+> `.dc.html` handoff + its `svasamm.css` (supersedes the older `~/Projects/web-dev/claude-code-handoff`).
+> Its `--sv-*` tokens are **already byte-identical to `app/svasamm.css`** (the design system is correctly
+> ported). Read `svasamm-handoff/README.md` + `pages/<X>.dc.html` as the visual reference for any page.
+>
+> **🐛 ROOT CAUSE of "brightness not coming out" (diagnosed 2026-08-09):** the rebrand shipped every
+> component reading **nocturne's `--color-*` role-flipped ramp** (a lossy approximation of the dark theme —
+> `--color-accent-300` is `#2b6fe3` where the design's `--sv-brand-300` is the airy `#8fb6fb`; the airy
+> `brand-200/300/400` tints + `--sv-teal`/`--sv-amber` signal colours are missing entirely) **instead of the
+> crisp `--sv-*` design tokens**. Fix = port each component onto `--sv-*` + the `.sv-*` classes, NOT a global
+> `--color-*` remap (some components use `--color-accent-300` for icon *colour* → a blind remap regresses them).
+> **For any new/ported UI use `var(--sv-*)` + `.sv-*` classes (`.sv-card`, `.sv-chip`, `.sv-btn*`, `.sv-tag*`,
+> `.sv-eyebrow`, `.sv-field-deep`), never `--color-*`.**
+>
+> **✅ PORTED so far (branch `feat/productpage-design-match`, off develop, build green, verified, NOT deployed):**
+> **`components/ProductPage.tsx`** (drives all 6 product pages) fully re-ported to `--sv-*`: two-column hero on a
+> **brand-50 radial wash** (`.pp-hero-wash` + `.pp-hero` grid in globals.css) with a **framed photo in a `.sv-card`**
+> (sv-sh-3) + mono **teal-dot `<figcaption>`** (wires the existing `/hero/<id>.webp`, caption from a local
+> `HERO_CAPTION` map); `.sv-card` capabilities w/ `.sv-chip` brand icon chips; `.sv-tag-brand/-outline`; tier
+> `.sv-card`s; **navy `.sv-field-deep` CTA band** (was a light card). Kept our IA (header Solutions/Resources/
+> Contact, phone 90077 93575) + our section order per founder — **"match visuals only, keep our IA"** (founder,
+> 2026-08-09). SEO/JSON-LD untouched (byte-identical). Verified desktop + 360px vs the design screenshots.
+> **⏭️ STILL TO PORT** (same pattern, awaiting founder review): **Home (`app/page.tsx`), `Article.tsx`
+> (guides/states/compares), `SolutionsPage.tsx`, `ContactPage.tsx`, `AboutPage.tsx`, Header/Footer polish** —
+> all still on nocturne `--color-*`. Hero images: products all have `/hero/<id>.webp`; Article/others use a
+> graceful fallback until per-page photos are supplied (founder swaps the exact Millingo photo too).
+
+## (historical) Rebrand v0.3.0 (⚠️ superseded by the handoff-2 port above — branch `feat/svasamm-rebrand`)
 - **Nocturne dark → Svasamm light-enterprise rebrand** is built + verified on `feat/svasamm-rebrand`
   (NOT yet deployed; awaiting founder review → v0.3.0). Source spec = `~/Projects/web-dev/claude-code-handoff/`
   (`MIGRATION-svasamm-theme.md` + `svasamm.css` + reference `.dc.html`). Applied to the **Next.js app**

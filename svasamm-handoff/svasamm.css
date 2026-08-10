@@ -1,0 +1,273 @@
+/* ============================================================
+   Svasamm Design System
+   Enterprise software credibility, modern product polish.
+   Single source of truth — every page links this one file.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;450;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* — Ground & surface: paper-white product ground with a cool cast — */
+  --sv-bg:            #ffffff;
+  --sv-bg-subtle:     #f5f7fa;   /* alternating sections */
+  --sv-bg-sunken:     #eef2f7;
+  --sv-surface:       #ffffff;   /* cards are REAL surfaces, not outlines */
+
+  /* — Ink — */
+  --sv-ink:           #0b1b2b;
+  --sv-ink-2:         #45566e;
+  --sv-ink-3:         #59687d;   /* WCAG AA on both white and subtle grounds */
+  --sv-ink-inv:       #ffffff;
+
+  /* — Lines — */
+  --sv-line:          #e2e8f0;   /* decorative separators */
+  --sv-line-strong:   #79879a;   /* interactive boundaries — 3:1 non-text contrast */
+  --sv-line-soft:     #cbd5e1;   /* non-interactive card edges */
+
+  /* — Brand: an enterprise blue that reads trustworthy, not playful — */
+  --sv-brand-50:      #eff5ff;
+  --sv-brand-100:     #dbe8ff;
+  --sv-brand-200:     #bcd4ff;
+  --sv-brand-300:     #8fb6fb;
+  --sv-brand-400:     #5c92f2;
+  --sv-brand-500:     #2b6fe3;
+  --sv-brand:         #1257c9;   /* base */
+  --sv-brand-700:     #0d449e;
+  --sv-brand-800:     #0b3579;
+  --sv-brand-900:     #0a2a5c;
+
+  /* — Deep field for CTA bands and footers — */
+  --sv-navy:          #0a1f3d;
+  --sv-navy-2:        #123059;
+
+  /* — Signal (sparing: data, status, positives) — */
+  --sv-teal:          #06635f;
+  --sv-teal-50:       #e6f5f4;
+  --sv-amber:         #7f4f00;
+  --sv-amber-50:      #fdf3e2;
+
+  /* — Type — */
+  --sv-font:          "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --sv-mono:          "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* — Radii: tight and product-like — */
+  --sv-r-xs: 4px;
+  --sv-r-sm: 6px;
+  --sv-r:    8px;
+  --sv-r-lg: 12px;
+  --sv-r-xl: 16px;
+
+  /* — Elevation: soft, layered, ink-tinted — depth is what makes a card
+       read as software rather than a wireframe — */
+  --sv-sh-1: 0 1px 2px rgba(11,27,43,.05), 0 1px 3px rgba(11,27,43,.07);
+  --sv-sh-2: 0 2px 4px rgba(11,27,43,.04), 0 6px 16px rgba(11,27,43,.08);
+  --sv-sh-3: 0 8px 20px rgba(11,27,43,.10), 0 20px 44px rgba(11,27,43,.10);
+  --sv-ring: 0 0 0 3px var(--sv-brand-100);
+
+  /* — Layout — */
+  --sv-max: 1200px;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--sv-bg);
+  color: var(--sv-ink);
+  font-family: var(--sv-font);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--sv-font);
+  font-weight: 600;
+  letter-spacing: -0.021em;
+  line-height: 1.12;
+  margin: 0 0 12px;
+  color: var(--sv-ink);
+  text-wrap: pretty;
+}
+h1 { font-size: 56px; letter-spacing: -0.028em; }
+h2 { font-size: 36px; letter-spacing: -0.024em; }
+h3 { font-size: 21px; }
+h4 { font-size: 17px; }
+p  { margin: 0 0 14px; }
+a  { color: var(--sv-brand); text-decoration: none; }
+a:hover { color: var(--sv-brand-700); }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--sv-brand); outline-offset: 2px; border-radius: var(--sv-r-xs); }
+::selection { background: var(--sv-brand-100); }
+
+.sv-wrap { max-width: var(--sv-max); margin: 0 auto; padding: 0 24px; }
+.sv-muted { color: var(--sv-ink-2); }
+.sv-dim   { color: var(--sv-ink-3); }
+
+/* Section eyebrow — small mono label, the "engineered" signal */
+.sv-eyebrow {
+  font-family: var(--sv-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--sv-brand);
+  margin-bottom: 14px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.sv-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--sv-font); font-weight: 500; font-size: 15px; line-height: 1;
+  padding: 12px 18px; border-radius: var(--sv-r-sm);
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease, color .15s ease;
+}
+.sv-btn-primary {
+  background: var(--sv-brand); color: #fff; border-color: var(--sv-brand);
+  box-shadow: var(--sv-sh-1);
+}
+.sv-btn-primary:hover  { background: var(--sv-brand-700); border-color: var(--sv-brand-700); color: #fff; }
+.sv-btn-primary:active { background: var(--sv-brand-800); box-shadow: none; }
+.sv-btn-secondary {
+  background: var(--sv-surface); color: var(--sv-ink); border-color: var(--sv-line-strong);
+  box-shadow: var(--sv-sh-1);
+}
+.sv-btn-secondary:hover  { background: var(--sv-bg-subtle); border-color: var(--sv-ink-2); color: var(--sv-ink); }
+.sv-btn-ghost { background: transparent; color: var(--sv-brand); padding-inline: 8px; }
+.sv-btn-ghost:hover { background: var(--sv-brand-50); }
+.sv-btn-inv {
+  background: #fff; color: var(--sv-navy); border-color: #fff;
+}
+.sv-btn-inv:hover { background: var(--sv-brand-50); color: var(--sv-navy); }
+.sv-btn-inv-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.62); }
+.sv-btn-inv-outline:hover { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.7); }
+.sv-btn-lg { font-size: 16px; padding: 14px 22px; }
+.sv-btn-block { width: 100%; }
+
+/* ── Cards: real surfaces with depth ──────────────────────── */
+.sv-card {
+  background: var(--sv-surface);
+  border: 1px solid var(--sv-line);
+  border-radius: var(--sv-r-lg);
+  box-shadow: var(--sv-sh-1);
+}
+.sv-card-i {
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+}
+.sv-card-i:hover {
+  box-shadow: var(--sv-sh-2);
+  border-color: var(--sv-brand-200);
+  transform: translateY(-2px);
+}
+
+/* Icon chip — the product-UI tell */
+.sv-chip {
+  display: grid; place-items: center; flex: none;
+  width: 44px; height: 44px; border-radius: var(--sv-r);
+  background: var(--sv-brand-50);
+  border: 1px solid var(--sv-brand-100);
+  color: var(--sv-brand);
+}
+.sv-chip-sm { width: 36px; height: 36px; border-radius: var(--sv-r-sm); }
+
+/* ── Tags ─────────────────────────────────────────────────── */
+.sv-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sv-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .05em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: var(--sv-r-xs);
+  background: var(--sv-bg-sunken); color: var(--sv-ink-2);
+  border: 1px solid transparent;
+}
+.sv-tag-brand   { background: var(--sv-brand-50); color: var(--sv-brand-700); border-color: var(--sv-brand-100); }
+.sv-tag-teal    { background: var(--sv-teal-50); color: var(--sv-teal); }
+.sv-tag-amber   { background: var(--sv-amber-50); color: var(--sv-amber); }
+.sv-tag-outline { background: transparent; color: var(--sv-ink-2); border-color: var(--sv-line-strong); }
+
+/* ── Forms ────────────────────────────────────────────────── */
+.sv-field { display: block; }
+.sv-field > label {
+  display: block; font-size: 13px; font-weight: 500;
+  color: var(--sv-ink-2); margin-bottom: 6px;
+}
+.sv-input {
+  width: 100%; min-height: 44px; padding: 11px 13px;
+  font-family: var(--sv-font); font-size: 15px; color: var(--sv-ink);
+  background: var(--sv-surface);
+  border: 1px solid var(--sv-line-strong); border-radius: var(--sv-r-sm);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.sv-input::placeholder { color: var(--sv-ink-3); }
+.sv-input:hover { border-color: var(--sv-ink-2); }
+.sv-input:focus-visible { border-color: var(--sv-brand); box-shadow: var(--sv-ring); outline: none; }
+textarea.sv-input { min-height: 108px; resize: vertical; }
+
+/* Segmented control */
+.sv-seg {
+  display: inline-flex; padding: 3px; gap: 2px;
+  background: var(--sv-bg-sunken); border-radius: var(--sv-r-sm);
+}
+.sv-seg-opt {
+  display: inline-flex; align-items: center; cursor: pointer;
+  padding: 7px 15px; font-size: 14px; font-weight: 500;
+  color: var(--sv-ink-2); border-radius: var(--sv-r-xs);
+  transition: background .15s ease, color .15s ease;
+}
+.sv-seg-opt input { position: absolute; opacity: 0; width: 0; height: 0; }
+.sv-seg-opt:has(input:checked) { background: var(--sv-surface); color: var(--sv-ink); box-shadow: var(--sv-sh-1); }
+.sv-seg-opt:not(:has(input:checked)):hover { color: var(--sv-ink); }
+
+/* ── Table: spec-sheet density ────────────────────────────── */
+.sv-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.sv-table th {
+  text-align: left; font-family: var(--sv-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--sv-ink-2);
+  padding: 10px 14px; border-bottom: 1px solid var(--sv-line-soft);
+}
+.sv-table td { padding: 14px; border-bottom: 1px solid var(--sv-line); vertical-align: top; }
+.sv-table tbody tr:hover { background: var(--sv-bg-subtle); }
+
+/* ── Deep field (CTA bands) ───────────────────────────────── */
+.sv-field-deep {
+  background:
+    radial-gradient(80% 120% at 12% 0%, var(--sv-navy-2), transparent 60%),
+    var(--sv-navy);
+  color: #fff;
+  border-radius: var(--sv-r-xl);
+}
+.sv-field-deep h2 { color: #fff; }
+
+/* ── Utility ──────────────────────────────────────────────── */
+.sv-hairline { height: 1px; background: var(--sv-line); border: 0; }
+.sv-ic { display: inline-block; line-height: 0; flex: none; }
+.sv-ic svg { display: block; }
+
+@media (max-width: 900px) {
+  h1 { font-size: 40px; }
+  h2 { font-size: 29px; }
+  .sv-collapse { grid-template-columns: 1fr !important; }
+}
+
+/* ── Accessibility ────────────────────────────────────────────
+   Contrast audited to WCAG 2.1 AA (see readme in the migration
+   guide). Respect users who ask for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .sv-card-i:hover { transform: none; }
+}
+
+/* Skip link — put <a class="sv-skip" href="#main">Skip to content</a>
+   as the first focusable element on every page. */
+.sv-skip {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--sv-brand); color: #fff;
+  padding: 12px 18px; border-radius: 0 0 var(--sv-r-sm) 0;
+  font-weight: 500;
+}
+.sv-skip:focus { left: 0; color: #fff; }

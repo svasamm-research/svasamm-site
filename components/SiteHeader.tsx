@@ -41,35 +41,34 @@ function ProductLink({
   );
 }
 
-// A left-column mega-menu item (icon tile + name + desc), shared by Vertical products & Services.
+// A left-column mega-menu item (icon chip + name + desc), shared by Vertical products & Services.
 function MegaItem({ p }: { p: NavProduct }) {
   return (
     <ProductLink
       p={p}
-      className="svh-mega-item flex gap-3 p-2.5"
-      style={{ borderRadius: 9 }}
+      className="svh-item"
+      style={{ display: "flex", gap: 12, padding: 11, color: "var(--sv-ink)" }}
     >
       <span className="sv-chip sv-chip-sm">
         <Icon name={p.icon} size={18} />
       </span>
-      <span className="block">
+      <span style={{ display: "block" }}>
         <span
-          className="block"
           style={{
-            fontFamily: "var(--font-heading)",
-            fontWeight: 500,
-            fontSize: 14,
-            color: "var(--color-text)",
+            display: "block",
+            fontWeight: 600,
+            fontSize: 15,
+            lineHeight: 1.3,
           }}
         >
           {p.name}
           {p.external ? " ↗" : ""}
         </span>
         <span
-          className="block"
           style={{
-            fontSize: 12,
-            color: "var(--color-neutral-500)",
+            display: "block",
+            fontSize: 13,
+            color: "var(--sv-ink-3)",
             lineHeight: 1.4,
           }}
         >
@@ -86,38 +85,40 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
   const [mobile, setMobile] = useState(false);
 
   const solActive = mega || active === "solutions" || active === "products";
-  const neutral300 = "var(--color-neutral-300)";
-  const accent = "var(--color-accent)";
+  const navColor = (on: boolean) => (on ? "var(--sv-ink)" : "var(--sv-ink-2)");
 
   return (
     <header
       className="sticky top-0 z-50"
       style={{
-        background: "color-mix(in srgb, var(--color-bg) 88%, transparent)",
+        background: "rgba(255,255,255,.88)",
         backdropFilter: "blur(12px)",
-        borderBottom: "1px solid var(--color-divider)",
+        borderBottom: "1px solid var(--sv-line)",
       }}
     >
       <div
-        className="mx-auto flex items-center gap-5 px-6"
-        style={{ maxWidth: 1180, height: 64 }}
+        className="sv-wrap flex items-center"
+        style={{ gap: 26, height: 68 }}
       >
-        <Link href="/" className="flex items-center gap-[11px]">
+        <Link
+          href="/"
+          className="flex items-center"
+          style={{ gap: 10, color: "var(--sv-ink)" }}
+        >
           <Image
             src="/assets/logo-svasamm.svg"
             alt="Svasamm"
-            width={34}
-            height={34}
-            style={{ borderRadius: 9 }}
+            width={32}
+            height={32}
+            style={{ borderRadius: 7 }}
             priority
           />
           <span
             style={{
-              fontFamily: "var(--font-heading)",
               fontWeight: 600,
-              fontSize: 19,
-              letterSpacing: "-.01em",
-              color: "var(--color-text)",
+              fontSize: 20,
+              letterSpacing: "-.02em",
+              color: "var(--sv-ink)",
             }}
           >
             Svasamm
@@ -125,7 +126,10 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
         </Link>
 
         {/* desktop nav */}
-        <nav className="hidden mob:flex items-center gap-[26px] ml-[14px]">
+        <nav
+          className="hidden mob:flex items-center"
+          style={{ gap: 26, marginLeft: 10 }}
+        >
           <div
             className="relative"
             onMouseEnter={() => setMega(true)}
@@ -136,20 +140,22 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                 e.preventDefault();
                 setMega((v) => !v);
               }}
-              className="inline-flex items-center gap-1.5 border-0 bg-transparent cursor-pointer py-2"
+              className="inline-flex items-center border-0 bg-transparent cursor-pointer"
               style={{
-                fontFamily: "var(--font-heading)",
+                gap: 5,
                 fontWeight: 500,
-                fontSize: 14,
-                color: solActive ? accent : neutral300,
+                fontSize: 15,
+                padding: "10px 0",
+                color: navColor(solActive),
               }}
               aria-expanded={mega}
+              aria-haspopup="true"
+              aria-controls="svh-solutions-menu"
             >
               Solutions
               <Icon
                 name="ph-caret-down"
-                weight="bold"
-                size={12}
+                size={15}
                 style={{
                   transition: "transform .2s ease",
                   transform: mega ? "rotate(180deg)" : "rotate(0deg)",
@@ -158,95 +164,91 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
             </button>
             {mega && (
               <div
-                className="svh-mega grid"
+                className="sv-card"
+                id="svh-solutions-menu"
                 style={{
                   position: "absolute",
-                  top: "100%",
-                  left: -16,
-                  width: 660,
-                  padding: 20,
-                  background: "var(--color-surface)",
-                  border: "1px solid var(--color-neutral-800)",
-                  borderRadius: 14,
-                  boxShadow: "var(--shadow-lg)",
+                  top: "calc(100% + 12px)",
+                  left: -18,
+                  width: 680,
+                  padding: 10,
+                  boxShadow: "var(--sv-sh-3)",
+                  display: "grid",
                   gridTemplateColumns: "1fr 1fr",
-                  gap: 26,
+                  gap: 8,
                 }}
               >
-                <div>
-                  <div
-                    style={{
-                      fontSize: 11,
-                      letterSpacing: ".1em",
-                      textTransform: "uppercase",
-                      color: accent,
-                      marginBottom: 12,
-                    }}
-                  >
+                <div style={{ padding: 12 }}>
+                  <div className="sv-eyebrow" style={{ marginBottom: 10 }}>
                     Vertical products
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col" style={{ gap: 2 }}>
                     {vertical.map((p) => (
                       <MegaItem key={p.id} p={p} />
                     ))}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 11,
-                      letterSpacing: ".1em",
-                      textTransform: "uppercase",
-                      color: accent,
-                      margin: "16px 0 12px",
-                    }}
-                  >
+                  <div className="sv-eyebrow" style={{ margin: "16px 0 10px" }}>
                     Services
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col" style={{ gap: 2 }}>
                     {service.map((p) => (
                       <MegaItem key={p.id} p={p} />
                     ))}
                   </div>
                 </div>
-                <div>
-                  <div
-                    style={{
-                      fontSize: 11,
-                      letterSpacing: ".1em",
-                      textTransform: "uppercase",
-                      color: accent,
-                      marginBottom: 12,
-                    }}
-                  >
+                <div
+                  style={{
+                    padding: 12,
+                    background: "var(--sv-bg-subtle)",
+                    borderRadius: "var(--sv-r)",
+                  }}
+                >
+                  <div className="sv-eyebrow" style={{ marginBottom: 10 }}>
                     Platform modules
                   </div>
-                  <div className="grid grid-cols-2 gap-1">
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: 2,
+                    }}
+                  >
                     {platform.map((p) => (
                       <ProductLink
                         key={p.id}
                         p={p}
-                        className="svh-mega-item flex items-center gap-[9px]"
-                        style={{ padding: "9px 10px", borderRadius: 9 }}
+                        className="svh-item"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 9,
+                          padding: "9px 10px",
+                          color: "var(--sv-ink)",
+                          fontSize: 14,
+                        }}
                       >
                         <Icon
                           name={p.icon}
                           size={17}
-                          style={{ color: "var(--color-accent-300)" }}
+                          style={{ color: "var(--sv-brand)" }}
                         />
-                        <span
-                          style={{ fontSize: 13, color: "var(--color-text)" }}
-                        >
-                          {p.name}
-                        </span>
+                        {p.name}
                       </ProductLink>
                     ))}
                   </div>
                   <Link
                     href="/pages/services.html"
-                    className="inline-flex items-center gap-1.5 mt-3.5"
-                    style={{ fontSize: 13, fontWeight: 500, color: accent }}
+                    className="inline-flex items-center"
+                    style={{
+                      gap: 6,
+                      marginTop: 16,
+                      paddingLeft: 10,
+                      fontSize: 14,
+                      fontWeight: 500,
+                      color: "var(--sv-brand)",
+                    }}
                   >
-                    View all solutions{" "}
-                    <Icon name="ph-arrow-right" weight="bold" size={12} />
+                    View all solutions <Icon name="ph-arrow-right" size={15} />
                   </Link>
                 </div>
               </div>
@@ -262,20 +264,22 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                 e.preventDefault();
                 setRes((v) => !v);
               }}
-              className="inline-flex items-center gap-1.5 border-0 bg-transparent cursor-pointer py-2"
+              className="inline-flex items-center border-0 bg-transparent cursor-pointer"
               style={{
-                fontFamily: "var(--font-heading)",
+                gap: 5,
                 fontWeight: 500,
-                fontSize: 14,
-                color: res ? accent : neutral300,
+                fontSize: 15,
+                padding: "10px 0",
+                color: navColor(res),
               }}
               aria-expanded={res}
+              aria-haspopup="true"
+              aria-controls="svh-resources-menu"
             >
               Resources
               <Icon
                 name="ph-caret-down"
-                weight="bold"
-                size={12}
+                size={15}
                 style={{
                   transition: "transform .2s ease",
                   transform: res ? "rotate(180deg)" : "rotate(0deg)",
@@ -284,46 +288,36 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
             </button>
             {res && (
               <div
-                className="svh-mega grid"
+                className="sv-card"
+                id="svh-resources-menu"
                 style={{
                   position: "absolute",
-                  top: "100%",
-                  left: -16,
+                  top: "calc(100% + 12px)",
+                  left: -18,
                   width: 720,
-                  padding: 20,
-                  background: "var(--color-surface)",
-                  border: "1px solid var(--color-neutral-800)",
-                  borderRadius: 14,
-                  boxShadow: "var(--shadow-lg)",
+                  padding: 10,
+                  boxShadow: "var(--sv-sh-3)",
+                  display: "grid",
                   gridTemplateColumns: "1fr 1fr 1fr",
-                  gap: 26,
+                  gap: 8,
                 }}
               >
                 {RESOURCE_GROUPS.map((g) => (
-                  <div key={g.heading}>
-                    <div
-                      style={{
-                        fontSize: 11,
-                        letterSpacing: ".1em",
-                        textTransform: "uppercase",
-                        color: accent,
-                        marginBottom: 12,
-                      }}
-                    >
+                  <div key={g.heading} style={{ padding: 12 }}>
+                    <div className="sv-eyebrow" style={{ marginBottom: 10 }}>
                       {g.heading}
                     </div>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col" style={{ gap: 2 }}>
                       {g.links.map((l) => (
                         <Link
                           key={l.href}
                           href={l.href}
-                          className="svh-mega-item"
+                          className="svh-item"
                           style={{
                             display: "block",
-                            padding: "6px 8px",
-                            borderRadius: 8,
-                            fontSize: 13,
-                            color: "var(--color-neutral-300)",
+                            padding: "8px 10px",
+                            fontSize: 13.5,
+                            color: "var(--sv-ink-2)",
                             lineHeight: 1.35,
                           }}
                         >
@@ -339,31 +333,42 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
           <Link
             href="/pages/contact.html"
             style={{
-              fontFamily: "var(--font-heading)",
               fontWeight: 500,
-              fontSize: 14,
-              color: active === "contact" ? accent : neutral300,
+              fontSize: 15,
+              color: navColor(active === "contact"),
             }}
           >
             Contact
           </Link>
         </nav>
 
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto flex items-center" style={{ gap: 10 }}>
           <Link
             href="/pages/contact.html"
-            className="btn btn-primary hidden mob:inline-flex"
-            style={{ fontSize: 13.5 }}
+            className="sv-btn sv-btn-primary hidden mob:inline-flex"
+            style={{ fontSize: 14, padding: "10px 16px" }}
           >
             Talk to us
           </Link>
           <button
-            className="mob:hidden grid place-items-center border-0 bg-transparent cursor-pointer"
-            style={{ color: "var(--color-text)", width: 40, height: 40 }}
+            className="mob:hidden"
+            style={{
+              background: "none",
+              border: "1px solid var(--sv-line-strong)",
+              borderRadius: "var(--sv-r-sm)",
+              color: "var(--sv-ink)",
+              cursor: "pointer",
+              display: "grid",
+              placeItems: "center",
+              width: 42,
+              height: 42,
+            }}
             aria-label="Menu"
+            aria-expanded={mobile}
+            aria-controls="svh-mobile-menu"
             onClick={() => setMobile((v) => !v)}
           >
-            <Icon name={mobile ? "ph-x" : "ph-list"} size={24} />
+            <Icon name={mobile ? "ph-x" : "ph-list"} size={20} />
           </button>
         </div>
       </div>
@@ -371,75 +376,57 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
       {/* mobile menu */}
       {mobile && (
         <div
-          className="mob:hidden flex flex-col gap-1.5"
+          className="mob:hidden"
+          id="svh-mobile-menu"
           style={{
-            borderTop: "1px solid var(--color-divider)",
-            background: "var(--color-bg)",
-            padding: "16px 24px 22px",
+            borderTop: "1px solid var(--sv-line)",
+            background: "var(--sv-bg)",
+            padding: "16px 24px 24px",
           }}
         >
-          <div
-            style={{
-              fontSize: 11,
-              letterSpacing: ".1em",
-              textTransform: "uppercase",
-              color: accent,
-              margin: "6px 0 4px",
-            }}
-          >
-            Products
+          <div className="sv-eyebrow">Products</div>
+          <div className="flex flex-col" style={{ gap: 2 }}>
+            {PRODUCTS.map((p) => (
+              <ProductLink
+                key={p.id}
+                p={p}
+                className="svh-item flex items-center"
+                style={{
+                  gap: 12,
+                  padding: "12px 10px",
+                  color: "var(--sv-ink)",
+                  fontSize: 16,
+                }}
+              >
+                <Icon
+                  name={p.icon}
+                  size={19}
+                  style={{ color: "var(--sv-brand)" }}
+                />
+                {p.name}
+                {p.external ? " ↗" : ""}
+              </ProductLink>
+            ))}
           </div>
-          {PRODUCTS.map((p) => (
-            <ProductLink
-              key={p.id}
-              p={p}
-              className="flex items-center gap-[11px]"
-              style={{
-                padding: "9px 0",
-                color: "var(--color-text)",
-                fontSize: 15,
-              }}
-            >
-              <Icon
-                name={p.icon}
-                size={19}
-                style={{ color: "var(--color-accent-300)" }}
-              />
-              {p.name}
-              {p.external ? " ↗" : ""}
-            </ProductLink>
-          ))}
-          <div className="hr" />
+          <hr className="sv-hairline" style={{ margin: "14px 0" }} />
           <Link
             href="/pages/services.html"
+            className="svh-item"
             style={{
-              padding: "9px 0",
-              color: "var(--color-text)",
-              fontSize: 15,
+              display: "block",
+              padding: "12px 10px",
+              color: "var(--sv-ink)",
+              fontSize: 16,
             }}
           >
             All solutions
           </Link>
-          <div className="hr" />
-          <div
-            style={{
-              fontSize: 11,
-              letterSpacing: ".1em",
-              textTransform: "uppercase",
-              color: accent,
-              margin: "6px 0 2px",
-            }}
-          >
-            Resources
-          </div>
+          <hr className="sv-hairline" style={{ margin: "14px 0" }} />
           {RESOURCE_GROUPS.map((g) => (
             <div key={g.heading}>
               <div
-                style={{
-                  fontSize: 11,
-                  color: "var(--color-neutral-500)",
-                  margin: "8px 0 2px",
-                }}
+                className="sv-eyebrow"
+                style={{ margin: "12px 0 4px" }}
               >
                 {g.heading}
               </div>
@@ -447,11 +434,12 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                 <Link
                   key={l.href}
                   href={l.href}
+                  className="svh-item"
                   style={{
                     display: "block",
-                    padding: "7px 0",
-                    color: "var(--color-neutral-300)",
-                    fontSize: 14,
+                    padding: "9px 10px",
+                    color: "var(--sv-ink-2)",
+                    fontSize: 14.5,
                   }}
                 >
                   {l.title}
@@ -461,8 +449,8 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
           ))}
           <Link
             href="/pages/contact.html"
-            className="btn btn-primary btn-block"
-            style={{ marginTop: 10 }}
+            className="sv-btn sv-btn-primary sv-btn-block"
+            style={{ marginTop: 14 }}
           >
             Talk to us
           </Link>
