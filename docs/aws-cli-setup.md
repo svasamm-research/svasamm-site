@@ -9,6 +9,45 @@ script instead of clicking through the console. Do this on the Mac where the pro
 
 ---
 
+## 0. First, check what is already set up — before creating anything
+
+**The credentials live under a NAMED profile, `svasamm`, and the default profile is
+empty.** So `aws sts get-caller-identity` with no profile answers *"Unable to locate
+credentials"* on a Mac that is fully set up. That sentence was once read as "nothing
+is configured" (27 September 2026) — the check was asking the wrong profile.
+
+```bash
+ls -la ~/.aws                                   # config + credentials, both mode 600
+grep '^\[' ~/.aws/config ~/.aws/credentials     # profile NAMES only — never print the keys
+export AWS_PROFILE=svasamm AWS_REGION=us-east-1  # zsh: an env var, not "$P" (zsh does not word-split)
+aws sts get-caller-identity                     # → …:user/svasamm-deployer
+```
+
+⚠️ **In zsh, `P="--profile svasamm"; aws … $P` fails** with *Unknown options* —
+zsh passes `$P` as ONE argument. Use `AWS_PROFILE` as above.
+
+The deployer key is deliberately narrow: it **cannot list its own IAM policies**, so
+`AccessDenied` on `iam:List*` is expected and is not a sign of a broken setup.
+
+### What is in the account (us-east-1), as of 27 September 2026
+
+| thing | what it is | where its code lives |
+|---|---|---|
+| Lambda `svasamm-contact-form` | svasamm.com contact form → `query@svasamm.com` | `svasamm-site/aws/contact-form/` |
+| Lambda `t4suite-contact-form` | t4suite.com demo form → `sales@svasamm.com` | `t4suite-site/aws/contact-form/` |
+| Lambda `lucoze-lead-form` | lucoze.com lead form + signup → `sales@lucoze.com` (replaced Frappe's `admin.lucoze.com`) | `lucoze-website/aws/lead-form/` |
+| IAM role `svasamm-contact-form-role` | shared by all three Lambdas: logs + `ses:SendEmail` | — |
+| SES identities | `svasamm.com`, `t4suite.com`, `lucoze.com` (DKIM verified) | — |
+
+```bash
+aws lambda list-functions --query 'Functions[].[FunctionName,Runtime]' --output text
+aws lambda get-function-url-config --function-name lucoze-lead-form --query FunctionUrl --output text
+aws sesv2 get-email-identity --email-identity lucoze.com --query '[VerifiedForSendingStatus,DkimAttributes.Status]'
+```
+
+If `get-caller-identity` works, **skip sections 1–3** — they are the one-time setup.
+
+
 ## 1. Install the AWS CLI (v2)
 
 **Homebrew (simplest):**
