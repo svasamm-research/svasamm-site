@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 import { Icon } from "@/components/Icon";
 import { HOME_PRODUCTS, REGIONS, WHYS, HOME_JSONLD } from "@/lib/home";
 import { toRoute } from "@/lib/routes";
+import { BUSINESS } from "@/lib/site";
 
 const SOLUTIONS = toRoute("Solutions.dc.html");
 const CONTACT = toRoute("Contact.dc.html");
@@ -419,10 +420,10 @@ export default function Home() {
                 </span>
                 <div>
                   <div style={{ fontSize: 15, fontWeight: 600 }}>
-                    Nabagram, Konnagar
+                    {BUSINESS.addressShort[0]}
                   </div>
                   <div style={{ fontSize: 13.5, color: "var(--sv-ink-3)" }}>
-                    Hooghly, West Bengal 712246
+                    {BUSINESS.addressShort[1]}
                   </div>
                 </div>
               </div>

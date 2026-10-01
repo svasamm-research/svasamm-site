@@ -12,18 +12,33 @@ export const PLAUSIBLE_SRC =
   process.env.NEXT_PUBLIC_PLAUSIBLE_SRC ??
   "https://analytics.lucoze.com/js/script.js";
 
+// One source for who we are. The REGISTERED address is the one on the GST certificate,
+// word for word, because the payment provider (Cashfree) checks the site against it. The
+// SHORT form is the standard settled on 14 Sep 2026 for letterheads and footers; the older
+// "Nabagram, Konnagar" postal form is retired. (Konnagar as a LOCALITY in prose is still true.)
 export const BUSINESS = {
   legalName: "Svasamm Research Pvt Ltd",
   name: "Svasamm",
   founder: "Mithun K. Singh",
-  addressLine: "Nabagram, Konnagar, Hooghly, West Bengal 712246, India",
+  addressLine: "Grand City, Nabagram Colony, Hooghly, West Bengal 712246, India",
+  addressShort: ["Grand City, Nabagram Colony", "Hooghly, West Bengal 712246"],
+  registeredAddress:
+    "Flat b06-09-05, Grand City, Grand One, Tower 6, Vivekananda Road, Daspara, Nabagram Colony, Hooghly, West Bengal 712246, India",
+  streetAddress: "Flat b06-09-05, Grand City, Grand One, Tower 6, Vivekananda Road, Daspara, Nabagram Colony",
   address: {
-    locality: "Konnagar",
+    locality: "Hooghly",
     region: "West Bengal",
     postalCode: "712246",
     country: "IN",
   },
+  gstin: "19ABNCS3363D2Z3",
+  cin: "U62099WB2024PTC270218",
   email: "query@svasamm.com",
+  // ⚠️ Mithun is creating this mailbox (1 Oct 2026). Nothing that names it goes live until
+  // he confirms it receives mail — a refund request sent to a dead address is the complaint
+  // the payment provider hears about.
+  billingEmail: "billing@svasamm.com",
+  grievanceOfficer: "Mithun K. Singh",
   phone: "+91 90077 93575",
 } as const;
 

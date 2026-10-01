@@ -179,7 +179,7 @@ export const DIGITAL_SCHOOLS_PRODUCT: Product = {
         telephone: "+91-90077-93575",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Nabagram, Konnagar",
+          streetAddress: "Flat b06-09-05, Grand City, Grand One, Tower 6, Vivekananda Road, Daspara, Nabagram Colony",
           addressLocality: "Hooghly",
           addressRegion: "West Bengal",
           postalCode: "712246",
