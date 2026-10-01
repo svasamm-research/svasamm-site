@@ -6,7 +6,28 @@ The SEO/GEO-first marketing site for **Svasamm Research Pvt Ltd**, rebuilt in Ne
 the Nocturne redesign at `~/Downloads/svasamm-website-redesign` (README.md +
 content-and-seo-map.md + design-tokens.css + `prototypes/*.dc.html` = source of truth for
 tokens, copy, structure, and per-page SEO/JSON-LD). Replaces the live gulp site at cutover
-(this repo — the gulp source was removed when the migration landed; see `## Deployment`
+(this repo — the gulp source was removed when the migration landed; see `## Billing pages and the registered identity (1 Oct 2026)
+
+Cashfree reviews svasamm.com before approving payments, so the site carries `/pricing`,
+`/refund-policy`, `/shipping-policy`, `/delete-account` (Google Play needs it), and a
+"Software subscriptions" section in `/terms` (`#subscriptions`). Source: the T4Suite
+session's `web-dev/HANDOFF-pricing-and-billing-policies.md`.
+
+- **`/pricing` is the one place prices ARE published** — an exception to the Svasamm
+  Digital guardrail "never prices", because a subscription a provider charges needs a
+  published figure. T4Suite only; every other product is "pricing on request", read from
+  `PRODUCTS`. The T4Suite figures are also on t4suite.com/pricing — change both together.
+- **Who we are comes from `BUSINESS` in `lib/site.ts`, and nowhere else.** The registered
+  address is the GST certificate's wording (contact, legal pages, every JSON-LD block); the
+  footer uses the settled short form; GSTIN and CIN are on the contact page. The postal form
+  "Nabagram, Konnagar" is retired — Konnagar as a locality in prose is still true.
+- **Refund, Privacy and Terms must agree** (30 days to export after an account ends, then
+  deleted; read-only after 7 days unpaid; never deleted for late payment). Each file says so
+  in a comment; change all three together.
+- ⚠️ `billing@svasamm.com` is on the refund and shipping pages. Do not deploy until Mithun
+  confirms the mailbox receives mail.
+
+## Deployment`
 below for what actually ships).
 
 > **Heed AGENTS.md above: this is Next 16 — read `node_modules/next/dist/docs/` before
