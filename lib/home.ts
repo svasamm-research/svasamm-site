@@ -1,6 +1,7 @@
 // Home-page presentational data (Svasamm.dc.html data()). Home-specific card copy —
 // distinct from the nav registry in site.ts — so it lives here, not in the shared registry.
 import { toRoute } from "./routes";
+import type { NavIconName } from "@/components/IconClient";
 
 export type HomeProduct = {
   id: string;
@@ -8,7 +9,7 @@ export type HomeProduct = {
   kind: "vertical" | "platform" | "service";
   tag: string;
   tagClass: string;
-  icon: string;
+  icon: NavIconName;
   badge?: string;
   short: string;
   href: string;
@@ -22,6 +23,7 @@ export type HomeProduct = {
 export const HOME_PRODUCTS: HomeProduct[] = [
   { id: "millingo", name: "Millingo", kind: "vertical", tag: "Vertical", tagClass: "tag-accent", icon: "ph-grains", badge: "Rice Mill ERP", short: "Rice-mill ERP", href: toRoute("Millingo.dc.html"), external: false, blurb: "ERP for rice mills — paddy procurement, quality grading, milling yield & by-products, and FCI/levy (CMR) compliance.", long: "Runs the whole mill: procurement, QC, milling recovery, gunny-bag accounting and the government CMR cycle.", cta: "Explore Millingo", ctaIcon: "ph-arrow-right" },
   { id: "lucoze", name: "Lucoze", kind: "vertical", tag: "Vertical", tagClass: "tag-accent", icon: "ph-heartbeat", badge: "Healthcare HIMS", short: "Healthcare HIMS", href: "https://lucoze.com", external: true, blurb: "India-first hospital & clinic management: appointments, EMR, billing, lab and pharmacy on one ABDM-ready platform.", long: "India-first HMS/EMR — appointments, EMR, billing, lab, pharmacy and HR on one ABDM-ready platform. Live at lucoze.com.", cta: "Visit lucoze.com", ctaIcon: "ph-arrow-up-right" },
+  { id: "t4suite", name: "T4Suite", kind: "vertical", tag: "Vertical", tagClass: "tag-accent", icon: "ph-calendar-check", badge: "Practice management", short: "CA practice management", href: "https://t4suite.com", external: true, blurb: "Practice management for CA and compliance firms: tasks, the compliance calendar, job costing, billing and client documents in one place.", long: "Practice management for CA and compliance firms — tasks and deadlines, job costing, GST invoicing and receivables. Live at t4suite.com.", cta: "Visit t4suite.com", ctaIcon: "ph-arrow-up-right" },
   { id: "dms", name: "DMS", kind: "vertical", tag: "Vertical", tagClass: "tag-accent", icon: "ph-truck", badge: "Distributor Mgmt", short: "Distributor management", href: toRoute("DMS.dc.html"), external: false, blurb: "Run an independent-distributor network: distributor-scoped sales, tiered stock, commissions and territory control.", long: "One platform for your whole distributor network — scoped sales, tiered stock, commissions and territory control.", cta: "Explore DMS", ctaIcon: "ph-arrow-right" },
   { id: "erp", name: "ERP System", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-stack", short: "Finance to operations", href: toRoute("ERP.dc.html"), external: false, blurb: "Unified finance, supply chain, manufacturing and operations for complete business visibility.", cta: "Explore ERP", ctaIcon: "ph-arrow-right" },
   { id: "hrms", name: "HRMS", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-users-three", short: "Recruit to retire", href: toRoute("HRMS.dc.html"), external: false, blurb: "HR from recruitment to retirement — payroll, attendance and performance tracking.", cta: "Explore HRMS", ctaIcon: "ph-arrow-right" },

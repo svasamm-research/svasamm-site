@@ -1,3 +1,4 @@
+import type { NavIconName } from "@/components/IconClient";
 export const SITE_URL = "https://svasamm.com";
 
 // GA4 Measurement ID. Enabled in prod; the Analytics component suppresses it on UAT/localhost.
@@ -32,7 +33,7 @@ export type NavProduct = {
   desc: string;
   category: "vertical" | "platform" | "service";
   href: string; // internal /pages/*.html or external URL
-  icon: string; // phosphor name, e.g. "ph-grains"
+  icon: NavIconName; // phosphor name the client icon map draws, e.g. "ph-grains"
   external?: boolean;
 };
 
@@ -55,6 +56,15 @@ export const PRODUCTS: NavProduct[] = [
     href: "https://lucoze.com",
     external: true,
     icon: "ph-heartbeat",
+  },
+  {
+    id: "t4suite",
+    name: "T4Suite",
+    desc: "Practice management for CA firms",
+    category: "vertical",
+    href: "https://t4suite.com",
+    external: true,
+    icon: "ph-calendar-check",
   },
   {
     id: "dms",
