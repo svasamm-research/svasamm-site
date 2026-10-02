@@ -37,18 +37,22 @@ env:
   IMAGE: svasamm/svasamm-website
 
 jobs:
+  # THE GATE. Typecheck, then every page from the sitemap (status, one h1, canonical,
+  # no errors, no sideways scroll on a phone), every internal link, the contact form,
+  # and the approved screenshots. Red here = nothing is built, pushed or deployed. Runs
+  # in Playwright's own Linux image because the approved screenshots were taken in it.
   test:
-    name: Build & validate
+    name: Build, typecheck & browser tests
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      options: --ipc=host
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+      - run: corepack enable && yarn install --frozen-lockfile
       - run: yarn build
       - run: yarn typecheck
+      - run: npx playwright test
 
   build:
     name: Build & push image
@@ -84,6 +88,21 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # The second half of the gate: nginx's redirects and headers, checked on the
+      # image that is about to ship — before it is pushed.
+      - name: Build image for the nginx check
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./deployment/docker/Dockerfile
+          target: production
+          load: true
+          tags: svasamm-website:check
+          cache-from: type=gha,key=svasamm-website-${{ steps.meta.outputs.floating_tag }}
+
+      - name: Check nginx on the release image
+        run: IMAGE=svasamm-website:check bash scripts/check-nginx.sh
 
       - name: Build and push image
         uses: docker/build-push-action@v5

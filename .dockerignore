@@ -6,3 +6,6 @@ out
 scratch
 *.log
 .DS_Store
+tests
+test-results
+playwright-report

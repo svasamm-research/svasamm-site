@@ -206,7 +206,7 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Custom Milled Rice (CMR) Explained: Process, 67% Obligation & FRK for Millers | Millingo",
+        "CMR Rice: Custom Milled Rice Meaning & Process | Millingo",
       metaDescription:
         "A rice miller's guide to Custom Milled Rice (CMR): how the process works, the 67% rice + 1% FRK obligation, delivery schedule, state portals, and reconciliation.",
       canonical:
@@ -514,7 +514,7 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Rice Mill Yield & Milling Recovery: How to Calculate It (Formula + Examples) | Millingo",
+        "Milling Recovery of Rice: Yield Formula | Millingo",
       metaDescription:
         "Learn how to calculate rice milling recovery and paddy-to-rice conversion, what a good yield is (67-72%), head rice vs broken, and how to track recovery per batch.",
       canonical: "https://svasamm.com/pages/rice-mill-yield-recovery.html",
@@ -906,7 +906,7 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "GST for Rice Mills: Rates on Paddy, Rice, Bran & Milling (2026 Guide) | Millingo",
+        "GST on Rice, Paddy, Husk & Bran for Mills | Millingo",
       metaDescription:
         "A practical GST guide for rice mills: paddy exempt, pre-packaged rice 5%, husk exempt, bran taxable, plus milling-charge and input-tax-credit points. Verify with your CA.",
       canonical: "https://svasamm.com/pages/gst-for-rice-mills.html",

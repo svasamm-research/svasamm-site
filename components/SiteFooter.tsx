@@ -26,9 +26,9 @@ export default function SiteFooter() {
               {BUSINESS.legalName} builds vertical ERPs and business platforms for rice mills, hospitals, distributor networks and more.
             </p>
             <p style={{ fontFamily: "var(--sv-mono)", fontSize: 12.5, color: "rgba(255,255,255,.66)", margin: 0, lineHeight: 1.6 }}>
-              Nabagram, Konnagar
+              {BUSINESS.addressShort[0]}
               <br />
-              Hooghly, West Bengal 712246
+              {BUSINESS.addressShort[1]}
             </p>
           </div>
 
@@ -51,6 +51,7 @@ export default function SiteFooter() {
               <Link href="/pages/services.html" className="svf-link">All solutions</Link>
               <Link href="/pages/about.html" className="svf-link">About</Link>
               <Link href="/pages/contact.html" className="svf-link">Contact</Link>
+              <Link href="/pricing" className="svf-link">Pricing</Link>
             </div>
           </div>
 
@@ -70,6 +71,9 @@ export default function SiteFooter() {
         >
           <span>© 2026 {BUSINESS.legalName}. All rights reserved.</span>
           <div className="flex items-center flex-wrap" style={{ gap: 22 }}>
+            <Link href="/pricing" className="svf-link" style={{ fontSize: 13 }}>Pricing</Link>
+            <Link href="/refund-policy" className="svf-link" style={{ fontSize: 13 }}>Refund and cancellation</Link>
+            <Link href="/shipping-policy" className="svf-link" style={{ fontSize: 13 }}>Shipping and delivery</Link>
             <Link href="/privacy" className="svf-link" style={{ fontSize: 13 }}>Privacy Policy</Link>
             <Link href="/terms" className="svf-link" style={{ fontSize: 13 }}>Terms of Service</Link>
             <span style={{ fontFamily: "var(--sv-mono)", fontSize: 12 }}>API-first · Self-hostable · India-first</span>
