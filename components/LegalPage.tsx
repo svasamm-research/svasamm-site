@@ -2,9 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "./Icon";
 
-// Minimal chrome for the legal pages (Privacy/Terms) — mirrors the prototype's slim
-// header/footer rather than the full site nav. `children` is the .lg-body prose.
-export default function LegalPage({ title, updated, children }: { title: string; updated: string; children: React.ReactNode }) {
+// Minimal chrome for the legal and billing pages (Privacy, Terms, Pricing, Refund,
+// Shipping, Delete account) — mirrors the prototype's slim header/footer rather than the
+// full site nav. `children` is the .lg-body prose. `kicker` defaults to "Legal".
+export default function LegalPage({ title, updated, kicker = "Legal", children }: { title: string; updated: string; kicker?: string; children: React.ReactNode }) {
   return (
     <div className="flex-1 flex flex-col">
       <header style={{ borderBottom: "1px solid var(--sv-line)", background: "var(--sv-bg)" }}>
@@ -21,7 +22,7 @@ export default function LegalPage({ title, updated, children }: { title: string;
 
       <main id="main" style={{ flex: 1, padding: "56px 0 72px" }}>
         <div className="lg-wrap">
-          <span className="sv-tag sv-tag-brand" style={{ marginBottom: 18 }}>Legal</span>
+          <span className="sv-tag sv-tag-brand" style={{ marginBottom: 18 }}>{kicker}</span>
           <h1 style={{ fontSize: 44, margin: "0 0 10px" }}>{title}</h1>
           <p style={{ fontFamily: "var(--sv-mono)", fontSize: 14, color: "var(--sv-ink-3)", margin: "0 0 8px" }}>Last updated {updated}</p>
           <div className="lg-body">{children}</div>
@@ -31,7 +32,10 @@ export default function LegalPage({ title, updated, children }: { title: string;
       <footer style={{ borderTop: "1px solid var(--sv-line)", background: "var(--sv-bg)", padding: "28px 0" }}>
         <div className="lg-wrap" style={{ maxWidth: 1180, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 10, fontSize: 12.5, color: "var(--sv-ink-3)" }}>
           <span>© 2026 Svasamm Research Pvt Ltd. All rights reserved.</span>
-          <span style={{ display: "flex", gap: 16 }}>
+          <span style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+            <Link href="/pricing" className="lg-link">Pricing</Link>
+            <Link href="/refund-policy" className="lg-link">Refund and cancellation</Link>
+            <Link href="/shipping-policy" className="lg-link">Shipping and delivery</Link>
             <Link href="/privacy" className="lg-link">Privacy</Link>
             <Link href="/terms" className="lg-link">Terms</Link>
           </span>

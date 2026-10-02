@@ -1,3 +1,4 @@
+import type { NavIconName } from "@/components/IconClient";
 export const SITE_URL = "https://svasamm.com";
 
 // GA4 Measurement ID. Enabled in prod; the Analytics component suppresses it on UAT/localhost.
@@ -11,18 +12,33 @@ export const PLAUSIBLE_SRC =
   process.env.NEXT_PUBLIC_PLAUSIBLE_SRC ??
   "https://analytics.lucoze.com/js/script.js";
 
+// One source for who we are. The REGISTERED address is the one on the GST certificate,
+// word for word, because the payment provider (Cashfree) checks the site against it. The
+// SHORT form is the standard settled on 14 Sep 2026 for letterheads and footers; the older
+// "Nabagram, Konnagar" postal form is retired. (Konnagar as a LOCALITY in prose is still true.)
 export const BUSINESS = {
   legalName: "Svasamm Research Pvt Ltd",
   name: "Svasamm",
   founder: "Mithun K. Singh",
-  addressLine: "Nabagram, Konnagar, Hooghly, West Bengal 712246, India",
+  addressLine: "Grand City, Nabagram Colony, Hooghly, West Bengal 712246, India",
+  addressShort: ["Grand City, Nabagram Colony", "Hooghly, West Bengal 712246"],
+  registeredAddress:
+    "Flat b06-09-05, Grand City, Grand One, Tower 6, Vivekananda Road, Daspara, Nabagram Colony, Hooghly, West Bengal 712246, India",
+  streetAddress: "Flat b06-09-05, Grand City, Grand One, Tower 6, Vivekananda Road, Daspara, Nabagram Colony",
   address: {
-    locality: "Konnagar",
+    locality: "Hooghly",
     region: "West Bengal",
     postalCode: "712246",
     country: "IN",
   },
+  gstin: "19ABNCS3363D2Z3",
+  cin: "U62099WB2024PTC270218",
   email: "query@svasamm.com",
+  // ⚠️ Mithun is creating this mailbox (1 Oct 2026). Nothing that names it goes live until
+  // he confirms it receives mail — a refund request sent to a dead address is the complaint
+  // the payment provider hears about.
+  billingEmail: "billing@svasamm.com",
+  grievanceOfficer: "Mithun K. Singh",
   phone: "+91 90077 93575",
 } as const;
 
@@ -32,7 +48,7 @@ export type NavProduct = {
   desc: string;
   category: "vertical" | "platform" | "service";
   href: string; // internal /pages/*.html or external URL
-  icon: string; // phosphor name, e.g. "ph-grains"
+  icon: NavIconName; // phosphor name the client icon map draws, e.g. "ph-grains"
   external?: boolean;
 };
 
@@ -55,6 +71,15 @@ export const PRODUCTS: NavProduct[] = [
     href: "https://lucoze.com",
     external: true,
     icon: "ph-heartbeat",
+  },
+  {
+    id: "t4suite",
+    name: "T4Suite",
+    desc: "Practice management for CA firms",
+    category: "vertical",
+    href: "https://t4suite.com",
+    external: true,
+    icon: "ph-calendar-check",
   },
   {
     id: "dms",

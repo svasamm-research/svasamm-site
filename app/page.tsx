@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 import { Icon } from "@/components/Icon";
 import { HOME_PRODUCTS, REGIONS, WHYS, HOME_JSONLD } from "@/lib/home";
 import { toRoute } from "@/lib/routes";
+import { BUSINESS } from "@/lib/site";
 
 const SOLUTIONS = toRoute("Solutions.dc.html");
 const CONTACT = toRoute("Contact.dc.html");
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
       "Vertical ERPs for Rice Mills, Hospitals & Distributors | Svasamm",
   },
   description:
-    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, Lucoze healthcare HIMS, distributor management, ERP, HRMS, CRM and service desk. API-first, self-hostable, India-first.",
+    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, ERP, HRMS, CRM and service desk. API-first, self-hostable, India-first.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Svasamm",
     title: "Svasamm — Vertical ERPs & Business Software",
     description:
-      "Purpose-built vertical ERPs and platform modules for Indian operations. Millingo, Lucoze, DMS and more.",
+      "Purpose-built vertical ERPs and platform modules for Indian operations. Millingo, T4Suite, Lucoze, DMS and more.",
     url: "/",
     images: [
       {
@@ -419,15 +420,16 @@ export default function Home() {
                 </span>
                 <div>
                   <div style={{ fontSize: 15, fontWeight: 600 }}>
-                    Nabagram, Konnagar
+                    {BUSINESS.addressShort[0]}
                   </div>
                   <div style={{ fontSize: 13.5, color: "var(--sv-ink-3)" }}>
-                    Hooghly, West Bengal 712246
+                    {BUSINESS.addressShort[1]}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="sv-card" style={{ padding: "6px 8px" }}>
+            {/* On a phone the table is wider than the card: it scrolls, the page does not. */}
+            <div className="sv-card" style={{ padding: "6px 8px", overflowX: "auto" }}>
               <table className="sv-table">
                 <thead>
                   <tr>

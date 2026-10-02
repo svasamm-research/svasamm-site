@@ -6,7 +6,28 @@ The SEO/GEO-first marketing site for **Svasamm Research Pvt Ltd**, rebuilt in Ne
 the Nocturne redesign at `~/Downloads/svasamm-website-redesign` (README.md +
 content-and-seo-map.md + design-tokens.css + `prototypes/*.dc.html` = source of truth for
 tokens, copy, structure, and per-page SEO/JSON-LD). Replaces the live gulp site at cutover
-(this repo — the gulp source was removed when the migration landed; see `## Deployment`
+(this repo — the gulp source was removed when the migration landed; see `## Billing pages and the registered identity (1 Oct 2026)
+
+Cashfree reviews svasamm.com before approving payments, so the site carries `/pricing`,
+`/refund-policy`, `/shipping-policy`, `/delete-account` (Google Play needs it), and a
+"Software subscriptions" section in `/terms` (`#subscriptions`). Source: the T4Suite
+session's `web-dev/HANDOFF-pricing-and-billing-policies.md`.
+
+- **`/pricing` is the one place prices ARE published** — an exception to the Svasamm
+  Digital guardrail "never prices", because a subscription a provider charges needs a
+  published figure. T4Suite only; every other product is "pricing on request", read from
+  `PRODUCTS`. The T4Suite figures are also on t4suite.com/pricing — change both together.
+- **Who we are comes from `BUSINESS` in `lib/site.ts`, and nowhere else.** The registered
+  address is the GST certificate's wording (contact, legal pages, every JSON-LD block); the
+  footer uses the settled short form; GSTIN and CIN are on the contact page. The postal form
+  "Nabagram, Konnagar" is retired — Konnagar as a locality in prose is still true.
+- **Refund, Privacy and Terms must agree** (30 days to export after an account ends, then
+  deleted; read-only after 7 days unpaid; never deleted for late payment). Each file says so
+  in a comment; change all three together.
+- ⚠️ `billing@svasamm.com` is on the refund and shipping pages. Do not deploy until Mithun
+  confirms the mailbox receives mail.
+
+## Deployment`
 below for what actually ships).
 
 > **Heed AGENTS.md above: this is Next 16 — read `node_modules/next/dist/docs/` before
@@ -38,6 +59,14 @@ Always `yarn typecheck` + `yarn build` before committing. Facts come from the ma
 `cmr-out-turn-shortfall-moisture` page + front-loaded CMR/yield/GST intros + cross-links (build-verified,
 62 pages). NAP: svasamm phone → 9007793575. **Next:** healthcare cluster + more Millingo content
 (plans in `~/Projects/web-dev/svasamm.com-audit/`). No deploy without the founder's explicit go.
+
+## Tests — the release gate (2 Oct 2026)
+**A release cannot deploy unless these are green** (`test` job + the nginx step in `deploy.yml`; PRs run the `test` job too).
+- `yarn test:e2e` — builds, then for EVERY page in `out/sitemap.xml`: 200, one h1, canonical = its sitemap URL, meta description, no console errors, no sideways scroll at 390px; every internal link resolves; the contact form keeps its fields. A new page is tested the day it is added.
+- **Approved screenshots** of five key pages (`tests/e2e/site.config.ts` → `keyPages`), desk + phone, in `tests/e2e/__screenshots__/`, compared ONLY on Linux — on a Mac run `yarn test:visual` (Docker). **Meant to change the design?** `yarn build && yarn test:visual:update`, look at the new PNGs, commit them with the change. An unexplained PNG change in a PR is the thing to question.
+- **Run `yarn test:visual` before calling a phone layout done** — it runs the WHOLE suite on Linux, and Linux fonts are wider: on 2 Oct 2026 eight healthcare articles overflowed 390px on Linux (a long `.sv-btn` label; `nowrap`) and passed on the Mac.
+- `yarn test:nginx` — the real nginx: pages 200, unknown 404, the moved-page 301s, www → apex, security headers, no `X-Robots-Tag` on the production host. Fails (does not skip) without Docker.
+- `site.spec.ts`, `visual.spec.ts`, `static-server.mjs` are the SAME files in t4suite-site and lucoze-website — change all three.
 
 ## Stack
 Next 16 (App Router, **SSG** — every page static HTML for SEO) · React 19 · TypeScript ·
