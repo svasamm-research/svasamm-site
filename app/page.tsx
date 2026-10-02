@@ -428,7 +428,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="sv-card" style={{ padding: "6px 8px" }}>
+            {/* On a phone the table is wider than the card: it scrolls, the page does not. */}
+            <div className="sv-card" style={{ padding: "6px 8px", overflowX: "auto" }}>
               <table className="sv-table">
                 <thead>
                   <tr>

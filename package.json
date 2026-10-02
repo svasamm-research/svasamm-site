@@ -9,7 +9,11 @@
     "typecheck": "tsc --noEmit",
     "test": "yarn typecheck",
     "docker:build": "docker build --platform linux/amd64 -t svasamm-website -f ./deployment/docker/Dockerfile .",
-    "docker:run": "docker run -p 80:80 svasamm-website"
+    "docker:run": "docker run -p 80:80 svasamm-website",
+    "test:e2e": "yarn build && playwright test",
+    "test:nginx": "bash scripts/check-nginx.sh",
+    "test:visual": "docker run --rm --ipc=host -v \"$PWD:/w\" -v /w/node_modules -w /w mcr.microsoft.com/playwright:v1.61.1-noble sh -c 'corepack enable && yarn install --frozen-lockfile --silent && npx playwright test '",
+    "test:visual:update": "docker run --rm --ipc=host -v \"$PWD:/w\" -v /w/node_modules -w /w mcr.microsoft.com/playwright:v1.61.1-noble sh -c 'corepack enable && yarn install --frozen-lockfile --silent && npx playwright test visual --update-snapshots'"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -19,6 +23,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@playwright/test": "1.61.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
