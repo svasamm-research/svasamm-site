@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "./Icon";
 import ContactForm from "./ContactForm";
+import { BUSINESS } from "@/lib/site";
 
 // Contact page body — ports Contact.dc.html onto the --sv-* design system. Left column is
 // static contact info (sv-card detail rows with sv-chip icons); the form on the right is the
@@ -137,10 +138,39 @@ export default function ContactPage() {
                     color: "var(--sv-ink-3)",
                   }}
                 >
-                  Office
+                  Registered office
                 </span>
-                <span style={{ fontWeight: 500 }}>
-                  Nabagram, Konnagar, Hooghly, WB 712246
+                <span style={{ fontWeight: 500 }}>{BUSINESS.registeredAddress}</span>
+              </span>
+            </div>
+            {/* The registered identity a payment provider and a client's accounts team look
+                for: legal name, GSTIN and CIN, matching the GST certificate. */}
+            <div
+              className="sv-card"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 14,
+                padding: "16px 18px",
+                color: "var(--sv-ink)",
+              }}
+            >
+              <span className="sv-chip sv-chip-sm">
+                <Icon name="ph-buildings" size={18} />
+              </span>
+              <span>
+                <span
+                  style={{
+                    display: "block",
+                    fontSize: 12.5,
+                    color: "var(--sv-ink-3)",
+                  }}
+                >
+                  Company
+                </span>
+                <span style={{ fontWeight: 500, display: "block" }}>{BUSINESS.legalName}</span>
+                <span style={{ fontFamily: "var(--sv-mono)", fontSize: 13, color: "var(--sv-ink-2)", display: "block" }}>
+                  GSTIN {BUSINESS.gstin} · CIN {BUSINESS.cin}
                 </span>
               </span>
             </div>

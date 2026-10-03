@@ -127,6 +127,12 @@ figure { margin: 0; }
   border: 1px solid transparent; cursor: pointer; white-space: nowrap;
   transition: background .15s ease, border-color .15s ease, box-shadow .15s ease, color .15s ease;
 }
+/* A label longer than a phone is wide wraps instead of pushing the page sideways
+   ("Explore Svasamm Digital for Healthcare" ran 10px past 390px). Only a button that
+   did not fit changes. */
+@media (max-width: 480px) {
+  .sv-btn { white-space: normal; text-align: center; max-width: 100%; }
+}
 .sv-btn-primary {
   background: var(--sv-brand); color: #fff; border-color: var(--sv-brand);
   box-shadow: var(--sv-sh-1);

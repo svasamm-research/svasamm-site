@@ -17,19 +17,19 @@ export const DIGITAL_SCHOOLS_PRODUCT: Product = {
   id: "digital-schools",
   name: "Svasamm Digital for Schools",
   badge: "Svasamm Digital · Schools",
-  tagline: "School presence that grows, not just launches",
+  tagline: "Found by parents before admissions open",
   blurb:
     "Not a build-and-disappear website. We get your school, pre-school or coaching institute properly online, then keep working every month — watching what parents actually search in Search Console, Analytics and Plausible, targeting the long-tail keywords you can realistically win, and adapting as Google changes — so your organic presence compounds instead of going stale, and it is strong before the admission season, not scrambled together when applications open. West Bengal and East India, a small number of clients, category exclusivity in your catchment.",
   ctaPrimary: "Request a proposal",
-  featuresTitle: "What the ongoing engagement covers",
+  featuresTitle: "What we do for the school, month by month",
   features: [
-    { icon: "ph-chart-line-up", title: "Ongoing organic growth — we don't build and leave", body: "The website is the starting line, not the finish. On Growth and Full we keep working every month so your presence compounds — the right pages added over time, local signals strengthened, steady improvement — and it is strong before the admission season, not scrambled together when applications open." },
-    { icon: "ph-chart-bar", title: "We watch the data and act on it", body: "Search Console, Analytics and Plausible, read every month — what parents actually search, what is ranking and what is not, where enquiries come from. Each month's work is a decision from the data, not a guess." },
+    { icon: "ph-chart-line-up", title: "Kept current through the whole admission cycle", body: "A school's year has a shape: enquiries build long before applications open, then fall away once the class is full. On Growth and Full we work to that shape — the class and board pages, the photographs and the Google profile brought up to date ahead of the season, and the quieter months used to add the pages parents will be searching for next year." },
+    { icon: "ph-chart-bar", title: "What parents searched last month", body: "Every month we read which board, class and locality searches found the school, what parents looked at on the Google profile, and which admission enquiries came from search rather than word of mouth. The next month's work follows from that, not from a guess about what parents might want." },
     { icon: "ph-funnel", title: "Long-tail keyword strategy", body: "We find the specific, winnable searches your catchment makes — by board, class and locality ('best CBSE school in [area]', 'playschool near [locality]') — and build the pages that answer them, rather than chasing head terms the big directories already own." },
-    { icon: "ph-shield-check", title: "Built to hold through algorithm updates", body: "We work on the fundamentals Google has rewarded for years — genuine relevant content, a complete and accurate local presence, technical health, real reviews — and adjust as it changes. That is what survives an update instead of being reset by one." },
+    { icon: "ph-shield-check", title: "Built on what a parent checks", body: "Google changes how it ranks often. What it keeps rewarding is what a parent checks anyway: the board and classes stated plainly, real photographs of the real campus, a complete Google profile and genuine reviews from parents. We build those, and look at the data after every update rather than chasing a trick the next one removes." },
     { icon: "ph-desktop", title: "A website built for the school", body: "Boards, classes, curriculum, facilities, fees process and the admission enquiry — structured the way parents actually look for them, and easy for your office to keep current." },
     { icon: "ph-map-pin", title: "Google Business Profile", body: "Set up or claimed, categories and details filled in properly, hours and real photos correct — the listing most parents see before they ever reach your site." },
-    { icon: "ph-map-trifold", title: "Local SEO, schema & AI visibility", body: "On-page optimisation for the searches your catchment makes, name-address-phone consistent across every listing, and structured data so search engines and AI assistants can read which board, classes and area your school covers." },
+    { icon: "ph-map-trifold", title: "Board, class and locality, readable by search and AI", body: "On-page optimisation for the searches your catchment makes, name-address-phone consistent across every listing, and structured data so search engines and AI assistants can read which board, classes and area your school covers." },
     { icon: "ph-handshake", title: "Category exclusivity", body: "One school per catchment. If a competing school inside that catchment approaches us, we decline — and it is written into the agreement." },
   ],
   tiersTitle: "Three fixed tiers — scope published, price quoted per school",
@@ -105,20 +105,20 @@ export const DIGITAL_SCHOOLS_PRODUCT: Product = {
   },
   faqs: [
     {
-      q: "Do you just build the website and disappear?",
-      a: "No — that is the opposite of how this works. The build is the starting point. On Growth and Full we work every month: reading Search Console, Analytics and Plausible to see what parents search and what is ranking, publishing pages around the long-tail keywords you can win, keeping the Google Business Profile and listings current, and helping earn reviews. Organic presence compounds when it is tended and goes stale when it is not — so the ongoing monthly work is the real product, not the website alone.",
+      q: "Do you build the school website and then leave?",
+      a: "No. The website is where it starts. On Growth and Full we work on the school every month: reading which board and class searches found you, adding pages for the questions parents keep asking, keeping the Google profile's photographs, hours and posts current, and helping you ask parents for honest reviews. A school's presence stays strong when someone looks after it through the year, and fades when nobody does — so the monthly work is the real service, not the website on its own.",
     },
     {
-      q: "How do you keep us visible when Google changes its algorithm?",
-      a: "We don't chase tactics a single update can wipe out. We build on the fundamentals Google has rewarded for years — genuine, relevant content that answers real parent questions, a complete and accurate local presence, technical health, and real reviews — and we adjust as the algorithm shifts, watching the data after every major update and responding. We will not promise a specific ranking on a specific day, because no honest agency can — but this is the approach that holds through updates rather than being reset by them.",
+      q: "What happens to the school's visibility when Google changes its rules?",
+      a: "We avoid anything a single update can undo. The school ranks on what parents already check: clear board and class information, real photographs, an accurate Google profile and genuine reviews from parents. Those have held through every change Google has made, so we strengthen them, and we look at the school's numbers after each major update and adjust. We will not promise a ranking on a date, because nobody can honestly do that.",
     },
     {
       q: "Will you work with a competing school nearby?",
       a: "No. You get category exclusivity in your catchment — we won't take a directly competing school. One school per catchment (roughly the area Google's nearby results draw from), and it is written into the agreement. If a competing school inside that catchment approaches us, we decline. This applies to Svasamm Digital services only.",
     },
     {
-      q: "Why does exclusivity matter for local search?",
-      a: "Local and map results are heavily proximity-driven, so two schools several kilometres apart largely serve different parents and there is no real conflict. The genuine conflict is narrow — two schools in the same catchment chasing the same 'best school near me' searches — and exclusivity removes it entirely rather than quietly working both sides.",
+      q: "Why only one school per catchment?",
+      a: "Parents choose a school close to home, and Google's local results follow distance closely, so two schools a few kilometres apart mostly reach different families. The real conflict is two schools in the same catchment competing for the same 'best school near me' searches. We would be working against one client for the other, so we take only one.",
     },
     {
       q: "When should a school start, given the admission season?",
@@ -179,7 +179,7 @@ export const DIGITAL_SCHOOLS_PRODUCT: Product = {
         telephone: "+91-90077-93575",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Nabagram, Konnagar",
+          streetAddress: "Flat b06-09-05, Grand City, Grand One, Tower 6, Vivekananda Road, Daspara, Nabagram Colony",
           addressLocality: "Hooghly",
           addressRegion: "West Bengal",
           postalCode: "712246",

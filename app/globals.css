@@ -184,8 +184,43 @@
   flex-direction: column;
   gap: 7px;
 }
+/* A numbered list in a legal page carries its order (the subscription terms are
+   numbered), so it keeps its numerals — the reset otherwise strips them. */
+.lg-body ol {
+  list-style: decimal;
+  padding-left: 22px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
 .lg-body strong {
   color: var(--sv-ink);
+}
+/* The pricing table. It scrolls sideways on a phone rather than squeezing four columns. */
+.lg-table-wrap {
+  overflow-x: auto;
+  margin: 14px 0;
+}
+.lg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.lg-table th,
+.lg-table td {
+  text-align: left;
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--sv-line);
+  color: var(--sv-ink-2);
+  vertical-align: top;
+}
+.lg-table th {
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sv-ink-3);
+  font-weight: 500;
 }
 
 /* Header mega-menu row hover + footer link hover (design: Header/Footer.dc.html). */
