@@ -5,6 +5,148 @@ import type { Article } from "./types";
 
 export const RICE_MILL_ARTICLES: Article[] = [
   {
+    slug: "punjab-custom-milling-policy-2026-27",
+    type: "guide",
+    parentProduct: "millingo",
+    eyebrow: "Punjab · KMS 2026-27",
+    title: "Punjab Custom Milling Policy 2026-27: What Changed for Rice Millers",
+    byline: "By Mithun K. Singh, Founder, Svasamm Research · 8 October 2026",
+    intro:
+      "Punjab's cabinet approved the Custom Milling Policy for Kharif 2026-27 on 5 September 2026. The change most millers will feel: a mill that has delivered 90% of the rice due from its 2025-26 paddy can take fresh paddy this season, instead of first clearing every last tonne. Here is what changed, why the state did it, and what it asks of a mill's own records.",
+    sections: [
+      {
+        type: "p",
+        h: "What the cabinet approved",
+        text: "On 5 September 2026 the Punjab cabinet approved three policies for the 2026-27 paddy season together: the Punjab Custom Milling Policy for Kharif 2026-27, the Punjab Foodgrains Transportation Policy 2027, and the Punjab Foodgrains Labour & Cartage Policy 2027. The milling policy is the one that decides which mills get paddy, and on what terms.",
+      },
+      {
+        type: "p",
+        h: "The 90% rule",
+        text: "Under the new policy, millers who have delivered up to 90% of the rice from the paddy allotted to them in 2025-26 are eligible to receive fresh paddy for milling. Before, a mill had to finish last season's delivery first. The reason is storage: the state's 280 LMT of foodgrain storage was reported full, so rice from 2025-26 could not move out fast enough for mills to clear their dues on time.",
+      },
+      {
+        type: "table",
+        h: "The numbers behind it",
+        cols: ["", "Figure", "Source"],
+        rows: [
+          ["Punjab's foodgrain storage", "280 LMT, reported full", "The Tribune, 5 Sep 2026"],
+          ["2025-26 rice delivery deadline", "Extended to 31 Oct 2026 (normally 31 March)", "The Tribune, 5 Sep 2026"],
+          ["2025-26 CMR due", "105.64 LMT", "The Tribune, 3 Oct 2026"],
+          ["2025-26 CMR delivered by end-September", "99.50 LMT — 94%", "The Tribune, 3 Oct 2026"],
+          ["2026-27 paddy procurement target", "About 180 LMT of 185 LMT produced", "The Tribune, 5 Sep 2026"],
+          ["Peak paddy arrivals", "Expected around 10 October", "The Tribune, 3 Oct 2026"],
+        ],
+      },
+      {
+        type: "p",
+        h: "How paddy reaches a mill in Punjab",
+        text: "Paddy is bought in the mandis by the state agencies — Pungrain, Markfed, Punsup and the Punjab State Warehousing Corporation — and stored at eligible rice mills for custom milling. Allotment is online: since the 2024-25 policy, mills are linked to mandis on the state's portal and paddy is allotted under the release-order (RO) scheme. Miller registration and FRK letters run through the Anaaj Kharid portal, and the movement of grain is monitored through Anaaj Kharid, the Vaahan application and vehicle tracking.",
+      },
+      {
+        type: "note",
+        text: "This is a summary of the government's announcements and of reporting on them, dated above. The policy text itself is the Department of Food, Civil Supplies & Consumer Affairs, Punjab's — read the current notification before acting on any figure here.",
+      },
+      {
+        type: "list",
+        h: "What the 90% line asks of your records",
+        items: [
+          { b: "Per allotment, per agency", t: "— paddy received, rice due at the out-turn ratio, rice delivered and accepted, and the share delivered." },
+          { b: "The date of each delivery", t: "— 31 October 2026 is the extended deadline for 2025-26 rice." },
+          { b: "Two seasons side by side", t: "— 2025-26 rice still owed while 2026-27 paddy is arriving, stacked and counted separately." },
+          { b: "FRK", t: "— the fortified rice kernels blended into each delivery, against the letters issued on the portal." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Why a mill should know its own figure",
+        text: "Eligibility for fresh paddy now turns on one number: how much of last season's rice you have delivered. The portal will tell you that figure eventually. A mill that keeps its own book of every allotment and delivery knows it first — which lots are still pending, how many tonnes stand between it and 90%, and whether the rice that is ready can be delivered before the deadline.",
+      },
+      {
+        type: "p",
+        h: "Where Millingo fits",
+        text: "Millingo keeps a mill's own record of the CMR cycle: each allotment, the paddy received against it, the rice delivered, and the out-turn against the norm, lot by lot. It does not replace Anaaj Kharid, and it does not file anything on the portal — the portal remains the government's record. Millingo is the mill's own book, so the 90% figure, the pending lots and the deadline are in front of you before anyone asks.",
+      },
+      {
+        type: "list",
+        h: "Sources",
+        items: [
+          { b: "The Tribune, 5 September 2026", t: "— “Punjab's new policy for millers: Deliver 90% rice from 2025-26, be eligible for fresh paddy batch”." },
+          { b: "The Tribune, 3 October 2026", t: "— “Punjab CM Bhagwant Mann seeks urgent clearance of stocks ahead of paddy arrivals”." },
+          { b: "The Tribune, 9 October 2024", t: "— “Cabinet gives nod to online allocation of paddy to millers” (the 2024-25 policy)." },
+          { b: "The Tribune, 29 July 2022", t: "— “Punjab cabinet nod to tech-driven rice milling policy” (agencies and monitoring)." },
+          { b: "anaajkharid.in", t: "— Punjab's procurement portal: miller registration and FRK letters." },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "What is Punjab's 90% rule for rice millers in 2026-27?",
+        a: "Under the Punjab Custom Milling Policy for Kharif 2026-27, approved on 5 September 2026, a miller who has delivered up to 90% of the rice due from the paddy allotted in 2025-26 is eligible to receive fresh paddy for milling.",
+      },
+      {
+        q: "What is the deadline for delivering 2025-26 custom milled rice in Punjab?",
+        a: "It was extended to 31 October 2026, from the usual 31 March, because the state's foodgrain storage was full.",
+      },
+      {
+        q: "How is paddy allotted to rice mills in Punjab?",
+        a: "Online. Mills are linked to mandis on the state's portal and paddy is allotted under the release-order (RO) scheme; miller registration and FRK letters run through the Anaaj Kharid portal.",
+      },
+      {
+        q: "Does Millingo connect to the Anaaj Kharid portal?",
+        a: "No. Anaaj Kharid remains the government's record. Millingo is the mill's own book of allotments, deliveries and out-turn, so the mill knows where it stands before the portal or an inspector tells it.",
+      },
+    ],
+    related: [
+      { title: "Custom Milled Rice (CMR): the complete process", href: "Guide-CMR.dc.html" },
+      { title: "Why CMR out-turn drops below 67%", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
+      { title: "Millingo — rice-mill ERP", href: "Millingo.dc.html" },
+    ],
+    cta: {
+      title: "Where does your mill stand against 90%?",
+      body: "Tell us your 2025-26 allotments and deliveries and we will walk through where you stand, and how Millingo keeps that figure current as you deliver. Free, no obligation.",
+      productHref: "Millingo.dc.html",
+      productLabel: "Explore Millingo",
+    },
+    seo: {
+      metaTitle: "Punjab Custom Milling Policy 2026-27: What Changed | Millingo",
+      metaDescription:
+        "Punjab's 2026-27 milling policy lets mills that delivered 90% of 2025-26 rice take fresh paddy. The rule, the deadline, the figures, and what to track.",
+      canonical: "https://svasamm.com/pages/punjab-custom-milling-policy-2026-27.html",
+      ogType: "article",
+      ogTitle: "Punjab Custom Milling Policy 2026-27: the 90% rule for millers",
+      ogDescription:
+        "What Punjab's 2026-27 custom milling policy changed, why storage forced it, and what a mill should track to stay eligible for fresh paddy.",
+    },
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Punjab Custom Milling Policy 2026-27: What Changed for Rice Millers",
+        description:
+          "Punjab's 2026-27 custom milling policy, the 90% delivery rule for fresh paddy, the extended 2025-26 deadline, and what a mill should track.",
+        author: {
+          "@type": "Person",
+          name: "Mithun K. Singh",
+          jobTitle: "Founder",
+          worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
+        },
+        publisher: { "@type": "Organization", name: "Svasamm" },
+        datePublished: "2026-10-08",
+        dateModified: "2026-10-08",
+        mainEntityOfPage: "https://svasamm.com/pages/punjab-custom-milling-policy-2026-27.html",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" },
+          { "@type": "ListItem", position: 2, name: "Millingo - Rice Mill ERP", item: "https://svasamm.com/pages/millingo.html" },
+          { "@type": "ListItem", position: 3, name: "Punjab Custom Milling Policy 2026-27", item: "https://svasamm.com/pages/punjab-custom-milling-policy-2026-27.html" },
+        ],
+      },
+    ],
+  },
+  {
     slug: "cmr-out-turn-shortfall-moisture",
     type: "guide",
     parentProduct: "millingo",

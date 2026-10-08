@@ -54,6 +54,7 @@ export const PRODUCTS: Product[] = [
             { title: "GST for rice mills: paddy, rice, bran & milling", href: "Guide-GST.dc.html" },
             { title: "Best rice-mill software: how to choose (buyer's guide)", href: "Guide-BestSoftware.dc.html" },
             { title: "Rice-mill software price: what it costs & why", href: "Guide-Pricing.dc.html" },
+            { title: "Why CMR out-turn drops below 67% (moisture & shortfall)", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
           ],
         },
         {
@@ -62,6 +63,7 @@ export const PRODUCTS: Product[] = [
             { title: "Uttar Pradesh (procurement & CMR)", href: "State-UttarPradesh.dc.html" },
             { title: "Odisha (OSCSC & CMR)", href: "State-Odisha.dc.html" },
             { title: "Bihar (PACS & CMR)", href: "State-Bihar.dc.html" },
+            { title: "Punjab: the 2026-27 milling policy & the 90% rule", href: "/pages/punjab-custom-milling-policy-2026-27.html" },
           ],
         },
         {
