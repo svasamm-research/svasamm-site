@@ -35,14 +35,14 @@ export const CORE_BY_SLUG: Record<string, CorePage> = {
     kind: "about",
     seo: {
       metaTitle: "About Svasamm — Vertical ERPs Built in West Bengal | Svasamm",
-      metaDescription: "Svasamm Research Pvt Ltd builds vertical ERPs and business platforms for Indian operations. Founded 2022 in Konnagar, West Bengal, by Mithun K. Singh.",
+      metaDescription: "Svasamm Research Pvt Ltd builds vertical ERPs and business platforms for Indian operations. Founded 2024 in Konnagar, West Bengal, by Mithun K. Singh.",
       canonical: "https://svasamm.com/pages/about.html",
       ogType: "website",
       ogTitle: "About Svasamm",
       ogDescription: "Vertical ERPs and business platforms, built in West Bengal for Indian operations.",
     },
     jsonLd: [
-      { "@context": "https://schema.org", "@type": "AboutPage", name: "About Svasamm", url: "https://svasamm.com/pages/about.html", mainEntity: { "@type": "Organization", name: "Svasamm Research Pvt Ltd", alternateName: "Svasamm", url: "https://svasamm.com", email: "query@svasamm.com", telephone: "+91-90077-93575", foundingDate: "2022", founder: { "@type": "Person", name: "Mithun K. Singh", jobTitle: "Founder" }, address: { "@type": "PostalAddress", streetAddress: "Flat b06-09-05, Grand City, Grand One, Tower 6, Vivekananda Road, Daspara, Nabagram Colony", addressLocality: "Hooghly", addressRegion: "West Bengal", postalCode: "712246", addressCountry: "IN" }, areaServed: "IN" } },
+      { "@context": "https://schema.org", "@type": "AboutPage", name: "About Svasamm", url: "https://svasamm.com/pages/about.html", mainEntity: { "@type": "Organization", name: "Svasamm Research Pvt Ltd", alternateName: "Svasamm", url: "https://svasamm.com", email: "query@svasamm.com", telephone: "+91-90077-93575", foundingDate: "2024", founder: { "@type": "Person", name: "Mithun K. Singh", jobTitle: "Founder" }, address: { "@type": "PostalAddress", streetAddress: "Flat b06-09-05, Grand City, Grand One, Tower 6, Vivekananda Road, Daspara, Nabagram Colony", addressLocality: "Hooghly", addressRegion: "West Bengal", postalCode: "712246", addressCountry: "IN" }, areaServed: "IN" } },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "About", item: "https://svasamm.com/pages/about.html" }] },
     ],
   },
