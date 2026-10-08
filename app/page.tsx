@@ -34,7 +34,7 @@ export const metadata: Metadata = {
       "Vertical ERPs for Rice Mills, Hospitals & Distributors | Svasamm",
   },
   description:
-    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, ERP, HRMS, CRM and service desk. API-first, self-hostable, India-first.",
+    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, Svasamm People for HR and payroll, ERP, CRM and service desk. API-first, self-hostable, India-first.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {

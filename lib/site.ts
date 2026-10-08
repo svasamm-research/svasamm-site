@@ -99,7 +99,7 @@ export const PRODUCTS: NavProduct[] = [
   },
   {
     id: "hrms",
-    name: "HRMS",
+    name: "Svasamm People",
     desc: "HR & payroll",
     category: "platform",
     href: "/pages/hrms.html",
