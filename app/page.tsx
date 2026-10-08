@@ -78,7 +78,7 @@ export default function Home() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 9,
-                  padding: "6px 13px 6px 7px",
+                  padding: "6px 13px",
                   borderRadius: 999,
                   background: "var(--sv-surface)",
                   border: "1px solid var(--sv-line)",
@@ -86,9 +86,6 @@ export default function Home() {
                   marginBottom: 26,
                 }}
               >
-                <span className="sv-tag sv-tag-brand" style={{ padding: "3px 8px" }}>
-                  Since 2019
-                </span>
                 <span style={{ fontSize: 13.5, color: "var(--sv-ink-2)" }}>
                   Svasamm Research Pvt Ltd · West Bengal, India
                 </span>
