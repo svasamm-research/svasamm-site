@@ -4566,7 +4566,7 @@ export const ARTICLES: Article[] = [
     title: "Payroll & Statutory Compliance in India: A Practical Guide",
     byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
     intro:
-      "Running payroll in India is more than paying salaries — it’s PF, ESI, professional tax, TDS and the returns that go with each, on deadlines that don’t move. This guide explains the core statutory components and how an HRMS keeps them right.",
+      "Running payroll in India is more than paying salaries — it’s PF, ESI, professional tax, TDS and the returns that go with each, on deadlines that don’t move. This guide explains the core statutory components and how Svasamm People keeps them right.",
     sections: [
       {
         type: "note",
@@ -4618,7 +4618,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        h: "How an HRMS keeps it right",
+        h: "How Svasamm People keeps it right",
         text: "Salary structures compute PF, ESI, PT and TDS automatically; attendance and shifts flow straight into the payroll run; and the reports needed for filing come out of the same system — with payslips and an audit trail for every cycle.",
       },
     ],
@@ -4628,21 +4628,21 @@ export const ARTICLES: Article[] = [
         a: "Typically Provident Fund (PF), ESI (below the wage threshold), state professional tax, and TDS on salary — each with its own contribution rules and return deadlines.",
       },
       {
-        q: "How does an HRMS help with payroll compliance?",
+        q: "How does HR and payroll software help with compliance?",
         a: "It computes PF, ESI, PT and TDS from salary structures, pulls attendance into the run, and produces the payslips, returns and audit trail needed for filing.",
       },
     ],
     related: [
       {
-        title: "HRMS for manufacturing",
+        title: "HR & payroll for manufacturing",
         href: "HRMS-Manufacturing.dc.html",
       },
       {
-        title: "HRMS for hospitals & clinics",
+        title: "HR & payroll for hospitals & clinics",
         href: "HRMS-Healthcare.dc.html",
       },
       {
-        title: "HRMS — overview",
+        title: "Svasamm People — overview",
         href: "HRMS.dc.html",
       },
     ],
@@ -4650,19 +4650,19 @@ export const ARTICLES: Article[] = [
       title: "Run compliant payroll without the deadline scramble",
       body: "Bring a salary structure and headcount, and we'll set up a sample cycle with you.",
       productHref: "HRMS.dc.html",
-      productLabel: "Explore HRMS",
+      productLabel: "Explore Svasamm People",
     },
     seo: {
       metaTitle:
         "Payroll & Statutory Compliance in India: A Practical Guide | Svasamm",
       metaDescription:
-        "PF, ESI, professional tax and TDS explained for Indian payroll - the core statutory components, where payroll goes wrong, and how an HRMS keeps it compliant.",
+        "PF, ESI, professional tax and TDS explained for Indian payroll - the core statutory components, where payroll goes wrong, and how Svasamm People keeps it compliant.",
       canonical:
         "https://svasamm.com/pages/payroll-statutory-compliance-india.html",
       ogType: "article",
       ogTitle: "Payroll &amp; Statutory Compliance in India: A Practical Guide",
       ogDescription:
-        "PF, ESI, professional tax and TDS explained for Indian payroll - the core statutory components, where payroll goes wrong, and how an HRMS keeps it compliant.",
+        "PF, ESI, professional tax and TDS explained for Indian payroll - the core statutory components, where payroll goes wrong, and how Svasamm People keeps it compliant.",
     },
     jsonLd: [
       {
@@ -4670,7 +4670,7 @@ export const ARTICLES: Article[] = [
         "@type": "Article",
         headline: "Payroll & Statutory Compliance in India: A Practical Guide",
         description:
-          "PF, ESI, professional tax and TDS explained for Indian payroll - the core statutory components, where payroll goes wrong, and how an HRMS keeps it compliant.",
+          "PF, ESI, professional tax and TDS explained for Indian payroll - the core statutory components, where payroll goes wrong, and how Svasamm People keeps it compliant.",
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
@@ -4702,7 +4702,7 @@ export const ARTICLES: Article[] = [
           {
             "@type": "ListItem",
             position: 2,
-            name: "HRMS",
+            name: "Svasamm People",
             item: "https://svasamm.com/pages/hrms.html",
           },
           {
@@ -4727,7 +4727,7 @@ export const ARTICLES: Article[] = [
           },
           {
             "@type": "Question",
-            name: "How does an HRMS help with payroll compliance?",
+            name: "How does HR and payroll software help with compliance?",
             acceptedAnswer: {
               "@type": "Answer",
               text: "It computes PF, ESI, PT and TDS from salary structures, pulls attendance into the run, and produces the payslips, returns and audit trail needed for filing.",
@@ -4741,42 +4741,42 @@ export const ARTICLES: Article[] = [
     slug: "hrms-for-manufacturing",
     type: "industry",
     parentProduct: "hrms",
-    eyebrow: "HRMS by Industry · Manufacturing",
-    title: "HRMS for Manufacturing",
+    eyebrow: "Svasamm People · Manufacturing",
+    title: "HR & Payroll for Manufacturing",
     byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
     intro:
-      "Manufacturing HR runs on shifts, overtime and a mix of permanent and contract labour. An HRMS built for the floor ties biometric attendance and shift rosters straight to compliant payroll.",
+      "Manufacturing HR runs on shifts, overtime and a mix of permanent and contract labour. Svasamm People ties shift rosters and attendance from the phone straight to compliant payroll.",
     sections: [
       {
         type: "list",
-        h: "What manufacturers need from HRMS",
+        h: "What manufacturers need from HR software",
         items: [
           {
             b: "Shift rosters & overtime",
             t: "across lines and plants.",
           },
           {
-            b: "Biometric / geo attendance",
+            b: "Attendance from the phone, inside the premises",
             t: "feeding payroll directly.",
           },
           {
-            b: "Contract-labour tracking",
-            t: "alongside permanent staff.",
+            b: "Statutory bonus and gratuity",
+            t: "worked out in payroll.",
           },
           {
             b: "PF/ESI/PT/TDS payroll",
             t: "computed automatically.",
           },
           {
-            b: "Multi-plant",
-            t: "headcount and reporting.",
+            b: "Payslips and leave",
+            t: "on every worker's phone.",
           },
         ],
       },
       {
         type: "p",
         h: "Attendance to payslip, one flow",
-        text: "Shifts and biometric check-in produce hours and overtime; payroll turns them into compliant pay with statutory deductions; employees self-serve payslips and leave — across every plant.",
+        text: "Shifts and phone check-in produce hours and overtime; payroll turns them into compliant pay with statutory deductions; workers see payslips and ask for leave on the Svasamm One app.",
       },
       {
         type: "list",
@@ -4784,19 +4784,19 @@ export const ARTICLES: Article[] = [
         items: [
           "Accurate shift and overtime pay.",
           "Compliant statutory deductions.",
-          "Contract and permanent labour in one view.",
-          "Multi-plant headcount visibility.",
+          "Statutory bonus and gratuity, worked out.",
+          "Payslips and leave on every phone.",
         ],
       },
     ],
     faqs: [
       {
-        q: "Does the HRMS handle shifts and overtime?",
-        a: "Yes — shift rosters, biometric/geo check-in and overtime feed straight into payroll.",
+        q: "Does Svasamm People handle shifts and overtime?",
+        a: "Yes — shift rosters, phone check-in and overtime feed straight into payroll.",
       },
       {
-        q: "Can it track contract labour alongside permanent staff?",
-        a: "Yes — contract and permanent workers are managed together, with compliant payroll for each.",
+        q: "Does it compute statutory bonus and gratuity?",
+        a: "Yes — statutory bonus under the Payment of Bonus Act and gratuity are worked out in payroll, alongside PF, ESI, professional tax and TDS.",
       },
     ],
     related: [
@@ -4805,11 +4805,11 @@ export const ARTICLES: Article[] = [
         href: "Guide-PayrollCompliance.dc.html",
       },
       {
-        title: "HRMS for multi-location retail",
+        title: "HR & payroll for multi-location retail",
         href: "HRMS-Retail.dc.html",
       },
       {
-        title: "HRMS — overview",
+        title: "Svasamm People — overview",
         href: "HRMS.dc.html",
       },
     ],
@@ -4817,26 +4817,26 @@ export const ARTICLES: Article[] = [
       title: "Tie the floor to compliant payroll",
       body: "Tell us your shift and labour mix, and we'll map attendance-to-payroll with you.",
       productHref: "HRMS.dc.html",
-      productLabel: "Explore HRMS",
+      productLabel: "Explore Svasamm People",
     },
     seo: {
-      metaTitle: "HRMS for Manufacturing | Svasamm",
+      metaTitle: "HR & Payroll Software for Manufacturing | Svasamm People",
       metaDescription:
-        "HRMS for manufacturers: shift rosters and overtime, biometric attendance feeding payroll, contract-labour tracking, and compliant PF/ESI/PT/TDS payroll across plants.",
+        "HR and payroll (HRMS) for manufacturers: shift rosters and overtime, phone attendance feeding payroll, and PF, ESI, PT, TDS, bonus and gratuity in Svasamm People.",
       canonical: "https://svasamm.com/pages/hrms-for-manufacturing.html",
       ogType: "website",
-      ogTitle: "HRMS for Manufacturing",
+      ogTitle: "HR & Payroll for Manufacturing",
       ogDescription:
-        "HRMS for manufacturers: shift rosters and overtime, biometric attendance feeding payroll, contract-labour tracking, and compliant PF/ESI/PT/TDS payroll across plants.",
+        "HR and payroll (HRMS) for manufacturers: shift rosters and overtime, phone attendance feeding payroll, and PF, ESI, PT, TDS, bonus and gratuity in Svasamm People.",
     },
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "Service",
-        name: "HRMS for Manufacturing",
+        name: "HR & Payroll for Manufacturing",
         serviceType: "HRMS Software",
         description:
-          "HRMS for manufacturers: shift rosters and overtime, biometric attendance feeding payroll, contract-labour tracking, and compliant PF/ESI/PT/TDS payroll across plants.",
+          "HR and payroll (HRMS) for manufacturers: shift rosters and overtime, phone attendance feeding payroll, and PF, ESI, PT, TDS, bonus and gratuity in Svasamm People.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -4861,13 +4861,13 @@ export const ARTICLES: Article[] = [
           {
             "@type": "ListItem",
             position: 2,
-            name: "HRMS",
+            name: "Svasamm People",
             item: "https://svasamm.com/pages/hrms.html",
           },
           {
             "@type": "ListItem",
             position: 3,
-            name: "HRMS for Manufacturing",
+            name: "HR & Payroll for Manufacturing",
             item: "https://svasamm.com/pages/hrms-for-manufacturing.html",
           },
         ],
@@ -4878,18 +4878,18 @@ export const ARTICLES: Article[] = [
         mainEntity: [
           {
             "@type": "Question",
-            name: "Does the HRMS handle shifts and overtime?",
+            name: "Does Svasamm People handle shifts and overtime?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes - shift rosters, biometric/geo check-in and overtime feed straight into payroll.",
+              text: "Yes - shift rosters, phone check-in and overtime feed straight into payroll.",
             },
           },
           {
             "@type": "Question",
-            name: "Can it track contract labour alongside permanent staff?",
+            name: "Does it compute statutory bonus and gratuity?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes - contract and permanent workers are managed together, with compliant payroll for each.",
+              text: "Yes - statutory bonus under the Payment of Bonus Act and gratuity are worked out in payroll, alongside PF, ESI, professional tax and TDS.",
             },
           },
         ],
@@ -4900,11 +4900,11 @@ export const ARTICLES: Article[] = [
     slug: "hrms-for-retail",
     type: "industry",
     parentProduct: "hrms",
-    eyebrow: "HRMS by Industry · Retail",
-    title: "HRMS for Multi-Location Retail",
+    eyebrow: "Svasamm People · Retail",
+    title: "HR & Payroll for Multi-Location Retail",
     byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
     intro:
-      "Retail chains manage a dispersed, high-churn workforce across many stores. An HRMS gives them store-wise rosters, fast onboarding and self-service that works from a phone.",
+      "Retail chains manage a dispersed, high-churn workforce across many stores. Svasamm People gives them rosters and phone attendance per store, quick staff import, and payslips and leave on the phone.",
     sections: [
       {
         type: "list",
@@ -4915,16 +4915,16 @@ export const ARTICLES: Article[] = [
             t: "with geo check-in.",
           },
           {
-            b: "Fast onboarding",
-            t: "for high-turnover roles.",
+            b: "Quick to add staff",
+            t: "one by one or imported from a spreadsheet.",
           },
           {
             b: "Centralised, location-aware payroll",
             t: "with state PT.",
           },
           {
-            b: "Leave & holiday calendars",
-            t: "per store/state.",
+            b: "Leave and holidays",
+            t: "with a supervisor deciding each request.",
           },
           {
             b: "Mobile self-service",
@@ -4942,7 +4942,7 @@ export const ARTICLES: Article[] = [
         h: "What retail chains get",
         items: [
           "Store-wise attendance and rosters.",
-          "Onboarding that keeps up with churn.",
+          "New staff added in minutes, not days.",
           "One payroll across states, with correct PT.",
           "Self-service for a deskless workforce.",
         ],
@@ -4950,8 +4950,8 @@ export const ARTICLES: Article[] = [
     ],
     faqs: [
       {
-        q: "Can staff use the HRMS from a phone?",
-        a: "Yes — mobile self-service lets a deskless workforce check in, apply for leave and get payslips from any device.",
+        q: "Can staff use Svasamm People from a phone?",
+        a: "Yes — on the Svasamm One app a deskless workforce punches in, asks for leave and sees payslips.",
       },
       {
         q: "Does it handle payroll across multiple states?",
@@ -4964,11 +4964,11 @@ export const ARTICLES: Article[] = [
         href: "Guide-PayrollCompliance.dc.html",
       },
       {
-        title: "HRMS for manufacturing",
+        title: "HR & payroll for manufacturing",
         href: "HRMS-Manufacturing.dc.html",
       },
       {
-        title: "HRMS — overview",
+        title: "Svasamm People — overview",
         href: "HRMS.dc.html",
       },
     ],
@@ -4976,26 +4976,26 @@ export const ARTICLES: Article[] = [
       title: "Manage a dispersed retail workforce",
       body: "Tell us your store count and states, and we'll map rosters-to-payroll with you.",
       productHref: "HRMS.dc.html",
-      productLabel: "Explore HRMS",
+      productLabel: "Explore Svasamm People",
     },
     seo: {
-      metaTitle: "HRMS for Multi-Location Retail | Svasamm",
+      metaTitle: "HR & Payroll for Multi-Location Retail | Svasamm People",
       metaDescription:
-        "HRMS for retail chains: store-wise rosters and geo attendance, fast onboarding for high churn, location-aware payroll with state PT, and mobile self-service.",
+        "HR and payroll (HRMS) for retail chains: store rosters and phone attendance, quick staff import, payroll with state PT, and payslips and leave on the phone.",
       canonical: "https://svasamm.com/pages/hrms-for-retail.html",
       ogType: "website",
-      ogTitle: "HRMS for Multi-Location Retail",
+      ogTitle: "HR & Payroll for Multi-Location Retail",
       ogDescription:
-        "HRMS for retail chains: store-wise rosters and geo attendance, fast onboarding for high churn, location-aware payroll with state PT, and mobile self-service.",
+        "HR and payroll (HRMS) for retail chains: store rosters and phone attendance, quick staff import, payroll with state PT, and payslips and leave on the phone.",
     },
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "Service",
-        name: "HRMS for Multi-Location Retail",
+        name: "HR & Payroll for Multi-Location Retail",
         serviceType: "HRMS Software",
         description:
-          "HRMS for retail chains: store-wise rosters and geo attendance, fast onboarding for high churn, location-aware payroll with state PT, and mobile self-service.",
+          "HR and payroll (HRMS) for retail chains: store rosters and phone attendance, quick staff import, payroll with state PT, and payslips and leave on the phone.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -5020,13 +5020,13 @@ export const ARTICLES: Article[] = [
           {
             "@type": "ListItem",
             position: 2,
-            name: "HRMS",
+            name: "Svasamm People",
             item: "https://svasamm.com/pages/hrms.html",
           },
           {
             "@type": "ListItem",
             position: 3,
-            name: "HRMS for Multi-Location Retail",
+            name: "HR & Payroll for Multi-Location Retail",
             item: "https://svasamm.com/pages/hrms-for-retail.html",
           },
         ],
@@ -5037,10 +5037,10 @@ export const ARTICLES: Article[] = [
         mainEntity: [
           {
             "@type": "Question",
-            name: "Can staff use the HRMS from a phone?",
+            name: "Can staff use Svasamm People from a phone?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes - mobile self-service lets a deskless workforce check in, apply for leave and get payslips from any device.",
+              text: "Yes - on the Svasamm One app a deskless workforce punches in, asks for leave and sees payslips.",
             },
           },
           {
@@ -5059,11 +5059,11 @@ export const ARTICLES: Article[] = [
     slug: "hrms-for-hospitals-clinics",
     type: "industry",
     parentProduct: "hrms",
-    eyebrow: "HRMS by Industry · Healthcare",
-    title: "HRMS for Hospitals & Clinics",
+    eyebrow: "Svasamm People · Healthcare",
+    title: "HR & Payroll for Hospitals & Clinics",
     byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
     intro:
-      "Hospitals run 24/7 on rotating shifts across clinical and support staff, with credentials that must stay current. An HRMS keeps rosters, attendance and compliant payroll straight around the clock.",
+      "Hospitals run 24/7 on rotating shifts across clinical and support staff, and payroll that must be right every month. Svasamm People keeps rosters, attendance and compliant payroll straight around the clock.",
     sections: [
       {
         type: "list",
@@ -5078,8 +5078,8 @@ export const ARTICLES: Article[] = [
             t: "for round-the-clock staffing.",
           },
           {
-            b: "Credential / license tracking",
-            t: "with expiry reminders.",
+            b: "Payslips and leave",
+            t: "on every staff member's phone.",
           },
           {
             b: "Compliant payroll",
@@ -5094,7 +5094,7 @@ export const ARTICLES: Article[] = [
       {
         type: "p",
         h: "Around-the-clock staffing, handled",
-        text: "Rotating rosters cover every shift; attendance and overtime feed payroll; credential expiries are flagged before they lapse; and leave is approved without leaving a ward short.",
+        text: "Rotating rosters cover every shift; attendance and overtime feed payroll; and leave is decided by a supervisor who can see who else is off.",
       },
       {
         type: "list",
@@ -5102,19 +5102,19 @@ export const ARTICLES: Article[] = [
         items: [
           "Reliable 24/7 shift coverage.",
           "Compliant payroll for clinical and support staff.",
-          "Credential expiry never missed.",
+          "Payslips and leave on the phone.",
           "Leave that protects coverage.",
         ],
       },
     ],
     faqs: [
       {
-        q: "Can the HRMS manage 24/7 rotating shifts?",
+        q: "Can Svasamm People manage rotating shifts?",
         a: "Yes — rotating rosters across departments with attendance and overtime feeding payroll.",
       },
       {
-        q: "Does it track staff credentials and licenses?",
-        a: "Yes — credential and license expiries are tracked with reminders so they don’t lapse.",
+        q: "Can staff ask for leave from their phone?",
+        a: "Yes — on the Svasamm One app staff ask for leave and a supervisor decides it.",
       },
     ],
     related: [
@@ -5123,11 +5123,11 @@ export const ARTICLES: Article[] = [
         href: "Guide-PayrollCompliance.dc.html",
       },
       {
-        title: "HRMS for multi-location retail",
+        title: "HR & payroll for multi-location retail",
         href: "HRMS-Retail.dc.html",
       },
       {
-        title: "HRMS — overview",
+        title: "Svasamm People — overview",
         href: "HRMS.dc.html",
       },
     ],
@@ -5135,26 +5135,26 @@ export const ARTICLES: Article[] = [
       title: "Keep round-the-clock staffing compliant",
       body: "Tell us your departments and shift pattern, and we'll map rostering-to-payroll with you.",
       productHref: "HRMS.dc.html",
-      productLabel: "Explore HRMS",
+      productLabel: "Explore Svasamm People",
     },
     seo: {
-      metaTitle: "HRMS for Hospitals & Clinics | Svasamm",
+      metaTitle: "HR & Payroll for Hospitals & Clinics | Svasamm People",
       metaDescription:
-        "HRMS for hospitals and clinics: 24/7 rotating shift rosters, attendance and overtime, credential/license expiry tracking, and compliant payroll for clinical and support staff.",
+        "HR and payroll (HRMS) for hospitals and clinics: shift rosters, attendance and overtime, leave on the phone, and compliant payroll for clinical and support staff.",
       canonical: "https://svasamm.com/pages/hrms-for-hospitals-clinics.html",
       ogType: "website",
-      ogTitle: "HRMS for Hospitals &amp; Clinics",
+      ogTitle: "HR &amp; Payroll for Hospitals &amp; Clinics",
       ogDescription:
-        "HRMS for hospitals and clinics: 24/7 rotating shift rosters, attendance and overtime, credential/license expiry tracking, and compliant payroll for clinical and support staff.",
+        "HR and payroll (HRMS) for hospitals and clinics: shift rosters, attendance and overtime, leave on the phone, and compliant payroll for clinical and support staff.",
     },
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "Service",
-        name: "HRMS for Hospitals & Clinics",
+        name: "HR & Payroll for Hospitals & Clinics",
         serviceType: "HRMS Software",
         description:
-          "HRMS for hospitals and clinics: 24/7 rotating shift rosters, attendance and overtime, credential/license expiry tracking, and compliant payroll for clinical and support staff.",
+          "HR and payroll (HRMS) for hospitals and clinics: shift rosters, attendance and overtime, leave on the phone, and compliant payroll for clinical and support staff.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -5179,13 +5179,13 @@ export const ARTICLES: Article[] = [
           {
             "@type": "ListItem",
             position: 2,
-            name: "HRMS",
+            name: "Svasamm People",
             item: "https://svasamm.com/pages/hrms.html",
           },
           {
             "@type": "ListItem",
             position: 3,
-            name: "HRMS for Hospitals & Clinics",
+            name: "HR & Payroll for Hospitals & Clinics",
             item: "https://svasamm.com/pages/hrms-for-hospitals-clinics.html",
           },
         ],
@@ -5196,7 +5196,7 @@ export const ARTICLES: Article[] = [
         mainEntity: [
           {
             "@type": "Question",
-            name: "Can the HRMS manage 24/7 rotating shifts?",
+            name: "Can Svasamm People manage rotating shifts?",
             acceptedAnswer: {
               "@type": "Answer",
               text: "Yes - rotating rosters across departments with attendance and overtime feeding payroll.",
@@ -5204,10 +5204,10 @@ export const ARTICLES: Article[] = [
           },
           {
             "@type": "Question",
-            name: "Does it track staff credentials and licenses?",
+            name: "Can staff ask for leave from their phone?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes - credential and license expiries are tracked with reminders so they do not lapse.",
+              text: "Yes - on the Svasamm One app staff ask for leave and a supervisor decides it.",
             },
           },
         ],
