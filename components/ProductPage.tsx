@@ -3,6 +3,7 @@ import { Icon } from "./Icon";
 import FaqAccordion from "./FaqAccordion";
 import { toRoute } from "@/lib/routes";
 import type { Product } from "@/lib/types";
+import { ONE } from "@/lib/site";
 
 const CONTACT = toRoute("Contact.dc.html");
 const SOLUTIONS = toRoute("Solutions.dc.html");
@@ -12,10 +13,8 @@ const CONTACT_FOR = (id: string) =>
 
 // Mono figcaption under the framed hero photo (ports ProductPage.dc.html capMap).
 const HERO_CAPTION: Record<string, string> = {
-  millingo: "Rice milling, in operation",
   dms: "Across the distributor & OEM channel",
   erp: "One connected system",
-  hrms: "Your workforce, handled",
   crm: "Relationships that close",
   "service-desk": "Support, on time",
 };
@@ -24,7 +23,9 @@ const HERO_CAPTION: Record<string, string> = {
 // design system (real .sv-card surfaces, framed hero photo on a brand-50 wash, navy
 // CTA band). Server-rendered except the FAQ accordion. SEO/JSON-LD live on the route.
 export default function ProductPage({ product: d }: { product: Product }) {
-  const caption = HERO_CAPTION[d.id] ?? "";
+  // A Svasamm One product shows its own screen, in its own colour; the rest keep a photo.
+  const one = ONE[d.id];
+  const caption = one?.caption ?? HERO_CAPTION[d.id] ?? "";
   return (
     <div>
       {/* Hero — brand-50 wash + framed photo */}
@@ -58,7 +59,10 @@ export default function ProductPage({ product: d }: { product: Product }) {
           <div>
             <span
               className="sv-tag sv-tag-brand"
-              style={{ marginBottom: 22 }}
+              style={{
+                marginBottom: 22,
+                ...(one && { color: one.ink, background: one.wash, borderColor: one.fill }),
+              }}
             >
               {d.badge}
             </span>
@@ -97,17 +101,19 @@ export default function ProductPage({ product: d }: { product: Product }) {
               padding: 10,
               boxShadow: "var(--sv-sh-3)",
               overflow: "hidden",
+              ...(one && { borderTop: `4px solid ${one.fill}` }),
             }}
           >
-            {/* Same-origin licensed photo per product; all 6 product ids have one. */}
+            {/* A real screen keeps its own shape; a licensed photo is cropped to 4:3. */}
             <img
-              src={`/hero/${d.id}.webp`}
-              alt=""
+              src={one?.screen ?? `/hero/${d.id}.webp`}
+              alt={one ? caption : ""}
               loading="eager"
               style={{
                 width: "100%",
-                aspectRatio: "4 / 3",
-                objectFit: "cover",
+                ...(one
+                  ? { border: "1px solid var(--sv-line)" }
+                  : { aspectRatio: "4 / 3", objectFit: "cover" as const }),
                 borderRadius: "var(--sv-r)",
               }}
             />
@@ -127,7 +133,7 @@ export default function ProductPage({ product: d }: { product: Product }) {
                   width: 6,
                   height: 6,
                   borderRadius: "50%",
-                  background: "var(--sv-teal)",
+                  background: one?.fill ?? "var(--sv-teal)",
                   flex: "none",
                 }}
               />
