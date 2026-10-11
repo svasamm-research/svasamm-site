@@ -4,11 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "./IconClient";
-import { PRODUCTS, RESOURCE_GROUPS, type NavProduct } from "@/lib/site";
+import { PRODUCTS, ONE, INDUSTRIES, RESOURCE_GROUPS, type NavProduct } from "@/lib/site";
 
-const vertical = PRODUCTS.filter((p) => p.category === "vertical");
-const platform = PRODUCTS.filter((p) => p.category === "platform");
-const service = PRODUCTS.filter((p) => p.category === "service");
+const one = PRODUCTS.filter((p) => ONE[p.id]);
+const also = PRODUCTS.filter((p) => !ONE[p.id]);
+
+const Dot = ({ c }: { c: string }) => (
+  <span style={{ width: 10, height: 10, borderRadius: "50%", background: c, flex: "none" }} />
+);
 
 function ProductLink({
   p,
@@ -41,7 +44,7 @@ function ProductLink({
   );
 }
 
-// A left-column mega-menu item (icon chip + name + desc), shared by Vertical products & Services.
+// A mega-menu item (icon chip + name + desc); a Svasamm One product wears its own colour.
 function MegaItem({ p }: { p: NavProduct }) {
   return (
     <ProductLink
@@ -49,7 +52,10 @@ function MegaItem({ p }: { p: NavProduct }) {
       className="svh-item"
       style={{ display: "flex", gap: 12, padding: 11, color: "var(--sv-ink)" }}
     >
-      <span className="sv-chip sv-chip-sm">
+      <span
+        className="sv-chip sv-chip-sm"
+        style={ONE[p.id] ? { background: ONE[p.id].fill, borderColor: ONE[p.id].fill, color: ONE[p.id].on } : undefined}
+      >
         <Icon name={p.icon} size={18} />
       </span>
       <span style={{ display: "block" }}>
@@ -178,28 +184,49 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                 className="sv-card"
                 id="svh-solutions-menu"
                 style={{
-                  width: 680,
+                  width: "min(900px, calc(100vw - 220px))",
                   padding: 10,
                   boxShadow: "var(--sv-sh-3)",
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
+                  gridTemplateColumns: "1fr 1fr 1fr",
                   gap: 8,
                 }}
               >
                 <div style={{ padding: 12 }}>
                   <div className="sv-eyebrow" style={{ marginBottom: 10 }}>
-                    Vertical products
+                    By industry
                   </div>
                   <div className="flex flex-col" style={{ gap: 2 }}>
-                    {vertical.map((p) => (
-                      <MegaItem key={p.id} p={p} />
-                    ))}
+                    {INDUSTRIES.map((i) => {
+                      const st: React.CSSProperties = { display: "flex", alignItems: "center", gap: 11, padding: "9px 10px", color: "var(--sv-ink)" };
+                      const inner = (
+                        <>
+                          <Dot c={i.product ? ONE[i.product].fill : "var(--sv-line-strong)"} />
+                          <span style={{ display: "block" }}>
+                            <span style={{ display: "block", fontWeight: 600, fontSize: 15, lineHeight: 1.3 }}>
+                              {i.name}
+                            </span>
+                            <span style={{ display: "block", fontSize: 13, color: "var(--sv-ink-3)", lineHeight: 1.4 }}>
+                              {i.to}
+                              {i.external ? " ↗" : ""}
+                            </span>
+                          </span>
+                        </>
+                      );
+                      return i.external ? (
+                        <a key={i.name} href={i.href} target="_blank" rel="noopener" className="svh-item" style={st}>{inner}</a>
+                      ) : (
+                        <Link key={i.name} href={i.href} className="svh-item" style={st}>{inner}</Link>
+                      );
+                    })}
                   </div>
-                  <div className="sv-eyebrow" style={{ margin: "16px 0 10px" }}>
-                    Services
+                </div>
+                <div style={{ padding: 12 }}>
+                  <div className="sv-eyebrow" style={{ marginBottom: 10 }}>
+                    Svasamm One products
                   </div>
                   <div className="flex flex-col" style={{ gap: 2 }}>
-                    {service.map((p) => (
+                    {one.map((p) => (
                       <MegaItem key={p.id} p={p} />
                     ))}
                   </div>
@@ -212,16 +239,10 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                   }}
                 >
                   <div className="sv-eyebrow" style={{ marginBottom: 10 }}>
-                    Platform modules
+                    Also built for clients
                   </div>
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 1fr",
-                      gap: 2,
-                    }}
-                  >
-                    {platform.map((p) => (
+                  <div className="flex flex-col" style={{ gap: 2 }}>
+                    {also.map((p) => (
                       <ProductLink
                         key={p.id}
                         p={p}
@@ -230,7 +251,7 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                           display: "flex",
                           alignItems: "center",
                           gap: 9,
-                          padding: "9px 10px",
+                          padding: "8px 10px",
                           color: "var(--sv-ink)",
                           fontSize: 14,
                         }}
@@ -238,7 +259,7 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                         <Icon
                           name={p.icon}
                           size={17}
-                          style={{ color: "var(--sv-brand)" }}
+                          style={{ color: "var(--sv-ink-3)", flex: "none" }}
                         />
                         {p.name}
                       </ProductLink>
@@ -400,7 +421,7 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
         >
           <div className="sv-eyebrow">Products</div>
           <div className="flex flex-col" style={{ gap: 2 }}>
-            {PRODUCTS.map((p) => (
+            {[...one, ...also].map((p) => (
               <ProductLink
                 key={p.id}
                 p={p}
@@ -415,7 +436,7 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                 <Icon
                   name={p.icon}
                   size={19}
-                  style={{ color: "var(--sv-brand)" }}
+                  style={{ color: ONE[p.id]?.fill ?? "var(--sv-ink-3)" }}
                 />
                 {p.name}
                 {p.external ? " ↗" : ""}
