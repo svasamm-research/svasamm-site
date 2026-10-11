@@ -139,6 +139,30 @@ export const PRODUCTS: NavProduct[] = [
   },
 ];
 
+// The products that run on Svasamm One, each in the colour decided for it in the Svasamm
+// One kit (svasamm-platform packages/ui tokens). Membership in this map IS "on Svasamm One";
+// everything else in PRODUCTS is "also built for clients". `on` is the icon colour on the
+// fill — Millingo's yellow takes dark ink, never white. `screen` is a real product screen.
+export const ONE: Record<
+  string,
+  { fill: string; ink: string; wash: string; on: string; screen: string; caption: string }
+> = {
+  millingo: { fill: "#D9A215", ink: "#6E5309", wash: "#FDF7E8", on: "#3A2C05", screen: "/screens/millingo.webp", caption: "Millingo · the batches board" },
+  lucoze: { fill: "#C15F3C", ink: "#8A3F23", wash: "#FDF3EE", on: "#fff", screen: "/screens/lucoze.webp", caption: "Lucoze · the bed board" },
+  t4suite: { fill: "#1D4ED8", ink: "#1E3A8A", wash: "#DBEAFE", on: "#fff", screen: "/screens/t4suite.webp", caption: "T4Suite · the dashboard" },
+  hrms: { fill: "#15803D", ink: "#14532D", wash: "#DCFCE7", on: "#fff", screen: "/screens/hrms.webp", caption: "Svasamm People · payroll" },
+};
+
+// Industry first: a mill owner looks for "rice mills" before they know the word Millingo.
+// Every href is a page that already exists. `product` keys the colour in ONE.
+export const INDUSTRIES: { name: string; to: string; href: string; product?: string; external?: boolean }[] = [
+  { name: "Rice mills", to: "Millingo · the CMR guides", href: "/pages/millingo.html", product: "millingo" },
+  { name: "CA & compliance firms", to: "T4Suite", href: "https://t4suite.com", product: "t4suite", external: true },
+  { name: "Hospitals & clinics", to: "Lucoze", href: "https://lucoze.com", product: "lucoze", external: true },
+  { name: "Factories & workshops", to: "HR & payroll for manufacturing", href: "/pages/hrms-for-manufacturing.html", product: "hrms" },
+  { name: "Schools & coaching", to: "Svasamm Digital for Schools", href: "/pages/digital-schools.html" },
+];
+
 // Header "Resources" dropdown — curated guide clusters (svasamm has no single blog index).
 // Keep to a few high-value entry points per topic; the full set lives on each product page.
 export const RESOURCE_GROUPS: {
