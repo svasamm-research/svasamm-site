@@ -1,5 +1,5 @@
 // All 7 product records — data from prototypes/ProductPage.dc.html data(), SEO + JSON-LD
-// copied verbatim from each product's wrapper helmet (Millingo/DMS/ERP/HRMS/CRM/
+// copied verbatim from each product's wrapper helmet (Millingo/DMS/ERP/People/CRM/
 // ServiceDesk .dc.html). Shaped to `Product` so it can move to Sanity later.
 
 import type { Faq, Product } from "./types";
@@ -54,6 +54,7 @@ export const PRODUCTS: Product[] = [
             { title: "GST for rice mills: paddy, rice, bran & milling", href: "Guide-GST.dc.html" },
             { title: "Best rice-mill software: how to choose (buyer's guide)", href: "Guide-BestSoftware.dc.html" },
             { title: "Rice-mill software price: what it costs & why", href: "Guide-Pricing.dc.html" },
+            { title: "Why CMR out-turn drops below 67% (moisture & shortfall)", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
           ],
         },
         {
@@ -62,6 +63,7 @@ export const PRODUCTS: Product[] = [
             { title: "Uttar Pradesh (procurement & CMR)", href: "State-UttarPradesh.dc.html" },
             { title: "Odisha (OSCSC & CMR)", href: "State-Odisha.dc.html" },
             { title: "Bihar (PACS & CMR)", href: "State-Bihar.dc.html" },
+            { title: "Punjab: the 2026-27 milling policy & the 90% rule", href: "/pages/punjab-custom-milling-policy-2026-27.html" },
           ],
         },
         {
@@ -208,22 +210,22 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "hrms",
-    name: "HRMS",
-    badge: "Platform · HR",
-    tagline: "HR from recruitment to retirement",
+    name: "Svasamm People",
+    badge: "Platform · HR & payroll",
+    tagline: "HR and payroll for the people who work for you",
     blurb:
-      "A single HR system for the whole employee lifecycle — recruitment and onboarding, attendance and shifts, payroll with Indian statutory compliance, leave, performance and employee self-service.",
+      "Svasamm People keeps your staff register, shifts and attendance, leave and holidays, and runs payroll with Indian statutory deductions from the first month — PF, ESI, professional tax by state, TDS with Form 16 and 24Q. Staff punch in and ask for leave on the Svasamm One app; HR works on the web.",
     ctaPrimary: "Book a walkthrough",
-    featuresTitle: "The whole employee lifecycle",
+    featuresTitle: "Everything about your staff, from joining to the payslip",
     features: [
-      { icon: "ph-user-plus", title: "Recruitment & onboarding", body: "Job openings, applicant pipeline and structured onboarding into the employee record." },
-      { icon: "ph-clock", title: "Attendance & shifts", body: "Shift rosters, biometric/geo check-in and overtime, feeding payroll directly." },
-      { icon: "ph-money", title: "Payroll & compliance", body: "Salary structures with PF, ESI, TDS and professional tax computed and filed." },
-      { icon: "ph-calendar-check", title: "Leave management", body: "Leave policies, balances, approvals and holiday calendars per location." },
-      { icon: "ph-chart-bar", title: "Performance", body: "Goals, appraisal cycles and feedback tied to each employee." },
-      { icon: "ph-device-mobile", title: "Employee self-service", body: "Payslips, leave requests and details, self-served from any device." },
+      { icon: "ph-user-plus", title: "Staff register", body: "Every employee, their joining date, salary and bank details (IFSC checked), added one by one or imported from a spreadsheet." },
+      { icon: "ph-clock", title: "Shifts & attendance", body: "Shift timings and rosters; staff punch in from their phone, and only from inside the office. Overtime is worked out from the punches." },
+      { icon: "ph-calendar-check", title: "Leave & holidays", body: "Leave policies and balances; a supervisor decides each request. National holidays are already set; add your festivals at setup." },
+      { icon: "ph-money", title: "Payroll", body: "A monthly run with PF, ESI and professional tax — with each state's due dates — plus statutory bonus and gratuity." },
+      { icon: "ph-file-text", title: "TDS, Form 16 & 24Q", body: "Tax deducted from salary through the year, with Form 16 for each employee and the 24Q return." },
+      { icon: "ph-device-mobile", title: "On the phone", body: "On the Svasamm One app staff punch in, ask for leave and see their payslips; nobody needs a desk." },
     ],
-    builtFor: ["SMEs & mid-market", "Manufacturing", "Multi-location teams", "Services firms", "Hospitals & clinics"],
+    builtFor: ["Small & mid-sized firms", "Factories & rice mills", "CA & professional firms", "Hospitals & clinics", "Shops & services"],
     resources: {
       title: "Guides & industry pages",
       intro: "In-depth, indexable pages for what HR buyers actually search — each is its own page for search & AI discovery.",
@@ -232,30 +234,31 @@ export const PRODUCTS: Product[] = [
         { heading: "HR guide", icon: "ph-file-text", links: [{ title: "Payroll & statutory compliance in India", href: "Guide-PayrollCompliance.dc.html" }] },
         {
           heading: "By industry", icon: "ph-buildings", links: [
-            { title: "HRMS for manufacturing", href: "HRMS-Manufacturing.dc.html" },
-            { title: "HRMS for multi-location retail", href: "HRMS-Retail.dc.html" },
-            { title: "HRMS for hospitals & clinics", href: "HRMS-Healthcare.dc.html" },
+            { title: "HR & payroll for manufacturing", href: "HRMS-Manufacturing.dc.html" },
+            { title: "HR & payroll for multi-location retail", href: "HRMS-Retail.dc.html" },
+            { title: "HR & payroll for hospitals & clinics", href: "HRMS-Healthcare.dc.html" },
           ],
         },
       ],
     },
     faqs: [
-      { q: "Does payroll handle Indian statutory compliance?", a: "Yes — PF, ESI, TDS and professional tax are computed within payroll, with the reports needed for filing." },
-      { q: "Can employees self-serve?", a: "Yes. Employees access payslips, apply for leave and update details from a self-service portal on any device." },
-      { q: "Does attendance connect to payroll?", a: "Yes — shifts, biometric/geo check-in and overtime flow straight into the payroll run." },
+      { q: "Does payroll handle Indian statutory compliance?", a: "Yes. PF, ESI, professional tax (with each state\u2019s due dates) and TDS are computed in the payroll run, with Form 16 and 24Q, statutory bonus and gratuity." },
+      { q: "Can staff use it on their phone?", a: "Yes. On the Svasamm One app staff punch in from inside the office, ask for leave and see their payslips." },
+      { q: "Does attendance connect to payroll?", a: "Yes. The days a person was present, on leave or absent, and their overtime, make the month that payroll pays." },
+      { q: "Does it work with T4Suite?", a: "Yes. Svasamm People sits beside T4Suite on one Svasamm One login, so a CA firm runs its practice and its own staff with one sign-in." },
     ],
-    cta: { title: "See HRMS run one payroll cycle", body: "Bring a salary structure and an employee list — we’ll set up a sample cycle with you.", primary: "Book a walkthrough" },
+    cta: { title: "See Svasamm People run one payroll month", body: "Bring a salary structure and an employee list — we’ll set up a sample month with you.", primary: "Book a walkthrough" },
     seo: {
-      metaTitle: "HRMS — HR, Payroll & Attendance | Svasamm",
-      metaDescription: "HR from recruitment to retirement: onboarding, attendance and shifts, payroll with Indian statutory compliance, leave, performance and employee self-service.",
+      metaTitle: "Svasamm People — HR, Payroll & Attendance (HRMS)",
+      metaDescription: "Svasamm People is HR and payroll software (HRMS) for Indian firms: staff register, shifts and phone attendance, leave, and payroll with PF, ESI, PT, TDS, Form 16 and 24Q.",
       canonical: "https://svasamm.com/pages/hrms.html",
       ogType: "website",
-      ogTitle: "HRMS | Svasamm",
-      ogDescription: "The whole employee lifecycle on one system, with Indian payroll compliance built in.",
+      ogTitle: "Svasamm People — HR & payroll | Svasamm",
+      ogDescription: "Staff, attendance, leave and payroll with Indian statutory deductions — on the web and on the Svasamm One app.",
     },
     jsonLd: [
-      { "@context": "https://schema.org", "@type": "Service", name: "HRMS", serviceType: "Human Resource Management Software", description: "HR management covering recruitment, onboarding, attendance, payroll with Indian statutory compliance, leave, performance and self-service.", provider: { "@type": "Organization", name: "Svasamm", url: "https://svasamm.com" }, areaServed: "IN" },
-      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://svasamm.com/pages/services.html" }, { "@type": "ListItem", position: 3, name: "HRMS", item: "https://svasamm.com/pages/hrms.html" }] },
+      { "@context": "https://schema.org", "@type": "Service", name: "Svasamm People", serviceType: "Human Resource Management Software", description: "HR and payroll for Indian firms: staff register, shifts and attendance on the phone, leave and holidays, and payroll with PF, ESI, professional tax, TDS, Form 16 and 24Q.", provider: { "@type": "Organization", name: "Svasamm", url: "https://svasamm.com" }, areaServed: "IN" },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://svasamm.com/pages/services.html" }, { "@type": "ListItem", position: 3, name: "Svasamm People", item: "https://svasamm.com/pages/hrms.html" }] },
     ],
   },
   {

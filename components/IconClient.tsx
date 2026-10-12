@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import {
-  ArrowRight, ArrowUpRight, ChevronDown, Check, Menu, X, Plus, Minus,
-  // product-nav icons rendered dynamically by the mega-menu / product filter
+  ArrowRight, ChevronDown, Check, Menu, X, Plus, Minus,
+  // product-nav icons rendered dynamically by the mega-menu
   Wheat, HeartPulse, Truck, Layers, Users, Handshake, Headset, Megaphone, GraduationCap, CalendarCheck,
   type LucideIcon,
 } from "lucide-react";
@@ -9,7 +9,7 @@ import {
 // Client-only icon subset (keeps the ~45 server-only icons out of the island bundles).
 // Same Lucide switch + `ph-*` compatibility as components/Icon.tsx. Keep in sync with island usage.
 const MAP = {
-  "ph-arrow-right": ArrowRight, "ph-arrow-up-right": ArrowUpRight, "ph-caret-down": ChevronDown,
+  "ph-arrow-right": ArrowRight, "ph-caret-down": ChevronDown,
   "ph-check": Check, "ph-list": Menu, "ph-x": X, "ph-plus": Plus, "ph-minus": Minus,
   "ph-grains": Wheat, "ph-heartbeat": HeartPulse, "ph-truck": Truck, "ph-stack": Layers,
   "ph-users-three": Users, "ph-handshake": Handshake, "ph-headset": Headset, "ph-megaphone": Megaphone,

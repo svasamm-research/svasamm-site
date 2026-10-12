@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | Svasamm",
   },
   description:
-    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, a DMS for OEMs, plus ERP, HRMS, CRM and Service Desk modules.",
+    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, a DMS for OEMs, plus Svasamm People (HR & payroll), ERP, CRM and Service Desk modules.",
   icons: {
     icon: [
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },

@@ -198,11 +198,13 @@ export default function ArticleView({ article: a }: { article: Article }) {
           className={hasHero ? "sv-wrap pp-hero" : "sv-wrap"}
           style={{ padding: "44px 24px 60px" }}
         >
-          <div style={hasHero ? undefined : { maxWidth: "40ch" }}>
+          {/* No photo: the copy takes the reading width. 40ch with a 20ch title squeezed a
+              long title into four lines on the left half of an empty hero (8 Oct 2026). */}
+          <div style={hasHero ? undefined : { maxWidth: 820 }}>
             <span className="sv-tag sv-tag-brand" style={{ marginBottom: 20 }}>
               {a.eyebrow}
             </span>
-            <h1 style={{ fontSize: 42, maxWidth: "20ch", margin: "0 0 16px" }}>
+            <h1 style={{ fontSize: "clamp(30px, 7.5vw, 42px)", maxWidth: hasHero ? "20ch" : "32ch", margin: "0 0 16px" }}>
               {a.title}
             </h1>
             <p

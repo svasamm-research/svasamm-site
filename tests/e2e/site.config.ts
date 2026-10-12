@@ -8,5 +8,7 @@ export const SITE = {
   // page, a legal page Play and Cashfree read, and the form.
   keyPages: ["/", "/pricing", "/pages/millingo.html", "/refund-policy", "/pages/contact.html"],
   forms: [{ path: "/pages/contact.html", form: "form", fields: ["cf-name", "cf-email", "cf-phone", "cf-company", "cf-product"] }],
-  mask: [] as string[],
+  // Native <select>s render a pixel up or down between identical runs (seen 8 Oct 2026 on
+  // the contact form, 401 px); masked so the tight 100-px allowance stays honest.
+  mask: ["select"] as string[],
 };

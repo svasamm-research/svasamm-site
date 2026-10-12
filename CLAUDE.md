@@ -96,7 +96,7 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 > (navy CTA band), `.sv-wrap`, `.sv-muted`; hero = `.pp-hero-wash` + `.pp-hero` grid with a **framed photo in a
 > `.sv-card`** (`sv-sh-3`) + mono teal-dot `<figcaption>` (products use `/hero/<id>.webp`; Article gates on a
 > `HERO_SLUGS` set with a copy-only fallback). Per component: **ProductPage** (6 product pages), **Home** (`app/page.tsx`
-> — suite panel, regions `.sv-table`), **Article** (34 guides/states/compares), **SolutionsPage** + **ProductFilter**
+> — suite panel, regions `.sv-table`), **Article** (34 guides/states/compares), **SolutionsPage**
 > (`.sv-seg`), **ContactPage** + **ContactForm** (`.sv-field`/`.sv-input`, all AWS/a11y logic intact), **SiteHeader**
 > (white mega-menu `.sv-card` panels) + **SiteFooter** (navy `--sv-navy` ground, per `Footer.dc.html`; Company col
 > trimmed to All solutions/About/Contact), **AboutPage**, **LegalPage**. globals.css: all `.pp-*`/`.lg-*` helper
@@ -159,7 +159,7 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 ## Architecture (mirror the prototypes)
 - Shared components: `SiteHeader` (client — mega-menu + mobile), `SiteFooter` (server),
   `ProductPage` (reusable product body), `Article` (reusable long-form body). Keep interactive
-  bits (mega-menu, FAQ, product filter, contact form) as the ONLY client islands; everything
+  bits (mega-menu, FAQ, contact form) as the ONLY client islands; everything
   else is server-rendered.
 - `app/not-found.tsx` — branded 404 (Nocturne header/footer + a link home). Owning this
   route matters: without it, Next's built-in not-found boundary renders its own default
@@ -190,6 +190,11 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
 - Do NOT state unverified metrics (no "300% ROI / 50+ clients / ISO 27001"); no "Videozjet".
 
 ## Key files
+- **`ONE` and `INDUSTRIES` in `lib/site.ts` (v4 tunes, 11 Oct 2026).** `ONE` = the products on Svasamm One,
+  each with its kit colour and a real screen in `public/screens/`; being in `ONE` is what puts a product in
+  the home hero, the home cards, the menu's "Svasamm One products" column and the footer — everything else
+  in `PRODUCTS` is "Also built for clients". `INDUSTRIES` drives the menu's and footer's industry column;
+  every href must be a page that exists. Design: v4 page of https://claude.ai/artifact/MUgYHMsV8yiEgZk75NnErc.
 - `lib/products.ts` — 7 solutions (6 products + Svasamm Digital; Service+Breadcrumb verbatim from helmets; **FAQPage
   generated for every product** from its visible `faqs` via `faqPageLd()` for GEO) ·
   `lib/articles.ts` —
@@ -203,7 +208,7 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   through the shared `ProductPage` and appears in the mega-menu, footer, home grid, Solutions
   page and sitemap automatically. **Both Digital lines are categorised `service`** (a distinct
   nav/home/filter category — `category`/`kind` union now `vertical | platform | service`), so the
-  mega-menu (`SiteHeader`), Solutions page and home `ProductFilter` render a separate **Services**
+  mega-menu (`SiteHeader`), and Solutions page render a separate **Services**
   group and the "vertical products" spotlight excludes them; cards keep the **"Service"** tag.
   Schema is `Service`, not a product type. **Svasamm Digital for Schools is LIVE** alongside
   Healthcare (`/pages/digital-schools.html`, id `digital-schools`, `lib/digital-schools.ts` +
@@ -228,7 +233,7 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   radius is ~5 km (matching Google's nearby-results proximity). Spec:
   `docs/superpowers/specs/2026-07-19-svasamm-digital-service-design.md`.
 - Components: `ProductPage`, `Article`, `SolutionsPage`, `ContactPage`, `AboutPage` (server
-  bodies) · `SiteHeader`, `ProductFilter`, `FaqAccordion`, `ContactForm` (client islands) ·
+  bodies) · `SiteHeader`, `FaqAccordion`, `ContactForm` (client islands) ·
   `JsonLd`, `LegalPage`. Dispatcher: `app/pages/[slug]/page.tsx` (slug incl. `.html`).
 - **Icons: two maps.** `Icon.tsx` = full set for **server** components; `IconClient.tsx` =
   ~15-icon subset that the **client islands** import — keeps the other ~45 server-only
