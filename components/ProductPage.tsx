@@ -26,7 +26,8 @@ const HERO_CAPTION: Record<string, string> = {
 export default function ProductPage({ product: d }: { product: Product }) {
   // A Svasamm One product shows its own screen, in its own colour; the rest keep a photo.
   const one = ONE[d.id];
-  const caption = one?.caption ?? HERO_CAPTION[d.id] ?? "";
+  const screen = one?.page;
+  const caption = screen?.caption ?? HERO_CAPTION[d.id] ?? "";
   return (
     <div>
       {/* Hero — brand-50 wash + framed photo */}
@@ -113,12 +114,12 @@ export default function ProductPage({ product: d }: { product: Product }) {
           >
             {/* A real screen keeps its own shape; a licensed photo is cropped to 4:3. */}
             <img
-              src={one?.screen ?? `/hero/${d.id}.webp`}
-              alt={one ? caption : ""}
+              src={screen?.src ?? `/hero/${d.id}.webp`}
+              alt={screen ? caption : ""}
               loading="eager"
               style={{
                 width: "100%",
-                ...(one
+                ...(screen
                   ? { border: "1px solid var(--sv-line)" }
                   : { aspectRatio: "4 / 3", objectFit: "cover" as const }),
                 borderRadius: "var(--sv-r)",
@@ -149,8 +150,8 @@ export default function ProductPage({ product: d }: { product: Product }) {
           </figure>
           {one?.phone && (
             <img
-              src={one.phone}
-              alt=""
+              src={one.phone.src}
+              alt={one.phone.caption}
               style={{
                 position: "absolute",
                 right: 0,

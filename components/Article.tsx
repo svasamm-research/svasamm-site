@@ -4,7 +4,7 @@ import FaqAccordion from "./FaqAccordion";
 import { toRoute } from "@/lib/routes";
 import { HERO_SLUGS } from "@/lib/heroes";
 import type { Article, Block, ListItem } from "@/lib/types";
-import { ONE } from "@/lib/site";
+import { ONE, GUIDE_SCREEN } from "@/lib/site";
 import ProductLogo from "./ProductLogo";
 
 const CONTACT = toRoute("Contact.dc.html");
@@ -153,6 +153,7 @@ export default function ArticleView({ article: a }: { article: Article }) {
   const crumbs = crumbsFrom(a.jsonLd);
   const hasHero = HERO_SLUGS.has(a.slug);
   const one = ONE[a.parentProduct];
+  const screen = one && (GUIDE_SCREEN[a.slug] ?? one.page ?? one.card);
   return (
     <div>
       {/* Hero — brand-50 wash + (optional) framed photo */}
@@ -325,10 +326,10 @@ export default function ArticleView({ article: a }: { article: Article }) {
                 Book a free consultation
               </Link>
             </div>
-            {one && (
+            {screen && (
               <img
-                src={one.screen}
-                alt={one.caption}
+                src={screen.src}
+                alt={screen.caption}
                 loading="lazy"
                 style={{
                   display: "block",

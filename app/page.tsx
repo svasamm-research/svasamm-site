@@ -8,7 +8,7 @@ import ProductLogo from "@/components/ProductLogo";
 import { HOME_PRODUCTS, REGIONS, WHYS, HOME_JSONLD } from "@/lib/home";
 import { INDIA_STATES, INDIA_VIEWBOX } from "@/lib/india-map";
 import { toRoute } from "@/lib/routes";
-import { BUSINESS, ONE } from "@/lib/site";
+import { BUSINESS, ONE, SCREENS } from "@/lib/site";
 
 const SOLUTIONS = toRoute("Solutions.dc.html");
 const CONTACT = toRoute("Contact.dc.html");
@@ -160,14 +160,14 @@ export default function Home() {
                   style={{ margin: 0, padding: 0, overflow: "hidden", boxShadow: "var(--sv-sh-3)", borderTop: `4px solid ${ONE.millingo.fill}` }}
                 >
                   <img
-                    src={ONE.millingo.screen}
+                    src={SCREENS.millingoToday.src}
                     alt="Millingo — a rice-mill owner's morning: CMR still owed, lorries at the gate"
                     style={{ display: "block", width: "100%" }}
                   />
                 </figure>
                 <img
-                  src="/screens/hrms-phone.webp"
-                  alt="Svasamm People on a phone — attendance for the month"
+                  src={SCREENS.peoplePhoneToday.src}
+                  alt="Svasamm People on a worker's phone — punched in, leave and pay"
                   style={{
                     position: "absolute",
                     right: 0,
@@ -236,8 +236,8 @@ export default function Home() {
                     }}
                   >
                     <img
-                      src={c.screen}
-                      alt={c.caption}
+                      src={c.card.src}
+                      alt={c.card.caption}
                       loading="lazy"
                       style={{
                         display: "block",

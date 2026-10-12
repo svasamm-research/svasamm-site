@@ -139,20 +139,68 @@ export const PRODUCTS: NavProduct[] = [
   },
 ];
 
+// Every product screen the site shows — each rendered from that product's LATEST design
+// canvas (Millingo https://claude.ai/artifact/1seLhA8GQtNnUga7t7FfTz, People
+// …/8YzFZYmdsCPPSMUs2wXeMd, T4Suite …/QUNATp1bRgSWvbM2b4jpxV; Lucoze's from its own site),
+// never a screenshot of an older build. One screen per page where it can be: a page about
+// gate weighing shows the gate, not the same dashboard as every other page.
+export type Screen = { src: string; caption: string };
+const S = (file: string, caption: string): Screen => ({ src: `/screens/${file}.webp`, caption });
+export const SCREENS = {
+  millingoToday: S("millingo-today", "Millingo · the owner's morning"),
+  millingoCmr: S("millingo-cmr", "Millingo · CMR owed to the government"),
+  millingoGate: S("millingo-gate", "Millingo · trucks at the gate"),
+  millingoBatches: S("millingo-batches", "Millingo · batches on the floor"),
+  millingoReports: S("millingo-reports", "Millingo · reports and the trial balance"),
+  millingoPhone: S("millingo-phone", "Millingo on the owner's phone"),
+  peopleMonthEnd: S("people-monthend", "Svasamm People · month end"),
+  peoplePayroll: S("people-payroll", "Svasamm People · payroll"),
+  peopleAttendance: S("people-attendance", "Svasamm People · attendance for the month"),
+  peopleFiling: S("people-filing", "Svasamm People · statutory filing"),
+  peoplePhoneToday: S("people-phone-today", "Svasamm People on a worker's phone"),
+  peoplePhoneAttendance: S("people-phone-attendance", "Svasamm People · attendance on a phone"),
+  t4suiteDashboard: S("t4suite-dashboard", "T4Suite · the dashboard"),
+  lucozeBeds: S("lucoze-beds", "Lucoze · the bed board"),
+} satisfies Record<string, Screen>;
+
 // The products that run on Svasamm One, each in the colour decided for it in the Svasamm
 // One kit (svasamm-platform packages/ui tokens). Membership in this map IS "on Svasamm One";
 // everything else in PRODUCTS is "also built for clients". `on` is the icon colour on the
-// fill — Millingo's yellow takes dark ink, never white. `screen` is a real product screen;
-// `phone` its phone screen, for a product people use on a phone.
+// fill — Millingo's yellow takes dark ink, never white. `card` is the screen on the home
+// page's card, `page` and `phone` the product page's — deliberately different screens.
 export const ONE: Record<
   string,
-  { fill: string; ink: string; wash: string; on: string; screen: string; caption: string; phone?: string }
+  { fill: string; ink: string; wash: string; on: string; card: Screen; page?: Screen; phone?: Screen }
 > = {
-  millingo: { fill: "#D9A215", ink: "#6E5309", wash: "#FDF7E8", on: "#3A2C05", screen: "/screens/millingo.webp", caption: "Millingo · the owner's morning" },
-  lucoze: { fill: "#C15F3C", ink: "#8A3F23", wash: "#FDF3EE", on: "#fff", screen: "/screens/lucoze.webp", caption: "Lucoze · the bed board" },
-  t4suite: { fill: "#1D4ED8", ink: "#1E3A8A", wash: "#DBEAFE", on: "#fff", screen: "/screens/t4suite.webp", caption: "T4Suite · the dashboard" },
-  hrms: { fill: "#15803D", ink: "#14532D", wash: "#DCFCE7", on: "#fff", screen: "/screens/hrms.webp", caption: "Svasamm People · payroll and attendance", phone: "/screens/hrms-phone.webp" },
+  millingo: { fill: "#D9A215", ink: "#6E5309", wash: "#FDF7E8", on: "#3A2C05", card: SCREENS.millingoCmr, page: SCREENS.millingoGate, phone: SCREENS.millingoPhone },
+  lucoze: { fill: "#C15F3C", ink: "#8A3F23", wash: "#FDF3EE", on: "#fff", card: SCREENS.lucozeBeds },
+  t4suite: { fill: "#1D4ED8", ink: "#1E3A8A", wash: "#DBEAFE", on: "#fff", card: SCREENS.t4suiteDashboard },
+  hrms: { fill: "#15803D", ink: "#14532D", wash: "#DCFCE7", on: "#fff", card: SCREENS.peoplePayroll, page: SCREENS.peopleMonthEnd, phone: SCREENS.peoplePhoneAttendance },
 };
+
+// A guide ends on the screen that does what the guide is about. A guide not listed falls
+// back to its product's page screen.
+export const GUIDE_SCREEN: Record<string, Screen> = {
+  "custom-milled-rice-cmr-process": SCREENS.millingoCmr,
+  "cmr-out-turn-shortfall-moisture": SCREENS.millingoCmr,
+  "punjab-custom-milling-policy-2026-27": SCREENS.millingoCmr,
+  "rice-mill-software-west-bengal": SCREENS.millingoGate,
+  "rice-mill-software-uttar-pradesh": SCREENS.millingoGate,
+  "rice-mill-software-bihar": SCREENS.millingoGate,
+  "rice-mill-software-odisha": SCREENS.millingoGate,
+  "rice-mill-yield-recovery": SCREENS.millingoBatches,
+  "rice-mill-byproduct-accounting": SCREENS.millingoBatches,
+  "gst-for-rice-mills": SCREENS.millingoReports,
+  "best-rice-mill-software": SCREENS.millingoToday,
+  "rice-mill-software-price": SCREENS.millingoToday,
+  "millingo-vs-dataman": SCREENS.millingoToday,
+  "millingo-vs-samadhan": SCREENS.millingoToday,
+  "hrms-for-manufacturing": SCREENS.peopleAttendance,
+  "hrms-for-hospitals-clinics": SCREENS.peopleAttendance,
+  "hrms-for-retail": SCREENS.peoplePayroll,
+  "payroll-statutory-compliance-india": SCREENS.peopleFiling,
+};
+
 
 // Industry first: a mill owner looks for "rice mills" before they know the word Millingo.
 // Every href is a page that already exists. `product` keys the colour in ONE.
