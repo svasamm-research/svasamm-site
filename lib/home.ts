@@ -22,7 +22,7 @@ export type HomeProduct = {
 
 export const HOME_PRODUCTS: HomeProduct[] = [
   { id: "millingo", name: "Millingo", kind: "vertical", tag: "Vertical", tagClass: "tag-accent", icon: "ph-grains", badge: "Rice Mill ERP", short: "Rice-mill ERP", href: toRoute("Millingo.dc.html"), external: false, blurb: "ERP for rice mills — paddy procurement, quality grading, milling yield & by-products, and FCI/levy (CMR) compliance.", long: "Runs the whole mill: procurement, QC, milling recovery, gunny-bag accounting and the government CMR cycle.", cta: "Explore Millingo", ctaIcon: "ph-arrow-right" },
-  { id: "lucoze", name: "Lucoze", kind: "vertical", tag: "Vertical", tagClass: "tag-accent", icon: "ph-heartbeat", badge: "Healthcare HIMS", short: "Healthcare HIMS", href: "https://lucoze.com", external: true, blurb: "India-first hospital & clinic management: appointments, EMR, billing, lab and pharmacy on one ABDM-ready platform.", long: "India-first HMS/EMR — appointments, EMR, billing, lab, pharmacy and HR on one ABDM-ready platform. Live at lucoze.com.", cta: "Visit lucoze.com", ctaIcon: "ph-arrow-up-right" },
+  { id: "lucoze", name: "Lucoze", kind: "vertical", tag: "Vertical", tagClass: "tag-accent", icon: "ph-heartbeat", badge: "Healthcare HIMS", short: "Healthcare HIMS", href: "https://lucoze.com", external: true, blurb: "India-first hospital & clinic management: appointments, EMR, billing, lab and pharmacy on one platform.", long: "India-first HMS/EMR — appointments, EMR, billing, lab, pharmacy and HR on one platform. Live at lucoze.com.", cta: "Visit lucoze.com", ctaIcon: "ph-arrow-up-right" },
   { id: "t4suite", name: "T4Suite", kind: "vertical", tag: "Vertical", tagClass: "tag-accent", icon: "ph-calendar-check", badge: "Practice management", short: "CA practice management", href: "https://t4suite.com", external: true, blurb: "Practice management for CA and compliance firms: tasks, the compliance calendar, job costing, billing and client documents in one place.", long: "Practice management for CA and compliance firms — tasks and deadlines, job costing, GST invoicing and receivables. Live at t4suite.com.", cta: "Visit t4suite.com", ctaIcon: "ph-arrow-up-right" },
   { id: "dms", name: "DMS", kind: "vertical", tag: "Vertical", tagClass: "tag-accent", icon: "ph-truck", badge: "Distributor Mgmt", short: "Distributor management", href: toRoute("DMS.dc.html"), external: false, blurb: "Run an independent-distributor network: distributor-scoped sales, tiered stock, commissions and territory control.", long: "One platform for your whole distributor network — scoped sales, tiered stock, commissions and territory control.", cta: "Explore DMS", ctaIcon: "ph-arrow-right" },
   { id: "erp", name: "ERP System", kind: "platform", tag: "Platform", tagClass: "tag-outline", icon: "ph-stack", short: "Finance to operations", href: toRoute("ERP.dc.html"), external: false, blurb: "Unified finance, supply chain, manufacturing and operations for complete business visibility.", cta: "Explore ERP", ctaIcon: "ph-arrow-right" },
@@ -38,18 +38,20 @@ export const HOME_PRODUCTS: HomeProduct[] = [
 // [x, y] in the map's 612x696 box.
 export const REGIONS: { map: string; name: string; status?: string; tone: "home" | "on" | "next"; note: string; href?: string; label: [number, number] }[] = [
   { map: "wb", name: "West Bengal", status: "Head office", tone: "home", note: "Hooghly. e-Paddy and the CMR cycle, first-hand.", href: "/pages/rice-mill-software-west-bengal.html", label: [432, 390] },
-  { map: "up", name: "Uttar Pradesh", tone: "on", note: "State procurement & CMR delivery workflow.", href: "/pages/rice-mill-software-uttar-pradesh.html", label: [253, 262] },
-  { map: "br", name: "Bihar", tone: "on", note: "PACS-linked procurement & CMR obligations.", href: "/pages/rice-mill-software-bihar.html", label: [362, 272] },
-  { map: "or", name: "Odisha", tone: "on", note: "OSCSC procurement & custom-milled rice.", href: "/pages/rice-mill-software-odisha.html", label: [335, 405] },
+  { map: "up", name: "Uttar Pradesh", tone: "on", note: "Our guide to the state’s procurement and CMR delivery.", href: "/pages/rice-mill-software-uttar-pradesh.html", label: [253, 262] },
+  { map: "br", name: "Bihar", tone: "on", note: "Our guide to PACS-linked procurement and CMR.", href: "/pages/rice-mill-software-bihar.html", label: [362, 272] },
+  { map: "or", name: "Odisha", tone: "on", note: "Our guide to OSCSC procurement and custom-milled rice.", href: "/pages/rice-mill-software-odisha.html", label: [335, 405] },
   { map: "jh", name: "Jharkhand", status: "Expanding", tone: "next", note: "Eastern-belt expansion in progress.", label: [362, 330] },
   { map: "pb", name: "Punjab", status: "Expanding", tone: "next", note: "The 2026-27 custom-milling policy, read for the mill.", href: "/pages/punjab-custom-milling-policy-2026-27.html", label: [151, 156] },
 ];
 
+// The four "Why Svasamm" cards; each opens its page in lib/why-articles.ts. Worded to what
+// the platform does today (checked 12 Oct 2026) — see that file before changing a claim.
 export const WHYS = [
-  { icon: "ph-sliders-horizontal", title: "Configured to your workflow", body: "Vertical products ship with your industry’s workflow, terminology and compliance already inside — not a generic tool you have to bend." },
-  { icon: "ph-hard-drives", title: "Self-hostable", body: "Run on your own infrastructure or ours. Your data stays where you decide it should." },
-  { icon: "ph-plugs-connected", title: "API-first", body: "Every module speaks REST. Integrate with what you already run instead of ripping it out." },
-  { icon: "ph-flag", title: "India-first compliance", body: "GST, ABDM and CMR handled in the product — not bolted on as an afterthought." },
+  { icon: "ph-sliders-horizontal", title: "Built for your workflow", body: "Each product starts from how its industry already works. Your firm makes a short list of choices, once, in the order the work needs them.", href: "/pages/configured-to-your-workflow.html" },
+  { icon: "ph-hard-drives", title: "Hosted, or your own", body: "We run it for you, or on your own servers on request. The database itself keeps each firm’s data apart.", href: "/pages/hosting-and-your-data.html" },
+  { icon: "ph-plugs-connected", title: "One open API", body: "Every screen runs on the same REST API. Access for your own systems is being added.", href: "/pages/api-and-integrations.html" },
+  { icon: "ph-flag", title: "India-first compliance", body: "PF, ESI, professional tax, TDS, GST returns and CMR built in — and ABDM coming with Lucoze.", href: "/pages/india-compliance.html" },
 ];
 
 export const HOME_JSONLD = [

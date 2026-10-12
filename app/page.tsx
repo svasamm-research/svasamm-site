@@ -31,8 +31,8 @@ const TONE = { home: "#1257c9", on: "#8fb6fb", next: "#d6e4fd" } as const;
 // Three ticks on one line; only India-first needs its detail.
 const TRUST = [
   ["Workflow-native", ""],
-  ["Self-hostable", ""],
-  ["India-first", "GST · ABDM · CMR"],
+  ["Hosted or your own", ""],
+  ["India-first", "GST · PF · CMR"],
 ];
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
       "Vertical ERPs for Rice Mills, Hospitals & Distributors | Svasamm",
   },
   description:
-    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, Svasamm People for HR and payroll, ERP, CRM and service desk. API-first, self-hostable, India-first.",
+    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, Svasamm People for HR and payroll, ERP, CRM and service desk. One API, hosted or your own, India-first.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
@@ -110,9 +110,9 @@ export default function Home() {
                 }}
               >
                 Svasamm builds vertical ERPs and business platforms — for rice
-                mills, CA firms, hospitals and the people who work in them. API-first,
-                self-hostable, and configured to your workflow instead of
-                forcing you into someone else&apos;s.
+                mills, CA firms, hospitals and the people who work in them —
+                configured to your workflow instead of forcing you into someone
+                else&apos;s, on one API, hosted by us or on your own servers.
               </p>
               <div
                 style={{
@@ -429,8 +429,7 @@ export default function Home() {
                 Engineered for teams that evaluate carefully
               </h2>
               <p className="sv-muted" style={{ fontSize: 17, margin: 0 }}>
-                No black boxes and no per-seat traps — the properties technical
-                buyers actually check.
+                What the products are built on — each opens the detail, including what is not built yet.
               </p>
             </div>
             <div
@@ -441,7 +440,12 @@ export default function Home() {
               }}
             >
               {WHYS.map((w) => (
-                <div key={w.title} className="sv-card" style={{ padding: 26 }}>
+                <Link
+                  key={w.title}
+                  href={w.href}
+                  className="sv-card sv-card-i"
+                  style={{ padding: 26, display: "flex", flexDirection: "column", color: "var(--sv-ink)" }}
+                >
                   <span className="sv-chip" style={{ marginBottom: 18 }}>
                     <Icon name={w.icon} size={22} />
                   </span>
@@ -452,7 +456,10 @@ export default function Home() {
                   >
                     {w.body}
                   </p>
-                </div>
+                  <span style={{ marginTop: "auto", paddingTop: 16, display: "inline-flex", alignItems: "center", gap: 6, fontWeight: 500, fontSize: 14, color: "var(--sv-brand)" }}>
+                    Read more <Icon name="ph-arrow-right" size={14} />
+                  </span>
+                </Link>
               ))}
             </div>
           </div>

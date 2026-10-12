@@ -1,16 +1,13 @@
 import Link from "next/link";
 import { Icon } from "./Icon";
 import { toRoute } from "@/lib/routes";
+import { WHYS } from "@/lib/home";
 
 const CONTACT = toRoute("Contact.dc.html");
 const SOLUTIONS = toRoute("Solutions.dc.html");
 
-const VALUES = [
-  { icon: "ph-sliders-horizontal", title: "Built per industry", body: "We start from how an industry actually works — its workflow, terminology and compliance — and build that in, rather than bending a generic tool to fit." },
-  { icon: "ph-hard-drives", title: "Self-hostable", body: "Run on your own infrastructure or ours. Your operational data stays where you decide it should." },
-  { icon: "ph-plugs-connected", title: "API-first", body: "Every module speaks REST, so it integrates with what you already run instead of replacing it." },
-  { icon: "ph-flag", title: "India-first", body: "GST, ABDM and CMR handled inside the product — because compliance here is not an afterthought." },
-];
+// The same four statements as the home page's "Why Svasamm" — one source, lib/home.ts.
+const VALUES = WHYS;
 
 // About / Company page — verified facts only (no fabricated metrics). Founder byline is
 // an E-E-A-T signal. Ported onto the --sv-* design system to match the other core pages.
