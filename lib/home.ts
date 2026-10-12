@@ -33,13 +33,15 @@ export const HOME_PRODUCTS: HomeProduct[] = [
   { id: "digital-schools", name: "Svasamm Digital for Schools", kind: "service", tag: "Service", tagClass: "tag-neutral", icon: "ph-graduation-cap", short: "School digitisation", href: "/pages/digital-schools.html", external: false, blurb: "Ongoing organic growth for schools, pre-schools and coaching institutes — website, Google Business Profile, local SEO and monthly optimisation, with category exclusivity. We don't build and leave.", cta: "Explore Digital for Schools", ctaIcon: "ph-arrow-right" },
 ];
 
-export const REGIONS = [
-  { name: "West Bengal", status: "HQ", tagClass: "tag-accent", note: "Home base — e-Paddy & CMR workflow understood first-hand." },
-  { name: "Uttar Pradesh", status: "Active", tagClass: "tag-outline", note: "State procurement & CMR delivery workflow." },
-  { name: "Bihar", status: "Active", tagClass: "tag-outline", note: "PACS-linked procurement & CMR obligations." },
-  { name: "Odisha", status: "Active", tagClass: "tag-outline", note: "OSCSC procurement & custom-milled rice." },
-  { name: "Jharkhand", status: "Expanding", tagClass: "tag-neutral", note: "Eastern-belt expansion in progress." },
-  { name: "Pan-India & global", status: "Remote", tagClass: "tag-neutral", note: "Cloud or on-prem deployments anywhere." },
+// "Where we work": each state is drawn on the India map (lib/india-map.ts, by `map` id) and
+// links to its rice-mill guide. `tone` is how strongly the map fills it. `label` sits at
+// [x, y] in the map's 612x696 box.
+export const REGIONS: { map: string; name: string; status?: string; tone: "home" | "on" | "next"; note: string; href?: string; label: [number, number] }[] = [
+  { map: "wb", name: "West Bengal", status: "Head office", tone: "home", note: "Hooghly. e-Paddy and the CMR cycle, first-hand.", href: "/pages/rice-mill-software-west-bengal.html", label: [432, 390] },
+  { map: "up", name: "Uttar Pradesh", tone: "on", note: "State procurement & CMR delivery workflow.", href: "/pages/rice-mill-software-uttar-pradesh.html", label: [253, 262] },
+  { map: "br", name: "Bihar", tone: "on", note: "PACS-linked procurement & CMR obligations.", href: "/pages/rice-mill-software-bihar.html", label: [362, 272] },
+  { map: "or", name: "Odisha", tone: "on", note: "OSCSC procurement & custom-milled rice.", href: "/pages/rice-mill-software-odisha.html", label: [335, 405] },
+  { map: "jh", name: "Jharkhand", status: "Expanding", tone: "next", note: "Eastern-belt expansion in progress.", label: [362, 330] },
 ];
 
 export const WHYS = [

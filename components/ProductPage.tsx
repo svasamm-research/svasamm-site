@@ -4,6 +4,7 @@ import FaqAccordion from "./FaqAccordion";
 import { toRoute } from "@/lib/routes";
 import type { Product } from "@/lib/types";
 import { ONE } from "@/lib/site";
+import ProductLogo from "./ProductLogo";
 
 const CONTACT = toRoute("Contact.dc.html");
 const SOLUTIONS = toRoute("Solutions.dc.html");
@@ -57,6 +58,11 @@ export default function ProductPage({ product: d }: { product: Product }) {
         </div>
         <div className="sv-wrap pp-hero" style={{ padding: "52px 24px 72px" }}>
           <div>
+            {one && (
+              <div style={{ marginBottom: 18 }}>
+                <ProductLogo id={d.id} size={20} />
+              </div>
+            )}
             <span
               className="sv-tag sv-tag-brand"
               style={{
@@ -95,6 +101,7 @@ export default function ProductPage({ product: d }: { product: Product }) {
               </a>
             </div>
           </div>
+          <div style={{ position: "relative", paddingRight: one?.phone ? 40 : 0 }}>
           <figure
             className="sv-card"
             style={{
@@ -140,6 +147,23 @@ export default function ProductPage({ product: d }: { product: Product }) {
               {caption}
             </figcaption>
           </figure>
+          {one?.phone && (
+            <img
+              src={one.phone}
+              alt=""
+              style={{
+                position: "absolute",
+                right: 0,
+                bottom: -24,
+                width: "26%",
+                borderRadius: 18,
+                border: "5px solid var(--sv-ink)",
+                boxShadow: "var(--sv-sh-3)",
+                background: "#fff",
+              }}
+            />
+          )}
+          </div>
         </div>
       </section>
 
