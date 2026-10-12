@@ -2,19 +2,28 @@
 
 > Svasamm builds vertical ERPs and business platforms for Indian operations —
 > systems that carry an industry's workflow, terminology and compliance inside them.
-> Founded 2022 in Konnagar, Hooghly, West Bengal. API-first, self-hostable, India-first.
+> Founded April 2024 in Konnagar, Hooghly, West Bengal. One API, hosted or your own deployment, India-first.
 > Contact: query@svasamm.com · +91 90077 93575.
 
 ## Products
 - Millingo — Rice Mill ERP (paddy procurement, quality grading, milling yield & by-products, FCI/levy CMR compliance): https://svasamm.com/pages/millingo.html
 - Lucoze — Healthcare HIMS (external product): https://lucoze.com
+- T4Suite — practice management for CA and compliance firms (external product): https://t4suite.com
 - DMS — Distributor Management for OEM channels: https://svasamm.com/pages/dms.html
 - ERP System: https://svasamm.com/pages/erp.html
-- HRMS: https://svasamm.com/pages/hrms.html
+- Svasamm People — HR and payroll: https://svasamm.com/pages/hrms.html
 - CRM Platform: https://svasamm.com/pages/crm.html
 - Service Desk (ITSM): https://svasamm.com/pages/service-desk.html
 - Svasamm Digital for Healthcare — Healthcare digitisation service (website, Google Business Profile, local SEO and digital marketing for clinics, nursing homes and small hospitals in West Bengal and East India): https://svasamm.com/pages/digital-healthcare.html
 
+
+- Svasamm Digital for Schools — school digitisation service: https://svasamm.com/pages/digital-schools.html
+
+## Why Svasamm
+- Configured to your workflow: https://svasamm.com/pages/configured-to-your-workflow.html
+- Hosting and your data: https://svasamm.com/pages/hosting-and-your-data.html
+- API and integrations: https://svasamm.com/pages/api-and-integrations.html
+- India-first compliance: https://svasamm.com/pages/india-compliance.html
 
 ## Key resources
 - All solutions: https://svasamm.com/pages/services.html

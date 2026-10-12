@@ -9,6 +9,19 @@ import { PRODUCTS, ONE, INDUSTRIES, RESOURCE_GROUPS, type NavProduct } from "@/l
 const one = PRODUCTS.filter((p) => ONE[p.id]);
 const also = PRODUCTS.filter((p) => !ONE[p.id]);
 
+// Sign in goes to the one Svasamm One app. The link says which site sent the person
+// (utm_source) so the app can count it; the click is counted here too, in GA4 and
+// Plausible, as "Sign In Click" with { site, location } — the same event T4Suite's site
+// sends with its own name, so one report splits sign-ins by site.
+const SITE = "svasamm.com";
+const signInHref = (where: string) =>
+  `https://app.svasamm.com/?utm_source=${SITE}&utm_medium=website&utm_campaign=sign_in&utm_content=${where}`;
+function signInClick(where: string) {
+  window.gtag?.("event", "sign_in_click", { site: SITE, location: where });
+  // "Sign In Click" must be a Goal in the Plausible dashboard to show up.
+  window.plausible?.("Sign In Click", { props: { site: SITE, location: where } });
+}
+
 const Dot = ({ c }: { c: string }) => (
   <span style={{ width: 10, height: 10, borderRadius: "50%", background: c, flex: "none" }} />
 );
@@ -380,6 +393,18 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
         </nav>
 
         <div className="ml-auto flex items-center" style={{ gap: 10 }}>
+          {/* The wrapper hides it on a phone (it is in the menu there): .sv-btn is unlayered
+              CSS and beats Tailwind's `hidden` on the link itself. */}
+          <span className="hidden sm:inline-flex">
+            <a
+              href={signInHref("header")}
+              onClick={() => signInClick("header")}
+              className="sv-btn sv-btn-secondary"
+              style={{ fontSize: 14, padding: "10px 16px" }}
+            >
+              Sign in
+            </a>
+          </span>
           <Link
             href="/pages/contact.html"
             className="sv-btn sv-btn-primary hidden mob:inline-flex"
@@ -419,9 +444,33 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
             padding: "16px 24px 24px",
           }}
         >
-          <div className="sv-eyebrow">Products</div>
+          <div className="sv-eyebrow">Svasamm One products</div>
           <div className="flex flex-col" style={{ gap: 2 }}>
-            {[...one, ...also].map((p) => (
+            {one.map((p) => (
+              <ProductLink
+                key={p.id}
+                p={p}
+                className="svh-item flex items-center"
+                style={{
+                  gap: 12,
+                  padding: "12px 10px",
+                  color: "var(--sv-ink)",
+                  fontSize: 16,
+                }}
+              >
+                <Icon
+                  name={p.icon}
+                  size={19}
+                  style={{ color: ONE[p.id]?.fill ?? "var(--sv-ink-3)" }}
+                />
+                {p.name}
+                {p.external ? " ↗" : ""}
+              </ProductLink>
+            ))}
+          </div>
+          <div className="sv-eyebrow" style={{ marginTop: 14 }}>Also built for clients</div>
+          <div className="flex flex-col" style={{ gap: 2 }}>
+            {also.map((p) => (
               <ProductLink
                 key={p.id}
                 p={p}
@@ -489,6 +538,14 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
           >
             Talk to us
           </Link>
+          <a
+            href={signInHref("mobile-menu")}
+            onClick={() => signInClick("mobile-menu")}
+            className="sv-btn sv-btn-secondary sv-btn-block"
+            style={{ marginTop: 10 }}
+          >
+            Sign in
+          </a>
         </div>
       )}
     </header>

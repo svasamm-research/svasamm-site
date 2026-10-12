@@ -4,25 +4,17 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import JsonLd from "@/components/JsonLd";
 import { Icon } from "@/components/Icon";
+import ProductLogo from "@/components/ProductLogo";
 import { HOME_PRODUCTS, REGIONS, WHYS, HOME_JSONLD } from "@/lib/home";
+import { INDIA_STATES, INDIA_VIEWBOX } from "@/lib/india-map";
 import { toRoute } from "@/lib/routes";
-import { BUSINESS, ONE } from "@/lib/site";
+import { BUSINESS, ONE, SCREENS } from "@/lib/site";
 
 const SOLUTIONS = toRoute("Solutions.dc.html");
 const CONTACT = toRoute("Contact.dc.html");
-// On Svasamm One (each in its colour) vs also built for clients. The hero counts its own list.
+// On Svasamm One (each in its colour and logo) vs also built for clients.
 const one = HOME_PRODUCTS.filter((p) => ONE[p.id]);
 const also = HOME_PRODUCTS.filter((p) => !ONE[p.id]);
-const chip = (id: string, size: number): React.CSSProperties => ({
-  width: size,
-  height: size,
-  borderRadius: 8,
-  background: ONE[id].fill,
-  color: ONE[id].on,
-  display: "grid",
-  placeItems: "center",
-  flex: "none",
-});
 
 // One card or row: an external product opens its own site in a new tab.
 function ProductLink({ p, className, style, children }: { p: (typeof HOME_PRODUCTS)[number]; className?: string; style?: React.CSSProperties; children: React.ReactNode }) {
@@ -33,19 +25,14 @@ function ProductLink({ p, className, style, children }: { p: (typeof HOME_PRODUC
   );
 }
 
-// Map the data's legacy tag classes to the --sv-* signal tags.
-const svTag = (cls: string) =>
-  cls.includes("accent")
-    ? "sv-tag-brand"
-    : cls.includes("outline")
-      ? "sv-tag-outline"
-      : "sv-tag";
+// How strongly the map fills a state: the head office, a state we work in, the next one.
+const TONE = { home: "#1257c9", on: "#8fb6fb", next: "#d6e4fd" } as const;
 
 // Three ticks on one line; only India-first needs its detail.
 const TRUST = [
   ["Workflow-native", ""],
-  ["Self-hostable", ""],
-  ["India-first", "GST · ABDM · CMR"],
+  ["Hosted or your own", ""],
+  ["India-first", "GST · PF · CMR"],
 ];
 
 export const metadata: Metadata = {
@@ -54,7 +41,7 @@ export const metadata: Metadata = {
       "Vertical ERPs for Rice Mills, Hospitals & Distributors | Svasamm",
   },
   description:
-    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, Svasamm People for HR and payroll, ERP, CRM and service desk. API-first, self-hostable, India-first.",
+    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, Svasamm People for HR and payroll, ERP, CRM and service desk. One API, hosted or your own, India-first.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
@@ -122,10 +109,10 @@ export default function Home() {
                   margin: "0 0 34px",
                 }}
               >
-                Svasamm builds vertical ERPs and business platforms — running
-                rice mills, hospitals and distributor networks. API-first,
-                self-hostable, and configured to your workflow instead of
-                forcing you into someone else&apos;s.
+                Svasamm builds vertical ERPs and business platforms — for rice
+                mills, CA firms, hospitals and the people who work in them —
+                configured to your workflow instead of forcing you into someone
+                else&apos;s, on one API, hosted by us or on your own servers.
               </p>
               <div
                 style={{
@@ -164,106 +151,52 @@ export default function Home() {
               </div>
             </div>
 
-            {/* product-suite panel — the "it's real software" signal */}
-            <div
-              className="sv-card"
-              style={{ padding: 0, boxShadow: "var(--sv-sh-3)", overflow: "hidden" }}
-            >
+            {/* The real product, not a diagram of it: Millingo at a desk, People on a phone,
+                and each Svasamm One product by its own logo. */}
+            <div>
+              <div style={{ position: "relative", paddingBottom: 28, paddingRight: 34 }}>
+                <figure
+                  className="sv-card"
+                  style={{ margin: 0, padding: 0, overflow: "hidden", boxShadow: "var(--sv-sh-3)", borderTop: `4px solid ${ONE.millingo.fill}` }}
+                >
+                  <img
+                    src={SCREENS.millingoToday.src}
+                    alt="Millingo — a rice-mill owner's morning: CMR still owed, lorries at the gate"
+                    style={{ display: "block", width: "100%" }}
+                  />
+                </figure>
+                <img
+                  src={SCREENS.peoplePhoneToday.src}
+                  alt="Svasamm People on a worker's phone — punched in, leave and pay"
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    bottom: 0,
+                    width: "27%",
+                    borderRadius: 18,
+                    border: "5px solid var(--sv-ink)",
+                    boxShadow: "var(--sv-sh-3)",
+                    background: "#fff",
+                  }}
+                />
+              </div>
               <div
                 style={{
-                  padding: "16px 20px",
-                  borderBottom: "1px solid var(--sv-line)",
+                  marginTop: 22,
                   display: "flex",
+                  flexWrap: "wrap",
                   alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 12,
-                  background: "var(--sv-bg-subtle)",
+                  gap: "14px 24px",
                 }}
               >
-                <span className="sv-eyebrow" style={{ margin: 0 }}>
+                <span className="sv-eyebrow" style={{ margin: 0, color: "var(--sv-ink-3)", flexBasis: "100%" }}>
                   On Svasamm One
                 </span>
-                <span className="sv-tag sv-tag-teal">{one.length} products</span>
-              </div>
-              <div
-                style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
-              >
-                {one.map((p, i) => (
-                  <ProductLink
-                    key={p.id}
-                    p={p}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 11,
-                      padding: "15px 18px",
-                      color: "var(--sv-ink)",
-                      borderBottom: "1px solid var(--sv-line)",
-                      borderRight: i % 2 === 0 ? "1px solid var(--sv-line)" : "none",
-                    }}
-                  >
-                    <span style={chip(p.id, 32)}>
-                      <Icon name={p.icon} size={17} />
-                    </span>
-                    <span style={{ minWidth: 0 }}>
-                      <span style={{ display: "block", fontSize: 14.5, fontWeight: 500, lineHeight: 1.25 }}>
-                        {p.name}
-                      </span>
-                      <span style={{ display: "block", fontSize: 12.5, color: "var(--sv-ink-3)" }}>
-                        {p.short}
-                      </span>
-                    </span>
+                {one.map((p) => (
+                  <ProductLink key={p.id} p={p} style={{ display: "inline-flex" }}>
+                    <ProductLogo id={p.id} size={15} />
                   </ProductLink>
                 ))}
-              </div>
-              <div style={{ padding: "14px 20px 4px" }}>
-                <span className="sv-eyebrow" style={{ margin: 0, color: "var(--sv-ink-3)" }}>
-                  Also built for clients
-                </span>
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, padding: "8px 20px 16px" }}>
-                {also.filter((p) => p.kind !== "service").map((p) => (
-                  <ProductLink
-                    key={p.id}
-                    p={p}
-                    className="sv-tag sv-tag-outline"
-                    style={{ fontSize: 13, textTransform: "none", letterSpacing: 0 }}
-                  >
-                    {p.name}
-                  </ProductLink>
-                ))}
-              </div>
-              <div
-                style={{
-                  borderTop: "1px solid var(--sv-line)",
-                  padding: "14px 20px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 12,
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--sv-mono)",
-                    fontSize: 12,
-                    color: "var(--sv-ink-3)",
-                  }}
-                >
-                  One login · API-first · Self-hostable
-                </span>
-                <Link
-                  href={SOLUTIONS}
-                  style={{
-                    fontSize: 13.5,
-                    fontWeight: 500,
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 5,
-                  }}
-                >
-                  All solutions <Icon name="ph-arrow-right" size={14} />
-                </Link>
               </div>
             </div>
           </div>
@@ -303,8 +236,8 @@ export default function Home() {
                     }}
                   >
                     <img
-                      src={c.screen}
-                      alt={c.caption}
+                      src={c.card.src}
+                      alt={c.card.caption}
                       loading="lazy"
                       style={{
                         display: "block",
@@ -317,10 +250,9 @@ export default function Home() {
                     />
                     <div style={{ padding: 22, display: "flex", flexDirection: "column", flex: 1, gap: 8 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                        <span style={chip(p.id, 30)}>
-                          <Icon name={p.icon} size={16} />
-                        </span>
-                        <h3 style={{ fontSize: 20, margin: 0 }}>{p.name}</h3>
+                        <h3 style={{ margin: 0, lineHeight: 0 }}>
+                          <ProductLogo id={p.id} size={20} />
+                        </h3>
                         <span
                           className="sv-tag"
                           style={{ marginLeft: "auto", color: c.ink, background: c.wash, borderColor: c.wash }}
@@ -376,88 +308,107 @@ export default function Home() {
           </div>
         </section>
 
-        {/* REGIONS */}
+        {/* WHERE WE WORK — the states on a map of India, each linked to its guide */}
         <section id="regions" style={{ padding: "88px 0" }}>
           <div
             className="sv-wrap sv-two"
             style={{
               display: "grid",
-              gridTemplateColumns: ".85fr 1.15fr",
+              gridTemplateColumns: "1fr 1fr",
               gap: 52,
-              alignItems: "start",
+              alignItems: "center",
             }}
           >
             <div>
               <div className="sv-eyebrow">Where we work</div>
               <h2 style={{ margin: "0 0 16px", maxWidth: "18ch" }}>
-                Rooted in West Bengal, deploying across India
+                Rooted in West Bengal. Serving India.
               </h2>
-              <p
-                className="sv-muted"
-                style={{ fontSize: 16, margin: "0 0 22px" }}
-              >
-                Headquartered in Konnagar, Hooghly, we understand state-specific
-                procurement and compliance first-hand — from West Bengal e-Paddy
-                to CMR obligations across the eastern belt — and deploy pan-India
-                and for global teams.
+              <p className="sv-muted" style={{ fontSize: 16, margin: "0 0 24px" }}>
+                Our office is in Hooghly, West Bengal. Rice-mill rules change at every
+                state line — procurement, gunny, CMR delivery — so we work through them
+                state by state, starting with the eastern belt. T4Suite, Lucoze and
+                Svasamm People serve a firm anywhere in India, in the cloud or on its
+                own servers.
               </p>
+              <div className="flex flex-col" style={{ gap: 2, marginBottom: 22 }}>
+                {REGIONS.map((r) => {
+                  const inner = (
+                    <>
+                      <span
+                        aria-hidden="true"
+                        style={{ width: 12, height: 12, borderRadius: 3, background: TONE[r.tone], flex: "none", marginTop: 5 }}
+                      />
+                      <span style={{ minWidth: 0, flex: 1 }}>
+                        <span style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                          <strong style={{ fontWeight: 600, fontSize: 15.5 }}>{r.name}</strong>
+                          {r.status && <span className="sv-tag sv-tag-outline">{r.status}</span>}
+                        </span>
+                        <span style={{ display: "block", fontSize: 14, color: "var(--sv-ink-2)", lineHeight: 1.5 }}>
+                          {r.note}
+                        </span>
+                      </span>
+                      {r.href && <Icon name="ph-arrow-right" size={15} style={{ color: "var(--sv-brand)", flex: "none", marginTop: 5 }} />}
+                    </>
+                  );
+                  const st: React.CSSProperties = { display: "flex", gap: 12, padding: "10px 10px", borderRadius: "var(--sv-r-sm)", color: "var(--sv-ink)" };
+                  return r.href ? (
+                    <Link key={r.map} href={r.href} className="svh-item" style={st} aria-label={`${r.name} — rice-mill guide`}>
+                      {inner}
+                    </Link>
+                  ) : (
+                    <div key={r.map} style={st}>{inner}</div>
+                  );
+                })}
+              </div>
               <div
                 className="sv-card"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 13,
-                  padding: "16px 18px",
-                }}
+                style={{ display: "flex", alignItems: "center", gap: 13, padding: "14px 16px" }}
               >
                 <span className="sv-chip sv-chip-sm">
                   <Icon name="ph-map-pin" size={18} />
                 </span>
                 <div>
-                  <div style={{ fontSize: 15, fontWeight: 600 }}>
-                    {BUSINESS.addressShort[0]}
-                  </div>
-                  <div style={{ fontSize: 13.5, color: "var(--sv-ink-3)" }}>
-                    {BUSINESS.addressShort[1]}
-                  </div>
+                  <div style={{ fontSize: 15, fontWeight: 600 }}>{BUSINESS.addressShort[0]}</div>
+                  <div style={{ fontSize: 13.5, color: "var(--sv-ink-3)" }}>{BUSINESS.addressShort[1]}</div>
                 </div>
               </div>
             </div>
-            {/* On a phone the table is wider than the card: it scrolls, the page does not. */}
-            <div className="sv-card" style={{ padding: "6px 8px", overflowX: "auto" }}>
-              <table className="sv-table">
-                <thead>
-                  <tr>
-                    <th>Region</th>
-                    <th>Status</th>
-                    <th>Coverage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {REGIONS.map((r) => (
-                    <tr key={r.name}>
-                      <td style={{ fontWeight: 600, whiteSpace: "nowrap" }}>
-                        {r.name}
-                      </td>
-                      <td>
-                        <span className={`sv-tag ${svTag(r.tagClass)}`}>
-                          {r.status}
-                        </span>
-                      </td>
-                      <td
-                        style={{
-                          fontSize: 14,
-                          color: "var(--sv-ink-2)",
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        {r.note}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <figure style={{ margin: 0 }}>
+              <svg
+                viewBox={INDIA_VIEWBOX}
+                role="img"
+                aria-label={`Map of India marking ${REGIONS.map((r) => r.name).join(", ")}`}
+                style={{ display: "block", width: "100%", maxWidth: 520, height: "auto", margin: "0 auto" }}
+              >
+                {INDIA_STATES.map((st) => {
+                  const r = REGIONS.find((x) => x.map === st.id);
+                  return (
+                    <path key={st.id} d={st.d} fill={r ? TONE[r.tone] : "#e7ecf3"} stroke="#fff" strokeWidth={1} strokeLinejoin="round">
+                      <title>{st.name}</title>
+                    </path>
+                  );
+                })}
+                {REGIONS.map((r) => (
+                  <text
+                    key={r.map}
+                    x={r.label[0]}
+                    y={r.label[1]}
+                    textAnchor={r.map === "wb" ? "start" : "middle"}
+                    style={{ fontFamily: "var(--sv-font)", fontSize: 12.5, fontWeight: 600, paintOrder: "stroke", stroke: "#fff", strokeWidth: 3.5 }}
+                    fill="var(--sv-ink)"
+                  >
+                    {r.name}
+                  </text>
+                ))}
+                {/* Hooghly — the head office */}
+                <circle cx={422} cy={350} r={11} fill="var(--sv-brand)" opacity={0.18} />
+                <circle cx={422} cy={350} r={5.5} fill="#fff" stroke="var(--sv-navy)" strokeWidth={3} />
+              </svg>
+              <figcaption style={{ marginTop: 10, textAlign: "center", fontFamily: "var(--sv-mono)", fontSize: 11, color: "var(--sv-ink-3)" }}>
+                Map: mapsvg.com, CC BY 4.0
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -478,8 +429,7 @@ export default function Home() {
                 Engineered for teams that evaluate carefully
               </h2>
               <p className="sv-muted" style={{ fontSize: 17, margin: 0 }}>
-                No black boxes and no per-seat traps — the properties technical
-                buyers actually check.
+                What the products are built on — each opens the detail, including what is not built yet.
               </p>
             </div>
             <div
@@ -490,7 +440,12 @@ export default function Home() {
               }}
             >
               {WHYS.map((w) => (
-                <div key={w.title} className="sv-card" style={{ padding: 26 }}>
+                <Link
+                  key={w.title}
+                  href={w.href}
+                  className="sv-card sv-card-i"
+                  style={{ padding: 26, display: "flex", flexDirection: "column", color: "var(--sv-ink)" }}
+                >
                   <span className="sv-chip" style={{ marginBottom: 18 }}>
                     <Icon name={w.icon} size={22} />
                   </span>
@@ -501,7 +456,10 @@ export default function Home() {
                   >
                     {w.body}
                   </p>
-                </div>
+                  <span style={{ marginTop: "auto", paddingTop: 16, display: "inline-flex", alignItems: "center", gap: 6, fontWeight: 500, fontSize: 14, color: "var(--sv-brand)" }}>
+                    Read more <Icon name="ph-arrow-right" size={14} />
+                  </span>
+                </Link>
               ))}
             </div>
           </div>

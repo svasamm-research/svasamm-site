@@ -4,6 +4,7 @@ import FaqAccordion from "./FaqAccordion";
 import { toRoute } from "@/lib/routes";
 import type { Product } from "@/lib/types";
 import { ONE } from "@/lib/site";
+import ProductLogo from "./ProductLogo";
 
 const CONTACT = toRoute("Contact.dc.html");
 const SOLUTIONS = toRoute("Solutions.dc.html");
@@ -25,7 +26,8 @@ const HERO_CAPTION: Record<string, string> = {
 export default function ProductPage({ product: d }: { product: Product }) {
   // A Svasamm One product shows its own screen, in its own colour; the rest keep a photo.
   const one = ONE[d.id];
-  const caption = one?.caption ?? HERO_CAPTION[d.id] ?? "";
+  const screen = one?.page;
+  const caption = screen?.caption ?? HERO_CAPTION[d.id] ?? "";
   return (
     <div>
       {/* Hero — brand-50 wash + framed photo */}
@@ -57,6 +59,11 @@ export default function ProductPage({ product: d }: { product: Product }) {
         </div>
         <div className="sv-wrap pp-hero" style={{ padding: "52px 24px 72px" }}>
           <div>
+            {one && (
+              <div style={{ marginBottom: 18 }}>
+                <ProductLogo id={d.id} size={20} />
+              </div>
+            )}
             <span
               className="sv-tag sv-tag-brand"
               style={{
@@ -95,6 +102,7 @@ export default function ProductPage({ product: d }: { product: Product }) {
               </a>
             </div>
           </div>
+          <div style={{ position: "relative", paddingRight: one?.phone ? 40 : 0 }}>
           <figure
             className="sv-card"
             style={{
@@ -106,12 +114,12 @@ export default function ProductPage({ product: d }: { product: Product }) {
           >
             {/* A real screen keeps its own shape; a licensed photo is cropped to 4:3. */}
             <img
-              src={one?.screen ?? `/hero/${d.id}.webp`}
-              alt={one ? caption : ""}
+              src={screen?.src ?? `/hero/${d.id}.webp`}
+              alt={screen ? caption : ""}
               loading="eager"
               style={{
                 width: "100%",
-                ...(one
+                ...(screen
                   ? { border: "1px solid var(--sv-line)" }
                   : { aspectRatio: "4 / 3", objectFit: "cover" as const }),
                 borderRadius: "var(--sv-r)",
@@ -140,6 +148,23 @@ export default function ProductPage({ product: d }: { product: Product }) {
               {caption}
             </figcaption>
           </figure>
+          {one?.phone && (
+            <img
+              src={one.phone.src}
+              alt={one.phone.caption}
+              style={{
+                position: "absolute",
+                right: 0,
+                bottom: -24,
+                width: "26%",
+                borderRadius: 18,
+                border: "5px solid var(--sv-ink)",
+                boxShadow: "var(--sv-sh-3)",
+                background: "#fff",
+              }}
+            />
+          )}
+          </div>
         </div>
       </section>
 
