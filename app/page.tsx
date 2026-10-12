@@ -161,7 +161,7 @@ export default function Home() {
                 >
                   <img
                     src={ONE.millingo.screen}
-                    alt="Millingo — the batches board of a rice mill"
+                    alt="Millingo — a rice-mill owner's morning: CMR still owed, lorries at the gate"
                     style={{ display: "block", width: "100%" }}
                   />
                 </figure>
@@ -378,7 +378,7 @@ export default function Home() {
               <svg
                 viewBox={INDIA_VIEWBOX}
                 role="img"
-                aria-label="Map of India marking West Bengal, Uttar Pradesh, Bihar, Odisha and Jharkhand"
+                aria-label={`Map of India marking ${REGIONS.map((r) => r.name).join(", ")}`}
                 style={{ display: "block", width: "100%", maxWidth: 520, height: "auto", margin: "0 auto" }}
               >
                 {INDIA_STATES.map((st) => {

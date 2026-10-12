@@ -148,7 +148,7 @@ export const ONE: Record<
   string,
   { fill: string; ink: string; wash: string; on: string; screen: string; caption: string; phone?: string }
 > = {
-  millingo: { fill: "#D9A215", ink: "#6E5309", wash: "#FDF7E8", on: "#3A2C05", screen: "/screens/millingo.webp", caption: "Millingo · the batches board" },
+  millingo: { fill: "#D9A215", ink: "#6E5309", wash: "#FDF7E8", on: "#3A2C05", screen: "/screens/millingo.webp", caption: "Millingo · the owner's morning" },
   lucoze: { fill: "#C15F3C", ink: "#8A3F23", wash: "#FDF3EE", on: "#fff", screen: "/screens/lucoze.webp", caption: "Lucoze · the bed board" },
   t4suite: { fill: "#1D4ED8", ink: "#1E3A8A", wash: "#DBEAFE", on: "#fff", screen: "/screens/t4suite.webp", caption: "T4Suite · the dashboard" },
   hrms: { fill: "#15803D", ink: "#14532D", wash: "#DCFCE7", on: "#fff", screen: "/screens/hrms.webp", caption: "Svasamm People · payroll and attendance", phone: "/screens/hrms-phone.webp" },

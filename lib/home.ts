@@ -42,6 +42,7 @@ export const REGIONS: { map: string; name: string; status?: string; tone: "home"
   { map: "br", name: "Bihar", tone: "on", note: "PACS-linked procurement & CMR obligations.", href: "/pages/rice-mill-software-bihar.html", label: [362, 272] },
   { map: "or", name: "Odisha", tone: "on", note: "OSCSC procurement & custom-milled rice.", href: "/pages/rice-mill-software-odisha.html", label: [335, 405] },
   { map: "jh", name: "Jharkhand", status: "Expanding", tone: "next", note: "Eastern-belt expansion in progress.", label: [362, 330] },
+  { map: "pb", name: "Punjab", status: "Expanding", tone: "next", note: "The 2026-27 custom-milling policy, read for the mill.", href: "/pages/punjab-custom-milling-policy-2026-27.html", label: [151, 156] },
 ];
 
 export const WHYS = [
