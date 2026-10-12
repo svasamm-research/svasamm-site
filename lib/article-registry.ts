@@ -8,6 +8,7 @@ import { ARTICLE_BY_SLUG as GENERATED } from "./articles";
 import { DIGITAL_ARTICLE_BY_SLUG } from "./digital-articles";
 import { SCHOOLS_ARTICLE_BY_SLUG } from "./schools-articles";
 import { RICE_MILL_ARTICLE_BY_SLUG } from "./rice-mill-articles";
+import { WHY_ARTICLE_BY_SLUG } from "./why-articles";
 import type { Article } from "./types";
 
 export const ARTICLE_BY_SLUG: Record<string, Article> = {
@@ -15,4 +16,5 @@ export const ARTICLE_BY_SLUG: Record<string, Article> = {
   ...DIGITAL_ARTICLE_BY_SLUG,
   ...SCHOOLS_ARTICLE_BY_SLUG,
   ...RICE_MILL_ARTICLE_BY_SLUG,
+  ...WHY_ARTICLE_BY_SLUG,
 };

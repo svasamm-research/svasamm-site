@@ -4,6 +4,8 @@ import FaqAccordion from "./FaqAccordion";
 import { toRoute } from "@/lib/routes";
 import { HERO_SLUGS } from "@/lib/heroes";
 import type { Article, Block, ListItem } from "@/lib/types";
+import { ONE, GUIDE_SCREEN } from "@/lib/site";
+import ProductLogo from "./ProductLogo";
 
 const CONTACT = toRoute("Contact.dc.html");
 
@@ -150,6 +152,8 @@ function crumbsFrom(jsonLd: object[]): Crumb[] {
 export default function ArticleView({ article: a }: { article: Article }) {
   const crumbs = crumbsFrom(a.jsonLd);
   const hasHero = HERO_SLUGS.has(a.slug);
+  const one = ONE[a.parentProduct];
+  const screen = one && (GUIDE_SCREEN[a.slug] ?? one.page ?? one.card);
   return (
     <div>
       {/* Hero — brand-50 wash + (optional) framed photo */}
@@ -282,8 +286,21 @@ export default function ArticleView({ article: a }: { article: Article }) {
             <BlockView key={i} b={b} />
           ))}
 
-          {/* CTA card — light .sv-card surface */}
-          <div className="sv-card" style={{ padding: 30, margin: "40px 0 8px" }}>
+          {/* CTA card. A guide about a Svasamm One product ends on that product: its
+              logo, its colour and its real screen — the reader has just read the problem. */}
+          <div
+            className="sv-card"
+            style={{
+              padding: 30,
+              margin: "40px 0 8px",
+              ...(one && { borderTop: `4px solid ${one.fill}` }),
+            }}
+          >
+            {one && (
+              <div style={{ marginBottom: 16 }}>
+                <ProductLogo id={a.parentProduct} size={18} />
+              </div>
+            )}
             <h3 style={{ fontSize: 21, margin: "0 0 10px" }}>{a.cta.title}</h3>
             <p
               style={{
@@ -309,6 +326,20 @@ export default function ArticleView({ article: a }: { article: Article }) {
                 Book a free consultation
               </Link>
             </div>
+            {screen && (
+              <img
+                src={screen.src}
+                alt={screen.caption}
+                loading="lazy"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  marginTop: 24,
+                  border: "1px solid var(--sv-line)",
+                  borderRadius: "var(--sv-r)",
+                }}
+              />
+            )}
           </div>
         </div>
       </section>
