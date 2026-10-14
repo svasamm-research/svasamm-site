@@ -129,6 +129,13 @@ export default function Home() {
                   Book a walkthrough
                 </Link>
               </div>
+              <Link
+                href="/pages/customized-software-for-your-industry.html"
+                style={{ display: "block", width: "fit-content", fontSize: 15, fontWeight: 500, marginBottom: 18 }}
+              >
+                Customized for your industry — not customizable{" "}
+                <Icon name="ph-arrow-right" size={15} style={{ display: "inline", verticalAlign: "-2px" }} />
+              </Link>
               <div style={{ display: "flex", gap: 22, flexWrap: "wrap" }}>
                 {TRUST.map(([t, s]) => (
                   <div
