@@ -64,6 +64,8 @@ export const PRODUCTS: Product[] = [
             { title: "Odisha (OSCSC & CMR)", href: "State-Odisha.dc.html" },
             { title: "Bihar (PACS & CMR)", href: "State-Bihar.dc.html" },
             { title: "Punjab: the 2026-27 milling policy & the 90% rule", href: "/pages/punjab-custom-milling-policy-2026-27.html" },
+            { title: "Punjab: release orders and paddy allotment", href: "/pages/punjab-release-order-paddy-allotment.html" },
+            { title: "Uttar Pradesh: paddy procurement and CMR 2026-27", href: "/pages/up-paddy-procurement-cmr-2026-27.html" },
           ],
         },
         {
@@ -80,7 +82,7 @@ export const PRODUCTS: Product[] = [
       { q: "Can Millingo track milling recovery and by-products?", a: "Yes. Each milling batch computes rice recovery and books bran, husk and broken rice as separate stock with their own valuation, so you see true profit per batch." },
       { q: "Which tiers does Millingo offer?", a: "Starter (small/seasonal, market-only mills), Professional (full operations, financials, quality/moisture slabs, by-product P&L), and Enterprise (government CMR business, statutory returns, multi-unit)." },
     ],
-    cta: { title: "See Millingo run your mill's numbers", body: "Bring one season of paddy purchases and CMR memos — we’ll walk them through the system with you.", primary: "Get a free consultation" },
+    cta: { title: "Free CMR season review for your mill", body: "Send one season’s paddy received and rice delivered — we’ll show you where your out-turn and deliveries stand against the state’s figures, and how Millingo keeps that current. Free, no obligation.", primary: "Ask for the free review" },
     seo: {
       metaTitle: "Millingo — Rice Mill ERP (Paddy, Milling, FCI/Levy CMR) | Svasamm",
       metaDescription: "Millingo is Svasamm's ERP built for rice mills: paddy procurement and quality grading, milling yield and by-products, gunny-bag accounting, and full FCI/state levy (CMR) compliance.",
@@ -247,7 +249,7 @@ export const PRODUCTS: Product[] = [
       { q: "Does attendance connect to payroll?", a: "Yes. The days a person was present, on leave or absent, and their overtime, make the month that payroll pays." },
       { q: "Does it work with T4Suite?", a: "Yes. Svasamm People sits beside T4Suite on one Svasamm One login, so a CA firm runs its practice and its own staff with one sign-in." },
     ],
-    cta: { title: "See Svasamm People run one payroll month", body: "Bring a salary structure and an employee list — we’ll set up a sample month with you.", primary: "Book a walkthrough" },
+    cta: { title: "Free payroll check for one month", body: "Send one month’s salary sheet — we’ll run it through Svasamm People and show you the PF, ESI, professional tax and TDS it works out, line by line. Free, no obligation.", primary: "Ask for the free check" },
     seo: {
       metaTitle: "Svasamm People — HR, Payroll & Attendance (HRMS)",
       metaDescription: "Svasamm People is HR and payroll software (HRMS) for Indian firms: staff register, shifts and phone attendance, leave, and payroll with PF, ESI, PT, TDS, Form 16 and 24Q.",

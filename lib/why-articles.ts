@@ -8,20 +8,21 @@
 import type { Article } from "./types";
 
 const DATE = "2026-10-12";
-const BYLINE = "By Mithun K. Singh, Founder, Svasamm Research · 12 October 2026";
 const url = (slug: string) => `https://svasamm.com/pages/${slug}.html`;
 
 function why(a: Omit<Article, "type" | "parentProduct" | "byline" | "jsonLd" | "seo"> & {
   metaTitle: string;
   metaDescription: string;
   crumb: string;
+  date?: string; // published, ISO; the first four pages share DATE
 }): Article {
-  const { metaTitle, metaDescription, crumb, ...rest } = a;
+  const { metaTitle, metaDescription, crumb, date = DATE, ...rest } = a;
+  const shown = new Date(date + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
   return {
     ...rest,
     type: "guide",
     parentProduct: "platform",
-    byline: BYLINE,
+    byline: `By Mithun K. Singh, Founder, Svasamm Research · ${shown}`,
     seo: {
       metaTitle,
       metaDescription,
@@ -43,8 +44,8 @@ function why(a: Omit<Article, "type" | "parentProduct" | "byline" | "jsonLd" | "
           worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
         },
         publisher: { "@type": "Organization", name: "Svasamm" },
-        datePublished: DATE,
-        dateModified: DATE,
+        datePublished: date,
+        dateModified: date,
         mainEntityOfPage: url(a.slug),
       },
       {
@@ -63,6 +64,7 @@ function why(a: Omit<Article, "type" | "parentProduct" | "byline" | "jsonLd" | "
 const CTA = { productHref: "Solutions.dc.html", productLabel: "See every product" };
 const OTHERS = (self: string) =>
   [
+    { title: "Customized, not customizable", href: "/pages/customized-software-for-your-industry.html" },
     { title: "Configured to your workflow", href: "/pages/configured-to-your-workflow.html" },
     { title: "Where Svasamm One runs", href: "/pages/hosting-and-your-data.html" },
     { title: "One open API", href: "/pages/api-and-integrations.html" },
@@ -70,6 +72,63 @@ const OTHERS = (self: string) =>
   ].filter((r) => !r.href.includes(self));
 
 export const WHY_ARTICLES: Article[] = [
+  why({
+    slug: "customized-software-for-your-industry",
+    date: "2026-10-14",
+    crumb: "Customized, not customizable",
+    eyebrow: "Why Svasamm · Customized",
+    title: "Customized, Not Customizable: Software Built for Your Industry Before You Arrive",
+    metaTitle: "Customized vs Customizable Software — Built for Your Industry | Svasamm",
+    metaDescription:
+      "Customizable software leaves the fitting to you. Customized software arrives already fitted to your industry. What that means for a rice mill, a CA firm and a payroll — and what Svasamm still leaves for your firm to choose.",
+    intro:
+      "Every business-software brochure now says it can be shaped to fit you. There are two very different things behind that word. Customizable software is a general tool with switches — you, or a consultant you pay, spend months making it fit. Customized software arrives already shaped for one industry, and leaves you only the choices that really differ from firm to firm. Svasamm builds the second kind.",
+    sections: [
+      {
+        type: "table",
+        h: "The difference, side by side",
+        cols: ["", "Customizable software", "Customized for your industry"],
+        rows: [
+          ["Where it starts", "A general ledger, a general form builder", "Your industry's own records — a CMR season, a payroll month, a client's filing list"],
+          ["Who does the fitting", "You, or a consultant billed by the day", "Already done; your firm answers a short setup checklist"],
+          ["The industry's rules", "Added by you as fields and formulas", "Inside the product — PF and professional tax, GST returns, the 67% out-turn"],
+          ["When a rule changes", "Your configuration may break; you fix it", "We change the product, and every firm gets the change"],
+          ["What can go wrong", "A field typed wrongly once is wrong every month", "A figure the law fixes cannot be typed over"],
+        ],
+      },
+      {
+        type: "list",
+        h: "What “customized” means in each Svasamm product",
+        items: [
+          { b: "Millingo, for rice mills", t: "— the CMR season kept apart from the financial year, the government's paddy and the mill's own paddy in separate pools, gunny bags, the shortfall as a debt, and fortified rice. A generic ERP has none of these words." },
+          { b: "Svasamm People, for any firm's payroll", t: "— PF, ESI, professional tax for every state and union territory with its due dates, TDS under both regimes, Form 24Q and Form 16 Part B, from the first month." },
+          { b: "T4Suite, for CA and compliance firms", t: "— starter task lists for the filings a practice handles (GST returns, TDS returns, income-tax returns, ROC filings), set by the kind of firm: CA, law, company secretary or other." },
+        ],
+      },
+      {
+        type: "p",
+        h: "What your firm still chooses",
+        text: "Customized does not mean rigid. Where firms genuinely differ, the product asks once, during setup: when overtime starts in your factory, whether each establishment is registered for PF and ESI, what a salary is made of, the day your week starts, your mill's recovery rate for the season. Each choice is a short list of options with a stated default — not a blank form to design.",
+      },
+      {
+        type: "p",
+        h: "When your rule doesn't fit",
+        text: "We change the product, not your copy of it. The overtime choice in Svasamm People exists because one company's policy did not fit a single fixed figure; it became a setting with options, and every firm now has it. That is the other half of customized: the fitting is our work, done once, for the whole industry — not yours, done again at every upgrade.",
+      },
+      {
+        type: "note",
+        text: "What we do not offer today: custom fields, custom workflows or roles you design yourself. If your firm needs something none of the choices covers, tell us — it is how the products grow.",
+      },
+    ],
+    faqs: [
+      { q: "What is the difference between customized and customizable software?", a: "Customizable software is a general tool you configure to fit your business, often with a consultant. Customized software is built for one industry from the start, so its records, rules and reports already fit; you only make the few choices that differ from firm to firm." },
+      { q: "Is Svasamm customized or customizable?", a: "Customized. Each product is built for one industry — rice mills, CA firms, payroll — and asks your firm a short list of setup choices. Custom fields and workflows you design yourself are not offered today." },
+      { q: "What if our firm works differently?", a: "Tell us. If your rule is one other firms share, it becomes a setting in the product for everyone — as the overtime choice in Svasamm People did." },
+    ],
+    related: OTHERS("customized-software-for-your-industry"),
+    cta: { ...CTA, title: "Is your industry one we have built for?", body: "Tell us what your business runs on. If one of our products fits, we will show you in your own figures; if none does, we will say so." },
+  }),
+
   why({
     slug: "configured-to-your-workflow",
     crumb: "Configured to your workflow",
