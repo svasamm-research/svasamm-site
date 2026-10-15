@@ -15,7 +15,9 @@ ROLE="${ROLE:-svasamm-contact-form-role}"
 MAIL_FROM="${MAIL_FROM:-no-reply@svasamm.com}"
 MAIL_TO="${MAIL_TO:-query@svasamm.com}"
 MAIL_TO_JOBS="${MAIL_TO_JOBS:-work@svasamm.com}"  # job applications (with the résumé attached)
-ALLOW_ORIGIN="${ALLOW_ORIGIN:-https://svasamm.com}"
+# Every origin whose pages post to this sender. UAT was missing until 15 Oct 2026, so the
+# contact and job forms failed there with "Load failed" (the browser blocks a CORS mismatch).
+ALLOW_ORIGIN="${ALLOW_ORIGIN:-https://svasamm.com,https://www.svasamm.com,https://uat.svasamm.com}"
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 aws() { command aws --profile "$PROFILE" --region "$REGION" "$@"; }

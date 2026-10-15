@@ -121,17 +121,17 @@ export const handler = async (event) => {
 
 // ── Job applications (15 Oct 2026) ───────────────────────────────────────────
 // svasamm.com/jobs posts { kind: "job", name, email, phone, position, note, resume: { name, data } }
+// — phone an Indian mobile, the résumé one PDF
 // with the résumé base64-encoded. It is mailed to MAIL_TO_JOBS as an attachment (raw MIME,
 // which needs ses:SendRawEmail — deploy.sh grants it). The request limit in front of the Lambda
 // is about 6 MB, so the file is capped at 3.5 MB (≈ 4.7 MB once base64-encoded).
 const RESUME_MAX = 3.5 * 1024 * 1024;
-const RESUME_TYPES = {
-  pdf: "application/pdf",
-  doc: "application/msword",
-  docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-};
-// The file's first bytes, not its name, decide what it is: %PDF, the old Word header, or a zip (docx).
-const MAGIC = { pdf: [0x25, 0x50, 0x44, 0x46], doc: [0xd0, 0xcf, 0x11, 0xe0], docx: [0x50, 0x4b, 0x03, 0x04] };
+// PDF only (Mithun, 15 Oct 2026): one format that opens the same everywhere.
+const RESUME_TYPES = { pdf: "application/pdf" };
+// The file's first bytes, not its name, decide what it is: a PDF starts "%PDF".
+const MAGIC = { pdf: [0x25, 0x50, 0x44, 0x46] };
+// An Indian mobile number: 10 digits starting 6–9, with an optional +91, 91 or 0 in front.
+const indianMobile = (v) => /^(?:\+?91|0)?[6-9]\d{9}$/.test(String(v).replace(/[\s-]/g, ""));
 
 async function apply(data, origin) {
   const name = clip(data.name, MAX.name);
@@ -141,18 +141,21 @@ async function apply(data, origin) {
   const note = clip(data.note, 2000);
   const file = data.resume || {};
   const ext = String(file.name || "").toLowerCase().split(".").pop();
-  if (!name || !validEmail(email) || phone.replace(/\D/g, "").length < 8 || !position) {
+  if (!name || !validEmail(email) || !position) {
     return reply(422, { ok: false, error: "Missing or invalid fields" }, origin);
   }
+  if (!indianMobile(phone)) {
+    return reply(422, { ok: false, error: "Enter a 10-digit mobile number." }, origin);
+  }
   if (!RESUME_TYPES[ext] || typeof file.data !== "string") {
-    return reply(422, { ok: false, error: "Attach a résumé as PDF, DOC or DOCX." }, origin);
+    return reply(422, { ok: false, error: "Attach your résumé as a PDF." }, origin);
   }
   const bytes = Buffer.from(file.data, "base64");
   if (!bytes.length || bytes.length > RESUME_MAX) {
     return reply(422, { ok: false, error: "The résumé must be under 3.5 MB." }, origin);
   }
   if (!MAGIC[ext].every((b, i) => bytes[i] === b)) {
-    return reply(422, { ok: false, error: "That file is not a real PDF, DOC or DOCX." }, origin);
+    return reply(422, { ok: false, error: "That file is not a real PDF." }, origin);
   }
 
   const safeFile = `${name.replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, "") || "applicant"}-resume.${ext}`;

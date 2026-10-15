@@ -137,10 +137,12 @@ test("jobs: the form refuses what it must, and sends a résumé it accepts", asy
   await expect(page.locator('[role="dialog"] [role="alert"]')).toHaveCount(4);
   await page.fill("#ap-name", "Asha Roy");
   await page.fill("#ap-email", "asha@example.com");
-  await page.fill("#ap-phone", "98300 12345");
-  await page.setInputFiles("#ap-file", { name: "cv.exe", mimeType: "application/octet-stream", buffer: Buffer.from("MZ") });
+  await page.fill("#ap-phone", "831731993212");
+  await page.setInputFiles("#ap-file", { name: "cv.docx", mimeType: "application/octet-stream", buffer: Buffer.from("PK") });
   await page.getByRole("button", { name: "Send application" }).click();
-  await expect(page.locator('[role="dialog"]')).toContainText("A PDF, DOC or DOCX");
+  await expect(page.locator('[role="dialog"]')).toContainText("Enter a 10-digit mobile number");
+  await expect(page.locator('[role="dialog"]')).toContainText("Only a PDF");
+  await page.fill("#ap-phone", "+91 98300 12345");
   await page.setInputFiles("#ap-file", { name: "cv.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4\nx") });
   await page.getByRole("button", { name: "Send application" }).click();
   await expect(page.locator('[role="status"]')).toContainText("Thank you, Asha");

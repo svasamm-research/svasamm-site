@@ -1,7 +1,7 @@
 // Checks the job-application path without AWS: copies index.mjs next to a fake
 // @aws-sdk/client-sesv2 that records what would be sent, then drives the handler.
 // Run: node aws/contact-form/apply.test.mjs
-import { mkdtempSync, mkdirSync, writeFileSync, copyFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, copyFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -15,6 +15,9 @@ writeFileSync(join(sdk, "package.json"), JSON.stringify({ name: "@aws-sdk/client
 writeFileSync(join(sdk, "index.js"),
   "export const sent = []; export class SendEmailCommand { constructor(i) { this.input = i; } }\n" +
   "export class SESv2Client { async send(c) { sent.push(c.input); return {}; } }\n");
+// The origins deploy.sh allows by default are the ones the Lambda is given.
+const deploy = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "deploy.sh"), "utf8");
+process.env.ALLOW_ORIGIN = deploy.match(/ALLOW_ORIGIN="\$\{ALLOW_ORIGIN:-([^}]+)\}"/)[1];
 const { handler } = await import(join(dir, "index.mjs"));
 const { sent } = await import(join(sdk, "index.js"));
 
@@ -38,6 +41,15 @@ r = await post({ ...good, resume: { name: "cv.pdf", data: Buffer.concat([Buffer.
 assert.equal(r.statusCode, 422, "over 3.5 MB is refused");
 r = await post({ ...good, phone: "123" });
 assert.equal(r.statusCode, 422, "a short phone is refused");
+r = await post({ ...good, phone: "831731993212" });
+assert.equal(r.statusCode, 422, "twelve digits is not a mobile number");
+r = await post({ ...good, phone: "+91 98300-12345" });
+assert.equal(r.statusCode, 200, "+91 with spaces and dashes is a mobile number");
+r = await post({ ...good, resume: { name: "cv.docx", data: Buffer.from("PK\u0003\u0004word").toString("base64") } });
+assert.equal(r.statusCode, 422, "a Word file is refused — PDF only");
+// UAT posts to the same sender: the browser blocks the answer unless its origin is echoed back.
+const uat = await handler({ headers: { origin: "https://uat.svasamm.com" }, requestContext: { http: { method: "OPTIONS" } } });
+assert.equal(uat.headers["Access-Control-Allow-Origin"], "https://uat.svasamm.com", "UAT is an allowed origin");
 r = await post({ ...good, website: "spam" });
 assert.equal(r.statusCode, 200, "the honeypot pretends success");
 const before = sent.length;
