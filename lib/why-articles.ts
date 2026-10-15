@@ -82,7 +82,7 @@ export const WHY_ARTICLES: Article[] = [
     metaDescription:
       "Customizable software leaves the fitting to you. Customized software arrives already fitted to your industry. What that means for a rice mill, a CA firm and a payroll — and what Svasamm still leaves for your firm to choose.",
     intro:
-      "Every business-software brochure now says it can be shaped to fit you. There are two very different things behind that word. Customizable software is a general tool with switches — you, or a consultant you pay, spend months making it fit. **Customized software arrives already shaped for one industry**, and leaves you only the choices that really differ from firm to firm. Svasamm builds the second kind.",
+      "Every business-software brochure now says it can be shaped to fit you. There are two very different things behind that word. Customizable software is a general tool with switches — you, or a consultant you pay, spend months making it fit. Customized software arrives already shaped for one industry, and leaves you only the choices that really differ from firm to firm. Svasamm builds the second kind.",
     sections: [
       {
         type: "table",
@@ -326,7 +326,7 @@ export const WHY_ARTICLES: Article[] = [
     faqs: [
       { q: "Does Svasamm file GST returns directly?", a: "No. Millingo prepares GSTR-1 and GSTR-3B from the books; your accountant files on the GST portal and records the acknowledgement number." },
       { q: "Does Svasamm People cover professional tax in our state?", a: "Yes — all 36 states and union territories are in, with their due dates. Check the rates with your CA before your first filing." },
-      { q: "Is Lucoze ABDM-ready on Svasamm One?", a: "Not yet. ABDM comes with Lucoze joining Svasamm One." },
+      { q: "Does Lucoze support ABDM on Svasamm One yet?", a: "Not yet. ABDM comes with Lucoze joining Svasamm One." },
     ],
     related: OTHERS("india-compliance"),
     cta: { ...CTA, title: "Which rules does your firm answer to?", body: "Tell us your state and your filings and we will show you which are built in and which are still coming." },

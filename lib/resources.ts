@@ -34,7 +34,8 @@ export function cardOf(a: Article): Card {
   const words = [a.intro, ...a.sections.map(text), ...a.faqs.map((f) => `${f.q} ${f.a}`)].join(" ").split(/\s+/).length;
   const ld = a.jsonLd.find((b) => "datePublished" in b) as { datePublished?: string } | undefined;
   const cat = CATEGORY_OF[a.parentProduct] ?? CATEGORIES.find((c) => c.key === "business")!;
-  const excerpt = a.intro.length > 190 ? a.intro.slice(0, a.intro.lastIndexOf(" ", 185)) + "…" : a.intro;
+  const intro = a.intro.replace(/\*\*/g, ""); // a card shows plain text
+  const excerpt = intro.length > 190 ? intro.slice(0, intro.lastIndexOf(" ", 185)) + "…" : intro;
   return {
     slug: a.slug, href: `/pages/${a.slug}.html`, title: a.title, excerpt, category: cat.key, categoryLabel: cat.label,
     minutes: Math.max(2, Math.round(words / 200)), date: ld?.datePublished ?? SITE_LAUNCH,
