@@ -3,6 +3,7 @@ import type { MetadataRoute } from "next";
 import { PRODUCT_BY_SLUG } from "@/lib/products";
 import { ARTICLE_BY_SLUG } from "@/lib/article-registry";
 import { CORE_BY_SLUG } from "@/lib/pages";
+import { JOURNEY_BY_SLUG } from "@/lib/journeys";
 import { SITE_URL } from "@/lib/site";
 
 // All indexable routes: home + legal + every /pages/*.html (products, articles, Solutions,
@@ -16,7 +17,7 @@ import { SITE_URL } from "@/lib/site";
 //
 // ⛔ BUMP SITE_CHANGED when a release changes what EVERY page shows — the header, the footer,
 // the shared closing box. Do not bump it for a change to one page: that page's own date moves.
-const SITE_CHANGED = "2026-10-12"; // v0.7.0: Sign in, grouped footer, product screens on every guide
+const SITE_CHANGED = "2026-10-15"; // v0.9: Resources hub, contents list and related cards on every guide
 
 const later = (a: string, b?: string) => (b && b > a ? b : a);
 const modifiedOf = (jsonLd: object[]) =>
@@ -27,10 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...Object.values(PRODUCT_BY_SLUG).map((p) => ({ url: p.seo.canonical, lastModified: SITE_CHANGED })),
     ...Object.values(ARTICLE_BY_SLUG).map((a) => ({ url: a.seo.canonical, lastModified: later(SITE_CHANGED, modifiedOf(a.jsonLd)) })),
     ...Object.values(CORE_BY_SLUG).map((c) => ({ url: c.seo.canonical, lastModified: SITE_CHANGED })),
+    ...Object.values(JOURNEY_BY_SLUG).map((j) => ({ url: j.seo.canonical, lastModified: SITE_CHANGED })),
   ];
 
   return [
     { url: `${SITE_URL}/`, lastModified: SITE_CHANGED, changeFrequency: "weekly", priority: 1 },
+    { url: `${SITE_URL}/resources`, lastModified: SITE_CHANGED, changeFrequency: "weekly", priority: 0.9 },
     ...pages.map((p) => ({ ...p, changeFrequency: "monthly" as const, priority: 0.8 })),
     { url: `${SITE_URL}/privacy`, lastModified: "2026-10-01", changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms`, lastModified: "2026-10-01", changeFrequency: "yearly", priority: 0.3 },

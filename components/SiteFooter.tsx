@@ -46,6 +46,7 @@ export default function SiteFooter() {
                 { name: "About", href: "/pages/about.html" },
                 { name: "Contact", href: "/pages/contact.html" },
                 { name: "All solutions", href: "/pages/services.html" },
+                { name: "Guides", href: "/resources" },
                 { name: "Pricing", href: "/pricing" },
               ],
             },

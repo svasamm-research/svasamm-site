@@ -5,6 +5,7 @@ import { toRoute } from "@/lib/routes";
 import { HERO_SLUGS } from "@/lib/heroes";
 import type { Article, Block, ListItem } from "@/lib/types";
 import { ONE, GUIDE_SCREEN } from "@/lib/site";
+import { anchor, relatedCards } from "@/lib/resources";
 import ProductLogo from "./ProductLogo";
 
 const CONTACT = toRoute("Contact.dc.html");
@@ -39,7 +40,7 @@ function ListRow({ it }: { it: ListItem }) {
 
 function BlockView({ b }: { b: Block }) {
   const heading = b.h ? (
-    <h2 style={{ fontSize: 27, margin: "40px 0 14px" }}>{b.h}</h2>
+    <h2 id={anchor(b.h)} style={{ fontSize: 27, margin: "40px 0 14px", scrollMarginTop: 90 }}>{b.h}</h2>
   ) : null;
   let body: React.ReactNode = null;
   if (b.type === "p") {
@@ -154,6 +155,8 @@ export default function ArticleView({ article: a }: { article: Article }) {
   const hasHero = HERO_SLUGS.has(a.slug);
   const one = ONE[a.parentProduct];
   const screen = one && (GUIDE_SCREEN[a.slug] ?? one.page ?? one.card);
+  const contents = a.sections.map((b) => (b as { h?: string }).h).filter((h): h is string => !!h);
+  const next = relatedCards(a);
   return (
     <div>
       {/* Hero — brand-50 wash + (optional) framed photo */}
@@ -269,8 +272,8 @@ export default function ArticleView({ article: a }: { article: Article }) {
         </div>
       </section>
 
-      {/* Body */}
-      <section style={{ padding: "56px 0 40px" }}>
+      {/* Body — data-read: components/Tracker.tsx measures reading depth against it */}
+      <section data-read style={{ padding: "56px 0 40px" }}>
         <div className="sv-wrap" style={{ maxWidth: 800 }}>
           <p
             style={{
@@ -282,6 +285,16 @@ export default function ArticleView({ article: a }: { article: Article }) {
           >
             {a.intro}
           </p>
+          {contents.length >= 3 && (
+            <nav aria-label="In this post" className="sv-card" style={{ padding: "18px 22px", margin: "26px 0 6px" }}>
+              <div className="sv-eyebrow" style={{ marginBottom: 10 }}>In this post</div>
+              <ol style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 6, fontSize: 15, lineHeight: 1.45 }}>
+                {contents.map((h) => (
+                  <li key={h}><a href={`#${anchor(h)}`} style={{ color: "var(--sv-ink-2)" }}>{h}</a></li>
+                ))}
+              </ol>
+            </nav>
+          )}
           {a.sections.map((b, i) => (
             <BlockView key={i} b={b} />
           ))}
@@ -353,35 +366,24 @@ export default function ArticleView({ article: a }: { article: Article }) {
           <div style={{ marginBottom: 48 }}>
             <FaqAccordion faqs={a.faqs} />
           </div>
-          <div style={{ borderTop: "1px solid var(--sv-line)", paddingTop: 28 }}>
-            <div className="sv-eyebrow">Related</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              {a.related.map((r, i) => (
-                <Link
-                  key={i}
-                  href={toRoute(r.href)}
-                  style={{
-                    display: "flex",
-                    gap: 10,
-                    fontSize: 15.5,
-                    lineHeight: 1.45,
-                    color: "var(--sv-ink-2)",
-                  }}
-                >
-                  <Icon
-                    name="ph-arrow-right"
-                    size={16}
-                    style={{
-                      color: "var(--sv-brand)",
-                      flex: "none",
-                      marginTop: 3,
-                    }}
-                  />
-                  {r.title}
-                </Link>
-              ))}
+          {next.length > 0 && (
+            <div style={{ borderTop: "1px solid var(--sv-line)", paddingTop: 28 }}>
+              <div className="sv-eyebrow">Read next</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+                {next.map((c) => (
+                  <Link key={c.slug} href={c.href} className="sv-card sv-card-i" data-evt="Related Click" data-evt-loc={c.slug}
+                    style={{ padding: 20, display: "flex", flexDirection: "column", gap: 8, color: "var(--sv-ink)" }}>
+                    <span className="sv-eyebrow" style={{ margin: 0, fontSize: 11 }}>{c.categoryLabel}</span>
+                    <span style={{ fontWeight: 600, fontSize: 16, lineHeight: 1.35, flex: 1 }}>{c.title}</span>
+                    <span style={{ fontFamily: "var(--sv-mono)", fontSize: 12, color: "var(--sv-ink-3)" }}>{c.minutes} min read</span>
+                  </Link>
+                ))}
+              </div>
+              <Link href="/resources" style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 18, fontWeight: 500, fontSize: 14.5 }}>
+                All guides <Icon name="ph-arrow-right" size={14} />
+              </Link>
             </div>
-          </div>
+          )}
         </div>
       </section>
     </div>

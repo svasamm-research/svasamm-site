@@ -180,11 +180,15 @@ export default function ProductPage({ product: d }: { product: Product }) {
               gap: 18,
             }}
           >
-            {d.features.map((f, i) => (
-              <div
+            {d.features.map((f, i) => {
+              const Card = f.href ? Link : "div";
+              return (
+              <Card
                 key={i}
-                className="sv-card"
-                style={{ display: "flex", gap: 16, padding: 24 }}
+                href={f.href as string}
+                className={f.href ? "sv-card sv-card-i" : "sv-card"}
+                style={{ display: "flex", gap: 16, padding: 24, color: "var(--sv-ink)" }}
+                {...(f.href ? { "data-evt": "Capability Click", "data-evt-loc": f.href.split("#")[1] } : {})}
               >
                 <span className="sv-chip sv-chip-sm">
                   <Icon name={f.icon} size={19} />
@@ -197,9 +201,15 @@ export default function ProductPage({ product: d }: { product: Product }) {
                   >
                     {f.body}
                   </p>
+                  {f.href && (
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: 5, marginTop: 10, fontSize: 13.5, fontWeight: 500, color: "var(--sv-brand)" }}>
+                      See it, step by step <Icon name="ph-arrow-right" size={13} />
+                    </span>
+                  )}
                 </div>
-              </div>
-            ))}
+              </Card>
+              );
+            })}
           </div>
         </div>
       </section>

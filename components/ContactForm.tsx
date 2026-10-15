@@ -59,6 +59,7 @@ const errStyle = {
 
 // Contact form island. Client-side validation, then POST to the SES-backed endpoint.
 export default function ContactForm() {
+  const [started, setStarted] = useState(false);
   const [f, setF] = useState({
     name: "",
     email: "",
@@ -173,6 +174,13 @@ export default function ContactForm() {
       ) : (
         <form
           onSubmit={submit}
+          onFocus={() => {
+            // "Lead Form Started", once — the gap between this and "Lead Submitted" is the form's drop-off.
+            if (started) return;
+            setStarted(true);
+            window.plausible?.("Lead Form Started", { props: { site: "svasamm.com", page: location.pathname } });
+            window.gtag?.("event", "lead_form_started", { site: "svasamm.com" });
+          }}
           style={{ display: "flex", flexDirection: "column", gap: 17 }}
           noValidate
         >
