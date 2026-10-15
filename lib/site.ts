@@ -184,6 +184,8 @@ export const GUIDE_SCREEN: Record<string, Screen> = {
   "custom-milled-rice-cmr-process": SCREENS.millingoCmr,
   "cmr-out-turn-shortfall-moisture": SCREENS.millingoCmr,
   "punjab-custom-milling-policy-2026-27": SCREENS.millingoCmr,
+  "punjab-release-order-paddy-allotment": SCREENS.millingoGate,
+  "up-paddy-procurement-cmr-2026-27": SCREENS.millingoCmr,
   "rice-mill-software-west-bengal": SCREENS.millingoGate,
   "rice-mill-software-uttar-pradesh": SCREENS.millingoGate,
   "rice-mill-software-bihar": SCREENS.millingoGate,

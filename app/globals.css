@@ -256,3 +256,80 @@
   ) !important;
   box-shadow: var(--sv-sh-3);
 }
+
+/* WhatsApp click-to-chat (components/WhatsAppButton.tsx), ported from lucoze-website. */
+.wa-fab { position: fixed; right: 20px; bottom: 20px; z-index: 40; display: grid; place-items: center;
+  width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #fff;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, .4); transition: transform .15s ease, box-shadow .15s ease; }
+.wa-fab:hover, .wa-fab:focus-visible { transform: scale(1.06); box-shadow: 0 8px 26px rgba(37, 211, 102, .5); color: #fff; }
+@media (max-width: 640px) { .wa-fab { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
+@media (prefers-reduced-motion: reduce) { .wa-fab { transition: none; } }
+
+/* Resources hub chips (components/ResourcesGrid.tsx), after lucoze-website's blog index. */
+.sv-res-chip { border: 1px solid var(--sv-line-strong); background: var(--sv-surface); color: var(--sv-ink);
+  border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13.5px; cursor: pointer; white-space: nowrap; }
+.sv-res-chip:hover { border-color: var(--sv-brand); color: var(--sv-brand); }
+.sv-res-chip[data-on] { background: var(--sv-brand); border-color: var(--sv-brand); color: #fff; }
+
+/* Capability journeys (components/JourneyView.tsx): stages left, one held screen right. */
+.jv { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+.jv-steps { list-style: none; margin: 0; padding: 0; }
+.jv-step { display: grid; grid-template-columns: 40px 1fr; gap: 16px; min-height: 62vh; padding: 48px 0;
+  border-bottom: 1px solid var(--sv-line); opacity: .45; transition: opacity .25s ease; scroll-margin-top: 100px; }
+.jv-step[data-on] { opacity: 1; }
+.jv-num { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-weight: 600;
+  background: var(--sv-bg-subtle); border: 1px solid var(--sv-line); color: var(--sv-ink); }
+.jv-rule { margin: 0; padding: 10px 14px; border-left: 3px solid; background: var(--sv-bg-subtle);
+  font-size: 15px; line-height: 1.55; color: var(--sv-ink-2); }
+.jv-inline { display: none; }
+.jv-hold { position: sticky; top: 96px; padding-top: 48px; }
+@media (max-width: 900px) {
+  .jv { grid-template-columns: 1fr; gap: 0; }
+  .jv-hold { display: none; }
+  .jv-step { min-height: 0; opacity: 1; padding: 32px 0; }
+  .jv-inline { display: block; width: 100%; margin-top: 16px; border: 1px solid var(--sv-line); border-radius: var(--sv-r); }
+}
+@media (prefers-reduced-motion: reduce) { .jv-step { transition: none; } }
+
+/* Team cards (app/team/page.tsx): hover or focus turns a card over to a few words. */
+.tm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; margin-top: 10px; }
+.tm-card { perspective: 1200px; min-height: 300px; outline: none; color: var(--sv-ink); display: block; }
+.tm-inner { position: relative; width: 100%; height: 100%; min-height: 300px; transition: transform .6s ease; transform-style: preserve-3d; }
+.tm-card:hover .tm-inner, .tm-card:focus-visible .tm-inner { transform: rotateY(180deg); }
+.tm-face { position: absolute; inset: 0; padding: 24px; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.tm-back { transform: rotateY(180deg); background: var(--sv-brand-50); border-color: var(--sv-brand-100); }
+.tm-card:focus-visible .tm-face { box-shadow: 0 0 0 3px var(--sv-brand-100); }
+.tm-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 16px; flex: none; }
+.tm-initials { display: grid; place-items: center; background: var(--sv-brand-50); border: 1px solid var(--sv-brand-100);
+  color: var(--sv-brand); font-size: 42px; font-weight: 600; }
+.tm-dashed { border: 2px dashed var(--sv-brand); font-size: 34px; }
+.tm-role { font-family: var(--sv-mono); font-size: 13px; color: var(--sv-ink-3); }
+/* "You?" closes the grid as a full-width row instead of an orphan card. */
+.tm-you { grid-column: 1 / -1; min-height: 0; }
+.tm-you .tm-face { position: relative; flex-direction: row; justify-content: flex-start; gap: 24px; text-align: left; min-height: 0; padding: 22px 28px; }
+.tm-you .tm-photo { width: 96px; height: 96px; margin: 0; font-size: 24px; }
+@media (max-width: 560px) { .tm-you .tm-face { flex-direction: column; text-align: center; } }
+.tm-you:hover .tm-face { border-color: var(--sv-brand); }
+@media (prefers-reduced-motion: reduce) {
+  .tm-inner { transition: none; }
+  .tm-card:hover .tm-inner, .tm-card:focus-visible .tm-inner { transform: none; }
+  .tm-back { transform: none; opacity: 0; transition: opacity .2s; }
+  .tm-card:hover .tm-back, .tm-card:focus-visible .tm-back { opacity: 1; }
+}
+
+/* Tables read on both axes (15 Oct 2026, Mithun): the column titles sit on a tinted band in
+   the brand's ink, and each row's first cell (a <th scope="row">) is its title — bold, ink. */
+.sv-table thead th { background: var(--sv-brand-50); color: var(--sv-brand-700, #0b3579); font-weight: 600;
+  border-bottom: 2px solid var(--sv-brand-100); }
+.sv-table tbody th { text-align: left; font-family: inherit; font-size: 14.5px; font-weight: 600; letter-spacing: 0;
+  text-transform: none; color: var(--sv-ink); padding: 14px; border-bottom: 1px solid var(--sv-line);
+  background: var(--sv-bg-subtle); vertical-align: top; }
+.tm-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; padding-block: 28px; }
+.tm-fact-n { font-size: 30px; font-weight: 600; letter-spacing: -.02em; color: var(--sv-brand); }
+.tm-fact-l { font-family: var(--sv-mono); font-size: 12.5px; color: var(--sv-ink-3); text-transform: uppercase; letter-spacing: .06em; }
+.tm-day { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; counter-reset: d; }
+.tm-day li { position: relative; padding: 18px 0 0 0; border-top: 3px solid var(--sv-brand-100); }
+.tm-day li::before { counter-increment: d; content: counter(d); position: absolute; top: -15px; left: 0; width: 26px; height: 26px;
+  border-radius: 50%; background: var(--sv-brand); color: #fff; font-size: 13px; font-weight: 600; display: grid; place-items: center; }
+.tm-day-when { font-family: var(--sv-mono); font-size: 12px; color: var(--sv-brand); text-transform: uppercase; letter-spacing: .08em; }

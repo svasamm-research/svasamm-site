@@ -17,11 +17,13 @@ const one = HOME_PRODUCTS.filter((p) => ONE[p.id]);
 const also = HOME_PRODUCTS.filter((p) => !ONE[p.id]);
 
 // One card or row: an external product opens its own site in a new tab.
+// Counted as "Product Click" { location: product id } by components/Tracker.tsx.
 function ProductLink({ p, className, style, children }: { p: (typeof HOME_PRODUCTS)[number]; className?: string; style?: React.CSSProperties; children: React.ReactNode }) {
+  const evt = { "data-evt": "Product Click", "data-evt-loc": p.id };
   return p.external ? (
-    <a href={p.href} target="_blank" rel="noopener" className={className} style={style}>{children}</a>
+    <a href={p.href} target="_blank" rel="noopener" className={className} style={style} {...evt}>{children}</a>
   ) : (
-    <Link href={p.href} className={className} style={style}>{children}</Link>
+    <Link href={p.href} className={className} style={style} {...evt}>{children}</Link>
   );
 }
 
@@ -439,6 +441,25 @@ export default function Home() {
                 gap: 20,
               }}
             >
+              {/* The positioning leads, full width; the four properties under it. */}
+              <Link
+                href="/pages/customized-software-for-your-industry.html"
+                className="sv-card sv-card-i"
+                style={{ gridColumn: "1 / -1", padding: 26, display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap", color: "var(--sv-ink)" }}
+              >
+                <span className="sv-chip">
+                  <Icon name="ph-sliders-horizontal" size={22} />
+                </span>
+                <span style={{ flex: "1 1 360px" }}>
+                  <h3 style={{ margin: "0 0 6px", fontSize: 21 }}>Customized for your industry — not customizable</h3>
+                  <span className="sv-muted" style={{ fontSize: 15, lineHeight: 1.6 }}>
+                    A general tool leaves the fitting to you. Ours arrive already fitted — CMR, payroll, a CA firm&apos;s filings — and leave your firm only the choices that really differ.
+                  </span>
+                </span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontWeight: 500, fontSize: 14, color: "var(--sv-brand)" }}>
+                  Read more <Icon name="ph-arrow-right" size={14} />
+                </span>
+              </Link>
               {WHYS.map((w) => (
                 <Link
                   key={w.title}

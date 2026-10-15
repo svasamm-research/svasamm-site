@@ -3,6 +3,8 @@ import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
 import Analytics from "@/components/Analytics";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import Tracker from "@/components/Tracker";
 
 // Svasamm design system typography (IBM Plex). Exposed as CSS vars that both
 // nocturne.css (--font-plex) and svasamm.css (--sv-font, remapped in globals.css) use.
@@ -52,6 +54,8 @@ export default function RootLayout({
         <a className="sv-skip" href="#main">Skip to content</a>
         {children}
         <Analytics />
+        <WhatsAppButton />
+        <Tracker />
       </body>
     </html>
   );

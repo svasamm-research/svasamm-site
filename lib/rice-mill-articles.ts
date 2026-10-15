@@ -22,7 +22,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "The 90% rule",
-        text: "Under the new policy, millers who have delivered up to 90% of the rice from the paddy allotted to them in 2025-26 are eligible to receive fresh paddy for milling. Before, a mill had to finish last season's delivery first. The reason is storage: the state's 280 LMT of foodgrain storage was reported full, so rice from 2025-26 could not move out fast enough for mills to clear their dues on time.",
+        text: "Under the new policy, **millers who have delivered up to 90% of the rice from the paddy allotted to them in 2025-26 are eligible to receive fresh paddy** for milling. Before, a mill had to finish last season's delivery first. The reason is storage: the **state's 280 LMT of foodgrain storage was reported full**, so rice from 2025-26 could not move out fast enough for mills to clear their dues on time.",
       },
       {
         type: "table",
@@ -59,7 +59,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "Why a mill should know its own figure",
-        text: "Eligibility for fresh paddy now turns on one number: how much of last season's rice you have delivered. The portal will tell you that figure eventually. A mill that keeps its own book of every allotment and delivery knows it first — which lots are still pending, how many tonnes stand between it and 90%, and whether the rice that is ready can be delivered before the deadline.",
+        text: "**Eligibility for fresh paddy now turns on one number**: how much of last season's rice you have delivered. The portal will tell you that figure eventually. A mill that keeps its own book of every allotment and delivery knows it first — which lots are still pending, how many tonnes stand between it and 90%, and whether the rice that is ready can be delivered before the deadline.",
       },
       {
         type: "p",
@@ -99,6 +99,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
     related: [
       { title: "Custom Milled Rice (CMR): the complete process", href: "Guide-CMR.dc.html" },
       { title: "Why CMR out-turn drops below 67%", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
+      { title: "Release orders in Punjab", href: "/pages/punjab-release-order-paddy-allotment.html" },
       { title: "Millingo — rice-mill ERP", href: "Millingo.dc.html" },
     ],
     cta: {
@@ -165,7 +166,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "Why moisture quietly eats your out-turn",
-        text: "The prescribed moisture limit for paddy is 17%. But paddy — especially in a wet kharif — often arrives at 22–27% moisture, and has to be dried down to roughly 13% before it can be milled. That drying removes water weight the OTR never accounted for. The physics is simple: wetter paddy in means less rice weight out, and the out-turn slips from 67% toward the low 60s.",
+        text: "**The prescribed moisture limit for paddy is 17%**. But paddy — especially in a wet kharif — often arrives at 22–27% moisture, and has to be dried down to roughly 13% before it can be milled. That drying removes water weight the OTR never accounted for. The physics is simple: wetter paddy in means less rice weight out, and the out-turn slips from 67% toward the low 60s.",
       },
       {
         type: "note",
@@ -174,12 +175,12 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "How the gap becomes a dispute",
-        text: "This is where millers get hurt. The agency sees a number below the OTR and issues a shortfall notice. You know the real cause was moisture, not diversion — but “I dried wet paddy” is hard to prove after the fact without the intake readings, the drying record and the milled output tied together, batch by batch. A verbal explanation rarely wins against a spreadsheet that only shows the shortfall.",
+        text: "**This is where millers get hurt.** The agency sees a number below the OTR and issues a shortfall notice. You know the real cause was moisture, not diversion — but “I dried wet paddy” is hard to prove after the fact without the intake readings, the drying record and the milled output tied together, batch by batch. A verbal explanation rarely wins against a spreadsheet that only shows the shortfall.",
       },
       {
         type: "p",
         h: "The fix isn't more milling — it's evidence",
-        text: "You can't change the physics of wet paddy. What you can change is whether you can prove what happened. The millers who defend shortfalls successfully are the ones who can show, per lot: the moisture at intake, what it was dried to before milling, the paddy-in and rice-out for that batch, and the resulting out-turn next to the norm. With that trail, a shortfall stops being an accusation and becomes an accounting fact you can stand behind.",
+        text: "You can't change the physics of wet paddy. **What you can change is whether you can prove what happened.** The millers who defend shortfalls successfully are the ones who can show, per lot: the moisture at intake, what it was dried to before milling, the paddy-in and rice-out for that batch, and the resulting out-turn next to the norm. With that trail, a shortfall stops being an accusation and becomes an accounting fact you can stand behind.",
       },
       {
         type: "list",
@@ -339,6 +340,238 @@ export const RICE_MILL_ARTICLES: Article[] = [
               text: "Keep a defensible lot-level record — intake moisture, drying and out-turn against the norm — so a shortfall is documented and explainable rather than assumed to be diversion.",
             },
           },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "up-paddy-procurement-cmr-2026-27",
+    type: "guide",
+    parentProduct: "millingo",
+    eyebrow: "Uttar Pradesh · KMS 2026-27",
+    title: "Uttar Pradesh Paddy Procurement and CMR 2026-27: Dates, Agencies and What the Mill Must Keep",
+    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 October 2026",
+    intro:
+      "Uttar Pradesh's cabinet approved the paddy procurement policy for Kharif Marketing Season 2026-27 in early October, with buying in western UP opening this month and eastern UP from 1 November. For a mill doing custom milling, the season is set by four facts — the price, the windows, the agencies and the bags — and decided by one record: how much of the state's paddy it holds, and how much rice it still owes. Here is what has been announced, with sources, and what is not yet published.",
+    sections: [
+      {
+        type: "table",
+        h: "What has been announced for 2026-27",
+        cols: ["", "2026-27", "Source"],
+        rows: [
+          ["Paddy MSP — common / Grade A", "₹2,441 / ₹2,461 a quintal (₹72 more than 2025-26)", "Union cabinet (CCEA), May 2026"],
+          ["Buying in western UP", "From mid-October 2026 (reported as 12 and as 15 Oct) to 15 Feb 2027", "Kisan India, UNI, 9 Oct 2026"],
+          ["Buying in eastern UP", "1 Nov 2026 to 28 Feb 2027", "Kisan India, UNI, 9 Oct 2026"],
+          ["Target", "65 lakh tonnes, at about 4,500 centres (62 lakh tonnes bought last season)", "Kisan India 9 Oct; Whalesbook 13 Oct 2026"],
+          ["Buying agencies", "PCF, PCU, UPSS, Mandi Parishad, FPOs, FPCs, NCCF and NAFED", "Kisan India, 9 Oct 2026"],
+          ["Farmer payment", "Through PFMS, reported within 48 hours; AgriStack Farmer ID avoids a second registration", "Whalesbook, 13 Oct 2026"],
+          ["Bags", "₹200 crore sanctioned for 40,000 bales of jute bags for procurement and CMR", "Patrika, 23 Aug 2026"],
+        ],
+      },
+      {
+        type: "note",
+        text: "Two figures disagree in the reporting: the western UP start date (12 or 15 October) and the target (65 lakh tonnes in state reports, a lower central figure elsewhere). **The government order on fcs.up.gov.in is the authority** — read it before acting on either.",
+      },
+      {
+        type: "list",
+        h: "Not yet published for 2026-27 (14 October 2026)",
+        items: [
+          { b: "The milling charge and delivery incentive", t: "— in 2025-26 a reported ₹35 a quintal for rice at the named depot within 15 days, ₹30 within 25 days (one secondary source)." },
+          { b: "The out-turn, FRK and delivery depot", t: "— which depot, FCI's or the state's, and the blending terms for fortified rice." },
+          { b: "Security from millers and the CMR deadline", t: "— the bank guarantee or other security, and the last date for delivery." },
+        ],
+      },
+      {
+        type: "p",
+        h: "What changed from 2025-26",
+        text: "Last season's policy, approved on 26 September 2025, bought at ₹2,369 and ₹2,389 through six agencies including FCI and the Food Department's own marketing wing, at about 3,300 centres against a 60 lakh tonne target. This season the list is eight agencies, with farmer producer organisations, NCCF and NAFED in and FCI and the marketing wing not named; the centres rise to about 4,500. **More agencies means a mill may hold the state's paddy for more than one of them in the same season** — each with its own account to settle.",
+      },
+      {
+        type: "list",
+        h: "What a UP mill should keep, agency by agency",
+        items: [
+          { b: "Paddy received per agency and per centre", t: "— each lot's weight and moisture at the mill gate, against what the centre dispatched." },
+          { b: "Rice owed per agency", t: "— paddy received times the out-turn the order fixes, less rice already accepted at the depot." },
+          { b: "Bags in and bags out", t: "— the state's jute bags are counted separately from the mill's own stock." },
+          { b: "Two seasons apart", t: "— 2025-26 rice still owed kept separate from 2026-27 paddy arriving." },
+          { b: "Delivery dates", t: "— if the 2025-26 pattern holds, the day a lot reaches the depot decides the incentive it earns." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Where the portal stops and your books start",
+        text: "Farmer registration and procurement run through fcs.up.gov.in, and payments through PFMS. That is the government's record of what it bought. The mill's own record is what it holds and owes — per agency, per season, per bag — and that is the record an officer asks for at the end of the season.",
+      },
+    ],
+    faqs: [
+      { q: "When does paddy procurement start in UP in 2026-27?", a: "In western UP from mid-October 2026 (reported as 12 and 15 October) to 15 February 2027; in eastern UP from 1 November 2026 to 28 February 2027." },
+      { q: "What is the paddy MSP for 2026-27?", a: "₹2,441 a quintal for common paddy and ₹2,461 for Grade A, ₹72 more than in 2025-26." },
+      { q: "Which agencies buy paddy in UP in 2026-27?", a: "PCF, PCU, UPSS, Mandi Parishad, farmer producer organisations and companies, NCCF and NAFED, as reported on 9 October 2026." },
+      { q: "What is the milling charge for CMR in UP for 2026-27?", a: "Not published as of 14 October 2026. Read the government order on fcs.up.gov.in." },
+    ],
+    related: [
+      { title: "Rice-mill software for Uttar Pradesh", href: "/pages/rice-mill-software-uttar-pradesh.html" },
+      { title: "Custom Milled Rice (CMR): the complete process", href: "Guide-CMR.dc.html" },
+      { title: "Millingo — rice-mill ERP", href: "Millingo.dc.html" },
+    ],
+    cta: {
+      title: "What does your mill owe, agency by agency?",
+      body: "Send last season's paddy received and rice delivered per agency — we will show you your position and how Millingo keeps it current as this season's paddy arrives. Free, no obligation.",
+      productHref: "Millingo.dc.html",
+      productLabel: "Explore Millingo",
+    },
+    seo: {
+      metaTitle: "UP Paddy Procurement & CMR 2026-27: Dates, Agencies, MSP | Millingo",
+      metaDescription:
+        "Uttar Pradesh paddy procurement 2026-27: MSP ₹2,441, western and eastern UP windows, the eight agencies, jute bags — and what a CMR mill should keep, agency by agency.",
+      canonical: "https://svasamm.com/pages/up-paddy-procurement-cmr-2026-27.html",
+      ogType: "article",
+      ogTitle: "UP paddy procurement and CMR 2026-27, for rice millers",
+      ogDescription:
+        "Dates, agencies, MSP and bags for UP's 2026-27 season, what is not yet published, and the records a CMR mill should keep.",
+    },
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Uttar Pradesh Paddy Procurement and CMR 2026-27: Dates, Agencies and What the Mill Must Keep",
+        description:
+          "UP's 2026-27 paddy procurement — MSP, windows, agencies, bags — what is not yet published, and the records a CMR mill should keep.",
+        author: {
+          "@type": "Person",
+          name: "Mithun K. Singh",
+          jobTitle: "Founder",
+          worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
+        },
+        publisher: { "@type": "Organization", name: "Svasamm" },
+        datePublished: "2026-10-14",
+        dateModified: "2026-10-14",
+        mainEntityOfPage: "https://svasamm.com/pages/up-paddy-procurement-cmr-2026-27.html",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" },
+          { "@type": "ListItem", position: 2, name: "Millingo - Rice Mill ERP", item: "https://svasamm.com/pages/millingo.html" },
+          { "@type": "ListItem", position: 3, name: "UP paddy procurement and CMR 2026-27", item: "https://svasamm.com/pages/up-paddy-procurement-cmr-2026-27.html" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "punjab-release-order-paddy-allotment",
+    type: "guide",
+    parentProduct: "millingo",
+    eyebrow: "Punjab · KMS 2026-27",
+    title: "Release Orders in Punjab: How Paddy Reaches a Mill Beyond Its Own Mandi",
+    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 October 2026",
+    intro:
+      "A Punjab rice mill gets government paddy two ways: its own linked share from the mandis it is attached to, and extra paddy lifted under a release order — the department's permission to take paddy from somewhere else. With 2025-26 rice still being delivered and the 2026-27 crop arriving, which of the two a mill is working on, and against which season, is the record that decides its next allotment. Here is how release orders have worked, with each rule dated, because the 2026-27 terms are not yet public.",
+    sections: [
+      {
+        type: "p",
+        h: "Linked paddy and release-order paddy",
+        text: "Each season a mill is linked online to mandis, and the paddy bought there by the state agencies — Pungrain, Markfed, Punsup and the Punjab State Warehousing Corporation — is stored at the mill for custom milling. That linked share is the mill's own entitlement. **A release order (RO) lets a mill lift further paddy, often from another mandi or district, for a per-tonne fee.** District officers are expected to supply mills in their own area first and only then consider release orders that send paddy to mills elsewhere.",
+      },
+      {
+        type: "table",
+        h: "What has been reported, year by year",
+        cols: ["Season", "What changed", "Source"],
+        rows: [
+          ["2018-19", "Free paddy decided by last season's performance; 5% bank guarantee on the paddy's cost; small mills up to 5,000 t exempt from the guarantee", "The Tribune, 31 Aug 2018; Hindustan Times, 26 Sep 2018"],
+          ["2020-21", "Allotment, RO applications, the RO fee and security deposits moved onto the online portal", "Global Agriculture report"],
+          ["2024-25", "Mills linked to mandis online and paddy allotted under the RO scheme; RO fee cut from ₹75 to ₹15 a tonne; a lien on land records replaced the bank guarantee for storage above 5,000 MT", "The Tribune, 9 and 22 Oct 2024; PTI, 5 Oct 2024"],
+          ["2025-26", "After the floods, ROs taking Majha's paddy (Amritsar, Tarn Taran, Gurdaspur, Pathankot) to other districts were stopped", "The Tribune, 27 Oct 2025"],
+          ["2026-27", "Policy of 5 Sep 2026: the state is one unit for milling and delivery; a mill that delivered 90% of its 2025-26 rice is eligible for fresh paddy", "Punjab policy memo, 5 Sep 2026; The Tribune, 5 Sep 2026"],
+        ],
+      },
+      {
+        type: "note",
+        text: "The 2026-27 release-order fee, the free-paddy formula and the security per tonne **had not been published when this was written (14 October 2026)**. The figures above are from the seasons named. Read the current notification on the Anaaj Kharid portal before acting on any of them.",
+      },
+      {
+        type: "p",
+        h: "Why 2026-27 is a tight season for allotment",
+        text: "On 2 October 2026 the Chief Minister wrote to the Union food minister that **only 99.50 of 105.64 LMT of 2025-26 rice — 94% — had been delivered by 29 September**, that about 17 LMT of 2026-27 wheat was still lying in rice mills and mandi yards, and that millers might not come forward for allotment and storage of the new paddy. Peak arrivals were expected around 10 October. In a season like this, **the mills that can show their delivery position quickly are the ones the department can rely on**.",
+      },
+      {
+        type: "list",
+        h: "What a mill should keep per release order",
+        items: [
+          { b: "The RO itself", t: "— its number, date, the agency, the mandi or district the paddy comes from, and the quantity." },
+          { b: "Lifting against it", t: "— each lorry's weight at the mill, so what was lifted can be set against what was ordered." },
+          { b: "Linked and RO paddy kept apart", t: "— the same agency, different terms; mixing them hides which quantity is behind." },
+          { b: "Two seasons side by side", t: "— 2025-26 rice still owed, counted separately from 2026-27 paddy arriving, because the 90% line is measured on the old season." },
+          { b: "Fees and security", t: "— the RO fee paid and the security or lien behind the paddy stored." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Where the portal stops and your books start",
+        text: "Registration, FRK letters, allotment and RO applications run through anaajkharid.in, and grain movement is tracked through its apps. The portal is the government's record. A mill also needs its own: which lorry carried which RO's paddy, how much of each season's rice is still owed, and what milling those lots actually yielded — so it knows where it stands before an officer tells it.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is a release order (RO) in Punjab paddy allotment?",
+        a: "The food department's order letting a mill lift government paddy beyond its own linked share, often from another mandi or district, for a per-tonne fee. Since 2020-21 RO applications and fees have run through the Anaaj Kharid portal.",
+      },
+      {
+        q: "What is the release-order fee in Punjab?",
+        a: "It was cut from ₹75 to ₹15 a tonne in October 2024. The 2026-27 fee had not been published on 14 October 2026; check the current notification.",
+      },
+      {
+        q: "Can a Punjab mill get fresh paddy in 2026-27 with 2025-26 rice still pending?",
+        a: "Yes, if it has delivered 90% of the rice due from its 2025-26 paddy — the rule in the policy of 5 September 2026.",
+      },
+    ],
+    related: [
+      { title: "Punjab Custom Milling Policy 2026-27: what changed", href: "/pages/punjab-custom-milling-policy-2026-27.html" },
+      { title: "Custom Milled Rice (CMR): the complete process", href: "Guide-CMR.dc.html" },
+      { title: "Millingo — rice-mill ERP", href: "Millingo.dc.html" },
+    ],
+    cta: {
+      title: "Where does your mill stand, season by season?",
+      body: "Send your linked and RO paddy and your 2025-26 deliveries — we will show you your position against the 90% line, and how Millingo keeps it current lorry by lorry. Free, no obligation.",
+      productHref: "Millingo.dc.html",
+      productLabel: "Explore Millingo",
+    },
+    seo: {
+      metaTitle: "Punjab Release Order (RO) Paddy Allotment for Millers | Millingo",
+      metaDescription:
+        "How Punjab allots paddy to rice mills under release orders: linked vs RO paddy, the fee, security, what changed each season to 2026-27, and what a mill should record.",
+      canonical: "https://svasamm.com/pages/punjab-release-order-paddy-allotment.html",
+      ogType: "article",
+      ogTitle: "Release orders in Punjab: how paddy reaches a mill",
+      ogDescription:
+        "Linked paddy, release-order paddy, the fee and security — dated season by season — and what a Punjab mill should keep per RO.",
+    },
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Release Orders in Punjab: How Paddy Reaches a Mill Beyond Its Own Mandi",
+        description:
+          "How Punjab allots paddy to rice mills under release orders, dated season by season to 2026-27, and what a mill should record per RO.",
+        author: {
+          "@type": "Person",
+          name: "Mithun K. Singh",
+          jobTitle: "Founder",
+          worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
+        },
+        publisher: { "@type": "Organization", name: "Svasamm" },
+        datePublished: "2026-10-14",
+        dateModified: "2026-10-14",
+        mainEntityOfPage: "https://svasamm.com/pages/punjab-release-order-paddy-allotment.html",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" },
+          { "@type": "ListItem", position: 2, name: "Millingo - Rice Mill ERP", item: "https://svasamm.com/pages/millingo.html" },
+          { "@type": "ListItem", position: 3, name: "Release orders in Punjab", item: "https://svasamm.com/pages/punjab-release-order-paddy-allotment.html" },
         ],
       },
     ],
