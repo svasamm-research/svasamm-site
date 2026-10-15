@@ -1016,7 +1016,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "3. Purpose-built rice-mill ERP. Modelled on the actual workflow: Sauda → gate receipt → QC → milling batch → sales/CMR delivery → reconciliation. This fits mills that live and die by recovery and CMR compliance. Millingo sits here.",
+        text: "3. Purpose-built rice-mill ERP. Modelled on the actual workflow: purchase order → gate pass and weighment → QC bench → milling batch → sales or CMR delivery → reconciliation. This fits mills that live and die by recovery and CMR compliance. Millingo sits here.",
       },
       {
         type: "list",
@@ -1024,7 +1024,7 @@ export const ARTICLES: Article[] = [
         items: [
           {
             b: "CMR / levy procurement —",
-            t: "levy memos, camp pickups, CMR delivery, release orders, and the 7.1 out-turn reconciliation.",
+            t: "release orders, camp picks, CMR delivery to the depot, and the 7.1 out-turn reconciliation.",
           },
           {
             b: "Paddy QC with butta/moisture deductions —",
@@ -1363,11 +1363,11 @@ export const ARTICLES: Article[] = [
           },
           {
             b: "Professional —",
-            t: "full operations: financials/reports, weighbridge, gunny-bag accounting, broker/commission, quality slabs, by-product P&L.",
+            t: "full operations: the books and GST returns, weighbridge, the QC bench and butta, gunny-bag accounting, by-products valued as stock.",
           },
           {
             b: "Enterprise —",
-            t: "government CMR business: levy/CMR procurement and sales, out-turn tracking, statutory returns, multi-unit.",
+            t: "government CMR business: levy procurement and CMR delivery, out-turn tracking, fortified rice, shortfall and report 7.1.",
           },
         ],
       },
@@ -1515,7 +1515,7 @@ export const ARTICLES: Article[] = [
         items: [
           {
             b: "WB e-Paddy / CMR workflow —",
-            t: "levy memos, camp pickups, gate receipts, CMR delivery and the out-turn (7.1) reconciliation, mapped to WBECSC/BENFED procedures.",
+            t: "release orders, camp picks, gate passes, CMR delivery and the out-turn (7.1) reconciliation, built to West Bengal’s rules first.",
           },
           {
             b: 'Local QC and "butta" norms —',
@@ -2282,7 +2282,7 @@ export const ARTICLES: Article[] = [
             "Yes (butta/moisture)",
             "Stated (lab testing)",
           ],
-          ["Multi-location / multi-unit", "Yes (Enterprise)", "Stated"],
+          ["Multi-location / multi-unit", "Not yet — one mill per account", "Stated"],
           [
             "Government CMR / levy cycle",
             "Yes (core focus)",
@@ -2448,7 +2448,7 @@ export const ARTICLES: Article[] = [
             "Stated",
           ],
           ["Weighbridge / gate integration", "Yes", "Stated"],
-          ["Multi-plant / multi-unit", "Yes (Enterprise)", "Stated"],
+          ["Multi-plant / multi-unit", "Not yet — one mill per account", "Stated"],
           ["Contract-labour / wage tracking", "Not a core focus", "Stated"],
           [
             "Government CMR / levy cycle & 7.1 reconciliation",

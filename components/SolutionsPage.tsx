@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Icon } from "./Icon";
 import { HOME_PRODUCTS, type HomeProduct } from "@/lib/home";
 import { toRoute } from "@/lib/routes";
+import { ONE } from "@/lib/site";
+import ProductLogo from "./ProductLogo";
 
 const CONTACT = toRoute("Contact.dc.html");
 const vertical = HOME_PRODUCTS.filter((p) => p.kind === "vertical");
@@ -130,11 +132,15 @@ export default function SolutionsPage() {
                     marginBottom: 16,
                   }}
                 >
-                  <span className="sv-chip">
-                    <Icon name={p.icon} size={22} />
-                  </span>
+                  {!ONE[p.id] && (
+                    <span className="sv-chip">
+                      <Icon name={p.icon} size={22} />
+                    </span>
+                  )}
                   <div>
-                    <h2 style={{ fontSize: 21, margin: "0 0 5px" }}>{p.name}</h2>
+                    <h2 style={{ fontSize: 21, margin: "0 0 8px", lineHeight: ONE[p.id] ? 0 : undefined }}>
+                      {ONE[p.id] ? <ProductLogo id={p.id} size={21} /> : p.name}
+                    </h2>
                     <span className="sv-tag sv-tag-brand">{p.badge}</span>
                   </div>
                 </div>
@@ -199,12 +205,16 @@ export default function SolutionsPage() {
                     marginBottom: 18,
                   }}
                 >
-                  <span className="sv-chip">
-                    <Icon name={p.icon} size={22} />
-                  </span>
+                  {ONE[p.id] ? (
+                    <h2 style={{ margin: 0, lineHeight: 0 }}><ProductLogo id={p.id} size={19} /></h2>
+                  ) : (
+                    <span className="sv-chip">
+                      <Icon name={p.icon} size={22} />
+                    </span>
+                  )}
                   <span className="sv-tag sv-tag-outline">Platform</span>
                 </div>
-                <h2 style={{ fontSize: 19, margin: "0 0 8px" }}>{p.name}</h2>
+                {!ONE[p.id] && <h2 style={{ fontSize: 19, margin: "0 0 8px" }}>{p.name}</h2>}
                 <p
                   className="sv-muted"
                   style={{
