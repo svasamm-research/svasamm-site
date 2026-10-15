@@ -16,6 +16,7 @@ import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
 const REGION = process.env.SES_REGION || "us-east-1";
 const MAIL_FROM = process.env.MAIL_FROM || "no-reply@svasamm.com";
 const MAIL_TO = process.env.MAIL_TO || "query@svasamm.com";
+const MAIL_TO_JOBS = process.env.MAIL_TO_JOBS || "work@svasamm.com";
 const ALLOW_ORIGIN = (process.env.ALLOW_ORIGIN || "https://svasamm.com").split(",").map((s) => s.trim());
 
 const ses = new SESv2Client({ region: REGION });
@@ -54,6 +55,8 @@ export const handler = async (event) => {
 
   // Honeypot: real users leave `website` empty; bots fill every field. Pretend success, send nothing.
   if (clip(data.website, 200)) return reply(200, { ok: true }, origin);
+
+  if (data.kind === "job") return apply(data, origin);
 
   const name = clip(data.name, MAX.name);
   const email = clip(data.email, MAX.email);
@@ -115,3 +118,76 @@ export const handler = async (event) => {
     return reply(502, { ok: false, error: "Could not send. Please email query@svasamm.com." }, origin);
   }
 };
+
+// ── Job applications (15 Oct 2026) ───────────────────────────────────────────
+// svasamm.com/jobs posts { kind: "job", name, email, phone, position, note, resume: { name, data } }
+// with the résumé base64-encoded. It is mailed to MAIL_TO_JOBS as an attachment (raw MIME,
+// which needs ses:SendRawEmail — deploy.sh grants it). The request limit in front of the Lambda
+// is about 6 MB, so the file is capped at 3.5 MB (≈ 4.7 MB once base64-encoded).
+const RESUME_MAX = 3.5 * 1024 * 1024;
+const RESUME_TYPES = {
+  pdf: "application/pdf",
+  doc: "application/msword",
+  docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+};
+// The file's first bytes, not its name, decide what it is: %PDF, the old Word header, or a zip (docx).
+const MAGIC = { pdf: [0x25, 0x50, 0x44, 0x46], doc: [0xd0, 0xcf, 0x11, 0xe0], docx: [0x50, 0x4b, 0x03, 0x04] };
+
+async function apply(data, origin) {
+  const name = clip(data.name, MAX.name);
+  const email = clip(data.email, MAX.email);
+  const phone = clip(data.phone, MAX.phone);
+  const position = clip(data.position, 120);
+  const note = clip(data.note, 2000);
+  const file = data.resume || {};
+  const ext = String(file.name || "").toLowerCase().split(".").pop();
+  if (!name || !validEmail(email) || phone.replace(/\D/g, "").length < 8 || !position) {
+    return reply(422, { ok: false, error: "Missing or invalid fields" }, origin);
+  }
+  if (!RESUME_TYPES[ext] || typeof file.data !== "string") {
+    return reply(422, { ok: false, error: "Attach a résumé as PDF, DOC or DOCX." }, origin);
+  }
+  const bytes = Buffer.from(file.data, "base64");
+  if (!bytes.length || bytes.length > RESUME_MAX) {
+    return reply(422, { ok: false, error: "The résumé must be under 3.5 MB." }, origin);
+  }
+  if (!MAGIC[ext].every((b, i) => bytes[i] === b)) {
+    return reply(422, { ok: false, error: "That file is not a real PDF, DOC or DOCX." }, origin);
+  }
+
+  const safeFile = `${name.replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, "") || "applicant"}-resume.${ext}`;
+  const subject = `Application — ${position} — ${name}`;
+  const text = [`Position: ${position}`, `Name:     ${name}`, `Email:    ${email}`, `Phone:    ${phone}`, ...(note ? ["", note] : [])].join("\n");
+  const boundary = `sv-${Date.now().toString(36)}`;
+  const enc = (v) => `=?UTF-8?B?${Buffer.from(v).toString("base64")}?=`;
+  const mime = [
+    `From: ${MAIL_FROM}`,
+    `To: ${MAIL_TO_JOBS}`,
+    `Reply-To: ${email}`,
+    `Subject: ${enc(subject)}`,
+    "MIME-Version: 1.0",
+    `Content-Type: multipart/mixed; boundary="${boundary}"`,
+    "",
+    `--${boundary}`,
+    "Content-Type: text/plain; charset=UTF-8",
+    "Content-Transfer-Encoding: base64",
+    "",
+    Buffer.from(text).toString("base64").replace(/.{76}/g, "$&\r\n"),
+    `--${boundary}`,
+    `Content-Type: ${RESUME_TYPES[ext]}; name="${safeFile}"`,
+    `Content-Disposition: attachment; filename="${safeFile}"`,
+    "Content-Transfer-Encoding: base64",
+    "",
+    bytes.toString("base64").replace(/.{76}/g, "$&\r\n"),
+    `--${boundary}--`,
+    "",
+  ].join("\r\n");
+
+  try {
+    await ses.send(new SendEmailCommand({ Content: { Raw: { Data: Buffer.from(mime) } } }));
+    return reply(200, { ok: true }, origin);
+  } catch (err) {
+    console.error("SES raw send failed:", err);
+    return reply(502, { ok: false, error: "Could not send. Please email work@svasamm.com." }, origin);
+  }
+}

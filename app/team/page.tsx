@@ -1,25 +1,21 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import JsonLd from "@/components/JsonLd";
+import { Icon } from "@/components/Icon";
 import { BUSINESS } from "@/lib/site";
+import { TEAM, WORK } from "@/lib/team";
+import { JOBS } from "@/lib/jobs";
 
-// The people behind Svasamm (15 Oct 2026). Names and roles as Mithun gave them; no bios
-// until each person writes their own. A person without a photo shows their initials —
-// add `photo` (a square image in public/team/) when one arrives.
-const TEAM: { name: string; role: string; photo?: string }[] = [
-  { name: "Mithun Kumar Singh", role: "Co-Founder", photo: "/team/mithun-kumar-singh.webp" },
-  { name: "Amrita Kushwaha", role: "Co-Founder" },
-  { name: "Manish Sharma", role: "Sales Manager", photo: "/team/manish-sharma.webp" },
-  { name: "Shreyosi Mondal", role: "QA Engineer" },
-  { name: "Aman Singh", role: "Developer" },
-  { name: "Tanya Malhotra", role: "HR Consultant" },
-];
+// The people behind Svasamm (15 Oct 2026): how we work, then a card per person that turns
+// over on hover or focus to show a few words about them, and a last "You?" card to /jobs.
+// The turn is CSS only (.tm-* in globals.css); with reduced motion it fades instead.
 const initials = (n: string) => n.split(" ").filter(Boolean).map((w) => w[0]).slice(0, 2).join("");
 
 export const metadata: Metadata = {
   title: { absolute: "Our Team — the People Behind Svasamm | Svasamm" },
-  description: "The people who build, test and sell Svasamm's software for rice mills, CA firms, hospitals and payroll — from Hooghly, West Bengal.",
+  description: "The people who build, test and sell Svasamm's software for rice mills, CA firms, hospitals and payroll — and how we work, in our office in Hooghly, West Bengal.",
   alternates: { canonical: "/team" },
   robots: { index: true, follow: true },
 };
@@ -39,28 +35,59 @@ export default function Team() {
           <div className="sv-wrap" style={{ padding: "64px 24px 48px", maxWidth: 900 }}>
             <div className="sv-eyebrow">Our team</div>
             <h1 style={{ margin: "0 0 14px" }}>The people behind Svasamm</h1>
-            <p className="sv-muted" style={{ fontSize: 18, lineHeight: 1.6, margin: 0, maxWidth: "52ch" }}>
-              A small team in Hooghly, West Bengal, building software for the way Indian businesses actually work.
-            </p>
+            <p className="sv-muted" style={{ fontSize: 18, lineHeight: 1.6, margin: 0, maxWidth: "56ch" }}>{WORK.intro}</p>
           </div>
         </section>
-        <section style={{ padding: "56px 0 88px" }}>
-          <div className="sv-wrap" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 24, maxWidth: 960 }}>
-            {TEAM.map((t) => (
-              <div key={t.name} className="sv-card" style={{ padding: 24, textAlign: "center" }}>
-                {t.photo ? (
-                  <img src={t.photo} alt={t.name} width={160} height={160} loading="lazy"
-                    style={{ width: 160, height: 160, borderRadius: "50%", objectFit: "cover", margin: "0 auto 18px", display: "block" }} />
-                ) : (
-                  <span aria-hidden="true" style={{ width: 160, height: 160, borderRadius: "50%", margin: "0 auto 18px", display: "grid", placeItems: "center",
-                    background: "var(--sv-brand-50)", border: "1px solid var(--sv-brand-100)", color: "var(--sv-brand)", fontSize: 44, fontWeight: 600 }}>
-                    {initials(t.name)}
+
+        <section style={{ padding: "56px 0 24px" }}>
+          <div className="sv-wrap" style={{ maxWidth: 960 }}>
+            <div className="sv-eyebrow">How we work</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))", gap: 16, marginTop: 10 }}>
+              {WORK.points.map((p) => (
+                <div key={p.title} className="sv-card" style={{ padding: 22 }}>
+                  <h2 style={{ fontSize: 17, margin: "0 0 8px" }}>{p.title}</h2>
+                  <p className="sv-muted" style={{ fontSize: 14.5, lineHeight: 1.6, margin: 0 }}>{p.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section style={{ padding: "40px 0 88px" }}>
+          <div className="sv-wrap" style={{ maxWidth: 960 }}>
+            <div className="sv-eyebrow">The team</div>
+            <div className="tm-grid">
+              {TEAM.map((t) => (
+                <div key={t.name} className="tm-card" tabIndex={0} aria-label={`${t.name}, ${t.role}. ${t.words}`}>
+                  <div className="tm-inner">
+                    <div className="tm-face sv-card">
+                      {t.photo ? (
+                        <img src={t.photo} alt="" width={150} height={150} loading="lazy" className="tm-photo" />
+                      ) : (
+                        <span aria-hidden="true" className="tm-photo tm-initials">{initials(t.name)}</span>
+                      )}
+                      <h2 style={{ fontSize: 19, margin: "0 0 4px" }}>{t.name}</h2>
+                      <div className="tm-role">{t.role}</div>
+                    </div>
+                    <div className="tm-face tm-back sv-card" aria-hidden="true">
+                      <p style={{ fontSize: 16, lineHeight: 1.6, margin: "0 0 14px" }}>“{t.words}”</p>
+                      <div style={{ fontWeight: 600 }}>{t.name}</div>
+                      <div className="tm-role">{t.role}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              <Link href="/jobs" className="tm-card tm-you" data-evt="Team You Click">
+                <div className="tm-face sv-card" style={{ position: "relative" }}>
+                  <span aria-hidden="true" className="tm-photo tm-initials tm-dashed">You?</span>
+                  <h2 style={{ fontSize: 19, margin: "0 0 4px" }}>Your name here</h2>
+                  <div className="tm-role">{JOBS.length} open {JOBS.length === 1 ? "role" : "roles"}</div>
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 12, fontWeight: 500, color: "var(--sv-brand)" }}>
+                    See the openings <Icon name="ph-arrow-right" size={15} />
                   </span>
-                )}
-                <h2 style={{ fontSize: 19, margin: "0 0 4px" }}>{t.name}</h2>
-                <div style={{ fontFamily: "var(--sv-mono)", fontSize: 13, color: "var(--sv-ink-3)" }}>{t.role}</div>
-              </div>
-            ))}
+                </div>
+              </Link>
+            </div>
           </div>
         </section>
       </main>

@@ -35,6 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/`, lastModified: SITE_CHANGED, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/resources`, lastModified: SITE_CHANGED, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/team`, lastModified: SITE_CHANGED, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_URL}/jobs`, lastModified: SITE_CHANGED, changeFrequency: "weekly", priority: 0.6 },
     ...pages.map((p) => ({ ...p, changeFrequency: "monthly" as const, priority: 0.8 })),
     { url: `${SITE_URL}/privacy`, lastModified: "2026-10-01", changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms`, lastModified: "2026-10-01", changeFrequency: "yearly", priority: 0.3 },

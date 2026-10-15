@@ -44,7 +44,7 @@ const SOLUTION_BY_ID: Record<string, string> = {
 // (Function URLs are blocked by the AWS-org guardrail, so we front the Lambda with API Gateway.)
 // While empty, submit falls back to an error state pointing at query@svasamm.com (never a silent
 // fake-success). Public URL — safe to commit; the browser calls it directly.
-const CONTACT_ENDPOINT: string =
+export const CONTACT_ENDPOINT: string =
   "https://p5ld0swl76.execute-api.us-east-1.amazonaws.com/";
 
 const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);

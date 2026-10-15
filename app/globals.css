@@ -290,3 +290,26 @@
   .jv-inline { display: block; width: 100%; margin-top: 16px; border: 1px solid var(--sv-line); border-radius: var(--sv-r); }
 }
 @media (prefers-reduced-motion: reduce) { .jv-step { transition: none; } }
+
+/* Team cards (app/team/page.tsx): hover or focus turns a card over to a few words. */
+.tm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; margin-top: 10px; }
+.tm-card { perspective: 1200px; min-height: 300px; outline: none; color: var(--sv-ink); display: block; }
+.tm-inner { position: relative; width: 100%; height: 100%; min-height: 300px; transition: transform .6s ease; transform-style: preserve-3d; }
+.tm-card:hover .tm-inner, .tm-card:focus-visible .tm-inner { transform: rotateY(180deg); }
+.tm-face { position: absolute; inset: 0; padding: 24px; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.tm-back { transform: rotateY(180deg); background: var(--sv-brand-50); border-color: var(--sv-brand-100); }
+.tm-card:focus-visible .tm-face { box-shadow: 0 0 0 3px var(--sv-brand-100); }
+.tm-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 16px; flex: none; }
+.tm-initials { display: grid; place-items: center; background: var(--sv-brand-50); border: 1px solid var(--sv-brand-100);
+  color: var(--sv-brand); font-size: 42px; font-weight: 600; }
+.tm-dashed { border: 2px dashed var(--sv-brand); font-size: 34px; }
+.tm-role { font-family: var(--sv-mono); font-size: 13px; color: var(--sv-ink-3); }
+.tm-you .tm-face { position: relative; height: 100%; min-height: 300px; }
+.tm-you:hover .tm-face { border-color: var(--sv-brand); }
+@media (prefers-reduced-motion: reduce) {
+  .tm-inner { transition: none; }
+  .tm-card:hover .tm-inner, .tm-card:focus-visible .tm-inner { transform: none; }
+  .tm-back { transform: none; opacity: 0; transition: opacity .2s; }
+  .tm-card:hover .tm-back, .tm-card:focus-visible .tm-back { opacity: 1; }
+}
