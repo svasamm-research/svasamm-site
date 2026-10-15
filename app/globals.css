@@ -256,3 +256,11 @@
   ) !important;
   box-shadow: var(--sv-sh-3);
 }
+
+/* WhatsApp click-to-chat (components/WhatsAppButton.tsx), ported from lucoze-website. */
+.wa-fab { position: fixed; right: 20px; bottom: 20px; z-index: 40; display: grid; place-items: center;
+  width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #fff;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, .4); transition: transform .15s ease, box-shadow .15s ease; }
+.wa-fab:hover, .wa-fab:focus-visible { transform: scale(1.06); box-shadow: 0 8px 26px rgba(37, 211, 102, .5); color: #fff; }
+@media (max-width: 640px) { .wa-fab { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
+@media (prefers-reduced-motion: reduce) { .wa-fab { transition: none; } }
