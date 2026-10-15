@@ -44,7 +44,7 @@ const SOLUTION_BY_ID: Record<string, string> = {
 // (Function URLs are blocked by the AWS-org guardrail, so we front the Lambda with API Gateway.)
 // While empty, submit falls back to an error state pointing at query@svasamm.com (never a silent
 // fake-success). Public URL — safe to commit; the browser calls it directly.
-const CONTACT_ENDPOINT: string =
+export const CONTACT_ENDPOINT: string =
   "https://p5ld0swl76.execute-api.us-east-1.amazonaws.com/";
 
 const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -59,6 +59,7 @@ const errStyle = {
 
 // Contact form island. Client-side validation, then POST to the SES-backed endpoint.
 export default function ContactForm() {
+  const [started, setStarted] = useState(false);
   const [f, setF] = useState({
     name: "",
     email: "",
@@ -173,6 +174,13 @@ export default function ContactForm() {
       ) : (
         <form
           onSubmit={submit}
+          onFocus={() => {
+            // "Lead Form Started", once — the gap between this and "Lead Submitted" is the form's drop-off.
+            if (started) return;
+            setStarted(true);
+            window.plausible?.("Lead Form Started", { props: { site: "svasamm.com", page: location.pathname } });
+            window.gtag?.("event", "lead_form_started", { site: "svasamm.com" });
+          }}
           style={{ display: "flex", flexDirection: "column", gap: 17 }}
           noValidate
         >

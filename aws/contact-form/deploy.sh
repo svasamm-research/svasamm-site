@@ -14,6 +14,7 @@ FN="${FN:-svasamm-contact-form}"
 ROLE="${ROLE:-svasamm-contact-form-role}"
 MAIL_FROM="${MAIL_FROM:-no-reply@svasamm.com}"
 MAIL_TO="${MAIL_TO:-query@svasamm.com}"
+MAIL_TO_JOBS="${MAIL_TO_JOBS:-work@svasamm.com}"  # job applications (with the résumé attached)
 ALLOW_ORIGIN="${ALLOW_ORIGIN:-https://svasamm.com}"
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -32,17 +33,20 @@ else
     --assume-role-policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":"lambda.amazonaws.com"},"Action":"sts:AssumeRole"}]}' >/dev/null
   aws iam attach-role-policy --role-name "$ROLE" \
     --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole >/dev/null
-  aws iam put-role-policy --role-name "$ROLE" --policy-name ses-send \
-    --policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":"ses:SendEmail","Resource":"*"}]}' >/dev/null
   echo "  waiting for role to propagate..."; sleep 12
 fi
+# Every run (idempotent): job applications send a raw MIME mail with the résumé attached,
+# which needs ses:SendRawEmail as well as ses:SendEmail. Re-putting the policy upgrades a
+# role created before that (15 Oct 2026).
+aws iam put-role-policy --role-name "$ROLE" --policy-name ses-send \
+  --policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["ses:SendEmail","ses:SendRawEmail"],"Resource":"*"}]}' >/dev/null
 
 # ── 2. Package (Node 20 bundles the AWS SDK — zip is just the handler) ────────
 say "Packaging"
 ZIP="$(mktemp -d)/fn.zip"
 ( cd "$DIR" && zip -q "$ZIP" index.mjs )
 
-ENV_JSON="{\"Variables\":{\"SES_REGION\":\"${REGION}\",\"MAIL_FROM\":\"${MAIL_FROM}\",\"MAIL_TO\":\"${MAIL_TO}\",\"ALLOW_ORIGIN\":\"${ALLOW_ORIGIN}\"}}"
+ENV_JSON="{\"Variables\":{\"SES_REGION\":\"${REGION}\",\"MAIL_FROM\":\"${MAIL_FROM}\",\"MAIL_TO\":\"${MAIL_TO}\",\"MAIL_TO_JOBS\":\"${MAIL_TO_JOBS}\",\"ALLOW_ORIGIN\":\"${ALLOW_ORIGIN}\"}}"
 
 # ── 3. Lambda (create or update) ─────────────────────────────────────────────
 if aws lambda get-function --function-name "$FN" >/dev/null 2>&1; then

@@ -67,6 +67,11 @@ Always `yarn typecheck` + `yarn build` before committing. Facts come from the ma
 - **Run `yarn test:visual` before calling a phone layout done** — it runs the WHOLE suite on Linux, and Linux fonts are wider: on 2 Oct 2026 eight healthcare articles overflowed 390px on Linux (a long `.sv-btn` label; `nowrap`) and passed on the Mac.
 - `yarn test:nginx` — the real nginx: pages 200, unknown 404, the moved-page 301s, www → apex, security headers, no `X-Robots-Tag` on the production host. Fails (does not skip) without Docker.
 - `site.spec.ts`, `visual.spec.ts`, `static-server.mjs` are the SAME files in t4suite-site and lucoze-website — change all three.
+- **`svasamm.spec.ts` is svasamm.com's own** (15 Oct 2026): no raw `**` on any page, no claim the code does not support
+  (self-hostable, ABDM-ready, GPS, Sauda, levy memos, multi-unit…), two-axis tables, bold facts, the resources chips,
+  contents and read-next, the tracker's events, Sign in/WhatsApp links, the journey, team and jobs (incl. the apply form).
+  Bold is `**text**` in an article's BODY only — an intro, title, meta or FAQ is plain text and shows the asterisks.
+  The contact/jobs Lambda has its own test: `node aws/contact-form/apply.test.mjs`.
 
 ## Stack
 Next 16 (App Router, **SSG** — every page static HTML for SEO) · React 19 · TypeScript ·

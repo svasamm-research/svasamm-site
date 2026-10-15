@@ -113,11 +113,11 @@ export const WHY_ARTICLES: Article[] = [
       {
         type: "p",
         h: "When your rule doesn't fit",
-        text: "We change the product, not your copy of it. The overtime choice in Svasamm People exists because one company's policy did not fit a single fixed figure; it became a setting with options, and every firm now has it. That is the other half of customized: the fitting is our work, done once, for the whole industry — not yours, done again at every upgrade.",
+        text: "**We change the product, not your copy of it.** The overtime choice in Svasamm People exists because one company's policy did not fit a single fixed figure; it became a setting with options, and every firm now has it. That is the other half of customized: the fitting is our work, done once, for the whole industry — not yours, done again at every upgrade.",
       },
       {
         type: "note",
-        text: "What we do not offer today: custom fields, custom workflows or roles you design yourself. If your firm needs something none of the choices covers, tell us — it is how the products grow.",
+        text: "**What we do not offer today: custom fields, custom workflows or roles you design yourself.** If your firm needs something none of the choices covers, tell us — it is how the products grow.",
       },
     ],
     faqs: [
@@ -143,7 +143,7 @@ export const WHY_ARTICLES: Article[] = [
       {
         type: "p",
         h: "Setup is a checklist, not a settings page",
-        text: "Instead of a page of switches, setting up a product is a list of steps with a count of how many are done. A step that is not finished says exactly what is missing and for whom — for example, that one person has no salary yet — so nothing is left half set up without anyone knowing.",
+        text: "Instead of a page of switches, **setting up a product is a list of steps with a count of how many are done**. A step that is not finished says exactly what is missing and for whom — for example, that one person has no salary yet — so nothing is left half set up without anyone knowing.",
       },
       {
         type: "table",
@@ -158,7 +158,7 @@ export const WHY_ARTICLES: Article[] = [
       {
         type: "p",
         h: "Roles come with the product you buy",
-        text: "A new firm gets three roles of its own — Owner, Administrator and Member — and the roles of the products it bought, nothing more. Each permission in a role can be switched on or off; the Owner role cannot be changed, so the firm can never lock itself out. Who may change a setting is named for each product, so a bookkeeper can set tax rates without holding the owner's keys.",
+        text: "A new firm gets three roles of its own — Owner, Administrator and Member — and the roles of the products it bought, nothing more. Each permission in a role can be switched on or off; **the Owner role cannot be changed, so the firm can never lock itself out**. Who may change a setting is named for each product, so a bookkeeper can set tax rates without holding the owner's keys.",
       },
       {
         type: "list",
@@ -171,7 +171,7 @@ export const WHY_ARTICLES: Article[] = [
       },
       {
         type: "note",
-        text: "Custom fields, custom workflows and roles you design yourself are not part of the products today. If your firm works in a way none of these choices covers, tell us — the overtime choice above exists because a client's rule did not fit one fixed figure.",
+        text: "**Custom fields, custom workflows and roles you design yourself are not part of the products today.** If your firm works in a way none of these choices covers, tell us — the overtime choice above exists because a client's rule did not fit one fixed figure.",
       },
     ],
     faqs: [
@@ -201,12 +201,12 @@ export const WHY_ARTICLES: Article[] = [
       {
         type: "p",
         h: "How each firm's data is kept apart",
-        text: "Many firms share one database, and the database itself keeps them apart: row-level security means a query made for one firm cannot see another firm's rows, even if the program asking has a fault. Which products a firm has is a setting, not a separate build — every firm runs the same software.",
+        text: "Many firms share one database, and the database itself keeps them apart: **row-level security means a query made for one firm cannot see another firm's rows**, even if the program asking has a fault. Which products a firm has is a setting, not a separate build — every firm runs the same software.",
       },
       {
         type: "p",
         h: "Where your documents live",
-        text: "T4Suite stores a firm's documents in S3-compatible storage, and they are uploaded and downloaded directly between the browser and that storage — the files never pass through our server.",
+        text: "T4Suite stores a firm's documents in S3-compatible storage, and they are uploaded and downloaded directly between the browser and that storage — **the files never pass through our server**.",
       },
       {
         type: "list",
@@ -240,7 +240,7 @@ export const WHY_ARTICLES: Article[] = [
       {
         type: "p",
         h: "What is true today",
-        text: "The API speaks JSON over HTTPS under one versioned path, /v1, with one section per product. The web app and the phone app are its first users: every screen you see is the API's answer, and the app's own types are generated from the server's, so the two cannot quietly disagree. When something is refused, the answer follows a public standard for errors (RFC 9457) and carries a stable code a program can act on.",
+        text: "The API speaks JSON over HTTPS under one versioned path, /v1, with one section per product. The web app and the phone app are its first users: **every screen you see is the API's answer**, and the app's own types are generated from the server's, so the two cannot quietly disagree. When something is refused, the answer follows a public standard for errors (RFC 9457) and carries a stable code a program can act on.",
       },
       {
         type: "p",
@@ -260,7 +260,7 @@ export const WHY_ARTICLES: Article[] = [
       },
       {
         type: "note",
-        text: "Until those arrive, connecting another system is something we do with you. Tell us what you want to connect, and it shapes what is built first.",
+        text: "**Until those arrive, connecting another system is something we do with you.** Tell us what you want to connect, and it shapes what is built first.",
       },
     ],
     faqs: [
@@ -320,13 +320,13 @@ export const WHY_ARTICLES: Article[] = [
       },
       {
         type: "note",
-        text: "Nothing here files with a government portal for you. Svasamm prepares the figures and keeps the record; filing stays with the person responsible for it.",
+        text: "**Nothing here files with a government portal for you.** Svasamm prepares the figures and keeps the record; filing stays with the person responsible for it.",
       },
     ],
     faqs: [
       { q: "Does Svasamm file GST returns directly?", a: "No. Millingo prepares GSTR-1 and GSTR-3B from the books; your accountant files on the GST portal and records the acknowledgement number." },
       { q: "Does Svasamm People cover professional tax in our state?", a: "Yes — all 36 states and union territories are in, with their due dates. Check the rates with your CA before your first filing." },
-      { q: "Is Lucoze ABDM-ready on Svasamm One?", a: "Not yet. ABDM comes with Lucoze joining Svasamm One." },
+      { q: "Does Lucoze support ABDM on Svasamm One yet?", a: "Not yet. ABDM comes with Lucoze joining Svasamm One." },
     ],
     related: OTHERS("india-compliance"),
     cta: { ...CTA, title: "Which rules does your firm answer to?", body: "Tell us your state and your filings and we will show you which are built in and which are still coming." },

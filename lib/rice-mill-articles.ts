@@ -22,7 +22,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "The 90% rule",
-        text: "Under the new policy, millers who have delivered up to 90% of the rice from the paddy allotted to them in 2025-26 are eligible to receive fresh paddy for milling. Before, a mill had to finish last season's delivery first. The reason is storage: the state's 280 LMT of foodgrain storage was reported full, so rice from 2025-26 could not move out fast enough for mills to clear their dues on time.",
+        text: "Under the new policy, **millers who have delivered up to 90% of the rice from the paddy allotted to them in 2025-26 are eligible to receive fresh paddy** for milling. Before, a mill had to finish last season's delivery first. The reason is storage: the **state's 280 LMT of foodgrain storage was reported full**, so rice from 2025-26 could not move out fast enough for mills to clear their dues on time.",
       },
       {
         type: "table",
@@ -59,7 +59,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "Why a mill should know its own figure",
-        text: "Eligibility for fresh paddy now turns on one number: how much of last season's rice you have delivered. The portal will tell you that figure eventually. A mill that keeps its own book of every allotment and delivery knows it first — which lots are still pending, how many tonnes stand between it and 90%, and whether the rice that is ready can be delivered before the deadline.",
+        text: "**Eligibility for fresh paddy now turns on one number**: how much of last season's rice you have delivered. The portal will tell you that figure eventually. A mill that keeps its own book of every allotment and delivery knows it first — which lots are still pending, how many tonnes stand between it and 90%, and whether the rice that is ready can be delivered before the deadline.",
       },
       {
         type: "p",
@@ -166,7 +166,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "Why moisture quietly eats your out-turn",
-        text: "The prescribed moisture limit for paddy is 17%. But paddy — especially in a wet kharif — often arrives at 22–27% moisture, and has to be dried down to roughly 13% before it can be milled. That drying removes water weight the OTR never accounted for. The physics is simple: wetter paddy in means less rice weight out, and the out-turn slips from 67% toward the low 60s.",
+        text: "**The prescribed moisture limit for paddy is 17%**. But paddy — especially in a wet kharif — often arrives at 22–27% moisture, and has to be dried down to roughly 13% before it can be milled. That drying removes water weight the OTR never accounted for. The physics is simple: wetter paddy in means less rice weight out, and the out-turn slips from 67% toward the low 60s.",
       },
       {
         type: "note",
@@ -175,12 +175,12 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "How the gap becomes a dispute",
-        text: "This is where millers get hurt. The agency sees a number below the OTR and issues a shortfall notice. You know the real cause was moisture, not diversion — but “I dried wet paddy” is hard to prove after the fact without the intake readings, the drying record and the milled output tied together, batch by batch. A verbal explanation rarely wins against a spreadsheet that only shows the shortfall.",
+        text: "**This is where millers get hurt.** The agency sees a number below the OTR and issues a shortfall notice. You know the real cause was moisture, not diversion — but “I dried wet paddy” is hard to prove after the fact without the intake readings, the drying record and the milled output tied together, batch by batch. A verbal explanation rarely wins against a spreadsheet that only shows the shortfall.",
       },
       {
         type: "p",
         h: "The fix isn't more milling — it's evidence",
-        text: "You can't change the physics of wet paddy. What you can change is whether you can prove what happened. The millers who defend shortfalls successfully are the ones who can show, per lot: the moisture at intake, what it was dried to before milling, the paddy-in and rice-out for that batch, and the resulting out-turn next to the norm. With that trail, a shortfall stops being an accusation and becomes an accounting fact you can stand behind.",
+        text: "You can't change the physics of wet paddy. **What you can change is whether you can prove what happened.** The millers who defend shortfalls successfully are the ones who can show, per lot: the moisture at intake, what it was dried to before milling, the paddy-in and rice-out for that batch, and the resulting out-turn next to the norm. With that trail, a shortfall stops being an accusation and becomes an accounting fact you can stand behind.",
       },
       {
         type: "list",
@@ -370,7 +370,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
       },
       {
         type: "note",
-        text: "Two figures disagree in the reporting: the western UP start date (12 or 15 October) and the target (65 lakh tonnes in state reports, a lower central figure elsewhere). The government order on fcs.up.gov.in is the authority — read it before acting on either.",
+        text: "Two figures disagree in the reporting: the western UP start date (12 or 15 October) and the target (65 lakh tonnes in state reports, a lower central figure elsewhere). **The government order on fcs.up.gov.in is the authority** — read it before acting on either.",
       },
       {
         type: "list",
@@ -384,7 +384,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "What changed from 2025-26",
-        text: "Last season's policy, approved on 26 September 2025, bought at ₹2,369 and ₹2,389 through six agencies including FCI and the Food Department's own marketing wing, at about 3,300 centres against a 60 lakh tonne target. This season the list is eight agencies, with farmer producer organisations, NCCF and NAFED in and FCI and the marketing wing not named; the centres rise to about 4,500. More agencies means a mill may hold the state's paddy for more than one of them in the same season — each with its own account to settle.",
+        text: "Last season's policy, approved on 26 September 2025, bought at ₹2,369 and ₹2,389 through six agencies including FCI and the Food Department's own marketing wing, at about 3,300 centres against a 60 lakh tonne target. This season the list is eight agencies, with farmer producer organisations, NCCF and NAFED in and FCI and the marketing wing not named; the centres rise to about 4,500. **More agencies means a mill may hold the state's paddy for more than one of them in the same season** — each with its own account to settle.",
       },
       {
         type: "list",
@@ -472,7 +472,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "Linked paddy and release-order paddy",
-        text: "Each season a mill is linked online to mandis, and the paddy bought there by the state agencies — Pungrain, Markfed, Punsup and the Punjab State Warehousing Corporation — is stored at the mill for custom milling. That linked share is the mill's own entitlement. A release order (RO) lets a mill lift further paddy, often from another mandi or district, for a per-tonne fee. District officers are expected to supply mills in their own area first and only then consider release orders that send paddy to mills elsewhere.",
+        text: "Each season a mill is linked online to mandis, and the paddy bought there by the state agencies — Pungrain, Markfed, Punsup and the Punjab State Warehousing Corporation — is stored at the mill for custom milling. That linked share is the mill's own entitlement. **A release order (RO) lets a mill lift further paddy, often from another mandi or district, for a per-tonne fee.** District officers are expected to supply mills in their own area first and only then consider release orders that send paddy to mills elsewhere.",
       },
       {
         type: "table",
@@ -488,12 +488,12 @@ export const RICE_MILL_ARTICLES: Article[] = [
       },
       {
         type: "note",
-        text: "The 2026-27 release-order fee, the free-paddy formula and the security per tonne had not been published when this was written (14 October 2026). The figures above are from the seasons named. Read the current notification on the Anaaj Kharid portal before acting on any of them.",
+        text: "The 2026-27 release-order fee, the free-paddy formula and the security per tonne **had not been published when this was written (14 October 2026)**. The figures above are from the seasons named. Read the current notification on the Anaaj Kharid portal before acting on any of them.",
       },
       {
         type: "p",
         h: "Why 2026-27 is a tight season for allotment",
-        text: "On 2 October 2026 the Chief Minister wrote to the Union food minister that only 99.50 of 105.64 LMT of 2025-26 rice — 94% — had been delivered by 29 September, that about 17 LMT of 2026-27 wheat was still lying in rice mills and mandi yards, and that millers might not come forward for allotment and storage of the new paddy. Peak arrivals were expected around 10 October. In a season like this, the mills that can show their delivery position quickly are the ones the department can rely on.",
+        text: "On 2 October 2026 the Chief Minister wrote to the Union food minister that **only 99.50 of 105.64 LMT of 2025-26 rice — 94% — had been delivered by 29 September**, that about 17 LMT of 2026-27 wheat was still lying in rice mills and mandi yards, and that millers might not come forward for allotment and storage of the new paddy. Peak arrivals were expected around 10 October. In a season like this, **the mills that can show their delivery position quickly are the ones the department can rely on**.",
       },
       {
         type: "list",

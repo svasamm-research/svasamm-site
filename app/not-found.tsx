@@ -15,7 +15,7 @@ export default function NotFound() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="flex-1" style={{ display: "grid", placeItems: "center", padding: "88px 24px" }}>
+      <main id="main" data-404 className="flex-1" style={{ display: "grid", placeItems: "center", padding: "88px 24px" }}>
         <div style={{ textAlign: "center", maxWidth: "34em" }}>
           <div className="tag tag-outline" style={{ marginBottom: 20 }}>404</div>
           <h1 style={{ fontSize: 42, lineHeight: 1.08, letterSpacing: "-.025em", margin: "0 0 16px", color: "var(--sv-ink)" }}>Page not found</h1>

@@ -12,7 +12,8 @@ export type Seo = {
 
 export type Faq = { q: string; a: string };
 
-export type Feature = { icon: string; title: string; body: string };
+// href: a capability journey stage, e.g. /pages/millingo-paddy-in-rice-out.html#qc
+export type Feature = { icon: string; title: string; body: string; href?: string };
 
 export type Tier = {
   name: string;

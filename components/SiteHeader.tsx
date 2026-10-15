@@ -376,6 +376,13 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
                     </div>
                   </div>
                 ))}
+                <Link
+                  href="/resources"
+                  className="inline-flex items-center"
+                  style={{ gridColumn: "1 / -1", gap: 6, padding: "4px 12px 10px", fontSize: 14, fontWeight: 500, color: "var(--sv-brand)" }}
+                >
+                  All guides <Icon name="ph-arrow-right" size={15} />
+                </Link>
               </div>
               </div>
             )}
@@ -506,6 +513,9 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
             All solutions
           </Link>
           <hr className="sv-hairline" style={{ margin: "14px 0" }} />
+          <Link href="/resources" className="svh-item" style={{ display: "block", padding: "12px 10px", color: "var(--sv-ink)", fontSize: 16 }}>
+            All guides
+          </Link>
           {RESOURCE_GROUPS.map((g) => (
             <div key={g.heading}>
               <div
