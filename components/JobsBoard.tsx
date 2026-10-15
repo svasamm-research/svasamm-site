@@ -7,10 +7,11 @@ import { CONTACT_ENDPOINT } from "./ContactForm";
 // /jobs: department chips, the openings, and one application form that opens over the page.
 // The form posts { kind: "job", …, resume } to the contact-form Lambda, which mails it to
 // work@svasamm.com with the résumé attached (aws/contact-form/index.mjs `apply`). Its limits
-// are checked here first so a visitor learns at once, not after the upload: PDF/DOC/DOCX,
-// under 3.5 MB. Counted as "Job Apply Opened" and "Job Application Submitted" { location: job id }.
+// are checked here first so a visitor learns at once, not after the upload: one PDF under
+// 3.5 MB, and an Indian mobile number (the same rules the Lambda applies). Counted as "Job Apply Opened" and "Job Application Submitted" { location: job id }.
 const MAX_BYTES = 3.5 * 1024 * 1024;
-const OK_EXT = ["pdf", "doc", "docx"];
+// 10 digits starting 6–9, with an optional +91, 91 or 0 in front — spaces and dashes ignored.
+const MOBILE = /^(?:\+?91|0)?[6-9]\d{9}$/;
 
 function track(name: string, job: string) {
   const props = { site: "svasamm.com", page: location.pathname, location: job };
@@ -76,8 +77,8 @@ function ApplyForm({ job, onClose }: { job: Job; onClose: () => void }) {
   const problems = {
     name: !f.name.trim() && "Your name, please.",
     email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email) && "An email address we can reply to.",
-    phone: f.phone.replace(/\D/g, "").length < 8 && "A phone number with at least 8 digits.",
-    file: !file ? "Attach your résumé." : !OK_EXT.includes(ext) ? "A PDF, DOC or DOCX, please." : file.size > MAX_BYTES ? "Keep it under 3.5 MB." : false,
+    phone: !MOBILE.test(f.phone.replace(/[\s-]/g, "")) && "Enter a 10-digit mobile number, e.g. 98300 12345.",
+    file: !file ? "Attach your résumé." : ext !== "pdf" ? "Only a PDF — save your résumé as a PDF first." : file.size > MAX_BYTES ? "Keep it under 3.5 MB." : false,
   };
   const ok = !Object.values(problems).some(Boolean);
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setF({ ...f, [k]: e.target.value });
@@ -112,6 +113,7 @@ function ApplyForm({ job, onClose }: { job: Job; onClose: () => void }) {
     <div className="sv-field">
       <label htmlFor={`ap-${id}`}>{label}</label>
       <input id={`ap-${id}`} type={type} className="sv-input" value={f[id]} onChange={set(id)}
+        {...(id === "phone" ? { inputMode: "tel" as const, maxLength: 16, placeholder: "98300 12345", autoComplete: "tel" } : {})}
         aria-invalid={tried && !!problems[id as keyof typeof problems]} aria-describedby={`ap-${id}-err`} />
       {tried && problems[id as keyof typeof problems] && <span id={`ap-${id}-err`} role="alert" style={{ color: "#b42318", fontSize: 13 }}>{problems[id as keyof typeof problems]}</span>}
     </div>
@@ -139,9 +141,12 @@ function ApplyForm({ job, onClose }: { job: Job; onClose: () => void }) {
             {field("email", "Email", "email")}
             {field("phone", "Phone", "tel")}
             <div className="sv-field">
-              <label htmlFor="ap-file">Résumé (PDF, DOC or DOCX, under 3.5 MB)</label>
-              <input id="ap-file" type="file" accept=".pdf,.doc,.docx" className="sv-input" onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-                aria-invalid={tried && !!problems.file} />
+              <label htmlFor="ap-file">Résumé — one PDF, under 3.5 MB</label>
+              <span id="ap-file-hint" style={{ fontSize: 13, color: "var(--sv-ink-3)", lineHeight: 1.5 }}>
+                Have it in Word? Choose File → Save As (or Export) → PDF, then upload that file.
+              </span>
+              <input id="ap-file" type="file" accept=".pdf,application/pdf" className="sv-input" onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+                aria-invalid={tried && !!problems.file} aria-describedby="ap-file-hint" />
               {tried && problems.file && <span role="alert" style={{ color: "#b42318", fontSize: 13 }}>{problems.file}</span>}
             </div>
             <div className="sv-field">
