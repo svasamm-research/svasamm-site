@@ -305,7 +305,11 @@
   color: var(--sv-brand); font-size: 42px; font-weight: 600; }
 .tm-dashed { border: 2px dashed var(--sv-brand); font-size: 34px; }
 .tm-role { font-family: var(--sv-mono); font-size: 13px; color: var(--sv-ink-3); }
-.tm-you .tm-face { position: relative; height: 100%; min-height: 300px; }
+/* "You?" closes the grid as a full-width row instead of an orphan card. */
+.tm-you { grid-column: 1 / -1; min-height: 0; }
+.tm-you .tm-face { position: relative; flex-direction: row; justify-content: flex-start; gap: 24px; text-align: left; min-height: 0; padding: 22px 28px; }
+.tm-you .tm-photo { width: 96px; height: 96px; margin: 0; font-size: 24px; }
+@media (max-width: 560px) { .tm-you .tm-face { flex-direction: column; text-align: center; } }
 .tm-you:hover .tm-face { border-color: var(--sv-brand); }
 @media (prefers-reduced-motion: reduce) {
   .tm-inner { transition: none; }
@@ -313,3 +317,19 @@
   .tm-back { transform: none; opacity: 0; transition: opacity .2s; }
   .tm-card:hover .tm-back, .tm-card:focus-visible .tm-back { opacity: 1; }
 }
+
+/* Tables read on both axes (15 Oct 2026, Mithun): the column titles sit on a tinted band in
+   the brand's ink, and each row's first cell (a <th scope="row">) is its title — bold, ink. */
+.sv-table thead th { background: var(--sv-brand-50); color: var(--sv-brand-700, #0b3579); font-weight: 600;
+  border-bottom: 2px solid var(--sv-brand-100); }
+.sv-table tbody th { text-align: left; font-family: inherit; font-size: 14.5px; font-weight: 600; letter-spacing: 0;
+  text-transform: none; color: var(--sv-ink); padding: 14px; border-bottom: 1px solid var(--sv-line);
+  background: var(--sv-bg-subtle); vertical-align: top; }
+.tm-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; padding-block: 28px; }
+.tm-fact-n { font-size: 30px; font-weight: 600; letter-spacing: -.02em; color: var(--sv-brand); }
+.tm-fact-l { font-family: var(--sv-mono); font-size: 12.5px; color: var(--sv-ink-3); text-transform: uppercase; letter-spacing: .06em; }
+.tm-day { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; counter-reset: d; }
+.tm-day li { position: relative; padding: 18px 0 0 0; border-top: 3px solid var(--sv-brand-100); }
+.tm-day li::before { counter-increment: d; content: counter(d); position: absolute; top: -15px; left: 0; width: 26px; height: 26px;
+  border-radius: 50%; background: var(--sv-brand); color: #fff; font-size: 13px; font-weight: 600; display: grid; place-items: center; }
+.tm-day-when { font-family: var(--sv-mono); font-size: 12px; color: var(--sv-brand); text-transform: uppercase; letter-spacing: .08em; }

@@ -29,3 +29,13 @@ export const WORK = {
     { title: "Say it plainly", body: "We write and speak in plain words — to clients and to each other. If something is not done, we say so." },
   ],
 };
+
+// ⚠️ DRAFT — a working day as it might be described; Mithun corrects the order and words.
+// No clock times on purpose: a time printed here is a promise to candidates.
+export const DAY: { when: string; what: string; body: string }[] = [
+  { when: "Morning", what: "The day's plan, together", body: "Everyone in the office, a short look at what is open: a client's question, a screen that is not right, the calls to make." },
+  { when: "Late morning", what: "Build, call, write", body: "Engineers build and test; sales calls rice mills and CA firms; marketing researches and drafts the next guide." },
+  { when: "Afternoon", what: "Try it the way a client would", body: "New work is walked in the browser before anyone calls it done — and anyone can say what looks wrong." },
+  { when: "Evening", what: "What we learned", body: "What a client said, what broke, what to change tomorrow — an idea from anyone goes on the list." },
+];
+

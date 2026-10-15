@@ -5,7 +5,8 @@ import SiteFooter from "@/components/SiteFooter";
 import JsonLd from "@/components/JsonLd";
 import { Icon } from "@/components/Icon";
 import { BUSINESS } from "@/lib/site";
-import { TEAM, WORK } from "@/lib/team";
+import { TEAM, WORK, DAY } from "@/lib/team";
+import { ONE } from "@/lib/site";
 import { JOBS } from "@/lib/jobs";
 
 // The people behind Svasamm (15 Oct 2026): how we work, then a card per person that turns
@@ -39,6 +40,23 @@ export default function Team() {
           </div>
         </section>
 
+        {/* Facts strip — each figure is true today and read from the data, not typed */}
+        <section style={{ borderBottom: "1px solid var(--sv-line)", background: "var(--sv-surface)" }}>
+          <div className="sv-wrap tm-facts" style={{ maxWidth: 960 }}>
+            {[
+              ["April 2024", "founded"],
+              [String(TEAM.length), "people"],
+              [String(Object.keys(ONE).length), "products on Svasamm One"],
+              ["1", "office, Hooghly"],
+            ].map(([n, l]) => (
+              <div key={l}>
+                <div className="tm-fact-n">{n}</div>
+                <div className="tm-fact-l">{l}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section style={{ padding: "56px 0 24px" }}>
           <div className="sv-wrap" style={{ maxWidth: 960 }}>
             <div className="sv-eyebrow">How we work</div>
@@ -50,6 +68,21 @@ export default function Team() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section style={{ padding: "40px 0 16px" }}>
+          <div className="sv-wrap" style={{ maxWidth: 960 }}>
+            <div className="sv-eyebrow">A day at Svasamm</div>
+            <ol className="tm-day">
+              {DAY.map((d) => (
+                <li key={d.when}>
+                  <span className="tm-day-when">{d.when}</span>
+                  <h3 style={{ fontSize: 18, margin: "2px 0 6px" }}>{d.what}</h3>
+                  <p className="sv-muted" style={{ fontSize: 15, lineHeight: 1.6, margin: 0 }}>{d.body}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -80,9 +113,11 @@ export default function Team() {
               <Link href="/jobs" className="tm-card tm-you" data-evt="Team You Click">
                 <div className="tm-face sv-card" style={{ position: "relative" }}>
                   <span aria-hidden="true" className="tm-photo tm-initials tm-dashed">You?</span>
-                  <h2 style={{ fontSize: 19, margin: "0 0 4px" }}>Your name here</h2>
-                  <div className="tm-role">{JOBS.length} open {JOBS.length === 1 ? "role" : "roles"}</div>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 12, fontWeight: 500, color: "var(--sv-brand)" }}>
+                  <div style={{ flex: 1 }}>
+                    <h2 style={{ fontSize: 21, margin: "0 0 4px" }}>Your name could be here</h2>
+                    <div className="tm-role">{JOBS.length} open {JOBS.length === 1 ? "role" : "roles"} · {[...new Set(JOBS.map((j) => j.department))].join(" · ")}</div>
+                  </div>
+                  <span className="sv-btn sv-btn-primary">
                     See the openings <Icon name="ph-arrow-right" size={15} />
                   </span>
                 </div>

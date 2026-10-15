@@ -10,6 +10,15 @@ import ProductLogo from "./ProductLogo";
 
 const CONTACT = toRoute("Contact.dc.html");
 
+// **words** in an article's text render bold, so the point of a paragraph is seen at a glance.
+// Body text only — titles, meta descriptions and the JSON-LD/FAQ markup stay plain.
+function rich(text: string): React.ReactNode {
+  const parts = text.split(/\*\*(.+?)\*\*/g);
+  return parts.length === 1
+    ? text
+    : parts.map((part, i) => (i % 2 ? <strong key={i} style={{ fontWeight: 600, color: "var(--sv-ink)" }}>{part}</strong> : part));
+}
+
 function ListRow({ it }: { it: ListItem }) {
   const b = typeof it === "string" ? "" : (it.b ?? "");
   const t = typeof it === "string" ? it : (it.t ?? "");
@@ -32,7 +41,7 @@ function ListRow({ it }: { it: ListItem }) {
         {b && (
           <span style={{ fontWeight: 600, color: "var(--sv-ink)" }}>{b} </span>
         )}
-        {t}
+        {rich(t)}
       </span>
     </li>
   );
@@ -53,7 +62,7 @@ function BlockView({ b }: { b: Block }) {
           margin: "0 0 16px",
         }}
       >
-        {b.text}
+        {rich(b.text)}
       </p>
     );
   } else if (b.type === "note") {
@@ -70,7 +79,7 @@ function BlockView({ b }: { b: Block }) {
           color: "var(--sv-ink)",
         }}
       >
-        {b.text}
+        {rich(b.text)}
       </div>
     );
   } else if (b.type === "list") {
@@ -107,18 +116,15 @@ function BlockView({ b }: { b: Block }) {
           <tbody>
             {b.rows.map((r, i) => (
               <tr key={i}>
-                {r.map((c, j) => (
-                  <td
-                    key={j}
-                    style={{
-                      fontSize: 14.5,
-                      color: "var(--sv-ink-2)",
-                      lineHeight: 1.55,
-                    }}
-                  >
-                    {c}
-                  </td>
-                ))}
+                {r.map((c, j) =>
+                  j === 0 ? (
+                    <th key={j} scope="row">{rich(c)}</th>
+                  ) : (
+                    <td key={j} style={{ fontSize: 14.5, color: "var(--sv-ink-2)", lineHeight: 1.55 }}>
+                      {rich(c)}
+                    </td>
+                  ),
+                )}
               </tr>
             ))}
           </tbody>
