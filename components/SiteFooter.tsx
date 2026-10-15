@@ -44,6 +44,7 @@ export default function SiteFooter() {
               h: "Company",
               links: [
                 { name: "About", href: "/pages/about.html" },
+                { name: "Our team", href: "/team" },
                 { name: "Contact", href: "/pages/contact.html" },
                 { name: "All solutions", href: "/pages/services.html" },
                 { name: "Guides", href: "/resources" },

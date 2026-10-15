@@ -27,12 +27,15 @@ export default function ResourcesGrid({ cards, categories }: { cards: Card[]; ca
   );
   return (
     <>
-      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 10, paddingBottom: 22, borderBottom: "1px solid var(--sv-line)", marginBottom: 28 }}>
-        {chip("all", "All", cards.length)}
-        {categories.map((c) => chip(c.key, c.label, cards.filter((x) => x.category === c.key).length))}
-        <label style={{ marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "var(--sv-mono)", fontSize: 12, color: "var(--sv-ink-3)" }}>
-          SORT
-          <select value={sort} onChange={(e) => setSort(e.target.value as "new" | "az")} className="sv-input" style={{ width: "auto", padding: "6px 10px" }}>
+      {/* Chips wrap among themselves; the sort keeps its place at the end of the first line. */}
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", gap: 12, paddingBottom: 22, borderBottom: "1px solid var(--sv-line)", marginBottom: 28 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, flex: "1 1 520px" }}>
+          {chip("all", "All", cards.length)}
+          {categories.map((c) => chip(c.key, c.label, cards.filter((x) => x.category === c.key).length))}
+        </div>
+        <label style={{ flex: "none", display: "inline-flex", alignItems: "center" }}>
+          <span className="sr-only">Sort</span>
+          <select value={sort} onChange={(e) => setSort(e.target.value as "new" | "az")} className="sv-input" style={{ width: "auto", padding: "5px 10px", fontSize: 13.5 }}>
             <option value="new">Newest first</option>
             <option value="az">A–Z</option>
           </select>

@@ -2,10 +2,13 @@ import Link from "next/link";
 import { Icon } from "./Icon";
 import { HOME_PRODUCTS, type HomeProduct } from "@/lib/home";
 import { toRoute } from "@/lib/routes";
+import { ONE } from "@/lib/site";
+import ProductLogo from "./ProductLogo";
 
 const CONTACT = toRoute("Contact.dc.html");
-const vertical = HOME_PRODUCTS.filter((p) => p.kind === "vertical");
-const platform = HOME_PRODUCTS.filter((p) => p.kind === "platform");
+// The same three groups as the menu: Svasamm One, also built for clients, services.
+const one = HOME_PRODUCTS.filter((p) => ONE[p.id]);
+const also = HOME_PRODUCTS.filter((p) => !ONE[p.id] && p.kind !== "service");
 const service = HOME_PRODUCTS.filter((p) => p.kind === "service");
 
 // Map the data's legacy tag classes to the --sv-* signal tags.
@@ -90,143 +93,58 @@ export default function SolutionsPage() {
               maxWidth: "56ch",
             }}
           >
-            Vertical products carry an entire industry&apos;s workflow inside;
-            platform modules are the horizontal systems every operation runs;
-            and Svasamm Digital services get your facility found online. Open any
-            of them for the full detail.
+            The Svasamm One products carry an industry&apos;s workflow inside —
+            rice mills, CA firms, hospitals and payroll. We have also built
+            systems for clients, and Svasamm Digital gets your facility found
+            online. Open any of them for the full detail.
           </p>
         </div>
       </section>
 
-      {/* Vertical products */}
+      {/* Svasamm One — each product in its own logo, colour and real screen, as on the home page */}
       <section style={{ padding: "64px 0 36px" }}>
         <div className="sv-wrap">
-          <div className="sv-eyebrow">Vertical products</div>
-          <div
-            className="sv-two"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))",
-              gap: 20,
-            }}
-          >
-            {vertical.map((p) => (
-              <ProductAnchor
-                key={p.id}
-                p={p}
-                className="sv-card sv-card-i"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  padding: 26,
-                  color: "var(--sv-ink)",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 14,
-                    marginBottom: 16,
-                  }}
-                >
-                  <span className="sv-chip">
-                    <Icon name={p.icon} size={22} />
-                  </span>
-                  <div>
-                    <h2 style={{ fontSize: 21, margin: "0 0 5px" }}>{p.name}</h2>
-                    <span className="sv-tag sv-tag-brand">{p.badge}</span>
+          <div className="sv-eyebrow">Svasamm One products</div>
+          <div className="sv-two" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(420px,1fr))", gap: 20 }}>
+            {one.map((p) => {
+              const c = ONE[p.id];
+              return (
+                <ProductAnchor key={p.id} p={p} className="sv-card sv-card-i"
+                  style={{ display: "flex", flexDirection: "column", padding: 0, overflow: "hidden", color: "var(--sv-ink)", borderTop: `4px solid ${c.fill}` }}>
+                  <img src={c.card.src} alt={c.card.caption} loading="lazy"
+                    style={{ display: "block", width: "100%", aspectRatio: "12 / 5", objectFit: "cover", objectPosition: "top left", borderBottom: "1px solid var(--sv-line)" }} />
+                  <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                      <h2 style={{ margin: 0, lineHeight: 0 }}><ProductLogo id={p.id} size={20} /></h2>
+                      <span className="sv-tag" style={{ marginLeft: "auto", color: c.ink, background: c.wash, borderColor: c.wash }}>{p.badge ?? p.short}</span>
+                    </div>
+                    <p className="sv-muted" style={{ fontSize: 14.5, lineHeight: 1.6, flex: 1, margin: 0 }}>{p.blurb}</p>
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 14.5, fontWeight: 500, color: c.ink }}>
+                      {p.cta} <Icon name={p.ctaIcon} size={15} />
+                    </span>
                   </div>
-                </div>
-                <p
-                  className="sv-muted"
-                  style={{
-                    fontSize: 14.5,
-                    lineHeight: 1.6,
-                    flex: 1,
-                    margin: "0 0 18px",
-                  }}
-                >
-                  {p.blurb}
-                </p>
-                <span
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 7,
-                    fontSize: 14.5,
-                    fontWeight: 500,
-                    color: "var(--sv-brand)",
-                  }}
-                >
-                  {p.cta} <Icon name={p.ctaIcon} size={15} />
-                </span>
-              </ProductAnchor>
-            ))}
+                </ProductAnchor>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Platform modules */}
+      {/* Also built for clients */}
       <section style={{ padding: "28px 0 36px" }}>
         <div className="sv-wrap">
-          <div className="sv-eyebrow">Platform modules</div>
-          <div
-            className="sv-two"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))",
-              gap: 20,
-            }}
-          >
-            {platform.map((p) => (
-              <ProductAnchor
-                key={p.id}
-                p={p}
-                className="sv-card sv-card-i"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  padding: 24,
-                  color: "var(--sv-ink)",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    justifyContent: "space-between",
-                    marginBottom: 18,
-                  }}
-                >
-                  <span className="sv-chip">
-                    <Icon name={p.icon} size={22} />
-                  </span>
-                  <span className="sv-tag sv-tag-outline">Platform</span>
-                </div>
-                <h2 style={{ fontSize: 19, margin: "0 0 8px" }}>{p.name}</h2>
-                <p
-                  className="sv-muted"
-                  style={{
-                    fontSize: 14,
-                    lineHeight: 1.6,
-                    flex: 1,
-                    margin: "0 0 16px",
-                  }}
-                >
-                  {p.blurb}
-                </p>
-                <span
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 7,
-                    fontSize: 14,
-                    fontWeight: 500,
-                    color: "var(--sv-brand)",
-                  }}
-                >
-                  {p.cta} <Icon name="ph-arrow-right" size={15} />
+          <div className="sv-eyebrow">Also built for clients</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))", gap: 16 }}>
+            {also.map((p) => (
+              <ProductAnchor key={p.id} p={p} className="sv-card sv-card-i"
+                style={{ display: "flex", flexDirection: "column", gap: 10, padding: 22, color: "var(--sv-ink)" }}>
+                <span style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <Icon name={p.icon} size={20} style={{ color: "var(--sv-ink-3)", flex: "none" }} />
+                  <h2 style={{ fontSize: 18, margin: 0 }}>{p.name}</h2>
+                </span>
+                <p className="sv-muted" style={{ fontSize: 14, lineHeight: 1.55, flex: 1, margin: 0 }}>{p.blurb}</p>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 500, color: "var(--sv-brand)" }}>
+                  {p.cta} <Icon name={p.ctaIcon} size={14} />
                 </span>
               </ProductAnchor>
             ))}

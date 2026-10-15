@@ -267,9 +267,9 @@
 
 /* Resources hub chips (components/ResourcesGrid.tsx), after lucoze-website's blog index. */
 .sv-res-chip { border: 1px solid var(--sv-line-strong); background: var(--sv-surface); color: var(--sv-ink);
-  border-radius: 999px; padding: 8px 16px; font: inherit; font-size: 14.5px; cursor: pointer; }
-.sv-res-chip:hover { border-color: var(--sv-ink-3); }
-.sv-res-chip[data-on] { background: var(--sv-ink); border-color: var(--sv-ink); color: #fff; }
+  border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13.5px; cursor: pointer; white-space: nowrap; }
+.sv-res-chip:hover { border-color: var(--sv-brand); color: var(--sv-brand); }
+.sv-res-chip[data-on] { background: var(--sv-brand); border-color: var(--sv-brand); color: #fff; }
 
 /* Capability journeys (components/JourneyView.tsx): stages left, one held screen right. */
 .jv { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
