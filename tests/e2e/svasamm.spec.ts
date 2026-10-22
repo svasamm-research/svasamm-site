@@ -3,6 +3,7 @@
 // the BUILT site like the rest of the suite.
 import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
+import { TEAM } from "../../lib/team";
 
 const urls = [...readFileSync("out/sitemap.xml", "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 
@@ -106,10 +107,11 @@ test("journey: scrolling to a stage shows its screen", async ({ page }) => {
   expect(await page.locator('a[href^="/pages/millingo-paddy-in-rice-out.html#"]').count()).toBe(4);
 });
 
-test("team: every person, the facts, and You? leading to the openings", async ({ page }) => {
+test("team: every person, and nobody taken off, the facts, and You? leading to the openings", async ({ page }) => {
   await page.goto("/team");
-  await expect(page.locator(".tm-card:not(.tm-you)")).toHaveCount(6);
-  await expect(page.locator(".tm-back")).toHaveCount(6);
+  await expect(page.locator(".tm-card:not(.tm-you)")).toHaveCount(TEAM.length);
+  await expect(page.locator(".tm-back")).toHaveCount(TEAM.length);
+  await expect(page.locator("main")).not.toContainText("Tanya");
   await expect(page.locator(".tm-fact-n").first()).toHaveText("April 2024");
   await page.locator("a.tm-you").click();
   await expect(page).toHaveURL(/\/jobs$/);
