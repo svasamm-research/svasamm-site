@@ -2,6 +2,8 @@
 // "fully in the office" are Mithun's. ⚠️ Every `words` line and the WORK text are DRAFTS
 // written from the role alone (no invented achievements or years) for Mithun to edit.
 // A person without a photo shows initials; add `photo` (a square image in public/team/).
+// Tanya Malhotra (HR Consultant) was taken off on 22 Oct 2026 until her contract is signed (Mithun);
+// her line is in git history (commit 1d45402's tree).
 
 export type Person = { name: string; role: string; words: string; photo?: string };
 
@@ -16,8 +18,6 @@ export const TEAM: Person[] = [
     words: "Finds the mistake before a client does. If a screen says something it cannot do, it does not ship." },
   { name: "Aman Singh", role: "Developer",
     words: "Builds the screens and the rules behind them, and tests what he builds the way a clerk would use it." },
-  { name: "Tanya Malhotra", role: "HR Consultant",
-    words: "Looks after hiring and the people side of Svasamm — so the team can do its best work." },
 ];
 
 export const WORK = {
