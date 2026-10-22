@@ -22,7 +22,7 @@ function why(a: Omit<Article, "type" | "parentProduct" | "byline" | "jsonLd" | "
     ...rest,
     type: "guide",
     parentProduct: "platform",
-    byline: `By Mithun K. Singh, Founder, Svasamm Research · ${shown}`,
+    byline: `By Mithun K. Singh, Co-Founder, Svasamm Research · ${shown}`,
     seo: {
       metaTitle,
       metaDescription,
@@ -40,7 +40,7 @@ function why(a: Omit<Article, "type" | "parentProduct" | "byline" | "jsonLd" | "
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
         },
         publisher: { "@type": "Organization", name: "Svasamm" },

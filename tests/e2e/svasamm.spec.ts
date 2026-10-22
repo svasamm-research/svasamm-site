@@ -28,9 +28,10 @@ test.describe("every page", () => {
     expect(bad).toEqual([]);
   });
 
-  // Claims that were on the site and are not true of the code (checked 12 and 15 Oct 2026).
+  // Claims that were on the site and are not true of the code (checked 12 and 15 Oct 2026), and
+  // the byline title: Mithun is Co-Founder, as on /team (22 Oct 2026).
   test("no claim the code does not support", async ({ page }) => {
-    const banned = [/self-hostable/i, /ABDM-ready/i, /geofenc/i, /camp-pick app/i, /\bSauda\b/, /multi-unit consolidation/i, /levy memos?/i, /founded 2022|since 2019/i];
+    const banned = [/self-hostable/i, /ABDM-ready/i, /geofenc/i, /camp-pick app/i, /\bSauda\b/, /multi-unit consolidation/i, /levy memos?/i, /founded 2022|since 2019/i, /(?<!Co-)\bFounder\b/];
     const bad: string[] = [];
     for (const u of urls) {
       await page.goto(u);
