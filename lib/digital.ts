@@ -90,6 +90,7 @@ export const DIGITAL_PRODUCT: Product = {
       {
         heading: "Healthcare digital guides", icon: "ph-file-text", links: [
           { title: "Digital marketing for nursing homes: what actually brings admissions", href: "/pages/digital-marketing-for-nursing-homes.html" },
+          { title: "Choosing a digital marketing company for your hospital in Kolkata", href: "/pages/digital-marketing-company-hospitals-kolkata.html" },
           { title: "Healthcare digital marketing in Kolkata: how facilities get found", href: "/pages/healthcare-digital-marketing-kolkata.html" },
           { title: "Clinic SEO in West Bengal: how patients actually find a clinic", href: "/pages/clinic-seo-west-bengal.html" },
           { title: "Hospital and clinic website design: what a facility site actually needs", href: "/pages/hospital-website-design.html" },

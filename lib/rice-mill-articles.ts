@@ -10,7 +10,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Punjab · KMS 2026-27",
     title: "Punjab Custom Milling Policy 2026-27: What Changed for Rice Millers",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 8 October 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 8 October 2026",
     intro:
       "Punjab's cabinet approved the Custom Milling Policy for Kharif 2026-27 on 5 September 2026. The change most millers will feel: a mill that has delivered 90% of the rice due from its 2025-26 paddy can take fresh paddy this season, instead of first clearing every last tonne. Here is what changed, why the state did it, and what it asks of a mill's own records.",
     sections: [
@@ -128,7 +128,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
         },
         publisher: { "@type": "Organization", name: "Svasamm" },
@@ -154,7 +154,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
     eyebrow: "Rice Mill Guide",
     title:
       "Why CMR Out-Turn Drops Below 67%: Moisture, Drying & Defending the Shortfall",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 28 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 28 July 2026",
     intro:
       "A miller under CMR must return 67 kg of raw rice (or 68 kg parboiled) for every 100 kg of paddy — the prescribed out-turn ratio. When paddy arrives wet, above the 17% moisture limit, drying it down for milling removes weight, so the actual out-turn can fall toward 62%. That gap is what triggers a shortfall notice — and this guide explains why it happens and how to defend it with data.",
     sections: [
@@ -268,7 +268,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -350,7 +350,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Uttar Pradesh · KMS 2026-27",
     title: "Uttar Pradesh Paddy Procurement and CMR 2026-27: Dates, Agencies and What the Mill Must Keep",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 October 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 October 2026",
     intro:
       "Uttar Pradesh's cabinet approved the paddy procurement policy for Kharif Marketing Season 2026-27 in early October, with buying in western UP opening this month and eastern UP from 1 November. For a mill doing custom milling, the season is set by four facts — the price, the windows, the agencies and the bags — and decided by one record: how much of the state's paddy it holds, and how much rice it still owes. Here is what has been announced, with sources, and what is not yet published.",
     sections: [
@@ -440,7 +440,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
         },
         publisher: { "@type": "Organization", name: "Svasamm" },
@@ -465,7 +465,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Punjab · KMS 2026-27",
     title: "Release Orders in Punjab: How Paddy Reaches a Mill Beyond Its Own Mandi",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 October 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 October 2026",
     intro:
       "A Punjab rice mill gets government paddy two ways: its own linked share from the mandis it is attached to, and extra paddy lifted under a release order — the department's permission to take paddy from somewhere else. With 2025-26 rice still being delivered and the 2026-27 crop arriving, which of the two a mill is working on, and against which season, is the record that decides its next allotment. Here is how release orders have worked, with each rule dated, because the 2026-27 terms are not yet public.",
     sections: [
@@ -557,7 +557,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
         },
         publisher: { "@type": "Organization", name: "Svasamm" },

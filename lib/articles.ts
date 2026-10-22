@@ -12,7 +12,7 @@ export const ARTICLES: Article[] = [
     eyebrow: "Rice Mill Guide",
     title:
       "Custom Milled Rice (CMR) Explained: The Complete Process for Millers",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
     intro:
       "CMR (Custom Milled Rice) is the rice a mill produces from government-procured paddy and returns to FCI or a state agency at a fixed out-turn ratio — 67% for raw rice, 68% for parboiled, per 100 kg of paddy. The miller doesn't own the paddy; they earn a milling charge. This guide explains the CMR process end to end: what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
     sections: [
@@ -226,7 +226,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -319,7 +319,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Rice Mill Guide",
     title: "Rice Mill Yield & Milling Recovery: How to Calculate It",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
     intro:
       "Milling recovery — the out-turn ratio — is how much sellable rice you get from paddy: under government procurement it's a fixed 67% for raw rice and 68% for parboiled, per 100 kg of paddy. It is also the single number that decides whether a mill makes money — a one-percent gain on thousands of quintals is real profit, and a one-percent unexplained loss is money walking out of the gate. Here is how to calculate yield and recovery, what a good figure is, and why tracking it per batch is where mills find their margin.",
     sections: [
@@ -533,7 +533,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -626,7 +626,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Rice Mill Guide",
     title: "Rice Mill By-Product Accounting: Bran, Husk & Broken Rice",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
     intro:
       "Ask a miller what they sell and they'll say 'rice.' But by weight, nearly a third of every quintal of paddy leaves the mill as something else — bran, husk, and broken rice. How well you track and sell those by-products often decides whether a milling run is profitable.",
     sections: [
@@ -745,7 +745,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -814,7 +814,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Rice Mill Guide",
     title: "GST for Rice Mills: Paddy, Rice, Bran & Milling",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
     intro:
       'GST on rice comes down to one thing: loose or packed. Paddy and loose, unbranded rice are nil-rated, but rice sold "pre-packaged and labelled" attracts 5% GST — the rule in force since 18 July 2022 — and by-products like bran and husk each have their own treatment. This guide lays out the full landscape so you can bill correctly.',
     sections: [
@@ -925,7 +925,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -1001,7 +1001,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Buyer's Guide",
     title: "Best Rice Mill Software: How to Choose",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
     intro:
       "Search 'rice mill software' and you'll find dozens of vendors, from one-person shops to SAP resellers. They are not the same kind of product, and the 'best' one depends on how your mill works — especially whether you do government custom milling. Here are the three categories mills actually buy, a must-have checklist, and the questions that separate a real fit from a good demo.",
     sections: [
@@ -1202,7 +1202,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -1287,108 +1287,74 @@ export const ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Pricing Guide",
     title: "Rice Mill Software Price: What It Costs & Why",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · updated 22 October 2026",
     intro:
-      "'What does rice mill software cost?' has no single answer, because a billing app and a full CMR-capable ERP are very different products. Here are the pricing models you'll encounter, what actually drives the cost, and how to compare offers fairly.",
+      "'What does rice mill software cost?' has no single answer, because a billing app and a system that runs the government CMR cycle are different products. This guide sets out the pricing models you will meet, what actually moves the price, the costs that sit outside the quote, a worked example of what the wrong system costs in one season, and the questions to ask before you sign.",
     sections: [
       {
         type: "list",
         h: "The pricing models you'll see",
         items: [
-          {
-            b: "One-time (perpetual) licence —",
-            t: "pay once, then pay for annual updates/support. Lower long-run cost if the software keeps up.",
-          },
-          {
-            b: "Subscription (SaaS) —",
-            t: "annual or monthly, usually including updates and support. Lower upfront, and you always run the current version.",
-          },
-          {
-            b: "Per-user —",
-            t: "priced by number of logins (gate, QC, production, accounts, owner).",
-          },
-          {
-            b: "Tiered / module-based —",
-            t: "a package (Starter / Professional / Enterprise) that scales scope and price with what you use.",
-          },
+          { b: "One-time (perpetual) licence —", t: "you pay once, then pay again each year for updates and support. It looks cheaper over five years only if the vendor keeps the software current with GST and state rules." },
+          { b: "Subscription —", t: "a yearly or monthly fee that includes updates and support. Lower at the start, and you always run the current version. Ask what happens to your data if you stop paying." },
+          { b: "Per-user —", t: "priced by the number of logins: gate, QC bench, production, accounts, the owner. It grows as more of the mill uses the system — which is what you want." },
+          { b: "Tiered —", t: "a package that grows with what the mill does: market-only, then full operations, then the government cycle. You pay for the scope you use." },
         ],
-      },
-      {
-        type: "p",
-        text: "As a rough marker: simple billing/POS tools can start in the low tens of thousands of rupees, while a full ERP handling CMR, recovery and by-products is priced on your operation’s size and scope.",
       },
       {
         type: "table",
-        h: "What actually drives the price",
-        cols: ["Cost driver", "Why it matters"],
+        h: "What actually moves the price",
+        cols: ["Driver", "Why it costs more", "What to ask"],
         rows: [
-          [
-            "Mill size & throughput",
-            "More volume, godowns and lots = more to configure and support.",
-          ],
-          [
-            "CMR vs market-only",
-            "Government custom milling is far more than open-market billing.",
-          ],
-          [
-            "Number of users",
-            "Per-user pricing scales with gate, QC, production and accounts logins.",
-          ],
-          [
-            "Hardware integration",
-            "Weighbridge, E-PoP, barcode/printer integration adds setup.",
-          ],
-          [
-            "Multi-unit / multi-state",
-            "Several mills or states multiplies configuration and compliance.",
-          ],
-          [
-            "Implementation & training",
-            "Data migration, setup and staff training are real costs beyond the licence.",
-          ],
+          ["CMR or market-only", "Government custom milling adds release orders, camp picks, fortified rice, depot delivery, the shortfall and report 7.1 — far more than open-market billing.", "Does the CMR part follow **your state's** rules, or one state's rules bent to fit?"],
+          ["Season volume", "More lorries, lots and batches mean more to set up, check and support.", "Is there a cap on entries, lots or batches?"],
+          ["Users", "Each desk that works in the system — gate, bench, godown, accounts — is a login.", "Is a seasonal worker a full user for the whole year?"],
+          ["Weighbridge and printers", "Connecting the weighbridge and the gate printer is setup work.", "Is the weighbridge connection included, and which models?"],
+          ["Moving your data in", "Opening stock, parties, the gunny balance and last season's figures have to come across correctly.", "Who enters the opening balances, and who checks them?"],
+          ["Training", "Gate staff, the QC bench and accounts each need their own walk-through.", "Is training on site, by phone, or a video?"],
         ],
       },
       {
         type: "p",
-        h: "Compare total cost of ownership, not the sticker",
-        text: "The cheapest licence is rarely the cheapest system. Add up licence/subscription + implementation + hardware integration + training + annual support. A tool that’s ₹20,000 cheaper but doesn’t handle your CMR reconciliation will cost far more in manual work and compliance risk over a season.",
+        h: "The costs that sit outside the quote",
+        text: "A licence or subscription is only part of what a system costs. Add the hours your staff spend entering data twice, the computer or tablet at the gate, the internet connection at the mill, and the accountant's time to reconcile what the software does not. Then add the cost of the mistakes a weak system lets through — a weighment claimed twice, a load paid for at full weight after the bench found high moisture, a CMR delivery short against the out-turn. **Those mistakes cost more than any licence.**",
+      },
+      {
+        type: "p",
+        h: "A worked example: one season's out-turn gap",
+        text: "Take a mill that receives **10,000 quintals** of paddy for CMR in a season. At the common 67% out-turn it owes **6,700 quintals** of rice. If the mill's own records run half a point behind — 66.5% instead of 67% — it finds out at the end that it is **50 quintals short**, and the state recovers that shortfall from the mill. The same half point, caught batch by batch while milling, is a decision the mill can still act on. That is the real comparison between two systems: not the price of the licence, but whether the gap shows up in the first week or the last.",
+      },
+      {
+        type: "list",
+        h: "Questions to ask before you sign",
+        items: [
+          { b: "Which state's CMR rules are built in?", t: "Out-turn, fortified rice, gunny and depot rules differ by state. Ask to see your state's, not a demo of another." },
+          { b: "Can I export all my data, at any time?", t: "In a format your accountant can open. Ask what happens to it if you stop paying." },
+          { b: "Are GST returns prepared from the books?", t: "Or does someone re-key the sales into another tool each month?" },
+          { b: "What happens at the weighbridge?", t: "Can one weighment be claimed by two entries? Ask them to try it in the demo." },
+          { b: "Who answers the phone in the season?", t: "October to February is when a mill needs help, and when vendors are busiest." },
+          { b: "What does the price include next year?", t: "Updates for new GST and state rules, support, and how much notice you get of a price change." },
+        ],
       },
       {
         type: "list",
         h: "How Millingo is priced",
         items: [
-          {
-            b: "Starter —",
-            t: "small/seasonal, market-only mills: procurement, inventory, milling, basic sales, core GST invoicing.",
-          },
-          {
-            b: "Professional —",
-            t: "full operations: the books and GST returns, weighbridge, the QC bench and butta, gunny-bag accounting, by-products valued as stock.",
-          },
-          {
-            b: "Enterprise —",
-            t: "government CMR business: levy procurement and CMR delivery, out-turn tracking, fortified rice, shortfall and report 7.1.",
-          },
+          { b: "Starter —", t: "small, seasonal, market-only mills: paddy purchase and stock, milling batches and recovery, market sales and accounting." },
+          { b: "Professional —", t: "full operations: the QC bench and butta deductions, by-products valued as stock, gunny-bag accounting, and GSTR-1 and GSTR-3B from the books." },
+          { b: "Enterprise —", t: "mills doing government custom milling: the levy and CMR cycle, fortified rice, the shortfall and report 7.1." },
         ],
       },
       {
         type: "p",
-        text: "Because the right tier depends on your mill’s size and whether you do CMR, we quote after a short conversation rather than post a one-size number that would mislead.",
+        text: "Millingo is a hosted subscription, and one account runs one mill. We quote after a short conversation about your season — whether you do CMR, how much paddy you receive, and how many desks will use it — rather than post one number that would be wrong for most mills. If a renewal goes unpaid, the account becomes read-only after 7 days: you can still see and export everything, and your data stays available to export for 30 days after an account ends.",
       },
     ],
     faqs: [
-      {
-        q: "How much does rice mill software cost in India?",
-        a: "It varies with scope. Entry-level billing tools can start in the low tens of thousands of rupees; a full CMR-capable ERP is priced on mill size, users and modules. Compare total cost of ownership, not just the sticker.",
-      },
-      {
-        q: "Is it a one-time cost or a subscription?",
-        a: "Both exist. Perpetual licences charge once plus annual updates; subscriptions spread cost and include updates/support. Subscription lowers upfront cost and keeps you current.",
-      },
-      {
-        q: "Why won't vendors just post a price?",
-        a: "Because a seasonal market-only mill and a multi-unit CMR operation need very different scope. A single posted number usually means you either overpay or find hidden add-ons later.",
-      },
+      { q: "How much does rice mill software cost in India?", a: "It depends on scope: whether the mill does government CMR, how much paddy it receives, how many people use it, and what setup it needs. Compare the whole cost over a season — licence, setup, training and the mistakes it prevents — not the sticker." },
+      { q: "Is it a one-time cost or a subscription?", a: "Both exist. A perpetual licence charges once plus a yearly fee for updates; a subscription includes updates and support. Millingo is a hosted subscription." },
+      { q: "Why won't vendors just post a price?", a: "Because a seasonal market-only mill and a CMR mill need very different scope. A single posted number usually means one of them overpays, or meets add-ons later." },
+      { q: "What should I check before buying?", a: "That your state's CMR rules are built in, that you can export all your data at any time, that GST returns come from the books, and that one weighment cannot be claimed twice." },
     ],
     related: [
       {
@@ -1414,7 +1380,7 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Rice Mill Software Price: What It Costs & Why (2026 Guide) | Millingo",
       metaDescription:
-        "How rice mill software is priced - one-time vs subscription, per-user vs tiered - and what drives cost (mill size, CMR vs market-only, users, hardware).",
+        "How rice mill software is priced, what moves the price (CMR, season volume, users, setup), the costs outside the quote, and what to ask before you sign.",
       canonical: "https://svasamm.com/pages/rice-mill-software-price.html",
       ogType: "article",
       ogTitle: "Rice Mill Software Price: What It Costs & Why",
@@ -1431,7 +1397,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -1442,7 +1408,7 @@ export const ARTICLES: Article[] = [
           name: "Svasamm",
         },
         datePublished: "2026-07-14",
-        dateModified: "2026-07-16",
+        dateModified: "2026-10-22",
         mainEntityOfPage:
           "https://svasamm.com/pages/rice-mill-software-price.html",
       },
@@ -2249,7 +2215,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Comparison",
     title: "Millingo vs Dataman Rice Soft (AAHAAR)",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
     intro:
       "If you're choosing rice-mill software, Dataman's Rice Soft (also marketed as AAHAAR) is one of the established options you'll come across, alongside Millingo. Both are built for Indian rice mills, but they emphasise different things. This is an honest, side-by-side look.",
     sections: [
@@ -2355,7 +2321,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -2415,7 +2381,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Comparison",
     title: "Millingo vs Samadhan Rice Mill ERP",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 14 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
     intro:
       "Samadhan Rice Mill ERP is another established option for Indian mills, so it's a fair one to weigh against Millingo. Both target rice milling, but they're built on different foundations and lead with different strengths. Here's an honest side-by-side.",
     sections: [
@@ -2529,7 +2495,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -2589,7 +2555,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "dms",
     eyebrow: "OEM Channel Guide",
     title: "Distributor Management for OEMs: The Complete Channel Lifecycle",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "For an OEM that sells through distributors, the product is only half the business — the channel is the other half. Once a machine leaves your factory, a distributor books the deal, installs it, services it, and is the face the customer sees for years. If you can't see any of that, you're flying blind on your own revenue and your own reputation. This guide breaks the OEM–distributor relationship into its three stages — before sale, sale & installation, and after sale — and explains what to track at each.",
     sections: [
@@ -2765,7 +2731,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -2842,7 +2808,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "dms",
     eyebrow: "OEM Industry · Coding & Marking",
     title: "Distributor Management for Coding & Marking OEMs",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Coding and marking OEMs — makers of continuous inkjet (CIJ), thermal inkjet, laser and thermal-transfer printers — live and die by uptime and consumables. A printer that stops on a packaging line stops the line, and the inks, make-up fluids and ribbons are a recurring revenue stream that flows through distributors. Managing that channel end to end is exactly what a DMS for OEMs is for.",
     sections: [
@@ -3011,7 +2977,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "dms",
     eyebrow: "OEM Industry · Packaging Machinery",
     title: "Distributor Management for Packaging & Industrial Machinery OEMs",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "OEMs that build filling, sealing, labelling, cartoning and wrapping machines sell high-value equipment through distributors who commission it, stock spares and change parts, and carry the service relationship for the machine’s long life. That whole channel needs to be visible to the OEM.",
     sections: [
@@ -3181,7 +3147,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "dms",
     eyebrow: "OEM Industry · Electrical & Electronics",
     title: "Distributor Management for Electrical & Electronics OEMs",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "OEMs making switchgear, drives, UPS systems, power electronics and test & measurement instruments sell a broad range through channel partners, with warranty registration at the end customer and a steady flow of repairs and returns. Keeping that visible is what an OEM DMS does.",
     sections: [
@@ -3351,7 +3317,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "dms",
     eyebrow: "OEM Industry · Pharma & Medical Devices",
     title: "Distributor Management for Pharma & Medical Device OEMs",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "OEMs selling lab, diagnostic and medical equipment through distributors carry obligations most channels don’t: qualified installation, calibration schedules, reagent and consumable resupply, and serial-level traceability. An OEM DMS keeps that lifecycle visible and accountable.",
     sections: [
@@ -3525,7 +3491,7 @@ export const ARTICLES: Article[] = [
     eyebrow: "OEM Industry · Automotive & Aftermarket",
     title:
       "Distributor Management for Automotive Components & Aftermarket OEMs",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Automotive component OEMs distribute through a multi-tier channel — distributor to retailer to garage — with high SKU counts, warranty claims coming back from the field, and a constant need to see secondary sales downstream. An OEM DMS brings that whole chain into view.",
     sections: [
@@ -3696,7 +3662,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "dms",
     eyebrow: "OEM Industry · HVAC & Equipment",
     title: "Distributor Management for HVAC & Industrial Equipment OEMs",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "OEMs making chillers, compressors, pumps and cooling systems sell heavy equipment through a dealer network that installs it, holds spares, and carries AMC and service contracts across a long service life. An OEM DMS keeps that installed base and service channel visible.",
     sections: [
@@ -3866,7 +3832,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "erp",
     eyebrow: "ERP Guide",
     title: "ERP Implementation for Indian Businesses: A Practical Guide",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "An ERP replaces the patchwork of spreadsheets, Tally and disconnected tools with one system of record for finance, inventory, procurement and sales. The software matters, but implementation is what decides success or failure. This guide covers when you actually need an ERP, the phases of a rollout, and the mistakes that sink projects.",
     sections: [
@@ -4010,7 +3976,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -4087,7 +4053,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "erp",
     eyebrow: "ERP by Industry · Manufacturing",
     title: "ERP for Manufacturing Businesses",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Manufacturers run on a chain that generic accounting can’t see: bill of materials, work orders, shop-floor consumption and costing. An ERP built for manufacturing ties the floor to inventory and the ledger so you know true cost per unit.",
     sections: [
@@ -4246,7 +4212,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "erp",
     eyebrow: "ERP by Industry · Trading & Distribution",
     title: "ERP for Trading & Distribution Businesses",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Traders and distributors live on stock accuracy, fast billing and tight receivables. An ERP gives them multi-warehouse inventory, quotation-to-invoice speed and a real handle on outstanding money.",
     sections: [
@@ -4405,7 +4371,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "erp",
     eyebrow: "ERP by Industry · Services",
     title: "ERP for Services & Project-Based Firms",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Services and project firms don’t sell stock — they sell time and deliverables. Their ERP has to track projects, timesheets, billing milestones and project profitability, not just inventory.",
     sections: [
@@ -4564,7 +4530,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "hrms",
     eyebrow: "HR Guide",
     title: "Payroll & Statutory Compliance in India: A Practical Guide",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Running payroll in India is more than paying salaries — it’s PF, ESI, professional tax, TDS and the returns that go with each, on deadlines that don’t move. This guide explains the core statutory components and how Svasamm People keeps them right.",
     sections: [
@@ -4674,7 +4640,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -4743,7 +4709,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "hrms",
     eyebrow: "Svasamm People · Manufacturing",
     title: "HR & Payroll for Manufacturing",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Manufacturing HR runs on shifts, overtime and a mix of permanent and contract labour. Svasamm People ties shift rosters and attendance from the phone straight to compliant payroll.",
     sections: [
@@ -4902,7 +4868,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "hrms",
     eyebrow: "Svasamm People · Retail",
     title: "HR & Payroll for Multi-Location Retail",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Retail chains manage a dispersed, high-churn workforce across many stores. Svasamm People gives them rosters and phone attendance per store, quick staff import, and payslips and leave on the phone.",
     sections: [
@@ -5061,7 +5027,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "hrms",
     eyebrow: "Svasamm People · Healthcare",
     title: "HR & Payroll for Hospitals & Clinics",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Hospitals run 24/7 on rotating shifts across clinical and support staff, and payroll that must be right every month. Svasamm People keeps rosters, attendance and compliant payroll straight around the clock.",
     sections: [
@@ -5220,7 +5186,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "crm",
     eyebrow: "CRM Guide",
     title: "Building a Sales Pipeline That Actually Closes",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "A CRM is only as good as the pipeline you run in it. This guide covers how to define stages that mean something, keep data clean, and use automation and analytics to close more without adding headcount.",
     sections: [
@@ -5334,7 +5300,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -5402,7 +5368,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "crm",
     eyebrow: "CRM by Industry · B2B Sales",
     title: "CRM for B2B Sales Teams",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "B2B sales means long cycles, multiple stakeholders and quoted deals. A CRM built for it keeps every conversation, quote and decision-maker on one account record.",
     sections: [
@@ -5561,7 +5527,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "crm",
     eyebrow: "CRM by Industry · Services",
     title: "CRM for Services Firms",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "For services firms, the sale is a relationship and the pipeline is proposals and retainers. A CRM keeps enquiries, proposals and ongoing client relationships in one place.",
     sections: [
@@ -5720,7 +5686,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "crm",
     eyebrow: "CRM by Industry · Distribution",
     title: "CRM for Distribution Businesses",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Distribution businesses juggle many customer accounts, repeat orders and support in one relationship. A CRM keeps sales, reorders and service issues on a single account view.",
     sections: [
@@ -5878,7 +5844,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "service-desk",
     eyebrow: "Service Desk Guide",
     title: "ITSM Fundamentals: Tickets, SLAs & Escalation",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "A service desk succeeds or fails on a few fundamentals: getting tickets to the right person, holding to SLAs, and escalating before things break. This guide covers the core concepts and how to set them up so they actually work.",
     sections: [
@@ -5986,7 +5952,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -6055,7 +6021,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "service-desk",
     eyebrow: "Service Desk by Industry · Internal IT",
     title: "Service Desk for Internal IT Teams",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Internal IT teams support employees across the business. A service desk gives them one place for requests, incidents and assets — with SLAs that keep the business running.",
     sections: [
@@ -6214,7 +6180,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "service-desk",
     eyebrow: "Service Desk by Industry · MSPs",
     title: "Service Desk for Managed Service Providers",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "MSPs run service desks for many client organisations at once, each with its own SLA. A multi-tenant service desk keeps clients separated, SLAs honoured and work reportable per client.",
     sections: [
@@ -6373,7 +6339,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "service-desk",
     eyebrow: "Service Desk by Industry · Customer Support",
     title: "Service Desk for Customer Support Teams",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Customer support teams field issues across email, phone and portal, and are judged on speed and satisfaction. A service desk unifies channels, holds SLAs and surfaces CSAT.",
     sections: [
@@ -6533,7 +6499,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "dms",
     eyebrow: "Comparison",
     title: "Svasamm DMS vs Bizom: For OEM Channels",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "Bizom (by Mobisy Technologies) is one of India's best-known channel platforms, so if you're an OEM comparing options it's a fair one to weigh against Svasamm DMS. Both manage distribution, but they're built for different shapes of channel. This is an honest side-by-side.",
     sections: [
@@ -6657,7 +6623,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -6725,7 +6691,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "dms",
     eyebrow: "Comparison",
     title: "Svasamm DMS vs FieldAssist: For OEM Channels",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "FieldAssist is a well-established route-to-market / SFA platform, so it's a reasonable one to compare against Svasamm DMS. Both help brands manage distribution, but they solve different problems. Here's an honest side-by-side.",
     sections: [
@@ -6845,7 +6811,7 @@ export const ARTICLES: Article[] = [
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
-          jobTitle: "Founder",
+          jobTitle: "Co-Founder",
           worksFor: {
             "@type": "Organization",
             name: "Svasamm Research Pvt Ltd",
@@ -6913,7 +6879,7 @@ export const ARTICLES: Article[] = [
     parentProduct: "dms",
     eyebrow: "OEM Industry · Agri & Farm Equipment",
     title: "Distributor Management for Agri & Farm Equipment OEMs",
-    byline: "By Mithun K. Singh, Founder, Svasamm Research · 16 July 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
       "OEMs making tractors, implements, pumps and harvesters sell through a dispersed rural dealer network where service reach, spare-part logistics, warranty and finance/subsidy paperwork all matter. An OEM DMS brings that far-flung channel into one view.",
     sections: [

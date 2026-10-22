@@ -13,7 +13,7 @@ import type { Article, Faq } from "./types";
 
 const PARENT_HREF = "/pages/digital-schools.html";
 const PARENT_URL = `${SITE_URL}${PARENT_HREF}`;
-const BYLINE = "By Mithun K. Singh, Founder, Svasamm Research · 29 July 2026";
+const BYLINE = "By Mithun K. Singh, Co-Founder, Svasamm Research · 29 July 2026";
 const DATE = "2026-07-29";
 
 const PARENT_RELATED = { title: "Svasamm Digital for Schools", href: PARENT_HREF };
@@ -35,7 +35,7 @@ function articleJsonLd(opts: { slug: string; headline: string; description: stri
       author: {
         "@type": "Person",
         name: "Mithun K. Singh",
-        jobTitle: "Founder",
+        jobTitle: "Co-Founder",
         worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
       },
       publisher: { "@type": "Organization", name: "Svasamm" },
