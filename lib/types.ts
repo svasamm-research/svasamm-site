@@ -70,7 +70,7 @@ export type Article = {
   parentProduct: string; // pid, e.g. "millingo"
   eyebrow: string;
   title: string;
-  byline: string; // e.g. "Mithun K. Singh, Founder"
+  byline: string; // e.g. "Mithun K. Singh, Co-Founder"
   intro: string;
   sections: Block[];
   faqs: Faq[];

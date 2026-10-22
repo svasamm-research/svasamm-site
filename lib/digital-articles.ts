@@ -1,4 +1,4 @@
-// Svasamm Digital for Healthcare — content cluster (6 guides + 2 comparisons).
+// Svasamm Digital for Healthcare — content cluster (7 guides + 2 comparisons).
 // Parent solution: lib/digital.ts (id "digital-healthcare", /pages/digital-healthcare.html).
 // Mirrors the shape/tone of lib/articles.ts (AUTO-GENERATED, do not edit) but is hand-written
 // and lives in its own file so it isn't touched by the article extractor.
@@ -15,7 +15,7 @@ import type { Article, Faq } from "./types";
 
 const PARENT_HREF = "/pages/digital-healthcare.html";
 const PARENT_URL = `${SITE_URL}${PARENT_HREF}`;
-const BYLINE = "By Mithun K. Singh, Founder, Svasamm Research · 20 July 2026";
+const BYLINE = "By Mithun K. Singh, Co-Founder, Svasamm Research · 20 July 2026";
 const DATE = "2026-07-20";
 
 const PARENT_RELATED = { title: "Svasamm Digital for Healthcare", href: PARENT_HREF };
@@ -26,7 +26,8 @@ function cta(title: string, body: string) {
 
 // Shared jsonLd builder — Article + BreadcrumbList (Home → Svasamm Digital for Healthcare →
 // this article) + FAQPage, matching the generated pattern in lib/articles.ts.
-function articleJsonLd(opts: { slug: string; headline: string; description: string; title: string; faqs: Faq[] }): object[] {
+function articleJsonLd(opts: { slug: string; headline: string; description: string; title: string; faqs: Faq[]; date?: string }): object[] {
+  const date = opts.date ?? DATE;
   const url = `${SITE_URL}/pages/${opts.slug}.html`;
   return [
     {
@@ -37,12 +38,12 @@ function articleJsonLd(opts: { slug: string; headline: string; description: stri
       author: {
         "@type": "Person",
         name: "Mithun K. Singh",
-        jobTitle: "Founder",
+        jobTitle: "Co-Founder",
         worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
       },
       publisher: { "@type": "Organization", name: "Svasamm" },
-      datePublished: DATE,
-      dateModified: DATE,
+      datePublished: date,
+      dateModified: date,
       mainEntityOfPage: url,
     },
     {
@@ -756,6 +757,7 @@ export const DIGITAL_ARTICLES: Article[] = [
       },
     ],
     related: [
+      { title: "Choosing a digital marketing company for your hospital in Kolkata", href: "/pages/digital-marketing-company-hospitals-kolkata.html" },
       { title: "Digital marketing for nursing homes: what actually brings admissions", href: "/pages/digital-marketing-for-nursing-homes.html" },
       { title: "Clinic SEO in West Bengal: how patients actually find a clinic", href: "/pages/clinic-seo-west-bengal.html" },
       { title: "Google Business Profile for clinics and nursing homes", href: "/pages/google-business-profile-for-clinics.html" },
@@ -782,6 +784,108 @@ export const DIGITAL_ARTICLES: Article[] = [
       faqs: [
         { q: "How do patients in Kolkata search for healthcare?", a: "By locality and need — 'nursing home in Salt Lake', 'dentist near Behala' — often mixing Bengali and English. Results are proximity-filtered, so neighbourhood presence matters more than city-wide claims." },
         { q: "Should a facility target 'Kolkata' or specific areas?", a: "Specific areas. Greater Kolkata is a set of catchments; content that speaks to the localities you serve matches how patients search better than a generic city page." },
+      ],
+    }),
+  },
+  // 9. Buyer guide — facilities choosing a marketing company in Kolkata (22 Oct 2026). Search Console
+  // showed ~1,100 impressions a month for "digital marketing company for <facility> in kolkata" landing
+  // on the hub at position ~70; the Kolkata page above answers how PATIENTS search, this one the buyer.
+  {
+    slug: "digital-marketing-company-hospitals-kolkata",
+    type: "guide",
+    parentProduct: "digital-healthcare",
+    eyebrow: "Healthcare Marketing — Kolkata",
+    title: "Choosing a digital marketing company for your hospital in Kolkata",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 22 October 2026",
+    intro:
+      "Nursing homes, multispecialty clinics, daycare centres and hospitals across Kolkata are being called by marketing companies every week. This guide is for the owner or administrator deciding between them: what you are actually paying for, what each kind of facility needs first, what to spend on in what order, what to expect and when, and the questions that separate a careful company from a careless one.",
+    sections: [
+      {
+        type: "p",
+        h: "What you are actually buying",
+        text: "Healthcare digital marketing is a handful of separate jobs sold under one name: a website patients can use, a Google Business Profile that shows the right hours and services, local search work so the facility appears for the searches made near it, content that answers what patients ask, a monthly report, and — sometimes — paid ads on Google and Facebook. **Some of this is a one-time build; most of it only works if somebody keeps doing it every month.** Ask any company to split its proposal into those two parts.",
+      },
+      {
+        type: "table",
+        h: "What each kind of facility needs first",
+        cols: ["Facility", "What patients search", "Fix first"],
+        rows: [
+          ["Nursing home", "By locality and need — a nursing home with ICU in Salt Lake, maternity near Behala.", "**Google Business Profile** with the right services and visiting hours; a page per service patients ask about."],
+          ["Multispecialty clinic", "By specialty and doctor — a cardiologist in Garia, a child specialist near New Town.", "**One page per specialty and per doctor**, with timings, so each search finds its own answer."],
+          ["General hospital", "By emergency, department and insurance — 24-hour emergency near Howrah, cashless with a named insurer.", "**Emergency number and directions** at the top of every page; departments and empanelments listed plainly."],
+          ["Daycare / surgery centre", "By procedure — cataract surgery, dialysis, day-care chemotherapy, with the word cost often attached.", "**A page per procedure** explaining the process, preparation and stay — within the advertising rules."],
+          ["Superspecialty hospital", "By condition and specialist, often from outside the city.", "Usually has its own team. Outside help is best kept to the **specialty pages and search work** they cannot cover."],
+          ["Single-specialty practice", "By condition and surgeon — a vascular surgeon or a spine specialist in Kolkata.", "**The doctor's own profile and condition pages**, linked from the Google listing."],
+        ],
+      },
+      {
+        type: "list",
+        h: "What to spend on, in this order",
+        items: [
+          { b: "The Google Business Profile —", t: "most patients see it before they see your website. Correct categories, services, hours, photos and phone. It costs little and comes first." },
+          { b: "A website that answers the visit —", t: "services, doctors, timings, directions and a number that is answered. Fast on a phone, because most searches are on one." },
+          { b: "Monthly content and search work —", t: "a page a month for a specialty, procedure or locality you serve, chosen from what patients actually searched. This is where results build." },
+          { b: "Ads, last —", t: "Google or Facebook ads bring visits only while you pay. They work best once the profile and website can convert a visit into a call." },
+        ],
+      },
+      {
+        type: "p",
+        h: "What to expect, and when",
+        text: "A website and profile can be live in about **four weeks** once the company has your content and access to the Google profile. Search results build more slowly — over months, as Google sees the pages, the reviews and the profile activity. **No company can honestly promise a ranking, a number of patients or a revenue figure.** Google decides rankings, and India's rules limit what a facility may claim: the Drugs and Magic Remedies Act, the National Medical Commission's conduct rules for doctors, and the advertising code of ASCI. A proposal that guarantees page one is telling you something about the company, not about Google.",
+      },
+      {
+        type: "list",
+        h: "Questions to ask any company",
+        items: [
+          { b: "Will you also work for the hospital down the road?", t: "Local results are decided by distance. A company handling your direct competitor nearby is working against you." },
+          { b: "Who owns the website, the domain and the Google profile?", t: "You should — in your name, with your login. If the relationship ends, they stay with you." },
+          { b: "What will the monthly report show?", t: "Searches, visits and calls from Google's own tools — Search Console and Analytics — not a screenshot of a ranking." },
+          { b: "Who writes the medical content, and who checks it?", t: "A doctor at your facility should approve anything clinical before it goes out." },
+          { b: "Do you know the advertising rules?", t: "Ask how they handle before-and-after pictures, success rates and patient testimonials. The answer should be careful." },
+          { b: "What happens in month three?", t: "If the answer is a new invoice and no new work, the monthly fee is buying nothing." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Where Svasamm fits",
+        text: "Svasamm Digital works with clinics, nursing homes, diagnostic centres and small hospitals across Kolkata and West Bengal from our office in Konnagar, in the Hooghly belt. The work comes in three fixed scopes — Foundation (the build), Growth (the build, then monthly work) and Full (Growth plus ads and social) — and we take **one client per facility category within about 5 km**, written into the agreement. We publish the scope and quote the price per facility, in writing, after we know your locality and specialty.",
+      },
+    ],
+    faqs: [
+      { q: "How do I choose a digital marketing company for a hospital in Kolkata?", a: "Ask them to split the one-time build from the monthly work, to keep your website, domain and Google profile in your name, to report from Search Console and Analytics, and not to take your direct competitor nearby. Be careful of anyone who guarantees rankings or patient numbers." },
+      { q: "What should a nursing home spend on first?", a: "A complete Google Business Profile, then a website that answers the visit — services, timings, directions and a phone that is answered. Ads come last, once the profile and website can turn a visit into a call." },
+      { q: "How long before a hospital sees results?", a: "A website and profile can be live in about four weeks once content and profile access are handed over. Search results build over months; nobody can honestly promise a ranking or a number of patients." },
+    ],
+    related: [
+      { title: "Healthcare digital marketing in Kolkata: how facilities get found", href: "/pages/healthcare-digital-marketing-kolkata.html" },
+      { title: "Digital marketing for nursing homes: what actually brings admissions", href: "/pages/digital-marketing-for-nursing-homes.html" },
+      { title: "Healthcare advertising rules in India: what a facility can and cannot say", href: "/pages/healthcare-advertising-rules-india.html" },
+      { title: "Svasamm Digital vs a general digital agency", href: "/pages/digital-healthcare-vs-general-agency.html" },
+      PARENT_RELATED,
+    ],
+    cta: cta(
+      "Is your catchment open?",
+      "Tell us your facility type and locality. We'll check no competitor nearby is already with us, then send the scope and price in writing.",
+    ),
+    seo: {
+      metaTitle: "Digital Marketing for Hospitals in Kolkata: Choosing a Company | Svasamm",
+      metaDescription:
+        "For Kolkata nursing homes, clinics and hospitals choosing a marketing company: what you pay for, what each facility needs first, what to expect, and what to ask.",
+      canonical: `${SITE_URL}/pages/digital-marketing-company-hospitals-kolkata.html`,
+      ogType: "article",
+      ogTitle: "Choosing a digital marketing company for your hospital in Kolkata",
+      ogDescription: "What you are paying for, what each kind of facility needs first, and the questions to ask.",
+    },
+    jsonLd: articleJsonLd({
+      slug: "digital-marketing-company-hospitals-kolkata",
+      headline: "Choosing a Digital Marketing Company for Your Hospital in Kolkata",
+      description: "What Kolkata nursing homes, clinics and hospitals pay for, what each needs first, what to expect and what to ask.",
+      title: "Choosing a digital marketing company in Kolkata",
+      date: "2026-10-22",
+      faqs: [
+        { q: "How do I choose a digital marketing company for a hospital in Kolkata?", a: "Ask them to split the one-time build from the monthly work, keep your website, domain and Google profile in your name, report from Search Console and Analytics, and not take your direct competitor nearby. Be careful of anyone who guarantees rankings or patient numbers." },
+        { q: "What should a nursing home spend on first?", a: "A complete Google Business Profile, then a website that answers the visit. Ads come last." },
+        { q: "How long before a hospital sees results?", a: "A website and profile can be live in about four weeks once content and profile access are handed over; search results build over months." },
       ],
     }),
   },
