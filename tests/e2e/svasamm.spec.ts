@@ -92,10 +92,11 @@ test("tracking: demo click, reading depth and a 404 are counted", async ({ page 
   await expect.poll(() => events.map((e) => e.name)).toContain("404");
 });
 
-test("Sign in names the site; WhatsApp names the page", async ({ page }) => {
+test("Sign in names the site; WhatsApp opens with an inviting message", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('header a[href*="app.svasamm.com"]').first()).toHaveAttribute("href", /utm_source=svasamm\.com/);
-  await expect(page.locator("a.wa-fab")).toHaveAttribute("href", /919007793575.*text=/);
+  // the link is built after the page mounts, so wait for it rather than read it once
+  await expect(page.locator("a.wa-fab")).toHaveAttribute("href", /919007793575.*text=Hi%20Svasamm%2C%20I'd%20like%20to%20know%20how%20you%20can%20help%20my%20business\./);
 });
 
 test("journey: scrolling to a stage shows its screen", async ({ page }) => {
