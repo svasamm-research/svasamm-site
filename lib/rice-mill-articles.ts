@@ -576,6 +576,127 @@ export const RICE_MILL_ARTICLES: Article[] = [
       },
     ],
   },
+  // FRK in CMR (26 Oct 2026). Sources: FSSAI cereals standards 2.4, clause 24(c) (FRK spec, 1:50 / 1:100
+  // levels, sale and labelling); BIS IS 17780:2021 (fortified rice, 1:100 ± 10%); PIB 9 Oct 2024 (supply
+  // to Dec 2028); WB KMS 2024-25 procurement guideline 16.22.11-12. Millingo claims match
+  // modules/millingo/migrations/0038 (the blend, FRK as stock, report 7.1 columns H and I).
+  {
+    slug: "frk-blending-cmr-records",
+    type: "guide",
+    parentProduct: "millingo",
+    eyebrow: "CMR · Fortified rice",
+    title: "FRK in CMR: the 1:100 Blend, Its Tolerance, and the Records an Inspector Asks For",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 26 October 2026",
+    intro:
+      "Every quintal of CMR rice a mill delivers for the government schemes must be fortified first: blended with fortified rice kernels (FRK) at one part in a hundred. The Union Cabinet extended the supply of fortified rice under PMGKAY and the other welfare schemes to December 2028, so this is not a pilot any more — it is part of every delivery. This guide sets out what FRK is, what the 1:100 blend and its tolerance mean in kilograms, how a mill gets it wrong, and the records to keep so an inspector's questions have answers.",
+    sections: [
+      {
+        type: "p",
+        h: "What FRK is",
+        text: "Fortified rice kernels are rice-shaped kernels made by extrusion from rice flour and a vitamin-mineral premix, so they look and cook like rice. FSSAI's standard for them (clause 24(c) of the cereals standards) sets the nutrients they must carry: for a 1:100 blend, **280–425 mg of iron, 750–1,250 µg of folic acid and 7.5–12.5 µg of vitamin B12 per 100 g of kernels**. Blended one in a hundred, that gives the rice 28–42.5 mg of iron per kilogram. FRK may only be sold for making fortified rice — never loose, never to a consumer — and every pack must state its blending ratio.",
+      },
+      {
+        type: "p",
+        h: "The mill buys it — it is not supplied like gunny",
+        text: "A mill buys FRK from a manufacturer, with a bill, a cost and input GST, the way it buys any other material. That makes FRK stock the mill owns and must account for: received, blended, and the balance in the godown. A mill that runs short cannot fortify, and rice that is not fortified cannot be delivered.",
+      },
+      {
+        type: "table",
+        h: "The 1:100 blend in kilograms",
+        cols: ["Rice to fortify", "FRK at exactly 1:100", "Inside ±10% (BIS IS 17780:2021)"],
+        rows: [
+          ["100 kg", "1.00 kg", "0.90 – 1.10 kg"],
+          ["Two 50 kg bags", "1.00 kg", "0.90 – 1.10 kg"],
+          ["100 quintals", "100 kg", "90 – 110 kg"],
+          ["1,000 quintals (a busy week)", "1,000 kg", "900 – 1,100 kg"],
+        ],
+      },
+      {
+        type: "note",
+        text: "The ±10% band is the BIS standard for fortified rice (IS 17780:2021). **State procurement notices can state their own range — check the current one for your state** before you set your blender, and keep a copy with the season's papers.",
+      },
+      {
+        type: "list",
+        h: "How a mill gets it wrong",
+        items: [
+          { b: "Running out of FRK —", t: "West Bengal's KMS 2024-25 procurement guideline lists as a default not holding enough FRK to fortify rice in time for paddy handed over at least 15 days earlier (clause 16.22.11)." },
+          { b: "Blending by eye —", t: "too little FRK under-fortifies and gets the rice rejected; too much wastes FRK the mill paid for. A blending machine meters it; the BIS standard for the machine is IS 17854:2022." },
+          { b: "Rejection at the godown —", t: "the same guideline treats repeated rejection of CMR for not meeting the blending ratio as a default (clause 16.22.12). A rejected lot comes back to the mill to be made right; it is not a shortfall, but it is a second delivery." },
+          { b: "Mixing fortified and unfortified stock —", t: "once a lot is blended it is fortified rice, and the stock records must say so. Report 7.1 counts rice mixed with FRK separately from rice not yet mixed." },
+        ],
+      },
+      {
+        type: "list",
+        h: "The records an inspector asks for",
+        items: [
+          { b: "FRK purchase bills", t: "— the manufacturer, the batch, the quantity, and the batch's test certificate." },
+          { b: "An FRK stock register", t: "— received, used in each blend, and the balance, day by day." },
+          { b: "A blend record per batch", t: "— the date, the unfortified rice in, the FRK in, the fortified rice out, and the ratio it worked out to." },
+          { b: "The rice split by state", t: "— fortified and not yet fortified, the two figures report 7.1 asks for." },
+          { b: "Deliveries and rejections", t: "— each lot sent to the depot, accepted or rejected, and what happened to a rejected lot." },
+        ],
+      },
+      {
+        type: "p",
+        h: "How Millingo records the blend",
+        text: "In Millingo, FRK is a kind of stock the mill buys, like gunny. Each blend is one document: unfortified rice and FRK go in, fortified rice comes out, and the blend is refused if what comes out does not equal what went in or if the FRK falls outside 1:100 ±10%. The godown then knows which rice is fortified, so report 7.1 shows rice mixed with FRK apart from rice not yet mixed — the two figures an inspector reads first.",
+      },
+    ],
+    faqs: [
+      { q: "What is the FRK blending ratio for CMR rice?", a: "1:100 — one kilogram of fortified rice kernels to 100 kg of rice. The BIS standard for fortified rice (IS 17780:2021) allows ±10%, so 0.90 to 1.10 kg per 100 kg. Check your state's current procurement notice for its own range." },
+      { q: "Who supplies FRK to a rice mill?", a: "The mill buys it from an FRK manufacturer, with a bill and input GST. It is the mill's own stock, not material supplied by the government." },
+      { q: "How long will fortified rice be required in CMR?", a: "The Union Cabinet extended the supply of fortified rice under PMGKAY and other welfare schemes from July 2024 to December 2028." },
+      { q: "What records should a mill keep for FRK?", a: "FRK purchase bills with each batch's test certificate, an FRK stock register, a blend record per batch with the ratio achieved, rice split into fortified and not yet fortified, and every delivery and rejection." },
+    ],
+    related: [
+      { title: "Custom Milled Rice (CMR): the complete process", href: "Guide-CMR.dc.html" },
+      { title: "Why CMR out-turn drops below 67% (moisture & shortfall)", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
+      { title: "Millingo: paddy in, rice out — step by step", href: "/pages/millingo-paddy-in-rice-out.html" },
+      { title: "Millingo — rice-mill ERP", href: "Millingo.dc.html" },
+    ],
+    cta: {
+      title: "Is your FRK stock ready for the season's deliveries?",
+      body: "Send your paddy received and FRK bought so far — we will show you how much rice you can fortify, what you still need, and how Millingo keeps it current. Free, no obligation.",
+      productHref: "Millingo.dc.html",
+      productLabel: "Explore Millingo",
+    },
+    seo: {
+      metaTitle: "FRK Blending in CMR: 1:100 Ratio, Tolerance & Records | Millingo",
+      metaDescription:
+        "Fortified rice kernels in CMR: the 1:100 blend and its ±10% tolerance in kilograms, how mills get it wrong, and the FRK records an inspector asks for.",
+      canonical: "https://svasamm.com/pages/frk-blending-cmr-records.html",
+      ogType: "article",
+      ogTitle: "FRK in CMR: the 1:100 blend, its tolerance, and the records",
+      ogDescription: "What FRK is, the blend in kilograms, the defaults to avoid, and the records to keep.",
+    },
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "FRK in CMR: the 1:100 Blend, Its Tolerance, and the Records an Inspector Asks For",
+        description: "The FRK blend for CMR rice in kilograms, its tolerance, the defaults to avoid and the records to keep.",
+        author: {
+          "@type": "Person",
+          name: "Mithun K. Singh",
+          jobTitle: "Co-Founder",
+          worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
+        },
+        publisher: { "@type": "Organization", name: "Svasamm" },
+        datePublished: "2026-10-26",
+        dateModified: "2026-10-26",
+        mainEntityOfPage: "https://svasamm.com/pages/frk-blending-cmr-records.html",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" },
+          { "@type": "ListItem", position: 2, name: "Millingo - Rice Mill ERP", item: "https://svasamm.com/pages/millingo.html" },
+          { "@type": "ListItem", position: 3, name: "FRK in CMR", item: "https://svasamm.com/pages/frk-blending-cmr-records.html" },
+        ],
+      },
+    ],
+  },
 ];
 
 export const RICE_MILL_ARTICLE_BY_SLUG: Record<string, Article> =
