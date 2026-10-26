@@ -588,7 +588,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
     title: "FRK in CMR: the 1:100 Blend, Its Tolerance, and the Records an Inspector Asks For",
     byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 26 October 2026",
     intro:
-      "Every quintal of CMR rice a mill delivers for the government schemes must be fortified first: blended with fortified rice kernels (FRK) at one part in a hundred. The Union Cabinet extended the supply of fortified rice under PMGKAY and the other welfare schemes to **December 2028**, so this is not a pilot any more — it is part of every delivery. This guide sets out what FRK is, what the 1:100 blend and its tolerance mean in kilograms, how a mill gets it wrong, and the records to keep so an inspector's questions have answers.",
+      "Every quintal of CMR rice a mill delivers for the government schemes must be fortified first: blended with fortified rice kernels (FRK) at one part in a hundred. The Union Cabinet extended the supply of fortified rice under PMGKAY and the other welfare schemes to December 2028, so this is not a pilot any more — it is part of every delivery. This guide sets out what FRK is, what the 1:100 blend and its tolerance mean in kilograms, how a mill gets it wrong, and the records to keep so an inspector's questions have answers.",
     sections: [
       {
         type: "p",
