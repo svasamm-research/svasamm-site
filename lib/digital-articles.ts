@@ -26,7 +26,7 @@ function cta(title: string, body: string) {
 
 // Shared jsonLd builder — Article + BreadcrumbList (Home → Svasamm Digital for Healthcare →
 // this article) + FAQPage, matching the generated pattern in lib/articles.ts.
-function articleJsonLd(opts: { slug: string; headline: string; description: string; title: string; faqs: Faq[]; date?: string }): object[] {
+function articleJsonLd(opts: { slug: string; headline: string; description: string; title: string; faqs: Faq[]; date?: string; modified?: string }): object[] {
   const date = opts.date ?? DATE;
   const url = `${SITE_URL}/pages/${opts.slug}.html`;
   return [
@@ -43,7 +43,7 @@ function articleJsonLd(opts: { slug: string; headline: string; description: stri
       },
       publisher: { "@type": "Organization", name: "Svasamm" },
       datePublished: date,
-      dateModified: date,
+      dateModified: opts.modified ?? date,
       mainEntityOfPage: url,
     },
     {
@@ -87,7 +87,7 @@ export const DIGITAL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "What a clinic can actually influence",
-        text: "You cannot control the exact position you appear in, and you cannot control when Google verifies a new listing — that timing is Google's, not yours. What you can influence is everything that feeds the ranking signals: a fully completed Google Business Profile (services, categories, hours, photos), on-page content on your own site that matches how patients actually phrase their search, reviews (asking for them, responding to them), and keeping your name, address and phone number identical everywhere they appear online.",
+        text: "You cannot control the exact position you appear in, and you cannot control when Google verifies a new listing — that timing is Google's, not yours. What you can influence is everything that feeds the ranking signals: a fully completed Google Business Profile (services, categories, hours, photos), on-page content on your own site that matches how patients actually phrase their search, reviews (responding to them, and agreeing with your legal advisor whether and how you ask for them), and keeping your name, address and phone number identical everywhere they appear online.",
       },
       {
         type: "list",
@@ -276,7 +276,7 @@ export const DIGITAL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "Reviews: how they work, and what you may and may not do",
-        text: "Reviews influence both local visibility and a patient's decision to visit. You can ask patients who are happy with their visit to leave a review, and you can respond publicly to reviews. What you cannot do is incentivise reviews or fabricate them — Google's policies prohibit both, and healthcare adds a further layer of care: a public response should never confirm or discuss a specific patient's condition or visit, even to correct a negative review, because that risks a patient-privacy breach on top of any advertising-rule concern.",
+        text: "Reviews influence both local visibility and a patient's decision to visit, and you can respond publicly to reviews. What you cannot do is buy, incentivise or fabricate them — Google's policies prohibit all three, and so do the NMC's advertising guidelines of 6 October 2026 (Explanation V to clause 3.2). Whether and how a facility asks real patients for a review needs more care than it used to: the same guidelines bar a doctor from requesting or sharing patient reviews for promotion on social media, and whether that reaches a Google profile is not settled, so agree your approach with your legal advisor before running any review request. Healthcare adds a further layer of care to replies: a public response should never confirm or discuss a specific patient's condition or visit, even to correct a negative review, because that risks a patient-privacy breach on top of any advertising-rule concern.",
       },
       {
         type: "p",
@@ -303,7 +303,7 @@ export const DIGITAL_ARTICLES: Article[] = [
       },
       {
         q: "Can we ask patients to leave a review?",
-        a: "Yes, genuinely — asking a happy patient to share their experience is fine. What isn't allowed is incentivising reviews or writing fabricated ones, and any public response should avoid discussing a specific patient's condition or visit.",
+        a: "It is no longer a simple yes. Bought, incentivised or fabricated reviews are prohibited by Google and by the NMC's guidelines of 6 October 2026. Those guidelines also bar a doctor from requesting or sharing patient reviews for promotion on social media; whether that reaches a Google profile is unsettled, so agree your approach with your legal advisor first. Any public response should avoid discussing a specific patient's condition or visit.",
       },
       {
         q: "What category should a nursing home use?",
@@ -333,9 +333,10 @@ export const DIGITAL_ARTICLES: Article[] = [
       headline: "Google Business Profile for Clinics and Nursing Homes",
       description: "How to set up and manage a Google Business Profile for a healthcare facility.",
       title: "Google Business Profile for clinics and nursing homes",
+      modified: "2026-11-03",
       faqs: [
         { q: "How long does Google Business Profile verification take?", a: "That timeline is Google's, not the facility's — it can range from a few days to a few weeks depending on the verification method available." },
-        { q: "Can we ask patients to leave a review?", a: "Yes, genuinely — but incentivising or fabricating reviews isn't allowed, and public responses should avoid discussing a specific patient's condition or visit." },
+        { q: "Can we ask patients to leave a review?", a: "Not a simple yes: bought, incentivised or fabricated reviews are prohibited, and the NMC's guidelines of 6 October 2026 bar a doctor from requesting patient reviews for promotion on social media. Agree your approach with your legal advisor first." },
       ],
     }),
   },
@@ -349,31 +350,75 @@ export const DIGITAL_ARTICLES: Article[] = [
     title: "Healthcare advertising rules in India: what a facility can and cannot say",
     byline: BYLINE,
     intro:
-      "Healthcare advertising in India sits under more restriction than most other categories, for good reason. Before any facility publishes a website, a Google Business Profile or an ad, it's worth understanding the main instruments that shape what can and can't be said — and what that means in practice.",
+      "Healthcare advertising in India sits under more restriction than most other categories, for good reason. On 6 October 2026 the National Medical Commission added a detailed set of guidelines, in force at once. Before any facility publishes a website, a Google Business Profile or an ad, it's worth understanding the instruments that shape what can and can't be said — and what that means in practice.",
     sections: [
       {
         type: "note",
         h: "This is general information, not legal advice",
-        text: "The position below reflects our general understanding as of the date this article was published, 20 July 2026. Advertising law and professional-conduct rules change, and how they apply can depend on the specific facility, service, claim and medium involved. This article is not legal advice. Confirm your website content, Google Business Profile posts and ad copy with your facility's own legal advisor before publishing anything that makes a health-related claim.",
+        text: "The position below reflects our reading of the rules as published, first written on 20 July 2026 and updated on 3 November 2026 for the NMC guidelines of 6 October 2026. Those guidelines are weeks old, and how State Medical Councils will apply them is not yet tested. How any rule applies can depend on the specific facility, service, claim and medium involved. This article is not legal advice. Confirm your website content, Google Business Profile posts and ad copy with your facility's own legal advisor before publishing anything that makes a health-related claim.",
       },
       {
         type: "p",
         h: "The main instruments that govern this",
-        text: "Several different rules apply at once, from different directions. The Drugs and Magic Remedies (Objectionable Advertisements) Act, 1954 restricts advertisements that claim to diagnose, cure, mitigate, treat or prevent certain diseases and conditions, and separately prohibits advertisements for \"magic remedies\" that claim miraculous or supernatural properties. The National Medical Commission, which took over the erstwhile Medical Council of India's regulatory role, carries forward professional-conduct norms that restrict individual registered practitioners from self-promotional advertising or soliciting patients — as distinct from a facility publishing factual, institutional information about its services. The Advertising Standards Council of India applies a self-regulatory code across advertising generally, including an expectation that health-related claims be capable of substantiation and not misleading or alarming. And the Consumer Protection Act, 2019 contains general provisions against misleading advertisements that apply to healthcare advertising as much as to any other sector.",
+        text: "Several different rules apply at once, from different directions. The Drugs and Magic Remedies (Objectionable Advertisements) Act, 1954 restricts advertisements that claim to diagnose, cure, mitigate, treat or prevent certain diseases and conditions, and separately prohibits advertisements for \"magic remedies\" that claim miraculous or supernatural properties. The National Medical Commission, which took over the erstwhile Medical Council of India's regulatory role, regulates the conduct of registered doctors: its 2002 conduct regulations (clauses 6.1.1 and 6.1.2, which the new guidelines cite) restrict a doctor's self-promotion, and its guidelines of 6 October 2026, described below, now spell out what that means for a doctor and for a hospital — a facility publishing factual, institutional information about its services sits in a different place from a doctor promoting themselves. The Advertising Standards Council of India applies a self-regulatory code across advertising generally, including an expectation that health-related claims be capable of substantiation and not misleading or alarming. And the Consumer Protection Act, 2019 contains general provisions against misleading advertisements that apply to healthcare advertising as much as to any other sector.",
       },
       {
         type: "p",
         h: "What this means in practice for a facility's site and ads",
-        text: "In practice, the safest content avoids claims that a treatment is certain to work or will produce a specific outcome, treats patient testimonials and before-and-after imagery with real caution — both for advertising-rule reasons and for patient privacy and consent — and avoids comparative superiority claims (\"the best in the district\") that can't be independently substantiated. Factual credentials — a doctor's degree, registration and years in practice — sit at the safer, more defensible end of what can be published; marketing flourish around outcomes sits at the riskier end.",
+        text: "In practice, the safest content describes what is offered, not what will result; leaves out patient testimonials, success stories and before-and-after imagery altogether, since consent does not make them permissible under the NMC guidelines; and avoids comparative superiority claims (\"the best in the district\") that can't be independently verified. Factual credentials — a doctor's degree, registration number and specialty — sit at the safer, more defensible end of what can be published; marketing flourish around outcomes sits at the riskier end.",
+      },
+      {
+        type: "p",
+        h: "The NMC guidelines of 6 October 2026",
+        text: "The Ethics and Medical Registration Board of the National Medical Commission issued \"Guidelines on Ethical Advertising and Public Communication by hospitals/medical institutions and Registered Medical Practitioners\" by public notice R-13014/01/2024-Ethics, dated 6 October 2026, in force with immediate effect. They apply to registered doctors and to hospitals and medical institutions. For a hospital they are read with the Clinical Establishments Act, or the state's own law, and if the two conflict the Act prevails (clause 4.3). The definition of an advertisement is wide: it covers websites and blogs, social media, search-engine and influencer promotion and AI-generated promotion, wherever the content has a promotional character (clause 3.2).",
+      },
+      {
+        type: "list",
+        h: "What the guidelines prohibit",
+        items: [
+          { b: "Superlatives and guarantees —", t: "\"Guaranteed cures\", \"Best doctors\", \"No.1 Specialist\", \"100% success\", \"painless treatment\" (clause 8.1(iii)). \"Best\", \"leading\", \"top\" or \"most trusted\" only where objectively verifiable by a transparent, independent method (8.1(ix))." },
+          { b: "Before-and-after pictures and promotional cases —", t: "clause 8.1(v). Patient consent does not by itself make a testimonial, patient story or success claim permissible (6.2)." },
+          { b: "Fake or bought reviews, followers and rankings —", t: "including manipulating search rankings or algorithms to create a misleading impression of standing (8.1(xii), Explanation V to clause 3.2)." },
+          { b: "Discounts, limited-period offers, contests and free procedures —", t: "that encourage unnecessary consultations or tests (8.1(x)). A plain, factual statement of charges is allowed." },
+          { b: "Fees tied to patients —", t: "no commission, referral or lead-generation fee, and an agency's payment must not be linked to procuring or referring individual patients (8.1(vii) and (viii))." },
+          { b: "AI-generated promotion —", t: "AI-generated promotional campaigns for commercial interest are prohibited; AI content that stays within the guidelines must carry a mark saying it is AI-generated (7.2)." },
+          { b: "Identifiable patients —", t: "names, faces or other data that identify a patient (7.4)." },
+        ],
+      },
+      {
+        type: "list",
+        h: "What a facility may publish",
+        items: [
+          { b: "Plain facts —", t: "name, location, contact details, departments, facilities, equipment, services, emergency services, accreditation status and charges (8.3(i), 9.1)." },
+          { b: "A doctor directory —", t: "names, recognised qualifications, specialties, registration details and availability. The guidelines treat this as patient information, distinct from promotion (9.1)." },
+          { b: "Names and registration numbers on posts —", t: "a clinical establishment's online posts should show its doctors' names with qualifications and registration numbers (Explanation IV to clause 3.2)." },
+          { b: "Health education —", t: "provided it does not promote a practice, solicit patients or earn money from promotion (5.1)." },
+        ],
+      },
+      {
+        type: "p",
+        h: "What it means if you hire a marketing company",
+        text: "Hiring a company does not move the responsibility. Content published through an agency, influencer or platform still counts against the doctor or institution that authorised, commissioned or knowingly permitted it (clause 4.4), and a third party may not be used to do indirectly what the facility may not do directly (8.1(xi)). Two practical points follow. A fee tied to leads or patients cannot be the arrangement, so ask any company how it is paid; Svasamm quotes a fixed scope, never a fee per patient or per lead. And for an individual doctor the wording is stricter than for a facility: clause 8.1(ii) says a doctor shall not \"engage any third party for marketing medical services\". How a State Medical Council will read that for a surgeon's own practice is untested, so a single-doctor practice should take its legal advisor's view before engaging any marketing company, ours included.",
+      },
+      {
+        type: "p",
+        h: "What happens if the guidelines are broken",
+        text: "For a doctor, the State Medical Council acts, in steps: a warning and ethics training for a first violation; censure and a monetary penalty for a second; suspension of registration for 3 to 6 months for a third; 6 to 12 months for serious violations such as misleading cure claims, inducement or digital mass solicitation; and removal from the register for 1 to 3 years for repeated violations (clause 10.1). A show-cause notice comes first (10.2), and a doctor can appeal to the Ethics and Medical Registration Board within 60 days (11.1). A hospital is dealt with under the Clinical Establishments Act or the state's own law.",
+      },
+      {
+        type: "p",
+        h: "What the notice does not settle",
+        text: "Three questions have no answer in the text, so we do not claim one. Whether asking a patient to post a Google review falls under Explanation V to clause 3.2, which bars a doctor from requesting or sharing patient reviews for promotion \"on social media\". How State Medical Councils will treat a facility's website that describes its doctors' services. And what the West Bengal Clinical Establishments Act adds for a nursing home in the state, which we have not reviewed for this article. Take each to your legal advisor.",
       },
       {
         type: "list",
         h: "A practical checklist before publishing",
         items: [
           { b: "No claims that a treatment or outcome is certain —", t: "describe what is offered, not what will result." },
-          { b: "Get explicit, informed consent for any patient image or testimonial —", t: "and consider carefully whether to use it at all." },
-          { b: "Avoid comparative superiority claims you can't substantiate —", t: "\"leading\", \"best\" and similar wording carry risk without independent backing." },
-          { b: "Stick to genuine, verifiable credentials —", t: "for any doctor or facility claim." },
+          { b: "No testimonials, patient stories or before-and-after pictures —", t: "consent does not make them permissible, and a patient's identity must not be shown." },
+          { b: "No \"best\", \"leading\" or \"top\" without an independent, verifiable basis —", t: "the method, the date and the awarding body must be stated." },
+          { b: "Show each doctor's name, qualification and registration number —", t: "genuine, verifiable credentials, on the site and on posts." },
+          { b: "Ask any marketing company how it is paid —", t: "a fee linked to patients or leads is a red flag under the guidelines." },
           { b: "Have new ad copy or landing pages reviewed by your legal advisor —", t: "particularly before a first launch or a new claim type." },
           { b: "Keep a record of when content was reviewed and approved —", t: "useful if a claim is ever questioned later." },
         ],
@@ -387,15 +432,23 @@ export const DIGITAL_ARTICLES: Article[] = [
     faqs: [
       {
         q: "Can we advertise a doctor's success rate?",
-        a: "Only if it's independently verifiable and substantiated, and professional-conduct norms around individual practitioners generally caution against marketing-style claims by a named doctor. Most facilities are better served publishing factual credentials than a success-rate figure.",
+        a: "No. The NMC's guidelines of 6 October 2026 bar a doctor from advertising professional success rates or the number of patients treated, and name claims such as \"Best doctors\", \"No.1 Specialist\" and \"100% success\" (clause 8.1(iii)). Publish factual credentials instead.",
       },
       {
         q: "Can we use patient testimonials on our website or ads?",
-        a: "Only with clear, informed consent, and with awareness of both privacy sensitivity and advertising-rule scrutiny of testimonials in healthcare. Many facilities choose not to use them at all for this reason.",
+        a: "Not as promotion. The guidelines prohibit promotional patient stories and before-and-after pictures, and say patient consent does not by itself make a testimonial permissible (clauses 6.2 and 8.1(v)). Most facilities leave them out entirely.",
       },
       {
         q: "Who is responsible for compliance — the facility or Svasamm?",
-        a: "The facility is legally responsible for claims published in its own name. We help draft factual copy and flag anything that reads like a clinical claim, but sign-off and legal compliance sit with the facility and its own legal advisor.",
+        a: "The facility is legally responsible for claims published in its own name, even when an agency published them (clause 4.4). We help draft factual copy and flag anything that reads like a clinical claim, but sign-off and legal compliance sit with the facility and its own legal advisor.",
+      },
+      {
+        q: "Can a marketing company be paid per patient or per lead?",
+        a: "No arrangement should be built that way. The guidelines prohibit referral and lead-generation fees and say an agency's payment must not be linked to procuring or referring individual patients (clause 8.1(vii) and (viii)). Ask any company how it is paid.",
+      },
+      {
+        q: "Do the October 2026 NMC guidelines apply to hospitals?",
+        a: "Yes. They are addressed to hospitals and medical institutions as well as to registered doctors. For a hospital they are read with the Clinical Establishments Act or the state's own law, which prevails if the two conflict, and a hospital's penalties come under that law.",
       },
     ],
     related: [
@@ -408,9 +461,9 @@ export const DIGITAL_ARTICLES: Article[] = [
       "We'll flag anything in your planned copy that needs a legal look before it goes live.",
     ),
     seo: {
-      metaTitle: "Healthcare Advertising Rules in India: What a Facility Can Say | Svasamm Digital",
+      metaTitle: "Healthcare Advertising Rules in India (NMC, Oct 2026) | Svasamm Digital",
       metaDescription:
-        "An overview of the rules shaping healthcare advertising in India — the Drugs and Magic Remedies Act, NMC conduct norms, ASCI's code and consumer protection law — and what they mean in practice. Not legal advice.",
+        "What the NMC's 6 October 2026 advertising guidelines, the Drugs and Magic Remedies Act and ASCI mean for a clinic or hospital's site and ads. Not legal advice.",
       canonical: `${SITE_URL}/pages/healthcare-advertising-rules-india.html`,
       ogType: "article",
       ogTitle: "Healthcare advertising rules in India: what a facility can and cannot say",
@@ -419,10 +472,12 @@ export const DIGITAL_ARTICLES: Article[] = [
     jsonLd: articleJsonLd({
       slug: "healthcare-advertising-rules-india",
       headline: "Healthcare Advertising Rules in India: What a Facility Can and Cannot Say",
-      description: "General information on the rules shaping healthcare advertising in India. Not legal advice.",
+      description: "General information on the rules shaping healthcare advertising in India, including the NMC guidelines of 6 October 2026. Not legal advice.",
       title: "Healthcare advertising rules in India",
+      modified: "2026-11-03",
       faqs: [
-        { q: "Can we advertise a doctor's success rate?", a: "Only if independently verifiable and substantiated; most facilities are better served publishing factual credentials instead." },
+        { q: "Can we advertise a doctor's success rate?", a: "No. The NMC's guidelines of 6 October 2026 bar a doctor from advertising success rates or the number of patients treated; publish factual credentials instead." },
+        { q: "Can a marketing company be paid per patient or per lead?", a: "No arrangement should be built that way: the guidelines prohibit referral and lead-generation fees and any agency payment linked to procuring or referring individual patients." },
         { q: "Who is responsible for compliance — the facility or Svasamm?", a: "The facility is legally responsible for claims published in its own name; we flag anything that reads like a clinical claim, but sign-off sits with the facility." },
       ],
     }),
@@ -633,7 +688,7 @@ export const DIGITAL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "Reviews are the deciding signal",
-        text: "For a family choosing care for a vulnerable relative, other families' experiences carry more weight than anything the facility says about itself. A steady flow of genuine reviews, and considered replies to them, is the single strongest trust signal a nursing home can build — and it also feeds local ranking. What you cannot do is buy, incentivise or fabricate them; healthcare advertising rules and platform policies both prohibit it, and families can tell. Our advertising-rules guide covers where the line sits.",
+        text: "For a family choosing care for a vulnerable relative, other families' experiences carry more weight than anything the facility says about itself. A steady flow of genuine reviews, and considered replies to them, is the single strongest trust signal a nursing home can build — and it also feeds local ranking. What you cannot do is buy, incentivise or fabricate them; healthcare advertising rules and platform policies both prohibit it, and families can tell. How a facility asks has become more delicate since the NMC's guidelines of 6 October 2026, so agree an approach with your legal advisor. Our advertising-rules guide covers where the line sits.",
       },
       {
         type: "p",
@@ -643,7 +698,7 @@ export const DIGITAL_ARTICLES: Article[] = [
       {
         type: "p",
         h: "A realistic first step",
-        text: "Before a rebuild or any ad spend, most nursing homes gain the most from finishing the fundamentals: a complete, photographed Google Business Profile with the right care categories, a website that answers a family's questions in the first screen, consistent contact details everywhere, and a genuine review habit. Those carry more of the admissions outcome than a larger project usually does.",
+        text: "Before a rebuild or any ad spend, most nursing homes gain the most from finishing the fundamentals: a complete, photographed Google Business Profile with the right care categories, a website that answers a family's questions in the first screen, consistent contact details everywhere, and honest reviews with considered replies. Those carry more of the admissions outcome than a larger project usually does.",
       },
     ],
     faqs: [
@@ -657,7 +712,7 @@ export const DIGITAL_ARTICLES: Article[] = [
       },
       {
         q: "Can we ask residents' families to leave reviews?",
-        a: "You can invite genuine reviews, but you cannot incentivise, buy or fabricate them — healthcare advertising rules and platform policies both prohibit it. Honest reviews and considered replies are the strongest trust signal you can build.",
+        a: "You cannot incentivise, buy or fabricate them — healthcare advertising rules and platform policies both prohibit it. Whether and how to ask real patients needs your legal advisor's view, because the NMC's guidelines of 6 October 2026 bar a doctor from requesting patient reviews for promotion on social media. Honest reviews and considered replies are the strongest trust signal you can build.",
       },
       {
         q: "Is a separate page worth it for each type of care?",
@@ -796,9 +851,9 @@ export const DIGITAL_ARTICLES: Article[] = [
     parentProduct: "digital-healthcare",
     eyebrow: "Healthcare Marketing — Kolkata",
     title: "Choosing a digital marketing company for your hospital in Kolkata",
-    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 22 October 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 22 October 2026 · updated 3 November 2026",
     intro:
-      "Nursing homes, multispecialty clinics, daycare centres and hospitals across Kolkata are being called by marketing companies every week. This guide is for the owner or administrator deciding between them: what you are actually paying for, what each kind of facility needs first, what to spend on in what order, what to expect and when, and the questions that separate a careful company from a careless one.",
+      "Nursing homes, multispecialty clinics, daycare centres and hospitals across Kolkata are being called by marketing companies every week. This guide is for the owner or administrator deciding between them: what you are actually paying for, what each kind of facility needs first, what to spend on in what order, what to expect and when, what the National Medical Commission's advertising guidelines of 6 October 2026 mean for the work, and the questions that separate a careful company from a careless one.",
     sections: [
       {
         type: "p",
@@ -813,9 +868,11 @@ export const DIGITAL_ARTICLES: Article[] = [
           ["Nursing home", "By locality and need — a nursing home with ICU in Salt Lake, maternity near Behala.", "**Google Business Profile** with the right services and visiting hours; a page per service patients ask about."],
           ["Multispecialty clinic", "By specialty and doctor — a cardiologist in Garia, a child specialist near New Town.", "**One page per specialty and per doctor**, with timings, so each search finds its own answer."],
           ["General hospital", "By emergency, department and insurance — 24-hour emergency near Howrah, cashless with a named insurer.", "**Emergency number and directions** at the top of every page; departments and empanelments listed plainly."],
-          ["Daycare / surgery centre", "By procedure — cataract surgery, dialysis, day-care chemotherapy, with the word cost often attached.", "**A page per procedure** explaining the process, preparation and stay — within the advertising rules."],
+          ["Daycare / surgery centre", "By procedure — cataract surgery, dialysis, day-care chemotherapy, with the word cost often attached.", "**A page per procedure** explaining the process, preparation and stay, and the facility's charges stated plainly — no outcome claims."],
+          ["Cancer / oncology centre", "By cancer type and treatment — surgery, chemotherapy, radiation — and often by cost.", "**Condition and treatment pages** written by the treating team: what the treatment involves, preparation, stay, equipment. No survival, success or \"best\" claims, which the October 2026 guidelines prohibit."],
+          ["Diagnostic centre", "By test and locality — an MRI near Salt Lake, a thyroid panel with home collection.", "**A page per test group**: preparation, report time, location and timings, and accreditation status, which the guidelines list as a permitted fact."],
           ["Superspecialty hospital", "By condition and specialist, often from outside the city.", "Usually has its own team. Outside help is best kept to the **specialty pages and search work** they cannot cover."],
-          ["Single-specialty practice", "By condition and surgeon — a vascular surgeon or a spine specialist in Kolkata.", "**The doctor's own profile and condition pages**, linked from the Google listing."],
+          ["Clinic built around one surgeon", "By condition and surgeon — a general or vascular surgeon, a surgical oncologist or a spine specialist in Kolkata.", "**Factual pages for the clinic** — services, timings, location, and a doctor entry with qualifications and registration number — not personal promotion. Read the rules section below first."],
         ],
       },
       {
@@ -834,6 +891,11 @@ export const DIGITAL_ARTICLES: Article[] = [
         text: "A website and profile can be live in about **four weeks** once the company has your content and access to the Google profile. Search results build more slowly — over months, as Google sees the pages, the reviews and the profile activity. **No company can honestly promise a ranking, a number of patients or a revenue figure.** Google decides rankings, and India's rules limit what a facility may claim: the Drugs and Magic Remedies Act, the National Medical Commission's conduct rules for doctors, and the advertising code of ASCI. A proposal that guarantees page one is telling you something about the company, not about Google.",
       },
       {
+        type: "p",
+        h: "The rules changed on 6 October 2026",
+        text: "The National Medical Commission published guidelines on ethical advertising on 6 October 2026, in force at once. Three things matter when you choose a company. First, \"best\", \"No.1\", \"leading\", \"top\" and \"100% success\" are out unless they can be independently verified, and before-and-after pictures, patient stories and promotional cases are prohibited; a company offering them is selling something you cannot lawfully publish. Second, payment must not be linked to procuring or referring individual patients (clause 8.1(viii)), so ask how you are paid. Third, a facility may publish plain facts — name, location, departments, facilities, services, emergency services, accreditation, charges, and a doctor directory with qualifications and registration numbers (clauses 8.3 and 9.1) — but clause 8.1(ii) says a doctor shall not \"engage any third party for marketing medical services\". If you are one surgeon rather than a facility, take your legal advisor's view before hiring anyone, us included. Our advertising-rules guide goes through the clauses.",
+      },
+      {
         type: "list",
         h: "Questions to ask any company",
         items: [
@@ -841,7 +903,8 @@ export const DIGITAL_ARTICLES: Article[] = [
           { b: "Who owns the website, the domain and the Google profile?", t: "You should — in your name, with your login. If the relationship ends, they stay with you." },
           { b: "What will the monthly report show?", t: "Searches, visits and calls from Google's own tools — Search Console and Analytics — not a screenshot of a ranking." },
           { b: "Who writes the medical content, and who checks it?", t: "A doctor at your facility should approve anything clinical before it goes out." },
-          { b: "Do you know the advertising rules?", t: "Ask how they handle before-and-after pictures, success rates and patient testimonials. The answer should be careful." },
+          { b: "Do you know the advertising rules?", t: "Ask how they handle before-and-after pictures, success rates, patient testimonials and \"best\" claims under the NMC's October 2026 guidelines. The answer should be careful, and should name the guidelines." },
+          { b: "How are you paid?", t: "A fixed fee for a stated scope. Not a fee per patient or per lead; the guidelines do not allow an arrangement to be built on referrals." },
           { b: "What happens in month three?", t: "If the answer is a new invoice and no new work, the monthly fee is buying nothing." },
         ],
       },
@@ -855,6 +918,7 @@ export const DIGITAL_ARTICLES: Article[] = [
       { q: "How do I choose a digital marketing company for a hospital in Kolkata?", a: "Ask them to split the one-time build from the monthly work, to keep your website, domain and Google profile in your name, to report from Search Console and Analytics, and not to take your direct competitor nearby. Be careful of anyone who guarantees rankings or patient numbers." },
       { q: "What should a nursing home spend on first?", a: "A complete Google Business Profile, then a website that answers the visit — services, timings, directions and a phone that is answered. Ads come last, once the profile and website can turn a visit into a call." },
       { q: "How long before a hospital sees results?", a: "A website and profile can be live in about four weeks once content and profile access are handed over. Search results build over months; nobody can honestly promise a ranking or a number of patients." },
+      { q: "What do the NMC's October 2026 advertising guidelines mean for a hospital's marketing?", a: "Superlatives such as \"best\" or \"100% success\", before-and-after pictures, patient stories and fees tied to patients are prohibited, while plain facts about the facility and a directory of its doctors are allowed. A hospital's penalties come under the Clinical Establishments Act or the state's own law; take your legal advisor's view before publishing." },
     ],
     related: [
       { title: "Healthcare digital marketing in Kolkata: how facilities get found", href: "/pages/healthcare-digital-marketing-kolkata.html" },
@@ -870,7 +934,7 @@ export const DIGITAL_ARTICLES: Article[] = [
     seo: {
       metaTitle: "Digital Marketing for Hospitals in Kolkata: Choosing a Company | Svasamm",
       metaDescription:
-        "For Kolkata nursing homes, clinics and hospitals choosing a marketing company: what you pay for, what each facility needs first, what to expect, and what to ask.",
+        "Choosing a marketing company for a Kolkata nursing home, clinic or hospital: what you pay for, what each needs first, the NMC's 2026 ad rules, what to ask.",
       canonical: `${SITE_URL}/pages/digital-marketing-company-hospitals-kolkata.html`,
       ogType: "article",
       ogTitle: "Choosing a digital marketing company for your hospital in Kolkata",
@@ -882,10 +946,12 @@ export const DIGITAL_ARTICLES: Article[] = [
       description: "What Kolkata nursing homes, clinics and hospitals pay for, what each needs first, what to expect and what to ask.",
       title: "Choosing a digital marketing company in Kolkata",
       date: "2026-10-22",
+      modified: "2026-11-03",
       faqs: [
         { q: "How do I choose a digital marketing company for a hospital in Kolkata?", a: "Ask them to split the one-time build from the monthly work, keep your website, domain and Google profile in your name, report from Search Console and Analytics, and not take your direct competitor nearby. Be careful of anyone who guarantees rankings or patient numbers." },
         { q: "What should a nursing home spend on first?", a: "A complete Google Business Profile, then a website that answers the visit. Ads come last." },
         { q: "How long before a hospital sees results?", a: "A website and profile can be live in about four weeks once content and profile access are handed over; search results build over months." },
+        { q: "What do the NMC's October 2026 advertising guidelines mean for a hospital's marketing?", a: "Superlatives such as \"best\", before-and-after pictures, patient stories and fees tied to patients are prohibited; plain facts about the facility and a directory of its doctors are allowed. Take your legal advisor's view before publishing." },
       ],
     }),
   },
