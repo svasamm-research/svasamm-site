@@ -51,6 +51,23 @@ test("article tables have column titles and a title on every row", async ({ page
   await expect(table.locator('tbody th[scope="row"]')).toHaveCount(rows);
 });
 
+// Healthcare advertising is regulated; the rules article must say where its facts come from, and
+// no healthcare page may go back to telling a facility that asking patients for reviews is simply
+// fine (the NMC's 6 Oct 2026 guidelines, Explanation V to clause 3.2, make that a question for the
+// facility's legal advisor). Wording checked on 3 Nov 2026 against the notice itself.
+test("healthcare rules: the NMC notice is cited and review-asking is not called fine", async ({ page }) => {
+  await page.goto("/pages/healthcare-advertising-rules-india.html");
+  const rules = (await page.locator("main").innerText()).replace(/\s+/g, " ");
+  expect(rules).toContain("R-13014/01/2024-Ethics");
+  expect(rules).toContain("6 October 2026");
+  expect(rules).toContain("engage any third party for marketing medical services");
+  for (const slug of ["google-business-profile-for-clinics", "digital-marketing-for-nursing-homes", "clinic-seo-west-bengal"]) {
+    await page.goto(`/pages/${slug}.html`);
+    const text = (await page.locator("main").innerText()).replace(/\s+/g, " ");
+    expect(text, slug).not.toMatch(/Yes, genuinely|asking happy patients|reviews \(asking for them|You can invite genuine reviews/i);
+  }
+});
+
 test("bold key facts render as bold, not as asterisks", async ({ page }) => {
   await page.goto("/pages/punjab-release-order-paddy-allotment.html");
   await expect(page.locator("main strong", { hasText: "only 99.50 of 105.64 LMT" })).toHaveCount(1);
