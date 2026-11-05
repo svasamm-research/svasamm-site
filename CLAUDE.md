@@ -15,7 +15,7 @@ session's `web-dev/HANDOFF-pricing-and-billing-policies.md`.
 
 - **`/pricing` is the one place prices ARE published** — an exception to the Svasamm
   Digital guardrail "never prices", because a subscription a provider charges needs a
-  published figure. T4Suite only; every other product is "pricing on request", read from
+  published figure. T4Suite only, per user from `docs/console/pricing.md` in the platform repo; every other product is "pricing on request", read from
   `PRODUCTS`. The T4Suite figures are also on t4suite.com/pricing — change both together.
 - **Who we are comes from `BUSINESS` in `lib/site.ts`, and nowhere else.** The registered
   address is the GST certificate's wording (contact, legal pages, every JSON-LD block); the
