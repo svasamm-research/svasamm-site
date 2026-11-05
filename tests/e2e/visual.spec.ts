@@ -26,6 +26,9 @@ for (const path of SITE.keyPages) {
       // a mask box follows its element, so a moving element moves its mask too.
       const hide = (SITE as { hide?: string[] }).hide ?? [];
       if (hide.length) await page.addStyleTag({ content: `${hide.join(",")}{visibility:hidden !important}` });
+      // CSS that makes a rendering repeatable (see SITE.css in site.config.ts).
+      const css = (SITE as { css?: string }).css;
+      if (css) await page.addStyleTag({ content: css });
       const name = `${path === "/" ? "home" : path.replace(/^\/|\/$/g, "").replace(/\//g, "-")}-${tag}.png`;
       await expect(page).toHaveScreenshot(name, {
         fullPage: true,
