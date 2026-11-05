@@ -73,6 +73,12 @@ test("bold key facts render as bold, not as asterisks", async ({ page }) => {
   await expect(page.locator("main strong", { hasText: "only 99.50 of 105.64 LMT" })).toHaveCount(1);
 });
 
+test("resources lists the journeys, which the article grid cannot", async ({ page }) => {
+  await page.goto("/resources");
+  await expect(page.locator('main a[href="/pages/millingo-paddy-in-rice-out.html"]')).toBeVisible();
+  await expect(page.locator('main a[href="https://t4suite.com/how-it-works"]')).toBeVisible();
+});
+
 test("resources: chips filter, the chosen chip is marked, the sort shares their line", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/resources");
