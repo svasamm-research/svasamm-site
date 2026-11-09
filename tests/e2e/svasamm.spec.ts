@@ -118,6 +118,8 @@ test("tracking: demo click, reading depth and a 404 are counted", async ({ page 
 test("Sign in names the site; WhatsApp opens with an inviting message", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('header a[href*="app.svasamm.com"]').first()).toHaveAttribute("href", /utm_source=svasamm\.com/);
+  // Sign in opens the app in its own tab, so the site stays open (Mithun, 9 Nov 2026).
+  for (const a of await page.locator('a[href*="app.svasamm.com"]').all()) await expect(a).toHaveAttribute("target", "_blank");
   // the link is built after the page mounts, so wait for it rather than read it once
   await expect(page.locator("a.wa-fab")).toHaveAttribute("href", /919007793575.*text=Hi%20Svasamm%2C%20I'd%20like%20to%20know%20how%20you%20can%20help%20my%20business\./);
 });
