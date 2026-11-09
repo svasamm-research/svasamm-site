@@ -177,3 +177,43 @@ test("jobs: the form refuses what it must, and sends a résumé it accepts", asy
   await expect(page.locator('[role="status"]')).toContainText("Thank you, Asha");
   expect(sent).toMatchObject({ kind: "job", name: "Asha Roy", resume: { name: "cv.pdf" } });
 });
+
+// One AI-crawler rule on all three sites (Mithun, 9 Nov 2026): every AI bot, training as well as
+// search, may read the whole site. A named group replaces "*" for that bot, so check the bot's own group.
+const AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+  "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot"];
+test("robots.txt lets every AI crawler read the site", async ({ request }) => {
+  const text = await (await request.get("/robots.txt")).text();
+  const groups: { agents: string[]; rules: string[] }[] = [];
+  let open = false;
+  for (const raw of text.split("\n")) {
+    const line = raw.replace(/#.*/, "").trim();
+    const m = line.match(/^([A-Za-z-]+):\s*(.*)$/);
+    if (!m) continue;
+    const [k, v] = [m[1].toLowerCase(), m[2].trim()];
+    if (k === "user-agent") {
+      if (!open) groups.push({ agents: [], rules: [] });
+      groups[groups.length - 1].agents.push(v.toLowerCase());
+      open = true;
+    } else if (k === "allow" || k === "disallow") {
+      if (groups.length) groups[groups.length - 1].rules.push(`${k}:${v}`);
+      open = false;
+    }
+  }
+  for (const bot of AI_BOTS) {
+    const g = groups.find((x) => x.agents.includes(bot.toLowerCase()));
+    expect(g, `${bot} is named`).toBeTruthy();
+    expect(g!.rules, bot).toContain("allow:/");
+    expect(g!.rules, bot).not.toContain("disallow:/");
+  }
+});
+
+// IndexNow (9 Nov 2026): the key the deploy step sends must be served at /<key>.txt, or Bing
+// refuses every submission. The step lives in .github/workflows/deploy.yml.
+test("the IndexNow key file serves the deploy step's key", async ({ request }) => {
+  const fs = await import("node:fs");
+  const key = fs.readFileSync(".github/workflows/deploy.yml", "utf8").match(/INDEXNOW_KEY: ([0-9a-f]{32})/)![1];
+  const res = await request.get(`/${key}.txt`);
+  expect(res.status()).toBe(200);
+  expect((await res.text()).trim()).toBe(key);
+});

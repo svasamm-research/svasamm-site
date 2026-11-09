@@ -148,3 +148,28 @@ jobs:
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$WEBHOOK_URL" -H "Content-Type: application/json")
           echo "Webhook HTTP $STATUS"
           [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 300 ]
+
+      - name: Ping IndexNow (Bing/Yandex; Bing also backs Copilot and ChatGPT search)
+        # Same step as t4suite.com and lucoze.com (9 Nov 2026; Bing Webmaster flagged svasamm.com
+        # for not using it). Pushes the live sitemap's URLs so changed pages are re-crawled in
+        # minutes. Google ignores IndexNow. The key is public by design (served at /<key>.txt).
+        # Best-effort: never fails the deploy.
+        continue-on-error: true
+        env:
+          INDEXNOW_KEY: 2910d4deceeadd21d3e0d9ce6e84d5c4
+          HOST: svasamm.com
+        run: |
+          sleep 90   # let Dokploy pull and restart, so we submit THIS release's sitemap
+          if ! curl -sf --max-time 30 "https://${HOST}/sitemap.xml" -o sitemap.xml; then
+            echo "Could not fetch sitemap — skipping IndexNow ping."; exit 0
+          fi
+          grep -o '<loc>[^<]*</loc>' sitemap.xml | sed -e 's|<loc>||' -e 's|</loc>||' > urls.txt
+          echo "Submitting $(wc -l < urls.txt) URLs to IndexNow"
+          jq -n --arg host "$HOST" --arg key "$INDEXNOW_KEY" --rawfile urls urls.txt \
+            '{host: $host, key: $key,
+              keyLocation: ("https://" + $host + "/" + $key + ".txt"),
+              urlList: ($urls | split("\n") | map(select(length > 0)))}' > payload.json
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" --data @payload.json)
+          echo "IndexNow responded HTTP $STATUS"  # 200 accepted, 202 pending key validation
