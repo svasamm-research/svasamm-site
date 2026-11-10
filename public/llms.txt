@@ -16,7 +16,6 @@
 - Service Desk (ITSM): https://svasamm.com/pages/service-desk.html
 
 
-- Svasamm Digital for Schools — school digitisation service: https://svasamm.com/pages/digital-schools.html
 
 ## Why Svasamm
 - Configured to your workflow: https://svasamm.com/pages/configured-to-your-workflow.html

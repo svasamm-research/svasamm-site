@@ -62,8 +62,8 @@ Always `yarn typecheck` + `yarn build` before committing. Facts come from the ma
 
 **Kept out of Google, and where a guide meets its product (10 Nov 2026):**
 - `lib/indexing.ts` — the ONE list of pages that stay live but are `noindex` and out of the
-  sitemap; the page metadata and `app/sitemap.ts` both read it. Today: every Svasamm Digital for
-  Healthcare page (Mithun's decision, web-dev `docs/seo-operating-plan.md`).
+  sitemap; the page metadata and `app/sitemap.ts` both read it. Today: every Svasamm Digital page,
+  healthcare and schools (Mithun's decisions, 10 Nov 2026, web-dev `docs/seo-operating-plan.md`).
 - `lib/product-moments.ts` — a guide's product box, placed after the section it names (word for
   word; a walk fails if the heading changes). A guide listed there gets `MOMENTS_CHANGED` as its
   sitemap lastmod at least.

@@ -238,10 +238,12 @@ for (const [slug, m] of Object.entries(PRODUCT_MOMENTS)) {
   });
 }
 
-// Healthcare marketing (Mithun, 10 Nov 2026): live for a link, kept out of Google. The page says
+// Svasamm Digital, healthcare and schools (Mithun, 10 Nov 2026): live for a link, kept out of Google. The page says
 // noindex AND the sitemap leaves it out, from one list (lib/indexing.ts).
-test("healthcare-marketing pages are live, noindex, and not in the sitemap", async ({ page }) => {
-  expect(NOT_INDEXED.size).toBeGreaterThanOrEqual(10);
+test("Svasamm Digital pages (healthcare and schools) are live, noindex, and not in the sitemap", async ({ page }) => {
+  expect(NOT_INDEXED.size).toBeGreaterThanOrEqual(17);
+  for (const s of ["digital-healthcare.html", "digital-schools.html", "school-website-design.html", "clinic-seo-west-bengal.html"])
+    expect(NOT_INDEXED.has(s), s).toBe(true);
   for (const slug of NOT_INDEXED) {
     expect(urls, slug).not.toContain(`/pages/${slug}`);
     const r = await page.goto(`/pages/${slug}`);
