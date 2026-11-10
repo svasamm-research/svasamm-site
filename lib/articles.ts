@@ -208,7 +208,7 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "CMR Rice: Custom Milled Rice Meaning & Process | Millingo",
       metaDescription:
-        "A rice miller's guide to Custom Milled Rice (CMR): how the process works, the 67% rice + 1% FRK obligation, delivery schedule, state portals, and reconciliation.",
+        "A rice miller's guide to Custom Milled Rice (CMR): the process, the 67% rice + 1% FRK obligation, delivery schedule, state portals and reconciliation.",
       canonical:
         "https://svasamm.com/pages/custom-milled-rice-cmr-process.html",
       ogType: "article",
@@ -516,7 +516,7 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Milling Recovery of Rice: Yield Formula | Millingo",
       metaDescription:
-        "Learn how to calculate rice milling recovery and paddy-to-rice conversion, what a good yield is (67-72%), head rice vs broken, and how to track recovery per batch.",
+        "Learn how to calculate rice milling recovery and paddy-to-rice conversion, what a good yield is (67-72%), head rice vs broken, and tracking it per batch.",
       canonical: "https://svasamm.com/pages/rice-mill-yield-recovery.html",
       ogType: "article",
       ogTitle: "Rice Mill Yield & Milling Recovery: How to Calculate It",
@@ -1186,7 +1186,7 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Best Rice Mill Software: How to Choose (Buyer's Guide 2026) | Millingo",
       metaDescription:
-        "A practical buyer's guide to choosing rice mill software: generic ERP vs POS vs purpose-built rice-mill ERP, the must-have checklist, and questions to ask vendors.",
+        "A buyer's guide to choosing rice mill software: generic ERP vs POS vs purpose-built rice-mill ERP, the must-have checklist, and questions to ask vendors.",
       canonical: "https://svasamm.com/pages/best-rice-mill-software.html",
       ogType: "article",
       ogTitle: "Best Rice Mill Software: How to Choose",
@@ -1825,9 +1825,9 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Rice Mill Software in Uttar Pradesh - Built for CMR & Paddy Procurement | Millingo",
+        "Rice Mill Software in Uttar Pradesh: CMR & Paddy Procurement | Millingo",
       metaDescription:
-        "Rice mill ERP for Uttar Pradesh millers: built around UP paddy procurement (fcs.up.gov.in, E-PoP), CMR obligations, milling recovery, by-products, and Hindi support.",
+        "Rice mill ERP for Uttar Pradesh millers: built around UP paddy procurement (fcs.up.gov.in, E-PoP), CMR, milling recovery, by-products and Hindi support.",
       canonical:
         "https://svasamm.com/pages/rice-mill-software-uttar-pradesh.html",
       ogType: "website",
@@ -2142,9 +2142,9 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Rice Mill Software in Bihar - Built for PACS Procurement & CMR | Millingo",
+        "Rice Mill Software in Bihar: PACS Procurement & CMR | Millingo",
       metaDescription:
-        "Rice mill ERP for Bihar millers: built around PACS/SFC paddy procurement (esahkari.bihar.gov.in) and custom milled rice (CMR), milling recovery, by-products, and GST.",
+        "Rice mill ERP for Bihar millers: PACS/SFC paddy procurement (esahkari.bihar.gov.in), custom milled rice (CMR), milling recovery, by-products and GST.",
       canonical: "https://svasamm.com/pages/rice-mill-software-bihar.html",
       ogType: "website",
       ogTitle: "Rice Mill Software in Bihar | Millingo",
@@ -2301,9 +2301,9 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Millingo vs Dataman Rice Soft (AAHAAR): Rice Mill Software Compared",
+        "Millingo vs Dataman Rice Soft: Rice Mill Software Compared",
       metaDescription:
-        "An honest comparison of Millingo and Dataman's Rice Soft / AAHAAR rice mill software - positioning, features, and which fits mills that depend on CMR and recovery.",
+        "An honest comparison of Millingo and Dataman's Rice Soft / AAHAAR rice mill software - features, and which fits mills that depend on CMR and recovery.",
       canonical: "https://svasamm.com/pages/millingo-vs-dataman.html",
       ogType: "article",
       ogTitle: "Millingo vs Dataman Rice Soft (AAHAAR)",
@@ -2315,7 +2315,7 @@ export const ARTICLES: Article[] = [
         "@context": "https://schema.org",
         "@type": "Article",
         headline:
-          "Millingo vs Dataman Rice Soft (AAHAAR): Rice Mill Software Compared",
+          "Millingo vs Dataman Rice Soft: Rice Mill Software Compared",
         description:
           "A factual comparison of Millingo and Dataman's Rice Soft / AAHAAR.",
         author: {
@@ -2710,9 +2710,9 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Distributor Management for OEMs: The Complete Channel Lifecycle | DMS by Svasamm",
+        "Distributor Management for OEMs: The Channel Lifecycle | DMS by Svasamm",
       metaDescription:
-        "How OEMs manage a distributor channel across the full lifecycle - before-sale lead registration, sale/installation/warranty with serial tracking, and after-sales query assignment with SLAs.",
+        "How OEMs manage distributor channels across the lifecycle - lead registration, sale/installation/warranty with serial tracking, after-sales queries with SLAs.",
       canonical: "https://svasamm.com/pages/oem-distributor-management.html",
       ogType: "article",
       ogTitle:
@@ -2897,12 +2897,12 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Distributor Management for Coding & Marking OEMs | DMS by Svasamm",
       metaDescription:
-        "Distributor management for coding &amp; marking OEMs (CIJ, thermal inkjet, laser, TTO): consumables tracking (inks, fluids, ribbons), serial/warranty, and SLA-backed line-down service.",
+        "Distributor management for coding & marking OEMs (CIJ, thermal inkjet, laser, TTO): consumables (inks, fluids, ribbons), serial/warranty, SLA service.",
       canonical: "https://svasamm.com/pages/dms-coding-marking-oem.html",
       ogType: "website",
-      ogTitle: "Distributor Management for Coding &amp; Marking OEMs",
+      ogTitle: "Distributor Management for Coding & Marking OEMs",
       ogDescription:
-        "Distributor management for coding &amp; marking OEMs (CIJ, thermal inkjet, laser, TTO): consumables tracking (inks, fluids, ribbons), serial/warranty, and SLA-backed line-down service.",
+        "Distributor management for coding & marking OEMs (CIJ, thermal inkjet, laser, TTO): consumables tracking (inks, fluids, ribbons), serial/warranty, and SLA-backed line-down service.",
     },
     jsonLd: [
       {
@@ -3064,15 +3064,15 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Distributor Management for Packaging & Industrial Machinery OEMs | DMS by Svasamm",
+        "Distributor Management for Packaging & Machinery OEMs | DMS by Svasamm",
       metaDescription:
-        "Distributor management for packaging &amp; machinery OEMs: commissioning tracking, serial/warranty, spares &amp; change parts through the channel, AMC renewals, and SLA-backed breakdown service.",
+        "Distributor management for packaging & machinery OEMs: commissioning, serial/warranty, spares and change parts via the channel, AMC renewals, SLA service.",
       canonical: "https://svasamm.com/pages/dms-packaging-machinery-oem.html",
       ogType: "website",
       ogTitle:
-        "Distributor Management for Packaging &amp; Industrial Machinery OEMs",
+        "Distributor Management for Packaging & Industrial Machinery OEMs",
       ogDescription:
-        "Distributor management for packaging &amp; machinery OEMs: commissioning tracking, serial/warranty, spares &amp; change parts through the channel, AMC renewals, and SLA-backed breakdown service.",
+        "Distributor management for packaging & machinery OEMs: commissioning tracking, serial/warranty, spares & change parts through the channel, AMC renewals, and SLA-backed breakdown service.",
     },
     jsonLd: [
       {
@@ -3236,13 +3236,13 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Distributor Management for Electrical & Electronics OEMs | DMS by Svasamm",
       metaDescription:
-        "Distributor management for electrical &amp; electronics OEMs (switchgear, drives, UPS, instruments): serial-level warranty registration, RMA/repair tracking, channel stock, and SLA support.",
+        "Distributor management for electrical & electronics OEMs (switchgear, drives, UPS, instruments): serial warranty registration, RMA/repair tracking, SLAs.",
       canonical:
         "https://svasamm.com/pages/dms-electrical-electronics-oem.html",
       ogType: "website",
-      ogTitle: "Distributor Management for Electrical &amp; Electronics OEMs",
+      ogTitle: "Distributor Management for Electrical & Electronics OEMs",
       ogDescription:
-        "Distributor management for electrical &amp; electronics OEMs (switchgear, drives, UPS, instruments): serial-level warranty registration, RMA/repair tracking, channel stock, and SLA support.",
+        "Distributor management for electrical & electronics OEMs (switchgear, drives, UPS, instruments): serial-level warranty registration, RMA/repair tracking, channel stock, and SLA support.",
     },
     jsonLd: [
       {
@@ -3410,12 +3410,12 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Distributor Management for Pharma & Medical Device OEMs | DMS by Svasamm",
       metaDescription:
-        "Distributor management for pharma &amp; medical device OEMs: qualified installation and calibration tracking, reagent/consumable resupply, serial-level traceability, and SLA-backed service.",
+        "Distributor management for pharma & medical device OEMs: qualified installation, calibration, reagent/consumable resupply, serial traceability, SLAs.",
       canonical: "https://svasamm.com/pages/dms-pharma-medical-device-oem.html",
       ogType: "website",
-      ogTitle: "Distributor Management for Pharma &amp; Medical Device OEMs",
+      ogTitle: "Distributor Management for Pharma & Medical Device OEMs",
       ogDescription:
-        "Distributor management for pharma &amp; medical device OEMs: qualified installation and calibration tracking, reagent/consumable resupply, serial-level traceability, and SLA-backed service.",
+        "Distributor management for pharma & medical device OEMs: qualified installation and calibration tracking, reagent/consumable resupply, serial-level traceability, and SLA-backed service.",
     },
     jsonLd: [
       {
@@ -3578,16 +3578,16 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Distributor Management for Automotive Components & Aftermarket OEMs | DMS by Svasamm",
+        "Distributor Management for Automotive Aftermarket OEMs | DMS by Svasamm",
       metaDescription:
-        "Distributor management for automotive component &amp; aftermarket OEMs: multi-tier secondary-sales visibility, field warranty-claim tracking, scheme &amp; commission management, and SLA service.",
+        "Distributor management for automotive component & aftermarket OEMs: multi-tier secondary-sales visibility, warranty claims, scheme and commissions.",
       canonical:
         "https://svasamm.com/pages/dms-automotive-aftermarket-oem.html",
       ogType: "website",
       ogTitle:
-        "Distributor Management for Automotive Components &amp; Aftermarket OEMs",
+        "Distributor Management for Automotive Components & Aftermarket OEMs",
       ogDescription:
-        "Distributor management for automotive component &amp; aftermarket OEMs: multi-tier secondary-sales visibility, field warranty-claim tracking, scheme &amp; commission management, and SLA service.",
+        "Distributor management for automotive component & aftermarket OEMs: multi-tier secondary-sales visibility, field warranty-claim tracking, scheme & commission management, and SLA service.",
     },
     jsonLd: [
       {
@@ -3751,13 +3751,13 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Distributor Management for HVAC & Industrial Equipment OEMs | DMS by Svasamm",
       metaDescription:
-        "Distributor management for HVAC &amp; equipment OEMs (chillers, compressors, pumps): commissioning, serial/warranty, dealer spares stock, AMC renewals, and SLA-backed breakdown service.",
+        "Distributor management for HVAC & equipment OEMs (chillers, compressors, pumps): commissioning, serial/warranty, dealer spares, AMC renewals, SLA service.",
       canonical: "https://svasamm.com/pages/dms-hvac-equipment-oem.html",
       ogType: "website",
       ogTitle:
-        "Distributor Management for HVAC &amp; Industrial Equipment OEMs",
+        "Distributor Management for HVAC & Industrial Equipment OEMs",
       ogDescription:
-        "Distributor management for HVAC &amp; equipment OEMs (chillers, compressors, pumps): commissioning, serial/warranty, dealer spares stock, AMC renewals, and SLA-backed breakdown service.",
+        "Distributor management for HVAC & equipment OEMs (chillers, compressors, pumps): commissioning, serial/warranty, dealer spares stock, AMC renewals, and SLA-backed breakdown service.",
     },
     jsonLd: [
       {
@@ -3959,7 +3959,7 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "ERP Implementation for Indian Businesses: A Practical Guide | Svasamm",
       metaDescription:
-        "When you need an ERP, the phases of a rollout, what to standardise first, and the mistakes that sink ERP projects - a practical guide for Indian SMEs and mid-market.",
+        "When you need an ERP, the phases of a rollout, what to standardise first, and the mistakes that sink ERP projects - a guide for Indian SMEs and mid-market.",
       canonical: "https://svasamm.com/pages/erp-implementation-guide.html",
       ogType: "article",
       ogTitle: "ERP Implementation for Indian Businesses: A Practical Guide",
@@ -4291,10 +4291,10 @@ export const ARTICLES: Article[] = [
     seo: {
       metaTitle: "ERP for Trading & Distribution Businesses | Svasamm",
       metaDescription:
-        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST, e-invoice and e-way bill built in.",
+        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables, credit limits, GST, e-invoice and e-way bill.",
       canonical: "https://svasamm.com/pages/erp-for-trading-distribution.html",
       ogType: "website",
-      ogTitle: "ERP for Trading &amp; Distribution Businesses",
+      ogTitle: "ERP for Trading & Distribution Businesses",
       ogDescription:
         "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST, e-invoice and e-way bill built in.",
     },
@@ -4453,7 +4453,7 @@ export const ARTICLES: Article[] = [
         "ERP for services and project firms: projects, timesheets, milestone and retainer billing, and true project profitability - with GST-compliant invoicing.",
       canonical: "https://svasamm.com/pages/erp-for-services-firms.html",
       ogType: "website",
-      ogTitle: "ERP for Services &amp; Project-Based Firms",
+      ogTitle: "ERP for Services & Project-Based Firms",
       ogDescription:
         "ERP for services and project firms: projects, timesheets, milestone and retainer billing, and true project profitability - with GST-compliant invoicing.",
     },
@@ -4622,11 +4622,11 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Payroll & Statutory Compliance in India: A Practical Guide | Svasamm",
       metaDescription:
-        "PF, ESI, professional tax and TDS explained for Indian payroll - the core statutory components, where payroll goes wrong, and how Svasamm People keeps it compliant.",
+        "PF, ESI, professional tax and TDS explained for Indian payroll - the core components, where payroll goes wrong, and how Svasamm People keeps it compliant.",
       canonical:
         "https://svasamm.com/pages/payroll-statutory-compliance-india.html",
       ogType: "article",
-      ogTitle: "Payroll &amp; Statutory Compliance in India: A Practical Guide",
+      ogTitle: "Payroll & Statutory Compliance in India: A Practical Guide",
       ogDescription:
         "PF, ESI, professional tax and TDS explained for Indian payroll - the core statutory components, where payroll goes wrong, and how Svasamm People keeps it compliant.",
     },
@@ -4788,7 +4788,7 @@ export const ARTICLES: Article[] = [
     seo: {
       metaTitle: "HR & Payroll Software for Manufacturing | Svasamm People",
       metaDescription:
-        "HR and payroll (HRMS) for manufacturers: shift rosters and overtime, phone attendance feeding payroll, and PF, ESI, PT, TDS, bonus and gratuity in Svasamm People.",
+        "HR and payroll (HRMS) for manufacturers: shift rosters, overtime, phone attendance feeding payroll, and PF, ESI, PT, TDS, bonus, gratuity in Svasamm People.",
       canonical: "https://svasamm.com/pages/hrms-for-manufacturing.html",
       ogType: "website",
       ogTitle: "HR & Payroll for Manufacturing",
@@ -5106,10 +5106,10 @@ export const ARTICLES: Article[] = [
     seo: {
       metaTitle: "HR & Payroll for Hospitals & Clinics | Svasamm People",
       metaDescription:
-        "HR and payroll (HRMS) for hospitals and clinics: shift rosters, attendance and overtime, leave on the phone, and compliant payroll for clinical and support staff.",
+        "HR and payroll (HRMS) for hospitals and clinics: shift rosters, attendance and overtime, leave on the phone, and payroll for clinical and support staff.",
       canonical: "https://svasamm.com/pages/hrms-for-hospitals-clinics.html",
       ogType: "website",
-      ogTitle: "HR &amp; Payroll for Hospitals &amp; Clinics",
+      ogTitle: "HR & Payroll for Hospitals & Clinics",
       ogDescription:
         "HR and payroll (HRMS) for hospitals and clinics: shift rosters, attendance and overtime, leave on the phone, and compliant payroll for clinical and support staff.",
     },
@@ -5764,7 +5764,7 @@ export const ARTICLES: Article[] = [
     seo: {
       metaTitle: "CRM for Distribution Businesses | Svasamm",
       metaDescription:
-        "CRM for distribution: a large account base with reorder history, quotation and order capture, support tickets on the same account, and outstanding/credit visibility for reps.",
+        "CRM for distribution: large account base with reorder history, quotation and order capture, support tickets on the account, outstanding/credit visibility.",
       canonical: "https://svasamm.com/pages/crm-for-distribution.html",
       ogType: "website",
       ogTitle: "CRM for Distribution Businesses",
@@ -5938,7 +5938,7 @@ export const ARTICLES: Article[] = [
         "The building blocks of a service desk: tickets and queues, incident vs problem, SLAs that mean something, automatic escalation, and self-service.",
       canonical: "https://svasamm.com/pages/itsm-fundamentals-guide.html",
       ogType: "article",
-      ogTitle: "ITSM Fundamentals: Tickets, SLAs &amp; Escalation",
+      ogTitle: "ITSM Fundamentals: Tickets, SLAs & Escalation",
       ogDescription:
         "The building blocks of a service desk: tickets and queues, incident vs problem, SLAs that mean something, automatic escalation, and self-service.",
     },
@@ -6100,7 +6100,7 @@ export const ARTICLES: Article[] = [
     seo: {
       metaTitle: "Service Desk for Internal IT Teams | Svasamm",
       metaDescription:
-        "Service desk for internal IT: an employee self-service portal, ticket routing, asset/CMDB tracking, SLAs and escalation, and a knowledge base to deflect repeat tickets.",
+        "Service desk for internal IT: a self-service portal, ticket routing, asset/CMDB tracking, SLAs and escalation, and a knowledge base to deflect repeat tickets.",
       canonical: "https://svasamm.com/pages/service-desk-for-internal-it.html",
       ogType: "website",
       ogTitle: "Service Desk for Internal IT Teams",
@@ -6259,7 +6259,7 @@ export const ARTICLES: Article[] = [
     seo: {
       metaTitle: "Service Desk for Managed Service Providers | Svasamm",
       metaDescription:
-        "Multi-tenant service desk for MSPs: client separation, per-client SLAs and escalation, branded client portals, time tracking for billing, and per-client reporting.",
+        "Multi-tenant service desk for MSPs: client separation, per-client SLAs, branded client portals, time tracking for billing and per-client reporting.",
       canonical: "https://svasamm.com/pages/service-desk-for-msps.html",
       ogType: "website",
       ogTitle: "Service Desk for Managed Service Providers",
@@ -6418,7 +6418,7 @@ export const ARTICLES: Article[] = [
     seo: {
       metaTitle: "Service Desk for Customer Support Teams | Svasamm",
       metaDescription:
-        "Service desk for customer support: multi-channel intake into one queue, SLAs and priority, knowledge base, CSAT capture, and reporting on response and satisfaction.",
+        "Service desk for customer support: multi-channel intake into one queue, SLAs and priority, knowledge base, CSAT capture, response and satisfaction reporting.",
       canonical:
         "https://svasamm.com/pages/service-desk-for-customer-support.html",
       ogType: "website",
@@ -6602,9 +6602,9 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Svasamm DMS vs Bizom: Distributor Management for OEM Channels Compared | Svasamm",
+        "Svasamm DMS vs Bizom: Distributor Management Compared | Svasamm",
       metaDescription:
-        "An honest comparison of Svasamm DMS and Bizom for OEMs: FMCG route-to-market vs OEM equipment-channel management (serial/warranty tracking, installation, after-sales SLA).",
+        "Svasamm DMS vs Bizom for OEMs: FMCG route-to-market vs OEM equipment-channel management (serial/warranty tracking, installation, after-sales SLA).",
       canonical: "https://svasamm.com/pages/dms-vs-bizom.html",
       ogType: "article",
       ogTitle:
@@ -6790,9 +6790,9 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Svasamm DMS vs FieldAssist: Distributor Management for OEM Channels Compared | Svasamm",
+        "Svasamm DMS vs FieldAssist: Distributor Management Compared | Svasamm",
       metaDescription:
-        "An honest comparison of Svasamm DMS and FieldAssist for OEMs: CPG/FMCG route-to-market vs OEM equipment-channel management (serial/warranty, installation, after-sales SLA).",
+        "Svasamm DMS vs FieldAssist for OEMs: CPG/FMCG route-to-market vs OEM equipment-channel management (serial/warranty, installation, after-sales SLA).",
       canonical: "https://svasamm.com/pages/dms-vs-fieldassist.html",
       ogType: "article",
       ogTitle:
@@ -6968,12 +6968,12 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Distributor Management for Agri & Farm Equipment OEMs | DMS by Svasamm",
       metaDescription:
-        "Distributor management for agri &amp; farm equipment OEMs (tractors, implements, pumps): dispersed rural dealer visibility, spares &amp; warranty tracking, finance/subsidy capture, and SLA service.",
+        "Distributor management for agri & farm equipment OEMs (tractors, implements, pumps): rural dealer visibility, spares and warranty, finance/subsidy, SLAs.",
       canonical: "https://svasamm.com/pages/dms-agri-farm-equipment-oem.html",
       ogType: "website",
-      ogTitle: "Distributor Management for Agri &amp; Farm Equipment OEMs",
+      ogTitle: "Distributor Management for Agri & Farm Equipment OEMs",
       ogDescription:
-        "Distributor management for agri &amp; farm equipment OEMs (tractors, implements, pumps): dispersed rural dealer visibility, spares &amp; warranty tracking, finance/subsidy capture, and SLA service.",
+        "Distributor management for agri & farm equipment OEMs (tractors, implements, pumps): dispersed rural dealer visibility, spares & warranty tracking, finance/subsidy capture, and SLA service.",
     },
     jsonLd: [
       {

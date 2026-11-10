@@ -7,7 +7,7 @@ import { JOBS, DEPARTMENTS, jobPostingLd } from "@/lib/jobs";
 import { WORK } from "@/lib/team";
 
 export const metadata: Metadata = {
-  title: { absolute: "Jobs and Internships at Svasamm — Hooghly, West Bengal | Svasamm" },
+  title: { absolute: "Jobs and Internships at Svasamm — Hooghly, West Bengal" },
   description: "Paid internships at Svasamm in sales, software engineering and marketing — six months, in our office in Hooghly, West Bengal.",
   alternates: { canonical: "/jobs" },
   robots: { index: true, follow: true },

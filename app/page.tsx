@@ -40,16 +40,18 @@ const TRUST = [
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Vertical ERPs for Rice Mills, Hospitals & Distributors | Svasamm",
+      // "Svasamm One" in the title (Mithun, 10 Nov 2026): the umbrella had no page that ranked for
+      // anything but the brand. Its own page and launch post wait for v1.0.0.
+      "Svasamm One — Rice Mill, CA Firm, Hospital & HR Software",
   },
   description:
-    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, Svasamm People for HR and payroll, ERP, CRM and service desk. One API, hosted or your own, India-first.",
+    "Svasamm One: Millingo for rice mills, T4Suite for CA firms, Lucoze for hospitals and Svasamm People for HR and payroll, in one app. Built in India.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     siteName: "Svasamm",
-    title: "Svasamm — Vertical ERPs & Business Software",
+    title: "Svasamm One — Rice Mill, CA Firm, Hospital & HR Software",
     description:
       "Purpose-built vertical ERPs and platform modules for Indian operations. Millingo, T4Suite, Lucoze, DMS and more.",
     url: "/",
@@ -82,23 +84,7 @@ export default function Home() {
             style={{ gap: 64, padding: "80px 24px 88px" }}
           >
             <div>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 9,
-                  padding: "6px 13px",
-                  borderRadius: 999,
-                  background: "var(--sv-surface)",
-                  border: "1px solid var(--sv-line)",
-                  boxShadow: "var(--sv-sh-1)",
-                  marginBottom: 26,
-                }}
-              >
-                <span style={{ fontSize: 13.5, color: "var(--sv-ink-2)" }}>
-                  Svasamm Research Pvt Ltd · West Bengal, India
-                </span>
-              </div>
+              {/* The "Svasamm Research Pvt Ltd · West Bengal, India" chip was removed (Mithun, 10 Nov 2026). */}
               <h1 style={{ margin: "0 0 22px", maxWidth: "16ch" }}>
                 Business software that fits how your operation actually runs.
               </h1>

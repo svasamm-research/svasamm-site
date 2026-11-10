@@ -7,7 +7,7 @@ import { ALL_CARDS, CATEGORIES } from "@/lib/resources";
 // Every guide on the site in one place (15 Oct 2026) — svasamm.com had 57 articles and no
 // index; they were reachable only from the Resources menu and product pages.
 export const metadata: Metadata = {
-  title: { absolute: "Guides for Rice Mills, Payroll and Indian Business Software | Svasamm" },
+  title: { absolute: "Rice Mill, Payroll and Business Software Guides | Svasamm" },
   description:
     "Svasamm's guides: custom milled rice and state procurement, payroll and statutory compliance, healthcare and school marketing, and how our software is built.",
   alternates: { canonical: "/resources" },

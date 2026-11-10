@@ -247,7 +247,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Why CMR Out-Turn Drops Below 67%: Moisture & Shortfall Explained | Millingo",
+        "Why CMR Out-Turn Drops Below 67%: Moisture and Shortfall | Millingo",
       metaDescription:
         "High paddy moisture drives CMR out-turn below the 67% norm and triggers shortfall notices. Why it happens — and how to document and defend the shortfall with data.",
       canonical:
@@ -423,7 +423,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
     seo: {
       metaTitle: "UP Paddy Procurement & CMR 2026-27: Dates, Agencies, MSP | Millingo",
       metaDescription:
-        "Uttar Pradesh paddy procurement 2026-27: MSP ₹2,441, western and eastern UP windows, the eight agencies, jute bags — and what a CMR mill should keep, agency by agency.",
+        "Uttar Pradesh paddy procurement 2026-27: MSP ₹2,441, western and eastern UP windows, the eight agencies, jute bags — and what a CMR mill should keep.",
       canonical: "https://svasamm.com/pages/up-paddy-procurement-cmr-2026-27.html",
       ogType: "article",
       ogTitle: "UP paddy procurement and CMR 2026-27, for rice millers",
@@ -540,7 +540,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
     seo: {
       metaTitle: "Punjab Release Order (RO) Paddy Allotment for Millers | Millingo",
       metaDescription:
-        "How Punjab allots paddy to rice mills under release orders: linked vs RO paddy, the fee, security, what changed each season to 2026-27, and what a mill should record.",
+        "How Punjab allots paddy to rice mills under release orders: linked vs RO paddy, fee, security, changes each season to 2026-27, and what a mill should record.",
       canonical: "https://svasamm.com/pages/punjab-release-order-paddy-allotment.html",
       ogType: "article",
       ogTitle: "Release orders in Punjab: how paddy reaches a mill",
