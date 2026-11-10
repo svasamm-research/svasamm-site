@@ -40,16 +40,18 @@ const TRUST = [
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Vertical ERPs for Rice Mills, Hospitals & Distributors | Svasamm",
+      // "Svasamm One" in the title (Mithun, 10 Nov 2026): the umbrella had no page that ranked for
+      // anything but the brand. Its own page and launch post wait for v1.0.0.
+      "Svasamm One — Rice Mill, CA Firm, Hospital & HR Software",
   },
   description:
-    "Svasamm Research builds vertical ERPs and business platforms — Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, Svasamm People for HR and payroll, ERP, CRM and service desk. One API, hosted or your own, India-first.",
+    "Svasamm One: Millingo for rice mills, T4Suite for CA firms, Lucoze for hospitals and Svasamm People for HR and payroll, in one app. Built in India.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     siteName: "Svasamm",
-    title: "Svasamm — Vertical ERPs & Business Software",
+    title: "Svasamm One — Rice Mill, CA Firm, Hospital & HR Software",
     description:
       "Purpose-built vertical ERPs and platform modules for Indian operations. Millingo, T4Suite, Lucoze, DMS and more.",
     url: "/",

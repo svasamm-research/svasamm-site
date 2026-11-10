@@ -4,6 +4,8 @@
 import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { TEAM } from "../../lib/team";
+import { PRODUCT_MOMENTS } from "../../lib/product-moments";
+import { NOT_INDEXED } from "../../lib/indexing";
 
 const urls = [...readFileSync("out/sitemap.xml", "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 
@@ -216,4 +218,44 @@ test("the IndexNow key file serves the deploy step's key", async ({ request }) =
   const res = await request.get(`/${key}.txt`);
   expect(res.status()).toBe(200);
   expect((await res.text()).trim()).toBe(key);
+});
+
+// The product moment (10 Nov 2026): each listed guide shows its Millingo box ONCE, directly after
+// the section it names. A renamed heading would make the box vanish silently; this catches it.
+for (const [slug, m] of Object.entries(PRODUCT_MOMENTS)) {
+  test(`product moment on ${slug} sits after "${m.after}"`, async ({ page }) => {
+    await page.goto(`/pages/${slug}.html`);
+    const box = page.locator("main aside[data-product-moment]");
+    await expect(box).toHaveCount(1);
+    await expect(box).toContainText(m.text);
+    await expect(box.locator('a[href="/pages/millingo.html"]')).toHaveCount(1);
+    const before = await box.evaluate((el) => {
+      let n = el.previousElementSibling;
+      while (n && n.tagName !== "H2") n = n.previousElementSibling;
+      return n?.textContent?.trim();
+    });
+    expect(before).toBe(m.after);
+  });
+}
+
+// Healthcare marketing (Mithun, 10 Nov 2026): live for a link, kept out of Google. The page says
+// noindex AND the sitemap leaves it out, from one list (lib/indexing.ts).
+test("healthcare-marketing pages are live, noindex, and not in the sitemap", async ({ page }) => {
+  expect(NOT_INDEXED.size).toBeGreaterThanOrEqual(10);
+  for (const slug of NOT_INDEXED) {
+    expect(urls, slug).not.toContain(`/pages/${slug}`);
+    const r = await page.goto(`/pages/${slug}`);
+    expect(r?.status(), slug).toBe(200);
+    await expect(page.locator('meta[name="robots"]'), slug).toHaveAttribute("content", /noindex/);
+  }
+  await page.goto("/pages/millingo.html");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /^index/);
+});
+
+// "Svasamm One" in the titles (Mithun, 10 Nov 2026) — only where the page is about it.
+test("the home and Solutions titles carry Svasamm One", async ({ page }) => {
+  await page.goto("/");
+  await expect(page).toHaveTitle(/^Svasamm One — /);
+  await page.goto("/pages/services.html");
+  await expect(page).toHaveTitle(/Svasamm One/);
 });

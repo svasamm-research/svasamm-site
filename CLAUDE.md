@@ -60,6 +60,14 @@ Always `yarn typecheck` + `yarn build` before committing. Facts come from the ma
 62 pages). NAP: svasamm phone → 9007793575. **Next:** healthcare cluster + more Millingo content
 (plans in `~/Projects/web-dev/svasamm.com-audit/`). No deploy without the founder's explicit go.
 
+**Kept out of Google, and where a guide meets its product (10 Nov 2026):**
+- `lib/indexing.ts` — the ONE list of pages that stay live but are `noindex` and out of the
+  sitemap; the page metadata and `app/sitemap.ts` both read it. Today: every Svasamm Digital for
+  Healthcare page (Mithun's decision, web-dev `docs/seo-operating-plan.md`).
+- `lib/product-moments.ts` — a guide's product box, placed after the section it names (word for
+  word; a walk fails if the heading changes). A guide listed there gets `MOMENTS_CHANGED` as its
+  sitemap lastmod at least.
+
 ## Tests — the release gate (2 Oct 2026)
 **A release cannot deploy unless these are green** (`test` job + the nginx step in `deploy.yml`; PRs run the `test` job too).
 - `yarn test:e2e` — builds, then for EVERY page in `out/sitemap.xml`: 200, one h1, canonical = its sitemap URL, meta description, no console errors, no sideways scroll at 390px; every internal link resolves; the contact form keeps its fields. A new page is tested the day it is added.

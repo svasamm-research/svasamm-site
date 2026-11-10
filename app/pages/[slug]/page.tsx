@@ -14,6 +14,7 @@ import { CORE_BY_SLUG } from "@/lib/pages";
 import { JOURNEY_BY_SLUG } from "@/lib/journeys";
 import { ONE } from "@/lib/site";
 import JourneyView from "@/components/JourneyView";
+import { isIndexed } from "@/lib/indexing";
 
 // Dispatcher for the canonical /pages/*.html scheme. The [slug] segment includes the
 // ".html" suffix (e.g. "millingo.html"). Routes products, articles, Solutions and Contact.
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: { absolute: seo.metaTitle }, // metaTitle already carries the "| Svasamm" suffix
     description: seo.metaDescription,
     alternates: { canonical: seo.canonical },
-    robots: { index: true, follow: true },
+    robots: { index: isIndexed(slug), follow: true }, // lib/indexing.ts: live, but kept out of Google
     openGraph: {
       type: seo.ogType,
       title: seo.ogTitle ?? seo.metaTitle,
