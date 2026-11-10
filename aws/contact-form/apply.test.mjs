@@ -45,6 +45,12 @@ r = await post({ ...good, phone: "831731993212" });
 assert.equal(r.statusCode, 422, "twelve digits is not a mobile number");
 r = await post({ ...good, phone: "+91 98300-12345" });
 assert.equal(r.statusCode, 200, "+91 with spaces and dashes is a mobile number");
+r = await post({ ...good, phone: "+44 7700 900123" });
+assert.equal(r.statusCode, 200, "another country's number, sent with its code, is accepted (10 Nov 2026)");
+r = await post({ ...good, phone: "+91 12345 67890" });
+assert.equal(r.statusCode, 422, "a +91 number must still be an Indian mobile");
+r = await post({ ...good, phone: "+44 12" });
+assert.equal(r.statusCode, 422, "too short for any country");
 r = await post({ ...good, resume: { name: "cv.docx", data: Buffer.from("PK\u0003\u0004word").toString("base64") } });
 assert.equal(r.statusCode, 422, "a Word file is refused — PDF only");
 // UAT posts to the same sender: the browser blocks the answer unless its origin is echoed back.

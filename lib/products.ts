@@ -86,7 +86,7 @@ export const PRODUCTS: Product[] = [
     cta: { title: "Free CMR season review for your mill", body: "Send one season’s paddy received and rice delivered — we’ll show you where your out-turn and deliveries stand against the state’s figures, and how Millingo keeps that current. Free, no obligation.", primary: "Ask for the free review" },
     seo: {
       metaTitle: "Millingo — Rice Mill ERP (Paddy, Milling, FCI/Levy CMR) | Svasamm",
-      metaDescription: "Millingo is Svasamm's ERP built for rice mills: paddy procurement and quality grading, milling yield and by-products, gunny-bag accounting, and full FCI/state levy (CMR) compliance.",
+      metaDescription: "Millingo is Svasamm's rice mill ERP: paddy procurement and grading, milling yield and by-products, gunny-bag accounting, and FCI/state levy (CMR) compliance.",
       canonical: "https://svasamm.com/pages/millingo.html",
       ogType: "website",
       ogTitle: "Millingo — Rice Mill ERP | Svasamm",
@@ -148,7 +148,7 @@ export const PRODUCTS: Product[] = [
     cta: { title: "See DMS run your distribution network", body: "Bring one region and a distributor list — we’ll model the tiers, commissions and territories with you.", primary: "Book a walkthrough" },
     seo: {
       metaTitle: "DMS — Distributor Management System | Svasamm",
-      metaDescription: "Run your entire distributor network on one system: distributor-scoped sales, tiered stock allocation, commissions and incentives, territory control, and reconciliation.",
+      metaDescription: "Run your distributor network on one system: distributor-scoped sales, tiered stock allocation, commissions, incentives, territory control and reconciliation.",
       canonical: "https://svasamm.com/pages/dms.html",
       ogType: "website",
       ogTitle: "DMS — Distributor Management System | Svasamm",
@@ -253,7 +253,7 @@ export const PRODUCTS: Product[] = [
     cta: { title: "Free payroll check for one month", body: "Send one month’s salary sheet — we’ll run it through Svasamm People and show you the PF, ESI, professional tax and TDS it works out, line by line. Free, no obligation.", primary: "Ask for the free check" },
     seo: {
       metaTitle: "Svasamm People — HR, Payroll & Attendance (HRMS)",
-      metaDescription: "Svasamm People is HR and payroll software (HRMS) for Indian firms: staff register, shifts and phone attendance, leave, and payroll with PF, ESI, PT, TDS, Form 16 and 24Q.",
+      metaDescription: "Svasamm People is HR and payroll software (HRMS) for Indian firms: shifts and phone attendance, leave, and payroll with PF, ESI, PT, TDS, Form 16 and 24Q.",
       canonical: "https://svasamm.com/pages/hrms.html",
       ogType: "website",
       ogTitle: "Svasamm People — HR & payroll | Svasamm",

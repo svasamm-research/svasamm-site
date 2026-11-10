@@ -132,6 +132,14 @@ const RESUME_TYPES = { pdf: "application/pdf" };
 const MAGIC = { pdf: [0x25, 0x50, 0x44, 0x46] };
 // An Indian mobile number: 10 digits starting 6–9, with an optional +91, 91 or 0 in front.
 const indianMobile = (v) => /^(?:\+?91|0)?[6-9]\d{9}$/.test(String(v).replace(/[\s-]/g, ""));
+// Since 10 Nov 2026 the form has a country picker and sends "+<code> <number>". A +91 number must
+// still be an Indian mobile; another country's must be 6–15 digits (the international limit).
+const reachablePhone = (v) => {
+  const s = String(v).replace(/[\s-]/g, "");
+  if (!s.startsWith("+") || s.startsWith("+91")) return indianMobile(s);
+  const n = s.replace(/\D/g, "").length;
+  return n >= 6 && n <= 15;
+};
 
 async function apply(data, origin) {
   const name = clip(data.name, MAX.name);
@@ -144,7 +152,7 @@ async function apply(data, origin) {
   if (!name || !validEmail(email) || !position) {
     return reply(422, { ok: false, error: "Missing or invalid fields" }, origin);
   }
-  if (!indianMobile(phone)) {
+  if (!reachablePhone(phone)) {
     return reply(422, { ok: false, error: "Enter a 10-digit mobile number." }, origin);
   }
   if (!RESUME_TYPES[ext] || typeof file.data !== "string") {

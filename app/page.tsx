@@ -84,23 +84,7 @@ export default function Home() {
             style={{ gap: 64, padding: "80px 24px 88px" }}
           >
             <div>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 9,
-                  padding: "6px 13px",
-                  borderRadius: 999,
-                  background: "var(--sv-surface)",
-                  border: "1px solid var(--sv-line)",
-                  boxShadow: "var(--sv-sh-1)",
-                  marginBottom: 26,
-                }}
-              >
-                <span style={{ fontSize: 13.5, color: "var(--sv-ink-2)" }}>
-                  Svasamm Research Pvt Ltd · West Bengal, India
-                </span>
-              </div>
+              {/* The "Svasamm Research Pvt Ltd · West Bengal, India" chip was removed (Mithun, 10 Nov 2026). */}
               <h1 style={{ margin: "0 0 22px", maxWidth: "16ch" }}>
                 Business software that fits how your operation actually runs.
               </h1>

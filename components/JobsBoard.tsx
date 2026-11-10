@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Job } from "@/lib/jobs";
 import { CONTACT_ENDPOINT } from "./ContactForm";
+import PhoneField, { validPhone, fullNumber } from "./PhoneField";
 
 // /jobs: department chips, the openings, and one application form that opens over the page.
 // The form posts { kind: "job", …, resume } to the contact-form Lambda, which mails it to
@@ -69,6 +70,7 @@ export default function JobsBoard({ jobs, departments }: { jobs: Job[]; departme
 
 function ApplyForm({ job, onClose }: { job: Job; onClose: () => void }) {
   const [f, setF] = useState({ name: "", email: "", phone: "", note: "", website: "" });
+  const [cc, setCc] = useState("IN"); // the phone's country (PhoneField)
   const [file, setFile] = useState<File | null>(null);
   const [tried, setTried] = useState(false);
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -77,7 +79,8 @@ function ApplyForm({ job, onClose }: { job: Job; onClose: () => void }) {
   const problems = {
     name: !f.name.trim() && "Your name, please.",
     email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email) && "An email address we can reply to.",
-    phone: !MOBILE.test(f.phone.replace(/[\s-]/g, "")) && "Enter a 10-digit mobile number, e.g. 98300 12345.",
+    // India keeps the mobile rule the jobs service checks (starts 6–9); elsewhere, that country's lengths.
+    phone: !(cc === "IN" ? MOBILE.test(f.phone.replace(/[\s-]/g, "")) : validPhone(cc, f.phone)) && (cc === "IN" ? "Enter a 10-digit mobile number, e.g. 98300 12345." : "Enter a number we can call you on."),
     file: !file ? "Attach your résumé." : ext !== "pdf" ? "Only a PDF — save your résumé as a PDF first." : file.size > MAX_BYTES ? "Keep it under 3.5 MB." : false,
   };
   const ok = !Object.values(problems).some(Boolean);
@@ -97,7 +100,7 @@ function ApplyForm({ job, onClose }: { job: Job; onClose: () => void }) {
       });
       const resp = await fetch(CONTACT_ENDPOINT, {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind: "job", position: job.title, ...f, resume: { name: file.name, data } }),
+        body: JSON.stringify({ kind: "job", position: job.title, ...f, phone: fullNumber(cc, f.phone), resume: { name: file.name, data } }),
       });
       const body = await resp.json().catch(() => ({}));
       if (!resp.ok) throw new Error(body.error || `status ${resp.status}`);
@@ -111,9 +114,9 @@ function ApplyForm({ job, onClose }: { job: Job; onClose: () => void }) {
 
   const field = (id: keyof typeof f, label: string, type = "text") => (
     <div className="sv-field">
-      <label htmlFor={`ap-${id}`}>{label}</label>
+      <label htmlFor={`ap-${id}`}>{label}<span className="sv-req" aria-hidden="true"> *</span></label>
       <input id={`ap-${id}`} type={type} className="sv-input" value={f[id]} onChange={set(id)}
-        {...(id === "phone" ? { inputMode: "tel" as const, maxLength: 16, placeholder: "98300 12345", autoComplete: "tel" } : {})}
+        aria-required="true"
         aria-invalid={tried && !!problems[id as keyof typeof problems]} aria-describedby={`ap-${id}-err`} />
       {tried && problems[id as keyof typeof problems] && <span id={`ap-${id}-err`} role="alert" style={{ color: "#b42318", fontSize: 13 }}>{problems[id as keyof typeof problems]}</span>}
     </div>
@@ -139,9 +142,10 @@ function ApplyForm({ job, onClose }: { job: Job; onClose: () => void }) {
               style={{ position: "absolute", left: -9999, width: 1, height: 1 }} />
             {field("name", "Your name")}
             {field("email", "Email", "email")}
-            {field("phone", "Phone", "tel")}
+            <PhoneField id="ap-phone" label="Phone" required cc={cc} value={f.phone} onCountry={setCc}
+              onNumber={(v) => setF({ ...f, phone: v })} error={tried && problems.phone} />
             <div className="sv-field">
-              <label htmlFor="ap-file">Résumé — one PDF, under 3.5 MB</label>
+              <label htmlFor="ap-file">Résumé — one PDF, under 3.5 MB<span className="sv-req" aria-hidden="true"> *</span></label>
               <span id="ap-file-hint" style={{ fontSize: 13, color: "var(--sv-ink-3)", lineHeight: 1.5 }}>
                 Have it in Word? Choose File → Save As (or Export) → PDF, then upload that file.
               </span>

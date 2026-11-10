@@ -15,6 +15,7 @@ import { JOURNEY_BY_SLUG } from "@/lib/journeys";
 import { ONE } from "@/lib/site";
 import JourneyView from "@/components/JourneyView";
 import { isIndexed } from "@/lib/indexing";
+import { fitTitle, fitDescription } from "@/lib/seo-fit";
 
 // Dispatcher for the canonical /pages/*.html scheme. The [slug] segment includes the
 // ".html" suffix (e.g. "millingo.html"). Routes products, articles, Solutions and Contact.
@@ -48,8 +49,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { seo } = lookup(slug);
   if (!seo) return {};
   return {
-    title: { absolute: seo.metaTitle }, // metaTitle already carries the "| Svasamm" suffix
-    description: seo.metaDescription,
+    title: { absolute: fitTitle(seo.metaTitle) }, // metaTitle carries the "| Svasamm" suffix; lib/seo-fit.ts
+    description: fitDescription(seo.metaDescription),
     alternates: { canonical: seo.canonical },
     robots: { index: isIndexed(slug), follow: true }, // lib/indexing.ts: live, but kept out of Google
     openGraph: {

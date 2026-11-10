@@ -123,6 +123,10 @@ export default function Team() {
                 </div>
               </Link>
             </div>
+            {/* The About page had no link from any page's body, only the footer (seo_pages.py, 10 Nov 2026). */}
+            <p style={{ marginTop: 28, fontSize: 16, color: "var(--sv-ink-2)" }}>
+              How Svasamm began, and what it builds: <Link href="/pages/about.html" style={{ color: "var(--sv-brand)", fontWeight: 600 }}>About Svasamm</Link>
+            </p>
           </div>
         </section>
       </main>

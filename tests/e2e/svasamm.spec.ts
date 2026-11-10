@@ -173,11 +173,11 @@ test("jobs: the form refuses what it must, and sends a résumé it accepts", asy
   await page.getByRole("button", { name: "Send application" }).click();
   await expect(page.locator('[role="dialog"]')).toContainText("Enter a 10-digit mobile number");
   await expect(page.locator('[role="dialog"]')).toContainText("Only a PDF");
-  await page.fill("#ap-phone", "+91 98300 12345");
+  await page.fill("#ap-phone", "098300 12345"); // the trunk 0 goes; the picker's +91 comes first
   await page.setInputFiles("#ap-file", { name: "cv.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4\nx") });
   await page.getByRole("button", { name: "Send application" }).click();
   await expect(page.locator('[role="status"]')).toContainText("Thank you, Asha");
-  expect(sent).toMatchObject({ kind: "job", name: "Asha Roy", resume: { name: "cv.pdf" } });
+  expect(sent).toMatchObject({ kind: "job", name: "Asha Roy", phone: "+91 98300 12345", resume: { name: "cv.pdf" } });
 });
 
 // One AI-crawler rule on all three sites (Mithun, 9 Nov 2026): every AI bot, training as well as
@@ -260,4 +260,62 @@ test("the home and Solutions titles carry Svasamm One", async ({ page }) => {
   await expect(page).toHaveTitle(/^Svasamm One — /);
   await page.goto("/pages/services.html");
   await expect(page).toHaveTitle(/Svasamm One/);
+});
+
+// The contact form's real path against a stand-in for the Lambda (10 Nov 2026): it refuses what it
+// must, the country picker sets the dial code, and the lead is posted once with "+<code> <number>".
+// The route catches the real endpoint, so a test never reaches AWS.
+test("contact form: refuses what it must, then posts the lead with the phone's country code", async ({ page }) => {
+  const posts: Record<string, unknown>[] = [];
+  await page.route(/execute-api/, async (r) => {
+    if (r.request().method() === "OPTIONS") return r.fulfill({ status: 204, headers: { "access-control-allow-origin": "*", "access-control-allow-headers": "Content-Type" } });
+    posts.push(JSON.parse(r.request().postData() ?? "{}"));
+    return r.fulfill({ status: 200, contentType: "application/json", body: '{"ok":true}', headers: { "access-control-allow-origin": "*" } });
+  });
+  await page.goto("/pages/contact.html?solution=millingo");
+  for (const id of ["cf-name", "cf-email", "cf-phone"]) await expect(page.locator(`label[for="${id}"]`), id).toContainText("*");
+  await expect(page.locator('label[for="cf-company"]')).not.toContainText("*");
+  await expect(page.locator("#cf-phone-cc")).toHaveValue("IN");
+  await page.getByRole("button", { name: /walkthrough/i }).click();
+  await expect(page.locator("form [role=alert]")).toHaveCount(3);
+  await page.fill("#cf-name", "Asha Roy");
+  await page.fill("#cf-email", "asha@roy.in");
+  await page.fill("#cf-phone", "98300");
+  await page.getByRole("button", { name: /walkthrough/i }).click();
+  await expect(page.locator("#cf-phone-err")).toBeVisible();
+  await page.selectOption("#cf-phone-cc", "GB");
+  await expect(page.locator(".sv-cc")).toContainText("+44");
+  await page.fill("#cf-phone", "07700 900123");
+  expect(posts).toHaveLength(0);
+  await page.getByRole("button", { name: /walkthrough/i }).click();
+  await expect(page.getByText("Thanks, Asha")).toBeVisible();
+  expect(posts).toHaveLength(1);
+  expect(posts[0]).toMatchObject({ name: "Asha Roy", email: "asha@roy.in", phone: "+44 7700 900123", source: "svasamm-contact" });
+});
+
+// A 404 with ways forward (10 Nov 2026): a real 404 status, and every door on it opens.
+test("the 404 page answers 404 and every door on it opens", async ({ page, request }) => {
+  const r = await page.goto("/pages/no-such-page.html");
+  expect(r?.status()).toBe(404);
+  await expect(page.locator("h1")).toHaveText("This page isn't here");
+  const hrefs = await page.locator("main a[href]").evaluateAll((as) => as.map((a) => a.getAttribute("href")!));
+  expect(hrefs.length).toBeGreaterThanOrEqual(8);
+  for (const h of hrefs.filter((h) => h.startsWith("/"))) expect((await request.get(h)).status(), h).toBe(200);
+  expect(hrefs).toEqual(expect.arrayContaining(["https://t4suite.com", "https://lucoze.com", "/pages/millingo.html", "/pages/hrms.html"]));
+});
+
+// The company chip left the home hero (Mithun, 10 Nov 2026).
+test("the home hero carries no company chip", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".pp-hero")).not.toContainText("Svasamm Research Pvt Ltd · West Bengal, India");
+});
+
+// "&amp;" written into the source showed as a literal "&amp;" in titles and meta descriptions:
+// React escapes "&" itself (found 10 Nov 2026 on seven DMS pages, live on main). Write "&".
+test("no page carries a double-escaped ampersand", () => {
+  const { readdirSync } = require("node:fs") as typeof import("node:fs");
+  const walk = (d: string): string[] => readdirSync(d, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".html") ? [`${d}/${e.name}`] : []);
+  const bad = walk("out").filter((f) => readFileSync(f, "utf8").includes("&amp;amp;"));
+  expect(bad).toEqual([]);
 });
