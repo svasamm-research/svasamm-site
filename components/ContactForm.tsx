@@ -11,6 +11,7 @@ declare global {
 }
 
 import { useEffect, useState } from "react";
+import PhoneField, { validPhone, fullNumber } from "./PhoneField";
 import { Icon } from "./IconClient";
 
 const PRODUCT_OPTIONS = [
@@ -59,6 +60,7 @@ const errStyle = {
 
 // Contact form island. Client-side validation, then POST to the SES-backed endpoint.
 export default function ContactForm() {
+  const [cc, setCc] = useState("IN"); // the phone's country (PhoneField)
   const [started, setStarted] = useState(false);
   const [f, setF] = useState({
     name: "",
@@ -85,15 +87,14 @@ export default function ContactForm() {
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
       setF((prev) => ({ ...prev, [k]: e.target.value }));
 
-  const validPhone = (v: string) => v.replace(/\D/g, "").length >= 8;
   const errName = touched && !f.name.trim();
   const errEmail = touched && !validEmail(f.email);
-  const errPhone = touched && !validPhone(f.phone);
+  const errPhone = touched && !validPhone(cc, f.phone);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setTouched(true);
-    if (!f.name.trim() || !validEmail(f.email) || !validPhone(f.phone)) return;
+    if (!f.name.trim() || !validEmail(f.email) || !validPhone(cc, f.phone)) return;
     setStatus("sending");
     try {
       if (!CONTACT_ENDPOINT) throw new Error("endpoint not configured");
@@ -104,7 +105,7 @@ export default function ContactForm() {
           name: f.name.trim(),
           email: f.email.trim(),
           company: f.company.trim(),
-          phone: f.phone.trim(),
+          phone: fullNumber(cc, f.phone),
           product: f.product,
           source: "svasamm-contact",
           website, // honeypot
@@ -129,6 +130,7 @@ export default function ContactForm() {
   }
 
   function reset() {
+    setCc("IN");
     setF({
       name: "",
       email: "",
@@ -206,12 +208,13 @@ export default function ContactForm() {
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 17 }}
           >
             <div className="sv-field">
-              <label htmlFor="cf-name">Name</label>
+              <label htmlFor="cf-name">Name<span className="sv-req" aria-hidden="true"> *</span></label>
               <input
                 id="cf-name"
                 className="sv-input"
                 value={f.name}
                 onChange={set("name")}
+                aria-required="true"
                 placeholder="Your name"
                 aria-invalid={errName || undefined}
                 aria-describedby={errName ? "cf-name-err" : undefined}
@@ -223,13 +226,14 @@ export default function ContactForm() {
               )}
             </div>
             <div className="sv-field">
-              <label htmlFor="cf-email">Work email</label>
+              <label htmlFor="cf-email">Work email<span className="sv-req" aria-hidden="true"> *</span></label>
               <input
                 id="cf-email"
                 className="sv-input"
                 type="email"
                 value={f.email}
                 onChange={set("email")}
+                aria-required="true"
                 placeholder="you@company.com"
                 aria-invalid={errEmail || undefined}
                 aria-describedby={errEmail ? "cf-email-err" : undefined}
@@ -245,24 +249,16 @@ export default function ContactForm() {
             className="pp-two"
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 17 }}
           >
-            <div className="sv-field">
-              <label htmlFor="cf-phone">Phone</label>
-              <input
-                id="cf-phone"
-                className="sv-input"
-                type="tel"
-                value={f.phone}
-                onChange={set("phone")}
-                placeholder="+91 9XXXXXXXXX"
-                aria-invalid={errPhone || undefined}
-                aria-describedby={errPhone ? "cf-phone-err" : undefined}
-              />
-              {errPhone && (
-                <span id="cf-phone-err" role="alert" style={errStyle}>
-                  Enter a number we can call you on
-                </span>
-              )}
-            </div>
+            <PhoneField
+              id="cf-phone"
+              label="Phone"
+              required
+              cc={cc}
+              value={f.phone}
+              onCountry={setCc}
+              onNumber={(v) => setF((prev) => ({ ...prev, phone: v }))}
+              error={errPhone && "Enter a number we can call you on"}
+            />
             <div className="sv-field">
               <label htmlFor="cf-company">Company / operation</label>
               <input

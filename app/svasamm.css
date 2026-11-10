@@ -211,6 +211,10 @@ figure { margin: 0; }
 .sv-input::placeholder { color: var(--sv-ink-3); }
 .sv-input:hover { border-color: var(--sv-ink-2); }
 .sv-input:focus-visible { border-color: var(--sv-brand); box-shadow: var(--sv-ring); outline: none; }
+/* The phone field's country picker: an invisible native select over "🇮🇳 +91" (components/PhoneField.tsx). */
+.sv-cc:focus-within { border-color: var(--sv-brand); box-shadow: var(--sv-ring); }
+/* A required field's star. */
+.sv-req { color: #b42318; }
 textarea.sv-input { min-height: 108px; resize: vertical; }
 
 /* Segmented control */

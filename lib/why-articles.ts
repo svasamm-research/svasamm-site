@@ -78,7 +78,7 @@ export const WHY_ARTICLES: Article[] = [
     crumb: "Customized, not customizable",
     eyebrow: "Why Svasamm · Customized",
     title: "Customized, Not Customizable: Software Built for Your Industry Before You Arrive",
-    metaTitle: "Customized vs Customizable Software — Built for Your Industry | Svasamm",
+    metaTitle: "Customized vs Customizable Software for Your Industry | Svasamm",
     metaDescription:
       "Customizable software leaves the fitting to you. Customized software arrives already fitted to your industry. What that means for a rice mill, a CA firm and a payroll — and what Svasamm still leaves for your firm to choose.",
     intro:

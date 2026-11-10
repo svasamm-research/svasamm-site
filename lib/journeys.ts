@@ -63,7 +63,7 @@ const millingo: Journey = {
   seo: {
     metaTitle: "Paddy In, Rice Out: a Load Through Millingo, Gate to Depot | Svasamm",
     metaDescription:
-      "Follow a lorry of paddy through a rice mill in Millingo: gate pass, weighbridge, entry, QC bench and butta, batch, milling, fortifying, CMR delivery and report 7.1.",
+      "Follow a lorry of paddy through a rice mill in Millingo: gate pass, weighbridge, entry, QC and butta, batch, milling, fortifying, CMR delivery and report 7.1.",
     canonical: "https://svasamm.com/pages/millingo-paddy-in-rice-out.html",
   },
 };

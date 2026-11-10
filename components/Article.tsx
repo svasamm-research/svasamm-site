@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { Icon } from "./Icon";
 import FaqAccordion from "./FaqAccordion";
@@ -7,6 +8,7 @@ import type { Article, Block, ListItem } from "@/lib/types";
 import { ONE, GUIDE_SCREEN } from "@/lib/site";
 import { anchor, relatedCards } from "@/lib/resources";
 import ProductLogo from "./ProductLogo";
+import { PRODUCT_MOMENTS } from "@/lib/product-moments";
 
 const CONTACT = toRoute("Contact.dc.html");
 
@@ -160,6 +162,7 @@ export default function ArticleView({ article: a }: { article: Article }) {
   const crumbs = crumbsFrom(a.jsonLd);
   const hasHero = HERO_SLUGS.has(a.slug);
   const one = ONE[a.parentProduct];
+  const moment = PRODUCT_MOMENTS[a.slug];
   const screen = one && (GUIDE_SCREEN[a.slug] ?? one.page ?? one.card);
   const contents = a.sections.map((b) => (b as { h?: string }).h).filter((h): h is string => !!h);
   const next = relatedCards(a);
@@ -302,7 +305,33 @@ export default function ArticleView({ article: a }: { article: Article }) {
             </nav>
           )}
           {a.sections.map((b, i) => (
-            <BlockView key={i} b={b} />
+            <Fragment key={i}>
+              <BlockView b={b} />
+              {moment && b.h === moment.after && (
+                /* The product moment (lib/product-moments.ts): the closing card's look, smaller,
+                   where the reader meets the problem. */
+                <aside
+                  className="sv-card"
+                  data-product-moment
+                  style={{ padding: "18px 22px", margin: "6px 0 26px", ...(one && { borderLeft: `4px solid ${one.fill}` }) }}
+                >
+                  {one && (
+                    <div style={{ marginBottom: 8 }}>
+                      <ProductLogo id={a.parentProduct} size={15} />
+                    </div>
+                  )}
+                  <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "var(--sv-ink)", margin: "0 0 12px" }}>{moment.text}</p>
+                  <div style={{ display: "flex", gap: "8px 18px", flexWrap: "wrap", alignItems: "center", fontSize: 15 }}>
+                    <Link href={toRoute(a.cta.productHref)} style={{ fontWeight: 600, color: "var(--sv-brand)", display: "inline-flex", alignItems: "center", gap: 5 }}>
+                      See how {a.cta.productLabel.replace(/^Explore /, "")} does it <Icon name="ph-arrow-right" size={14} />
+                    </Link>
+                    <Link href={`${CONTACT}?solution=${a.parentProduct}`} style={{ color: "var(--sv-ink-2)" }}>
+                      or book a free walkthrough
+                    </Link>
+                  </div>
+                </aside>
+              )}
+            </Fragment>
           ))}
 
           {/* CTA card. A guide about a Svasamm One product ends on that product: its

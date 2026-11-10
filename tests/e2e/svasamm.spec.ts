@@ -4,6 +4,8 @@
 import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { TEAM } from "../../lib/team";
+import { PRODUCT_MOMENTS } from "../../lib/product-moments";
+import { NOT_INDEXED } from "../../lib/indexing";
 
 const urls = [...readFileSync("out/sitemap.xml", "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 
@@ -73,6 +75,12 @@ test("bold key facts render as bold, not as asterisks", async ({ page }) => {
   await expect(page.locator("main strong", { hasText: "only 99.50 of 105.64 LMT" })).toHaveCount(1);
 });
 
+test("resources lists the journeys, which the article grid cannot", async ({ page }) => {
+  await page.goto("/resources");
+  await expect(page.locator('main a[href="/pages/millingo-paddy-in-rice-out.html"]')).toBeVisible();
+  await expect(page.locator('main a[href="https://t4suite.com/how-it-works"]')).toBeVisible();
+});
+
 test("resources: chips filter, the chosen chip is marked, the sort shares their line", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/resources");
@@ -112,6 +120,8 @@ test("tracking: demo click, reading depth and a 404 are counted", async ({ page 
 test("Sign in names the site; WhatsApp opens with an inviting message", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('header a[href*="app.svasamm.com"]').first()).toHaveAttribute("href", /utm_source=svasamm\.com/);
+  // Sign in opens the app in its own tab, so the site stays open (Mithun, 9 Nov 2026).
+  for (const a of await page.locator('a[href*="app.svasamm.com"]').all()) await expect(a).toHaveAttribute("target", "_blank");
   // the link is built after the page mounts, so wait for it rather than read it once
   await expect(page.locator("a.wa-fab")).toHaveAttribute("href", /919007793575.*text=Hi%20Svasamm%2C%20I'd%20like%20to%20know%20how%20you%20can%20help%20my%20business\./);
 });
@@ -163,9 +173,149 @@ test("jobs: the form refuses what it must, and sends a résumé it accepts", asy
   await page.getByRole("button", { name: "Send application" }).click();
   await expect(page.locator('[role="dialog"]')).toContainText("Enter a 10-digit mobile number");
   await expect(page.locator('[role="dialog"]')).toContainText("Only a PDF");
-  await page.fill("#ap-phone", "+91 98300 12345");
+  await page.fill("#ap-phone", "098300 12345"); // the trunk 0 goes; the picker's +91 comes first
   await page.setInputFiles("#ap-file", { name: "cv.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4\nx") });
   await page.getByRole("button", { name: "Send application" }).click();
   await expect(page.locator('[role="status"]')).toContainText("Thank you, Asha");
-  expect(sent).toMatchObject({ kind: "job", name: "Asha Roy", resume: { name: "cv.pdf" } });
+  expect(sent).toMatchObject({ kind: "job", name: "Asha Roy", phone: "+91 98300 12345", resume: { name: "cv.pdf" } });
+});
+
+// One AI-crawler rule on all three sites (Mithun, 9 Nov 2026): every AI bot, training as well as
+// search, may read the whole site. A named group replaces "*" for that bot, so check the bot's own group.
+const AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+  "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot"];
+test("robots.txt lets every AI crawler read the site", async ({ request }) => {
+  const text = await (await request.get("/robots.txt")).text();
+  const groups: { agents: string[]; rules: string[] }[] = [];
+  let open = false;
+  for (const raw of text.split("\n")) {
+    const line = raw.replace(/#.*/, "").trim();
+    const m = line.match(/^([A-Za-z-]+):\s*(.*)$/);
+    if (!m) continue;
+    const [k, v] = [m[1].toLowerCase(), m[2].trim()];
+    if (k === "user-agent") {
+      if (!open) groups.push({ agents: [], rules: [] });
+      groups[groups.length - 1].agents.push(v.toLowerCase());
+      open = true;
+    } else if (k === "allow" || k === "disallow") {
+      if (groups.length) groups[groups.length - 1].rules.push(`${k}:${v}`);
+      open = false;
+    }
+  }
+  for (const bot of AI_BOTS) {
+    const g = groups.find((x) => x.agents.includes(bot.toLowerCase()));
+    expect(g, `${bot} is named`).toBeTruthy();
+    expect(g!.rules, bot).toContain("allow:/");
+    expect(g!.rules, bot).not.toContain("disallow:/");
+  }
+});
+
+// IndexNow (9 Nov 2026): the key the deploy step sends must be served at /<key>.txt, or Bing
+// refuses every submission. The step lives in .github/workflows/deploy.yml.
+test("the IndexNow key file serves the deploy step's key", async ({ request }) => {
+  const fs = await import("node:fs");
+  const key = fs.readFileSync(".github/workflows/deploy.yml", "utf8").match(/INDEXNOW_KEY: ([0-9a-f]{32})/)![1];
+  const res = await request.get(`/${key}.txt`);
+  expect(res.status()).toBe(200);
+  expect((await res.text()).trim()).toBe(key);
+});
+
+// The product moment (10 Nov 2026): each listed guide shows its Millingo box ONCE, directly after
+// the section it names. A renamed heading would make the box vanish silently; this catches it.
+for (const [slug, m] of Object.entries(PRODUCT_MOMENTS)) {
+  test(`product moment on ${slug} sits after "${m.after}"`, async ({ page }) => {
+    await page.goto(`/pages/${slug}.html`);
+    const box = page.locator("main aside[data-product-moment]");
+    await expect(box).toHaveCount(1);
+    await expect(box).toContainText(m.text);
+    await expect(box.locator('a[href="/pages/millingo.html"]')).toHaveCount(1);
+    const before = await box.evaluate((el) => {
+      let n = el.previousElementSibling;
+      while (n && n.tagName !== "H2") n = n.previousElementSibling;
+      return n?.textContent?.trim();
+    });
+    expect(before).toBe(m.after);
+  });
+}
+
+// Svasamm Digital, healthcare and schools (Mithun, 10 Nov 2026): live for a link, kept out of Google. The page says
+// noindex AND the sitemap leaves it out, from one list (lib/indexing.ts).
+test("Svasamm Digital pages (healthcare and schools) are live, noindex, and not in the sitemap", async ({ page }) => {
+  expect(NOT_INDEXED.size).toBeGreaterThanOrEqual(17);
+  for (const s of ["digital-healthcare.html", "digital-schools.html", "school-website-design.html", "clinic-seo-west-bengal.html"])
+    expect(NOT_INDEXED.has(s), s).toBe(true);
+  for (const slug of NOT_INDEXED) {
+    expect(urls, slug).not.toContain(`/pages/${slug}`);
+    const r = await page.goto(`/pages/${slug}`);
+    expect(r?.status(), slug).toBe(200);
+    await expect(page.locator('meta[name="robots"]'), slug).toHaveAttribute("content", /noindex/);
+  }
+  await page.goto("/pages/millingo.html");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /^index/);
+});
+
+// "Svasamm One" in the titles (Mithun, 10 Nov 2026) — only where the page is about it.
+test("the home and Solutions titles carry Svasamm One", async ({ page }) => {
+  await page.goto("/");
+  await expect(page).toHaveTitle(/^Svasamm One — /);
+  await page.goto("/pages/services.html");
+  await expect(page).toHaveTitle(/Svasamm One/);
+});
+
+// The contact form's real path against a stand-in for the Lambda (10 Nov 2026): it refuses what it
+// must, the country picker sets the dial code, and the lead is posted once with "+<code> <number>".
+// The route catches the real endpoint, so a test never reaches AWS.
+test("contact form: refuses what it must, then posts the lead with the phone's country code", async ({ page }) => {
+  const posts: Record<string, unknown>[] = [];
+  await page.route(/execute-api/, async (r) => {
+    if (r.request().method() === "OPTIONS") return r.fulfill({ status: 204, headers: { "access-control-allow-origin": "*", "access-control-allow-headers": "Content-Type" } });
+    posts.push(JSON.parse(r.request().postData() ?? "{}"));
+    return r.fulfill({ status: 200, contentType: "application/json", body: '{"ok":true}', headers: { "access-control-allow-origin": "*" } });
+  });
+  await page.goto("/pages/contact.html?solution=millingo");
+  for (const id of ["cf-name", "cf-email", "cf-phone"]) await expect(page.locator(`label[for="${id}"]`), id).toContainText("*");
+  await expect(page.locator('label[for="cf-company"]')).not.toContainText("*");
+  await expect(page.locator("#cf-phone-cc")).toHaveValue("IN");
+  await page.getByRole("button", { name: /walkthrough/i }).click();
+  await expect(page.locator("form [role=alert]")).toHaveCount(3);
+  await page.fill("#cf-name", "Asha Roy");
+  await page.fill("#cf-email", "asha@roy.in");
+  await page.fill("#cf-phone", "98300");
+  await page.getByRole("button", { name: /walkthrough/i }).click();
+  await expect(page.locator("#cf-phone-err")).toBeVisible();
+  await page.selectOption("#cf-phone-cc", "GB");
+  await expect(page.locator(".sv-cc")).toContainText("+44");
+  await page.fill("#cf-phone", "07700 900123");
+  expect(posts).toHaveLength(0);
+  await page.getByRole("button", { name: /walkthrough/i }).click();
+  await expect(page.getByText("Thanks, Asha")).toBeVisible();
+  expect(posts).toHaveLength(1);
+  expect(posts[0]).toMatchObject({ name: "Asha Roy", email: "asha@roy.in", phone: "+44 7700 900123", source: "svasamm-contact" });
+});
+
+// A 404 with ways forward (10 Nov 2026): a real 404 status, and every door on it opens.
+test("the 404 page answers 404 and every door on it opens", async ({ page, request }) => {
+  const r = await page.goto("/pages/no-such-page.html");
+  expect(r?.status()).toBe(404);
+  await expect(page.locator("h1")).toHaveText("This page isn't here");
+  const hrefs = await page.locator("main a[href]").evaluateAll((as) => as.map((a) => a.getAttribute("href")!));
+  expect(hrefs.length).toBeGreaterThanOrEqual(8);
+  for (const h of hrefs.filter((h) => h.startsWith("/"))) expect((await request.get(h)).status(), h).toBe(200);
+  expect(hrefs).toEqual(expect.arrayContaining(["https://t4suite.com", "https://lucoze.com", "/pages/millingo.html", "/pages/hrms.html"]));
+});
+
+// The company chip left the home hero (Mithun, 10 Nov 2026).
+test("the home hero carries no company chip", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".pp-hero")).not.toContainText("Svasamm Research Pvt Ltd · West Bengal, India");
+});
+
+// "&amp;" written into the source showed as a literal "&amp;" in titles and meta descriptions:
+// React escapes "&" itself (found 10 Nov 2026 on seven DMS pages, live on main). Write "&".
+test("no page carries a double-escaped ampersand", () => {
+  const { readdirSync } = require("node:fs") as typeof import("node:fs");
+  const walk = (d: string): string[] => readdirSync(d, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".html") ? [`${d}/${e.name}`] : []);
+  const bad = walk("out").filter((f) => readFileSync(f, "utf8").includes("&amp;amp;"));
+  expect(bad).toEqual([]);
 });
