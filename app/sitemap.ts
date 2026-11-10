@@ -5,6 +5,8 @@ import { ARTICLE_BY_SLUG } from "@/lib/article-registry";
 import { CORE_BY_SLUG } from "@/lib/pages";
 import { JOURNEY_BY_SLUG } from "@/lib/journeys";
 import { SITE_URL } from "@/lib/site";
+import { isIndexed } from "@/lib/indexing";
+import { PRODUCT_MOMENTS, MOMENTS_CHANGED } from "@/lib/product-moments";
 
 // All indexable routes: home + legal + every /pages/*.html (products, articles, Solutions,
 // Contact). Canonicals come straight from each record's SEO, so the sitemap can't drift
@@ -26,7 +28,10 @@ const modifiedOf = (jsonLd: object[]) =>
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
     ...Object.values(PRODUCT_BY_SLUG).map((p) => ({ url: p.seo.canonical, lastModified: SITE_CHANGED })),
-    ...Object.values(ARTICLE_BY_SLUG).map((a) => ({ url: a.seo.canonical, lastModified: later(SITE_CHANGED, modifiedOf(a.jsonLd)) })),
+    ...Object.values(ARTICLE_BY_SLUG).map((a) => ({
+      url: a.seo.canonical,
+      lastModified: later(later(SITE_CHANGED, modifiedOf(a.jsonLd)), PRODUCT_MOMENTS[a.slug] ? MOMENTS_CHANGED : undefined),
+    })),
     ...Object.values(CORE_BY_SLUG).map((c) => ({ url: c.seo.canonical, lastModified: SITE_CHANGED })),
     ...Object.values(JOURNEY_BY_SLUG).map((j) => ({ url: j.seo.canonical, lastModified: SITE_CHANGED })),
   ];
@@ -36,7 +41,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/resources`, lastModified: SITE_CHANGED, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/team`, lastModified: SITE_CHANGED, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/jobs`, lastModified: SITE_CHANGED, changeFrequency: "weekly", priority: 0.6 },
-    ...pages.map((p) => ({ ...p, changeFrequency: "monthly" as const, priority: 0.8 })),
+    // A noindex page is never listed: lib/indexing.ts is the one list both read.
+    ...pages.filter((p) => isIndexed(p.url)).map((p) => ({ ...p, changeFrequency: "monthly" as const, priority: 0.8 })),
     { url: `${SITE_URL}/privacy`, lastModified: "2026-10-01", changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms`, lastModified: "2026-10-01", changeFrequency: "yearly", priority: 0.3 },
     // Billing pages the payment provider (Cashfree) reviews before approving the account.

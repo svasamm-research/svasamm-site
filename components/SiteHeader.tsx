@@ -405,6 +405,8 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
           <span className="hidden sm:inline-flex">
             <a
               href={signInHref("header")}
+              target="_blank"
+              rel="noopener"
               onClick={() => signInClick("header")}
               className="sv-btn sv-btn-secondary"
               style={{ fontSize: 14, padding: "10px 16px" }}
@@ -550,6 +552,8 @@ export default function SiteHeader({ active = "" }: { active?: string }) {
           </Link>
           <a
             href={signInHref("mobile-menu")}
+            target="_blank"
+            rel="noopener"
             onClick={() => signInClick("mobile-menu")}
             className="sv-btn sv-btn-secondary sv-btn-block"
             style={{ marginTop: 10 }}

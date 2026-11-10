@@ -8,8 +8,8 @@ export const CORE_BY_SLUG: Record<string, CorePage> = {
   "services.html": {
     kind: "solutions",
     seo: {
-      metaTitle: "Solutions — Vertical ERPs & Platform Modules | Svasamm",
-      metaDescription: "Every Svasamm product in one place: Millingo rice-mill ERP, T4Suite for CA firms, Lucoze healthcare HIMS, distributor management, and platform modules — Svasamm People for HR and payroll, ERP, CRM and service desk.",
+      metaTitle: "Solutions — Svasamm One Products & Client Software | Svasamm",
+      metaDescription: "On Svasamm One: Millingo for rice mills, T4Suite for CA firms, Lucoze for hospitals, Svasamm People for HR. Also ERP, CRM, DMS and service desk.",
       canonical: "https://svasamm.com/pages/services.html",
       ogType: "website",
       ogTitle: "Solutions | Svasamm",
