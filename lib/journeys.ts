@@ -25,7 +25,7 @@ const millingo: Journey = {
     { id: "gate", step: "1", title: "A lorry at the gate", who: "The gate clerk",
       does: "Raises a gate pass for the lorry — the party, the driver, the paddy — or turns it away.",
       rule: "A pass with no driver is refused, and so is a party that does not supply paddy, or a lorry that is already inside.",
-      screen: "/journeys/millingo/gate.webp", alt: "Trucks at the gate: lorries waiting, weighing, unloading and leaving" },
+      screen: "/journeys/millingo/gate.webp", alt: "Lorries at the gate: waiting, weighing, unloading and leaving" },
     { id: "weigh", step: "2", title: "On the weighbridge", who: "The kanta operator",
       does: "Records the loaded and the empty weight; the difference is the milling weight everything after it is paid on.",
       rule: "An empty weight equal to or above the loaded weight is refused.",

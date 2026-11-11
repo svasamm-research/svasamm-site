@@ -140,8 +140,10 @@ export const PRODUCTS: NavProduct[] = [
 ];
 
 // Every product screen the site shows — each rendered from that product's LATEST design
-// canvas (Millingo https://claude.ai/artifact/1seLhA8GQtNnUga7t7FfTz, People
-// …/8YzFZYmdsCPPSMUs2wXeMd, T4Suite …/QUNATp1bRgSWvbM2b4jpxV; Lucoze's from its own site),
+// canvas (Millingo https://claude.ai/artifact/1seLhA8GQtNnUga7t7FfTz, Finance
+// …/DuL2SAuriFDrGn8HF66smP, People …/8YzFZYmdsCPPSMUs2wXeMd, T4Suite …/QUNATp1bRgSWvbM2b4jpxV;
+// Lucoze's from its own site). Millingo, Finance and T4Suite re-rendered 11 Nov 2026 to the
+// Svasamm One look: every product app in Svasamm blue, product logos in their own colours.
 // never a screenshot of an older build. One screen per page where it can be: a page about
 // gate weighing shows the gate, not the same dashboard as every other page.
 export type Screen = { src: string; caption: string };
@@ -149,9 +151,9 @@ const S = (file: string, caption: string): Screen => ({ src: `/screens/${file}.w
 export const SCREENS = {
   millingoToday: S("millingo-today", "Millingo · the owner's morning"),
   millingoCmr: S("millingo-cmr", "Millingo · CMR owed to the government"),
-  millingoGate: S("millingo-gate", "Millingo · trucks at the gate"),
+  millingoGate: S("millingo-gate", "Millingo · lorries at the gate"),
   millingoBatches: S("millingo-batches", "Millingo · batches on the floor"),
-  millingoReports: S("millingo-reports", "Millingo · reports and the trial balance"),
+  millingoReports: S("millingo-reports", "Millingo’s books in Svasamm Finance · the trial balance"),
   millingoPhone: S("millingo-phone", "Millingo on the owner's phone"),
   peopleMonthEnd: S("people-monthend", "Svasamm People · month end"),
   peoplePayroll: S("people-payroll", "Svasamm People · payroll"),
