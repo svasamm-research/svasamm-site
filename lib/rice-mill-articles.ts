@@ -576,105 +576,271 @@ export const RICE_MILL_ARTICLES: Article[] = [
       },
     ],
   },
-  // FRK in CMR (26 Oct 2026). Sources: FSSAI cereals standards 2.4, clause 24(c) (FRK spec, 1:50 / 1:100
-  // levels, sale and labelling); BIS IS 17780:2021 (fortified rice, 1:100 ± 10%); PIB 9 Oct 2024 (supply
-  // to Dec 2028); WB KMS 2024-25 procurement guideline 16.22.11-12. Millingo claims match
-  // modules/millingo/migrations/0038 (the blend, FRK as stock, report 7.1 columns H and I).
+  // Broken rice: 10%, not 15% (13 Nov 2026). Press reports only; no DFPD circular or PIB release
+  // read. Rural Voice 2 Sep 2026 (10% raw / 5% parboiled from KMS 2026-27, State Food Secretaries,
+  // 1 Sep 2026, phased); Rural Voice 26 Jul 2025 (the 85 + 15 split, brokens sold from the mill to
+  // distilleries); Angel One 2 Jul 2026 (phased by KMS 2027-28). Its pilot-state list is left out
+  // on purpose (Mithun, 13 Nov: name none). Millingo claims are only the two session C confirmed on
+  // 13 Nov (mill/lots.go: a lot passes only when every reading is in limit; each limit carries its
+  // order). The 10% and 5% limits are NOT built (CR2, v0.13.0) — never say they are.
   {
-    slug: "frk-blending-cmr-records",
+    slug: "broken-rice-10-percent-cmr-improved-rice",
     type: "guide",
     parentProduct: "millingo",
-    eyebrow: "CMR · Fortified rice",
-    title: "FRK in CMR: the 1:100 Blend, Its Tolerance, and the Records an Inspector Asks For",
-    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 26 October 2026",
+    eyebrow: "CMR · Improved Rice",
+    title: "Broken Rice: 10%, Not 15%. What the New CMR Rule Means for Your Mill",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 13 November 2026",
     intro:
-      "Every quintal of CMR rice a mill delivers for the government schemes must be fortified first: blended with fortified rice kernels (FRK) at one part in a hundred. The Union Cabinet extended the supply of fortified rice under PMGKAY and the other welfare schemes to December 2028, so this is not a pilot any more — it is part of every delivery. This guide sets out what FRK is, what the 1:100 blend and its tolerance mean in kilograms, how a mill gets it wrong, and the records to keep so an inspector's questions have answers.",
+      "The trade says the broken-rice limit for CMR is going from 25% to 15%. That is loose. The new limit, as reported, is 10% broken grains for raw rice and 5% for parboiled. The 15% is something else: the share of fully broken rice sorted out of every lot and sent away separately. Here is what is reported, where the 15% comes from, and what a mill should do before its state's order arrives.",
     sections: [
       {
         type: "p",
-        h: "What FRK is",
-        text: "Fortified rice kernels are rice-shaped kernels made by extrusion from rice flour and a vitamin-mineral premix, so they look and cook like rice. FSSAI's standard for them (clause 24(c) of the cereals standards) sets the nutrients they must carry: for a 1:100 blend, **280–425 mg of iron, 750–1,250 µg of folic acid and 7.5–12.5 µg of vitamin B12 per 100 g of kernels**. Blended one in a hundred, that gives the rice 28–42.5 mg of iron per kilogram. FRK may only be sold for making fortified rice — never loose, never to a consumer — and every pack must state its blending ratio.",
-      },
-      {
-        type: "p",
-        h: "The mill buys it — it is not supplied like gunny",
-        text: "A mill buys FRK from a manufacturer, with a bill, a cost and input GST, the way it buys any other material. That makes FRK stock the mill owns and must account for: received, blended, and the balance in the godown. A mill that runs short cannot fortify, and rice that is not fortified cannot be delivered.",
+        h: "What changed",
+        text: "From KMS 2026-27, the Department of Food and Public Distribution (DFPD) is moving rice for PMGKAY and the other welfare schemes to what it calls **Improved Rice**. It was reviewed at a meeting of State Food Secretaries chaired by the DFPD Secretary in New Delhi on 1 September 2026. As reported, **raw rice may now contain up to 10% broken grains, down from 25%**, and **parboiled rice up to 5%, down from 16%**.",
       },
       {
         type: "table",
-        h: "The 1:100 blend in kilograms",
-        cols: ["Rice to fortify", "FRK at exactly 1:100", "Inside ±10% (BIS IS 17780:2021)"],
+        h: "The limits, old and new",
+        cols: ["Rice", "Broken grains allowed until now", "Improved Rice, from KMS 2026-27", "Source"],
         rows: [
-          ["100 kg", "1.00 kg", "0.90 – 1.10 kg"],
-          ["Two 50 kg bags", "1.00 kg", "0.90 – 1.10 kg"],
-          ["100 quintals", "100 kg", "90 – 110 kg"],
-          ["1,000 quintals (a busy week)", "1,000 kg", "900 – 1,100 kg"],
-        ],
-      },
-      {
-        type: "note",
-        text: "The ±10% band is the BIS standard for fortified rice (IS 17780:2021). **State procurement notices can state their own range — check the current one for your state** before you set your blender, and keep a copy with the season's papers.",
-      },
-      {
-        type: "list",
-        h: "How a mill gets it wrong",
-        items: [
-          { b: "Running out of FRK —", t: "West Bengal's KMS 2024-25 procurement guideline lists as a default not holding enough FRK to fortify rice in time for paddy handed over at least 15 days earlier (clause 16.22.11)." },
-          { b: "Blending by eye —", t: "too little FRK under-fortifies and gets the rice rejected; too much wastes FRK the mill paid for. A blending machine meters it; the BIS standard for the machine is IS 17854:2022." },
-          { b: "Rejection at the godown —", t: "the same guideline treats repeated rejection of CMR for not meeting the blending ratio as a default (clause 16.22.12). A rejected lot comes back to the mill to be made right; it is not a shortfall, but it is a second delivery." },
-          { b: "Mixing fortified and unfortified stock —", t: "once a lot is blended it is fortified rice, and the stock records must say so. Report 7.1 counts rice mixed with FRK separately from rice not yet mixed." },
-        ],
-      },
-      {
-        type: "list",
-        h: "The records an inspector asks for",
-        items: [
-          { b: "FRK purchase bills", t: "— the manufacturer, the batch, the quantity, and the batch's test certificate." },
-          { b: "An FRK stock register", t: "— received, used in each blend, and the balance, day by day." },
-          { b: "A blend record per batch", t: "— the date, the unfortified rice in, the FRK in, the fortified rice out, and the ratio it worked out to." },
-          { b: "The rice split by state", t: "— fortified and not yet fortified, the two figures report 7.1 asks for." },
-          { b: "Deliveries and rejections", t: "— each lot sent to the depot, accepted or rejected, and what happened to a rejected lot." },
+          ["Raw", "25%", "10%", "Rural Voice, 2 Sep 2026"],
+          ["Parboiled", "16%", "5%", "Rural Voice, 2 Sep 2026"],
         ],
       },
       {
         type: "p",
-        h: "How Millingo records the blend",
-        text: "In Millingo, FRK is a kind of stock the mill buys, like gunny. Each blend is one document: unfortified rice and FRK go in, fortified rice comes out, and the blend is refused if what comes out does not equal what went in or if the FRK falls outside 1:100 ±10%. The godown then knows which rice is fortified, so report 7.1 shows rice mixed with FRK apart from rice not yet mixed — the two figures an inspector reads first.",
+        h: "Where the 15% comes from",
+        text: "The 15% is not a limit. It comes from the model reported in July 2025, after a pilot in four states: **for every 100 quintals of CMR, the mill delivers about 85 quintals of rice with no more than 10% brokens in one lot, and 15 quintals of fully broken rice in another**. The fully broken rice is to be sold from the mill to distilleries, for ethanol. Under CMR the rice is the government's, so the broken lot is too: the mill sorts it out, keeps it apart and counts it, but it does not own it or sell it.",
+      },
+      {
+        type: "p",
+        h: "It is coming in phases",
+        text: "Procurement of Improved Rice begins from KMS 2026-27 and is to be **expanded across the procuring states gradually**. States have been asked to assess their milling capacity, plan the upgrades and prepare a phased roadmap. One report says the roll-out across states is to be complete by KMS 2027-28. Which states come first has not been confirmed in any order we have read, so do not assume yours is in or out.",
+      },
+      {
+        type: "note",
+        text: "Everything above is from press reports, cited below. We have not read a DFPD circular or a PIB release on it. **Read your own state's order for KMS 2026-27 before you change anything at the mill**, and keep a copy with the season's papers.",
+      },
+      {
+        type: "list",
+        h: "What a mill should do now",
+        items: [
+          { b: "Check your sorting capacity.", t: "Getting brokens down to 10% (or 5% for parboiled) is a job for the grader and the colour sorter. Run a test lot and measure what your plant gives today." },
+          { b: "Plan for the broken lot.", t: "About 15 quintals in every 100 will leave as a separate lot of fully broken rice. It needs its own space, its own bags and its own count until it leaves the mill." },
+          { b: "Test every lot before it leaves for the depot.", t: "A lot over the limit is rejected at the godown and comes back to the mill. That costs a second delivery." },
+          { b: "Read your own state's order.", t: "It decides when the new limits apply to your mill, and for which kind of rice. Until it reaches you, the limits in your current order still apply." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Where Millingo fits",
+        text: "In Millingo, **every CMR lot is tested against the FCI limits before it can be passed**, reading by reading, and **each limit is stored with the order it comes from**. So when a lot is questioned at the depot, the readings and the order they were judged against are on the record.",
+      },
+      {
+        type: "list",
+        h: "Sources",
+        items: [
+          { b: "Rural Voice, 2 September 2026", t: "— “Paddy procurement target for Kharif 2026-27 set at 708.64 LMT, lowest in six years” (the 10% and 5% limits, the 1 September meeting, the phasing)." },
+          { b: "Rural Voice, 26 July 2025", t: "— “Broken rice to be separated from FCI stock for ethanol market use” (the 85 + 15 split, and brokens sold from the mill to distilleries)." },
+          { b: "Angel One, 2 July 2026", t: "— “India approves new rice quality norms for PMGKAY beneficiaries” (phased across procuring states by KMS 2027-28)." },
+        ],
       },
     ],
     faqs: [
-      { q: "What is the FRK blending ratio for CMR rice?", a: "1:100 — one kilogram of fortified rice kernels to 100 kg of rice. The BIS standard for fortified rice (IS 17780:2021) allows ±10%, so 0.90 to 1.10 kg per 100 kg. Check your state's current procurement notice for its own range." },
-      { q: "Who supplies FRK to a rice mill?", a: "The mill buys it from an FRK manufacturer, with a bill and input GST. It is the mill's own stock, not material supplied by the government." },
-      { q: "How long will fortified rice be required in CMR?", a: "The Union Cabinet extended the supply of fortified rice under PMGKAY and other welfare schemes from July 2024 to December 2028." },
-      { q: "What records should a mill keep for FRK?", a: "FRK purchase bills with each batch's test certificate, an FRK stock register, a blend record per batch with the ratio achieved, rice split into fortified and not yet fortified, and every delivery and rejection." },
+      {
+        q: "What is the new broken-rice limit for CMR rice?",
+        a: "As reported, from KMS 2026-27 Improved Rice for PMGKAY allows up to 10% broken grains in raw rice (down from 25%) and up to 5% in parboiled rice (down from 16%). It is being rolled out state by state, so read your state's order.",
+      },
+      {
+        q: "Is the broken-rice limit 15% now?",
+        a: "No. The 15% is the share of fully broken rice sorted out of a lot: for every 100 quintals of CMR, about 85 quintals are delivered with at most 10% brokens and 15 quintals leave as a separate broken lot, to be sold from the mill to distilleries.",
+      },
+      {
+        q: "When does the 10% broken-rice limit apply to my mill?",
+        a: "Procurement of Improved Rice starts from KMS 2026-27 and is being expanded across states in phases; one report says the roll-out is to be complete by KMS 2027-28. Your state's own order decides when it applies to you.",
+      },
+      {
+        q: "Who owns the broken rice sorted out of CMR?",
+        a: "Under CMR the rice is the government's, and so is the broken lot. The mill sorts it out, keeps it apart and counts it; the reported model sells it from the mill to distilleries for ethanol.",
+      },
     ],
     related: [
       { title: "Custom Milled Rice (CMR): the complete process", href: "Guide-CMR.dc.html" },
-      { title: "Why CMR out-turn drops below 67% (moisture & shortfall)", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
-      { title: "Millingo: paddy in, rice out — step by step", href: "/pages/millingo-paddy-in-rice-out.html" },
+      { title: "Why CMR out-turn drops below 67%", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
+      { title: "Fortified rice (FRK) paused: what changes for CMR millers", href: "/pages/frk-blending-cmr-records.html" },
       { title: "Millingo — rice-mill ERP", href: "Millingo.dc.html" },
     ],
     cta: {
-      title: "Is your FRK stock ready for the season's deliveries?",
-      body: "Send your paddy received and FRK bought so far — we will show you how much rice you can fortify, what you still need, and how Millingo keeps it current. Free, no obligation.",
+      title: "Is every lot tested before it leaves for the depot?",
+      body: "Ask us how a CMR lot is tested and passed in Millingo: every reading against the FCI limits, and each limit stored with the order it comes from. A 20-minute demo, free, no obligation.",
       productHref: "Millingo.dc.html",
       productLabel: "Explore Millingo",
     },
     seo: {
-      metaTitle: "FRK Blending in CMR: 1:100 Ratio, Tolerance & Records | Millingo",
+      metaTitle: "Broken Rice in CMR: 10%, Not 15% (Improved Rice) | Millingo",
       metaDescription:
-        "Fortified rice kernels in CMR: the 1:100 blend and its ±10% tolerance in kilograms, how mills get it wrong, and the FRK records an inspector asks for.",
-      canonical: "https://svasamm.com/pages/frk-blending-cmr-records.html",
+        "From KMS 2026-27, reported Improved Rice limits: 10% brokens in raw CMR rice, 5% in parboiled. Where the 15% comes from, and what a mill should do now.",
+      canonical: "https://svasamm.com/pages/broken-rice-10-percent-cmr-improved-rice.html",
       ogType: "article",
-      ogTitle: "FRK in CMR: the 1:100 blend, its tolerance, and the records",
-      ogDescription: "What FRK is, the blend in kilograms, the defaults to avoid, and the records to keep.",
+      ogTitle: "Broken rice: 10%, not 15%. What the new CMR rule means",
+      ogDescription:
+        "The reported Improved Rice limits for CMR, the 85 + 15 split, the phased roll-out, and what a mill should check before its state's order arrives.",
     },
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        headline: "FRK in CMR: the 1:100 Blend, Its Tolerance, and the Records an Inspector Asks For",
-        description: "The FRK blend for CMR rice in kilograms, its tolerance, the defaults to avoid and the records to keep.",
+        headline: "Broken Rice: 10%, Not 15%. What the New CMR Rule Means for Your Mill",
+        description:
+          "The reported Improved Rice broken-grain limits for CMR from KMS 2026-27, where the 15% comes from, and what a mill should do now.",
+        author: {
+          "@type": "Person",
+          name: "Mithun K. Singh",
+          jobTitle: "Co-Founder",
+          worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
+        },
+        publisher: { "@type": "Organization", name: "Svasamm" },
+        datePublished: "2026-11-13",
+        dateModified: "2026-11-13",
+        mainEntityOfPage: "https://svasamm.com/pages/broken-rice-10-percent-cmr-improved-rice.html",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" },
+          { "@type": "ListItem", position: 2, name: "Millingo - Rice Mill ERP", item: "https://svasamm.com/pages/millingo.html" },
+          { "@type": "ListItem", position: 3, name: "Broken rice: 10%, not 15%", item: "https://svasamm.com/pages/broken-rice-10-percent-cmr-improved-rice.html" },
+        ],
+      },
+    ],
+  },
+  // Fortified rice (FRK) paused (rewritten in place 13 Nov 2026, Mithun's choice: same URL; first
+  // published 26 Oct 2026 as "FRK in CMR: the 1:100 blend…", which said fortification was required to
+  // Dec 2028 — overtaken by the 28 Feb 2026 pause). Press reports only; no DFPD letter read:
+  // newKerala 28 Feb 2026 ("temporarily", "until … developed and operationalised", states' discretion
+  // for KMS 2025-26 and pending 2024-25); Drishti IAS 2 Mar 2026 (IIT Kharagpur, 2-3 years' storage,
+  // entitlements unchanged); Insights 28 Feb 2026; Chinimandi 2 Mar 2026. Business Standard 27 Feb
+  // returned 403 and is not cited. WB/Odisha "no FRK" is mills' word to Mithun (12 Nov), stated as
+  // reported; Odisha's RFP cancellation had no source and is left out. FSSAI clause 24(c) (FRK only
+  // for making fortified rice) and BIS IS 17780:2021 kept from the first version. Rule from the
+  // Millingo session (13 Nov): "fortification where the state requires it"; never sell FRK blending;
+  // never say Millingo switches FRK off by state (v0.12.0, not shipped).
+  {
+    slug: "frk-blending-cmr-records",
+    type: "guide",
+    parentProduct: "millingo",
+    eyebrow: "CMR · Fortified rice",
+    title: "Fortified Rice (FRK) Paused: What Changes for CMR Millers",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · Updated 13 November 2026 (first published 26 October 2026)",
+    intro:
+      "On 28 February 2026 the Centre was reported to have temporarily stopped fortifying rice under PMGKAY and the schemes that go with it. For a CMR mill that changes the blend, the FRK it bought, and what its state's order asks of it this season. Here is what was reported, why, what FRK was, and what a mill should do now, including the records it still owes for past seasons.",
+    sections: [
+      {
+        type: "p",
+        h: "What the Centre decided",
+        text: "As reported on 28 February 2026, the government will **temporarily discontinue the fortification of rice under PMGKAY and allied schemes**, until “a more robust and effective nutrient delivery mechanism is developed and operationalised”. It said people's foodgrain entitlements are not reduced. As of 13 November 2026 we have seen no report that fortification has resumed.",
+      },
+      {
+        type: "p",
+        h: "Why it was paused",
+        text: "The government had asked IIT Kharagpur to study how long fortified rice kernels and fortified rice keep. As reported, the study found that **moisture, temperature, humidity and packaging all affect the nutrients, and that micronutrient levels fall over time**. Rice in the central pool is often stored for two to three years, so much of it would lose what fortification added before it was eaten.",
+      },
+      {
+        type: "p",
+        h: "What your state may ask for",
+        text: "As a transitional step, states were reported to be free to **supply either fortified or non-fortified rice, at their discretion**, for KMS 2025-26 and the KMS 2024-25 rice still being received. Mills in West Bengal and Odisha report that their CMR no longer needs FRK blending. So fortification now applies **where the state requires it**, and only your state's order tells you whether yours does.",
+      },
+      {
+        type: "note",
+        text: "Everything above is from press reports, cited below. We have not read the DFPD letter itself. The Union Cabinet's 2024 decision to supply fortified rice until December 2028 came before this pause. **Read your state's order for KMS 2026-27** before you buy FRK or set your blender, and keep a copy with the season's papers.",
+      },
+      {
+        type: "p",
+        h: "What FRK was",
+        text: "Fortified rice kernels are rice-shaped kernels made by extrusion from rice flour and a vitamin-mineral premix, so they look and cook like rice. They were blended into CMR rice at **one part in a hundred**: one kilogram of kernels to every 100 kg of rice. FSSAI's standard for them (clause 24(c) of the cereals standards) sets the iron, folic acid and vitamin B12 they must carry, and allows FRK to be sold **only for making fortified rice**, never loose and never to a consumer.",
+      },
+      {
+        type: "table",
+        h: "The 1:100 blend, where a state still requires it",
+        cols: ["Rice to fortify", "FRK at exactly 1:100", "Inside ±10% (BIS IS 17780:2021)"],
+        rows: [
+          ["100 kg", "1.00 kg", "0.90 – 1.10 kg"],
+          ["100 quintals", "100 kg", "90 – 110 kg"],
+          ["1,000 quintals", "1,000 kg", "900 – 1,100 kg"],
+        ],
+      },
+      {
+        type: "list",
+        h: "What a mill should do now",
+        items: [
+          { b: "Read your state's KMS 2026-27 order.", t: "It says whether this season's CMR is fortified or not, and from when. Do not buy FRK for the season until you know." },
+          { b: "Settle what happens to the FRK you hold.", t: "Because FSSAI allows FRK to be sold only for making fortified rice, it is not stock you can simply sell as rice. Ask your procuring agency and your FRK manufacturer what they will accept, get it in writing, and record what you do with it." },
+          { b: "Keep fortified and plain rice apart.", t: "If your godown still holds fortified rice from earlier blends, keep it and count it apart from rice that was never blended." },
+          { b: "Keep your past seasons' records.", t: "Blending was required in those seasons, and a past season is judged by its own rules. The records below still answer an inspector's questions about it." },
+        ],
+      },
+      {
+        type: "list",
+        h: "Records to keep for seasons when blending was required",
+        items: [
+          { b: "FRK purchase bills", t: "— the manufacturer, the batch, the quantity, and the batch's test certificate." },
+          { b: "The FRK stock register", t: "— received, used in each blend, and the balance, including what is left over now." },
+          { b: "A blend record per batch", t: "— the date, the rice in, the FRK in, the fortified rice out, and the ratio it worked out to." },
+          { b: "Rice split by kind", t: "— fortified and not yet fortified; West Bengal's report 7.1, for one, asks for the two figures apart." },
+          { b: "Deliveries and rejections", t: "— each lot sent to the depot, accepted or rejected, and what happened to a rejected lot." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Where Millingo fits",
+        text: "Millingo keeps a mill's own record of the CMR cycle, lot by lot. **Every CMR lot is tested against the FCI limits before it can be passed**, and **each limit is stored with the order it comes from**.",
+      },
+      {
+        type: "list",
+        h: "Sources",
+        items: [
+          { b: "newKerala, 28 February 2026", t: "— “Centre temporarily discontinues fortification of rice under PMGKAY” (the decision, the condition, states' discretion)." },
+          { b: "Insights on India, 28 February 2026", t: "— “Suspension of fortified rice rollout”." },
+          { b: "Drishti IAS, 2 March 2026", t: "— “Centre pauses rice fortification” (the IIT Kharagpur study, storage of two to three years)." },
+          { b: "Chinimandi, 2 March 2026", t: "— “Suspension of rice fortification welcomed by civil society groups”." },
+          { b: "FSSAI cereals standards, clause 24(c); BIS IS 17780:2021", t: "— the FRK standard, its sale only for making fortified rice, and the ±10% blend band." },
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Is FRK blending still required in CMR rice?", a: "Only where your state requires it. As reported, the Centre temporarily discontinued rice fortification under PMGKAY and allied schemes on 28 February 2026, and states may supply fortified or non-fortified rice at their discretion. Read your state's KMS 2026-27 order." },
+      { q: "Why was rice fortification paused?", a: "As reported, an IIT Kharagpur study found that the micronutrients in fortified rice kernels and fortified rice fall over time with moisture, temperature, humidity and packaging, while central-pool rice is often stored for two to three years." },
+      { q: "What should a mill do with the FRK it already holds?", a: "FSSAI allows FRK to be sold only for making fortified rice, so it is not ordinary rice to sell. Ask your procuring agency and your FRK manufacturer what they will accept, get it in writing, and record what you do with it." },
+      { q: "Should a mill keep its FRK records from past seasons?", a: "Yes. Blending was required in those seasons and a past season is judged by its own rules: keep the FRK bills with test certificates, the stock register, the blend records, the fortified and unfortified rice figures, and every delivery and rejection." },
+    ],
+    related: [
+      { title: "Broken rice: 10%, not 15%. What the new CMR rule means", href: "/pages/broken-rice-10-percent-cmr-improved-rice.html" },
+      { title: "Custom Milled Rice (CMR): the complete process", href: "Guide-CMR.dc.html" },
+      { title: "Why CMR out-turn drops below 67% (moisture & shortfall)", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
+      { title: "Millingo — rice-mill ERP", href: "Millingo.dc.html" },
+    ],
+    cta: {
+      title: "Has your state's KMS 2026-27 order reached your mill?",
+      body: "Ask us how Millingo keeps a CMR season: every lot tested against the FCI limits before it can be passed, and each limit stored with the order it comes from. A 20-minute demo, free, no obligation.",
+      productHref: "Millingo.dc.html",
+      productLabel: "Explore Millingo",
+    },
+    seo: {
+      metaTitle: "Fortified Rice (FRK) Paused: What Changes for CMR Millers",
+      metaDescription:
+        "Rice fortification under PMGKAY was reported paused on 28 Feb 2026. What changed, why, what FRK was, and what a CMR mill should do with its FRK and records.",
+      canonical: "https://svasamm.com/pages/frk-blending-cmr-records.html",
+      ogType: "article",
+      ogTitle: "Fortified rice (FRK) paused: what changes for CMR millers",
+      ogDescription: "The reported pause, the reason, states' discretion, and what a mill should do now.",
+    },
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Fortified Rice (FRK) Paused: What Changes for CMR Millers",
+        description: "The reported pause of rice fortification under PMGKAY, why, states' discretion, and what a CMR mill should do with its FRK and its records.",
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
@@ -683,7 +849,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
         },
         publisher: { "@type": "Organization", name: "Svasamm" },
         datePublished: "2026-10-26",
-        dateModified: "2026-10-26",
+        dateModified: "2026-11-13",
         mainEntityOfPage: "https://svasamm.com/pages/frk-blending-cmr-records.html",
       },
       {
@@ -692,7 +858,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" },
           { "@type": "ListItem", position: 2, name: "Millingo - Rice Mill ERP", item: "https://svasamm.com/pages/millingo.html" },
-          { "@type": "ListItem", position: 3, name: "FRK in CMR", item: "https://svasamm.com/pages/frk-blending-cmr-records.html" },
+          { "@type": "ListItem", position: 3, name: "Fortified rice (FRK) paused", item: "https://svasamm.com/pages/frk-blending-cmr-records.html" },
         ],
       },
     ],
