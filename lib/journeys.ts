@@ -1,6 +1,8 @@
 // Capability journeys (15 Oct 2026): one page per product that walks a real piece of work
 // stage by stage, the screen changing as the reader scrolls. Pilot: Millingo, paddy in →
 // rice out. A product's capability cards link to the stage that shows them.
+// The fortifying stage was taken off on 13 Nov 2026 (Mithun): fortification is paused under
+// PMGKAY since 28 Feb 2026 and is no longer something the site sells.
 //
 // ⛔ THE WORDS ARE THE BUILD, THE PICTURES ARE THE DESIGN. Every `rule` is a refusal the code
 // makes today (svasamm-platform origin/main, checked 15 Oct 2026 — modules/millingo gate,
@@ -46,15 +48,11 @@ const millingo: Journey = {
       does: "Records the rice and every by-product — bran, husk, broken — and the recovery against what was promised.",
       rule: "More cannot come out than went in. By-products become stock, valued at what they will sell for.",
       screen: "/journeys/millingo/milling.webp", alt: "Milling: what is on each line, and every batch milled this season" },
-    { id: "fortify", step: "7", title: "Fortified for the government", who: "The store",
-      does: "Blends the government's rice with fortified rice kernels before it can be offered.",
-      rule: "A blend outside the kernel ratio is refused, and only fortified rice can be offered to the depot.",
-      screen: "/journeys/millingo/fortify.webp", alt: "Fortifying: rice waiting for kernel, kernel in the store, and each blend" },
-    { id: "depot", step: "8", title: "Delivered to the depot", who: "The CMR desk",
+    { id: "depot", step: "7", title: "Delivered to the depot", who: "The CMR desk",
       does: "Offers the lot, sends the lorry, and records what the depot accepted — or sent back.",
       rule: "Nothing beyond what is owed can be offered, and rice the depot sends back needs a reason.",
       screen: "/journeys/millingo/depot.webp", alt: "Levy dispatch: lorries loading, at the depot, and ruled on" },
-    { id: "report", step: "9", title: "Report 7.1, and what is still owed", who: "The owner",
+    { id: "report", step: "8", title: "Report 7.1, and what is still owed", who: "The owner",
       does: "Sets the mill's own figures beside the government portal's, column by column.",
       rule: "Paddy still owed is set against paddy actually counted, and a shortfall becomes a debt with its cost.",
       screen: "/journeys/millingo/report.webp", alt: "Report 7.1: the portal's figures and the mill's, side by side" },
@@ -63,7 +61,7 @@ const millingo: Journey = {
   seo: {
     metaTitle: "Paddy In, Rice Out: a Load Through Millingo, Gate to Depot | Svasamm",
     metaDescription:
-      "Follow a lorry of paddy through a rice mill in Millingo: gate pass, weighbridge, entry, QC and butta, batch, milling, fortifying, CMR delivery and report 7.1.",
+      "Follow a lorry of paddy through a rice mill in Millingo: gate pass, weighbridge, entry, QC and butta, batch, milling, CMR delivery and report 7.1.",
     canonical: "https://svasamm.com/pages/millingo-paddy-in-rice-out.html",
   },
 };
