@@ -265,6 +265,32 @@
 @media (max-width: 640px) { .wa-fab { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
 @media (prefers-reduced-motion: reduce) { .wa-fab { transition: none; } }
 
+/* The guide bar (components/GuideBar.tsx): slides up from the foot of a guide; while it shows,
+   the page's foot moves up by its height and the round WhatsApp button steps aside. */
+.gbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; background: var(--sv-bg);
+  border-top: 1px solid var(--sv-line); box-shadow: 0 -6px 24px rgba(15, 23, 42, .08);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); animation: gbar-up .25s ease-out; }
+.gbar[hidden] { display: none; }
+.gbar-in { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; gap: 12px 20px; position: relative; padding-right: 36px; }
+.gbar-text { margin: 0; flex: 1; font-size: 15px; line-height: 1.45; color: var(--sv-ink-2); }
+.gbar-text strong { color: var(--sv-ink); font-weight: 600; }
+.gbar-acts { display: flex; gap: 10px; flex-shrink: 0; }
+.gbar-btn { padding: 9px 16px; font-size: 14.5px; }
+.gbar-x { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: 0;
+  background: none; color: var(--sv-ink-3); font-size: 16px; cursor: pointer; border-radius: 50%; }
+.gbar-x:hover, .gbar-x:focus-visible { background: var(--sv-line); color: var(--sv-ink); }
+body.has-guide-bar { padding-bottom: 76px; }
+body.has-guide-bar .wa-fab { display: none; } /* the bar carries WhatsApp itself */
+@keyframes gbar-up { from { transform: translateY(100%); } to { transform: none; } }
+@media (max-width: 720px) {
+  .gbar-in { flex-direction: column; align-items: stretch; gap: 10px; padding-right: 0; }
+  .gbar-text { font-size: 14px; padding-right: 36px; }
+  .gbar-acts .gbar-btn { flex: 1; justify-content: center; }
+  .gbar-x { top: 0; transform: none; }
+  body.has-guide-bar { padding-bottom: 124px; }
+}
+@media (prefers-reduced-motion: reduce) { .gbar { animation: none; } }
+
 /* Resources hub chips (components/ResourcesGrid.tsx), after lucoze-website's blog index. */
 .sv-res-chip { border: 1px solid var(--sv-line-strong); background: var(--sv-surface); color: var(--sv-ink);
   border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13.5px; cursor: pointer; white-space: nowrap; }

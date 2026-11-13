@@ -8,6 +8,7 @@ import type { Article, Block, ListItem } from "@/lib/types";
 import { ONE, GUIDE_SCREEN } from "@/lib/site";
 import { anchor, relatedCards } from "@/lib/resources";
 import ProductLogo from "./ProductLogo";
+import GuideBar from "./GuideBar";
 import { PRODUCT_MOMENTS } from "@/lib/product-moments";
 
 const CONTACT = toRoute("Contact.dc.html");
@@ -338,6 +339,7 @@ export default function ArticleView({ article: a }: { article: Article }) {
               logo, its colour and its real screen — the reader has just read the problem. */}
           <div
             className="sv-card"
+            data-guide-cta
             style={{
               padding: 30,
               margin: "40px 0 8px",
@@ -421,6 +423,8 @@ export default function ArticleView({ article: a }: { article: Article }) {
           )}
         </div>
       </section>
+      {/* The guide bar (components/GuideBar.tsx): a guide about a Svasamm One product only. */}
+      {one && <GuideBar product={a.parentProduct} label={a.cta.productLabel.replace(/^Explore /, "")} contact={CONTACT} />}
     </div>
   );
 }

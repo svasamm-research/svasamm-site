@@ -126,6 +126,36 @@ test("Sign in names the site; WhatsApp opens with an inviting message", async ({
   await expect(page.locator("a.wa-fab")).toHaveAttribute("href", /919007793575.*text=Hi%20Svasamm%2C%20I'd%20like%20to%20know%20how%20you%20can%20help%20my%20business\./);
 });
 
+// The guide bar (13 Nov 2026, components/GuideBar.tsx): not there on arrival, up once the reader
+// is halfway, gone while the closing card shows, and closed means closed on the next guide too.
+test("guide bar: halfway up, hides at the closing card, stays closed", async ({ page }) => {
+  const events = await recordEvents(page);
+  await page.setViewportSize({ width: 1366, height: 900 });
+  await page.goto("/pages/custom-milled-rice-cmr-process.html");
+  const bar = page.locator("[data-guide-bar]");
+  await expect(bar).toBeHidden();
+  await page.evaluate(() => {
+    const b = document.querySelector("[data-read]") as HTMLElement;
+    scrollTo(0, b.offsetTop + b.offsetHeight * 0.55 - innerHeight);
+  });
+  await expect(bar).toBeVisible();
+  await expect(bar.getByRole("link", { name: "Book a walkthrough" })).toHaveAttribute("href", "/pages/contact.html?solution=millingo");
+  expect(events.some((e) => e.name === "Guide Bar Shown")).toBe(true);
+  await page.evaluate(() => document.querySelector("[data-guide-cta]")!.scrollIntoView({ block: "center" }));
+  await expect(bar).toBeHidden();
+  await page.evaluate(() => scrollTo(0, (document.querySelector("[data-read]") as HTMLElement).offsetTop + 2400));
+  await expect(bar).toBeVisible();
+  await bar.getByRole("button", { name: "Close" }).click();
+  await expect(bar).toBeHidden();
+  await page.goto("/pages/rice-mill-yield-recovery.html");
+  await page.evaluate(() => scrollTo(0, document.body.scrollHeight * 0.6));
+  await page.waitForTimeout(400);
+  await expect(page.locator("[data-guide-bar]")).toBeHidden();
+  // Not on a page that is not a guide.
+  await page.goto("/pages/millingo.html");
+  await expect(page.locator("[data-guide-bar]")).toHaveCount(0);
+});
+
 test("journey: scrolling to a stage shows its screen", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/pages/millingo-paddy-in-rice-out.html");
