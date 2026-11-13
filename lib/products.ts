@@ -31,14 +31,14 @@ export const PRODUCTS: Product[] = [
       { icon: "ph-scales", title: "Quality grading with butta deductions", body: "Recovery, moisture and dust read at the bench; a shortfall takes value off the bill — 1% of the load per point — without touching the weight.", href: "/pages/millingo-paddy-in-rice-out.html#qc" },
       { icon: "ph-chart-line-up", title: "Milling yield & by-products", body: "Every batch tracks recovery against what was promised; bran, husk, broken rice and the rest become stock, valued at what they will sell for and taken off the rice’s cost.", href: "/pages/millingo-paddy-in-rice-out.html#milling" },
       { icon: "ph-package", title: "Gunny-bag (bardana) accounting", body: "Two pools that never mix — the mill’s own bags and the corporation’s — drawn by packing, issued to camps and received back, jute and PP kept apart." },
-      { icon: "ph-buildings", title: "Government levy & CMR", body: "Release orders, camp picks, fortified rice offered and delivered to the depot, the shortfall as a debt, and report 7.1 set against the portal.", href: "/pages/millingo-paddy-in-rice-out.html#depot" },
+      { icon: "ph-buildings", title: "Government levy & CMR", body: "Release orders, camp picks, rice offered and delivered to the depot, the shortfall as a debt, and report 7.1 set against the portal.", href: "/pages/millingo-paddy-in-rice-out.html#depot" },
       { icon: "ph-receipt", title: "Market sales & the books", body: "Sale orders, dispatch only against rice the godown holds, tax invoices, and GSTR-1 and GSTR-3B prepared from the books." },
     ],
     tiersTitle: "From a market-only mill to full government CMR",
     tiers: [
       { name: "Starter", for: "Small, seasonal, market-only mills.", featured: false, cta: "Start here", items: ["Paddy purchase & stock", "Milling batches & recovery", "Market sales & accounting"] },
       { name: "Professional", for: "Full operations with financials & QC slabs.", featured: true, cta: "Get a walkthrough", items: ["Everything in Starter", "QC bench & butta deductions", "By-products valued as stock", "Gunny-bag accounting", "GSTR-1 & GSTR-3B from the books"] },
-      { name: "Enterprise", for: "Mills doing government custom milling (CMR).", featured: false, cta: "Talk to us", items: ["Everything in Professional", "Government levy & CMR cycle", "Fortified rice (FRK)", "Shortfall & report 7.1"] },
+      { name: "Enterprise", for: "Mills doing government custom milling (CMR).", featured: false, cta: "Talk to us", items: ["Everything in Professional", "Government levy & CMR cycle", "Shortfall & report 7.1"] },
     ],
     builtFor: ["Private Rice Mills", "Paddy Processing", "FCI / CMR Mills", "Open-market Rice Sellers", "Agri Processing"],
     resources: {
@@ -48,14 +48,13 @@ export const PRODUCTS: Product[] = [
       columns: [
         {
           heading: "Rice-mill guides", icon: "ph-file-text", links: [
-            { title: "Custom Milled Rice (CMR) explained — process, 67% obligation & FRK", href: "Guide-CMR.dc.html" },
+            { title: "Custom Milled Rice (CMR) explained — the process and the 67% obligation", href: "Guide-CMR.dc.html" },
             { title: "How to calculate rice-mill yield & milling recovery", href: "Guide-YieldRecovery.dc.html" },
             { title: "By-product accounting: bran, husk & broken rice", href: "Guide-ByproductAccounting.dc.html" },
             { title: "GST for rice mills: paddy, rice, bran & milling", href: "Guide-GST.dc.html" },
             { title: "Best rice-mill software: how to choose (buyer's guide)", href: "Guide-BestSoftware.dc.html" },
             { title: "Rice-mill software price: what it costs & why", href: "Guide-Pricing.dc.html" },
             { title: "Why CMR out-turn drops below 67% (moisture & shortfall)", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
-            { title: "FRK in CMR: the 1:100 blend, its tolerance and the records", href: "/pages/frk-blending-cmr-records.html" },
           ],
         },
         {
@@ -79,9 +78,9 @@ export const PRODUCTS: Product[] = [
     },
     faqs: [
       { q: "What is a rice mill ERP?", a: "Software built specifically for rice milling — paddy procurement and quality grading, milling production with yield and by-product tracking, packaging, sales, accounting, and government FCI/levy (CMR) compliance — on one system, rather than a generic ERP adapted to fit." },
-      { q: "Does Millingo handle government CMR / levy procurement?", a: "Yes. Millingo covers the CMR cycle — release orders, camp picks, fortified rice offered and delivered to the depot, the shortfall, and report 7.1 — with West Bengal’s rules built in first." },
+      { q: "Does Millingo handle government CMR / levy procurement?", a: "Yes. Millingo covers the CMR cycle — release orders, camp picks, rice offered and delivered to the depot, the shortfall, and report 7.1 — with West Bengal’s rules built in first." },
       { q: "Can Millingo track milling recovery and by-products?", a: "Yes. Each milling batch computes rice recovery against what was promised, and books bran, husk and broken rice as stock valued at what they will sell for." },
-      { q: "Which tiers does Millingo offer?", a: "Starter (market-only mills), Professional (QC bench and butta, by-products, gunny, GST returns), and Enterprise (government levy and CMR, fortified rice, shortfall and report 7.1)." },
+      { q: "Which tiers does Millingo offer?", a: "Starter (market-only mills), Professional (QC bench and butta, by-products, gunny, GST returns), and Enterprise (government levy and CMR, shortfall and report 7.1)." },
     ],
     cta: { title: "Free CMR season review for your mill", body: "Send one season’s paddy received and rice delivered — we’ll show you where your out-turn and deliveries stand against the state’s figures, and how Millingo keeps that current. Free, no obligation.", primary: "Ask for the free review" },
     seo: {

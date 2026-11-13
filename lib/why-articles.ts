@@ -100,7 +100,7 @@ export const WHY_ARTICLES: Article[] = [
         type: "list",
         h: "What “customized” means in each Svasamm product",
         items: [
-          { b: "Millingo, for rice mills", t: "— the CMR season kept apart from the financial year, the government's paddy and the mill's own paddy in separate pools, gunny bags, the shortfall as a debt, and fortified rice. A generic ERP has none of these words." },
+          { b: "Millingo, for rice mills", t: "— the CMR season kept apart from the financial year, the government's paddy and the mill's own paddy in separate pools, gunny bags and the shortfall as a debt. A generic ERP has none of these words." },
           { b: "Svasamm People, for any firm's payroll", t: "— PF, ESI, professional tax for every state and union territory with its due dates, TDS under both regimes, Form 24Q and Form 16 Part B, from the first month." },
           { b: "T4Suite, for CA and compliance firms", t: "— starter task lists for the filings a practice handles (GST returns, TDS returns, income-tax returns, ROC filings), set by the kind of firm: CA, law, company secretary or other." },
         ],
@@ -300,7 +300,7 @@ export const WHY_ARTICLES: Article[] = [
           { b: "GST", t: "— your GSTIN, regular or composition; GSTR-1 and GSTR-3B prepared from the books. Your accountant files on the GST portal and enters the acknowledgement number back." },
           { b: "E-way bills", t: "— a sale over ₹50,000 asks for its e-way bill number before it is saved." },
           { b: "TDS on purchases", t: "— section 194Q, if it applies to your mill." },
-          { b: "CMR", t: "— the CMR season kept apart from the financial year, the 67% and 68% out-turn, release orders, offers and dispatches to the corporation, gunny bags, shortfall as a debt, and fortified rice. The state rules built in today are West Bengal's." },
+          { b: "CMR", t: "— the CMR season kept apart from the financial year, the 67% and 68% out-turn, release orders, offers and dispatches to the corporation, gunny bags, and shortfall as a debt. The state rules built in today are West Bengal's." },
         ],
       },
       {
