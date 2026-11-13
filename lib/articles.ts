@@ -178,6 +178,10 @@ export const ARTICLES: Article[] = [
     ],
     related: [
       {
+        title: "GST for rice mills: paddy, rice, bran & milling",
+        href: "Guide-GST.dc.html",
+      },
+      {
         title: "How to calculate rice-mill yield & milling recovery",
         href: "Guide-YieldRecovery.dc.html",
       },
@@ -482,6 +486,10 @@ export const ARTICLES: Article[] = [
     ],
     related: [
       {
+        title: "GST for rice mills: paddy, rice, bran & milling",
+        href: "Guide-GST.dc.html",
+      },
+      {
         title: "Custom Milled Rice (CMR): the complete process",
         href: "Guide-CMR.dc.html",
       },
@@ -705,6 +713,10 @@ export const ARTICLES: Article[] = [
       },
     ],
     related: [
+      {
+        title: "GST for rice mills: paddy, rice, bran & milling",
+        href: "Guide-GST.dc.html",
+      },
       {
         title: "How to calculate rice-mill yield & milling recovery",
         href: "Guide-YieldRecovery.dc.html",
