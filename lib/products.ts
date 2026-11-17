@@ -172,7 +172,7 @@ export const PRODUCTS: Product[] = [
       { icon: "ph-warehouse", title: "Inventory & warehouse", body: "Multi-warehouse stock, batches, serials and valuation, live with every transaction." },
       { icon: "ph-shopping-cart", title: "Procurement", body: "Indent to purchase order to goods received, with approvals and each supplier rated from what they delivered." },
       { icon: "ph-factory", title: "Industry processes", body: "Your industry's own steps built in — a rice mill's paddy-to-rice and CMR, and your plant's recipes and batches set up for you during onboarding." },
-      { icon: "ph-receipt", title: "Sales & billing", body: "Orders to invoice with GST, e-invoice and e-way bill support." },
+      { icon: "ph-receipt", title: "Sales & billing", body: "Orders to invoice with GST on every line, and GSTR-1 and GSTR-3B prepared from the books." },
       { icon: "ph-file-text", title: "GST & statutory", body: "GST returns, TDS and Indian statutory reporting handled in the product." },
     ],
     builtFor: ["Food and grain mills", "Manufacturing", "Trading & distribution", "Services"],
@@ -193,7 +193,7 @@ export const PRODUCTS: Product[] = [
       ],
     },
     faqs: [
-      { q: "Is Indian GST built in?", a: "Yes — GST-compliant invoicing, e-invoice and e-way bill support, and GST return preparation are part of the system, not a bolt-on." },
+      { q: "Is Indian GST built in?", a: "Yes — GST-compliant invoicing and GSTR-1, GSTR-3B and HSN summary preparation are part of the system, not a bolt-on." },
       { q: "Can it run more than one plant or godown?", a: "Yes. Each plant and godown is its own place, with its own stock and staff, in one firm's books." },
       { q: "Does it cover manufacturing?", a: "Purchase, stores, people and the books run from day one. Your recipes, production orders and batch costing are set up for your plant during onboarding: we walk your floor and build your industry's own steps with you, as we did for rice mills." },
     ],
