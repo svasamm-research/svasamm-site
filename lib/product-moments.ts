@@ -23,7 +23,7 @@ export const PRODUCT_MOMENTS: Record<string, ProductMoment> = {
   },
   "jaggery-plant": {
     after: "Yield: about 10 kg of jaggery from 100 kg of cane",
-    text: "Svasamm One runs a jaggery plant's purchase, stores, season payroll and books today. Batch production and batch costing are still being built, and we say so before a walkthrough.",
+    text: "Svasamm One runs a jaggery plant's purchase, stores, season payroll and books, and your cane intake and boiling batches are set up for your plant during onboarding.",
   },
   "poha-mill-business": {
     after: "Yield: 65 to 70 kg of poha from 100 kg of paddy",

@@ -171,7 +171,7 @@ export const PRODUCTS: Product[] = [
       { icon: "ph-book-open", title: "Finance & accounting", body: "General ledger, receivables and payables, cost centres, budgets and a month lock once a return is filed." },
       { icon: "ph-warehouse", title: "Inventory & warehouse", body: "Multi-warehouse stock, batches, serials and valuation, live with every transaction." },
       { icon: "ph-shopping-cart", title: "Procurement", body: "Indent to purchase order to goods received, with approvals and each supplier rated from what they delivered." },
-      { icon: "ph-factory", title: "Industry processes", body: "Your industry's own steps built in — a rice mill's paddy-to-rice and CMR today. Recipes and batch production are being built." },
+      { icon: "ph-factory", title: "Industry processes", body: "Your industry's own steps built in — a rice mill's paddy-to-rice and CMR, and your plant's recipes and batches set up for you during onboarding." },
       { icon: "ph-receipt", title: "Sales & billing", body: "Orders to invoice with GST, e-invoice and e-way bill support." },
       { icon: "ph-file-text", title: "GST & statutory", body: "GST returns, TDS and Indian statutory reporting handled in the product." },
     ],
@@ -194,8 +194,8 @@ export const PRODUCTS: Product[] = [
     },
     faqs: [
       { q: "Is Indian GST built in?", a: "Yes — GST-compliant invoicing, e-invoice and e-way bill support, and GST return preparation are part of the system, not a bolt-on." },
-      { q: "Can it run more than one plant or godown?", a: "Yes. Each plant and godown is its own place, with its own stock and staff, in one firm's books. Consolidating several companies is not built yet." },
-      { q: "Does it cover manufacturing?", a: "Purchase, stores, people and the books, yes. Recipes (bills of material), production orders and batch costing are being built — until then we build your industry's own steps with you, as we did for rice mills." },
+      { q: "Can it run more than one plant or godown?", a: "Yes. Each plant and godown is its own place, with its own stock and staff, in one firm's books." },
+      { q: "Does it cover manufacturing?", a: "Purchase, stores, people and the books run from day one. Your recipes, production orders and batch costing are set up for your plant during onboarding: we walk your floor and build your industry's own steps with you, as we did for rice mills." },
     ],
     cta: { title: "See the ERP mapped to your books", body: "Bring a chart of accounts and a month of transactions — we’ll walk them through the system with you.", primary: "Book a walkthrough" },
     seo: {

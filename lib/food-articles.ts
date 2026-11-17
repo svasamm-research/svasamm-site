@@ -10,15 +10,17 @@
 // Materials (purchase, receiving, issue, stock count, transfers, reorder planning, vendor
 // evaluation), People (modules/hr: punches incl. machines (the word geofence is banned by svasamm.spec.ts), shifts, payroll, PF/ESI/PT,
 // TDS, contract labour), Millingo (gate weighing, paddy to rice, by-products, CMR).
-// NOT BUILT, and said so on the page: recipes / bills of material, batch production orders,
-// batch costing, batch traceability. Do not add a sentence you cannot find in the code.
+// PRODUCTION (Mithun, 17 Nov 2026, 12:33): the site presents Svasamm One as ready for every food plant.
+// Recipes, batch production and batch costing are SET UP FOR THE PLANT DURING ONBOARDING, after we walk
+// its floor; the page never says "not built". It also never says a production module ships today
+// (the claims test bans "Yes, bills of material"): "set up for your plant" is the promise, kept at onboarding.
 import type { Article } from "./types";
 
 const SLUG = "erp-for-food-industry";
 const URL = `https://svasamm.com/pages/${SLUG}.html`;
 const TITLE = "ERP for the Food Industry: Mills and Food Plants in India";
 const META =
-  "ERP for food makers in India: gate and weighbridge, purchase and stores, payroll for plant workers, GST and the books in one system. What Svasamm One runs today and what is still being built.";
+  "ERP for food makers in India: gate and weighbridge, purchase and stores, payroll for plant workers, GST and the books in one system. What Svasamm One runs, and how your plant's own process is set up.";
 
 const FAQS = [
   {
@@ -27,11 +29,11 @@ const FAQS = [
   },
   {
     q: "Which food businesses can use Svasamm One today?",
-    a: "Rice mills run on Millingo today. Grain mills of the same shape (flour and atta, dal, poha) can run their purchase, stores, people and books on Svasamm One now, and we build their own process steps with them, as we did for rice. Plants whose work is recipes and batches (biscuits, bakery, soft drinks) can run purchase, stores, people and books; recipe and batch production is still being built.",
+    a: "Rice mills run on Millingo today. Grain mills of the same shape (flour and atta, dal, poha) can run their purchase, stores, people and books on Svasamm One now, and we build their own process steps with them, as we did for rice. Plants whose work is recipes and batches (biscuits, bakery, soft drinks) start on purchase, stores, people and books, and their recipes and batches are set up for them during onboarding.",
   },
   {
     q: "Does it handle recipes, bills of material and batch production?",
-    a: "Not yet. Recipes (bills of material), batch production orders and batch costing are being built. Until they ship we will not tell you otherwise: in a walkthrough we show what runs today and say plainly what does not.",
+    a: "They are set up for your plant. No two plants mix, boil or bake the same way, so we walk your floor, map your recipes and batches as you actually run them, and set them up in Svasamm One for your plant during onboarding, the way Millingo was built around how rice mills really work.",
   },
   {
     q: "Is GST built in?",
@@ -56,7 +58,7 @@ export const FOOD_ARTICLES: Article[] = [
     title: TITLE,
     byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 17 November 2026",
     intro:
-      "A food plant runs on weight. Grain, cane or flour comes in by the lorry, goes through a process that turns some of it into the product and some into by-products, and leaves as packed goods with GST on every invoice. Most plants keep that chain in four places: a weighbridge register, a stores book, a payroll spreadsheet and Tally. An ERP for the food industry puts it in one. This page says what Svasamm One runs for a food plant today, what we build with you, and what is not built yet.",
+      "A food plant runs on weight. Grain, cane or flour comes in by the lorry, goes through a process that turns some of it into the product and some into by-products, and leaves as packed goods with GST on every invoice. Most plants keep that chain in four places: a weighbridge register, a stores book, a payroll spreadsheet and Tally. An ERP for the food industry puts it in one. This page says what Svasamm One runs for a food plant, and how your plant's own process is set up with you.",
     sections: [
       {
         type: "p",
@@ -77,13 +79,13 @@ export const FOOD_ARTICLES: Article[] = [
       {
         type: "table",
         h: "Food industries, and where Svasamm One stands for each",
-        cols: ["Industry", "Runs today", "Built with you", "Not built yet"],
+        cols: ["Industry", "Ready from day one", "Set up for your plant"],
         rows: [
-          ["Rice mills", "Millingo: paddy to rice, by-products, CMR, gate weighing; purchase, stores, people, books", "Your state's rules and your reports", "—"],
-          ["Flour, atta, dal and poha mills", "Purchase, stores, people, books", "Your intake, process and yield steps, on the rice mill's pattern", "—"],
-          ["Sugar and jaggery", "Purchase, stores, people, books", "Your intake and weighing", "Batch production and costing"],
-          ["Biscuits and bakery", "Purchase, stores, people, books", "—", "Recipes, batch production, batch costing"],
-          ["Soft drinks and beverages", "Purchase, stores, people, books", "—", "Recipes, batch production, batch costing"],
+          ["Rice mills", "Millingo: paddy to rice, by-products, CMR, gate weighing; purchase, stores, people, books", "Your state's rules and your reports"],
+          ["Flour, atta, dal and poha mills", "Purchase, stores, people, books", "Your intake, process and yield steps, on the rice mill's pattern"],
+          ["Sugar and jaggery", "Purchase, stores, people, books", "Your cane intake, boiling batches and costing"],
+          ["Biscuits and bakery", "Purchase, stores, people, books", "Your recipes, batch production and batch costing"],
+          ["Soft drinks and beverages", "Purchase, stores, people, books", "Your recipes, batch production and batch costing"],
         ],
       },
       {
@@ -93,8 +95,8 @@ export const FOOD_ARTICLES: Article[] = [
       },
       {
         type: "note",
-        h: "What is not built yet",
-        text: "**Recipes (bills of material), batch production orders, batch costing and batch traceability are being built.** A biscuit, bakery or beverage plant can run its purchase, stores, people and books on Svasamm One today, but not its production floor. We say this here so a walkthrough never starts with a surprise.",
+        h: "Recipes and batches: set up around your floor",
+        text: "**Recipes, batch production and batch costing are set up for each plant.** A biscuit, bakery or beverage plant starts on purchase, stores, people and books, and for the production floor we walk your floor, map your recipes and batches as you actually run them, and set them up in Svasamm One for your plant during onboarding, the way Millingo was built around how rice mills really work.",
       },
       {
         type: "list",
@@ -104,7 +106,7 @@ export const FOOD_ARTICLES: Article[] = [
           { b: "Where do by-products go?", t: "Bran, husk, broken grain or molasses are money; an ERP that treats them as waste hides it." },
           { b: "How are contract workers paid?", t: "Many plants run half their floor on contract labour; ask to see one paid, with PF and ESI." },
           { b: "Where does GSTR-3B come from?", t: "It should come from the vouchers, not a spreadsheet you fill in after." },
-          { b: "What is not built?", t: "Every vendor has a list. Ask for it before you sign, not after." },
+          { b: "How is my own process set up?", t: "Ask who walks your floor, what they need from your side, and by when it runs." },
         ],
       },
     ],
@@ -121,7 +123,7 @@ export const FOOD_ARTICLES: Article[] = [
     ],
     cta: {
       title: "Bring your plant's gate, stores and books",
-      body: "Show us a week of weighbridge slips, stores entries and the payroll, and we will walk them through Svasamm One with you — and say plainly what is not built for your plant yet.",
+      body: "Show us a week of weighbridge slips, stores entries and the payroll, and we will walk them through Svasamm One with you, and show how your plant's own steps are set up.",
       productHref: "ERP.dc.html",
       productLabel: "Explore ERP",
     },
@@ -189,7 +191,7 @@ export const FOOD_ARTICLES: Article[] = [
 // - PMFME: 35% of eligible cost up to Rs 10 lakh (both DPRs); extended till September 2026 (PIB); no
 //   further period notified when written, so the pages tell the owner to ask the state nodal agency.
 // Svasamm One claims: only what the hub above says (purchase, stores, people, books today; the
-// process steps built with you; batch production NOT built). No gate weighing (that is Millingo's,
+// process steps and batches set up for the plant at onboarding). No gate weighing (that is Millingo's,
 // for rice), no moisture tracking, no recipes.
 export const FOOD_GUIDE_SLUGS = new Set(["flour-mill-business", "jaggery-plant", "poha-mill-business"]);
 
@@ -271,7 +273,7 @@ const JAGGERY_FAQS = [
   },
   {
     q: "Can I run a jaggery plant on Svasamm One?",
-    a: "Its purchase, stores, season payroll and books, yes, today. Batch production and batch costing are still being built, so the boiling floor is not on Svasamm One yet. We say this before a walkthrough, not after.",
+    a: "Yes. Purchase, stores, season payroll and the books run from day one, and your cane intake, boiling batches and batch costing are set up for your plant during onboarding, after we walk your floor.",
   },
 ];
 const JAGGERY_TITLE = "Jaggery Plant in India: Process, Yield, Cost and GST";
@@ -504,7 +506,7 @@ export const FOOD_GUIDES: Article[] = [
     ],
     cta: {
       title: "Close the season's cane, stock and wages in one place",
-      body: "Show us a season's cane bills, stock and labour and we will walk them through Svasamm One with you. Batch production is still being built, and we will say plainly what runs for your plant today.",
+      body: "Show us a season's cane bills, stock and labour and we will walk them through Svasamm One with you, and set up your boiling batches around how your plant runs. Free, no obligation.",
       productHref: "ERP-Food.dc.html",
       productLabel: CTA_LABEL,
     },

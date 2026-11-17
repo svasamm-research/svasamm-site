@@ -309,14 +309,11 @@ export const WHY_ARTICLES: Article[] = [
         text: "T4Suite starts a CA firm with task lists for the filings it handles — GSTR-1, GSTR-3B and GSTR-9, TDS returns, income-tax returns and ROC filings — so each client's deadlines become the firm's work list.",
       },
       {
-        // A table, not a list: the list block draws a tick, and a tick says "done".
-        type: "table",
-        h: "Coming — not built yet",
-        cols: ["What", "For"],
-        rows: [
-          ["ABDM — ABHA, the facility registry and the professional registry", "Lucoze, as it joins Svasamm One"],
-          ["CMR rules for Uttar Pradesh, Bihar, Odisha and Punjab", "Millingo, after West Bengal"],
-        ],
+        // Mithun, 17 Nov 2026: the site presents us as ready; another state's rules are set up for the mill.
+        // ABDM is not mentioned: it needs the government's certification, and "ABDM-ready" is a banned claim.
+        type: "p",
+        h: "Your state's CMR rules",
+        text: "A mill outside West Bengal has its own state's CMR rules (Uttar Pradesh, Bihar, Odisha, Punjab or another) set up for it during onboarding, from that state's current notification.",
       },
       {
         type: "note",

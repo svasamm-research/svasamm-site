@@ -2260,7 +2260,7 @@ export const ARTICLES: Article[] = [
             "Yes (butta/moisture)",
             "Stated (lab testing)",
           ],
-          ["Multi-location / multi-unit", "Not yet — one mill per account", "Stated"],
+          ["Multi-location / multi-unit", "One account per mill", "Stated"],
           [
             "Government CMR / levy cycle",
             "Yes (core focus)",
@@ -2426,7 +2426,7 @@ export const ARTICLES: Article[] = [
             "Stated",
           ],
           ["Weighbridge / gate integration", "Yes", "Stated"],
-          ["Multi-plant / multi-unit", "Not yet — one mill per account", "Stated"],
+          ["Multi-plant / multi-unit", "One account per mill", "Stated"],
           ["Contract-labour / wage tracking", "Not a core focus", "Stated"],
           [
             "Government CMR / levy cycle & 7.1 reconciliation",
@@ -4067,7 +4067,7 @@ export const ARTICLES: Article[] = [
     title: "ERP for Manufacturing Businesses",
     byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
-      "Manufacturers run on a chain that generic accounting can’t see: raw material in, the floor, finished goods out, and the people in between. This page says what Svasamm One runs for a manufacturer today — purchase, stores, people and the books — and what is still being built: recipes, production orders and batch costing.",
+      "Manufacturers run on a chain that generic accounting can’t see: raw material in, the floor, finished goods out, and the people in between. This page says what Svasamm One runs for a manufacturer from day one — purchase, stores, people and the books — and how your production floor is set up with you: recipes, production orders and batch costing.",
     sections: [
       {
         type: "list",
@@ -4093,8 +4093,8 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "note",
-        h: "What is not built yet",
-        text: "**Bills of material, work orders, production planning and batch costing are being built.** Until they ship, Svasamm One runs a manufacturer's purchase, stores, people and books — not the production floor itself. We say so here so a walkthrough never starts with a surprise.",
+        h: "Your production floor: set up around how you run it",
+        text: "**Bills of material, work orders, production planning and batch costing are set up for each plant.** No two plants run the same way, so we walk your floor, map your bills of material and work orders as you actually run them, and set them up in Svasamm One for your plant during onboarding, the way Millingo was built around how rice mills really work.",
       },
       {
         type: "p",
@@ -4105,11 +4105,11 @@ export const ARTICLES: Article[] = [
     faqs: [
       {
         q: "Does the ERP handle bills of material and work orders?",
-        a: "Not yet. Bills of material, work orders and production planning are being built. Today Svasamm One runs a manufacturer's purchase, stores, people and books.",
+        a: "They are set up for your plant: we walk your floor, map your bills of material and work orders as you actually run them, and set them up in Svasamm One for your plant during onboarding. Purchase, stores, people and the books run from day one.",
       },
       {
         q: "Which manufacturers can use it today?",
-        a: "Rice mills run on Millingo. Food and grain mills (flour, dal, poha) can run purchase, stores, people and books now, with their own process steps built with us. Plants that need recipes and batch production should wait for those to ship.",
+        a: "Rice mills run on Millingo. Food and grain mills (flour, dal, poha) can run purchase, stores, people and books now, with their own process steps built with us. Plants that run on recipes and batches have those set up during onboarding.",
       },
     ],
     related: [
@@ -4132,19 +4132,19 @@ export const ARTICLES: Article[] = [
     ],
     cta: {
       title: "Connect your stores and people to your books",
-      body: "Bring a month of purchases, stores entries and payroll, and we'll walk them through Svasamm One with you — and say plainly what is not built for your plant yet.",
+      body: "Bring a month of purchases, stores entries and payroll, and we'll walk them through Svasamm One with you, and show how your production floor is set up.",
       productHref: "ERP.dc.html",
       productLabel: "Explore ERP",
     },
     seo: {
       metaTitle: "ERP for Manufacturing Businesses | Svasamm",
       metaDescription:
-        "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs today, and what is still being built.",
+        "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs, and how your production floor is set up.",
       canonical: "https://svasamm.com/pages/erp-for-manufacturing.html",
       ogType: "website",
       ogTitle: "ERP for Manufacturing Businesses",
       ogDescription:
-        "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs today, and what is still being built.",
+        "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs, and how your production floor is set up.",
     },
     jsonLd: [
       {
@@ -4153,7 +4153,7 @@ export const ARTICLES: Article[] = [
         name: "ERP for Manufacturing Businesses",
         serviceType: "ERP System Software",
         description:
-          "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs today, and what is still being built.",
+          "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs, and how your production floor is set up.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -4198,7 +4198,7 @@ export const ARTICLES: Article[] = [
             name: "Does the ERP handle bills of material and work orders?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Not yet. Bills of material, work orders and production planning are being built. Today Svasamm One runs a manufacturer's purchase, stores, people and books.",
+              text: "They are set up for your plant: we walk your floor, map your bills of material and work orders as you actually run them, and set them up in Svasamm One for your plant during onboarding. Purchase, stores, people and the books run from day one.",
             },
           },
           {
@@ -4206,7 +4206,7 @@ export const ARTICLES: Article[] = [
             name: "Which manufacturers can use it today?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Rice mills run on Millingo. Food and grain mills (flour, dal, poha) can run purchase, stores, people and books now, with their own process steps built with us. Plants that need recipes and batch production should wait for those to ship.",
+              text: "Rice mills run on Millingo. Food and grain mills (flour, dal, poha) can run purchase, stores, people and books now, with their own process steps built with us. Plants that run on recipes and batches have those set up during onboarding.",
             },
           },
         ],
