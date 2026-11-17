@@ -2,7 +2,7 @@
 // stage by stage, the screen changing as the reader scrolls. Pilot: Millingo, paddy in →
 // rice out. A product's capability cards link to the stage that shows them.
 // The fortifying stage was taken off on 13 Nov 2026 (Mithun): fortification is paused under
-// PMGKAY since 28 Feb 2026 and is no longer something the site sells.
+// PMGKAY since 27 Feb 2026 (PIB 2233779) and is no longer something the site sells.
 //
 // ⛔ THE WORDS ARE THE BUILD, THE PICTURES ARE THE DESIGN. Every `rule` is a refusal the code
 // makes today (svasamm-platform origin/main, checked 15 Oct 2026 — modules/millingo gate,

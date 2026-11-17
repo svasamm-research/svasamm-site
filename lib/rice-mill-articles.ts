@@ -576,59 +576,78 @@ export const RICE_MILL_ARTICLES: Article[] = [
       },
     ],
   },
-  // Broken rice: 10%, not 15% (13 Nov 2026). Press reports only; no DFPD circular or PIB release
-  // read. Rural Voice 2 Sep 2026 (10% raw / 5% parboiled from KMS 2026-27, State Food Secretaries,
-  // 1 Sep 2026, phased); Rural Voice 26 Jul 2025 (the 85 + 15 split, brokens sold from the mill to
-  // distilleries); Angel One 2 Jul 2026 (phased by KMS 2027-28). Its pilot-state list is left out
-  // on purpose (Mithun, 13 Nov: name none). Millingo claims are only the two session C confirmed on
-  // 13 Nov (mill/lots.go: a lot passes only when every reading is in limit; each limit carries its
-  // order). The 10% and 5% limits are NOT built (CR2, v0.13.0) — never say they are.
+  // Broken rice: 10%, not 15% (17 Nov 2026; drafted 13 Nov from press, rewritten from the OFFICIAL
+  // documents before it was ever published — checking-the-official-rule):
+  //  - DFPD letter F.No. 8-1/2022-S&I (E-381310), 17 Aug 2026, "Uniform specifications … KMS 2026-27",
+  //    read in full by the Millingo session (Odisha FS&CW forwarding, letter 14453 of 21 Aug 2026;
+  //    svasamm-millingo docs/handbook/11-milling-a-batch.md, build sheet CR2/CR4): FOUR columns,
+  //    Grade A, Common, Improved Rice, Segregated Broken Rice. Brokens 25 raw / 16 parboiled stay in
+  //    Grade A and Common; 10 / 5 is an ADDED Improved Rice column, not a replacement.
+  //  - PIB 2280307, 2 Jul 2026 (CCEA): 10% raw / 5% parboiled for Improved Rice under PMGKAY;
+  //    procurement "will commence immediately" and reach all procuring States by KMS 2027-28, phased;
+  //    broken rice separated, "auctioned directly from millers' premises", stored in HDPE bags;
+  //    QR-code tagging of bags. Its pilot-state list is left out (Mithun, 13 Nov: name none).
+  //  - PIB 2305725, 1 Sep 2026 (State Food Secretaries, 1 Sep): procurement "will commence from
+  //    KMS 2026–27 and will be progressively expanded"; States to assess milling capacity and
+  //    prepare a phased roadmap.
+  //  - The 85 + 15 split is Rural Voice 26 Jul 2025 ONLY; no official figure, so it stays "reported".
+  //    No official document says distilleries; PIB says "other purposes" / "industrial uses".
+  // Millingo claims: only that a lot passes when every reading is within its limit (mill/lots.go
+  // JudgeLot) and each limit carries its order (millingo_rice_spec.note, migrations 0096/0130).
+  // The Improved Rice profile (CR2) is on develop but NOT released — never say Millingo has it until
+  // a Millingo release ships it.
   {
     slug: "broken-rice-10-percent-cmr-improved-rice",
     type: "guide",
     parentProduct: "millingo",
     eyebrow: "CMR · Improved Rice",
     title: "Broken Rice: 10%, Not 15%. What the New CMR Rule Means for Your Mill",
-    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 13 November 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 17 November 2026",
     intro:
-      "The trade says the broken-rice limit for CMR is going from 25% to 15%. That is loose. The new limit, as reported, is 10% broken grains for raw rice and 5% for parboiled. The 15% is something else: the share of fully broken rice sorted out of every lot and sent away separately. Here is what is reported, where the 15% comes from, and what a mill should do before its state's order arrives.",
+      "The trade says the broken-rice limit for CMR is going from 25% to 15%. That is wrong twice. The government's new limit is 10% broken grains for raw rice and 5% for parboiled, and it is for a new kind of rice called Improved Rice; the old 25% has not gone for the rest. The 15% is something else again. Here is what the official documents say, where the 15% comes from, and what a mill should do before its state's order arrives.",
     sections: [
       {
         type: "p",
         h: "What changed",
-        text: "From KMS 2026-27, the Department of Food and Public Distribution (DFPD) is moving rice for PMGKAY and the other welfare schemes to what it calls **Improved Rice**. It was reviewed at a meeting of State Food Secretaries chaired by the DFPD Secretary in New Delhi on 1 September 2026. As reported, **raw rice may now contain up to 10% broken grains, down from 25%**, and **parboiled rice up to 5%, down from 16%**.",
+        text: "On 2 July 2026 the Cabinet Committee on Economic Affairs approved **Improved Rice** for PMGKAY and the other welfare schemes: the first change to the broken-grain limit in nearly thirty years. **Raw Improved Rice may contain up to 10% broken grains**, against 25% until now, and **parboiled Improved Rice up to 5%**, against 16%. The broken rice taken out in milling is kept apart and sold separately.",
+      },
+      {
+        type: "p",
+        h: "The old limits have not gone",
+        text: "The Department of Food and Public Distribution's letter of 17 August 2026 (F.No. 8-1/2022-S&I), the **uniform specification for KMS 2026-27**, has four columns for rice: Grade A, Common, Improved Rice and Segregated Broken Rice. **The 25% and 16% limits are still there, in the Grade A and Common columns.** The 10% and 5% are an added column for Improved Rice. So which limit your rice is judged against depends on whether your state procures Improved Rice from your mill this season.",
       },
       {
         type: "table",
-        h: "The limits, old and new",
-        cols: ["Rice", "Broken grains allowed until now", "Improved Rice, from KMS 2026-27", "Source"],
+        h: "The broken-grain limits for KMS 2026-27",
+        cols: ["Rice", "Grade A and Common", "Improved Rice"],
         rows: [
-          ["Raw", "25%", "10%", "Rural Voice, 2 Sep 2026"],
-          ["Parboiled", "16%", "5%", "Rural Voice, 2 Sep 2026"],
+          ["Raw", "25%", "10%"],
+          ["Parboiled", "16%", "5%"],
         ],
       },
       {
         type: "p",
         h: "Where the 15% comes from",
-        text: "The 15% is not a limit. It comes from the model reported in July 2025, after a pilot in four states: **for every 100 quintals of CMR, the mill delivers about 85 quintals of rice with no more than 10% brokens in one lot, and 15 quintals of fully broken rice in another**. The fully broken rice is to be sold from the mill to distilleries, for ethanol. Under CMR the rice is the government's, so the broken lot is too: the mill sorts it out, keeps it apart and counts it, but it does not own it or sell it.",
+        text: "The 15% is not a limit. It comes from the model reported in July 2025, during the pilot: **for every 100 quintals of CMR, about 85 quintals of rice with no more than 10% brokens go to the depot as one lot, and about 15 quintals of fully broken rice leave as another**. The official documents confirm the second lot but give no fixed share. The government says the broken rice will be **auctioned directly from the millers' premises**, stored in HDPE bags, and used for other purposes. Under CMR the rice is the government's, so the broken lot is too: the mill sorts it out, keeps it apart and counts it, but does not own it or sell it.",
       },
       {
         type: "p",
         h: "It is coming in phases",
-        text: "Procurement of Improved Rice begins from KMS 2026-27 and is to be **expanded across the procuring states gradually**. States have been asked to assess their milling capacity, plan the upgrades and prepare a phased roadmap. One report says the roll-out across states is to be complete by KMS 2027-28. Which states come first has not been confirmed in any order we have read, so do not assume yours is in or out.",
+        text: "The Cabinet decision says procurement of Improved Rice starts at once and reaches **all procuring states by KMS 2027-28**, in phases. At the meeting of State Food Secretaries on 1 September 2026, the Department said it **starts from KMS 2026-27 and will be expanded state by state**, and asked states to assess their milling capacity, plan the upgrades and prepare a phased roadmap. No official document we have read says which states procure it this season, so do not assume yours is in or out.",
       },
       {
         type: "note",
-        text: "Everything above is from press reports, cited below. We have not read a DFPD circular or a PIB release on it. **Read your own state's order for KMS 2026-27 before you change anything at the mill**, and keep a copy with the season's papers.",
+        text: "**Read your own state's order for KMS 2026-27 before you change anything at the mill**: it says whether your CMR is Grade A, Common or Improved Rice, and from when. Keep a copy with the season's papers.",
       },
       {
         type: "list",
         h: "What a mill should do now",
         items: [
           { b: "Check your sorting capacity.", t: "Getting brokens down to 10% (or 5% for parboiled) is a job for the grader and the colour sorter. Run a test lot and measure what your plant gives today." },
-          { b: "Plan for the broken lot.", t: "About 15 quintals in every 100 will leave as a separate lot of fully broken rice. It needs its own space, its own bags and its own count until it leaves the mill." },
+          { b: "Plan for the broken lot.", t: "The broken rice sorted out will leave as a separate lot, auctioned from your premises. It needs its own space, its own HDPE bags and its own count until it leaves the mill." },
+          { b: "Expect QR codes on bags.", t: "The reform plans QR-code tagging of rice bags for tracking through the supply chain. Ask your agency what it will need from the mill." },
           { b: "Test every lot before it leaves for the depot.", t: "A lot over the limit is rejected at the godown and comes back to the mill. That costs a second delivery." },
-          { b: "Read your own state's order.", t: "It decides when the new limits apply to your mill, and for which kind of rice. Until it reaches you, the limits in your current order still apply." },
+          { b: "Read your own state's order.", t: "It decides when the new limits apply to your mill, and for which kind of rice. Until it reaches you, the Grade A and Common limits still apply." },
         ],
       },
       {
@@ -640,28 +659,29 @@ export const RICE_MILL_ARTICLES: Article[] = [
         type: "list",
         h: "Sources",
         items: [
-          { b: "Rural Voice, 2 September 2026", t: "— “Paddy procurement target for Kharif 2026-27 set at 708.64 LMT, lowest in six years” (the 10% and 5% limits, the 1 September meeting, the phasing)." },
-          { b: "Rural Voice, 26 July 2025", t: "— “Broken rice to be separated from FCI stock for ethanol market use” (the 85 + 15 split, and brokens sold from the mill to distilleries)." },
-          { b: "Angel One, 2 July 2026", t: "— “India approves new rice quality norms for PMGKAY beneficiaries” (phased across procuring states by KMS 2027-28)." },
+          { b: "Department of Food and Public Distribution, letter F.No. 8-1/2022-S&I, 17 August 2026", t: "— uniform specifications for Grade A, Common and Improved Rice, KMS 2026-27 (the four columns and their broken-grain limits)." },
+          { b: "Press Information Bureau, 2 July 2026", t: "— “Government approves supply of improved-quality rice under PMGKAY” (the Cabinet decision, the limits, the phasing to KMS 2027-28, the broken rice auctioned from millers' premises, QR codes)." },
+          { b: "Press Information Bureau, 1 September 2026", t: "— “States/UTs Food Secretaries Conference reviews various issues” (from KMS 2026-27, expanded state by state, the phased roadmap)." },
+          { b: "Rural Voice, 26 July 2025", t: "— “Broken rice to be separated from FCI stock for ethanol market use” (the reported 85 + 15 split)." },
         ],
       },
     ],
     faqs: [
       {
         q: "What is the new broken-rice limit for CMR rice?",
-        a: "As reported, from KMS 2026-27 Improved Rice for PMGKAY allows up to 10% broken grains in raw rice (down from 25%) and up to 5% in parboiled rice (down from 16%). It is being rolled out state by state, so read your state's order.",
+        a: "For Improved Rice, up to 10% broken grains in raw rice and 5% in parboiled rice (Cabinet decision of 2 July 2026). For Grade A and Common rice, the KMS 2026-27 specification still allows 25% raw and 16% parboiled. Your state's order says which kind your mill delivers.",
       },
       {
         q: "Is the broken-rice limit 15% now?",
-        a: "No. The 15% is the share of fully broken rice sorted out of a lot: for every 100 quintals of CMR, about 85 quintals are delivered with at most 10% brokens and 15 quintals leave as a separate broken lot, to be sold from the mill to distilleries.",
+        a: "No. The 15% is the reported share of fully broken rice sorted out under the Improved Rice model: about 85 quintals of rice with at most 10% brokens and about 15 quintals of broken rice per 100 quintals of CMR. The broken lot is auctioned from the mill's premises.",
       },
       {
         q: "When does the 10% broken-rice limit apply to my mill?",
-        a: "Procurement of Improved Rice starts from KMS 2026-27 and is being expanded across states in phases; one report says the roll-out is to be complete by KMS 2027-28. Your state's own order decides when it applies to you.",
+        a: "Improved Rice procurement starts from KMS 2026-27 and is to reach all procuring states by KMS 2027-28, in phases. It applies to your mill when your state's order says your CMR is Improved Rice.",
       },
       {
         q: "Who owns the broken rice sorted out of CMR?",
-        a: "Under CMR the rice is the government's, and so is the broken lot. The mill sorts it out, keeps it apart and counts it; the reported model sells it from the mill to distilleries for ethanol.",
+        a: "Under CMR the rice is the government's, and so is the broken lot. The mill sorts it out, keeps it apart and counts it; the government auctions it directly from the mill's premises.",
       },
     ],
     related: [
@@ -679,12 +699,12 @@ export const RICE_MILL_ARTICLES: Article[] = [
     seo: {
       metaTitle: "Broken Rice in CMR: 10%, Not 15% (Improved Rice) | Millingo",
       metaDescription:
-        "From KMS 2026-27, reported Improved Rice limits: 10% brokens in raw CMR rice, 5% in parboiled. Where the 15% comes from, and what a mill should do now.",
+        "Improved Rice allows 10% brokens in raw CMR rice and 5% in parboiled; Grade A and Common keep 25% and 16% for KMS 2026-27. Where the 15% comes from.",
       canonical: "https://svasamm.com/pages/broken-rice-10-percent-cmr-improved-rice.html",
       ogType: "article",
       ogTitle: "Broken rice: 10%, not 15%. What the new CMR rule means",
       ogDescription:
-        "The reported Improved Rice limits for CMR, the 85 + 15 split, the phased roll-out, and what a mill should check before its state's order arrives.",
+        "The official Improved Rice limits for CMR, why 25% has not gone, the broken lot, the phased roll-out, and what a mill should check now.",
     },
     jsonLd: [
       {
@@ -692,7 +712,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
         "@type": "Article",
         headline: "Broken Rice: 10%, Not 15%. What the New CMR Rule Means for Your Mill",
         description:
-          "The reported Improved Rice broken-grain limits for CMR from KMS 2026-27, where the 15% comes from, and what a mill should do now.",
+          "The official Improved Rice broken-grain limits for CMR, the KMS 2026-27 specification, where the 15% comes from, and what a mill should do now.",
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
@@ -700,8 +720,8 @@ export const RICE_MILL_ARTICLES: Article[] = [
           worksFor: { "@type": "Organization", name: "Svasamm Research Pvt Ltd" },
         },
         publisher: { "@type": "Organization", name: "Svasamm" },
-        datePublished: "2026-11-13",
-        dateModified: "2026-11-13",
+        datePublished: "2026-11-17",
+        dateModified: "2026-11-17",
         mainEntityOfPage: "https://svasamm.com/pages/broken-rice-10-percent-cmr-improved-rice.html",
       },
       {
@@ -717,11 +737,15 @@ export const RICE_MILL_ARTICLES: Article[] = [
   },
   // Fortified rice (FRK) paused (rewritten in place 13 Nov 2026, Mithun's choice: same URL; first
   // published 26 Oct 2026 as "FRK in CMR: the 1:100 blend…", which said fortification was required to
-  // Dec 2028 — overtaken by the 28 Feb 2026 pause). Press reports only; no DFPD letter read:
-  // newKerala 28 Feb 2026 ("temporarily", "until … developed and operationalised", states' discretion
-  // for KMS 2025-26 and pending 2024-25); Drishti IAS 2 Mar 2026 (IIT Kharagpur, 2-3 years' storage,
-  // entitlements unchanged); Insights 28 Feb 2026; Chinimandi 2 Mar 2026. Business Standard 27 Feb
-  // returned 403 and is not cited. WB/Odisha "no FRK" is mills' word to Mithun (12 Nov), stated as
+  // Dec 2028 — overtaken by the 27 Feb 2026 pause). OFFICIAL SOURCE (read 17 Nov 2026, replacing the
+  // press reports of the 13 Nov draft): PIB 2233779, Ministry of Consumer Affairs, Food & Public
+  // Distribution, 27 Feb 2026 9:41 PM, "Recalibration of Nutrition Intervention – Temporary
+  // Discontinuation of Rice Fortification": "temporarily discontinue … until a more effective
+  // mechanism for delivery of nutrients … is identified"; IIT Kharagpur shelf-life study; "rice
+  // remains in storage for two to three years"; no reduction in entitlements, PDS/ICDS/Mid-Day Meal
+  // unaffected; for KMS 2025-26 and pending KMS 2024-25 receipts States/UTs may supply fortified or
+  // non-fortified rice "at their discretion". The press dated it 28 Feb (the morning after).
+  // WB/Odisha "no FRK" is mills' word to Mithun (12 Nov), stated as
   // reported; Odisha's RFP cancellation had no source and is left out. FSSAI clause 24(c) (FRK only
   // for making fortified rice) and BIS IS 17780:2021 kept from the first version. Rule from the
   // Millingo session (13 Nov): "fortification where the state requires it"; never sell FRK blending;
@@ -732,28 +756,28 @@ export const RICE_MILL_ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "CMR · Fortified rice",
     title: "Fortified Rice (FRK) Paused: What Changes for CMR Millers",
-    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · Updated 13 November 2026 (first published 26 October 2026)",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · Updated 17 November 2026 (first published 26 October 2026)",
     intro:
-      "On 28 February 2026 the Centre was reported to have temporarily stopped fortifying rice under PMGKAY and the schemes that go with it. For a CMR mill that changes the blend, the FRK it bought, and what its state's order asks of it this season. Here is what was reported, why, what FRK was, and what a mill should do now, including the records it still owes for past seasons.",
+      "On 27 February 2026 the Ministry of Consumer Affairs, Food and Public Distribution announced that it would temporarily stop fortifying rice under PMGKAY and the schemes that go with it. For a CMR mill that changes the blend, the FRK it bought, and what its state's order asks of it this season. Here is what the government said, why, what FRK was, and what a mill should do now, including the records it still owes for past seasons.",
     sections: [
       {
         type: "p",
         h: "What the Centre decided",
-        text: "As reported on 28 February 2026, the government will **temporarily discontinue the fortification of rice under PMGKAY and allied schemes**, until “a more robust and effective nutrient delivery mechanism is developed and operationalised”. It said people's foodgrain entitlements are not reduced. As of 13 November 2026 we have seen no report that fortification has resumed.",
+        text: "In its release of 27 February 2026, the Ministry said it had decided to **temporarily discontinue the fortification of rice under PMGKAY and allied schemes** until “a more robust and effective nutrient delivery mechanism is developed and operationalised”. It said foodgrain entitlements are not reduced, and that the PDS, ICDS and the Mid-Day Meal Scheme are not affected. As of 17 November 2026 we have seen no announcement that fortification has resumed.",
       },
       {
         type: "p",
         h: "Why it was paused",
-        text: "The government had asked IIT Kharagpur to study how long fortified rice kernels and fortified rice keep. As reported, the study found that **moisture, temperature, humidity and packaging all affect the nutrients, and that micronutrient levels fall over time**. Rice in the central pool is often stored for two to three years, so much of it would lose what fortification added before it was eaten.",
+        text: "The government had asked IIT Kharagpur to study how long fortified rice kernels and fortified rice keep in real storage. The study found that **moisture, storage conditions, temperature, humidity and packaging all affect them, and that their micronutrients fall during long storage and handling**. The Ministry noted that rice in the central pool stays in storage for two to three years, so much of it would lose what fortification added before it was eaten.",
       },
       {
         type: "p",
         h: "What your state may ask for",
-        text: "As a transitional step, states were reported to be free to **supply either fortified or non-fortified rice, at their discretion**, for KMS 2025-26 and the KMS 2024-25 rice still being received. Mills in West Bengal and Odisha report that their CMR no longer needs FRK blending. So fortification now applies **where the state requires it**, and only your state's order tells you whether yours does.",
+        text: "As a transitional step, the Ministry gave states the choice to **supply either fortified or non-fortified rice, at their discretion**, for KMS 2025-26 and the KMS 2024-25 rice still being received. Mills in West Bengal and Odisha tell us that their CMR no longer needs FRK blending. So fortification now applies **where the state requires it**, and only your state's order tells you whether yours does.",
       },
       {
         type: "note",
-        text: "Everything above is from press reports, cited below. We have not read the DFPD letter itself. The Union Cabinet's 2024 decision to supply fortified rice until December 2028 came before this pause. **Read your state's order for KMS 2026-27** before you buy FRK or set your blender, and keep a copy with the season's papers.",
+        text: "This is from the Ministry's own release of 27 February 2026, cited below. The Union Cabinet's 2024 decision to supply fortified rice until December 2028 came before this pause. **Read your state's order for KMS 2026-27** before you buy FRK or set your blender, and keep a copy with the season's papers.",
       },
       {
         type: "p",
@@ -800,17 +824,15 @@ export const RICE_MILL_ARTICLES: Article[] = [
         type: "list",
         h: "Sources",
         items: [
-          { b: "newKerala, 28 February 2026", t: "— “Centre temporarily discontinues fortification of rice under PMGKAY” (the decision, the condition, states' discretion)." },
-          { b: "Insights on India, 28 February 2026", t: "— “Suspension of fortified rice rollout”." },
-          { b: "Drishti IAS, 2 March 2026", t: "— “Centre pauses rice fortification” (the IIT Kharagpur study, storage of two to three years)." },
-          { b: "Chinimandi, 2 March 2026", t: "— “Suspension of rice fortification welcomed by civil society groups”." },
+          { b: "Press Information Bureau, 27 February 2026", t: "— Ministry of Consumer Affairs, Food & Public Distribution, “Recalibration of Nutrition Intervention – Temporary Discontinuation of Rice Fortification” (the decision, the IIT Kharagpur study, storage of two to three years, states' discretion)." },
+          { b: "Press Information Bureau, 9 October 2024", t: "— the Cabinet's approval to supply fortified rice from July 2024 to December 2028, which the pause overtook." },
           { b: "FSSAI cereals standards, clause 24(c); BIS IS 17780:2021", t: "— the FRK standard, its sale only for making fortified rice, and the ±10% blend band." },
         ],
       },
     ],
     faqs: [
-      { q: "Is FRK blending still required in CMR rice?", a: "Only where your state requires it. As reported, the Centre temporarily discontinued rice fortification under PMGKAY and allied schemes on 28 February 2026, and states may supply fortified or non-fortified rice at their discretion. Read your state's KMS 2026-27 order." },
-      { q: "Why was rice fortification paused?", a: "As reported, an IIT Kharagpur study found that the micronutrients in fortified rice kernels and fortified rice fall over time with moisture, temperature, humidity and packaging, while central-pool rice is often stored for two to three years." },
+      { q: "Is FRK blending still required in CMR rice?", a: "Only where your state requires it. On 27 February 2026 the Centre temporarily discontinued rice fortification under PMGKAY and allied schemes, and gave states the choice to supply fortified or non-fortified rice. Read your state's KMS 2026-27 order." },
+      { q: "Why was rice fortification paused?", a: "An IIT Kharagpur study for the government found that the micronutrients in fortified rice kernels and fortified rice fall over time with moisture, temperature, humidity and packaging, while central-pool rice is often stored for two to three years." },
       { q: "What should a mill do with the FRK it already holds?", a: "FSSAI allows FRK to be sold only for making fortified rice, so it is not ordinary rice to sell. Ask your procuring agency and your FRK manufacturer what they will accept, get it in writing, and record what you do with it." },
       { q: "Should a mill keep its FRK records from past seasons?", a: "Yes. Blending was required in those seasons and a past season is judged by its own rules: keep the FRK bills with test certificates, the stock register, the blend records, the fortified and unfortified rice figures, and every delivery and rejection." },
     ],
@@ -829,18 +851,18 @@ export const RICE_MILL_ARTICLES: Article[] = [
     seo: {
       metaTitle: "Fortified Rice (FRK) Paused: What Changes for CMR Millers",
       metaDescription:
-        "Rice fortification under PMGKAY was reported paused on 28 Feb 2026. What changed, why, what FRK was, and what a CMR mill should do with its FRK and records.",
+        "Rice fortification under PMGKAY was paused on 27 Feb 2026. What changed, why, what FRK was, and what a CMR mill should do with its FRK and records.",
       canonical: "https://svasamm.com/pages/frk-blending-cmr-records.html",
       ogType: "article",
       ogTitle: "Fortified rice (FRK) paused: what changes for CMR millers",
-      ogDescription: "The reported pause, the reason, states' discretion, and what a mill should do now.",
+      ogDescription: "The pause of 27 February 2026, the reason, states' discretion, and what a mill should do now.",
     },
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "Article",
         headline: "Fortified Rice (FRK) Paused: What Changes for CMR Millers",
-        description: "The reported pause of rice fortification under PMGKAY, why, states' discretion, and what a CMR mill should do with its FRK and its records.",
+        description: "The pause of rice fortification under PMGKAY, why, states' discretion, and what a CMR mill should do with its FRK and its records.",
         author: {
           "@type": "Person",
           name: "Mithun K. Singh",
@@ -849,7 +871,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
         },
         publisher: { "@type": "Organization", name: "Svasamm" },
         datePublished: "2026-10-26",
-        dateModified: "2026-11-13",
+        dateModified: "2026-11-17",
         mainEntityOfPage: "https://svasamm.com/pages/frk-blending-cmr-records.html",
       },
       {
