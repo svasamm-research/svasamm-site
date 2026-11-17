@@ -237,7 +237,7 @@ export const PRODUCTS: Product[] = [
         { heading: "HR guide", icon: "ph-file-text", links: [{ title: "Payroll & statutory compliance in India", href: "Guide-PayrollCompliance.dc.html" }] },
         {
           heading: "By industry", icon: "ph-buildings", links: [
-            { title: "HR & payroll for manufacturing", href: "HRMS-Manufacturing.dc.html" },
+            { title: "Payroll & attendance for factories", href: "HRMS-Manufacturing.dc.html" },
             { title: "HR & payroll for multi-location retail", href: "HRMS-Retail.dc.html" },
             { title: "HR & payroll for hospitals & clinics", href: "HRMS-Healthcare.dc.html" },
           ],

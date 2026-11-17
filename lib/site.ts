@@ -213,7 +213,7 @@ export const INDUSTRIES: { name: string; to: string; href: string; product?: str
   { name: "Food & grain mills", to: "ERP for the food industry", href: "/pages/erp-for-food-industry.html" },
   { name: "CA & compliance firms", to: "T4Suite", href: "https://t4suite.com", product: "t4suite", external: true },
   { name: "Hospitals & clinics", to: "Lucoze", href: "https://lucoze.com", product: "lucoze", external: true },
-  { name: "Factories & workshops", to: "HR & payroll for manufacturing", href: "/pages/hrms-for-manufacturing.html", product: "hrms" },
+  { name: "Factories & workshops", to: "Payroll & attendance for factories", href: "/pages/hrms-for-manufacturing.html", product: "hrms" },
   { name: "Schools & coaching", to: "Svasamm Digital for Schools", href: "/pages/digital-schools.html" },
 ];
 
