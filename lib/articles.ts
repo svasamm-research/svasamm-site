@@ -1033,8 +1033,8 @@ export const ARTICLES: Article[] = [
     type: "guide",
     parentProduct: "millingo",
     eyebrow: "Buyer's Guide",
-    title: "Best Rice Mill Software: How to Choose",
-    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
+    title: "Best Rice Mill Software in India: How to Choose (2026)",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026 · Updated 17 November 2026",
     intro:
       "Search 'rice mill software' and you'll find dozens of vendors, from one-person shops to SAP resellers. They are not the same kind of product, and the 'best' one depends on how your mill works — especially whether you do government custom milling. Here are the three categories mills actually buy, a must-have checklist, and the questions that separate a real fit from a good demo.",
     sections: [
@@ -1078,10 +1078,6 @@ export const ARTICLES: Article[] = [
           {
             b: "Stock that posts only after QC",
             t: "— a gate receipt shouldn’t inflate stock before quality is confirmed.",
-          },
-          {
-            b: "Local-language screens",
-            t: "so gate/QC/production staff aren’t fighting English-only software.",
           },
         ],
       },
@@ -1155,20 +1151,27 @@ export const ARTICLES: Article[] = [
           "'We can customise that' as the answer to every mill-specific question — customisation is time, cost and risk.",
           "No answer on the 7.1 / out-turn reconciliation, or a suggestion you'll still do it in Excel.",
           "By-products (bran, husk, broken) treated as an afterthought rather than separate stock and sales.",
-          "English-only screens with no local-language option for gate and production staff.",
           "No named support contact, or support only in a time zone that isn't yours.",
         ],
       },
       {
         type: "p",
         h: "Where Millingo fits",
-        text: "Millingo is a purpose-built rice-mill ERP: it models the full mill workflow, computes recovery per batch, books by-products separately, handles gunny-bag accounting, and runs the complete CMR cycle with state-specific workflow. It comes in Starter, Professional and Enterprise tiers. It isn’t the only good option — but if CMR and recovery are central, purpose-built beats generic.",
+        text: "Millingo is a purpose-built rice-mill ERP: it models the full mill workflow, computes recovery per batch, books by-products separately, handles gunny-bag accounting, and runs the CMR cycle (release orders, the depot's gunny, deliveries, the shortfall and report 7.1), with West Bengal's and Odisha's rules built in first. It comes in Starter, Professional and Enterprise tiers. It isn’t the only good option — but if CMR and recovery are central, purpose-built beats generic.",
       },
     ],
     faqs: [
       {
+        q: "Which is the best rice mill software in India?",
+        a: "The one built for how your mill works. A market-only mill needs paddy purchase, QC with butta, milling recovery, by-products and GST. A mill doing government custom milling also needs release orders, depot delivery, the shortfall and report 7.1, with its own state's rules. Ask each vendor to show your state's CMR cycle on your own figures before you choose.",
+      },
+      {
+        q: "Does rice mill software need the internet?",
+        a: "Cloud software does: there is no server to keep at the mill, but the gate needs a working connection. On-premise software runs without one, but the mill keeps the backups and updates. Millingo is cloud software.",
+      },
+      {
         q: "What should I look for in rice mill software?",
-        a: "Mill-specific capabilities: CMR/levy support, paddy QC with butta/moisture, per-batch milling recovery, by-product accounting, gunny-bag handling, GST, and local-language screens. Generic accounting is table stakes.",
+        a: "Mill-specific capabilities: CMR/levy support, paddy QC with butta/moisture, per-batch milling recovery, by-product accounting, gunny-bag handling and GST. Generic accounting is table stakes.",
       },
       {
         q: "Is a generic ERP like Tally enough for a rice mill?",
@@ -1217,12 +1220,12 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Best Rice Mill Software: How to Choose (Buyer's Guide 2026) | Millingo",
+        "Best Rice Mill Software in India: 2026 Buyer's Guide | Millingo",
       metaDescription:
-        "A buyer's guide to choosing rice mill software: generic ERP vs POS vs purpose-built rice-mill ERP, the must-have checklist, and questions to ask vendors.",
+        "How to choose rice mill software in India: the three kinds you will meet, the checklist for CMR, butta, recovery and gunny, the vendor questions, the real cost.",
       canonical: "https://svasamm.com/pages/best-rice-mill-software.html",
       ogType: "article",
-      ogTitle: "Best Rice Mill Software: How to Choose",
+      ogTitle: "Best rice mill software in India: how to choose",
       ogDescription:
         "How to choose rice mill software: categories, a must-have checklist, and questions to ask vendors.",
     },
@@ -1230,7 +1233,7 @@ export const ARTICLES: Article[] = [
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        headline: "Best Rice Mill Software: How to Choose (Buyer's Guide 2026)",
+        headline: "Best Rice Mill Software in India: How to Choose (2026)",
         description: "How to choose rice mill software.",
         author: {
           "@type": "Person",
@@ -1246,7 +1249,7 @@ export const ARTICLES: Article[] = [
           name: "Svasamm",
         },
         datePublished: "2026-07-14",
-        dateModified: "2026-08-04",
+        dateModified: "2026-11-17",
         mainEntityOfPage:
           "https://svasamm.com/pages/best-rice-mill-software.html",
       },
@@ -1280,10 +1283,20 @@ export const ARTICLES: Article[] = [
         mainEntity: [
           {
             "@type": "Question",
+            name: "Which is the best rice mill software in India?",
+            acceptedAnswer: { "@type": "Answer", text: "The one built for how your mill works. A market-only mill needs paddy purchase, QC with butta, milling recovery, by-products and GST. A mill doing government custom milling also needs release orders, depot delivery, the shortfall and report 7.1, with its own state's rules. Ask each vendor to show your state's CMR cycle on your own figures before you choose." },
+          },
+          {
+            "@type": "Question",
+            name: "Does rice mill software need the internet?",
+            acceptedAnswer: { "@type": "Answer", text: "Cloud software does: there is no server to keep at the mill, but the gate needs a working connection. On-premise software runs without one, but the mill keeps the backups and updates. Millingo is cloud software." },
+          },
+          {
+            "@type": "Question",
             name: "What should I look for in rice mill software?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Mill-specific capabilities: CMR/levy support, paddy QC with butta/moisture, per-batch milling recovery, by-product accounting, gunny-bag handling, GST, and local-language screens.",
+              text: "Mill-specific capabilities: CMR/levy support, paddy QC with butta/moisture, per-batch milling recovery, by-product accounting, gunny-bag handling and GST.",
             },
           },
           {
@@ -1565,10 +1578,6 @@ export const ARTICLES: Article[] = [
             b: "It ignores the jute-bag rule —",
             t: "bardana supplied by WBECSC isn't a line item in software built for other states.",
           },
-          {
-            b: "It's English-only —",
-            t: "gate and production staff who work in Bengali end up bypassing it.",
-          },
         ],
       },
       {
@@ -1589,7 +1598,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Is Millingo available in Bengali?",
-        a: "Millingo is designed for WB mills with local-language support in mind, so gate, QC and production staff can work comfortably rather than in English-only screens.",
+        a: "Not yet. Millingo's screens are in English today, laid out so gate, QC and production staff follow one step at a time. Bengali screens are planned; ask us for the date when you book a demo.",
       },
       {
         q: "Can Millingo handle both CMR and open-market sales?",
@@ -1632,13 +1641,13 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Rice Mill Software in West Bengal - Built for e-Paddy & CMR | Millingo",
       metaDescription:
-        "Rice mill ERP for West Bengal millers: built around WB e-Paddy procurement, WBECSC/BENFED CMR rules, local QC/butta norms, and Bengali support.",
+        "Rice mill ERP for West Bengal millers: built around WB e-Paddy procurement, WBECSC/BENFED CMR rules and local QC/butta norms.",
       canonical:
         "https://svasamm.com/pages/rice-mill-software-west-bengal.html",
       ogType: "website",
       ogTitle: "Rice Mill Software in West Bengal | Millingo",
       ogDescription:
-        "Rice-mill ERP built for West Bengal millers - e-Paddy, WBECSC/BENFED CMR, butta norms, Bengali support.",
+        "Rice-mill ERP built for West Bengal millers - e-Paddy, WBECSC/BENFED CMR and butta norms.",
     },
     jsonLd: [
       {
@@ -1647,7 +1656,7 @@ export const ARTICLES: Article[] = [
         name: "Rice Mill Software for West Bengal (Millingo)",
         serviceType: "Rice Mill ERP Software",
         description:
-          "Rice-mill ERP built for West Bengal millers - WB e-Paddy procurement, WBECSC/BENFED CMR compliance, local QC/butta norms, and Bengali support.",
+          "Rice-mill ERP built for West Bengal millers - WB e-Paddy procurement, WBECSC/BENFED CMR compliance and local QC/butta norms.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -1699,7 +1708,7 @@ export const ARTICLES: Article[] = [
             name: "Is Millingo available in Bengali?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Millingo is designed for West Bengal mills with local-language support in mind, so gate, QC and production staff can work in Bengali rather than English-only screens.",
+              text: "Not yet. Millingo's screens are in English today, laid out so gate, QC and production staff follow one step at a time. Bengali screens are planned; ask us for the date when you book a demo.",
             },
           },
           {
@@ -1795,10 +1804,6 @@ export const ARTICLES: Article[] = [
             t: "per-lot recovery across hundreds of batches is where generic tools fall back to Excel.",
           },
           {
-            b: "It's English-only —",
-            t: "gate and production staff who work in Hindi end up bypassing it.",
-          },
-          {
             b: "It treats CMR as an add-on —",
             t: "the 7.1 reconciliation and the depot's rules aren't native, so they're done by hand.",
           },
@@ -1817,7 +1822,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Is Millingo available in Hindi?",
-        a: "Millingo is built with local-language support in mind, so UP gate, QC and production staff can work in Hindi rather than English-only screens.",
+        a: "Not yet. Millingo's screens are in English today, laid out so gate, QC and production staff follow one step at a time. Hindi screens are planned; ask us for the date when you book a demo.",
       },
       {
         q: "Can it handle both CMR and open-market business?",
@@ -1860,13 +1865,13 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Rice Mill Software in Uttar Pradesh: CMR & Paddy Procurement | Millingo",
       metaDescription:
-        "Rice mill ERP for Uttar Pradesh millers: built around UP paddy procurement (fcs.up.gov.in, E-PoP), CMR, milling recovery, by-products and Hindi support.",
+        "Rice mill ERP for Uttar Pradesh millers: built around UP paddy procurement (fcs.up.gov.in, E-PoP), CMR, milling recovery and by-products.",
       canonical:
         "https://svasamm.com/pages/rice-mill-software-uttar-pradesh.html",
       ogType: "website",
       ogTitle: "Rice Mill Software in Uttar Pradesh | Millingo",
       ogDescription:
-        "Rice-mill ERP built for UP millers - fcs.up.gov.in/E-PoP procurement, CMR, recovery, Hindi support.",
+        "Rice-mill ERP built for UP millers - fcs.up.gov.in/E-PoP procurement, CMR, recovery and by-products.",
     },
     jsonLd: [
       {
@@ -1875,7 +1880,7 @@ export const ARTICLES: Article[] = [
         name: "Rice Mill Software for Uttar Pradesh (Millingo)",
         serviceType: "Rice Mill ERP Software",
         description:
-          "Rice-mill ERP built for Uttar Pradesh millers - UP paddy procurement (fcs.up.gov.in, E-PoP), CMR compliance, milling recovery and by-products, with Hindi support.",
+          "Rice-mill ERP built for Uttar Pradesh millers - UP paddy procurement (fcs.up.gov.in, E-PoP), CMR compliance, milling recovery and by-products.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -1927,7 +1932,7 @@ export const ARTICLES: Article[] = [
             name: "Is Millingo available in Hindi?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Millingo is built with local-language support in mind, so UP staff at the gate, QC and production can work in Hindi.",
+              text: "Not yet. Millingo's screens are in English today, laid out so gate, QC and production staff follow one step at a time. Hindi screens are planned; ask us for the date when you book a demo.",
             },
           },
           {
@@ -4104,7 +4109,7 @@ export const ARTICLES: Article[] = [
           },
           {
             b: "The books and GST —",
-            t: "ledger, cost centres, budgets, GSTR-1, GSTR-3B and the HSN summary from the same vouchers, and an e-invoice board.",
+            t: "ledger, cost centres, budgets, GSTR-1, GSTR-3B and the HSN summary from the same vouchers.",
           },
           {
             b: "Your industry's own steps —",
@@ -4265,8 +4270,8 @@ export const ARTICLES: Article[] = [
             t: "tracked to the day.",
           },
           {
-            b: "GST, e-invoice & e-way bill",
-            t: "built in.",
+            b: "GST",
+            t: "on every invoice, with GSTR-1, GSTR-3B and the HSN summary prepared from the books.",
           },
         ],
       },
@@ -4319,12 +4324,12 @@ export const ARTICLES: Article[] = [
     seo: {
       metaTitle: "ERP for Trading & Distribution Businesses | Svasamm",
       metaDescription:
-        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables, credit limits, GST, e-invoice and e-way bill.",
+        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables, credit limits and GST.",
       canonical: "https://svasamm.com/pages/erp-for-trading-distribution.html",
       ogType: "website",
       ogTitle: "ERP for Trading & Distribution Businesses",
       ogDescription:
-        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST, e-invoice and e-way bill built in.",
+        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST built in.",
     },
     jsonLd: [
       {
@@ -4333,7 +4338,7 @@ export const ARTICLES: Article[] = [
         name: "ERP for Trading & Distribution Businesses",
         serviceType: "ERP System Software",
         description:
-          "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST, e-invoice and e-way bill built in.",
+          "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST built in.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",

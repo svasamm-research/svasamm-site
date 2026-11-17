@@ -37,7 +37,10 @@ test.describe("every page", () => {
   test("no claim the code does not support", async ({ page }) => {
     const banned = [/self-hostable/i, /ABDM-ready/i, /geofenc/i, /camp-pick app/i, /\bSauda\b/, /multi-unit consolidation/i, /levy memos?/i, /founded 2022|since 2019/i, /(?<!Co-)\bFounder\b/,
       // 17 Nov 2026: production and multi-company were claimed on the ERP pages and are not built.
-      /\bYes\W+(BOMs?|bills? of material)/i, /multi-entity consolidation/i, /inter-company/i, /true cost per unit/i];
+      /\bYes\W+(BOMs?|bills? of material)/i, /multi-entity consolidation/i, /inter-company/i, /true cost per unit/i,
+      // 17 Nov 2026: Millingo is English only (packages/millingo strings: en), and the IRP link is a stand-in and
+      // an e-way bill is only a number typed in (modules/books einvoice.go StubIRP, entry.go).
+      /(Bengali|Hindi|local-language) support\b/i, /work in (Bengali|Hindi)\b/i, /e-invoice (and|&) e-way bill/i, /e-invoice board/i];
     const bad: string[] = [];
     for (const u of urls) {
       await page.goto(u);
