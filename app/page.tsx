@@ -417,7 +417,7 @@ export default function Home() {
                 Engineered for teams that evaluate carefully
               </h2>
               <p className="sv-muted" style={{ fontSize: 17, margin: 0 }}>
-                What the products are built on — each opens the detail, including what is not built yet.
+                What the products are built on — each opens the detail.
               </p>
             </div>
             <div
