@@ -7,6 +7,7 @@ import { JOURNEY_BY_SLUG } from "@/lib/journeys";
 import { SITE_URL } from "@/lib/site";
 import { isIndexed } from "@/lib/indexing";
 import { PRODUCT_MOMENTS, MOMENTS_CHANGED } from "@/lib/product-moments";
+import { ARTICLE_DEPTH } from "@/lib/article-depth";
 
 // All indexable routes: home + legal + every /pages/*.html (products, articles, Solutions,
 // Contact). Canonicals come straight from each record's SEO, so the sitemap can't drift
@@ -27,10 +28,13 @@ const modifiedOf = (jsonLd: object[]) =>
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
-    ...Object.values(PRODUCT_BY_SLUG).map((p) => ({ url: p.seo.canonical, lastModified: SITE_CHANGED })),
+    ...Object.values(PRODUCT_BY_SLUG).map((p) => ({ url: p.seo.canonical, lastModified: later(SITE_CHANGED, p.changed) })),
     ...Object.values(ARTICLE_BY_SLUG).map((a) => ({
       url: a.seo.canonical,
-      lastModified: later(later(SITE_CHANGED, modifiedOf(a.jsonLd)), PRODUCT_MOMENTS[a.slug] ? MOMENTS_CHANGED : undefined),
+      lastModified: later(
+        later(later(SITE_CHANGED, modifiedOf(a.jsonLd)), PRODUCT_MOMENTS[a.slug] ? MOMENTS_CHANGED : undefined),
+        ARTICLE_DEPTH[a.slug]?.changed,
+      ),
     })),
     ...Object.values(CORE_BY_SLUG).map((c) => ({ url: c.seo.canonical, lastModified: SITE_CHANGED })),
     ...Object.values(JOURNEY_BY_SLUG).map((j) => ({ url: j.seo.canonical, lastModified: SITE_CHANGED })),

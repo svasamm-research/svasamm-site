@@ -52,6 +52,9 @@ export type Product = {
   cta: { title: string; body: string; primary: string; secondary?: string };
   seo: Seo;
   jsonLd: object[]; // verbatim schema blocks from the prototype helmet
+  // 17 Nov 2026: a long-form part under the resources, in the guides' prose (components/Article BlockView).
+  guide?: { title: string; sections: Block[] };
+  changed?: string; // the sitemap's lastmod when this page last changed by itself
 };
 
 // Article prose blocks — mirror Article.dc.html norm(): p | note | list | table.
