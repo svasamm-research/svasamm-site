@@ -238,7 +238,7 @@ export const PRODUCTS: Product[] = [
         { heading: "HR guide", icon: "ph-file-text", links: [{ title: "Payroll & statutory compliance in India", href: "Guide-PayrollCompliance.dc.html" }] },
         {
           heading: "By industry", icon: "ph-buildings", links: [
-            { title: "HR & payroll for manufacturing", href: "HRMS-Manufacturing.dc.html" },
+            { title: "Payroll & attendance for factories", href: "HRMS-Manufacturing.dc.html" },
             { title: "HR & payroll for multi-location retail", href: "HRMS-Retail.dc.html" },
             { title: "HR & payroll for hospitals & clinics", href: "HRMS-Healthcare.dc.html" },
           ],
@@ -246,6 +246,7 @@ export const PRODUCTS: Product[] = [
       ],
     },
     faqs: [
+      { q: "What is HRMS software, and what does Svasamm People cover?", a: "HRMS (human resource management system) software keeps everything about the people who work for you in one place. Svasamm People covers the staff register and pay history, attendance from a punch machine or a phone, shifts and overtime, leave, payroll with PF, ESI, professional tax and TDS, Form 16 and 24Q, statutory bonus, gratuity, and the full and final settlement when somebody leaves." },
       { q: "Does payroll handle Indian statutory compliance?", a: "Yes. PF, ESI, professional tax (with each state\u2019s due dates) and TDS are computed in the payroll run, with Form 16 and 24Q, statutory bonus and gratuity." },
       { q: "Can staff use it on their phone?", a: "Yes. On the Svasamm One app staff punch in from inside the office, ask for leave and see their payslips." },
       { q: "Does attendance connect to payroll?", a: "Yes. The days a person was present, on leave or absent, and their overtime, make the month that payroll pays." },
@@ -253,11 +254,11 @@ export const PRODUCTS: Product[] = [
     ],
     cta: { title: "Free payroll check for one month", body: "Send one month’s salary sheet — we’ll run it through Svasamm People and show you the PF, ESI, professional tax and TDS it works out, line by line. Free, no obligation.", primary: "Ask for the free check" },
     seo: {
-      metaTitle: "Svasamm People — HR, Payroll & Attendance (HRMS)",
-      metaDescription: "Svasamm People is HR and payroll software (HRMS) for Indian firms: shifts and phone attendance, leave, and payroll with PF, ESI, PT, TDS, Form 16 and 24Q.",
+      metaTitle: "HRMS Software in India: HR, Payroll & Attendance | Svasamm People",
+      metaDescription: "Svasamm People is HRMS software for Indian firms: staff register, shifts and attendance from a machine or phone, leave, and payroll with PF, ESI, PT, TDS, Form 16 and 24Q.",
       canonical: "https://svasamm.com/pages/hrms.html",
       ogType: "website",
-      ogTitle: "Svasamm People — HR & payroll | Svasamm",
+      ogTitle: "Svasamm People: HRMS software for Indian firms",
       ogDescription: "Staff, attendance, leave and payroll with Indian statutory deductions — on the web and on the Svasamm One app.",
     },
     jsonLd: [
