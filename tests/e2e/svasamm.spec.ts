@@ -5,6 +5,7 @@ import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { TEAM } from "../../lib/team";
 import { PRODUCT_MOMENTS } from "../../lib/product-moments";
+import { FOOD_GUIDE_SLUGS } from "../../lib/food-articles";
 import { NOT_INDEXED } from "../../lib/indexing";
 
 const urls = [...readFileSync("out/sitemap.xml", "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
@@ -260,7 +261,9 @@ for (const [slug, m] of Object.entries(PRODUCT_MOMENTS)) {
     const box = page.locator("main aside[data-product-moment]");
     await expect(box).toHaveCount(1);
     await expect(box).toContainText(m.text);
-    await expect(box.locator('a[href="/pages/millingo.html"]')).toHaveCount(1);
+    // A food owner guide's box leads to the food hub; every other box to Millingo.
+    const to = FOOD_GUIDE_SLUGS.has(slug) ? "/pages/erp-for-food-industry.html" : "/pages/millingo.html";
+    await expect(box.locator(`a[href="${to}"]`)).toHaveCount(1);
     const before = await box.evaluate((el) => {
       let n = el.previousElementSibling;
       while (n && n.tagName !== "H2") n = n.previousElementSibling;
@@ -350,4 +353,27 @@ test("no page carries a double-escaped ampersand", () => {
     e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".html") ? [`${d}/${e.name}`] : []);
   const bad = walk("out").filter((f) => readFileSync(f, "utf8").includes("&amp;amp;"));
   expect(bad).toEqual([]);
+});
+
+// The food owner guides (17 Nov 2026, lib/food-articles.ts): each is a guide with the guide bar,
+// which books a walkthrough for ERP (the food hub has no product of its own), and a product box
+// that leads to the hub; the hub's "read next" carries all three.
+test("food owner guides: guide bar, product box, linked from the hub", async ({ page }) => {
+  await page.setViewportSize({ width: 1366, height: 900 });
+  for (const slug of ["flour-mill-business", "jaggery-plant", "poha-mill-business"]) {
+    await page.goto(`/pages/${slug}.html`);
+    const box = page.locator("[data-product-moment]");
+    await expect(box).toHaveCount(1);
+    await expect(box.getByRole("link", { name: /See how Svasamm One for food does it/ })).toHaveAttribute("href", "/pages/erp-for-food-industry.html");
+    await page.evaluate(() => {
+      const b = document.querySelector("[data-read]") as HTMLElement;
+      scrollTo(0, b.offsetTop + b.offsetHeight * 0.55 - innerHeight);
+    });
+    const bar = page.locator("[data-guide-bar]");
+    await expect(bar).toBeVisible();
+    await expect(bar.getByRole("link", { name: "Book a walkthrough" })).toHaveAttribute("href", "/pages/contact.html?solution=erp");
+  }
+  await page.goto("/pages/erp-for-food-industry.html");
+  for (const slug of ["flour-mill-business", "jaggery-plant", "poha-mill-business"])
+    await expect(page.locator(`a[href="/pages/${slug}.html"]`).first()).toBeAttached();
 });
