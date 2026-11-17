@@ -10,11 +10,15 @@ export const ARTICLES: Article[] = [
     type: "guide",
     parentProduct: "millingo",
     eyebrow: "Rice Mill Guide",
+    // 17 Nov 2026: retitled for "cmr rice full form" (Search Console: position 4.5, ~150 impressions,
+    // 1 click in 28 days) and FRK corrected to the official pause (PIB 2233779, 27 Feb 2026) — the page
+    // said every CMR delivery needed 1% FRK. Broken rice: DFPD F.No. 8-1/2022-S&I, 17 Aug 2026 (KMS
+    // 2026-27 specification) and PIB 2280307, 2 Jul 2026; see lib/rice-mill-articles.ts.
     title:
-      "Custom Milled Rice (CMR) Explained: The Complete Process for Millers",
-    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
+      "CMR Rice Full Form: Custom Milled Rice, and the Complete Process for Millers",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026 · Updated 17 November 2026",
     intro:
-      "CMR (Custom Milled Rice) is the rice a mill produces from government-procured paddy and returns to FCI or a state agency at a fixed out-turn ratio — 67% for raw rice, 68% for parboiled, per 100 kg of paddy. The miller doesn't own the paddy; they earn a milling charge. This guide explains the CMR process end to end: what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
+      "The full form of CMR is Custom Milled Rice: the rice a mill produces from government-procured paddy and returns to FCI or a state agency at a fixed out-turn ratio — 67% for raw rice, 68% for parboiled, per 100 kg of paddy. The miller doesn't own the paddy; they earn a milling charge. This guide explains the CMR process end to end: what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
     sections: [
       {
         type: "p",
@@ -27,12 +31,17 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        h: "The miller's core obligation: 67% + 1% FRK",
-        text: "For Kharif Marketing Season (KMS) 2024–25, a miller must deliver 67% rice against the total paddy allotted, of which 1% must be Fortified Rice Kernels (FRK). In plain terms: for every 100 quintals of paddy you receive, you owe 67 quintals of rice back to the pool.",
+        h: "The miller's core obligation: 67% rice",
+        text: "A miller must deliver 67% rice against the total paddy allotted (68% for parboiled rice). In plain terms: for every 100 quintals of paddy you receive, you owe 67 quintals of rice back to the pool. In KMS 2024–25 that rice also had to be fortified, blended with Fortified Rice Kernels (FRK) at one part in a hundred. On 27 February 2026 the Centre paused rice fortification under PMGKAY and left it to each state for KMS 2025–26, so FRK blending now applies only where your state's order still requires it.",
       },
       {
         type: "note",
         text: "Obligation and out-turn rates are re-notified every marketing season and can differ by state and paddy grade — always work from the current KMS notification, not last year's.",
+      },
+      {
+        type: "p",
+        h: "Broken grains: the limit the rice is tested against",
+        text: "Every CMR lot is tested at the depot against the Department of Food and Public Distribution's uniform specification for the season. For KMS 2026-27 (letter of 17 August 2026), Grade A and Common rice may still carry up to 25% broken grains raw and 16% parboiled. A new kind, Improved Rice, approved by the Cabinet on 2 July 2026, allows only 10% raw and 5% parboiled, and its broken rice is sorted out and auctioned from the mill as a separate lot. It is being brought in state by state up to KMS 2027-28, so your state's order says which limit your rice must meet.",
       },
       {
         type: "p",
@@ -115,7 +124,7 @@ export const ARTICLES: Article[] = [
       {
         type: "p",
         h: "Milling charges: how the miller actually earns",
-        text: "This is the point most people outside the trade miss. Under CMR the miller never owns the grain and is not paid for the rice. The miller is paid a milling charge for converting the government's paddy into rice, sometimes topped up by a state incentive. The by-products — bran, husk and broken rice, subject to each state's rules — are usually the miller's to sell, and for many mills that by-product income is the real margin. The economics of a CMR mill are therefore not 'buy low, sell high'; they are 'hit the out-turn, control costs, and monetise the by-products' — which is exactly why measuring recovery to the batch matters.",
+        text: "This is the point most people outside the trade miss. Under CMR the miller never owns the grain and is not paid for the rice. The miller is paid a milling charge for converting the government's paddy into rice, sometimes topped up by a state incentive. The by-products — bran and husk, subject to each state's rules — are usually the miller's to sell, and for many mills that by-product income is the real margin. The economics of a CMR mill are therefore not 'buy low, sell high'; they are 'hit the out-turn, control costs, and monetise the by-products' — which is exactly why measuring recovery to the batch matters.",
       },
       {
         type: "p",
@@ -156,16 +165,20 @@ export const ARTICLES: Article[] = [
     ],
     faqs: [
       {
+        q: "What is the full form of CMR in rice?",
+        a: "CMR stands for Custom Milled Rice: rice a private mill produces from paddy the government has procured, and delivers back to FCI or a state agency at a fixed out-turn, for a milling charge.",
+      },
+      {
         q: "What is Custom Milled Rice (CMR)?",
         a: "CMR is rice a miller produces from government-supplied paddy. A state agency or FCI procures paddy from farmers at MSP and hands it to selected mills, which mill it and return finished rice to the central pool for milling charges.",
       },
       {
         q: "How much rice must a miller deliver under CMR?",
-        a: "For KMS 2024–25, 67% rice against allotted paddy, including 1% Fortified Rice Kernels (FRK), delivered on a staged schedule. The exact rate and dates are notified each season and vary by state.",
+        a: "67 kg of raw rice (68 kg of parboiled rice) for every 100 kg of paddy allotted, delivered on a staged schedule. The exact rate and dates are notified each season and vary by state.",
       },
       {
-        q: "What is FRK in CMR?",
-        a: "Fortified Rice Kernels — rice kernels enriched with micronutrients (iron, folic acid, B12) blended into delivered rice (1% for KMS 2024–25) as part of the government fortification programme.",
+        q: "Is FRK still needed in CMR rice?",
+        a: "Only where your state requires it. FRK (Fortified Rice Kernels, enriched with iron, folic acid and B12) was blended into CMR at 1 in 100. On 27 February 2026 the Centre paused rice fortification under PMGKAY and let each state choose fortified or non-fortified rice.",
       },
       {
         q: "Who does a miller deliver CMR to?",
@@ -177,6 +190,10 @@ export const ARTICLES: Article[] = [
       },
     ],
     related: [
+      {
+        title: "GST for rice mills: paddy, rice, bran & milling",
+        href: "Guide-GST.dc.html",
+      },
       {
         title: "How to calculate rice-mill yield & milling recovery",
         href: "Guide-YieldRecovery.dc.html",
@@ -206,13 +223,13 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "CMR Rice: Custom Milled Rice Meaning & Process | Millingo",
+        "CMR Rice Full Form: Custom Milled Rice Meaning | Millingo",
       metaDescription:
-        "A rice miller's guide to Custom Milled Rice (CMR): the process, the 67% rice + 1% FRK obligation, delivery schedule, state portals and reconciliation.",
+        "CMR full form: Custom Milled Rice, government paddy a mill turns into rice for FCI at 67 kg per 100 kg (68 parboiled). The process, and what changed in 2026.",
       canonical:
         "https://svasamm.com/pages/custom-milled-rice-cmr-process.html",
       ogType: "article",
-      ogTitle: "Custom Milled Rice (CMR) Explained",
+      ogTitle: "CMR rice full form: Custom Milled Rice, explained",
       ogDescription:
         "How the CMR process works for millers: obligations, delivery schedule, state portals, and reconciliation.",
     },
@@ -221,7 +238,7 @@ export const ARTICLES: Article[] = [
         "@context": "https://schema.org",
         "@type": "Article",
         headline:
-          "Custom Milled Rice (CMR) Explained: Process, 67% Obligation & FRK for Millers",
+          "CMR Rice Full Form: Custom Milled Rice, and the Complete Process for Millers",
         description: "How the CMR process works for millers.",
         author: {
           "@type": "Person",
@@ -237,7 +254,7 @@ export const ARTICLES: Article[] = [
           name: "Svasamm",
         },
         datePublished: "2026-07-14",
-        dateModified: "2026-08-04",
+        dateModified: "2026-11-17",
         mainEntityOfPage:
           "https://svasamm.com/pages/custom-milled-rice-cmr-process.html",
       },
@@ -271,6 +288,14 @@ export const ARTICLES: Article[] = [
         mainEntity: [
           {
             "@type": "Question",
+            name: "What is the full form of CMR in rice?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "CMR stands for Custom Milled Rice: rice a private mill produces from paddy the government has procured, and delivers back to FCI or a state agency at a fixed out-turn, for a milling charge.",
+            },
+          },
+          {
+            "@type": "Question",
             name: "What is Custom Milled Rice (CMR)?",
             acceptedAnswer: {
               "@type": "Answer",
@@ -282,15 +307,15 @@ export const ARTICLES: Article[] = [
             name: "How much rice must a miller deliver under CMR?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "For KMS 2024-25, 67% rice against allotted paddy, including 1% Fortified Rice Kernels (FRK), delivered on a staged schedule. The exact rate and dates are notified each season and vary by state.",
+              text: "67 kg of raw rice (68 kg of parboiled rice) for every 100 kg of paddy allotted, delivered on a staged schedule. The exact rate and dates are notified each season and vary by state.",
             },
           },
           {
             "@type": "Question",
-            name: "What is FRK in CMR?",
+            name: "Is FRK still needed in CMR rice?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Fortified Rice Kernels - rice enriched with micronutrients (iron, folic acid, B12) blended into delivered rice (1% for KMS 2024-25).",
+              text: "Only where your state requires it. FRK (Fortified Rice Kernels, enriched with iron, folic acid and B12) was blended into CMR at 1 in 100. On 27 February 2026 the Centre paused rice fortification under PMGKAY and let each state choose fortified or non-fortified rice.",
             },
           },
           {
@@ -481,6 +506,10 @@ export const ARTICLES: Article[] = [
       },
     ],
     related: [
+      {
+        title: "GST for rice mills: paddy, rice, bran & milling",
+        href: "Guide-GST.dc.html",
+      },
       {
         title: "Custom Milled Rice (CMR): the complete process",
         href: "Guide-CMR.dc.html",
@@ -705,6 +734,10 @@ export const ARTICLES: Article[] = [
       },
     ],
     related: [
+      {
+        title: "GST for rice mills: paddy, rice, bran & milling",
+        href: "Guide-GST.dc.html",
+      },
       {
         title: "How to calculate rice-mill yield & milling recovery",
         href: "Guide-YieldRecovery.dc.html",
@@ -1000,8 +1033,8 @@ export const ARTICLES: Article[] = [
     type: "guide",
     parentProduct: "millingo",
     eyebrow: "Buyer's Guide",
-    title: "Best Rice Mill Software: How to Choose",
-    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
+    title: "Best Rice Mill Software in India: How to Choose (2026)",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026 · Updated 17 November 2026",
     intro:
       "Search 'rice mill software' and you'll find dozens of vendors, from one-person shops to SAP resellers. They are not the same kind of product, and the 'best' one depends on how your mill works — especially whether you do government custom milling. Here are the three categories mills actually buy, a must-have checklist, and the questions that separate a real fit from a good demo.",
     sections: [
@@ -1045,10 +1078,6 @@ export const ARTICLES: Article[] = [
           {
             b: "Stock that posts only after QC",
             t: "— a gate receipt shouldn’t inflate stock before quality is confirmed.",
-          },
-          {
-            b: "Local-language screens",
-            t: "so gate/QC/production staff aren’t fighting English-only software.",
           },
         ],
       },
@@ -1122,20 +1151,27 @@ export const ARTICLES: Article[] = [
           "'We can customise that' as the answer to every mill-specific question — customisation is time, cost and risk.",
           "No answer on the 7.1 / out-turn reconciliation, or a suggestion you'll still do it in Excel.",
           "By-products (bran, husk, broken) treated as an afterthought rather than separate stock and sales.",
-          "English-only screens with no local-language option for gate and production staff.",
           "No named support contact, or support only in a time zone that isn't yours.",
         ],
       },
       {
         type: "p",
         h: "Where Millingo fits",
-        text: "Millingo is a purpose-built rice-mill ERP: it models the full mill workflow, computes recovery per batch, books by-products separately, handles gunny-bag accounting, and runs the complete CMR cycle with state-specific workflow. It comes in Starter, Professional and Enterprise tiers. It isn’t the only good option — but if CMR and recovery are central, purpose-built beats generic.",
+        text: "Millingo is a purpose-built rice-mill ERP: it models the full mill workflow, computes recovery per batch, books by-products separately, handles gunny-bag accounting, and runs the CMR cycle (release orders, the depot's gunny, deliveries, the shortfall and report 7.1), with West Bengal's and Odisha's rules built in first. It comes in Starter, Professional and Enterprise tiers. It isn’t the only good option — but if CMR and recovery are central, purpose-built beats generic.",
       },
     ],
     faqs: [
       {
+        q: "Which is the best rice mill software in India?",
+        a: "The one built for how your mill works. A market-only mill needs paddy purchase, QC with butta, milling recovery, by-products and GST. A mill doing government custom milling also needs release orders, depot delivery, the shortfall and report 7.1, with its own state's rules. Ask each vendor to show your state's CMR cycle on your own figures before you choose.",
+      },
+      {
+        q: "Does rice mill software need the internet?",
+        a: "Cloud software does: there is no server to keep at the mill, but the gate needs a working connection. On-premise software runs without one, but the mill keeps the backups and updates. Millingo is cloud software.",
+      },
+      {
         q: "What should I look for in rice mill software?",
-        a: "Mill-specific capabilities: CMR/levy support, paddy QC with butta/moisture, per-batch milling recovery, by-product accounting, gunny-bag handling, GST, and local-language screens. Generic accounting is table stakes.",
+        a: "Mill-specific capabilities: CMR/levy support, paddy QC with butta/moisture, per-batch milling recovery, by-product accounting, gunny-bag handling and GST. Generic accounting is table stakes.",
       },
       {
         q: "Is a generic ERP like Tally enough for a rice mill?",
@@ -1184,12 +1220,12 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "Best Rice Mill Software: How to Choose (Buyer's Guide 2026) | Millingo",
+        "Best Rice Mill Software in India: 2026 Buyer's Guide | Millingo",
       metaDescription:
-        "A buyer's guide to choosing rice mill software: generic ERP vs POS vs purpose-built rice-mill ERP, the must-have checklist, and questions to ask vendors.",
+        "How to choose rice mill software in India: the three kinds you will meet, the checklist for CMR, butta, recovery and gunny, the vendor questions, the real cost.",
       canonical: "https://svasamm.com/pages/best-rice-mill-software.html",
       ogType: "article",
-      ogTitle: "Best Rice Mill Software: How to Choose",
+      ogTitle: "Best rice mill software in India: how to choose",
       ogDescription:
         "How to choose rice mill software: categories, a must-have checklist, and questions to ask vendors.",
     },
@@ -1197,7 +1233,7 @@ export const ARTICLES: Article[] = [
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        headline: "Best Rice Mill Software: How to Choose (Buyer's Guide 2026)",
+        headline: "Best Rice Mill Software in India: How to Choose (2026)",
         description: "How to choose rice mill software.",
         author: {
           "@type": "Person",
@@ -1213,7 +1249,7 @@ export const ARTICLES: Article[] = [
           name: "Svasamm",
         },
         datePublished: "2026-07-14",
-        dateModified: "2026-08-04",
+        dateModified: "2026-11-17",
         mainEntityOfPage:
           "https://svasamm.com/pages/best-rice-mill-software.html",
       },
@@ -1247,10 +1283,20 @@ export const ARTICLES: Article[] = [
         mainEntity: [
           {
             "@type": "Question",
+            name: "Which is the best rice mill software in India?",
+            acceptedAnswer: { "@type": "Answer", text: "The one built for how your mill works. A market-only mill needs paddy purchase, QC with butta, milling recovery, by-products and GST. A mill doing government custom milling also needs release orders, depot delivery, the shortfall and report 7.1, with its own state's rules. Ask each vendor to show your state's CMR cycle on your own figures before you choose." },
+          },
+          {
+            "@type": "Question",
+            name: "Does rice mill software need the internet?",
+            acceptedAnswer: { "@type": "Answer", text: "Cloud software does: there is no server to keep at the mill, but the gate needs a working connection. On-premise software runs without one, but the mill keeps the backups and updates. Millingo is cloud software." },
+          },
+          {
+            "@type": "Question",
             name: "What should I look for in rice mill software?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Mill-specific capabilities: CMR/levy support, paddy QC with butta/moisture, per-batch milling recovery, by-product accounting, gunny-bag handling, GST, and local-language screens.",
+              text: "Mill-specific capabilities: CMR/levy support, paddy QC with butta/moisture, per-batch milling recovery, by-product accounting, gunny-bag handling and GST.",
             },
           },
           {
@@ -1306,7 +1352,7 @@ export const ARTICLES: Article[] = [
         h: "What actually moves the price",
         cols: ["Driver", "Why it costs more", "What to ask"],
         rows: [
-          ["CMR or market-only", "Government custom milling adds release orders, camp picks, fortified rice, depot delivery, the shortfall and report 7.1 — far more than open-market billing.", "Does the CMR part follow **your state's** rules, or one state's rules bent to fit?"],
+          ["CMR or market-only", "Government custom milling adds release orders, camp picks, depot delivery, the shortfall and report 7.1 — far more than open-market billing.", "Does the CMR part follow **your state's** rules, or one state's rules bent to fit?"],
           ["Season volume", "More lorries, lots and batches mean more to set up, check and support.", "Is there a cap on entries, lots or batches?"],
           ["Users", "Each desk that works in the system — gate, bench, godown, accounts — is a login.", "Is a seasonal worker a full user for the whole year?"],
           ["Weighbridge and printers", "Connecting the weighbridge and the gate printer is setup work.", "Is the weighbridge connection included, and which models?"],
@@ -1328,7 +1374,7 @@ export const ARTICLES: Article[] = [
         type: "list",
         h: "Questions to ask before you sign",
         items: [
-          { b: "Which state's CMR rules are built in?", t: "Out-turn, fortified rice, gunny and depot rules differ by state. Ask to see your state's, not a demo of another." },
+          { b: "Which state's CMR rules are built in?", t: "Out-turn, gunny and depot rules differ by state. Ask to see your state's, not a demo of another." },
           { b: "Can I export all my data, at any time?", t: "In a format your accountant can open. Ask what happens to it if you stop paying." },
           { b: "Are GST returns prepared from the books?", t: "Or does someone re-key the sales into another tool each month?" },
           { b: "What happens at the weighbridge?", t: "Can one weighment be claimed by two entries? Ask them to try it in the demo." },
@@ -1342,7 +1388,7 @@ export const ARTICLES: Article[] = [
         items: [
           { b: "Starter —", t: "small, seasonal, market-only mills: paddy purchase and stock, milling batches and recovery, market sales and accounting." },
           { b: "Professional —", t: "full operations: the QC bench and butta deductions, by-products valued as stock, gunny-bag accounting, and GSTR-1 and GSTR-3B from the books." },
-          { b: "Enterprise —", t: "mills doing government custom milling: the levy and CMR cycle, fortified rice, the shortfall and report 7.1." },
+          { b: "Enterprise —", t: "mills doing government custom milling: the levy and CMR cycle, the shortfall and report 7.1." },
         ],
       },
       {
@@ -1532,10 +1578,6 @@ export const ARTICLES: Article[] = [
             b: "It ignores the jute-bag rule —",
             t: "bardana supplied by WBECSC isn't a line item in software built for other states.",
           },
-          {
-            b: "It's English-only —",
-            t: "gate and production staff who work in Bengali end up bypassing it.",
-          },
         ],
       },
       {
@@ -1556,7 +1598,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Is Millingo available in Bengali?",
-        a: "Millingo is designed for WB mills with local-language support in mind, so gate, QC and production staff can work comfortably rather than in English-only screens.",
+        a: "Not yet. Millingo's screens are in English today, laid out so gate, QC and production staff follow one step at a time. Bengali screens are planned; ask us for the date when you book a demo.",
       },
       {
         q: "Can Millingo handle both CMR and open-market sales?",
@@ -1599,13 +1641,13 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Rice Mill Software in West Bengal - Built for e-Paddy & CMR | Millingo",
       metaDescription:
-        "Rice mill ERP for West Bengal millers: built around WB e-Paddy procurement, WBECSC/BENFED CMR rules, local QC/butta norms, and Bengali support.",
+        "Rice mill ERP for West Bengal millers: built around WB e-Paddy procurement, WBECSC/BENFED CMR rules and local QC/butta norms.",
       canonical:
         "https://svasamm.com/pages/rice-mill-software-west-bengal.html",
       ogType: "website",
       ogTitle: "Rice Mill Software in West Bengal | Millingo",
       ogDescription:
-        "Rice-mill ERP built for West Bengal millers - e-Paddy, WBECSC/BENFED CMR, butta norms, Bengali support.",
+        "Rice-mill ERP built for West Bengal millers - e-Paddy, WBECSC/BENFED CMR and butta norms.",
     },
     jsonLd: [
       {
@@ -1614,7 +1656,7 @@ export const ARTICLES: Article[] = [
         name: "Rice Mill Software for West Bengal (Millingo)",
         serviceType: "Rice Mill ERP Software",
         description:
-          "Rice-mill ERP built for West Bengal millers - WB e-Paddy procurement, WBECSC/BENFED CMR compliance, local QC/butta norms, and Bengali support.",
+          "Rice-mill ERP built for West Bengal millers - WB e-Paddy procurement, WBECSC/BENFED CMR compliance and local QC/butta norms.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -1666,7 +1708,7 @@ export const ARTICLES: Article[] = [
             name: "Is Millingo available in Bengali?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Millingo is designed for West Bengal mills with local-language support in mind, so gate, QC and production staff can work in Bengali rather than English-only screens.",
+              text: "Not yet. Millingo's screens are in English today, laid out so gate, QC and production staff follow one step at a time. Bengali screens are planned; ask us for the date when you book a demo.",
             },
           },
           {
@@ -1710,7 +1752,7 @@ export const ARTICLES: Article[] = [
         items: [
           {
             b: "CMR compliance —",
-            t: "track allotment vs delivery, the staged schedule, the 67% + FRK obligation, and the out-turn (7.1) reconciliation.",
+            t: "track allotment vs delivery, the staged schedule, the 67% obligation, and the out-turn (7.1) reconciliation.",
           },
           {
             b: "Milling recovery —",
@@ -1762,12 +1804,8 @@ export const ARTICLES: Article[] = [
             t: "per-lot recovery across hundreds of batches is where generic tools fall back to Excel.",
           },
           {
-            b: "It's English-only —",
-            t: "gate and production staff who work in Hindi end up bypassing it.",
-          },
-          {
             b: "It treats CMR as an add-on —",
-            t: "the 7.1 reconciliation and FRK obligation aren't native, so they're done by hand.",
+            t: "the 7.1 reconciliation and the depot's rules aren't native, so they're done by hand.",
           },
         ],
       },
@@ -1784,7 +1822,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Is Millingo available in Hindi?",
-        a: "Millingo is built with local-language support in mind, so UP gate, QC and production staff can work in Hindi rather than English-only screens.",
+        a: "Not yet. Millingo's screens are in English today, laid out so gate, QC and production staff follow one step at a time. Hindi screens are planned; ask us for the date when you book a demo.",
       },
       {
         q: "Can it handle both CMR and open-market business?",
@@ -1827,13 +1865,13 @@ export const ARTICLES: Article[] = [
       metaTitle:
         "Rice Mill Software in Uttar Pradesh: CMR & Paddy Procurement | Millingo",
       metaDescription:
-        "Rice mill ERP for Uttar Pradesh millers: built around UP paddy procurement (fcs.up.gov.in, E-PoP), CMR, milling recovery, by-products and Hindi support.",
+        "Rice mill ERP for Uttar Pradesh millers: built around UP paddy procurement (fcs.up.gov.in, E-PoP), CMR, milling recovery and by-products.",
       canonical:
         "https://svasamm.com/pages/rice-mill-software-uttar-pradesh.html",
       ogType: "website",
       ogTitle: "Rice Mill Software in Uttar Pradesh | Millingo",
       ogDescription:
-        "Rice-mill ERP built for UP millers - fcs.up.gov.in/E-PoP procurement, CMR, recovery, Hindi support.",
+        "Rice-mill ERP built for UP millers - fcs.up.gov.in/E-PoP procurement, CMR, recovery and by-products.",
     },
     jsonLd: [
       {
@@ -1842,7 +1880,7 @@ export const ARTICLES: Article[] = [
         name: "Rice Mill Software for Uttar Pradesh (Millingo)",
         serviceType: "Rice Mill ERP Software",
         description:
-          "Rice-mill ERP built for Uttar Pradesh millers - UP paddy procurement (fcs.up.gov.in, E-PoP), CMR compliance, milling recovery and by-products, with Hindi support.",
+          "Rice-mill ERP built for Uttar Pradesh millers - UP paddy procurement (fcs.up.gov.in, E-PoP), CMR compliance, milling recovery and by-products.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -1894,7 +1932,7 @@ export const ARTICLES: Article[] = [
             name: "Is Millingo available in Hindi?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Millingo is built with local-language support in mind, so UP staff at the gate, QC and production can work in Hindi.",
+              text: "Not yet. Millingo's screens are in English today, laid out so gate, QC and production staff follow one step at a time. Hindi screens are planned; ask us for the date when you book a demo.",
             },
           },
           {
@@ -2248,7 +2286,7 @@ export const ARTICLES: Article[] = [
             "Yes (butta/moisture)",
             "Stated (lab testing)",
           ],
-          ["Multi-location / multi-unit", "Not yet — one mill per account", "Stated"],
+          ["Multi-location / multi-unit", "One account per mill", "Stated"],
           [
             "Government CMR / levy cycle",
             "Yes (core focus)",
@@ -2414,7 +2452,7 @@ export const ARTICLES: Article[] = [
             "Stated",
           ],
           ["Weighbridge / gate integration", "Yes", "Stated"],
-          ["Multi-plant / multi-unit", "Not yet — one mill per account", "Stated"],
+          ["Multi-plant / multi-unit", "One account per mill", "Stated"],
           ["Contract-labour / wage tracking", "Not a core focus", "Stated"],
           [
             "Government CMR / levy cycle & 7.1 reconciliation",
@@ -4055,61 +4093,56 @@ export const ARTICLES: Article[] = [
     title: "ERP for Manufacturing Businesses",
     byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
-      "Manufacturers run on a chain that generic accounting can’t see: bill of materials, work orders, shop-floor consumption and costing. An ERP built for manufacturing ties the floor to inventory and the ledger so you know true cost per unit.",
+      "Manufacturers run on a chain that generic accounting can’t see: raw material in, the floor, finished goods out, and the people in between. This page says what Svasamm One runs for a manufacturer from day one — purchase, stores, people and the books — and how your production floor is set up with you: recipes, production orders and batch costing.",
     sections: [
       {
         type: "list",
-        h: "What manufacturers need from an ERP",
+        h: "What Svasamm One runs for a manufacturer today",
         items: [
           {
-            b: "Bills of material & routings",
-            t: "for every product and variant.",
+            b: "Purchase and stores —",
+            t: "indent to purchase order to goods received, issues to the floor, transfers, stock counts, reorder planning, and each supplier rated from what they delivered.",
           },
           {
-            b: "Work orders & production planning",
-            t: "tied to stock availability.",
+            b: "People on the floor —",
+            t: "punches from a machine or a phone, shifts, overtime, payroll with PF, ESI, professional tax and TDS, and contract labour.",
           },
           {
-            b: "Material consumption & WIP",
-            t: "tracked as batches move through stages.",
+            b: "The books and GST —",
+            t: "ledger, cost centres, budgets, GSTR-1, GSTR-3B and the HSN summary from the same vouchers.",
           },
           {
-            b: "Costing —",
-            t: "material, labour and overhead rolled into cost per unit.",
-          },
-          {
-            b: "Quality checks",
-            t: "at inward, in-process and dispatch.",
+            b: "Your industry's own steps —",
+            t: "built with you, as Millingo was built for rice mills.",
           },
         ],
+      },
+      {
+        type: "note",
+        h: "Your production floor: set up around how you run it",
+        text: "**Bills of material, work orders, production planning and batch costing are set up for each plant.** No two plants run the same way, so we walk your floor, map your bills of material and work orders as you actually run them, and set them up in Svasamm One for your plant during onboarding, the way Millingo was built around how rice mills really work.",
       },
       {
         type: "p",
-        h: "One connected flow",
-        text: "Sales order to production plan to purchase of shortfall materials to work order to finished goods to dispatch and invoice — with GST, e-invoice and e-way bill handled at the billing end. Every step posts to inventory and accounts, so cost and margin are visible per order.",
-      },
-      {
-        type: "list",
-        h: "What manufacturers get",
-        items: [
-          "True cost per unit, not a guess.",
-          "Live stock of raw material, WIP and finished goods.",
-          "Production planned against real availability.",
-          "GST-compliant billing end to end.",
-        ],
+        h: "Where we start: food and grain mills",
+        text: "Our first manufacturing industry is food: rice mills run on Millingo today, and flour, dal and poha mills share its shape — grain in by weight, a yield from the process, by-products to account for. The ERP for the food industry page sets out what runs for each kind of plant.",
       },
     ],
     faqs: [
       {
         q: "Does the ERP handle bills of material and work orders?",
-        a: "Yes — BOMs, routings, work orders and production planning connect the shop floor to inventory and costing.",
+        a: "They are set up for your plant: we walk your floor, map your bills of material and work orders as you actually run them, and set them up in Svasamm One for your plant during onboarding. Purchase, stores, people and the books run from day one.",
       },
       {
-        q: "Can it calculate true cost per unit?",
-        a: "Yes — material, labour and overhead are rolled into per-unit cost, so you see real margin per order.",
+        q: "Which manufacturers can use it today?",
+        a: "Rice mills run on Millingo. Food and grain mills (flour, dal, poha) can run purchase, stores, people and books now, with their own process steps built with us. Plants that run on recipes and batches have those set up during onboarding.",
       },
     ],
     related: [
+      {
+        title: "ERP for the food industry",
+        href: "ERP-Food.dc.html",
+      },
       {
         title: "ERP implementation guide",
         href: "Guide-ERPImplementation.dc.html",
@@ -4124,20 +4157,20 @@ export const ARTICLES: Article[] = [
       },
     ],
     cta: {
-      title: "Connect your shop floor to your books",
-      body: "Bring a product BOM and a month of orders, and we'll map production-to-costing with you.",
+      title: "Connect your stores and people to your books",
+      body: "Bring a month of purchases, stores entries and payroll, and we'll walk them through Svasamm One with you, and show how your production floor is set up.",
       productHref: "ERP.dc.html",
       productLabel: "Explore ERP",
     },
     seo: {
       metaTitle: "ERP for Manufacturing Businesses | Svasamm",
       metaDescription:
-        "ERP for manufacturers: bills of material, work orders, production planning, material consumption and true cost per unit, with GST-compliant billing end to end.",
+        "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs, and how your production floor is set up.",
       canonical: "https://svasamm.com/pages/erp-for-manufacturing.html",
       ogType: "website",
       ogTitle: "ERP for Manufacturing Businesses",
       ogDescription:
-        "ERP for manufacturers: bills of material, work orders, production planning, material consumption and true cost per unit, with GST-compliant billing end to end.",
+        "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs, and how your production floor is set up.",
     },
     jsonLd: [
       {
@@ -4146,7 +4179,7 @@ export const ARTICLES: Article[] = [
         name: "ERP for Manufacturing Businesses",
         serviceType: "ERP System Software",
         description:
-          "ERP for manufacturers: bills of material, work orders, production planning, material consumption and true cost per unit, with GST-compliant billing end to end.",
+          "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs, and how your production floor is set up.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -4191,15 +4224,15 @@ export const ARTICLES: Article[] = [
             name: "Does the ERP handle bills of material and work orders?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes - BOMs, routings, work orders and production planning connect the shop floor to inventory and costing.",
+              text: "They are set up for your plant: we walk your floor, map your bills of material and work orders as you actually run them, and set them up in Svasamm One for your plant during onboarding. Purchase, stores, people and the books run from day one.",
             },
           },
           {
             "@type": "Question",
-            name: "Can it calculate true cost per unit?",
+            name: "Which manufacturers can use it today?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes - material, labour and overhead are rolled into per-unit cost, so you see real margin per order.",
+              text: "Rice mills run on Millingo. Food and grain mills (flour, dal, poha) can run purchase, stores, people and books now, with their own process steps built with us. Plants that run on recipes and batches have those set up during onboarding.",
             },
           },
         ],
@@ -4237,8 +4270,8 @@ export const ARTICLES: Article[] = [
             t: "tracked to the day.",
           },
           {
-            b: "GST, e-invoice & e-way bill",
-            t: "built in.",
+            b: "GST",
+            t: "on every invoice, with GSTR-1, GSTR-3B and the HSN summary prepared from the books.",
           },
         ],
       },
@@ -4291,12 +4324,12 @@ export const ARTICLES: Article[] = [
     seo: {
       metaTitle: "ERP for Trading & Distribution Businesses | Svasamm",
       metaDescription:
-        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables, credit limits, GST, e-invoice and e-way bill.",
+        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables, credit limits and GST.",
       canonical: "https://svasamm.com/pages/erp-for-trading-distribution.html",
       ogType: "website",
       ogTitle: "ERP for Trading & Distribution Businesses",
       ogDescription:
-        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST, e-invoice and e-way bill built in.",
+        "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST built in.",
     },
     jsonLd: [
       {
@@ -4305,7 +4338,7 @@ export const ARTICLES: Article[] = [
         name: "ERP for Trading & Distribution Businesses",
         serviceType: "ERP System Software",
         description:
-          "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST, e-invoice and e-way bill built in.",
+          "ERP for traders and distributors: multi-warehouse inventory, quotation-to-invoice, pricing rules, receivables and credit limits, with GST built in.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",

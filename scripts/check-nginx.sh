@@ -53,6 +53,9 @@ expect "/pages/loan-management.html"  301 "/pages/services.html"
 expect "//pages/services.html"            301 "/pages/services.html"   # a repeated slash (10 Nov 2026)
 expect "/pages//millingo.html"            301 "/pages/millingo.html"
 expect "//pricing?x=1"                    301 "/pricing?x=1"
+expect "/pricing/"                         301 "/pricing"                # a trailing slash (13 Nov 2026)
+expect "/pages/millingo.html/"             301 "/pages/millingo.html"
+expect "/resources/?ref=x"                 301 "/resources?ref=x"
 expect "/pricing" 301 "https://svasamm.com/pricing" "www.svasamm.com"
 
 echo "== headers =="

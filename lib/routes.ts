@@ -43,6 +43,7 @@ export const PROTO_TO_ROUTE: Record<string, string> = {
   // ERP cluster
   "Guide-ERPImplementation.dc.html": "/pages/erp-implementation-guide.html",
   "ERP-Manufacturing.dc.html": "/pages/erp-for-manufacturing.html",
+  "ERP-Food.dc.html": "/pages/erp-for-food-industry.html", // hand-authored (lib/food-articles.ts)
   "ERP-Trading.dc.html": "/pages/erp-for-trading-distribution.html",
   "ERP-Services.dc.html": "/pages/erp-for-services-firms.html",
   // HRMS cluster
