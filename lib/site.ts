@@ -210,6 +210,7 @@ export const GUIDE_SCREEN: Record<string, Screen> = {
 // Every href is a page that already exists. `product` keys the colour in ONE.
 export const INDUSTRIES: { name: string; to: string; href: string; product?: string; external?: boolean }[] = [
   { name: "Rice mills", to: "Millingo · the CMR guides", href: "/pages/millingo.html", product: "millingo" },
+  { name: "Food & grain mills", to: "ERP for the food industry", href: "/pages/erp-for-food-industry.html" },
   { name: "CA & compliance firms", to: "T4Suite", href: "https://t4suite.com", product: "t4suite", external: true },
   { name: "Hospitals & clinics", to: "Lucoze", href: "https://lucoze.com", product: "lucoze", external: true },
   { name: "Factories & workshops", to: "HR & payroll for manufacturing", href: "/pages/hrms-for-manufacturing.html", product: "hrms" },

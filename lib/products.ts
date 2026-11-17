@@ -164,18 +164,18 @@ export const PRODUCTS: Product[] = [
     badge: "Platform · ERP",
     tagline: "Finance, supply chain and operations on one connected system",
     blurb:
-      "A unified ERP for finance, inventory, procurement, manufacturing and sales — so a single source of truth drives your accounting, your warehouse and your shop floor, with Indian GST and statutory returns built in.",
+      "Svasamm One's ERP: finance, purchase and stores, people and sales on one system — one source of truth for your accounting, your godowns and your gate, with Indian GST and statutory returns built in.",
     ctaPrimary: "Book a walkthrough",
     featuresTitle: "The whole operation, one source of truth",
     features: [
-      { icon: "ph-book-open", title: "Finance & accounting", body: "General ledger, receivables/payables, cost centres and multi-entity consolidation." },
+      { icon: "ph-book-open", title: "Finance & accounting", body: "General ledger, receivables and payables, cost centres, budgets and a month lock once a return is filed." },
       { icon: "ph-warehouse", title: "Inventory & warehouse", body: "Multi-warehouse stock, batches, serials and valuation, live with every transaction." },
-      { icon: "ph-shopping-cart", title: "Procurement", body: "Requisition to purchase order to receipt, with supplier scoring and approvals." },
-      { icon: "ph-factory", title: "Manufacturing", body: "Bills of material, work orders and production planning tied to stock and costs." },
-      { icon: "ph-receipt", title: "Sales & billing", body: "Quotation to invoice with GST, e-invoicing and e-way bill support." },
+      { icon: "ph-shopping-cart", title: "Procurement", body: "Indent to purchase order to goods received, with approvals and each supplier rated from what they delivered." },
+      { icon: "ph-factory", title: "Industry processes", body: "Your industry's own steps built in — a rice mill's paddy-to-rice and CMR today. Recipes and batch production are being built." },
+      { icon: "ph-receipt", title: "Sales & billing", body: "Orders to invoice with GST, e-invoice and e-way bill support." },
       { icon: "ph-file-text", title: "GST & statutory", body: "GST returns, TDS and Indian statutory reporting handled in the product." },
     ],
-    builtFor: ["Manufacturing", "Trading & distribution", "Services", "Multi-entity groups", "Project-based firms"],
+    builtFor: ["Food and grain mills", "Manufacturing", "Trading & distribution", "Services"],
     resources: {
       title: "Guides & industry pages",
       intro: "In-depth, indexable pages for what ERP buyers actually search — each is its own page for search & AI discovery.",
@@ -184,6 +184,7 @@ export const PRODUCTS: Product[] = [
         { heading: "ERP guide", icon: "ph-file-text", links: [{ title: "ERP implementation for Indian businesses", href: "Guide-ERPImplementation.dc.html" }] },
         {
           heading: "By industry", icon: "ph-buildings", links: [
+            { title: "ERP for the food industry", href: "ERP-Food.dc.html" },
             { title: "ERP for manufacturing", href: "ERP-Manufacturing.dc.html" },
             { title: "ERP for trading & distribution", href: "ERP-Trading.dc.html" },
             { title: "ERP for services & project firms", href: "ERP-Services.dc.html" },
@@ -193,20 +194,20 @@ export const PRODUCTS: Product[] = [
     },
     faqs: [
       { q: "Is Indian GST built in?", a: "Yes — GST-compliant invoicing, e-invoice and e-way bill support, and GST return preparation are part of the system, not a bolt-on." },
-      { q: "Can it run multiple companies?", a: "Yes. Multiple legal entities with consolidation, inter-company transactions and per-entity books are supported." },
-      { q: "Does it cover manufacturing?", a: "Yes — bills of material, work orders and production planning connect the shop floor to inventory and costing." },
+      { q: "Can it run more than one plant or godown?", a: "Yes. Each plant and godown is its own place, with its own stock and staff, in one firm's books. Consolidating several companies is not built yet." },
+      { q: "Does it cover manufacturing?", a: "Purchase, stores, people and the books, yes. Recipes (bills of material), production orders and batch costing are being built — until then we build your industry's own steps with you, as we did for rice mills." },
     ],
     cta: { title: "See the ERP mapped to your books", body: "Bring a chart of accounts and a month of transactions — we’ll walk them through the system with you.", primary: "Book a walkthrough" },
     seo: {
       metaTitle: "ERP System — Finance, Supply Chain & Operations | Svasamm",
-      metaDescription: "A unified ERP for finance, inventory, procurement, manufacturing and sales, with Indian GST and statutory returns built in.",
+      metaDescription: "Svasamm One's ERP: finance, purchase and stores, people and sales on one system, with Indian GST, e-invoice and statutory returns built in.",
       canonical: "https://svasamm.com/pages/erp.html",
       ogType: "website",
       ogTitle: "ERP System | Svasamm",
       ogDescription: "One connected system for finance, warehouse and shop floor, with GST built in.",
     },
     jsonLd: [
-      { "@context": "https://schema.org", "@type": "Service", name: "ERP System", serviceType: "Enterprise Resource Planning Software", description: "A unified ERP for finance, inventory, procurement, manufacturing and sales with Indian GST and statutory returns.", provider: { "@type": "Organization", name: "Svasamm", url: "https://svasamm.com" }, areaServed: "IN" },
+      { "@context": "https://schema.org", "@type": "Service", name: "ERP System", serviceType: "Enterprise Resource Planning Software", description: "An ERP for finance, purchase and stores, people and sales, with Indian GST, e-invoice and statutory returns.", provider: { "@type": "Organization", name: "Svasamm", url: "https://svasamm.com" }, areaServed: "IN" },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://svasamm.com/pages/services.html" }, { "@type": "ListItem", position: 3, name: "ERP System", item: "https://svasamm.com/pages/erp.html" }] },
     ],
   },

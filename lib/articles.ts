@@ -4067,61 +4067,56 @@ export const ARTICLES: Article[] = [
     title: "ERP for Manufacturing Businesses",
     byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 16 July 2026",
     intro:
-      "Manufacturers run on a chain that generic accounting can’t see: bill of materials, work orders, shop-floor consumption and costing. An ERP built for manufacturing ties the floor to inventory and the ledger so you know true cost per unit.",
+      "Manufacturers run on a chain that generic accounting can’t see: raw material in, the floor, finished goods out, and the people in between. This page says what Svasamm One runs for a manufacturer today — purchase, stores, people and the books — and what is still being built: recipes, production orders and batch costing.",
     sections: [
       {
         type: "list",
-        h: "What manufacturers need from an ERP",
+        h: "What Svasamm One runs for a manufacturer today",
         items: [
           {
-            b: "Bills of material & routings",
-            t: "for every product and variant.",
+            b: "Purchase and stores —",
+            t: "indent to purchase order to goods received, issues to the floor, transfers, stock counts, reorder planning, and each supplier rated from what they delivered.",
           },
           {
-            b: "Work orders & production planning",
-            t: "tied to stock availability.",
+            b: "People on the floor —",
+            t: "punches from a machine or a phone, shifts, overtime, payroll with PF, ESI, professional tax and TDS, and contract labour.",
           },
           {
-            b: "Material consumption & WIP",
-            t: "tracked as batches move through stages.",
+            b: "The books and GST —",
+            t: "ledger, cost centres, budgets, GSTR-1, GSTR-3B and the HSN summary from the same vouchers, and an e-invoice board.",
           },
           {
-            b: "Costing —",
-            t: "material, labour and overhead rolled into cost per unit.",
-          },
-          {
-            b: "Quality checks",
-            t: "at inward, in-process and dispatch.",
+            b: "Your industry's own steps —",
+            t: "built with you, as Millingo was built for rice mills.",
           },
         ],
+      },
+      {
+        type: "note",
+        h: "What is not built yet",
+        text: "**Bills of material, work orders, production planning and batch costing are being built.** Until they ship, Svasamm One runs a manufacturer's purchase, stores, people and books — not the production floor itself. We say so here so a walkthrough never starts with a surprise.",
       },
       {
         type: "p",
-        h: "One connected flow",
-        text: "Sales order to production plan to purchase of shortfall materials to work order to finished goods to dispatch and invoice — with GST, e-invoice and e-way bill handled at the billing end. Every step posts to inventory and accounts, so cost and margin are visible per order.",
-      },
-      {
-        type: "list",
-        h: "What manufacturers get",
-        items: [
-          "True cost per unit, not a guess.",
-          "Live stock of raw material, WIP and finished goods.",
-          "Production planned against real availability.",
-          "GST-compliant billing end to end.",
-        ],
+        h: "Where we start: food and grain mills",
+        text: "Our first manufacturing industry is food: rice mills run on Millingo today, and flour, dal and poha mills share its shape — grain in by weight, a yield from the process, by-products to account for. The ERP for the food industry page sets out what runs for each kind of plant.",
       },
     ],
     faqs: [
       {
         q: "Does the ERP handle bills of material and work orders?",
-        a: "Yes — BOMs, routings, work orders and production planning connect the shop floor to inventory and costing.",
+        a: "Not yet. Bills of material, work orders and production planning are being built. Today Svasamm One runs a manufacturer's purchase, stores, people and books.",
       },
       {
-        q: "Can it calculate true cost per unit?",
-        a: "Yes — material, labour and overhead are rolled into per-unit cost, so you see real margin per order.",
+        q: "Which manufacturers can use it today?",
+        a: "Rice mills run on Millingo. Food and grain mills (flour, dal, poha) can run purchase, stores, people and books now, with their own process steps built with us. Plants that need recipes and batch production should wait for those to ship.",
       },
     ],
     related: [
+      {
+        title: "ERP for the food industry",
+        href: "ERP-Food.dc.html",
+      },
       {
         title: "ERP implementation guide",
         href: "Guide-ERPImplementation.dc.html",
@@ -4136,20 +4131,20 @@ export const ARTICLES: Article[] = [
       },
     ],
     cta: {
-      title: "Connect your shop floor to your books",
-      body: "Bring a product BOM and a month of orders, and we'll map production-to-costing with you.",
+      title: "Connect your stores and people to your books",
+      body: "Bring a month of purchases, stores entries and payroll, and we'll walk them through Svasamm One with you — and say plainly what is not built for your plant yet.",
       productHref: "ERP.dc.html",
       productLabel: "Explore ERP",
     },
     seo: {
       metaTitle: "ERP for Manufacturing Businesses | Svasamm",
       metaDescription:
-        "ERP for manufacturers: bills of material, work orders, production planning, material consumption and true cost per unit, with GST-compliant billing end to end.",
+        "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs today, and what is still being built.",
       canonical: "https://svasamm.com/pages/erp-for-manufacturing.html",
       ogType: "website",
       ogTitle: "ERP for Manufacturing Businesses",
       ogDescription:
-        "ERP for manufacturers: bills of material, work orders, production planning, material consumption and true cost per unit, with GST-compliant billing end to end.",
+        "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs today, and what is still being built.",
     },
     jsonLd: [
       {
@@ -4158,7 +4153,7 @@ export const ARTICLES: Article[] = [
         name: "ERP for Manufacturing Businesses",
         serviceType: "ERP System Software",
         description:
-          "ERP for manufacturers: bills of material, work orders, production planning, material consumption and true cost per unit, with GST-compliant billing end to end.",
+          "ERP for manufacturers in India: purchase and stores, payroll for the floor, GST and the books on one system. What Svasamm One runs today, and what is still being built.",
         provider: {
           "@type": "Organization",
           name: "Svasamm",
@@ -4203,15 +4198,15 @@ export const ARTICLES: Article[] = [
             name: "Does the ERP handle bills of material and work orders?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes - BOMs, routings, work orders and production planning connect the shop floor to inventory and costing.",
+              text: "Not yet. Bills of material, work orders and production planning are being built. Today Svasamm One runs a manufacturer's purchase, stores, people and books.",
             },
           },
           {
             "@type": "Question",
-            name: "Can it calculate true cost per unit?",
+            name: "Which manufacturers can use it today?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes - material, labour and overhead are rolled into per-unit cost, so you see real margin per order.",
+              text: "Rice mills run on Millingo. Food and grain mills (flour, dal, poha) can run purchase, stores, people and books now, with their own process steps built with us. Plants that need recipes and batch production should wait for those to ship.",
             },
           },
         ],

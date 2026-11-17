@@ -31,10 +31,12 @@ test.describe("every page", () => {
     expect(bad).toEqual([]);
   });
 
-  // Claims that were on the site and are not true of the code (checked 12 and 15 Oct 2026), and
+  // Claims that were on the site and are not true of the code (checked 12 and 15 Oct, 17 Nov 2026), and
   // the byline title: Mithun is Co-Founder, as on /team (22 Oct 2026).
   test("no claim the code does not support", async ({ page }) => {
-    const banned = [/self-hostable/i, /ABDM-ready/i, /geofenc/i, /camp-pick app/i, /\bSauda\b/, /multi-unit consolidation/i, /levy memos?/i, /founded 2022|since 2019/i, /(?<!Co-)\bFounder\b/];
+    const banned = [/self-hostable/i, /ABDM-ready/i, /geofenc/i, /camp-pick app/i, /\bSauda\b/, /multi-unit consolidation/i, /levy memos?/i, /founded 2022|since 2019/i, /(?<!Co-)\bFounder\b/,
+      // 17 Nov 2026: production and multi-company were claimed on the ERP pages and are not built.
+      /\bYes\W+(BOMs?|bills? of material)/i, /multi-entity consolidation/i, /inter-company/i, /true cost per unit/i];
     const bad: string[] = [];
     for (const u of urls) {
       await page.goto(u);
