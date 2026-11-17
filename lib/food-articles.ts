@@ -6,7 +6,7 @@
 // web-dev docs/svasamm-one-food-erp-plan.md).
 //
 // ⛔ EVERY CLAIM HERE WAS CHECKED AGAINST svasamm-platform origin/develop on 17 Nov 2026:
-// Finance (modules/books: GSTR-1/3B/HSN, the e-invoice board, month lock, cost centres),
+// Finance (modules/books: GSTR-1/3B/HSN, month lock, cost centres),
 // Materials (purchase, receiving, issue, stock count, transfers, reorder planning, vendor
 // evaluation), People (modules/hr: punches incl. machines (the word geofence is banned by svasamm.spec.ts), shifts, payroll, PF/ESI/PT,
 // TDS, contract labour), Millingo (gate weighing, paddy to rice, by-products, CMR).
@@ -37,7 +37,7 @@ const FAQS = [
   },
   {
     q: "Is GST built in?",
-    a: "Yes. GSTR-1, GSTR-3B and the HSN summary come from the same vouchers the plant posts, and the e-invoice board checks each invoice. A month can be locked once its return is filed, so nobody changes a filed figure by accident.",
+    a: "Yes. GSTR-1, GSTR-3B and the HSN summary come from the same vouchers the plant posts. A month can be locked once its return is filed, so nobody changes a filed figure by accident.",
   },
   {
     q: "Can it pay contract labour and shift workers?",
@@ -72,7 +72,7 @@ export const FOOD_ARTICLES: Article[] = [
           { b: "Gate and weighbridge —", t: "for rice mills, every lorry is weighed in and out at the gate and the net weight goes straight into the purchase (Millingo)." },
           { b: "Purchase and stores —", t: "indents, purchase orders, goods received, issues to the floor, transfers between godowns, stock counts and reorder planning. Each supplier is rated from what they actually delivered." },
           { b: "People on the floor —", t: "punches from a machine at the gate or a phone at the plant, shifts and rosters, overtime, payroll with PF, ESI, professional tax and TDS, and contract labour without a login." },
-          { b: "The books and GST —", t: "the ledger, cost centres, GSTR-1, GSTR-3B and the HSN summary from the same vouchers, an e-invoice board, and a month lock once a return is filed." },
+          { b: "The books and GST —", t: "the ledger, cost centres, GSTR-1, GSTR-3B and the HSN summary from the same vouchers, and a month lock once a return is filed." },
           { b: "One sign-in, one phone app —", t: "the gate, the stores, the payroll and the books are one system, so a figure is entered once." },
         ],
       },

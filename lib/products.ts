@@ -82,14 +82,23 @@ export const PRODUCTS: Product[] = [
       { q: "Does Millingo handle government CMR / levy procurement?", a: "Yes. Millingo covers the CMR cycle — release orders, camp picks, rice offered and delivered to the depot, the shortfall, and report 7.1 — with West Bengal’s rules built in first." },
       { q: "Can Millingo track milling recovery and by-products?", a: "Yes. Each milling batch computes rice recovery against what was promised, and books bran, husk and broken rice as stock valued at what they will sell for." },
       { q: "Which tiers does Millingo offer?", a: "Starter (market-only mills), Professional (QC bench and butta, by-products, gunny, GST returns), and Enterprise (government levy and CMR, shortfall and report 7.1)." },
+      // 17 Nov 2026, each answer checked against svasamm-platform origin/develop: weighment typed and claimed
+      // once (gate/arrival.go ErrAlreadyEntered); nine role templates (modules/millingo/manifest.go); imports
+      // (modules/millingo/imports, books/openimport.go); WB and Odisha rules (gate/levy.go, rice_profile.go);
+      // cloud, desk screens only (packages/millingo App.tsx). Millingo is English only: never claim Hindi or Bengali.
+      { q: "Does Millingo read the weighbridge?", a: "The gate types the weight from the kanta's display, and each weighment can go on one entry only, so the same slip cannot be claimed twice." },
+      { q: "Can each person at the mill see only their own part?", a: "Yes. Millingo comes with nine ready roles: owner, mill manager, gate and weighbridge, quality, production floor, store and gunny, sales and dispatch, CMR and levy, and accounts. Each one sees or edits only its own area." },
+      { q: "Can I bring my parties and opening balances across from Excel or Tally?", a: "Yes. Farmers, arhtiyas, traders, customers, varieties, warehouses and lorries import from an Excel or CSV sheet, and the opening trial balance imports from an Excel or CSV export, including one taken from Tally." },
+      { q: "Which states' CMR rules are built in?", a: "West Bengal's and Odisha's are built in. A mill in another state has its own state's rules set up during onboarding, from that state's current notification." },
+      { q: "Is Millingo on the cloud?", a: "Yes. It runs in the cloud and opens in a browser on the mill's computers, so there is no server to keep at the mill. It needs an internet connection." },
     ],
     cta: { title: "Free CMR season review for your mill", body: "Send one season’s paddy received and rice delivered — we’ll show you where your out-turn and deliveries stand against the state’s figures, and how Millingo keeps that current. Free, no obligation.", primary: "Ask for the free review" },
     seo: {
-      metaTitle: "Millingo — Rice Mill ERP (Paddy, Milling, FCI/Levy CMR) | Svasamm",
-      metaDescription: "Millingo is Svasamm's rice mill ERP: paddy procurement and grading, milling yield and by-products, gunny-bag accounting, and FCI/state levy (CMR) compliance.",
+      metaTitle: "Millingo: Rice Mill Software for Paddy, Milling & CMR | Svasamm",
+      metaDescription: "Millingo is rice mill software for Indian mills: paddy gate and QC with butta, recovery per batch, by-products, gunny bags, the CMR cycle and GST on one system.",
       canonical: "https://svasamm.com/pages/millingo.html",
       ogType: "website",
-      ogTitle: "Millingo — Rice Mill ERP | Svasamm",
+      ogTitle: "Millingo: rice mill software | Svasamm",
       ogDescription: "ERP built specifically for rice mills — procurement, milling yield, by-products and CMR compliance.",
     },
     jsonLd: [
@@ -201,14 +210,14 @@ export const PRODUCTS: Product[] = [
     cta: { title: "See the ERP mapped to your books", body: "Bring a chart of accounts and a month of transactions — we’ll walk them through the system with you.", primary: "Book a walkthrough" },
     seo: {
       metaTitle: "ERP System — Finance, Supply Chain & Operations | Svasamm",
-      metaDescription: "Svasamm One's ERP: finance, purchase and stores, people and sales on one system, with Indian GST, e-invoice and statutory returns built in.",
+      metaDescription: "Svasamm One's ERP: finance, purchase and stores, people and sales on one system, with Indian GST and statutory returns built in.",
       canonical: "https://svasamm.com/pages/erp.html",
       ogType: "website",
       ogTitle: "ERP System | Svasamm",
       ogDescription: "One connected system for finance, warehouse and shop floor, with GST built in.",
     },
     jsonLd: [
-      { "@context": "https://schema.org", "@type": "Service", name: "ERP System", serviceType: "Enterprise Resource Planning Software", description: "An ERP for finance, purchase and stores, people and sales, with Indian GST, e-invoice and statutory returns.", provider: { "@type": "Organization", name: "Svasamm", url: "https://svasamm.com" }, areaServed: "IN" },
+      { "@context": "https://schema.org", "@type": "Service", name: "ERP System", serviceType: "Enterprise Resource Planning Software", description: "An ERP for finance, purchase and stores, people and sales, with Indian GST and statutory returns.", provider: { "@type": "Organization", name: "Svasamm", url: "https://svasamm.com" }, areaServed: "IN" },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://svasamm.com/pages/services.html" }, { "@type": "ListItem", position: 3, name: "ERP System", item: "https://svasamm.com/pages/erp.html" }] },
     ],
   },
