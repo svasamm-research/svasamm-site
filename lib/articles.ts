@@ -10,11 +10,15 @@ export const ARTICLES: Article[] = [
     type: "guide",
     parentProduct: "millingo",
     eyebrow: "Rice Mill Guide",
+    // 17 Nov 2026: retitled for "cmr rice full form" (Search Console: position 4.5, ~150 impressions,
+    // 1 click in 28 days) and FRK corrected to the official pause (PIB 2233779, 27 Feb 2026) — the page
+    // said every CMR delivery needed 1% FRK. Broken rice: DFPD F.No. 8-1/2022-S&I, 17 Aug 2026 (KMS
+    // 2026-27 specification) and PIB 2280307, 2 Jul 2026; see lib/rice-mill-articles.ts.
     title:
-      "Custom Milled Rice (CMR) Explained: The Complete Process for Millers",
-    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026",
+      "CMR Rice Full Form: Custom Milled Rice, and the Complete Process for Millers",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 July 2026 · Updated 17 November 2026",
     intro:
-      "CMR (Custom Milled Rice) is the rice a mill produces from government-procured paddy and returns to FCI or a state agency at a fixed out-turn ratio — 67% for raw rice, 68% for parboiled, per 100 kg of paddy. The miller doesn't own the paddy; they earn a milling charge. This guide explains the CMR process end to end: what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
+      "The full form of CMR is Custom Milled Rice: the rice a mill produces from government-procured paddy and returns to FCI or a state agency at a fixed out-turn ratio — 67% for raw rice, 68% for parboiled, per 100 kg of paddy. The miller doesn't own the paddy; they earn a milling charge. This guide explains the CMR process end to end: what you must deliver, the season schedule, how it differs by state, and where mills lose money.",
     sections: [
       {
         type: "p",
@@ -27,12 +31,17 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        h: "The miller's core obligation: 67% + 1% FRK",
-        text: "For Kharif Marketing Season (KMS) 2024–25, a miller must deliver 67% rice against the total paddy allotted, of which 1% must be Fortified Rice Kernels (FRK). In plain terms: for every 100 quintals of paddy you receive, you owe 67 quintals of rice back to the pool.",
+        h: "The miller's core obligation: 67% rice",
+        text: "A miller must deliver 67% rice against the total paddy allotted (68% for parboiled rice). In plain terms: for every 100 quintals of paddy you receive, you owe 67 quintals of rice back to the pool. In KMS 2024–25 that rice also had to be fortified, blended with Fortified Rice Kernels (FRK) at one part in a hundred. On 27 February 2026 the Centre paused rice fortification under PMGKAY and left it to each state for KMS 2025–26, so FRK blending now applies only where your state's order still requires it.",
       },
       {
         type: "note",
         text: "Obligation and out-turn rates are re-notified every marketing season and can differ by state and paddy grade — always work from the current KMS notification, not last year's.",
+      },
+      {
+        type: "p",
+        h: "Broken grains: the limit the rice is tested against",
+        text: "Every CMR lot is tested at the depot against the Department of Food and Public Distribution's uniform specification for the season. For KMS 2026-27 (letter of 17 August 2026), Grade A and Common rice may still carry up to 25% broken grains raw and 16% parboiled. A new kind, Improved Rice, approved by the Cabinet on 2 July 2026, allows only 10% raw and 5% parboiled, and its broken rice is sorted out and auctioned from the mill as a separate lot. It is being brought in state by state up to KMS 2027-28, so your state's order says which limit your rice must meet.",
       },
       {
         type: "p",
@@ -115,7 +124,7 @@ export const ARTICLES: Article[] = [
       {
         type: "p",
         h: "Milling charges: how the miller actually earns",
-        text: "This is the point most people outside the trade miss. Under CMR the miller never owns the grain and is not paid for the rice. The miller is paid a milling charge for converting the government's paddy into rice, sometimes topped up by a state incentive. The by-products — bran, husk and broken rice, subject to each state's rules — are usually the miller's to sell, and for many mills that by-product income is the real margin. The economics of a CMR mill are therefore not 'buy low, sell high'; they are 'hit the out-turn, control costs, and monetise the by-products' — which is exactly why measuring recovery to the batch matters.",
+        text: "This is the point most people outside the trade miss. Under CMR the miller never owns the grain and is not paid for the rice. The miller is paid a milling charge for converting the government's paddy into rice, sometimes topped up by a state incentive. The by-products — bran and husk, subject to each state's rules — are usually the miller's to sell, and for many mills that by-product income is the real margin. The economics of a CMR mill are therefore not 'buy low, sell high'; they are 'hit the out-turn, control costs, and monetise the by-products' — which is exactly why measuring recovery to the batch matters.",
       },
       {
         type: "p",
@@ -156,16 +165,20 @@ export const ARTICLES: Article[] = [
     ],
     faqs: [
       {
+        q: "What is the full form of CMR in rice?",
+        a: "CMR stands for Custom Milled Rice: rice a private mill produces from paddy the government has procured, and delivers back to FCI or a state agency at a fixed out-turn, for a milling charge.",
+      },
+      {
         q: "What is Custom Milled Rice (CMR)?",
         a: "CMR is rice a miller produces from government-supplied paddy. A state agency or FCI procures paddy from farmers at MSP and hands it to selected mills, which mill it and return finished rice to the central pool for milling charges.",
       },
       {
         q: "How much rice must a miller deliver under CMR?",
-        a: "For KMS 2024–25, 67% rice against allotted paddy, including 1% Fortified Rice Kernels (FRK), delivered on a staged schedule. The exact rate and dates are notified each season and vary by state.",
+        a: "67 kg of raw rice (68 kg of parboiled rice) for every 100 kg of paddy allotted, delivered on a staged schedule. The exact rate and dates are notified each season and vary by state.",
       },
       {
-        q: "What is FRK in CMR?",
-        a: "Fortified Rice Kernels — rice kernels enriched with micronutrients (iron, folic acid, B12) blended into delivered rice (1% for KMS 2024–25) as part of the government fortification programme.",
+        q: "Is FRK still needed in CMR rice?",
+        a: "Only where your state requires it. FRK (Fortified Rice Kernels, enriched with iron, folic acid and B12) was blended into CMR at 1 in 100. On 27 February 2026 the Centre paused rice fortification under PMGKAY and let each state choose fortified or non-fortified rice.",
       },
       {
         q: "Who does a miller deliver CMR to?",
@@ -210,13 +223,13 @@ export const ARTICLES: Article[] = [
     },
     seo: {
       metaTitle:
-        "CMR Rice: Custom Milled Rice Meaning & Process | Millingo",
+        "CMR Rice Full Form: Custom Milled Rice Meaning | Millingo",
       metaDescription:
-        "A rice miller's guide to Custom Milled Rice (CMR): the process, the 67% rice + 1% FRK obligation, delivery schedule, state portals and reconciliation.",
+        "CMR full form: Custom Milled Rice, government paddy a mill turns into rice for FCI at 67 kg per 100 kg (68 parboiled). The process, and what changed in 2026.",
       canonical:
         "https://svasamm.com/pages/custom-milled-rice-cmr-process.html",
       ogType: "article",
-      ogTitle: "Custom Milled Rice (CMR) Explained",
+      ogTitle: "CMR rice full form: Custom Milled Rice, explained",
       ogDescription:
         "How the CMR process works for millers: obligations, delivery schedule, state portals, and reconciliation.",
     },
@@ -225,7 +238,7 @@ export const ARTICLES: Article[] = [
         "@context": "https://schema.org",
         "@type": "Article",
         headline:
-          "Custom Milled Rice (CMR) Explained: Process, 67% Obligation & FRK for Millers",
+          "CMR Rice Full Form: Custom Milled Rice, and the Complete Process for Millers",
         description: "How the CMR process works for millers.",
         author: {
           "@type": "Person",
@@ -241,7 +254,7 @@ export const ARTICLES: Article[] = [
           name: "Svasamm",
         },
         datePublished: "2026-07-14",
-        dateModified: "2026-08-04",
+        dateModified: "2026-11-17",
         mainEntityOfPage:
           "https://svasamm.com/pages/custom-milled-rice-cmr-process.html",
       },
@@ -275,6 +288,14 @@ export const ARTICLES: Article[] = [
         mainEntity: [
           {
             "@type": "Question",
+            name: "What is the full form of CMR in rice?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "CMR stands for Custom Milled Rice: rice a private mill produces from paddy the government has procured, and delivers back to FCI or a state agency at a fixed out-turn, for a milling charge.",
+            },
+          },
+          {
+            "@type": "Question",
             name: "What is Custom Milled Rice (CMR)?",
             acceptedAnswer: {
               "@type": "Answer",
@@ -286,15 +307,15 @@ export const ARTICLES: Article[] = [
             name: "How much rice must a miller deliver under CMR?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "For KMS 2024-25, 67% rice against allotted paddy, including 1% Fortified Rice Kernels (FRK), delivered on a staged schedule. The exact rate and dates are notified each season and vary by state.",
+              text: "67 kg of raw rice (68 kg of parboiled rice) for every 100 kg of paddy allotted, delivered on a staged schedule. The exact rate and dates are notified each season and vary by state.",
             },
           },
           {
             "@type": "Question",
-            name: "What is FRK in CMR?",
+            name: "Is FRK still needed in CMR rice?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Fortified Rice Kernels - rice enriched with micronutrients (iron, folic acid, B12) blended into delivered rice (1% for KMS 2024-25).",
+              text: "Only where your state requires it. FRK (Fortified Rice Kernels, enriched with iron, folic acid and B12) was blended into CMR at 1 in 100. On 27 February 2026 the Centre paused rice fortification under PMGKAY and let each state choose fortified or non-fortified rice.",
             },
           },
           {
@@ -1318,7 +1339,7 @@ export const ARTICLES: Article[] = [
         h: "What actually moves the price",
         cols: ["Driver", "Why it costs more", "What to ask"],
         rows: [
-          ["CMR or market-only", "Government custom milling adds release orders, camp picks, fortified rice, depot delivery, the shortfall and report 7.1 — far more than open-market billing.", "Does the CMR part follow **your state's** rules, or one state's rules bent to fit?"],
+          ["CMR or market-only", "Government custom milling adds release orders, camp picks, depot delivery, the shortfall and report 7.1 — far more than open-market billing.", "Does the CMR part follow **your state's** rules, or one state's rules bent to fit?"],
           ["Season volume", "More lorries, lots and batches mean more to set up, check and support.", "Is there a cap on entries, lots or batches?"],
           ["Users", "Each desk that works in the system — gate, bench, godown, accounts — is a login.", "Is a seasonal worker a full user for the whole year?"],
           ["Weighbridge and printers", "Connecting the weighbridge and the gate printer is setup work.", "Is the weighbridge connection included, and which models?"],
@@ -1340,7 +1361,7 @@ export const ARTICLES: Article[] = [
         type: "list",
         h: "Questions to ask before you sign",
         items: [
-          { b: "Which state's CMR rules are built in?", t: "Out-turn, fortified rice, gunny and depot rules differ by state. Ask to see your state's, not a demo of another." },
+          { b: "Which state's CMR rules are built in?", t: "Out-turn, gunny and depot rules differ by state. Ask to see your state's, not a demo of another." },
           { b: "Can I export all my data, at any time?", t: "In a format your accountant can open. Ask what happens to it if you stop paying." },
           { b: "Are GST returns prepared from the books?", t: "Or does someone re-key the sales into another tool each month?" },
           { b: "What happens at the weighbridge?", t: "Can one weighment be claimed by two entries? Ask them to try it in the demo." },
@@ -1354,7 +1375,7 @@ export const ARTICLES: Article[] = [
         items: [
           { b: "Starter —", t: "small, seasonal, market-only mills: paddy purchase and stock, milling batches and recovery, market sales and accounting." },
           { b: "Professional —", t: "full operations: the QC bench and butta deductions, by-products valued as stock, gunny-bag accounting, and GSTR-1 and GSTR-3B from the books." },
-          { b: "Enterprise —", t: "mills doing government custom milling: the levy and CMR cycle, fortified rice, the shortfall and report 7.1." },
+          { b: "Enterprise —", t: "mills doing government custom milling: the levy and CMR cycle, the shortfall and report 7.1." },
         ],
       },
       {
@@ -1722,7 +1743,7 @@ export const ARTICLES: Article[] = [
         items: [
           {
             b: "CMR compliance —",
-            t: "track allotment vs delivery, the staged schedule, the 67% + FRK obligation, and the out-turn (7.1) reconciliation.",
+            t: "track allotment vs delivery, the staged schedule, the 67% obligation, and the out-turn (7.1) reconciliation.",
           },
           {
             b: "Milling recovery —",
@@ -1779,7 +1800,7 @@ export const ARTICLES: Article[] = [
           },
           {
             b: "It treats CMR as an add-on —",
-            t: "the 7.1 reconciliation and FRK obligation aren't native, so they're done by hand.",
+            t: "the 7.1 reconciliation and the depot's rules aren't native, so they're done by hand.",
           },
         ],
       },

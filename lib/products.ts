@@ -55,6 +55,7 @@ export const PRODUCTS: Product[] = [
             { title: "Best rice-mill software: how to choose (buyer's guide)", href: "Guide-BestSoftware.dc.html" },
             { title: "Rice-mill software price: what it costs & why", href: "Guide-Pricing.dc.html" },
             { title: "Why CMR out-turn drops below 67% (moisture & shortfall)", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
+            { title: "Broken rice: 10%, not 15%. What the new CMR rule means", href: "/pages/broken-rice-10-percent-cmr-improved-rice.html" },
           ],
         },
         {
