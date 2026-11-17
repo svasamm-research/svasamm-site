@@ -51,7 +51,7 @@ function ListRow({ it }: { it: ListItem }) {
   );
 }
 
-function BlockView({ b }: { b: Block }) {
+export function BlockView({ b }: { b: Block }) {
   const heading = b.h ? (
     <h2 id={anchor(b.h)} style={{ fontSize: 27, margin: "40px 0 14px", scrollMarginTop: 90 }}>{b.h}</h2>
   ) : null;
