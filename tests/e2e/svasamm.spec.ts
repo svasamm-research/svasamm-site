@@ -5,6 +5,7 @@ import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { TEAM } from "../../lib/team";
 import { PRODUCT_MOMENTS } from "../../lib/product-moments";
+import { FOOD_GUIDE_SLUGS } from "../../lib/food-articles";
 import { NOT_INDEXED } from "../../lib/indexing";
 
 const urls = [...readFileSync("out/sitemap.xml", "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
@@ -31,10 +32,15 @@ test.describe("every page", () => {
     expect(bad).toEqual([]);
   });
 
-  // Claims that were on the site and are not true of the code (checked 12 and 15 Oct 2026), and
+  // Claims that were on the site and are not true of the code (checked 12 and 15 Oct, 17 Nov 2026), and
   // the byline title: Mithun is Co-Founder, as on /team (22 Oct 2026).
   test("no claim the code does not support", async ({ page }) => {
-    const banned = [/self-hostable/i, /ABDM-ready/i, /geofenc/i, /camp-pick app/i, /\bSauda\b/, /multi-unit consolidation/i, /levy memos?/i, /founded 2022|since 2019/i, /(?<!Co-)\bFounder\b/];
+    const banned = [/self-hostable/i, /ABDM-ready/i, /geofenc/i, /camp-pick app/i, /\bSauda\b/, /multi-unit consolidation/i, /levy memos?/i, /founded 2022|since 2019/i, /(?<!Co-)\bFounder\b/,
+      // 17 Nov 2026: production and multi-company were claimed on the ERP pages and are not built.
+      /\bYes\W+(BOMs?|bills? of material)/i, /multi-entity consolidation/i, /inter-company/i, /true cost per unit/i,
+      // 17 Nov 2026: Millingo is English only (packages/millingo strings: en), and the IRP link is a stand-in and
+      // an e-way bill is only a number typed in (modules/books einvoice.go StubIRP, entry.go).
+      /(Bengali|Hindi|local-language) support\b/i, /work in (Bengali|Hindi)\b/i, /e-invoice (and|&) e-way bill/i, /e-invoice board/i];
     const bad: string[] = [];
     for (const u of urls) {
       await page.goto(u);
@@ -124,6 +130,36 @@ test("Sign in names the site; WhatsApp opens with an inviting message", async ({
   for (const a of await page.locator('a[href*="app.svasamm.com"]').all()) await expect(a).toHaveAttribute("target", "_blank");
   // the link is built after the page mounts, so wait for it rather than read it once
   await expect(page.locator("a.wa-fab")).toHaveAttribute("href", /919007793575.*text=Hi%20Svasamm%2C%20I'd%20like%20to%20know%20how%20you%20can%20help%20my%20business\./);
+});
+
+// The guide bar (13 Nov 2026, components/GuideBar.tsx): not there on arrival, up once the reader
+// is halfway, gone while the closing card shows, and closed means closed on the next guide too.
+test("guide bar: halfway up, hides at the closing card, stays closed", async ({ page }) => {
+  const events = await recordEvents(page);
+  await page.setViewportSize({ width: 1366, height: 900 });
+  await page.goto("/pages/custom-milled-rice-cmr-process.html");
+  const bar = page.locator("[data-guide-bar]");
+  await expect(bar).toBeHidden();
+  await page.evaluate(() => {
+    const b = document.querySelector("[data-read]") as HTMLElement;
+    scrollTo(0, b.offsetTop + b.offsetHeight * 0.55 - innerHeight);
+  });
+  await expect(bar).toBeVisible();
+  await expect(bar.getByRole("link", { name: "Book a walkthrough" })).toHaveAttribute("href", "/pages/contact.html?solution=millingo");
+  expect(events.some((e) => e.name === "Guide Bar Shown")).toBe(true);
+  await page.evaluate(() => document.querySelector("[data-guide-cta]")!.scrollIntoView({ block: "center" }));
+  await expect(bar).toBeHidden();
+  await page.evaluate(() => scrollTo(0, (document.querySelector("[data-read]") as HTMLElement).offsetTop + 2400));
+  await expect(bar).toBeVisible();
+  await bar.getByRole("button", { name: "Close" }).click();
+  await expect(bar).toBeHidden();
+  await page.goto("/pages/rice-mill-yield-recovery.html");
+  await page.evaluate(() => scrollTo(0, document.body.scrollHeight * 0.6));
+  await page.waitForTimeout(400);
+  await expect(page.locator("[data-guide-bar]")).toBeHidden();
+  // Not on a page that is not a guide.
+  await page.goto("/pages/millingo.html");
+  await expect(page.locator("[data-guide-bar]")).toHaveCount(0);
 });
 
 test("journey: scrolling to a stage shows its screen", async ({ page }) => {
@@ -228,7 +264,9 @@ for (const [slug, m] of Object.entries(PRODUCT_MOMENTS)) {
     const box = page.locator("main aside[data-product-moment]");
     await expect(box).toHaveCount(1);
     await expect(box).toContainText(m.text);
-    await expect(box.locator('a[href="/pages/millingo.html"]')).toHaveCount(1);
+    // A food owner guide's box leads to the food hub; every other box to Millingo.
+    const to = FOOD_GUIDE_SLUGS.has(slug) ? "/pages/erp-for-food-industry.html" : "/pages/millingo.html";
+    await expect(box.locator(`a[href="${to}"]`)).toHaveCount(1);
     const before = await box.evaluate((el) => {
       let n = el.previousElementSibling;
       while (n && n.tagName !== "H2") n = n.previousElementSibling;
@@ -318,4 +356,27 @@ test("no page carries a double-escaped ampersand", () => {
     e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".html") ? [`${d}/${e.name}`] : []);
   const bad = walk("out").filter((f) => readFileSync(f, "utf8").includes("&amp;amp;"));
   expect(bad).toEqual([]);
+});
+
+// The food owner guides (17 Nov 2026, lib/food-articles.ts): each is a guide with the guide bar,
+// which books a walkthrough for ERP (the food hub has no product of its own), and a product box
+// that leads to the hub; the hub's "read next" carries all three.
+test("food owner guides: guide bar, product box, linked from the hub", async ({ page }) => {
+  await page.setViewportSize({ width: 1366, height: 900 });
+  for (const slug of ["flour-mill-business", "jaggery-plant", "poha-mill-business"]) {
+    await page.goto(`/pages/${slug}.html`);
+    const box = page.locator("[data-product-moment]");
+    await expect(box).toHaveCount(1);
+    await expect(box.getByRole("link", { name: /See how Svasamm One for food does it/ })).toHaveAttribute("href", "/pages/erp-for-food-industry.html");
+    await page.evaluate(() => {
+      const b = document.querySelector("[data-read]") as HTMLElement;
+      scrollTo(0, b.offsetTop + b.offsetHeight * 0.55 - innerHeight);
+    });
+    const bar = page.locator("[data-guide-bar]");
+    await expect(bar).toBeVisible();
+    await expect(bar.getByRole("link", { name: "Book a walkthrough" })).toHaveAttribute("href", "/pages/contact.html?solution=erp");
+  }
+  await page.goto("/pages/erp-for-food-industry.html");
+  for (const slug of ["flour-mill-business", "jaggery-plant", "poha-mill-business"])
+    await expect(page.locator(`a[href="/pages/${slug}.html"]`).first()).toBeAttached();
 });

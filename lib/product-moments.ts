@@ -16,6 +16,19 @@ export type ProductMoment = { after: string; text: string };
 
 // Keyed by the article's slug (Article.slug: no ".html").
 export const PRODUCT_MOMENTS: Record<string, ProductMoment> = {
+  // The food owner guides (17 Nov 2026): each line says only what the food hub says.
+  "flour-mill-business": {
+    after: "Yield: what 100 kg of wheat should give you",
+    text: "Svasamm One runs a flour mill's purchase, stores, payroll and books today, so stock and sales are entered once. We build your intake and yield steps with you, on the pattern Millingo uses for rice.",
+  },
+  "jaggery-plant": {
+    after: "Yield: about 10 kg of jaggery from 100 kg of cane",
+    text: "Svasamm One runs a jaggery plant's purchase, stores, season payroll and books, and your cane intake and boiling batches are set up for your plant during onboarding.",
+  },
+  "poha-mill-business": {
+    after: "Yield: 65 to 70 kg of poha from 100 kg of paddy",
+    text: "A poha mill starts where a rice mill starts: paddy by weight. Svasamm One runs your purchase, stores, payroll and books today, and we build your soak, roast and flake steps with you on Millingo's paddy pattern.",
+  },
   "punjab-custom-milling-policy-2026-27": {
     after: "What the 90% line asks of your records",
     text: "Millingo keeps your delivered share against allotted paddy current as each lot is delivered, so you see the 90% line during the season, not after it.",

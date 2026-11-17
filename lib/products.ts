@@ -31,14 +31,14 @@ export const PRODUCTS: Product[] = [
       { icon: "ph-scales", title: "Quality grading with butta deductions", body: "Recovery, moisture and dust read at the bench; a shortfall takes value off the bill — 1% of the load per point — without touching the weight.", href: "/pages/millingo-paddy-in-rice-out.html#qc" },
       { icon: "ph-chart-line-up", title: "Milling yield & by-products", body: "Every batch tracks recovery against what was promised; bran, husk, broken rice and the rest become stock, valued at what they will sell for and taken off the rice’s cost.", href: "/pages/millingo-paddy-in-rice-out.html#milling" },
       { icon: "ph-package", title: "Gunny-bag (bardana) accounting", body: "Two pools that never mix — the mill’s own bags and the corporation’s — drawn by packing, issued to camps and received back, jute and PP kept apart." },
-      { icon: "ph-buildings", title: "Government levy & CMR", body: "Release orders, camp picks, fortified rice offered and delivered to the depot, the shortfall as a debt, and report 7.1 set against the portal.", href: "/pages/millingo-paddy-in-rice-out.html#depot" },
+      { icon: "ph-buildings", title: "Government levy & CMR", body: "Release orders, camp picks, rice offered and delivered to the depot, the shortfall as a debt, and report 7.1 set against the portal.", href: "/pages/millingo-paddy-in-rice-out.html#depot" },
       { icon: "ph-receipt", title: "Market sales & the books", body: "Sale orders, dispatch only against rice the godown holds, tax invoices, and GSTR-1 and GSTR-3B prepared from the books." },
     ],
     tiersTitle: "From a market-only mill to full government CMR",
     tiers: [
       { name: "Starter", for: "Small, seasonal, market-only mills.", featured: false, cta: "Start here", items: ["Paddy purchase & stock", "Milling batches & recovery", "Market sales & accounting"] },
       { name: "Professional", for: "Full operations with financials & QC slabs.", featured: true, cta: "Get a walkthrough", items: ["Everything in Starter", "QC bench & butta deductions", "By-products valued as stock", "Gunny-bag accounting", "GSTR-1 & GSTR-3B from the books"] },
-      { name: "Enterprise", for: "Mills doing government custom milling (CMR).", featured: false, cta: "Talk to us", items: ["Everything in Professional", "Government levy & CMR cycle", "Fortified rice (FRK)", "Shortfall & report 7.1"] },
+      { name: "Enterprise", for: "Mills doing government custom milling (CMR).", featured: false, cta: "Talk to us", items: ["Everything in Professional", "Government levy & CMR cycle", "Shortfall & report 7.1"] },
     ],
     builtFor: ["Private Rice Mills", "Paddy Processing", "FCI / CMR Mills", "Open-market Rice Sellers", "Agri Processing"],
     resources: {
@@ -48,14 +48,14 @@ export const PRODUCTS: Product[] = [
       columns: [
         {
           heading: "Rice-mill guides", icon: "ph-file-text", links: [
-            { title: "Custom Milled Rice (CMR) explained — process, 67% obligation & FRK", href: "Guide-CMR.dc.html" },
+            { title: "Custom Milled Rice (CMR) explained — the process and the 67% obligation", href: "Guide-CMR.dc.html" },
             { title: "How to calculate rice-mill yield & milling recovery", href: "Guide-YieldRecovery.dc.html" },
             { title: "By-product accounting: bran, husk & broken rice", href: "Guide-ByproductAccounting.dc.html" },
             { title: "GST for rice mills: paddy, rice, bran & milling", href: "Guide-GST.dc.html" },
             { title: "Best rice-mill software: how to choose (buyer's guide)", href: "Guide-BestSoftware.dc.html" },
             { title: "Rice-mill software price: what it costs & why", href: "Guide-Pricing.dc.html" },
             { title: "Why CMR out-turn drops below 67% (moisture & shortfall)", href: "/pages/cmr-out-turn-shortfall-moisture.html" },
-            { title: "FRK in CMR: the 1:100 blend, its tolerance and the records", href: "/pages/frk-blending-cmr-records.html" },
+            { title: "Broken rice: 10%, not 15%. What the new CMR rule means", href: "/pages/broken-rice-10-percent-cmr-improved-rice.html" },
           ],
         },
         {
@@ -79,17 +79,26 @@ export const PRODUCTS: Product[] = [
     },
     faqs: [
       { q: "What is a rice mill ERP?", a: "Software built specifically for rice milling — paddy procurement and quality grading, milling production with yield and by-product tracking, packaging, sales, accounting, and government FCI/levy (CMR) compliance — on one system, rather than a generic ERP adapted to fit." },
-      { q: "Does Millingo handle government CMR / levy procurement?", a: "Yes. Millingo covers the CMR cycle — release orders, camp picks, fortified rice offered and delivered to the depot, the shortfall, and report 7.1 — with West Bengal’s rules built in first." },
+      { q: "Does Millingo handle government CMR / levy procurement?", a: "Yes. Millingo covers the CMR cycle — release orders, camp picks, rice offered and delivered to the depot, the shortfall, and report 7.1 — with West Bengal’s rules built in first." },
       { q: "Can Millingo track milling recovery and by-products?", a: "Yes. Each milling batch computes rice recovery against what was promised, and books bran, husk and broken rice as stock valued at what they will sell for." },
-      { q: "Which tiers does Millingo offer?", a: "Starter (market-only mills), Professional (QC bench and butta, by-products, gunny, GST returns), and Enterprise (government levy and CMR, fortified rice, shortfall and report 7.1)." },
+      { q: "Which tiers does Millingo offer?", a: "Starter (market-only mills), Professional (QC bench and butta, by-products, gunny, GST returns), and Enterprise (government levy and CMR, shortfall and report 7.1)." },
+      // 17 Nov 2026, each answer checked against svasamm-platform origin/develop: weighment typed and claimed
+      // once (gate/arrival.go ErrAlreadyEntered); nine role templates (modules/millingo/manifest.go); imports
+      // (modules/millingo/imports, books/openimport.go); WB and Odisha rules (gate/levy.go, rice_profile.go);
+      // cloud, desk screens only (packages/millingo App.tsx). Millingo is English only: never claim Hindi or Bengali.
+      { q: "Does Millingo read the weighbridge?", a: "The gate types the weight from the kanta's display, and each weighment can go on one entry only, so the same slip cannot be claimed twice." },
+      { q: "Can each person at the mill see only their own part?", a: "Yes. Millingo comes with nine ready roles: owner, mill manager, gate and weighbridge, quality, production floor, store and gunny, sales and dispatch, CMR and levy, and accounts. Each one sees or edits only its own area." },
+      { q: "Can I bring my parties and opening balances across from Excel or Tally?", a: "Yes. Farmers, arhtiyas, traders, customers, varieties, warehouses and lorries import from an Excel or CSV sheet, and the opening trial balance imports from an Excel or CSV export, including one taken from Tally." },
+      { q: "Which states' CMR rules are built in?", a: "West Bengal's and Odisha's are built in. A mill in another state has its own state's rules set up during onboarding, from that state's current notification." },
+      { q: "Is Millingo on the cloud?", a: "Yes. It runs in the cloud and opens in a browser on the mill's computers, so there is no server to keep at the mill. It needs an internet connection." },
     ],
     cta: { title: "Free CMR season review for your mill", body: "Send one season’s paddy received and rice delivered — we’ll show you where your out-turn and deliveries stand against the state’s figures, and how Millingo keeps that current. Free, no obligation.", primary: "Ask for the free review" },
     seo: {
-      metaTitle: "Millingo — Rice Mill ERP (Paddy, Milling, FCI/Levy CMR) | Svasamm",
-      metaDescription: "Millingo is Svasamm's rice mill ERP: paddy procurement and grading, milling yield and by-products, gunny-bag accounting, and FCI/state levy (CMR) compliance.",
+      metaTitle: "Millingo: Rice Mill Software for Paddy, Milling & CMR | Svasamm",
+      metaDescription: "Millingo is rice mill software for Indian mills: paddy gate and QC with butta, recovery per batch, by-products, gunny bags, the CMR cycle and GST on one system.",
       canonical: "https://svasamm.com/pages/millingo.html",
       ogType: "website",
-      ogTitle: "Millingo — Rice Mill ERP | Svasamm",
+      ogTitle: "Millingo: rice mill software | Svasamm",
       ogDescription: "ERP built specifically for rice mills — procurement, milling yield, by-products and CMR compliance.",
     },
     jsonLd: [
@@ -165,18 +174,18 @@ export const PRODUCTS: Product[] = [
     badge: "Platform · ERP",
     tagline: "Finance, supply chain and operations on one connected system",
     blurb:
-      "A unified ERP for finance, inventory, procurement, manufacturing and sales — so a single source of truth drives your accounting, your warehouse and your shop floor, with Indian GST and statutory returns built in.",
+      "Svasamm One's ERP: finance, purchase and stores, people and sales on one system — one source of truth for your accounting, your godowns and your gate, with Indian GST and statutory returns built in.",
     ctaPrimary: "Book a walkthrough",
     featuresTitle: "The whole operation, one source of truth",
     features: [
-      { icon: "ph-book-open", title: "Finance & accounting", body: "General ledger, receivables/payables, cost centres and multi-entity consolidation." },
+      { icon: "ph-book-open", title: "Finance & accounting", body: "General ledger, receivables and payables, cost centres, budgets and a month lock once a return is filed." },
       { icon: "ph-warehouse", title: "Inventory & warehouse", body: "Multi-warehouse stock, batches, serials and valuation, live with every transaction." },
-      { icon: "ph-shopping-cart", title: "Procurement", body: "Requisition to purchase order to receipt, with supplier scoring and approvals." },
-      { icon: "ph-factory", title: "Manufacturing", body: "Bills of material, work orders and production planning tied to stock and costs." },
-      { icon: "ph-receipt", title: "Sales & billing", body: "Quotation to invoice with GST, e-invoicing and e-way bill support." },
+      { icon: "ph-shopping-cart", title: "Procurement", body: "Indent to purchase order to goods received, with approvals and each supplier rated from what they delivered." },
+      { icon: "ph-factory", title: "Industry processes", body: "Your industry's own steps built in — a rice mill's paddy-to-rice and CMR, and your plant's recipes and batches set up for you during onboarding." },
+      { icon: "ph-receipt", title: "Sales & billing", body: "Orders to invoice with GST on every line, and GSTR-1 and GSTR-3B prepared from the books." },
       { icon: "ph-file-text", title: "GST & statutory", body: "GST returns, TDS and Indian statutory reporting handled in the product." },
     ],
-    builtFor: ["Manufacturing", "Trading & distribution", "Services", "Multi-entity groups", "Project-based firms"],
+    builtFor: ["Food and grain mills", "Manufacturing", "Trading & distribution", "Services"],
     resources: {
       title: "Guides & industry pages",
       intro: "In-depth, indexable pages for what ERP buyers actually search — each is its own page for search & AI discovery.",
@@ -185,6 +194,7 @@ export const PRODUCTS: Product[] = [
         { heading: "ERP guide", icon: "ph-file-text", links: [{ title: "ERP implementation for Indian businesses", href: "Guide-ERPImplementation.dc.html" }] },
         {
           heading: "By industry", icon: "ph-buildings", links: [
+            { title: "ERP for the food industry", href: "ERP-Food.dc.html" },
             { title: "ERP for manufacturing", href: "ERP-Manufacturing.dc.html" },
             { title: "ERP for trading & distribution", href: "ERP-Trading.dc.html" },
             { title: "ERP for services & project firms", href: "ERP-Services.dc.html" },
@@ -193,21 +203,21 @@ export const PRODUCTS: Product[] = [
       ],
     },
     faqs: [
-      { q: "Is Indian GST built in?", a: "Yes — GST-compliant invoicing, e-invoice and e-way bill support, and GST return preparation are part of the system, not a bolt-on." },
-      { q: "Can it run multiple companies?", a: "Yes. Multiple legal entities with consolidation, inter-company transactions and per-entity books are supported." },
-      { q: "Does it cover manufacturing?", a: "Yes — bills of material, work orders and production planning connect the shop floor to inventory and costing." },
+      { q: "Is Indian GST built in?", a: "Yes — GST-compliant invoicing and GSTR-1, GSTR-3B and HSN summary preparation are part of the system, not a bolt-on." },
+      { q: "Can it run more than one plant or godown?", a: "Yes. Each plant and godown is its own place, with its own stock and staff, in one firm's books." },
+      { q: "Does it cover manufacturing?", a: "Purchase, stores, people and the books run from day one. Your recipes, production orders and batch costing are set up for your plant during onboarding: we walk your floor and build your industry's own steps with you, as we did for rice mills." },
     ],
     cta: { title: "See the ERP mapped to your books", body: "Bring a chart of accounts and a month of transactions — we’ll walk them through the system with you.", primary: "Book a walkthrough" },
     seo: {
       metaTitle: "ERP System — Finance, Supply Chain & Operations | Svasamm",
-      metaDescription: "A unified ERP for finance, inventory, procurement, manufacturing and sales, with Indian GST and statutory returns built in.",
+      metaDescription: "Svasamm One's ERP: finance, purchase and stores, people and sales on one system, with Indian GST and statutory returns built in.",
       canonical: "https://svasamm.com/pages/erp.html",
       ogType: "website",
       ogTitle: "ERP System | Svasamm",
       ogDescription: "One connected system for finance, warehouse and shop floor, with GST built in.",
     },
     jsonLd: [
-      { "@context": "https://schema.org", "@type": "Service", name: "ERP System", serviceType: "Enterprise Resource Planning Software", description: "A unified ERP for finance, inventory, procurement, manufacturing and sales with Indian GST and statutory returns.", provider: { "@type": "Organization", name: "Svasamm", url: "https://svasamm.com" }, areaServed: "IN" },
+      { "@context": "https://schema.org", "@type": "Service", name: "ERP System", serviceType: "Enterprise Resource Planning Software", description: "An ERP for finance, purchase and stores, people and sales, with Indian GST and statutory returns.", provider: { "@type": "Organization", name: "Svasamm", url: "https://svasamm.com" }, areaServed: "IN" },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://svasamm.com/pages/services.html" }, { "@type": "ListItem", position: 3, name: "ERP System", item: "https://svasamm.com/pages/erp.html" }] },
     ],
   },
@@ -237,7 +247,7 @@ export const PRODUCTS: Product[] = [
         { heading: "HR guide", icon: "ph-file-text", links: [{ title: "Payroll & statutory compliance in India", href: "Guide-PayrollCompliance.dc.html" }] },
         {
           heading: "By industry", icon: "ph-buildings", links: [
-            { title: "HR & payroll for manufacturing", href: "HRMS-Manufacturing.dc.html" },
+            { title: "Payroll & attendance for factories", href: "HRMS-Manufacturing.dc.html" },
             { title: "HR & payroll for multi-location retail", href: "HRMS-Retail.dc.html" },
             { title: "HR & payroll for hospitals & clinics", href: "HRMS-Healthcare.dc.html" },
           ],
@@ -245,6 +255,7 @@ export const PRODUCTS: Product[] = [
       ],
     },
     faqs: [
+      { q: "What is HRMS software, and what does Svasamm People cover?", a: "HRMS (human resource management system) software keeps everything about the people who work for you in one place. Svasamm People covers the staff register and pay history, attendance from a punch machine or a phone, shifts and overtime, leave, payroll with PF, ESI, professional tax and TDS, Form 16 and 24Q, statutory bonus, gratuity, and the full and final settlement when somebody leaves." },
       { q: "Does payroll handle Indian statutory compliance?", a: "Yes. PF, ESI, professional tax (with each state\u2019s due dates) and TDS are computed in the payroll run, with Form 16 and 24Q, statutory bonus and gratuity." },
       { q: "Can staff use it on their phone?", a: "Yes. On the Svasamm One app staff punch in from inside the office, ask for leave and see their payslips." },
       { q: "Does attendance connect to payroll?", a: "Yes. The days a person was present, on leave or absent, and their overtime, make the month that payroll pays." },
@@ -252,11 +263,11 @@ export const PRODUCTS: Product[] = [
     ],
     cta: { title: "Free payroll check for one month", body: "Send one month’s salary sheet — we’ll run it through Svasamm People and show you the PF, ESI, professional tax and TDS it works out, line by line. Free, no obligation.", primary: "Ask for the free check" },
     seo: {
-      metaTitle: "Svasamm People — HR, Payroll & Attendance (HRMS)",
-      metaDescription: "Svasamm People is HR and payroll software (HRMS) for Indian firms: shifts and phone attendance, leave, and payroll with PF, ESI, PT, TDS, Form 16 and 24Q.",
+      metaTitle: "HRMS Software in India: HR, Payroll & Attendance | Svasamm People",
+      metaDescription: "Svasamm People is HRMS software for Indian firms: staff register, shifts and attendance from a machine or phone, leave, and payroll with PF, ESI, PT, TDS, Form 16 and 24Q.",
       canonical: "https://svasamm.com/pages/hrms.html",
       ogType: "website",
-      ogTitle: "Svasamm People — HR & payroll | Svasamm",
+      ogTitle: "Svasamm People: HRMS software for Indian firms",
       ogDescription: "Staff, attendance, leave and payroll with Indian statutory deductions — on the web and on the Svasamm One app.",
     },
     jsonLd: [

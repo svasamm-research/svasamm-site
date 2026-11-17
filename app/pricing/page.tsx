@@ -4,11 +4,11 @@ import LegalPage from "@/components/LegalPage";
 import { BUSINESS, PRODUCTS } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Pricing | Svasamm" },
+  title: { absolute: "Svasamm Pricing: T4Suite from ₹99 a User, Others on Request" },
   description: "Subscription prices for software sold by Svasamm Research Pvt Ltd. T4Suite from ₹99 per user a month, plus GST; other products priced on request.",
   alternates: { canonical: "/pricing" },
   robots: { index: true, follow: true },
-  openGraph: { type: "website", title: "Pricing | Svasamm", url: "/pricing", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Svasamm — vertical ERPs & business platforms" }] },
+  openGraph: { type: "website", title: "Svasamm Pricing: T4Suite from ₹99 a User, Others on Request", url: "/pricing", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Svasamm — vertical ERPs & business platforms" }] },
 };
 
 // T4Suite's figures come from docs/console/pricing.md in the platform repo (Mithun, 31 Oct 2026) and
