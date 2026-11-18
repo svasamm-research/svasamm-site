@@ -4,6 +4,7 @@
 
 import type { Faq, Product } from "./types";
 import { DIGITAL_PRODUCT } from "./digital";
+import { PRODUCT_GUIDES } from "./product-guides";
 import { DIGITAL_SCHOOLS_PRODUCT } from "./digital-schools";
 
 // FAQPage from the product's visible on-page FAQs — matches the accordion content Google
@@ -382,6 +383,15 @@ export const PRODUCTS: Product[] = [
   DIGITAL_PRODUCT,
   DIGITAL_SCHOOLS_PRODUCT,
 ];
+
+// The long-form guides (lib/product-guides.ts), and the date each page last changed by itself.
+for (const p of PRODUCTS) {
+  const g = PRODUCT_GUIDES[p.id];
+  if (g) {
+    p.guide = { title: g.title, sections: g.sections };
+    p.changed = g.changed;
+  }
+}
 
 // Append a FAQPage (built from each product's visible FAQs) to every product's JSON-LD.
 for (const p of PRODUCTS) p.jsonLd = [...p.jsonLd, faqPageLd(p.faqs)];

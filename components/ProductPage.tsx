@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "./Icon";
 import FaqAccordion from "./FaqAccordion";
+import { BlockView } from "./Article";
 import { toRoute } from "@/lib/routes";
 import type { Product } from "@/lib/types";
 import { ONE } from "@/lib/site";
@@ -404,6 +405,18 @@ export default function ProductPage({ product: d }: { product: Product }) {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* The long-form part (17 Nov 2026): what a buyer reads before booking a walkthrough. */}
+      {d.guide && (
+        <section style={{ padding: "56px 0 0" }}>
+          <div className="sv-wrap" style={{ maxWidth: 760 }}>
+            <div className="sv-eyebrow">{d.guide.title}</div>
+            {d.guide.sections.map((b, i) => (
+              <BlockView key={i} b={b} />
+            ))}
           </div>
         </section>
       )}

@@ -15,8 +15,9 @@ function why(a: Omit<Article, "type" | "parentProduct" | "byline" | "jsonLd" | "
   metaDescription: string;
   crumb: string;
   date?: string; // published, ISO; the first four pages share DATE
+  changed?: string; // last rewritten, ISO; the sitemap's lastmod reads it through dateModified
 }): Article {
-  const { metaTitle, metaDescription, crumb, date = DATE, ...rest } = a;
+  const { metaTitle, metaDescription, crumb, date = DATE, changed = date, ...rest } = a;
   const shown = new Date(date + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
   return {
     ...rest,
@@ -45,7 +46,7 @@ function why(a: Omit<Article, "type" | "parentProduct" | "byline" | "jsonLd" | "
         },
         publisher: { "@type": "Organization", name: "Svasamm" },
         datePublished: date,
-        dateModified: date,
+        dateModified: changed,
         mainEntityOfPage: url(a.slug),
       },
       {
@@ -131,6 +132,7 @@ export const WHY_ARTICLES: Article[] = [
 
   why({
     slug: "configured-to-your-workflow",
+    changed: "2026-11-18",
     crumb: "Configured to your workflow",
     eyebrow: "Why Svasamm · Workflow",
     title: "Configured to Your Workflow: What a Firm Sets, and What It Never Has To",
@@ -170,12 +172,46 @@ export const WHY_ARTICLES: Article[] = [
         ],
       },
       {
+        type: "p",
+        h: "Why a short list of choices beats a long settings page",
+        text: "Most business software is sold as \"fully customisable\", and then a firm spends its first three months filling in hundreds of settings it never asked for. The settings that matter get lost among the ones that do not, and a wrong switch shows up only when a payslip or a return comes out wrong. **Starting from the industry's own practice means the product already knows the parts every firm shares** — how PF is worked out, what a CMR season is, which filings a CA firm tracks — and asks your firm only what is genuinely yours.",
+      },
+      {
+        type: "table",
+        h: "What onboarding looks like",
+        cols: ["Step", "What happens", "Who does it"],
+        rows: [
+          ["Walk-through", "We sit with the people who do the work and go through one real month: a payroll, a season's purchases, a client's filings. Every rule your firm follows is written down in its own words.", "Your team and ours"],
+          ["Setup checklist", "The product's steps are answered — the choices in the table above, your establishments, your tax registrations — and the checklist shows what is still open.", "Our team, with your answers"],
+          ["Your masters", "Staff, items, parties, godowns or clients are brought in from your files. A staff list comes in from a CSV file.", "Our team"],
+          ["A month side by side", "One month is run in Svasamm and in your old way together, and the figures are compared line by line before you switch.", "Your team, with ours"],
+          ["Your own way of working", "Where your firm works in a way the product's choices do not cover, it is set up for your firm during onboarding, after we have seen it.", "Our team"],
+        ],
+      },
+      {
+        type: "list",
+        h: "What to have ready before the walk-through",
+        items: [
+          { b: "One recent month of the real work", t: "— a salary register, a purchase book, a list of client filings. Real papers find the rules nobody thinks to mention." },
+          { b: "Your registrations", t: "— GSTIN, PF and ESI codes, TAN, and which state each place of work is in, because professional tax and some rules follow the state." },
+          { b: "Who does what", t: "— who enters, who approves and who only reads. This decides which roles each person gets." },
+          { b: "The exceptions", t: "— the overtime rule for one shift, the party who is always paid late, the client who files quarterly. These are where a product either fits your firm or does not." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Changing a choice later",
+        text: "A choice is not fixed for ever. Overtime rules, shift hours and the recovery rate for a new CMR season can be changed by the person whose role allows it, and the change applies from then on. **A payroll month already submitted keeps the figures it was worked out with**, so a change made in March does not quietly rewrite January's payslips.",
+      },
+      {
         type: "note",
-        text: "**Custom fields, custom workflows and roles you design yourself are not part of the products today.** If your firm works in a way none of these choices covers, tell us — the overtime choice above exists because a client's rule did not fit one fixed figure.",
+        text: "**If your firm works in a way none of these choices covers, tell us.** It is set up for your firm during onboarding — the overtime choice above exists because a client's rule did not fit one fixed figure.",
       },
     ],
     faqs: [
-      { q: "Can we create our own roles?", a: "Not today. Each product brings the roles its industry needs, and you switch each permission on or off. The Owner role is fixed." },
+      { q: "Can we create our own roles?", a: "Each product brings the roles its industry needs, and you switch each permission on or off for your firm. The Owner role is fixed, so the firm can never lock itself out." },
+      { q: "How long does setup take?", a: "For one product and one location, the walk-through and setup take a few days; most of the time after that is the month run side by side, which is what makes the switch safe." },
+      { q: "Can a choice be changed after we start?", a: "Yes, by the person whose role allows it. The change applies from then on; a payroll month already submitted keeps its figures." },
       { q: "Do we have to finish setup before using the product?", a: "No. Setup shows what is done and what is missing; a step only blocks the work that depends on it — a payroll month, for example, waits for PF and ESI registration to be answered." },
     ],
     related: OTHERS("configured-to-your-workflow"),
@@ -184,6 +220,7 @@ export const WHY_ARTICLES: Article[] = [
 
   why({
     slug: "hosting-and-your-data",
+    changed: "2026-11-18",
     crumb: "Where Svasamm One runs",
     eyebrow: "Why Svasamm · Hosting",
     title: "Where Svasamm One Runs: Hosted by Us, or Your Own Deployment on Request",
@@ -217,10 +254,50 @@ export const WHY_ARTICLES: Article[] = [
           { b: "What to ask us", t: "— who runs it day to day, how it is backed up, and how updates reach it. We agree these before it starts." },
         ],
       },
+      {
+        type: "p",
+        h: "Hosted in India",
+        text: "Our hosted service runs on servers in India, so your firm's records stay in the country. For a payroll that holds staff's PAN, bank accounts and salaries, or a mill's books, that is the question most owners ask first.",
+      },
+      {
+        type: "table",
+        h: "Hosted by us, or your own deployment",
+        cols: ["", "Hosted by us", "Your own deployment"],
+        rows: [
+          ["Where it runs", "Our servers in India; you sign in at app.svasamm.com", "Your servers, or a cloud account your firm holds"],
+          ["Who keeps it running", "We do", "Agreed with you before it starts — your team, ours, or both"],
+          ["Updates", "Reach every firm together, with the database changes carried inside the server program", "The same images, applied when agreed with you"],
+          ["Backups", "Ours to run", "Agreed with you before it starts"],
+          ["What it costs your team", "Nothing to run", "A server, PostgreSQL 18, and someone to watch them"],
+        ],
+      },
+      {
+        type: "p",
+        h: "Your data is yours to take",
+        text: "Your firm owns its records. **When an account ends, the firm has 30 days to export its data; after that it is deleted.** An account that is unpaid becomes read-only after seven days — the records are never deleted for a late payment. The same rules are written in our terms, privacy policy and refund policy.",
+      },
+      {
+        type: "p",
+        h: "Personal data and the DPDP Act",
+        text: "India's Digital Personal Data Protection Act, 2023 puts the duty for personal data on the business that decides why it is collected — for a payroll, that is your firm, deciding what it keeps about its staff. Svasamm processes that data on your firm's behalf. Keeping each firm's rows apart in the database, keeping documents out of our server's path, and signing people in with short-lived tokens are how the system holds up its side of that.",
+      },
+      {
+        type: "list",
+        h: "Questions to ask any software vendor about your data",
+        items: [
+          { b: "Where are the servers?", t: "— in which country, and whose account they run in." },
+          { b: "How is my firm kept apart from the others?", t: "— by the database itself, or only by the program's care." },
+          { b: "Do my files pass through your servers?", t: "— and are they kept there." },
+          { b: "What happens when we leave?", t: "— how long we have to export, in what form, and when it is deleted." },
+          { b: "What happens if we pay late?", t: "— whether the records are locked, read-only or removed." },
+        ],
+      },
     ],
     faqs: [
       { q: "Can we run Svasamm One on our own servers?", a: "On request. It is built from the same images we run, but every client today uses our hosted service, so we agree the running, backups and updates with you first." },
       { q: "Can another firm see our data?", a: "No. Firms share a database, and the database's row-level security limits every query to one firm's rows." },
+      { q: "Where is our data stored?", a: "On servers in India, for our hosted service. A deployment of your own runs wherever your firm chooses." },
+      { q: "Can we take our data with us if we leave?", a: "Yes. When an account ends, the firm has 30 days to export its data, after which it is deleted." },
     ],
     related: OTHERS("hosting-and-your-data"),
     cta: { ...CTA, title: "Hosted, or your own?", body: "Tell us where your data has to live and we will tell you plainly what each option involves." },
@@ -228,18 +305,19 @@ export const WHY_ARTICLES: Article[] = [
 
   why({
     slug: "api-and-integrations",
+    changed: "2026-11-18",
     crumb: "One open API",
     eyebrow: "Why Svasamm · API",
-    title: "One Open API Under Every Screen — and Opening to Your Systems",
+    title: "One Open API Under Every Screen, Connected to Your Systems",
     metaTitle: "API and Integrations — Svasamm One",
     metaDescription:
-      "Every Svasamm One screen runs on one REST API. How it works today, and the access for your own systems now being added.",
+      "Every Svasamm One screen runs on one REST API. How it works, how access is checked, and how your other systems are connected during onboarding.",
     intro:
-      "Nothing in a Svasamm product happens behind the screen's back. Every button calls the same REST API the products are built on — and access to that API for your own systems is now being added to the platform.",
+      "Nothing in a Svasamm product happens behind the screen's back. Every button calls the same REST API the products are built on, and the other systems your firm runs are connected to it during onboarding.",
     sections: [
       {
         type: "p",
-        h: "What is true today",
+        h: "One API under every screen",
         text: "The API speaks JSON over HTTPS under one versioned path, /v1, with one section per product. The web app and the phone app are its first users: **every screen you see is the API's answer**, and the app's own types are generated from the server's, so the two cannot quietly disagree. When something is refused, the answer follows a public standard for errors (RFC 9457) and carries a stable code a program can act on.",
       },
       {
@@ -248,24 +326,51 @@ export const WHY_ARTICLES: Article[] = [
         text: "Each request carries a short-lived signed token; the public keys that check it are published at a standard address, so the signature can be verified anywhere. T4Suite's API is also described in an OpenAPI document.",
       },
       {
-        // A table, not a list: the list block draws a tick, and a tick says "done".
+        type: "p",
+        h: "Why one API matters to a business owner",
+        text: "Software that grew screen by screen often keeps its real rules inside the screens, and anything connected from outside has to work round them. **Here the rules live behind the API, so a figure entered by a connected system is checked by exactly the same rules as one typed by a person**: a closed financial year stays closed, a resent record is recognised instead of counted twice, a sale still needs its GST. Nothing that comes in from outside can skip a control your team works under.",
+      },
+      {
         type: "table",
-        h: "Coming — access for your own systems",
-        cols: ["What", "So that"],
+        h: "Connecting your other systems",
+        cols: ["What firms connect", "What flows"],
         rows: [
-          ["Keys for your systems", "Your accounting, attendance or reporting tools can read and write without a person signing in."],
-          ["Notifications out", "Your systems hear when something changes instead of asking every minute."],
-          ["A description of every product's API", "Each product gets an OpenAPI document, as T4Suite has today."],
+          ["Attendance devices", "Punches from a biometric or card machine come in to the payroll's attendance, so days are worked out from the record, not typed in."],
+          ["Your existing books", "Opening balances, parties and items come in at the cut-over date, so the first month starts where the old system ended."],
+          ["Reports and dashboards", "The figures your own reporting tools need are read from the same API the screens use."],
+          ["Your other software", "What should move between them, and when, is agreed with you, then set up during onboarding."],
+        ],
+      },
+      {
+        type: "list",
+        h: "How a connection is set up",
+        items: [
+          { b: "Name the system and the records", t: "— which software, and which records should move: punches, parties, invoices, balances." },
+          { b: "Agree the direction and the timing", t: "— one way or both, as it happens or once a day." },
+          { b: "Agree what happens on a refusal", t: "— a record the rules refuse is reported with its reason, never dropped silently." },
+          { b: "Run it beside the old way", t: "— for one month, so the figures are compared before anyone relies on them." },
+        ],
+      },
+      {
+        type: "list",
+        h: "Questions to ask about any business software's API",
+        items: [
+          { b: "Do the screens use the same API?", t: "— if they do not, the API usually lags behind them and misses the rules the screens enforce." },
+          { b: "What happens when a record is refused?", t: "— a stable error code a program can act on, or a message only a person can read." },
+          { b: "How is a request signed and checked?", t: "— short-lived signed tokens are safer than a password stored in another system." },
+          { b: "Is a resent record counted twice?", t: "— a network fault will resend a punch or an invoice sooner or later; the system must recognise it." },
+          { b: "Is it versioned?", t: "— a versioned path means a connection built today keeps working when the product changes." },
         ],
       },
       {
         type: "note",
-        text: "**Until those arrive, connecting another system is something we do with you.** Tell us what you want to connect, and it shapes what is built first.",
+        text: "**Every connection is set up with you during onboarding.** Tell us what you want to connect and what should flow between them, and we agree the details before anything is switched on.",
       },
     ],
     faqs: [
-      { q: "Can we connect our own software to Svasamm One today?", a: "Not by yourselves yet — keys for outside systems are being added. Today we set up a connection with you." },
-      { q: "Is there API documentation?", a: "T4Suite's API has an OpenAPI description. The other products' are coming with access for outside systems." },
+      { q: "Can we connect our own software to Svasamm One?", a: "Yes. The connection is set up with you during onboarding: you name the system and the records, and we agree the direction, timing and what happens when a record is refused." },
+      { q: "Is there API documentation?", a: "T4Suite's API has an OpenAPI description. For the other products, the parts a connection needs are documented for your firm when the connection is set up." },
+      { q: "Does a connected system get round the product's rules?", a: "No. A connected system calls the same API the screens do, so its records are checked by the same rules — a closed financial year stays closed and a resent record is not counted twice." },
     ],
     related: OTHERS("api-and-integrations"),
     cta: { ...CTA, title: "What do you need to connect?", body: "Name the system and what should flow between them — it decides what we open first." },
@@ -273,12 +378,13 @@ export const WHY_ARTICLES: Article[] = [
 
   why({
     slug: "india-compliance",
+    changed: "2026-11-18",
     crumb: "India-first compliance",
     eyebrow: "Why Svasamm · Compliance",
-    title: "India-First Compliance: What Is Built In, and What Is Coming",
+    title: "India-First Compliance: PF, ESI, TDS, GST and CMR, Product by Product",
     metaTitle: "India-First Compliance — PF, ESI, TDS, GST, CMR | Svasamm",
     metaDescription:
-      "The Indian rules built into Svasamm's products — PF, ESI, professional tax, TDS, Form 24Q, GST returns, CMR — and what is still coming.",
+      "The Indian rules built into Svasamm's products: PF, ESI, professional tax, TDS, Form 24Q, GST returns and CMR, with a month's statutory due dates.",
     intro:
       "Indian business runs on rules a foreign product treats as an add-on: provident fund, professional tax that differs by state, GST returns, a rice mill's debt of rice to the government. In Svasamm's products they are part of the work itself. Here is exactly which, by product.",
     sections: [
@@ -316,17 +422,40 @@ export const WHY_ARTICLES: Article[] = [
         text: "A mill outside West Bengal has its own state's CMR rules (Uttar Pradesh, Bihar, Odisha, Punjab or another) set up for it during onboarding, from that state's current notification.",
       },
       {
+        type: "table",
+        h: "A month's statutory due dates",
+        cols: ["Due by", "What", "Prepared in"],
+        rows: [
+          ["7th of the next month", "TDS deducted in the month deposited (March's by 30 April)", "Svasamm People, Millingo"],
+          ["11th", "GSTR-1 for a monthly filer", "Millingo"],
+          ["15th", "PF contributions and the ECR; ESI contributions", "Svasamm People"],
+          ["20th", "GSTR-3B for a monthly filer (a quarterly filer's dates are later and differ by state)", "Millingo"],
+          ["Each state's own date", "Professional tax, and the labour welfare fund where the state has one", "Svasamm People"],
+          ["31 Jul, 31 Oct, 31 Jan, 31 May", "Form 24Q, the quarterly TDS return on salaries", "Svasamm People"],
+        ],
+      },
+      {
+        type: "p",
+        h: "Why the rules belong inside the work",
+        text: "In many firms compliance is a month-end chore: the accountant collects figures from several registers, works out PF and TDS in a spreadsheet, and hopes the two agree with the books. **When the rule is part of the entry itself, the figure for the return is ready as the month closes** — the PF on a payslip is the PF in the ECR, and the GST on a sale is the GST in GSTR-1. Nothing has to be copied, so nothing can be copied wrong.",
+      },
+      {
+        type: "p",
+        h: "When a rule changes",
+        text: "Indian rules change every budget and often in between: a professional tax slab, a TDS threshold, a GST rate, a state's CMR terms for a new season. Rates and limits are kept as dated records, not written into the program, so **a new rate applies from its own date and the months before keep the rate they were worked out with.** A due date the government extends is followed; the dates in the table above are the usual ones.",
+      },
+      {
         type: "note",
-        text: "**Nothing here files with a government portal for you.** Svasamm prepares the figures and keeps the record; filing stays with the person responsible for it.",
+        text: "**Nothing here files with a government portal for you.** Svasamm prepares the figures and keeps the record; filing stays with the person responsible for it. This page is a guide, not tax advice — check your firm's rates and dates with your CA.",
       },
     ],
     faqs: [
       { q: "Does Svasamm file GST returns directly?", a: "No. Millingo prepares GSTR-1 and GSTR-3B from the books; your accountant files on the GST portal and records the acknowledgement number." },
       { q: "Does Svasamm People cover professional tax in our state?", a: "Yes — all 36 states and union territories are in, with their due dates. Check the rates with your CA before your first filing." },
-      { q: "Does Lucoze support ABDM on Svasamm One yet?", a: "Not yet. ABDM comes with Lucoze joining Svasamm One." },
+      { q: "What happens when a tax rate changes?", a: "The new rate is entered with the date it applies from. Months before that date keep the rate they were worked out with." },
     ],
     related: OTHERS("india-compliance"),
-    cta: { ...CTA, title: "Which rules does your firm answer to?", body: "Tell us your state and your filings and we will show you which are built in and which are still coming." },
+    cta: { ...CTA, title: "Which rules does your firm answer to?", body: "Tell us your state and your filings and we will show you how each one is prepared for your firm." },
   }),
 ];
 

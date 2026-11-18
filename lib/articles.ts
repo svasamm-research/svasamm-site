@@ -1767,10 +1767,6 @@ export const ARTICLES: Article[] = [
             t: "handled correctly at the gate.",
           },
           {
-            b: "Hindi-friendly screens",
-            t: "so mill staff work in their own language.",
-          },
-          {
             b: "GST billing",
             t: "for the open-market side of the business.",
           },
@@ -2137,8 +2133,8 @@ export const ARTICLES: Article[] = [
             t: "at the gate.",
           },
           {
-            b: "Hindi-friendly screens",
-            t: "and GST billing for open-market sales.",
+            b: "GST billing",
+            t: "for open-market sales.",
           },
         ],
       },
