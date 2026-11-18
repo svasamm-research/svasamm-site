@@ -13,6 +13,8 @@ import GuideBar from "./GuideBar";
 import { PRODUCT_MOMENTS } from "@/lib/product-moments";
 
 const CONTACT = toRoute("Contact.dc.html");
+// Products with no Svasamm One entry that still carry the guide bar, and the name it says.
+const BAR_LABEL: Record<string, string> = { erp: "Svasamm ERP", platform: "Svasamm One" };
 
 // **words** in an article's text render bold, so the point of a paragraph is seen at a glance.
 // Body text only — titles, meta descriptions and the JSON-LD/FAQ markup stay plain.
@@ -424,9 +426,17 @@ export default function ArticleView({ article: a }: { article: Article }) {
           )}
         </div>
       </section>
-      {/* The guide bar (components/GuideBar.tsx): a guide about a Svasamm One product, and the food
-          owner guides (lib/food-articles.ts), which lead to the food hub rather than one product. */}
-      {(one || FOOD_GUIDE_SLUGS.has(a.slug)) && <GuideBar product={a.parentProduct} label={a.cta.productLabel.replace(/^Explore /, "")} contact={CONTACT} />}
+      {/* The guide bar (components/GuideBar.tsx): a guide about a Svasamm One product, the food
+          owner guides (lib/food-articles.ts), and since 18 Nov 2026 (Mithun: "no banner at the
+          bottom") the ERP guides, the food ERP hub and the Why Svasamm pages. CRM, DMS, Service
+          Desk and Svasamm Digital stay without it (left alone, 17 Nov). */}
+      {(one || FOOD_GUIDE_SLUGS.has(a.slug) || a.parentProduct in BAR_LABEL) && (
+        <GuideBar
+          product={a.parentProduct}
+          label={BAR_LABEL[a.parentProduct] ?? a.cta.productLabel.replace(/^Explore /, "")}
+          contact={CONTACT}
+        />
+      )}
     </div>
   );
 }
