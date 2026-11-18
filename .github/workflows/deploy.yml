@@ -54,9 +54,40 @@ jobs:
       - run: yarn typecheck
       - run: npx playwright test
 
+  # Security (18 Nov 2026, Mithun: the same checks as lucoze.com, for cyber-security). Trivy reads
+  # the lockfile for known vulnerabilities and the tree for committed secrets; any HIGH or CRITICAL
+  # fails the PR and stops a release. An accepted finding goes in .trivyignore WITH a reason and an
+  # exp: date, never as a blanket switch. The action is pinned to a commit: a moved tag cannot run.
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Trivy vulnerability and secret scan
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: "fs"
+          scan-ref: "."
+          scanners: "vuln,secret"
+          severity: "CRITICAL,HIGH"
+          exit-code: "1"
+
+  # ESLint (Next 16's core-web-vitals and TypeScript rules, eslint.config.mjs) and the type check.
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 20
+      - run: corepack enable && yarn install --frozen-lockfile
+      - run: yarn lint
+      - run: yarn typecheck
+
   build:
     name: Build & push image
-    needs: test
+    needs: [test, security, lint]
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     outputs:
@@ -103,6 +134,19 @@ jobs:
 
       - name: Check nginx on the release image
         run: IMAGE=svasamm-website:check bash scripts/check-nginx.sh
+
+      # The image that ships, scanned before it is pushed (18 Nov 2026): the fs scan reads only the
+      # lockfile, while nginx:alpine brings its own OS packages. ignore-unfixed: an OS package with no
+      # released fix cannot be acted on; the Dockerfile's apk upgrade takes every fix there is.
+      - name: Trivy scan of the release image
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: "image"
+          image-ref: "svasamm-website:check"
+          scanners: "vuln,secret"
+          severity: "CRITICAL,HIGH"
+          ignore-unfixed: true
+          exit-code: "1"
 
       - name: Build and push image
         uses: docker/build-push-action@v5
