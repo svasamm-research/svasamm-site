@@ -2,7 +2,7 @@
 // shared site.spec.ts (same file in all three site repos) does not know about. Runs against
 // the BUILT site like the rest of the suite.
 import { test, expect, type Page } from "@playwright/test";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { TEAM } from "../../lib/team";
 import { PRODUCT_MOMENTS } from "../../lib/product-moments";
 import { FOOD_GUIDE_SLUGS } from "../../lib/food-articles";
@@ -351,7 +351,6 @@ test("the home hero carries no company chip", async ({ page }) => {
 // "&amp;" written into the source showed as a literal "&amp;" in titles and meta descriptions:
 // React escapes "&" itself (found 10 Nov 2026 on seven DMS pages, live on main). Write "&".
 test("no page carries a double-escaped ampersand", () => {
-  const { readdirSync } = require("node:fs") as typeof import("node:fs");
   const walk = (d: string): string[] => readdirSync(d, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".html") ? [`${d}/${e.name}`] : []);
   const bad = walk("out").filter((f) => readFileSync(f, "utf8").includes("&amp;amp;"));
