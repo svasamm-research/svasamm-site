@@ -8,6 +8,7 @@ export default defineConfig([
   ...nextVitals,
   ...nextTs,
   {
+    files: ["**/*.{js,jsx,ts,tsx}"],
     rules: {
       // A static export renders once at build time, so a value only the browser knows (the user
       // agent for a WhatsApp link, localStorage for a closed bar, the host for analytics) MUST be

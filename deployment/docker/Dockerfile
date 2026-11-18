@@ -21,8 +21,9 @@ RUN yarn build
 # Production stage
 FROM nginx:alpine AS production
 
-# Install additional tools for health checks
-RUN apk add --no-cache curl
+# Patched OS packages (18 Nov 2026): the base image lags Alpine's security fixes, and Trivy found
+# 34 HIGH/CRITICAL in it (brotli, curl, openssl, expat). Upgrade at build, then add curl for health checks.
+RUN apk upgrade --no-cache && apk add --no-cache curl
 
 # Copy custom nginx configuration
 COPY ./deployment/nginx/nginx.conf /etc/nginx/nginx.conf
