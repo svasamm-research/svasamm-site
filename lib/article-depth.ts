@@ -434,4 +434,572 @@ export const ARTICLE_DEPTH: Record<string, Depth> = {
       },
     ],
   },
+  // DMS industry pages (19 Nov 2026): claims from svasamm-platform docs/channel/the-requirement-catalogue.md;
+  // service tickets, AMC, schemes, claims and RMA are "set up during onboarding".
+  "dms-coding-marking-oem": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: one CIJ printer and its ink",
+        text: "A coding and marking OEM sells a continuous inkjet printer through its distributor in Ludhiana. The distributor bills a biscuit factory in Jalandhar from its own GSTIN, and its engineer installs the printer on the packing line. The Application and Warranty Sheet records the serial, the line speed, the substrate it codes on and the ink and make-up fluid that fit that model. From then on, every litre of ink the distributor sells to that factory is a sale against a known machine. The OEM can see which installed printers are buying genuine consumables and which have gone quiet — the first sign of a competitor's ink or a printer that is no longer running."
+      },
+      {
+        type: "table",
+        h: "What the Application and Warranty Sheet holds for a coding printer",
+        cols: [
+          "Field",
+          "What it records",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Model and serial",
+            "The printer, as dispatched and received",
+            "Follows the machine through every move"
+          ],
+          [
+            "Application",
+            "Product, substrate and line speed",
+            "Tells the next engineer how it was set up"
+          ],
+          [
+            "Consumables",
+            "Ink, make-up fluid and cleaning solution that fit the model",
+            "Only approved consumables are offered on the next order"
+          ],
+          [
+            "Engineer",
+            "Who installed it, from which distributor",
+            "Service history starts with a name"
+          ],
+          [
+            "Warranty",
+            "Start date from installation, and the terms",
+            "Known on arrival when the line goes down"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "The reports a coding & marking OEM reads every week",
+        items: [
+          {
+            b: "Consumable pull by installed printer —",
+            t: "ink and fluid sold per machine, so a printer buying nothing stands out."
+          },
+          {
+            b: "Printers held by distributors —",
+            t: "with the days each has sat; amber at 45 days and red at 60 by default."
+          },
+          {
+            b: "Installations this month —",
+            t: "by distributor and region, with sheets still to be completed."
+          },
+          {
+            b: "Commission —",
+            t: "worked out from the distributor's invoices, printers and consumables on their own slabs."
+          }
+        ]
+      },
+      {
+        type: "p",
+        h: "Rolling it out across a coding & marking channel",
+        text: "Start with the distributors that sell the most printers. Bring their customers, pincodes and the printers they hold today, by serial, from Excel. Approve the consumables that fit each model, so a distributor cannot offer the wrong ink on an order. Then bring the installed printers you already know about, so the installed base is useful from the first week. Line-down service requests and visits are set up during onboarding, on the same printer and warranty records."
+      }
+    ],
+    faqs: [
+      {
+        q: "Can a distributor propose a new consumable for a printer model?",
+        a: "Yes. A distributor can propose a consumable for a model; head office approves it before it can be sold against that model."
+      },
+      {
+        q: "Can we see which customers stopped buying our ink?",
+        a: "Yes. Because consumables are sold against installed printers, a printer with no consumable sales for a period shows up in the consumable pull report."
+      }
+    ]
+  },
+  "dms-packaging-machinery-oem": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a cartoner commissioned by a distributor",
+        text: "A packaging machinery OEM ships a cartoning machine to its distributor in Pune. The distributor sells it to a pharmaceutical plant in Baddi, bills it from its own GSTIN, and its engineer commissions it on site with the plant's format parts. The Application and Warranty Sheet records the serial, the carton sizes it was set up for, the change parts supplied and the warranty start. When the plant later orders a new format part, the distributor raises it against that machine, and the OEM sees which machines are growing their use and which have stood still since installation."
+      },
+      {
+        type: "table",
+        h: "What the Application and Warranty Sheet holds for a packaging machine",
+        cols: [
+          "Field",
+          "What it records",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Model and serial",
+            "The machine, as dispatched and received",
+            "Follows the machine through every move"
+          ],
+          [
+            "Application",
+            "Product, pack sizes and speed it was commissioned for",
+            "The next change part is ordered against a known setup"
+          ],
+          [
+            "Change parts and spares",
+            "What shipped with it and what was added later",
+            "Spares stock at the distributor matches the machines it serves"
+          ],
+          [
+            "Engineer",
+            "Who commissioned it",
+            "Service history starts with a name"
+          ],
+          [
+            "Warranty",
+            "Start date from commissioning, and the terms",
+            "Known on arrival at a breakdown"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "The reports a packaging machinery OEM reads every week",
+        items: [
+          {
+            b: "Installed base by customer and region —",
+            t: "every machine, since when, and the warranty left."
+          },
+          {
+            b: "Machines held by distributors —",
+            t: "with days held; a machine sitting 60 days is capital tied up in the channel."
+          },
+          {
+            b: "Commissioning still open —",
+            t: "machines delivered whose sheet is not complete."
+          },
+          {
+            b: "Spares and change parts sold per machine —",
+            t: "which installations keep buying and which have gone quiet."
+          }
+        ]
+      },
+      {
+        type: "p",
+        h: "Rolling it out across a packaging machinery channel",
+        text: "Packaging machinery channels are small and high-value, so start with all distributors at once. Bring the machines each holds and the installed base you already know, by serial. Set warranty terms per model, and the days at which held stock turns amber and red. AMC contracts and their renewals are set up during onboarding to your service policy, on the same machine records."
+      }
+    ],
+    faqs: [
+      {
+        q: "Can a distributor hold several models with different warranty terms?",
+        a: "Yes. Warranty terms are set per model, and each installation starts its own warranty from the commissioning date."
+      },
+      {
+        q: "Do we see a machine resold by the distributor to another customer?",
+        a: "Yes. The serial follows every move, so a machine moved from one customer site to another keeps its history."
+      }
+    ]
+  },
+  "dms-electrical-electronics-oem": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a drive sold through two tiers",
+        text: "An electrical equipment OEM sells variable-frequency drives through a distributor in Ahmedabad. The distributor sells a batch to a panel builder and bills from its own GSTIN in Gujarat; the panel builder fits one drive into a machine that ends up at a textile mill. The serial of each drive is recorded on dispatch and on the distributor's sale, so a drive returned from the field a year later can be traced to the distributor, the invoice and the date — and the warranty is known without anyone searching email."
+      },
+      {
+        type: "table",
+        h: "What the warranty record holds for an electrical product",
+        cols: [
+          "Field",
+          "What it records",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Model and serial",
+            "Each unit, from dispatch to the distributor's sale",
+            "A return is traced to its invoice in seconds"
+          ],
+          [
+            "Customer",
+            "The party the distributor billed",
+            "Warranty is registered at the right name"
+          ],
+          [
+            "Installation",
+            "Where and when it was put to work, when an engineer installs it",
+            "Warranty starts from installation, not from dispatch"
+          ],
+          [
+            "Warranty",
+            "Terms per model and the date it ends",
+            "A return inside warranty is known on arrival"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "The reports an electrical & electronics OEM reads every week",
+        items: [
+          {
+            b: "Secondary sales by distributor —",
+            t: "what each partner sold on, the day it was billed, not at month end."
+          },
+          {
+            b: "Serial tracker —",
+            t: "where any unit is and who has held it."
+          },
+          {
+            b: "Stock and days held —",
+            t: "per distributor and godown, with ageing on slow lines."
+          },
+          {
+            b: "Off-territory sales —",
+            t: "sales to pincodes outside a distributor's area, flagged for review."
+          }
+        ]
+      },
+      {
+        type: "p",
+        h: "Rolling it out across an electrical & electronics channel",
+        text: "Electrical channels carry many models, so begin by bringing items and price lists for each channel, then the distributors and their pincodes. Bring opening stock by serial for the high-value lines. Returns, repairs and the RMA process are set up during onboarding, on the same serial and warranty records, so a returned unit arrives already known."
+      }
+    ],
+    faqs: [
+      {
+        q: "Can the price to the distributor and the distributor's price to its customer differ?",
+        a: "Yes. Price lists are kept per channel and per distributor: your price to the distributor and the distributor's price to its customer."
+      },
+      {
+        q: "Can our distributors import their customers in bulk?",
+        a: "Yes. Customers, territories and pincodes come in from Excel, and a bad row is refused with its reason."
+      }
+    ]
+  },
+  "dms-pharma-medical-device-oem": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: an analyser installed by a distributor",
+        text: "A diagnostic equipment OEM sells a biochemistry analyser through its distributor in Kolkata. The distributor bills a diagnostic lab in Siliguri from its own GSTIN, and its engineer installs and qualifies the analyser on site. The Application and Warranty Sheet records the serial, the tests the lab runs, the reagent kits that fit the model and the warranty start. Every reagent order the lab places afterwards is a sale against a known instrument, so the OEM sees which installations are running and which have stopped ordering."
+      },
+      {
+        type: "table",
+        h: "What the Application and Warranty Sheet holds for an instrument",
+        cols: [
+          "Field",
+          "What it records",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Model and serial",
+            "The instrument, as dispatched and received",
+            "Serial-level traceability from factory to lab"
+          ],
+          [
+            "Application",
+            "The tests and sample volume it was installed for",
+            "Reagent supply is planned per instrument"
+          ],
+          [
+            "Consumables",
+            "Reagent kits and consumables approved for the model",
+            "Only approved consumables are sold against it"
+          ],
+          [
+            "Engineer",
+            "Who installed and qualified it",
+            "A named person for every installation"
+          ],
+          [
+            "Warranty",
+            "Start date from installation, and the terms",
+            "Known on arrival at a fault"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "The reports a pharma & medical device OEM reads every week",
+        items: [
+          {
+            b: "Installed base by customer —",
+            t: "every instrument, where, since when, warranty left."
+          },
+          {
+            b: "Reagent and consumable sales per instrument —",
+            t: "so an instrument that has gone quiet stands out."
+          },
+          {
+            b: "Installations this month —",
+            t: "by distributor, with sheets still open."
+          },
+          {
+            b: "Instruments held by distributors —",
+            t: "with days held, so demo and stock units do not drift."
+          }
+        ]
+      },
+      {
+        type: "p",
+        h: "Rolling it out across a pharma & medical device channel",
+        text: "Start with the instruments: bring the installed base you know, by serial, and the units each distributor holds. Approve the reagent kits and consumables per model. Then bring customers and pincodes. Calibration and preventive maintenance schedules, and service visits, are set up during onboarding on the same instrument records."
+      }
+    ],
+    faqs: [
+      {
+        q: "Can we keep batch numbers on reagents?",
+        a: "Batch numbers and expiry dates for reagents and consumables are set up in stock during onboarding, to how your products are labelled."
+      },
+      {
+        q: "Does each distributor see only its own labs and hospitals?",
+        a: "Yes. A distributor's people see only their own entity — its customers, orders, stock and books."
+      }
+    ]
+  },
+  "dms-automotive-aftermarket-oem": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a brake part from distributor to garage",
+        text: "An automotive component OEM sells brake assemblies through a distributor in Ludhiana that supplies retailers and garages across Punjab. The distributor raises its own invoices to retailers from its GSTIN, inside the OEM's system. The OEM sees secondary sales by part and by pincode the day they are billed, which retailers are buying, and where a part sold outside the distributor's pincodes. When a part comes back under warranty, its invoice and distributor are known."
+      },
+      {
+        type: "table",
+        h: "What the OEM sees across the tiers",
+        cols: [
+          "Field",
+          "What it records",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Primary sales",
+            "OEM to distributor, by part and by month",
+            "What went into the channel"
+          ],
+          [
+            "Secondary sales",
+            "Distributor to retailer or garage, the day it is billed",
+            "What actually sold, not what was pushed"
+          ],
+          [
+            "Stock and days held",
+            "Per distributor, per part",
+            "Slow parts are seen before they become returns"
+          ],
+          [
+            "Territory",
+            "Pincodes per distributor; outside sales flagged",
+            "Disputes between distributors are settled with facts"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "The reports an automotive OEM reads every week",
+        items: [
+          {
+            b: "Primary against secondary sales —",
+            t: "per distributor, so a distributor stocking up without selling is seen early."
+          },
+          {
+            b: "Top parts by region —",
+            t: "from secondary invoices, not estimates."
+          },
+          {
+            b: "Off-territory sales —",
+            t: "flagged for review, never silently allowed."
+          },
+          {
+            b: "Outstanding and collections —",
+            t: "per distributor, from their books."
+          }
+        ]
+      },
+      {
+        type: "p",
+        h: "Rolling it out across an automotive aftermarket channel",
+        text: "Aftermarket catalogues are large, so bring items and price lists first, by channel. Then bring the distributors, their pincodes and their retailers from Excel; a bad row is refused with its reason. Warranty claims, schemes for retailers and the distributor's claims against you are set up during onboarding to your channel policy."
+      }
+    ],
+    faqs: [
+      {
+        q: "Can retailers be added by the distributor?",
+        a: "Yes. A distributor adds its own customers — retailers, garages, fleets — and they are visible to head office."
+      },
+      {
+        q: "Can we see stock at each distributor by part?",
+        a: "Yes. Stock on hand per distributor and godown, with days held, part by part."
+      }
+    ]
+  },
+  "dms-hvac-equipment-oem": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a chiller installed by a dealer",
+        text: "An HVAC OEM sells an air-cooled chiller through its dealer in Hyderabad. The dealer bills a hospital from its own GSTIN in Telangana, and its engineer installs and commissions the chiller. The Application and Warranty Sheet records the serial, the cooling load it was sized for, the site and the warranty start. The OEM sees the installed base grow by city, the chillers and compressors each dealer still holds and for how long, and which installations are coming out of warranty — the moment to offer a service contract."
+      },
+      {
+        type: "table",
+        h: "What the Application and Warranty Sheet holds for HVAC equipment",
+        cols: [
+          "Field",
+          "What it records",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Model and serial",
+            "The unit, as dispatched and received",
+            "Follows the machine through every move"
+          ],
+          [
+            "Application",
+            "Site, load and duty it was installed for",
+            "The next engineer knows the setup"
+          ],
+          [
+            "Spares",
+            "What shipped with it and what was added",
+            "Dealer spares stock matches the base it serves"
+          ],
+          [
+            "Engineer",
+            "Who installed and commissioned it",
+            "Service history starts with a name"
+          ],
+          [
+            "Warranty",
+            "Start from commissioning; terms per model",
+            "Expiring warranties are a list, not a surprise"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "The reports an HVAC & equipment OEM reads every week",
+        items: [
+          {
+            b: "Warranty ending in the next 90 days —",
+            t: "by dealer and city, ready for a service contract offer."
+          },
+          {
+            b: "Installed base by city —",
+            t: "every unit, since when, warranty left."
+          },
+          {
+            b: "Units held by dealers —",
+            t: "with days held; heavy equipment sitting 60 days is costly."
+          },
+          {
+            b: "Dealer commission —",
+            t: "from invoices, by product category."
+          }
+        ]
+      },
+      {
+        type: "p",
+        h: "Rolling it out across an HVAC & equipment dealer network",
+        text: "Bring the installed units you know, by serial, with their installation dates, so the warranty list is right from the first day. Then bring dealers, their pincodes and the units they hold. AMC contracts, renewals and service visits are set up during onboarding to your service policy, on the same unit records."
+      }
+    ],
+    faqs: [
+      {
+        q: "Can we see which units are coming out of warranty?",
+        a: "Yes. Warranty starts at installation and is kept per unit, so the units whose warranty ends in a period are a report."
+      },
+      {
+        q: "Do dealers in different states bill with their own GSTIN?",
+        a: "Yes. Each dealer is its own entity in your system, with its own GSTIN, and GST is worked out on every invoice from the two parties' states."
+      }
+    ]
+  },
+  "dms-agri-farm-equipment-oem": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a tractor implement sold in a rural district",
+        text: "An agri equipment OEM sells rotavators through a dealer in Bardhaman. The dealer sells one to a farmer and bills it from its own GSTIN in West Bengal; its mechanic delivers and sets it up at the farm. The serial and the warranty start are recorded on the sale. The OEM sees, district by district, what each dealer sold this season, what is still in the dealer's yard and for how long, and where sales crossed into another dealer's pincodes."
+      },
+      {
+        type: "table",
+        h: "What the OEM records for each machine",
+        cols: [
+          "Field",
+          "What it records",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Model and serial",
+            "The machine, as dispatched and received",
+            "Follows it through every move"
+          ],
+          [
+            "Customer",
+            "The farmer or contractor the dealer billed",
+            "Warranty is registered at the right name"
+          ],
+          [
+            "Delivery and setup",
+            "Who set it up and when",
+            "Warranty starts from setup"
+          ],
+          [
+            "Warranty",
+            "Terms per model and the date it ends",
+            "Known on arrival at a breakdown in the field"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "The reports an agri equipment OEM reads every season",
+        items: [
+          {
+            b: "Sales by district and dealer —",
+            t: "from the dealer's own invoices, the day they are billed."
+          },
+          {
+            b: "Machines in dealers' yards —",
+            t: "with days held, so stock is moved before the season ends."
+          },
+          {
+            b: "Off-territory sales —",
+            t: "sales outside a dealer's pincodes, flagged for review."
+          },
+          {
+            b: "Dealer outstanding —",
+            t: "from the dealer's books, before the next dispatch is approved."
+          }
+        ]
+      },
+      {
+        type: "p",
+        h: "Rolling it out across a rural dealer network",
+        text: "Rural dealers often keep their records on paper, so begin with what head office already has: the dealer list, their pincodes and the machines dispatched to them, brought in from Excel. Each dealer then raises invoices in the system from its own login. Subsidy paperwork, spares programmes and service visits are set up during onboarding to your channel policy."
+      }
+    ],
+    faqs: [
+      {
+        q: "Do dealers need a computer at the counter?",
+        a: "No. Dealers sign in from a browser on a computer or a phone."
+      },
+      {
+        q: "Can we stop a dispatch to a dealer over its credit limit?",
+        a: "Each dealer has a credit limit and terms, and its outstanding is visible from its books when you approve the next dispatch."
+      }
+    ]
+  },
 };

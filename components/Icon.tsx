@@ -6,7 +6,7 @@ import {
   ScrollText, Scale, Smartphone, UserCheck, Percent, Map, BookOpen,
   Warehouse, ShoppingCart, Factory, Receipt, FileText, UserPlus, Clock, Banknote,
   CalendarCheck, BarChart3, Filter, Megaphone, GraduationCap, ShieldCheck, MessageCircle, Ticket, TriangleAlert,
-  Timer, BookMarked, Monitor, CircleUser, Cable, Server, SlidersHorizontal, Flag,
+  Timer, BookMarked, Monitor, CircleUser, Cable, Server, SlidersHorizontal, Flag, Barcode,
   type LucideIcon,
 } from "lucide-react";
 
@@ -21,7 +21,7 @@ const MAP: Record<string, LucideIcon> = {
   "ph-lightning": Zap, "ph-buildings": Building2, "ph-package": Package, "ph-chart-line-up": TrendingUp,
   "ph-scroll": ScrollText, "ph-scales": Scale, "ph-device-mobile": Smartphone, "ph-user-focus": UserCheck,
   "ph-percent": Percent, "ph-map-trifold": Map, "ph-book-open": BookOpen, "ph-warehouse": Warehouse,
-  "ph-shopping-cart": ShoppingCart, "ph-factory": Factory, "ph-receipt": Receipt, "ph-file-text": FileText,
+  "ph-shopping-cart": ShoppingCart, "ph-factory": Factory, "ph-receipt": Receipt, "ph-file-text": FileText, "ph-barcode": Barcode,
   "ph-user-plus": UserPlus, "ph-clock": Clock, "ph-money": Banknote, "ph-calendar-check": CalendarCheck,
   "ph-chart-bar": BarChart3, "ph-funnel": Filter, "ph-megaphone": Megaphone, "ph-graduation-cap": GraduationCap,
   "ph-shield-check": ShieldCheck, "ph-chat-circle-dots": MessageCircle, "ph-ticket": Ticket, "ph-warning": TriangleAlert,

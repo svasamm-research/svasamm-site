@@ -168,4 +168,54 @@ export const PRODUCT_GUIDES: Record<string, { title: string; changed: string; se
       },
     ],
   },
+  // DMS (19 Nov 2026): claims from svasamm-platform docs/channel/the-requirement-catalogue.md (the
+  // spine S1–S15 and the OEM pack O1–O9). Schemes, claims and service tickets are "set up during onboarding".
+  dms: {
+    title: "How DMS runs an OEM's channel",
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "One machine's journey, from your factory to the customer's floor",
+        text: "Take a maker of inkjet printers in Pune that sells through forty distributors. A distributor in Ludhiana orders three printers and sixty litres of ink. That purchase order is the maker's sales order — one document, seen from both sides. The maker dispatches and invoices from Pune; the printers arrive at the distributor's godown with their serial numbers. The distributor sells one printer to a biscuit factory in Jalandhar and bills it from its own GSTIN in Punjab. Its engineer installs the printer and fills in the Application and Warranty Sheet: the serial, the line it codes, the inks that fit, the warranty start. The maker sees all of it — without a phone call.",
+      },
+      {
+        type: "table",
+        h: "What the OEM sees that it could not see before",
+        cols: ["Question", "Before", "With DMS"],
+        rows: [
+          ["Where is printer KCS-2231?", "Ask the distributor", "Installed in Jalandhar since 4 November, warranty to November next year"],
+          ["What has the distributor sold this month?", "A Tally export at month end", "Every secondary invoice, the day it is raised"],
+          ["Which machines are sitting unsold?", "Nobody knows until the audit", "Two at Ludhiana for 52 days, shown amber"],
+          ["What commission do we owe?", "A spreadsheet built at quarter end", "₹38,400 this quarter, from the invoices themselves"],
+          ["Did anyone sell outside their area?", "Found out from a complaint", "Flagged on the sale, by pincode"],
+        ],
+      },
+      {
+        type: "list",
+        h: "What each person in the channel sees",
+        items: [
+          { b: "Head office —", t: "the whole network: primary and secondary sales, stock and days held at every distributor, the installed base, commission and outstanding." },
+          { b: "Zone and region managers —", t: "every distributor under them, read-only, so they can review without changing a distributor's books." },
+          { b: "The distributor —", t: "its own orders, stock, invoices, collections and customers, and nothing of any other distributor." },
+          { b: "Engineers —", t: "the brand's and the distributor's, assigned by region, with the sheets and installations they own." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Why the distributor's books live inside your system",
+        text: "Most distributor software leaves the distributor's sales in Tally and copies them across on a schedule. The copy is late, it is incomplete, and serial numbers and warranty never make the trip. In DMS each distributor is a legal entity inside your firm, with its own GSTIN, its own invoices and its own ledger, and its people can see only that entity. The distributor gets proper books without a second system, and you get the truth the day it happens.",
+      },
+      {
+        type: "list",
+        h: "Rolling out to your distributors",
+        items: [
+          { b: "Start with one region —", t: "five to ten distributors, their users, customers and pincodes, brought in from Excel." },
+          { b: "Bring opening stock by serial —", t: "every machine each distributor holds today, so the installed base and the days held are right from day one." },
+          { b: "Set your policy —", t: "commission slabs, the days at which held stock turns amber and red, warranty terms per model." },
+          { b: "Then widen —", t: "one region at a time, with your schemes, claims and service process set up during onboarding." },
+        ],
+      },
+    ],
+  },
 };
