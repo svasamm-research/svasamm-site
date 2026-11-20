@@ -1002,4 +1002,443 @@ export const ARTICLE_DEPTH: Record<string, Depth> = {
       }
     ]
   },
+  // CRM and Service desk industry pages (19 Nov 2026): as the product-guides note.
+  "crm-for-distribution": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a distributor's salesperson on Monday",
+        text: "A salesperson at an electrical goods distributor starts the week with a list, not a blank page: the twelve retailers due a visit, the three deals with a new contractor waiting on a quote, and the two customers whose outstanding has crossed their credit limit. Every visit is logged against the customer with the next step. When a contractor's deal is won, the contractor becomes a customer in the distributor's books with the products already on it, and the first order is raised from there."
+      },
+      {
+        type: "table",
+        h: "What a distribution CRM should hold for each account",
+        cols: [
+          "Record",
+          "What it holds",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Account",
+            "The customer, its locations and its people",
+            "One view for sales and support"
+          ],
+          [
+            "Deals",
+            "New business: products, value, stage, days in stage",
+            "New accounts are chased, not forgotten"
+          ],
+          [
+            "Visits",
+            "Who visited, when, what was agreed",
+            "The next salesperson knows the history"
+          ],
+          [
+            "Outstanding",
+            "What the customer owes, from the books",
+            "Nobody sells into an account that has not paid"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "Questions to ask any CRM vendor",
+        items: [
+          {
+            b: "Does a won deal become a customer in the books —",
+            t: "or does accounts type it again?"
+          },
+          {
+            b: "Can a salesperson see only their accounts —",
+            t: "while the manager sees the team's?"
+          },
+          {
+            b: "Is the deal's value worked out from its products —",
+            t: "or typed by hand?"
+          },
+          {
+            b: "Can visits be logged in under a minute on a phone —",
+            t: "or will the team go back to WhatsApp?"
+          }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        q: "Can the CRM work with the distributor management system?",
+        a: "Yes. Svasamm's CRM and DMS share the same customers and the same scoping, so a distributor's salespeople see only their own leads, deals and customers."
+      },
+      {
+        q: "Can a manager see deals that are stuck?",
+        a: "Yes. Every deal shows how many days it has spent in its stage, so the ones that have not moved stand out."
+      }
+    ]
+  },
+  "crm-for-b2b-sales": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a six-month industrial deal",
+        text: "An equipment maker's salesperson meets a plant head at a trade fair. The lead goes in with the source. Over six months the deal moves from qualified to proposal to negotiation; the purchase head, the plant head and the finance head are each recorded with their part in the decision. Each visit and call is logged with the next step. The proposal carries the products and quantities, so its value is worked out, not typed. When the order comes, the deal is won and the company becomes a customer in the books."
+      },
+      {
+        type: "table",
+        h: "Stages for a long B2B deal",
+        cols: [
+          "Stage",
+          "Probability",
+          "What moves it on"
+        ],
+        rows: [
+          [
+            "Lead",
+            "10%",
+            "A meeting with someone who has the problem"
+          ],
+          [
+            "Qualified",
+            "25%",
+            "Need, budget range and decision-maker confirmed"
+          ],
+          [
+            "Proposal",
+            "50%",
+            "A priced proposal with products and quantities"
+          ],
+          [
+            "Negotiation",
+            "75%",
+            "Terms agreed with purchase and finance"
+          ],
+          [
+            "Won",
+            "100%",
+            "A purchase order received"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "What makes B2B pipelines honest",
+        items: [
+          {
+            b: "Days in stage —",
+            t: "a deal that has sat in proposal for ninety days is not a 50% deal."
+          },
+          {
+            b: "Value from products —",
+            t: "the pipeline's total is the sum of real proposals."
+          },
+          {
+            b: "One next step on every deal —",
+            t: "a deal without a next step is a deal nobody is working."
+          },
+          {
+            b: "Loss reasons —",
+            t: "recorded on every lost deal, reviewed every quarter."
+          }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        q: "Can we set our own deal stages and probabilities?",
+        a: "Yes. The firm names its stages, their order and the probability at each."
+      },
+      {
+        q: "Can quotations come from the deal?",
+        a: "The deal carries its products and value; quotation printing to your format is set up during onboarding."
+      }
+    ]
+  },
+  "crm-for-services-firms": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a consulting firm's enquiry to retainer",
+        text: "An enquiry arrives from a manufacturer that wants help with GST compliance. The partner logs the lead and its source — a referral from an existing client. After a first meeting the deal is qualified, a proposal for a monthly retainer goes out, and a follow-up task is set for a week later. When the client signs, the deal is won and the client becomes a customer in the books, ready to be billed every month."
+      },
+      {
+        type: "table",
+        h: "What a services firm should track",
+        cols: [
+          "Record",
+          "What it holds",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Source",
+            "Referral, website, event, existing client",
+            "Shows where good clients come from"
+          ],
+          [
+            "Proposal",
+            "The services, the fee and the term",
+            "The pipeline is a real number"
+          ],
+          [
+            "Follow-ups",
+            "Tasks with dates, against the deal",
+            "No proposal goes cold by silence"
+          ],
+          [
+            "Won and lost",
+            "With the reason",
+            "Pricing and pitch improve from facts"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "Habits that keep a services pipeline healthy",
+        items: [
+          {
+            b: "Log the referral source on every lead —",
+            t: "referrals are usually a services firm's best clients, and they deserve a thank-you."
+          },
+          {
+            b: "Set the next follow-up before leaving the meeting —",
+            t: "the deal shows it until it is done."
+          },
+          {
+            b: "Review deals with no movement for thirty days —",
+            t: "every Monday, in ten minutes."
+          },
+          {
+            b: "Record why you lost —",
+            t: "price, timing, fit or a competitor."
+          }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        q: "Can partners see every deal while associates see only theirs?",
+        a: "Yes. Each person sees their own deals; partners and managers see their team's or the whole firm's."
+      },
+      {
+        q: "Does a won deal start billing?",
+        a: "A won deal becomes a customer in the books; recurring billing for the retainer is set up during onboarding."
+      }
+    ]
+  },
+  "service-desk-for-customer-support": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a line-down call at a customer",
+        text: "A packaging line stops at a customer's plant. The support team raises an urgent ticket naming the customer and the machine. Because the machine's installation is on record, the agent sees at once that it is under warranty. The service-level timer shows thirty minutes to first response; the ticket goes to the engineer for that region, and the customer is told who is coming and when."
+      },
+      {
+        type: "table",
+        h: "Priorities a customer support team can start with",
+        cols: [
+          "Priority",
+          "When to use it",
+          "Example"
+        ],
+        rows: [
+          [
+            "Urgent",
+            "The customer's work has stopped",
+            "A machine is down on a running line"
+          ],
+          [
+            "High",
+            "Work is slowed or at risk",
+            "Output is below normal"
+          ],
+          [
+            "Normal",
+            "A question or a request",
+            "How to change a setting"
+          ],
+          [
+            "Low",
+            "A suggestion",
+            "A feature the customer would like"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "What support managers review every week",
+        items: [
+          {
+            b: "Breaches —",
+            t: "tickets that missed first response or resolution, by queue."
+          },
+          {
+            b: "Oldest open tickets —",
+            t: "anything open longer than a week, with its owner."
+          },
+          {
+            b: "Repeat tickets —",
+            t: "the same question from many customers is a knowledge-base article waiting to be written."
+          },
+          {
+            b: "Warranty against paid work —",
+            t: "known from the machine on each ticket."
+          }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        q: "Can a ticket show whether the machine is under warranty?",
+        a: "Yes, for an OEM on Svasamm's DMS: the ticket names the installed machine, and its warranty is known on arrival."
+      },
+      {
+        q: "Can customers raise tickets by email or a portal?",
+        a: "Email intake and a customer portal are set up during onboarding, to your support process."
+      }
+    ]
+  },
+  "service-desk-for-msps": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: one desk, twelve client companies",
+        text: "A managed service provider supports twelve companies. Each client is kept separate: its users, its tickets, its service levels. A manufacturing client pays for a four-hour fix on urgent tickets; a small office client has next-day. The agent's queue shows every client's tickets with the time left on each, so the urgent one at the manufacturer is worked first even if it arrived later."
+      },
+      {
+        type: "table",
+        h: "Service levels that differ by client",
+        cols: [
+          "Client type",
+          "Urgent response",
+          "Urgent resolution"
+        ],
+        rows: [
+          [
+            "Plant running shifts",
+            "30 minutes",
+            "4 hours"
+          ],
+          [
+            "Office, business hours",
+            "2 hours",
+            "1 working day"
+          ],
+          [
+            "Small office, basic plan",
+            "Next working day",
+            "3 working days"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "What an MSP reports to each client every month",
+        items: [
+          {
+            b: "Tickets raised and solved —",
+            t: "by priority, against the service level promised."
+          },
+          {
+            b: "Breaches —",
+            t: "each one, with the reason."
+          },
+          {
+            b: "Top recurring issues —",
+            t: "with what is being done to stop them."
+          },
+          {
+            b: "Open items —",
+            t: "anything carried into next month, with an owner."
+          }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        q: "Can each client see only its own tickets?",
+        a: "Yes. Records are scoped, so a client's people see only their company's tickets."
+      },
+      {
+        q: "Can service levels be set per client?",
+        a: "Service levels per client and per priority are set up during onboarding to each contract."
+      }
+    ]
+  },
+  "service-desk-for-internal-it": {
+    changed: "2026-11-19",
+    sections: [
+      {
+        type: "p",
+        h: "A worked example: a new joiner's first day",
+        text: "HR adds a new joiner, and IT gets the requests: a laptop, an email account, access to the accounting system. Each is a ticket with an owner and a due date before the joining day. On the day, a printer on the second floor stops working; an employee raises a ticket, and the timer shows the team has one working day. The IT head sees both kinds of work — planned requests and things that broke — on one board."
+      },
+      {
+        type: "table",
+        h: "Kinds of tickets internal IT handles",
+        cols: [
+          "Kind",
+          "Example",
+          "Typical target"
+        ],
+        rows: [
+          [
+            "Incident",
+            "A printer or a system stopped",
+            "Same working day"
+          ],
+          [
+            "Service request",
+            "A laptop, an account, software",
+            "Before the date it is needed"
+          ],
+          [
+            "Access",
+            "Rights to a system or a folder",
+            "One working day, with approval"
+          ],
+          [
+            "Change",
+            "An update or a new system",
+            "Planned, with notice"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "What internal IT should measure",
+        items: [
+          {
+            b: "Requests done before they were needed —",
+            t: "the joiner had a laptop on day one."
+          },
+          {
+            b: "Incidents by kind —",
+            t: "so the printer that fails every week gets replaced."
+          },
+          {
+            b: "Breaches by team —",
+            t: "where the work is piling up."
+          },
+          {
+            b: "Tickets per employee per month —",
+            t: "a rising number means something is wrong upstream."
+          }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        q: "Can employees raise their own tickets?",
+        a: "Yes. Employees raise and follow their own tickets; the self-service portal and its catalogue of requests are set up during onboarding."
+      },
+      {
+        q: "Can tickets be linked to the laptop or device they are about?",
+        a: "Asset records and linking tickets to them are set up during onboarding to how your IT team tracks devices."
+      }
+    ]
+  },
 };
