@@ -1441,4 +1441,278 @@ export const ARTICLE_DEPTH: Record<string, Depth> = {
       }
     ]
   },
+
+  // Millingo comparisons and the by-product guide (20 Nov 2026): claims from svasamm-platform develop,
+  // modules/millingo gate and mill (refusals, and priceBatch for the worked batch). Vendors are "ask them".
+  "millingo-vs-dataman": {
+    changed: "2026-11-20",
+    sections: [
+      {
+        type: "p",
+        h: "Test both with one lorry, not a feature list",
+        text: "Every rice-mill package lists purchase, stock, milling and GST, so a feature list cannot tell two of them apart. A demo can. Ask both vendors to take one real lorry of paddy through their software while you watch, from the gate to the godown, then mill it and sell the rice. The differences show up in the first ten minutes: where the weight comes from, what the bench does to the bill, and where the bran and husk go."
+      },
+      {
+        type: "list",
+        h: "Six things to try in each demo",
+        items: [
+          {
+            b: "Claim one weighment twice —",
+            t: "in Millingo a weighment can go on one paddy entry only, so the second claim is refused."
+          },
+          {
+            b: "Grade a load below standard —",
+            t: "in Millingo the shortfall takes value off the bill, 1% of the load per point, and the weight stays as weighed."
+          },
+          {
+            b: "Receive the government's paddy —",
+            t: "in Millingo it comes only against a release order, is never bought or billed, and moisture is never deducted from it."
+          },
+          {
+            b: "Mill a batch —",
+            t: "in Millingo the rice, bran, husk and brokens come off as stock, and more cannot come out than went in."
+          },
+          {
+            b: "Leave a by-product without a rate —",
+            t: "in Millingo the rice is then left unpriced so somebody looks, rather than carrying the whole paddy cost."
+          },
+          {
+            b: "Deliver a lot to FCI —",
+            t: "in Millingo a lot is 290 quintals, 580 bags of 50 kg, accepted or rejected whole, and no bill is raised before the depot accepts it."
+          }
+        ]
+      },
+      {
+        type: "table",
+        h: "Questions to put to any vendor",
+        cols: [
+          "Question",
+          "Why it matters"
+        ],
+        rows: [
+          [
+            "Which states' CMR rules do you carry, and for which season?",
+            "Rules on brokens, lots and dates differ by state and change every KMS"
+          ],
+          [
+            "How is a shortfall valued, and where does it show?",
+            "It is a debt to the government with a cost, not a footnote"
+          ],
+          [
+            "Are the corporation's gunny bags kept apart from ours?",
+            "Two owners, two pools; mixing them is a reconciliation every season"
+          ],
+          [
+            "Is the cost of rice net of what the by-products fetch?",
+            "Without it, a batch's margin is wrong by the value of bran and husk"
+          ],
+          [
+            "Who can see what?",
+            "The gate, the QC bench and the office should each see only their part"
+          ],
+          [
+            "How do we move from our current registers?",
+            "Opening stock, open orders and the season's CMR position have to come across"
+          ]
+        ]
+      },
+      {
+        type: "p",
+        h: "Moving from another package",
+        text: "A mill rarely changes software mid-season. The move is planned for the gap between seasons: opening stock by shed and variety, open purchase orders, the parties, the gunny bags in each pool, and the CMR position with the government. The rules for your state and the current season are set during onboarding. Every plan includes the move from your current registers or Tally, and the nine ready roles, so the gate, the bench and the office each start with only their own screens."
+      }
+    ],
+    faqs: [
+      {
+        q: "Can I try Millingo on my own mill's figures before deciding?",
+        a: "Yes. Send one season's paddy received and rice delivered, and we walk it through Millingo with you: the gate, the bench, the batches, the depot and report 7.1. It is free and there is no obligation."
+      },
+      {
+        q: "Does Millingo replace Tally?",
+        a: "Millingo keeps the mill's books itself: every bill, dispatch and invoice posts as it is made, and GSTR-1 and GSTR-3B are prepared from those books. The move from Tally or your registers is part of every plan."
+      }
+    ]
+  },
+
+  "millingo-vs-samadhan": {
+    changed: "2026-11-20",
+    sections: [
+      {
+        type: "p",
+        h: "A platform ERP or a rice-mill ERP",
+        text: "The real choice here is not a list of features. Samadhan is built on Microsoft Dynamics 365 Business Central, a general business platform that a partner configures for rice milling. Millingo is written for a rice mill from the start: the gate, the bench, the batch, the gunny bags and the government's paddy are its own records, not settings on a general one. Both approaches can work. They differ in who sets the mill up, what you pay for the platform, and how much of the CMR cycle the software already knows."
+      },
+      {
+        type: "table",
+        h: "What each approach means for a mill",
+        cols: [
+          "Question",
+          "A platform ERP",
+          "Millingo"
+        ],
+        rows: [
+          [
+            "Who sets up the mill's rules?",
+            "The platform partner, during the project",
+            "Onboarding, with the mill's rules already in the product"
+          ],
+          [
+            "Where does CMR live?",
+            "Whatever the partner builds or configures",
+            "Release orders, camp picks, lots, the shortfall and report 7.1 are built in"
+          ],
+          [
+            "What do you license?",
+            "The platform's users, plus the partner's work",
+            "One Millingo plan: Starter, Professional or Enterprise"
+          ],
+          [
+            "Who changes it later?",
+            "The partner, usually as a change request",
+            "The product team, for every mill at once"
+          ],
+          [
+            "Fits a seasonal, market-only mill?",
+            "Usually more than it needs",
+            "Starter covers purchase, stock, milling and sales"
+          ]
+        ]
+      },
+      {
+        type: "list",
+        h: "What Millingo refuses, so your staff cannot get it wrong",
+        items: [
+          {
+            b: "A lorry without a driver, a number plate or an order —",
+            t: "refused at the gate; the government's paddy needs a release order instead."
+          },
+          {
+            b: "An empty weight above the loaded one —",
+            t: "refused at the kanta."
+          },
+          {
+            b: "A verdict before every parameter is read —",
+            t: "refused at the bench; stock posts only after the load passes."
+          },
+          {
+            b: "The government's paddy in a market batch —",
+            t: "refused; a batch is milled for the market or for levy, never both."
+          },
+          {
+            b: "More out of a batch than went in —",
+            t: "refused, and so is paddy that comes out of a dryer heavier."
+          },
+          {
+            b: "A bill before the depot has accepted the rice —",
+            t: "refused; the depot's acceptance note number is what the bill is raised against."
+          }
+        ]
+      },
+      {
+        type: "p",
+        h: "When a platform ERP is the better fit",
+        text: "If your group already runs Dynamics in other businesses, wants one platform across all of them, and has a partner it trusts, a Dynamics-based mill package keeps everything on one stack. If the mill is the business, and the CMR cycle, the bench and the by-products are where the money is made or lost, a product built for the mill gets you there with less to configure. Ask both for a demo on one real lorry, and judge them on what each refuses."
+      }
+    ],
+    faqs: [
+      {
+        q: "Do I need Microsoft licences to run Millingo?",
+        a: "No. Millingo runs in the browser and on a phone, on Svasamm One. There is no other platform to license."
+      },
+      {
+        q: "Can Millingo handle more than one mill?",
+        a: "Each mill is its own account in Millingo, with its own sheds, stock, books and CMR position."
+      }
+    ]
+  },
+
+  "rice-mill-byproduct-accounting": {
+    changed: "2026-11-20",
+    sections: [
+      {
+        type: "p",
+        h: "How the accounting standard values by-products",
+        text: "When one process gives a main product and by-products, the accounting standard for inventories (AS 2, and Ind AS 2 for larger companies) does not ask you to split the paddy's cost between them. Nobody can say how much of a grain became husk. Instead the by-products are carried at their net realisable value, what they will sell for less the cost of selling them, and that value is deducted from the cost of the main product. The rice absorbs whatever is left."
+      },
+      {
+        type: "table",
+        h: "A worked batch",
+        cols: [
+          "Line",
+          "Quintals",
+          "Rate (₹/qtl)",
+          "Value (₹)"
+        ],
+        rows: [
+          [
+            "Paddy milled",
+            "100.00",
+            "1,828.00",
+            "1,82,800.00"
+          ],
+          [
+            "Less bran, at what it will fetch",
+            "8.00",
+            "2,200.00",
+            "17,600.00"
+          ],
+          [
+            "Less husk, at what it will fetch",
+            "20.00",
+            "120.00",
+            "2,400.00"
+          ],
+          [
+            "Wastage, closing the weight balance",
+            "7.00",
+            "—",
+            "nil"
+          ],
+          [
+            "Rice absorbs the balance",
+            "65.00",
+            "2,504.62",
+            "1,62,800.00"
+          ]
+        ]
+      },
+      {
+        type: "p",
+        text: "Value in equals value out: ₹1,82,800 of paddy became ₹17,600 of bran, ₹2,400 of husk and ₹1,62,800 of rice. Weight in equals weight out: 100 quintals became 8 + 20 + 7 + 65. Wastage carries no value, because it is the difference between what went in and what came off the floor, and putting cost on it moves money onto something nobody can sell."
+      },
+      {
+        type: "list",
+        h: "Three mistakes that make the rice's cost wrong",
+        items: [
+          {
+            b: "No rate on a by-product —",
+            t: "crediting nothing for the bran loads the whole paddy cost onto the rice and overstates it. Millingo leaves the rice unpriced until the rate is set, so the gap is visible instead of hidden."
+          },
+          {
+            b: "A by-product rate higher than it can fetch —",
+            t: "if the by-products come out worth more than the paddy, a rate is wrong. Millingo refuses to price the rice negative and leaves it for somebody to check."
+          },
+          {
+            b: "Brokens priced as head rice —",
+            t: "brokens are rice, sold below head rice; set them up as their own product so their stock and sales are seen apart."
+          }
+        ]
+      },
+      {
+        type: "p",
+        h: "What Millingo does at the end of a batch",
+        text: "When a batch is milled, the floor records what came off it: rice, each by-product and the wastage. Millingo checks the weights balance, then prices the batch: each by-product at the rate the mill has set for it, and the rice at the paddy's cost less those values, to the paisa. The bran, husk and brokens go into stock in their sheds, ready to sell on their own invoices with their own HSN codes and GST rates."
+      }
+    ],
+    faqs: [
+      {
+        q: "Where does the rate for bran and husk come from?",
+        a: "The mill sets each by-product's net realisable value per quintal: what it sells for less the cost of selling it. Update it when the market moves; every batch milled after that uses the new rate."
+      },
+      {
+        q: "Should power and labour go into the batch's cost?",
+        a: "For the stock valuation in Millingo, a batch is priced from the paddy's cost less the by-products. Power, labour and other running costs are booked as expenses in the books, and your chartered accountant decides how conversion costs are treated in the year-end inventory valuation."
+      }
+    ]
+  },
 };
