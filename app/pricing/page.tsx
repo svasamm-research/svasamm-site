@@ -17,16 +17,16 @@ export const metadata: Metadata = {
 // is never missing from this page.
 const T4SUITE = [
   { tier: "Free trial", monthly: "₹0 for 90 days", yearly: "None", covers: "2 users, 1 entity; no WhatsApp, document storage or client portal" },
-  { tier: "Starter", monthly: "₹99", yearly: "₹990", covers: "Every feature, unlimited entities" },
-  { tier: "Growth", monthly: "₹149", yearly: "₹1,490", covers: "Every feature, unlimited entities, more WhatsApp messages" },
-  { tier: "Scale", monthly: "₹199", yearly: "₹1,990", covers: "Every feature, unlimited entities, the most WhatsApp messages" },
-  { tier: "Enterprise", monthly: "Custom", yearly: "Custom", covers: "Set per firm" },
+  { tier: "Starter", monthly: "₹99", yearly: "₹990", covers: "Every feature, unlimited entities, 50 WhatsApp messages a user a month" },
+  { tier: "Growth", monthly: "₹149", yearly: "₹1,490", covers: "Every feature, unlimited entities, 75 WhatsApp messages a user a month" },
+  { tier: "Scale", monthly: "₹199", yearly: "₹1,990", covers: "Every feature, unlimited entities, 125 WhatsApp messages a user a month" },
+  { tier: "Enterprise", monthly: "Custom", yearly: "Custom", covers: "More users, your own limits, and your own server for client documents, set up during onboarding" },
 ];
 
 export default function Pricing() {
   const others = PRODUCTS.filter((p) => p.name !== "T4Suite");
   return (
-    <LegalPage title="Pricing" updated="5 November 2026" kicker="Pricing">
+    <LegalPage title="Pricing" updated="23 November 2026" kicker="Pricing">
       <p>{BUSINESS.legalName} sells software subscriptions to businesses and professional firms. Subscriptions are billed in advance, monthly or yearly.</p>
 
       <h2>T4Suite</h2>
@@ -43,7 +43,7 @@ export default function Pricing() {
           </tbody>
         </table>
       </div>
-      <p>Paying yearly gives you two months free. Full details on <a href="https://t4suite.com/pricing">t4suite.com/pricing</a>.</p>
+      <p>Paying yearly gives you two months free. WhatsApp messages are pooled for the whole firm: 5 users on Growth get 375 a month, refilled on the 1st, and unused messages lapse. You can buy 1,000 more for ₹199 at any time; a bought pack never expires, and the month's pool is used first. Client documents are kept in encrypted cloud storage hosted for Svasamm. Full details on <a href="https://t4suite.com/pricing">t4suite.com/pricing</a>.</p>
 
       <h2>Other products</h2>
       <p>Pricing on request. <Link href="/pages/contact.html">Contact us</Link> and we will send a quotation.</p>
