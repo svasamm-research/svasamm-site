@@ -5,14 +5,14 @@
 //
 // ⛔ EVERY CLAIM WAS CHECKED AGAINST svasamm-platform origin/develop, 23 Nov 2026.
 // Books (modules/books): a sale refused past a customer's credit limit, ageing, customer receipts,
-//   discounts, credit and debit notes, e-invoice and e-way bill, HSN, GSTR-1 and GSTR-3B, TCS and TDS,
+//   discounts, credit and debit notes, an e-way bill NUMBER typed in, HSN, GSTR-1 and GSTR-3B, TCS and TDS,
 //   godowns with stock transfer, batches and serials, valuation, reorder levels, purchase orders,
 //   cost centres, budgets. People (modules/hr): shifts and rosters, night shift on the day it started,
 //   weekly offs and holidays, phone punch never/always/office (0018, 0030), regularisation, muster import
 //   (0029), overtime as a multiple that refuses when unset (0024), leave with balances and a supervisor's
 //   decision, professional tax per state (0028, 0031), PF + ECR, ESI, TDS, bonus, gratuity, full and final.
 // NOT CLAIMED, because the code does not do it: quotations and sales orders, milestone or retainer
-//   billing, project costing in the books, price lists by quantity, GPS or "geo" check-in (banned by
+//   billing, e-invoice (the IRP link is a stand-in), project costing in the books, price lists by quantity, GPS or "geo" check-in (banned by
 //   svasamm.spec.ts), comp-off, shift allowance, a bank salary file, payroll posting to Finance, a named
 //   machine brand. Anything unbuilt is "set up for your business during onboarding" (present-as-ready,
 //   Mithun 17 Nov 2026). The ERP stays ERP-first, not Tally-first: the account's name is its identity.
@@ -138,7 +138,7 @@ const TRADING = build({
       h: "GST on every invoice, without the month-end rebuild",
       items: [
         { b: "Tax invoice —", t: "with the HSN code and the right CGST, SGST or IGST worked out from the place of supply." },
-        { b: "E-invoice and e-way bill —", t: "for the businesses and consignments that need them, prepared from the invoice and not retyped." },
+        { b: "E-way bill number —", t: "recorded against the invoice, so the consignment and the sale can be matched later." },
         { b: "Credit and debit notes —", t: "for returns and rate corrections, tied to the original invoice." },
         { b: "GSTR-1 and GSTR-3B —", t: "prepared from the books, with the HSN summary, so the return is a check, not a rebuild." },
         { b: "TDS and TCS —", t: "tracked where they apply to your purchases and sales." },
@@ -170,7 +170,7 @@ const TRADING = build({
   faqs: [
     { q: "Can the ERP manage multiple warehouses?", a: "Yes. Each godown holds its own stock, and a transfer between godowns is one entry. Batches and serial numbers are kept where the product needs them, and the stock is valued by the method your accountant chooses." },
     { q: "Does it track customer credit limits and outstanding?", a: "Yes. A sale to a customer past their credit limit is refused, receipts are matched to invoices, and the ageing report shows what is overdue customer by customer." },
-    { q: "Does it prepare GST returns?", a: "Yes. GSTR-1 and GSTR-3B, with the HSN summary, are prepared from the books, along with e-invoice and e-way bill details for the invoices that need them. Your chartered accountant still files and signs the return." },
+    { q: "Does it prepare GST returns?", a: "Yes. GSTR-1 and GSTR-3B, with the HSN summary, are prepared from the books, and the e-way bill number is recorded against the invoice. Your chartered accountant still files and signs the return." },
     { q: "Does it replace Tally?", a: "Yes for the daily work. The books, stock, purchase, sales and GST run in Svasamm One, so nothing is retyped into a second package. We import your masters and opening balances during onboarding." },
     { q: "Can we send quotations and take orders before invoicing?", a: "That flow is set up for your business during onboarding, around how you quote and confirm today. The invoice, stock and GST that follow are built in." },
   ],
@@ -186,7 +186,7 @@ const TRADING = build({
     productLabel: "Explore ERP",
   },
   metaTitle: "ERP for Trading & Distribution Businesses | Svasamm",
-  meta: "ERP for traders and distributors: stock by godown, credit limits that stop a sale, receivables ageing, discounts and GST with e-invoice and e-way bill built in.",
+  meta: "ERP for traders and distributors: stock by godown, credit limits that stop a sale, receivables ageing, discounts and GST built in.",
 });
 
 const SERVICES = build({
@@ -215,7 +215,7 @@ const SERVICES = build({
     {
       type: "p",
       h: "From the invoice to the books, with GST built in",
-      text: "A tax invoice in Svasamm One carries the SAC code and the right CGST, SGST or IGST from the place of supply, and posts to the ledger as it is issued. Credit notes correct it, and the e-invoice details are prepared where your turnover requires them. GSTR-1 and GSTR-3B are prepared from the same books, so the return is a check of the month and not a rebuild of it.",
+      text: "A tax invoice in Svasamm One carries the SAC code and the right CGST, SGST or IGST from the place of supply, and posts to the ledger as it is issued. Credit notes correct it. GSTR-1 and GSTR-3B are prepared from the same books, so the return is a check of the month and not a rebuild of it.",
     },
     {
       type: "list",
@@ -246,7 +246,7 @@ const SERVICES = build({
       h: "What runs from day one, and what is set up for your firm",
       cols: ["Area", "From day one", "Set up for your firm during onboarding"],
       rows: [
-        ["Invoicing and GST", "Tax invoice, credit note, e-invoice, GSTR-1, GSTR-3B", "Your SAC codes and invoice series"],
+        ["Invoicing and GST", "Tax invoice, credit note, GSTR-1, GSTR-3B", "Your SAC codes and invoice series"],
         ["Receivables", "Ageing, receipts matched to invoices, TDS", "Your clients and their opening balances"],
         ["Books", "Ledger, cost centres, budgets", "Your chart of accounts and team structure"],
         ["People", "Attendance, leave, payroll with PF, ESI, PT and TDS", "Your shifts and leave policy"],
