@@ -316,6 +316,35 @@ export default function SolutionsPage() {
       </section>
 
       {/* CTA — navy deep field */}
+      <section style={{ padding: "8px 0 40px" }}>
+        <div className="sv-wrap" style={{ maxWidth: 980 }}>
+          <div className="sv-eyebrow">Which one fits</div>
+          <h2 style={{ fontSize: 28, margin: "0 0 12px" }}>Start from what you run</h2>
+          <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--sv-ink-2)", margin: "0 0 18px", maxWidth: 760 }}>
+            All of our products share one platform, so you can begin with the one that hurts most and add the others later without moving your data.
+          </p>
+          <div style={{ overflowX: "auto" }}>
+            <table className="sv-table">
+              <thead>
+                <tr><th>If you run…</th><th>Start with</th><th>Add later</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A rice mill with custom milling</td><td>Millingo</td><td>Svasamm People for payroll and attendance; the books</td></tr>
+                <tr><td>A CA or compliance firm</td><td>T4Suite</td><td>Svasamm People for the firm&apos;s own staff</td></tr>
+                <tr><td>A factory or plant</td><td>ERP for purchase, stores and the books</td><td>Svasamm People for shifts, overtime and contract labour</td></tr>
+                <tr><td>A trading or distribution business</td><td>ERP for stock, billing and receivables</td><td>A dealer system, if you sell through dealers</td></tr>
+                <tr><td>A services or project firm</td><td>ERP for invoicing, receivables and cost by team</td><td>CRM for the sales pipeline; a service desk for support</td></tr>
+                <tr><td>A hospital or clinic</td><td>Lucoze for the hospital; Svasamm People for staff</td><td>The books for the hospital&apos;s accounts</td></tr>
+                <tr><td>A retail chain</td><td>Svasamm People for stores and payroll</td><td>ERP for stock and billing</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--sv-ink-3)", margin: "16px 0 0", maxWidth: 760 }}>
+            Anything particular to your business, such as your stages, shifts, rates or approvals, is set up for you during onboarding. Not sure where to start? <Link href={CONTACT}>Tell us what you run</Link> and we will say honestly whether we fit.
+          </p>
+        </div>
+      </section>
+
       <section style={{ padding: "8px 0 88px" }}>
         <div className="sv-wrap">
           <div
