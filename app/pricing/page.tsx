@@ -17,10 +17,10 @@ export const metadata: Metadata = {
 // is never missing from this page.
 const T4SUITE = [
   { tier: "Free trial", monthly: "₹0 for 90 days", yearly: "None", covers: "2 users, 1 entity; no WhatsApp, document storage or client portal" },
-  { tier: "Starter", monthly: "₹99", yearly: "₹990", covers: "Every feature, unlimited entities, 50 WhatsApp messages a user a month" },
-  { tier: "Growth", monthly: "₹149", yearly: "₹1,490", covers: "Every feature, unlimited entities, 75 WhatsApp messages a user a month" },
-  { tier: "Scale", monthly: "₹199", yearly: "₹1,990", covers: "Every feature, unlimited entities, 125 WhatsApp messages a user a month" },
-  { tier: "Enterprise", monthly: "Custom", yearly: "Custom", covers: "More users, your own limits, and your own server for client documents, set up during onboarding" },
+  { tier: "Starter", monthly: "₹99", yearly: "₹990", covers: "50 WhatsApp messages a user" },
+  { tier: "Growth", monthly: "₹149", yearly: "₹1,490", covers: "75 WhatsApp messages a user" },
+  { tier: "Scale", monthly: "₹199", yearly: "₹1,990", covers: "125 WhatsApp messages a user" },
+  { tier: "Enterprise", monthly: "Custom", yearly: "Custom", covers: "Set per firm" },
 ];
 
 export default function Pricing() {
@@ -30,7 +30,7 @@ export default function Pricing() {
       <p>{BUSINESS.legalName} sells software subscriptions to businesses and professional firms. Subscriptions are billed in advance, monthly or yearly.</p>
 
       <h2>T4Suite</h2>
-      <p>Practice management for CA and compliance firms. Priced per user with no minimum. Every paid plan has every feature, and a free trial starts with a call.</p>
+      <p>Practice management for CA and compliance firms. Priced per user with no minimum. Every paid plan has every feature and unlimited entities, and a free trial starts with a call. Plans differ in their monthly WhatsApp messages.</p>
       <div className="lg-table-wrap">
         <table className="lg-table">
           <thead>
@@ -43,7 +43,7 @@ export default function Pricing() {
           </tbody>
         </table>
       </div>
-      <p>Paying yearly gives you two months free. WhatsApp messages are pooled for the whole firm: 5 users on Growth get 375 a month, refilled on the 1st, and unused messages lapse. You can buy 1,000 more for ₹199 at any time; a bought pack never expires, and the month's pool is used first. Client documents are kept in encrypted cloud storage hosted for Svasamm. Full details on <a href="https://t4suite.com/pricing">t4suite.com/pricing</a>.</p>
+      <p>Paying yearly gives you two months free. WhatsApp messages are pooled for the whole firm: 5 users on Growth get 375 a month, refilled on the 1st, and unused messages lapse. You can buy 1,000 more for ₹199 at any time; a bought pack never expires, and the month's pool is used first. Client documents are kept in encrypted cloud storage hosted for Svasamm; on Enterprise, your own server can be set up during onboarding. Full details on <a href="https://t4suite.com/pricing">t4suite.com/pricing</a>.</p>
 
       <h2>Other products</h2>
       <p>Pricing on request. <Link href="/pages/contact.html">Contact us</Link> and we will send a quotation.</p>
