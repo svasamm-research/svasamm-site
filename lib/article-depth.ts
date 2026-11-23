@@ -1715,4 +1715,164 @@ export const ARTICLE_DEPTH: Record<string, Depth> = {
       }
     ]
   },
+  "itsm-fundamentals-guide": {
+    changed: "2026-11-23",
+    sections: [
+      {
+        type: "p",
+        h: "Why a service desk drifts",
+        text: "Most desks start as a shared mailbox. Requests arrive from email, phone and the corridor, one person remembers who asked for what, and the first sign of trouble is a user asking whether anyone has seen their request. Nothing is wrong with the people. The desk has no single queue, no priority that means anything, and no clock. The fundamentals below are what you put in place, in this order, so the desk stops depending on memory.",
+      },
+      {
+        type: "table",
+        h: "Priority is impact and urgency, not who shouts",
+        cols: ["Impact and urgency", "Work stops now", "Work slows", "Can wait"],
+        rows: [
+          ["Many people", "P1 — critical", "P2 — high", "P3 — medium"],
+          ["A team", "P2 — high", "P3 — medium", "P4 — low"],
+          ["One person", "P3 — medium", "P4 — low", "P4 — low"],
+        ],
+      },
+      {
+        type: "p",
+        h: "Set the clock per priority",
+        text: "Each priority gets two targets: how soon someone responds, and how soon the ticket is resolved. A common starting point is minutes for a P1 response and a working day or two for a P4 resolution, but the numbers must come from what your business can bear, not from a template. Write them down, show the remaining time on the ticket, and pause the clock only for stated reasons, such as waiting for the user. If the clock can be paused for anything, nobody trusts the report.",
+      },
+      {
+        type: "list",
+        h: "Incident, request, problem, change",
+        items: [
+          { b: "Incident —", t: "something that worked and now does not. Restore service first; the cause can wait." },
+          { b: "Service request —", t: "something asked for that is on the menu: a new login, a laptop, access to a folder. It has a known path and often needs an approval." },
+          { b: "Problem —", t: "the cause behind repeated incidents. It has its own record, so the fix is tracked after the incident is closed." },
+          { b: "Change —", t: "a planned alteration to a live system, with an owner, a reason and a way back." },
+        ],
+      },
+      {
+        type: "list",
+        h: "An escalation ladder you can read aloud",
+        items: [
+          { b: "At 50% of the resolution time —", t: "the assigned agent and the queue lead are told the ticket is half spent." },
+          { b: "At 80% —", t: "the team lead is told, and the ticket moves to the top of the queue." },
+          { b: "At breach —", t: "the manager is told, the user is updated, and the breach is recorded with its reason." },
+          { b: "Functional escalation —", t: "when the first line cannot fix it, it passes to the right second-line team with what was already tried, so the user does not start again." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Knowledge that deflects tickets",
+        text: "The best knowledge article is written from a closed ticket while the fix is fresh. Keep it short: the symptom as a user would describe it, the steps, and when to call the desk anyway. Review the ten most repeated tickets every month; each one that gets an article is a ticket the desk stops handling.",
+      },
+      {
+        type: "list",
+        h: "Measure the desk, not the agents",
+        items: [
+          { b: "SLA attainment —", t: "the share of tickets resolved inside target, by priority." },
+          { b: "Backlog and age —", t: "how many are open and how old the oldest are." },
+          { b: "Reopen rate —", t: "tickets closed and then reopened, a sign of fixes that did not hold." },
+          { b: "First-contact resolution —", t: "how many are solved by the first person who touches them." },
+          { b: "Top repeat causes —", t: "the list that feeds problem records and knowledge articles." },
+        ],
+      },
+      {
+        type: "list",
+        h: "A rollout that holds, step by step",
+        items: [
+          { b: "Week 1 —", t: "one queue, one intake form, and the four priorities above. Move the mailbox into it." },
+          { b: "Week 2 —", t: "write the response and resolution targets, and show the clock on every ticket." },
+          { b: "Week 3 —", t: "set the escalation ladder and tell the managers it exists." },
+          { b: "Week 4 —", t: "open a self-service page for the five most common requests, and write the first ten articles." },
+          { b: "Month 2 —", t: "review the report; retire the targets nobody meets, or fix what stops them being met." },
+        ],
+      },
+      {
+        type: "note",
+        text: "In Svasamm One the queue, priorities, SLA clocks and escalation are set up for your team during onboarding, from your own categories and targets. Bring a month of tickets, even from a mailbox, and we will show you what the clock would have said.",
+      },
+    ],
+    faqs: [
+      { q: "How many priority levels should a service desk have?", a: "Four is enough for most desks. More levels invite argument over which one a ticket belongs to, and fewer lose the difference between an outage and an annoyance." },
+      { q: "Should the SLA clock ever pause?", a: "Only for stated reasons, such as waiting for the user's reply. Write the reasons down; a clock that pauses for anything makes the report meaningless." },
+      { q: "What do we do first if the desk is a shared mailbox?", a: "Move the mailbox into one queue, give every ticket an owner and one of four priorities, and show the clock. Everything else builds on those three." },
+    ],
+  },
+  "sales-pipeline-guide": {
+    changed: "2026-11-23",
+    sections: [
+      {
+        type: "p",
+        h: "What a pipeline is for",
+        text: "A pipeline is not a list of hopes. It is the team's agreed answer to three questions: where is every open deal, what is the next thing that will happen to it, and how much of it is likely to close this quarter. If the pipeline cannot answer those, the forecast is a guess and the follow-up depends on who remembers.",
+      },
+      {
+        type: "table",
+        h: "Stages written as buyer actions",
+        cols: ["Stage", "The buyer has…", "Exit when…"],
+        rows: [
+          ["New lead", "Asked, or been found", "Someone has spoken to them"],
+          ["Qualified", "A need, a budget range and a decision maker named", "A demo or visit is booked"],
+          ["Demo done", "Seen the product on their own data", "They have said what would make them buy"],
+          ["Proposal sent", "Received a written quotation", "They have replied, yes or no"],
+          ["Negotiation", "Asked about price, terms or scope", "Terms are agreed in writing"],
+          ["Won or lost", "Signed, or said no", "A reason is recorded either way"],
+        ],
+      },
+      {
+        type: "list",
+        h: "Qualify early, so the pipeline stays small and true",
+        items: [
+          { b: "Need —", t: "what problem is the buyer trying to solve, in their words?" },
+          { b: "Budget —", t: "is there a range, and has anyone approved spending it?" },
+          { b: "Decision —", t: "who signs, and who else has a say?" },
+          { b: "Timing —", t: "what happens if they do nothing this quarter?" },
+          { b: "Fit —", t: "can we actually do what they need, or will we have to say no later?" },
+        ],
+      },
+      {
+        type: "list",
+        h: "Data rules that keep it honest",
+        items: [
+          { b: "One owner per deal —", t: "a deal with two owners has none." },
+          { b: "A next action and a date —", t: "always. A deal with no next step is not in the pipeline; it is in a drawer." },
+          { b: "No deal sits in a stage past its age limit —", t: "review anything older than twice the usual time in that stage." },
+          { b: "Close dates are earned —", t: "a date moves only with a reason, and moving it three times is a loss waiting to be recorded." },
+          { b: "Lost reasons come from a short list —", t: "price, timing, competitor, no decision, no fit. Free text cannot be counted." },
+        ],
+      },
+      {
+        type: "p",
+        h: "A weekly review that takes thirty minutes",
+        text: "Once a week, each rep walks the deals with a close date in the next thirty days and the deals that have not moved in two weeks. For each: what is the next step, who is doing it, and by when. Anything without an answer is either given one or moved out. Do this every week and the pipeline report is a by-product, not a project.",
+      },
+      {
+        type: "list",
+        h: "Forecast from history, not from feeling",
+        items: [
+          { b: "Conversion by stage —", t: "of the deals that reached Proposal sent in the last year, what share were won?" },
+          { b: "Average cycle —", t: "how long from Qualified to Won, by deal size." },
+          { b: "Weighted value —", t: "each open deal's value times the historical rate for its stage, never a rep's mood." },
+          { b: "Coverage —", t: "the open pipeline as a multiple of the target; three times is a usual starting point, but your own history decides." },
+        ],
+      },
+      {
+        type: "list",
+        h: "Common ways a pipeline lies",
+        items: [
+          { b: "Stages are internal steps —", t: "\"sent email\" is not a buyer action." },
+          { b: "Old deals never die —", t: "last year's maybe is still counted in this year's forecast." },
+          { b: "One big deal carries the total —", t: "remove it and see what is left." },
+          { b: "Quotes live in documents —", t: "so the value in the pipeline and the value quoted drift apart." },
+        ],
+      },
+      {
+        type: "note",
+        text: "In Svasamm One your stages, lost reasons and follow-up rules are set up for your sales team during onboarding, from your own deals. Bring your last twenty won and lost deals and we will show you where they would have stalled.",
+      },
+    ],
+    faqs: [
+      { q: "How many pipeline stages should we have?", a: "Five to seven. Each must be something the buyer has done, with a clear exit, so any rep would put the same deal in the same stage." },
+      { q: "What should we do with deals that have gone quiet?", a: "Give each a next step and date, or move it out. A deal with no next action is not a pipeline entry; record the lost reason and revisit it later as a new lead if it wakes." },
+      { q: "How do we forecast without guessing?", a: "Use your own conversion rate for each stage over the last year, applied to each open deal's value. It is less exciting than a rep's estimate and far closer." },
+    ],
+  },
 };
