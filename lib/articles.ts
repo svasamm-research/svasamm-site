@@ -2499,7 +2499,7 @@ export const ARTICLES: Article[] = [
         href: "Guide-BestSoftware.dc.html",
       },
       {
-        title: "Millingo — rice-mill ERP",
+        title: "Millingo — milling ERP for rice mills",
         href: "Millingo.dc.html",
       },
     ],

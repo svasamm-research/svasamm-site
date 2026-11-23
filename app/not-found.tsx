@@ -20,6 +20,7 @@ const DOORS = [
 // producing two <title> tags in out/404.html. Owning this route replaces that boundary.
 export const metadata: Metadata = {
   title: { absolute: "Page not found | Svasamm" },
+  description: "This page is not here. Try our products, guides, pricing or contact page.",
   robots: { index: false, follow: true },
 };
 

@@ -12,6 +12,7 @@ import { WHY_ARTICLE_BY_SLUG } from "./why-articles";
 import { FOOD_ARTICLE_BY_SLUG } from "./food-articles";
 import { PEOPLE_ARTICLE_BY_SLUG } from "./people-articles";
 import { INDUSTRY_ARTICLE_BY_SLUG } from "./industry-articles";
+import { PAYROLL_ARTICLE_BY_SLUG } from "./payroll-articles";
 import { ARTICLE_DEPTH } from "./article-depth";
 import type { Article } from "./types";
 
@@ -23,6 +24,7 @@ const HAND_AUTHORED: Record<string, Article> = {
   ...FOOD_ARTICLE_BY_SLUG,
   ...PEOPLE_ARTICLE_BY_SLUG,
   ...INDUSTRY_ARTICLE_BY_SLUG,
+  ...PAYROLL_ARTICLE_BY_SLUG,
 };
 
 // A hand-authored article may REPLACE a generated one at the same URL (17 Nov 2026: People's

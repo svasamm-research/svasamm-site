@@ -1875,4 +1875,32 @@ export const ARTICLE_DEPTH: Record<string, Depth> = {
       { q: "How do we forecast without guessing?", a: "Use your own conversion rate for each stage over the last year, applied to each open deal's value. It is less exciting than a rep's estimate and far closer." },
     ],
   },
+  "rice-mill-software-west-bengal": {
+    changed: "2026-11-23",
+    sections: [
+      {
+        type: "p",
+        h: "The e-Paddy portal: what a West Bengal miller should know",
+        text: "e-Paddy (epaddy.wb.gov.in) is the West Bengal Food and Supplies Department's portal for paddy procurement. A farmer must be registered on it before selling paddy at the procurement price, and the Purchase Officer at each procurement centre is responsible for registration, scheduling the farmer's visit and buying the paddy. The portal also lists the centres and the mills involved, and carries the department's guidelines, FAQs and notices for each KMS. Read the current season's guideline on the portal itself, because the dates and rules change every KMS.",
+      },
+      {
+        type: "list",
+        h: "What stays on the portal, and what stays with the mill",
+        items: [
+          { b: "On the portal —", t: "the farmer's registration, the schedule for bringing paddy, and the department's record of what was bought." },
+          { b: "With the mill —", t: "the paddy actually received against your allotment, lot by lot, the milling and the out-turn, and the rice delivered back for each lot." },
+          { b: "Between them —", t: "the two records must agree. A mill that keeps its own records current can answer a query on a lot the same day, from its own books." },
+        ],
+      },
+      {
+        type: "p",
+        h: "Keeping your side of the record clean",
+        text: "Millingo keeps the mill's own side: paddy received by lot, the milling and out-turn, by-products, and rice delivered against what was allotted, so the figures for each lot are ready when an agency asks. The season's rules for your state, such as the delivery period and the standards the rice must meet, are set for your mill during onboarding and are not fixed in the software.",
+      },
+    ],
+    faqs: [
+      { q: "What is e-Paddy in West Bengal?", a: "It is the Food and Supplies Department's portal at epaddy.wb.gov.in for paddy procurement: farmer registration, scheduling and the procurement centres' records. Millers read its guidelines and notices for each KMS." },
+      { q: "Does a farmer need to register on e-Paddy?", a: "Yes. A farmer must be registered before selling paddy at the procurement price, and the registration is handled with the Purchase Officer at the procurement centre." },
+    ],
+  },
 };
