@@ -223,6 +223,7 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   the home hero, the home cards, the menu's "Svasamm One products" column and the footer — everything else
   in `PRODUCTS` is "Also built for clients". `INDUSTRIES` drives the menu's and footer's industry column;
   every href must be a page that exists. Design: v4 page of https://claude.ai/artifact/MUgYHMsV8yiEgZk75NnErc.
+- **Svasamm Materials (24 Nov 2026): `lib/materials.ts` (product, `/pages/materials.html`) + `lib/materials-articles.ts` (four guides).** On Svasamm One in Svasamm blue (no kit colour of its own). Its header lists what the code does and what is NOT claimed (FIFO, batches, expiry, unit conversion, e-way bills) — re-check against svasamm-platform `modules/materials` before adding a claim. Screens: `public/screens/materials-*.webp`, from the Materials canvas (…/GtdFXAw3YhjmCniJAaWejf).
 - **Product logos (12 Oct 2026): `components/ProductLogo.tsx` + `lib/wordmarks.ts`.** Copied from each product's
   design, never redrawn: Millingo = its canvas (8 Oct poster, Inter Tight 800), T4Suite = `packages/t4suite` Brand.tsx,
   Lucoze = lucoze-website Logo.astro. Wordmarks are OUTLINED paths (`scripts/outline-wordmarks.py`) so the site loads
