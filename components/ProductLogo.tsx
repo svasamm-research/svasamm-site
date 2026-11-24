@@ -4,7 +4,8 @@ import { Icon } from "./Icon";
 // Each product's own lockup — its mark and its wordmark, copied from the product's
 // design (sources in scripts/outline-wordmarks.py), never redrawn here. Fixed colours
 // on purpose: a brand mark does not re-colour with the page. Svasamm People has no
-// logo designed yet, so it shows the launcher's people icon on its green and its name.
+// logo designed yet, so it shows the launcher's people icon on its green and its name;
+// Svasamm Materials likewise shows a box on Svasamm blue (FALLBACK).
 
 function Millingo({ s }: { s: number }) {
   // The paddy ear — Millingo canvas Main.dc.html MARK (8 Oct 2026 poster colours).
@@ -48,6 +49,10 @@ function Lucoze({ s }: { s: number }) {
 }
 
 const MARKS: Record<string, (p: { s: number }) => React.ReactElement> = { millingo: Millingo, t4suite: T4Suite, lucoze: Lucoze };
+const FALLBACK: Record<string, { bg: string; icon: string }> = {
+  hrms: { bg: "#15803D", icon: "ph-users-three" },
+  materials: { bg: "#1257C9", icon: "ph-package" },
+};
 const NAMES: Record<string, string> = { millingo: "Millingo", t4suite: "T4Suite", lucoze: "Lucoze", hrms: "Svasamm People", materials: "Svasamm Materials" };
 
 /** `size` is the wordmark's font size in px; the mark is drawn a little taller. */
@@ -66,9 +71,9 @@ export default function ProductLogo({ id, size = 22, ink = "var(--sv-ink)" }: { 
       ) : (
         <span
           aria-hidden="true"
-          style={{ width: Math.round(size * 1.45), height: Math.round(size * 1.45), borderRadius: Math.round(size * 0.36), background: "#15803D", color: "#fff", display: "grid", placeItems: "center", flex: "none" }}
+          style={{ width: Math.round(size * 1.45), height: Math.round(size * 1.45), borderRadius: Math.round(size * 0.36), background: (FALLBACK[id] ?? FALLBACK.hrms).bg, color: "#fff", display: "grid", placeItems: "center", flex: "none" }}
         >
-          <Icon name="ph-users-three" size={Math.round(size * 0.85)} />
+          <Icon name={(FALLBACK[id] ?? FALLBACK.hrms).icon} size={Math.round(size * 0.85)} />
         </span>
       )}
       {wm ? (
