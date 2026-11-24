@@ -106,6 +106,14 @@ export const PRODUCTS: NavProduct[] = [
     icon: "ph-users-three",
   },
   {
+    id: "materials",
+    name: "Svasamm Materials",
+    desc: "Purchase & stores",
+    category: "platform",
+    href: "/pages/materials.html",
+    icon: "ph-package",
+  },
+  {
     id: "crm",
     name: "CRM Platform",
     desc: "Sales & pipeline",

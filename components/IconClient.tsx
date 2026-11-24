@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import {
   ArrowRight, ChevronDown, Check, Menu, X, Plus, Minus,
   // product-nav icons rendered dynamically by the mega-menu
-  Wheat, HeartPulse, Truck, Layers, Users, Handshake, Headset, Megaphone, GraduationCap, CalendarCheck,
+  Wheat, HeartPulse, Truck, Layers, Users, Handshake, Headset, Megaphone, GraduationCap, CalendarCheck, Package,
   type LucideIcon,
 } from "lucide-react";
 
@@ -13,7 +13,7 @@ const MAP = {
   "ph-check": Check, "ph-list": Menu, "ph-x": X, "ph-plus": Plus, "ph-minus": Minus,
   "ph-grains": Wheat, "ph-heartbeat": HeartPulse, "ph-truck": Truck, "ph-stack": Layers,
   "ph-users-three": Users, "ph-handshake": Handshake, "ph-headset": Headset, "ph-megaphone": Megaphone,
-  "ph-graduation-cap": GraduationCap, "ph-calendar-check": CalendarCheck,
+  "ph-graduation-cap": GraduationCap, "ph-calendar-check": CalendarCheck, "ph-package": Package,
 } satisfies Record<string, LucideIcon>;
 
 // A product's icon must be one THIS map draws. The mega-menu and the product filter render

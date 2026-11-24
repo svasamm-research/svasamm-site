@@ -6,6 +6,7 @@ import type { Faq, Product } from "./types";
 import { DIGITAL_PRODUCT } from "./digital";
 import { PRODUCT_GUIDES } from "./product-guides";
 import { DIGITAL_SCHOOLS_PRODUCT } from "./digital-schools";
+import { MATERIALS_PRODUCT } from "./materials";
 
 // FAQPage from the product's visible on-page FAQs — matches the accordion content Google
 // requires to be visible, and gives every product a FAQPage for GEO/AI-answer coverage.
@@ -413,4 +414,5 @@ export const PRODUCT_BY_SLUG: Record<string, Product> = {
   "service-desk.html": PRODUCTS[5],
   "digital-healthcare.html": PRODUCTS[6],
   "digital-schools.html": PRODUCTS[7],
+  "materials.html": MATERIALS_PRODUCT,
 };

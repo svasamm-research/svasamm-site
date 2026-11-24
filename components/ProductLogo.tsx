@@ -48,7 +48,7 @@ function Lucoze({ s }: { s: number }) {
 }
 
 const MARKS: Record<string, (p: { s: number }) => React.ReactElement> = { millingo: Millingo, t4suite: T4Suite, lucoze: Lucoze };
-const NAMES: Record<string, string> = { millingo: "Millingo", t4suite: "T4Suite", lucoze: "Lucoze", hrms: "Svasamm People" };
+const NAMES: Record<string, string> = { millingo: "Millingo", t4suite: "T4Suite", lucoze: "Lucoze", hrms: "Svasamm People", materials: "Svasamm Materials" };
 
 /** `size` is the wordmark's font size in px; the mark is drawn a little taller. */
 export default function ProductLogo({ id, size = 22, ink = "var(--sv-ink)" }: { id: string; size?: number; ink?: string }) {
