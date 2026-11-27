@@ -223,6 +223,7 @@ Tailwind v4 (CSS-first `@theme`) · Inter via `next/font` · Phosphor via
   the home hero, the home cards, the menu's "Svasamm One products" column and the footer — everything else
   in `PRODUCTS` is "Also built for clients". `INDUSTRIES` drives the menu's and footer's industry column;
   every href must be a page that exists. Design: v4 page of https://claude.ai/artifact/MUgYHMsV8yiEgZk75NnErc.
+- **Svasamm Materials is NOT its own product on this site (Mithun, 27 Nov 2026).** It is part of Millingo and of Svasamm One's ERP (and may be sold alone), so it has no page, menu entry, home card, hero slide or contact option. Its four guides are `lib/materials-articles.ts`, parented to the ERP page (`/pages/erp.html`, which carries the purchase and stores features and FAQs); Millingo's FAQ names it for the mill's stores. The header of `lib/materials-articles.ts` lists what the code does and what is NOT claimed (FIFO, batches, serials, expiry, unit conversion, e-way bills) — re-check against svasamm-platform `modules/materials` before adding a claim. Industry pages (ERPNext's /industry pattern) are the next version. Screens: `public/screens/materials-*.webp`, from the Materials canvas (…/GtdFXAw3YhjmCniJAaWejf).
 - **Product logos (12 Oct 2026): `components/ProductLogo.tsx` + `lib/wordmarks.ts`.** Copied from each product's
   design, never redrawn: Millingo = its canvas (8 Oct poster, Inter Tight 800), T4Suite = `packages/t4suite` Brand.tsx,
   Lucoze = lucoze-website Logo.astro. Wordmarks are OUTLINED paths (`scripts/outline-wordmarks.py`) so the site loads

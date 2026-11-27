@@ -22,6 +22,9 @@ async function recordEvents(page: Page) {
 }
 
 test.describe("every page", () => {
+  // Each test below loads every sitemap page (78 on 27 Nov 2026); under a loaded machine 30 s was not
+  // enough for the loop, though no single page was slow.
+  test.describe.configure({ timeout: 120_000 });
   // 15 Oct: a bold marker put in an intro (which is not rendered bold) showed as "**" on the page.
   test("no raw ** markers in any page's text", async ({ page }) => {
     const bad: string[] = [];

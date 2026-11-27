@@ -142,7 +142,10 @@ export const PRODUCTS: NavProduct[] = [
 // Every product screen the site shows — each rendered from that product's LATEST design
 // canvas (Millingo https://claude.ai/artifact/1seLhA8GQtNnUga7t7FfTz, Finance
 // …/DuL2SAuriFDrGn8HF66smP, People …/8YzFZYmdsCPPSMUs2wXeMd, T4Suite …/QUNATp1bRgSWvbM2b4jpxV;
-// Lucoze's from its own site). Millingo, Finance and T4Suite re-rendered 11 Nov 2026 to the
+// Lucoze …/UPqLeNpbSZA1RTRLsDQ9at, Materials …/GtdFXAw3YhjmCniJAaWejf). Every screen re-rendered
+// 24 Nov 2026 from the canvases' versions of that day (People now blue, 58 people; Lucoze's bed board
+// from its Svasamm One canvas; Materials new, for the four purchase guides). People's filing screen dropped: its canvas shows the
+// "payroll not run yet" state. Millingo, Finance and T4Suite were first re-rendered 11 Nov 2026 to the
 // Svasamm One look: every product app in Svasamm blue, product logos in their own colours.
 // never a screenshot of an older build. One screen per page where it can be: a page about
 // gate weighing shows the gate, not the same dashboard as every other page.
@@ -158,11 +161,14 @@ export const SCREENS = {
   peopleMonthEnd: S("people-monthend", "Svasamm People · month end"),
   peoplePayroll: S("people-payroll", "Svasamm People · payroll"),
   peopleAttendance: S("people-attendance", "Svasamm People · attendance for the month"),
-  peopleFiling: S("people-filing", "Svasamm People · statutory filing"),
   peoplePhoneToday: S("people-phone-today", "Svasamm People on a worker's phone"),
   peoplePhoneAttendance: S("people-phone-attendance", "Svasamm People · attendance on a phone"),
   t4suiteDashboard: S("t4suite-dashboard", "T4Suite · the dashboard"),
   lucozeBeds: S("lucoze-beds", "Lucoze · the bed board"),
+  materialsOrders: S("materials-orders", "Svasamm Materials · purchase orders"),
+  materialsGrn: S("materials-grn", "Svasamm Materials · goods received, matched to the bill"),
+  materialsCount: S("materials-count", "Svasamm Materials · stock counts"),
+  materialsReorder: S("materials-reorder", "Svasamm Materials · reorder levels"),
 } satisfies Record<string, Screen>;
 
 // The products that run on Svasamm One, each in the colour decided for it in the Svasamm
@@ -202,7 +208,11 @@ export const GUIDE_SCREEN: Record<string, Screen> = {
   "hrms-for-manufacturing": SCREENS.peopleAttendance,
   "hrms-for-hospitals-clinics": SCREENS.peopleAttendance,
   "hrms-for-retail": SCREENS.peoplePayroll,
-  "payroll-statutory-compliance-india": SCREENS.peopleFiling,
+  "three-way-match-po-grn-bill": SCREENS.materialsGrn,
+  "physical-stock-verification": SCREENS.materialsCount,
+  "reorder-level-formula": SCREENS.materialsReorder,
+  "vendor-rating-method": SCREENS.materialsOrders,
+  "payroll-statutory-compliance-india": SCREENS.peoplePayroll,
 };
 
 

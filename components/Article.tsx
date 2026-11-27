@@ -167,7 +167,9 @@ export default function ArticleView({ article: a }: { article: Article }) {
   const hasHero = HERO_SLUGS.has(a.slug);
   const one = ONE[a.parentProduct];
   const moment = PRODUCT_MOMENTS[a.slug];
-  const screen = one && (GUIDE_SCREEN[a.slug] ?? one.page ?? one.card);
+  // A guide whose parent is not a Svasamm One tile (the purchase guides sit under the ERP) still
+  // shows the screen GUIDE_SCREEN names for it.
+  const screen = GUIDE_SCREEN[a.slug] ?? (one && (one.page ?? one.card));
   const contents = a.sections.map((b) => (b as { h?: string }).h).filter((h): h is string => !!h);
   const next = relatedCards(a);
   return (
