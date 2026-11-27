@@ -4,8 +4,7 @@ import { Icon } from "./Icon";
 // Each product's own lockup — its mark and its wordmark, copied from the product's
 // design (sources in scripts/outline-wordmarks.py), never redrawn here. Fixed colours
 // on purpose: a brand mark does not re-colour with the page. Svasamm People has no
-// logo designed yet, so it shows the launcher's people icon on its green and its name;
-// Svasamm Materials likewise shows a box on Svasamm blue (FALLBACK).
+// logo designed yet, so it shows the launcher's people icon on its green and its name (FALLBACK).
 
 function Millingo({ s }: { s: number }) {
   // The paddy ear — Millingo canvas Main.dc.html MARK (8 Oct 2026 poster colours).
@@ -51,9 +50,8 @@ function Lucoze({ s }: { s: number }) {
 const MARKS: Record<string, (p: { s: number }) => React.ReactElement> = { millingo: Millingo, t4suite: T4Suite, lucoze: Lucoze };
 const FALLBACK: Record<string, { bg: string; icon: string }> = {
   hrms: { bg: "#15803D", icon: "ph-users-three" },
-  materials: { bg: "#1257C9", icon: "ph-package" },
 };
-const NAMES: Record<string, string> = { millingo: "Millingo", t4suite: "T4Suite", lucoze: "Lucoze", hrms: "Svasamm People", materials: "Svasamm Materials" };
+const NAMES: Record<string, string> = { millingo: "Millingo", t4suite: "T4Suite", lucoze: "Lucoze", hrms: "Svasamm People" };
 
 /** `size` is the wordmark's font size in px; the mark is drawn a little taller. */
 export default function ProductLogo({ id, size = 22, ink = "var(--sv-ink)" }: { id: string; size?: number; ink?: string }) {

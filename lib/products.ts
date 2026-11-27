@@ -6,7 +6,6 @@ import type { Faq, Product } from "./types";
 import { DIGITAL_PRODUCT } from "./digital";
 import { PRODUCT_GUIDES } from "./product-guides";
 import { DIGITAL_SCHOOLS_PRODUCT } from "./digital-schools";
-import { MATERIALS_PRODUCT } from "./materials";
 
 // FAQPage from the product's visible on-page FAQs — matches the accordion content Google
 // requires to be visible, and gives every product a FAQPage for GEO/AI-answer coverage.
@@ -83,6 +82,7 @@ export const PRODUCTS: Product[] = [
       { q: "What is a rice mill ERP?", a: "Software built specifically for rice milling — paddy procurement and quality grading, milling production with yield and by-product tracking, packaging, sales, accounting, and government FCI/levy (CMR) compliance — on one system, rather than a generic ERP adapted to fit." },
       { q: "Does Millingo handle government CMR / levy procurement?", a: "Yes. Millingo covers the CMR cycle — release orders, camp picks, rice offered and delivered to the depot, the shortfall, and report 7.1 — with West Bengal’s rules built in first." },
       { q: "Can Millingo track milling recovery and by-products?", a: "Yes. Each milling batch computes rice recovery against what was promised, and books bran, husk and broken rice as stock valued at what they will sell for." },
+      { q: "Does Millingo run the mill's store — spares and consumables?", a: "Yes. Svasamm Materials comes with Millingo for the mill's stores: indents, purchase orders, goods received against the order, the bill matched three ways, issues to a machine at moving-average cost, transfers between godowns and the stock count, all posted to the same books." },
       { q: "Which tiers does Millingo offer?", a: "Starter (market-only mills), Professional (QC bench and butta, by-products, gunny, GST returns), and Enterprise (government levy and CMR, shortfall and report 7.1)." },
       // 17 Nov 2026, each answer checked against svasamm-platform origin/develop: weighment typed and claimed
       // once (gate/arrival.go ErrAlreadyEntered); nine role templates (modules/millingo/manifest.go); imports
@@ -188,8 +188,8 @@ export const PRODUCTS: Product[] = [
     featuresTitle: "The whole operation, one source of truth",
     features: [
       { icon: "ph-book-open", title: "Finance & accounting", body: "General ledger, receivables and payables, cost centres, budgets and a month lock once a return is filed." },
-      { icon: "ph-warehouse", title: "Inventory & warehouse", body: "Multi-warehouse stock, batches, serials and valuation, live with every transaction." },
-      { icon: "ph-shopping-cart", title: "Procurement", body: "Indent to purchase order to goods received, with approvals and each supplier rated from what they delivered." },
+      { icon: "ph-warehouse", title: "Stores & godowns", body: "Stock by warehouse at moving-average cost. Issues to a department or a machine, transfers between godowns, and a stock count whose difference posts after approval." },
+      { icon: "ph-shopping-cart", title: "Purchase", body: "Indent to purchase order to goods received, with approvals and a budget check. The bill is matched three ways, and each vendor is rated from what they delivered." },
       { icon: "ph-factory", title: "Industry processes", body: "Your industry's own steps built in — a rice mill's paddy-to-rice and CMR, and your plant's recipes and batches set up for you during onboarding." },
       { icon: "ph-receipt", title: "Sales & billing", body: "Orders to invoice with GST on every line, and GSTR-1 and GSTR-3B prepared from the books." },
       { icon: "ph-file-text", title: "GST & statutory", body: "GST returns, TDS and Indian statutory reporting handled in the product." },
@@ -200,7 +200,15 @@ export const PRODUCTS: Product[] = [
       intro: "In-depth, indexable pages for what ERP buyers actually search — each is its own page for search & AI discovery.",
       grid: "1fr 1.5fr",
       columns: [
-        { heading: "ERP guide", icon: "ph-file-text", links: [{ title: "ERP implementation for Indian businesses", href: "Guide-ERPImplementation.dc.html" }] },
+        {
+          heading: "ERP & purchase guides", icon: "ph-file-text", links: [
+            { title: "ERP implementation for Indian businesses", href: "Guide-ERPImplementation.dc.html" },
+            { title: "Three-way matching: purchase order, GRN and bill", href: "/pages/three-way-match-po-grn-bill.html" },
+            { title: "Physical stock verification, step by step", href: "/pages/physical-stock-verification.html" },
+            { title: "Reorder level: the formula and how to set it", href: "/pages/reorder-level-formula.html" },
+            { title: "Vendor rating that counts, not guesses", href: "/pages/vendor-rating-method.html" },
+          ],
+        },
         {
           heading: "By industry", icon: "ph-buildings", links: [
             { title: "ERP for the food industry", href: "ERP-Food.dc.html" },
@@ -213,6 +221,8 @@ export const PRODUCTS: Product[] = [
     },
     faqs: [
       { q: "Is Indian GST built in?", a: "Yes — GST-compliant invoicing and GSTR-1, GSTR-3B and HSN summary preparation are part of the system, not a bolt-on." },
+      { q: "Can we take only purchase and stores?", a: "Yes. Svasamm Materials, the purchase and stores part of the ERP, can be taken on its own with the books it posts to: indents, purchase orders with approval and a budget check, goods received against the order, the bill matched three ways with input GST and TDS, issues, godown transfers, the stock count and reorder levels." },
+      { q: "How is stock valued?", a: "At moving-average cost, per material and warehouse. The cost of an issue is worked out by the books, never typed, so the stock in the store and the stock in the books are one figure." },
       { q: "Can it run more than one plant or godown?", a: "Yes. Each plant and godown is its own place, with its own stock and staff, in one firm's books." },
       { q: "Does it cover manufacturing?", a: "Purchase, stores, people and the books run from day one. Your recipes, production orders and batch costing are set up for your plant during onboarding: we walk your floor and build your industry's own steps with you, as we did for rice mills." },
     ],
@@ -414,5 +424,4 @@ export const PRODUCT_BY_SLUG: Record<string, Product> = {
   "service-desk.html": PRODUCTS[5],
   "digital-healthcare.html": PRODUCTS[6],
   "digital-schools.html": PRODUCTS[7],
-  "materials.html": MATERIALS_PRODUCT,
 };

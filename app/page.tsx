@@ -52,9 +52,6 @@ const STAGE: HeroSlide[] = [
   { id: "hrms", phrase: "team", line: "Svasamm People — attendance on the phone, leave, and payroll with PF, ESI and PT done.",
     desk: { src: SCREENS.peopleMonthEnd.src, alt: "Svasamm People — month end: attendance closed, payroll ready" },
     phone: { src: SCREENS.peoplePhoneToday.src, alt: "Svasamm People on a worker's phone — punched in, leave and pay" } },
-  { id: "materials", phrase: "store", line: "Svasamm Materials — purchase orders, goods received, issues and the stock count, posted to the books.",
-    desk: { src: SCREENS.materialsHome.src, alt: "Svasamm Materials — the stock held today and what needs the store" },
-    phone: { src: SCREENS.materialsPhone.src, alt: "Svasamm Materials on the store keeper's phone" } },
 ].map((x) => {
   const p = HOME_PRODUCTS.find((h) => h.id === x.id)!;
   return { ...x, name: p.name, href: p.href, external: !!p.external, colour: ONE[x.id].fill, logo: <ProductLogo id={x.id} size={15} /> };

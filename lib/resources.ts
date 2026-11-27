@@ -9,7 +9,6 @@ import { toRoute } from "./routes";
 export const CATEGORIES: { key: string; label: string; products: string[] }[] = [
   { key: "rice-mills", label: "Rice mills & CMR", products: ["millingo"] },
   { key: "payroll", label: "Payroll & HR", products: ["hrms"] },
-  { key: "stores", label: "Purchase & stores", products: ["materials"] },
   { key: "healthcare", label: "Healthcare marketing", products: ["digital-healthcare"] },
   { key: "schools", label: "School marketing", products: ["digital-schools"] },
   { key: "business", label: "ERP, CRM & DMS", products: ["dms", "erp", "crm", "service-desk"] },

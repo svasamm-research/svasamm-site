@@ -1,10 +1,21 @@
-// Svasamm Materials — four guides (24 Nov 2026), hand-authored, merged in lib/article-registry.ts.
+// Svasamm Materials — four purchase and stores guides (24 Nov 2026), hand-authored, merged in
+// lib/article-registry.ts. Materials is NOT its own product on this site (Mithun, 27 Nov 2026): it
+// is part of Millingo and of Svasamm One's ERP, and can be sold alone, so the guides sit under the
+// ERP page. Industry pages (ERPNext's /industry pattern) are the next version, not this one.
 // The searches a purchase or stores head makes: three-way matching, physical stock verification,
 // the reorder level formula, vendor rating.
 //
 // ⛔ CLAIMS ABOUT THE PRODUCT were checked against svasamm-platform origin/develop modules/materials,
-// 24 Nov 2026 — the list is in lib/materials.ts's header, and so is what is NOT claimed (FIFO, batch
-// and expiry, unit conversion, a receipt tolerance, e-way bill generation).
+// 24 Nov 2026 (migrations 0001-0029, packages/materials): indents with approval above a value;
+// purchase orders with approval and a budget check (off / warn / block, commitments counted); GRN that
+// refuses more than is left on the order; the bill matched three ways, input GST per line, TDS on
+// purchases; purchase returns as a debit note; issues to a department or a machine at moving average;
+// transfers in one step, or two through "on the road" to a hired godown; the stock count; reservations;
+// reorder levels raising an indent; RFQs, rate contracts, approved vendors, vendor rating from
+// documents; phone floor screens (weigh-in, issue, move, count).
+// NOT CLAIMED, because the code does not do it: FIFO, batch, lot, serial or expiry tracking; unit
+// conversion; a receipt tolerance; e-way bill or e-invoice generation; reverse-charge bills;
+// issuing for production (Millingo issues its own). The same holds for the ERP and Millingo pages.
 // Rules cited: CGST Act 2017 s.16(2) (the conditions for input tax credit, among them that the goods
 // were received); CARO 2020 para 3(ii)(a) (the auditor reports on physical verification of inventory
 // and on discrepancies of 10% or more in aggregate for a class). TDS on purchases is named without a
@@ -12,7 +23,7 @@
 import type { Article, Block, Faq } from "./types";
 
 const BYLINE = "By Mithun K. Singh, Co-Founder, Svasamm Research · 24 November 2026";
-const PRODUCT = { title: "Svasamm Materials — purchase and stores", href: "/pages/materials.html" };
+const PRODUCT = { title: "Svasamm One ERP — purchase and stores", href: "/pages/erp.html" };
 
 type Spec = {
   slug: string;
@@ -32,7 +43,7 @@ function build(s: Spec): Article {
   return {
     slug: s.slug,
     type: "guide",
-    parentProduct: "materials",
+    parentProduct: "erp",
     eyebrow: s.eyebrow,
     title: s.title,
     byline: BYLINE,
@@ -40,7 +51,7 @@ function build(s: Spec): Article {
     sections: s.sections,
     faqs: s.faqs,
     related: [...s.related, PRODUCT],
-    cta: { ...s.cta, productHref: "/pages/materials.html", productLabel: "Explore Svasamm Materials" },
+    cta: { ...s.cta, productHref: "/pages/erp.html", productLabel: "Explore the ERP" },
     seo: {
       metaTitle: s.metaTitle,
       metaDescription: s.meta,
@@ -71,7 +82,7 @@ function build(s: Spec): Article {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://svasamm.com/" },
-          { "@type": "ListItem", position: 2, name: "Svasamm Materials", item: "https://svasamm.com/pages/materials.html" },
+          { "@type": "ListItem", position: 2, name: "ERP System", item: "https://svasamm.com/pages/erp.html" },
           { "@type": "ListItem", position: 3, name: s.title, item: url },
         ],
       },

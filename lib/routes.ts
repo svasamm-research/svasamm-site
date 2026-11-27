@@ -13,7 +13,6 @@ export const PROTO_TO_ROUTE: Record<string, string> = {
   "DMS.dc.html": "/pages/dms.html",
   "ERP.dc.html": "/pages/erp.html",
   "HRMS.dc.html": "/pages/hrms.html",
-  "Materials.dc.html": "/pages/materials.html", // hand-authored (lib/materials.ts)
   "CRM.dc.html": "/pages/crm.html",
   "ServiceDesk.dc.html": "/pages/service-desk.html",
   // Millingo cluster

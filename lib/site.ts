@@ -106,14 +106,6 @@ export const PRODUCTS: NavProduct[] = [
     icon: "ph-users-three",
   },
   {
-    id: "materials",
-    name: "Svasamm Materials",
-    desc: "Purchase & stores",
-    category: "platform",
-    href: "/pages/materials.html",
-    icon: "ph-package",
-  },
-  {
     id: "crm",
     name: "CRM Platform",
     desc: "Sales & pipeline",
@@ -152,7 +144,7 @@ export const PRODUCTS: NavProduct[] = [
 // …/DuL2SAuriFDrGn8HF66smP, People …/8YzFZYmdsCPPSMUs2wXeMd, T4Suite …/QUNATp1bRgSWvbM2b4jpxV;
 // Lucoze …/UPqLeNpbSZA1RTRLsDQ9at, Materials …/GtdFXAw3YhjmCniJAaWejf). Every screen re-rendered
 // 24 Nov 2026 from the canvases' versions of that day (People now blue, 58 people; Lucoze's bed board
-// from its Svasamm One canvas; Materials new). People's filing screen dropped: its canvas shows the
+// from its Svasamm One canvas; Materials new, for the four purchase guides). People's filing screen dropped: its canvas shows the
 // "payroll not run yet" state. Millingo, Finance and T4Suite were first re-rendered 11 Nov 2026 to the
 // Svasamm One look: every product app in Svasamm blue, product logos in their own colours.
 // never a screenshot of an older build. One screen per page where it can be: a page about
@@ -173,12 +165,10 @@ export const SCREENS = {
   peoplePhoneAttendance: S("people-phone-attendance", "Svasamm People · attendance on a phone"),
   t4suiteDashboard: S("t4suite-dashboard", "T4Suite · the dashboard"),
   lucozeBeds: S("lucoze-beds", "Lucoze · the bed board"),
-  materialsHome: S("materials-home", "Svasamm Materials · the stock held today"),
   materialsOrders: S("materials-orders", "Svasamm Materials · purchase orders"),
   materialsGrn: S("materials-grn", "Svasamm Materials · goods received, matched to the bill"),
   materialsCount: S("materials-count", "Svasamm Materials · stock counts"),
   materialsReorder: S("materials-reorder", "Svasamm Materials · reorder levels"),
-  materialsPhone: S("materials-phone", "Svasamm Materials on the store keeper's phone"),
 } satisfies Record<string, Screen>;
 
 // The products that run on Svasamm One, each in the colour decided for it in the Svasamm
@@ -193,8 +183,6 @@ export const ONE: Record<
   millingo: { fill: "#D9A215", ink: "#6E5309", wash: "#FDF7E8", on: "#3A2C05", card: SCREENS.millingoCmr, page: SCREENS.millingoGate, phone: SCREENS.millingoPhone },
   lucoze: { fill: "#C15F3C", ink: "#8A3F23", wash: "#FDF3EE", on: "#fff", card: SCREENS.lucozeBeds },
   t4suite: { fill: "#1D4ED8", ink: "#1E3A8A", wash: "#DBEAFE", on: "#fff", card: SCREENS.t4suiteDashboard },
-  // Materials has no colour of its own in the kit (24 Nov 2026), so it takes Svasamm blue.
-  materials: { fill: "#1257C9", ink: "#0B3579", wash: "#EFF5FF", on: "#fff", card: SCREENS.materialsHome, page: SCREENS.materialsGrn, phone: SCREENS.materialsPhone },
   hrms: { fill: "#15803D", ink: "#14532D", wash: "#DCFCE7", on: "#fff", card: SCREENS.peoplePayroll, page: SCREENS.peopleMonthEnd, phone: SCREENS.peoplePhoneAttendance },
 };
 
