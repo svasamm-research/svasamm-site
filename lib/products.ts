@@ -203,10 +203,10 @@ export const PRODUCTS: Product[] = [
         {
           heading: "ERP & purchase guides", icon: "ph-file-text", links: [
             { title: "ERP implementation for Indian businesses", href: "Guide-ERPImplementation.dc.html" },
-            { title: "Three-way matching: purchase order, GRN and bill", href: "/pages/three-way-match-po-grn-bill.html" },
-            { title: "Physical stock verification, step by step", href: "/pages/physical-stock-verification.html" },
+            { title: "Three-way matching in accounts payable", href: "/pages/three-way-match-po-grn-bill.html" },
+            { title: "Physical verification of stock: process and report format", href: "/pages/physical-stock-verification.html" },
             { title: "Reorder level: the formula and how to set it", href: "/pages/reorder-level-formula.html" },
-            { title: "Vendor rating that counts, not guesses", href: "/pages/vendor-rating-method.html" },
+            { title: "Vendor rating: methods, formula and format", href: "/pages/vendor-rating-method.html" },
           ],
         },
         {

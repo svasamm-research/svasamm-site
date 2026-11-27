@@ -122,8 +122,8 @@ const TRADING = build({
       h: "Stock across godowns",
       items: [
         { b: "Godowns and transfers —", t: "each godown holds its own stock, and a transfer moves it out of one and into another in a single entry." },
-        { b: "Batches and serial numbers —", t: "kept where the product needs them, such as expiry-dated goods or serial-numbered appliances." },
-        { b: "Valuation —", t: "stock is valued by a method your accountant chooses, so the closing figure agrees with the books." },
+        { b: "Batches and serial numbers —", t: "set up during onboarding where the product needs them, such as expiry-dated goods or serial-numbered appliances." },
+        { b: "Valuation —", t: "stock is valued at moving-average cost, worked out by the books, so the closing figure agrees with them." },
         { b: "Reorder levels —", t: "set per item, so what is running low is on a list before it is out." },
         { b: "Stock counts —", t: "a count is entered against the register and the difference is posted, not typed over." },
       ],
@@ -168,13 +168,15 @@ const TRADING = build({
     },
   ],
   faqs: [
-    { q: "Can the ERP manage multiple warehouses?", a: "Yes. Each godown holds its own stock, and a transfer between godowns is one entry. Batches and serial numbers are kept where the product needs them, and the stock is valued by the method your accountant chooses." },
+    { q: "Can the ERP manage multiple warehouses?", a: "Yes. Each godown holds its own stock, and a transfer between godowns is one entry. Stock is valued at moving-average cost. Batches and serial numbers, where your product needs them, are set up during onboarding." },
     { q: "Does it track customer credit limits and outstanding?", a: "Yes. A sale to a customer past their credit limit is refused, receipts are matched to invoices, and the ageing report shows what is overdue customer by customer." },
     { q: "Does it prepare GST returns?", a: "Yes. GSTR-1 and GSTR-3B, with the HSN summary, are prepared from the books, and the e-way bill number is recorded against the invoice. Your chartered accountant still files and signs the return." },
     { q: "Does it replace Tally?", a: "Yes for the daily work. The books, stock, purchase, sales and GST run in Svasamm One, so nothing is retyped into a second package. We import your masters and opening balances during onboarding." },
     { q: "Can we send quotations and take orders before invoicing?", a: "That flow is set up for your business during onboarding, around how you quote and confirm today. The invoice, stock and GST that follow are built in." },
   ],
   related: [
+    { title: "Three-way matching in accounts payable", href: "/pages/three-way-match-po-grn-bill.html" },
+    { title: "Reorder level: the formula and how to set it", href: "/pages/reorder-level-formula.html" },
     { title: "ERP implementation guide", href: "Guide-ERPImplementation.dc.html" },
     { title: "ERP for manufacturing businesses", href: "ERP-Manufacturing.dc.html" },
     { title: "ERP System — overview", href: "ERP.dc.html" },
@@ -276,7 +278,7 @@ const SERVICES = build({
     productLabel: "Explore ERP",
   },
   metaTitle: "ERP for Services & Project-Based Firms | Svasamm",
-  meta: "ERP for services firms: GST invoicing, receivables ageing, TDS, cost centres and budgets by team, and payroll in one place, with project billing set up for your firm.",
+  meta: "ERP for services firms: GST invoicing, receivables ageing, TDS, cost centres and team budgets, and payroll in one place, with project billing set up for you.",
 });
 
 const RETAIL = build({
