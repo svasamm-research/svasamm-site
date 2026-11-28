@@ -350,16 +350,26 @@ export const RICE_MILL_ARTICLES: Article[] = [
     parentProduct: "millingo",
     eyebrow: "Uttar Pradesh · KMS 2026-27",
     title: "Uttar Pradesh Paddy Procurement and CMR 2026-27: Dates, Agencies and What the Mill Must Keep",
-    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 October 2026",
+    byline: "By Mithun K. Singh, Co-Founder, Svasamm Research · 14 October 2026 · Updated 23 November 2026",
     intro:
       "Uttar Pradesh's cabinet approved the paddy procurement policy for Kharif Marketing Season 2026-27 in early October, with buying in western UP opening this month and eastern UP from 1 November. For a mill doing custom milling, the season is set by four facts — the price, the windows, the agencies and the bags — and decided by one record: how much of the state's paddy it holds, and how much rice it still owes. Here is what has been announced, with sources, and what is not yet published.",
     sections: [
+      // MSP (23 Nov 2026, for the search "msp of paddy 2026-27 in up"): PIB, "Cabinet approves Minimum
+      // Support Prices (MSP) for Kharif Crops for Marketing Season 2026-27" (PRID 2260617/2260618), table rows
+      // Paddy Common ₹2,441 and Paddy Grade 'A' ₹2,461 a quintal; the same ₹2,441 in PIB's PM-AASHA note.
+      // Cross-checked: the previous year's ₹2,369 / ₹2,389 (PIB PRID 2131983) is what this page already cited.
+      // MSP is set by the Union government on CACP's recommendation and is the same in every state.
+      {
+        type: "p",
+        h: "Paddy MSP in Uttar Pradesh for 2026-27",
+        text: "The minimum support price for paddy in Kharif Marketing Season 2026-27 is ₹2,441 a quintal for common paddy and ₹2,461 a quintal for Grade A, ₹72 more than the ₹2,369 and ₹2,389 of 2025-26. The Union Cabinet fixed these on the recommendation of the Commission for Agricultural Costs and Prices, and they are the same in Uttar Pradesh as in every other state. UP's agencies buy from registered farmers at this price at their purchase centres; the paddy then goes to mills for custom milling, and the rice comes back as CMR.",
+      },
       {
         type: "table",
         h: "What has been announced for 2026-27",
         cols: ["", "2026-27", "Source"],
         rows: [
-          ["Paddy MSP — common / Grade A", "₹2,441 / ₹2,461 a quintal (₹72 more than 2025-26)", "Union cabinet (CCEA), May 2026"],
+          ["Paddy MSP — common / Grade A", "₹2,441 / ₹2,461 a quintal (₹72 more than 2025-26)", "Union Cabinet (CCEA), PIB release, May 2026"],
           ["Buying in western UP", "From mid-October 2026 (reported as 12 and as 15 Oct) to 15 Feb 2027", "Kisan India, UNI, 9 Oct 2026"],
           ["Buying in eastern UP", "1 Nov 2026 to 28 Feb 2027", "Kisan India, UNI, 9 Oct 2026"],
           ["Target", "65 lakh tonnes, at about 4,500 centres (62 lakh tonnes bought last season)", "Kisan India 9 Oct; Whalesbook 13 Oct 2026"],
@@ -445,7 +455,7 @@ export const RICE_MILL_ARTICLES: Article[] = [
         },
         publisher: { "@type": "Organization", name: "Svasamm" },
         datePublished: "2026-10-14",
-        dateModified: "2026-10-14",
+        dateModified: "2026-11-23",
         mainEntityOfPage: "https://svasamm.com/pages/up-paddy-procurement-cmr-2026-27.html",
       },
       {

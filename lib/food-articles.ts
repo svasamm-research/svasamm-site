@@ -119,6 +119,7 @@ export const FOOD_ARTICLES: Article[] = [
       { title: "Millingo — rice mill software", href: "/pages/millingo.html" },
       { title: "Choosing rice mill software", href: "/pages/best-rice-mill-software.html" },
       { title: "Svasamm People — payroll and attendance", href: "/pages/hrms.html" },
+      { title: "Svasamm One ERP — purchase and stores", href: "/pages/erp.html" },
       { title: "ERP System — overview", href: "/pages/erp.html" },
     ],
     cta: {
@@ -396,6 +397,7 @@ export const FOOD_GUIDES: Article[] = [
       { title: "Jaggery plant: process, yield, cost and GST", href: "/pages/jaggery-plant.html" },
       { title: "Poha mill business", href: "/pages/poha-mill-business.html" },
       { title: "Svasamm People — payroll and attendance", href: "/pages/hrms.html" },
+      { title: "Svasamm One ERP — purchase and stores", href: "/pages/erp.html" },
     ],
     cta: {
       title: "Run your flour mill's stores, payroll and books in one place",
@@ -503,6 +505,7 @@ export const FOOD_GUIDES: Article[] = [
       { title: "Flour mill business in India", href: "/pages/flour-mill-business.html" },
       { title: "Poha mill business", href: "/pages/poha-mill-business.html" },
       { title: "Svasamm People — payroll and attendance", href: "/pages/hrms.html" },
+      { title: "Svasamm One ERP — purchase and stores", href: "/pages/erp.html" },
     ],
     cta: {
       title: "Close the season's cane, stock and wages in one place",

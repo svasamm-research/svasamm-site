@@ -3,6 +3,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import JsonLd from "@/components/JsonLd";
+import HeroStage, { type HeroSlide } from "@/components/HeroStage";
 import { Icon } from "@/components/Icon";
 import ProductLogo from "@/components/ProductLogo";
 import { HOME_PRODUCTS, REGIONS, WHYS, HOME_JSONLD } from "@/lib/home";
@@ -36,6 +37,25 @@ const TRUST = [
   ["Hosted or your own", ""],
   ["India-first", "GST · PF · CMR"],
 ];
+
+
+// The hero's product stage: the four Svasamm One products, each with its real screens
+// (Mithun, 19 Nov 2026). Order = the logos' order; slide 0 is what the server renders.
+const STAGE: HeroSlide[] = [
+  { id: "millingo", phrase: "rice mill", line: "Millingo — paddy in at the gate, rice out to the depot, and the CMR you still owe, to the day.",
+    desk: { src: SCREENS.millingoToday.src, alt: "Millingo — a rice-mill owner's morning: CMR still owed, lorries at the gate" },
+    phone: { src: SCREENS.millingoPhone.src, alt: "Millingo on the owner's phone" } },
+  { id: "lucoze", phrase: "hospital", line: "Lucoze — OPD, beds, billing, lab and pharmacy for clinics and hospitals, on one record.",
+    desk: { src: SCREENS.lucozeBeds.src, alt: "Lucoze — the hospital bed board, ward by ward" } },
+  { id: "t4suite", phrase: "CA firm", line: "T4Suite — every client's deadlines, the team's tasks and time, and the bills, in one practice.",
+    desk: { src: SCREENS.t4suiteDashboard.src, alt: "T4Suite — a CA firm's dashboard of tasks and due dates" } },
+  { id: "hrms", phrase: "team", line: "Svasamm People — attendance on the phone, leave, and payroll with PF, ESI and PT done.",
+    desk: { src: SCREENS.peopleMonthEnd.src, alt: "Svasamm People — month end: attendance closed, payroll ready" },
+    phone: { src: SCREENS.peoplePhoneToday.src, alt: "Svasamm People on a worker's phone — punched in, leave and pay" } },
+].map((x) => {
+  const p = HOME_PRODUCTS.find((h) => h.id === x.id)!;
+  return { ...x, name: p.name, href: p.href, external: !!p.external, colour: ONE[x.id].fill, logo: <ProductLogo id={x.id} size={15} /> };
+});
 
 export const metadata: Metadata = {
   title: {
@@ -79,15 +99,7 @@ export default function Home() {
           className="pp-hero-wash"
           style={{ borderBottom: "1px solid var(--sv-line)" }}
         >
-          <div
-            className="sv-wrap pp-hero"
-            style={{ gap: 64, padding: "80px 24px 88px" }}
-          >
-            <div>
-              {/* The "Svasamm Research Pvt Ltd · West Bengal, India" chip was removed (Mithun, 10 Nov 2026). */}
-              <h1 style={{ margin: "0 0 22px", maxWidth: "16ch" }}>
-                Business software that fits how your operation actually runs.
-              </h1>
+          <HeroStage slides={STAGE}>
               <p
                 className="sv-muted"
                 style={{
@@ -137,57 +149,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* The real product, not a diagram of it: Millingo at a desk, People on a phone,
-                and each Svasamm One product by its own logo. */}
-            <div>
-              <div style={{ position: "relative", paddingBottom: 28, paddingRight: 34 }}>
-                <figure
-                  className="sv-card"
-                  style={{ margin: 0, padding: 0, overflow: "hidden", boxShadow: "var(--sv-sh-3)", borderTop: `4px solid ${ONE.millingo.fill}` }}
-                >
-                  <img
-                    src={SCREENS.millingoToday.src}
-                    alt="Millingo — a rice-mill owner's morning: CMR still owed, lorries at the gate"
-                    style={{ display: "block", width: "100%" }}
-                  />
-                </figure>
-                <img
-                  src={SCREENS.peoplePhoneToday.src}
-                  alt="Svasamm People on a worker's phone — punched in, leave and pay"
-                  style={{
-                    position: "absolute",
-                    right: 0,
-                    bottom: 0,
-                    width: "27%",
-                    borderRadius: 18,
-                    border: "5px solid var(--sv-ink)",
-                    boxShadow: "var(--sv-sh-3)",
-                    background: "#fff",
-                  }}
-                />
-              </div>
-              <div
-                style={{
-                  marginTop: 22,
-                  display: "flex",
-                  flexWrap: "wrap",
-                  alignItems: "center",
-                  gap: "14px 24px",
-                }}
-              >
-                <span className="sv-eyebrow" style={{ margin: 0, color: "var(--sv-ink-3)", flexBasis: "100%" }}>
-                  On Svasamm One
-                </span>
-                {one.map((p) => (
-                  <ProductLink key={p.id} p={p} style={{ display: "inline-flex" }}>
-                    <ProductLogo id={p.id} size={15} />
-                  </ProductLink>
-                ))}
-              </div>
-            </div>
-          </div>
+          </HeroStage>
         </section>
 
         {/* PRODUCTS — the Svasamm One products once, each with its real screen; the rest below */}

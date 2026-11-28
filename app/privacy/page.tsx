@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 // safety" form. If either changes, this page changes in the same commit.
 export default function Privacy() {
   return (
-    <LegalPage title="Privacy Policy" updated="1 October 2026">
+    <LegalPage title="Privacy Policy" updated="23 November 2026">
       <p>{BUSINESS.legalName} (&quot;Svasamm&quot;, &quot;we&quot;, &quot;us&quot;) operates svasamm.com and sells the software products described on it, including T4Suite, and the Svasamm One app. This policy explains what information we collect, why, how long we keep it, and the choices you have.</p>
 
       <h2>Information we collect</h2>
@@ -38,6 +38,7 @@ export default function Privacy() {
 
       <h2>Legal basis &amp; sharing</h2>
       <p>We process your information to take steps at your request, to perform our contract with your business, and for our legitimate interest in running and improving our business. We do not sell your personal data. We share it only with service providers who help us operate — for example hosting, email, payment processing (Cashfree Payments) and app notifications (Google Firebase) — under confidentiality obligations, and where the law requires it.</p>
+      <p>The emails our software sends for your organisation — such as invoices, reminders and documents to your clients, and sign-in emails to your staff — are delivered through Amazon Web Services&apos; email service. The recipient&apos;s address and the email&apos;s content may therefore be processed outside India, only to deliver that email.</p>
 
       <h2>Data in our software</h2>
       <p>The records your organisation keeps in our software — clients, tasks, time, invoices, documents, staff details and the like — belong to your organisation. We process them only to provide the service, on your organisation&apos;s instructions and in line with India&apos;s Digital Personal Data Protection Act, 2023. Your organisation can export them at any time.</p>

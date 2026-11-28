@@ -82,6 +82,7 @@ export const PRODUCTS: Product[] = [
       { q: "What is a rice mill ERP?", a: "Software built specifically for rice milling — paddy procurement and quality grading, milling production with yield and by-product tracking, packaging, sales, accounting, and government FCI/levy (CMR) compliance — on one system, rather than a generic ERP adapted to fit." },
       { q: "Does Millingo handle government CMR / levy procurement?", a: "Yes. Millingo covers the CMR cycle — release orders, camp picks, rice offered and delivered to the depot, the shortfall, and report 7.1 — with West Bengal’s rules built in first." },
       { q: "Can Millingo track milling recovery and by-products?", a: "Yes. Each milling batch computes rice recovery against what was promised, and books bran, husk and broken rice as stock valued at what they will sell for." },
+      { q: "Does Millingo run the mill's store — spares and consumables?", a: "Yes. Svasamm Materials comes with Millingo for the mill's stores: indents, purchase orders, goods received against the order, the bill matched three ways, issues to a machine at moving-average cost, transfers between godowns and the stock count, all posted to the same books." },
       { q: "Which tiers does Millingo offer?", a: "Starter (market-only mills), Professional (QC bench and butta, by-products, gunny, GST returns), and Enterprise (government levy and CMR, shortfall and report 7.1)." },
       // 17 Nov 2026, each answer checked against svasamm-platform origin/develop: weighment typed and claimed
       // once (gate/arrival.go ErrAlreadyEntered); nine role templates (modules/millingo/manifest.go); imports
@@ -111,23 +112,25 @@ export const PRODUCTS: Product[] = [
     id: "dms",
     name: "DMS",
     badge: "Distributor Management",
-    tagline: "Run your entire distributor network on one system",
+    tagline: "See every distributor, every machine and every sale in one system",
     blurb:
-      "DMS gives every distributor a scoped workspace while you keep central control — tiered stock allocation, order-to-delivery, commission and incentive calculation, and territory-level visibility across the whole network.",
+      "DMS is distributor management built for OEMs — makers of machines that sell, install and service through distributors. Each distributor runs its own sales, stock and books inside your system, so you see primary and secondary sales, serial numbers, installations, warranty and commission without waiting for a phone call or a Tally export.",
     ctaPrimary: "Book a walkthrough",
     featuresTitle: "Central control, distributor-level detail",
     features: [
-      { icon: "ph-user-focus", title: "Distributor-scoped access", body: "Each distributor sees only their own orders, stock and ledger — one system, cleanly partitioned." },
-      { icon: "ph-stack", title: "Tiered stock & allocation", body: "Central warehouse to distributor to sub-stockist, with allocation rules and stock transfers." },
-      { icon: "ph-package", title: "Order to delivery", body: "Order capture, approval, dispatch and proof-of-delivery, tracked end to end." },
-      { icon: "ph-percent", title: "Commissions & incentives", body: "Slab-based commissions and scheme payouts computed automatically per distributor." },
-      { icon: "ph-map-trifold", title: "Territory & beat control", body: "Geographies, beats and coverage mapped to distributors, with overlap prevention." },
-      { icon: "ph-scales", title: "Ledgers & reconciliation", body: "Distributor-wise outstanding, credit limits and statements, reconciled to the day." },
+      { icon: "ph-user-focus", title: "A workspace per distributor", body: "Each distributor is its own legal entity in your system, with its GSTIN, users, godowns and credit limit. Its people see only their own orders, stock and books; zone managers see the distributors under them; head office sees all." },
+      { icon: "ph-package", title: "Primary and secondary sales", body: "The distributor's purchase order is your sales order — one document seen from both sides. When the distributor sells on, it bills from its own GSTIN, and that sale is in your view the same day." },
+      { icon: "ph-barcode", title: "Serial numbers and installed base", body: "Every machine keeps its serial from your dispatch to the distributor's godown to the customer's floor. The installed base shows every machine at every customer: where, since when, and how much warranty is left." },
+      { icon: "ph-file-text", title: "Application and Warranty Sheet", body: "The OEM's own document over a delivery: the machine and serial, the customer's application, the consumables that fit it, the engineer and the warranty terms, printed on one page. Installation starts the warranty." },
+      { icon: "ph-stack", title: "Stock held, and for how long", body: "Stock on hand at each distributor and each godown, with the days each machine has sat. Amber at 45 days and red at 60 by default, both set to your policy." },
+      { icon: "ph-percent", title: "Commission from invoices", body: "Commission slabs by category and amount, worked out from the distributor's invoices — not from a spreadsheet someone fills in at quarter end." },
+      { icon: "ph-map-trifold", title: "Territories down to the pincode", body: "Zone, region and territory, with pincodes allocated to each distributor. A sale outside a distributor's pincodes is flagged for you to see, not silently allowed." },
+      { icon: "ph-scales", title: "The distributor's books", body: "Invoices, credit notes, collections and outstanding at each distributor, in the same books as yours. GST is worked out on every invoice from the two parties' states." },
     ],
-    builtFor: ["OEM channel networks", "Coding & marking", "Packaging machinery", "Electrical & electronics", "Pharma & med-devices", "Automotive aftermarket", "HVAC & equipment", "Agri equipment"],
+    builtFor: ["Coding & marking", "Packaging machinery", "Electrical & electronics", "Pharma & med-devices", "Automotive aftermarket", "HVAC & equipment", "Agri equipment", "Any OEM selling through distributors"],
     resources: {
       title: "Guides, OEM-industry pages & comparisons",
-      intro: "In-depth, indexable pages for the channel questions OEMs actually search — each is its own page for search & AI discovery.",
+      intro: "In-depth pages for the channel questions OEMs actually search — each is its own page for search & AI discovery.",
       grid: "1fr 1.4fr 1fr",
       columns: [
         { heading: "OEM channel guide", icon: "ph-file-text", links: [{ title: "Distributor management for OEMs: the full channel lifecycle", href: "Guide-OEMDistributor.dc.html" }] },
@@ -151,11 +154,16 @@ export const PRODUCTS: Product[] = [
       ],
     },
     faqs: [
-      { q: "Can each distributor log in and see only their data?", a: "Yes. Access is scoped per distributor — orders, stock and ledgers are partitioned so each party sees only their own, while head office sees the whole network." },
-      { q: "Does DMS calculate commissions and scheme payouts?", a: "Yes. Slab-based commissions and promotional schemes are configured centrally and computed automatically on qualifying orders." },
-      { q: "Can we run multiple stock tiers?", a: "Yes — central warehouse, distributor and sub-stockist tiers with allocation rules and inter-tier transfers." },
+      { q: "How is DMS different from Bizom, Botree or FieldAssist?", a: "Those tools were built for fast-moving consumer goods: outlets, beats and cartons, with the distributor's own books left in Tally and synced across. DMS is built for OEMs. The unit is a machine with a serial number, an installation and a warranty, and the distributor's sales and books live inside your system, so there is nothing to sync." },
+      { q: "Can each distributor log in and see only their data?", a: "Yes. A distributor's people see only their own entity — orders, stock, invoices and collections. A zone or region manager sees every distributor under them, read-only. Your own staff see the whole network." },
+      { q: "Does the distributor still need Tally?", a: "No. The distributor raises its invoices, credit notes and collections in DMS, from its own GSTIN, and its books are kept there. That is what lets you see secondary sales the same day instead of at month end." },
+      { q: "Can we follow a machine by its serial number?", a: "Yes. The serial is recorded when the machine is received, picked oldest first on dispatch, and followed through every move to the customer's site. The serial tracker shows where any machine is and who has held it." },
+      { q: "How is commission worked out?", a: "You set slabs by product category and by amount. DMS works out each distributor's commission from its invoices for the period, so the figure and the invoices behind it are the same thing." },
+      { q: "Can we bring our distributors, customers and opening stock from Excel?", a: "Yes. Distributors, users, customers, territories, pincodes, items and opening stock come in from Excel sheets. A bad row is refused with its reason, so you fix the sheet rather than the data afterwards." },
+      { q: "What about schemes, claims and field service visits?", a: "Scheme slabs, the distributor's claims against you, and service tickets on an installed machine are set up during onboarding to your channel policy, on the same distributor, serial and warranty records." },
     ],
-    cta: { title: "See DMS run your distribution network", body: "Bring one region and a distributor list — we’ll model the tiers, commissions and territories with you.", primary: "Book a walkthrough" },
+    cta: { title: "See DMS run your distribution network", body: "Bring one region and a distributor list — we’ll model the territories, a machine's journey and the commission with you.", primary: "Book a walkthrough" },
+    changed: "2026-11-19",
     seo: {
       metaTitle: "DMS — Distributor Management System | Svasamm",
       metaDescription: "Run your distributor network on one system: distributor-scoped sales, tiered stock allocation, commissions, incentives, territory control and reconciliation.",
@@ -180,8 +188,8 @@ export const PRODUCTS: Product[] = [
     featuresTitle: "The whole operation, one source of truth",
     features: [
       { icon: "ph-book-open", title: "Finance & accounting", body: "General ledger, receivables and payables, cost centres, budgets and a month lock once a return is filed." },
-      { icon: "ph-warehouse", title: "Inventory & warehouse", body: "Multi-warehouse stock, batches, serials and valuation, live with every transaction." },
-      { icon: "ph-shopping-cart", title: "Procurement", body: "Indent to purchase order to goods received, with approvals and each supplier rated from what they delivered." },
+      { icon: "ph-warehouse", title: "Stores & godowns", body: "Stock by warehouse at moving-average cost. Issues to a department or a machine, transfers between godowns, and a stock count whose difference posts after approval." },
+      { icon: "ph-shopping-cart", title: "Purchase", body: "Indent to purchase order to goods received, with approvals and a budget check. The bill is matched three ways, and each vendor is rated from what they delivered." },
       { icon: "ph-factory", title: "Industry processes", body: "Your industry's own steps built in — a rice mill's paddy-to-rice and CMR, and your plant's recipes and batches set up for you during onboarding." },
       { icon: "ph-receipt", title: "Sales & billing", body: "Orders to invoice with GST on every line, and GSTR-1 and GSTR-3B prepared from the books." },
       { icon: "ph-file-text", title: "GST & statutory", body: "GST returns, TDS and Indian statutory reporting handled in the product." },
@@ -192,7 +200,15 @@ export const PRODUCTS: Product[] = [
       intro: "In-depth, indexable pages for what ERP buyers actually search — each is its own page for search & AI discovery.",
       grid: "1fr 1.5fr",
       columns: [
-        { heading: "ERP guide", icon: "ph-file-text", links: [{ title: "ERP implementation for Indian businesses", href: "Guide-ERPImplementation.dc.html" }] },
+        {
+          heading: "ERP & purchase guides", icon: "ph-file-text", links: [
+            { title: "ERP implementation for Indian businesses", href: "Guide-ERPImplementation.dc.html" },
+            { title: "Three-way matching in accounts payable", href: "/pages/three-way-match-po-grn-bill.html" },
+            { title: "Physical verification of stock: process and report format", href: "/pages/physical-stock-verification.html" },
+            { title: "Reorder level: the formula and how to set it", href: "/pages/reorder-level-formula.html" },
+            { title: "Vendor rating: methods, formula and format", href: "/pages/vendor-rating-method.html" },
+          ],
+        },
         {
           heading: "By industry", icon: "ph-buildings", links: [
             { title: "ERP for the food industry", href: "ERP-Food.dc.html" },
@@ -205,6 +221,8 @@ export const PRODUCTS: Product[] = [
     },
     faqs: [
       { q: "Is Indian GST built in?", a: "Yes — GST-compliant invoicing and GSTR-1, GSTR-3B and HSN summary preparation are part of the system, not a bolt-on." },
+      { q: "Can we take only purchase and stores?", a: "Yes. Svasamm Materials, the purchase and stores part of the ERP, can be taken on its own with the books it posts to: indents, purchase orders with approval and a budget check, goods received against the order, the bill matched three ways with input GST and TDS, issues, godown transfers, the stock count and reorder levels." },
+      { q: "How is stock valued?", a: "At moving-average cost, per material and warehouse. The cost of an issue is worked out by the books, never typed, so the stock in the store and the stock in the books are one figure." },
       { q: "Can it run more than one plant or godown?", a: "Yes. Each plant and godown is its own place, with its own stock and staff, in one firm's books." },
       { q: "Does it cover manufacturing?", a: "Purchase, stores, people and the books run from day one. Your recipes, production orders and batch costing are set up for your plant during onboarding: we walk your floor and build your industry's own steps with you, as we did for rice mills." },
     ],

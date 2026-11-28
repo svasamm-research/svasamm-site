@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ),
     })),
     ...Object.values(CORE_BY_SLUG).map((c) => ({ url: c.seo.canonical, lastModified: SITE_CHANGED })),
-    ...Object.values(JOURNEY_BY_SLUG).map((j) => ({ url: j.seo.canonical, lastModified: SITE_CHANGED })),
+    ...Object.values(JOURNEY_BY_SLUG).map((j) => ({ url: j.seo.canonical, lastModified: later(SITE_CHANGED, j.changed) })),
   ];
 
   return [

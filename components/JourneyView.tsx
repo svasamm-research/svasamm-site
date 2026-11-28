@@ -55,6 +55,7 @@ export default function JourneyView({ j, fill }: { j: Journey; fill: string }) {
                 <h2 style={{ fontSize: 24, margin: "0 0 4px" }}>{s.title}</h2>
                 <div style={{ fontFamily: "var(--sv-mono)", fontSize: 12, color: "var(--sv-ink-3)", marginBottom: 12 }}>{s.who}</div>
                 <p style={{ fontSize: 16.5, lineHeight: 1.65, margin: "0 0 12px" }}>{s.does}</p>
+                {s.more && <p className="sv-muted" style={{ fontSize: 15.5, lineHeight: 1.65, margin: "0 0 12px" }}>{s.more}</p>}
                 <p className="jv-rule" style={{ borderLeftColor: fill }}>{s.rule}</p>
                 <img className="jv-inline" src={s.screen} alt={s.alt} loading="lazy" />
               </div>
@@ -74,6 +75,19 @@ export default function JourneyView({ j, fill }: { j: Journey; fill: string }) {
           <p style={{ fontSize: 12.5, color: "var(--sv-ink-3)", margin: "10px 4px 0" }}>{j.note}</p>
         </div>
       </section>
+
+      {j.after && (
+        <section style={{ padding: "0 0 56px" }}>
+          <div className="sv-wrap" style={{ maxWidth: 900 }}>
+            <h2 style={{ margin: "0 0 16px" }}>{j.after.h}</h2>
+            <ul style={{ margin: 0, paddingLeft: 20, display: "grid", gap: 10 }}>
+              {j.after.items.map((it) => (
+                <li key={it.b} style={{ fontSize: 16, lineHeight: 1.6 }}><strong>{it.b}</strong> {it.t}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <section style={{ padding: "0 0 88px" }}>
         <div className="sv-wrap" style={{ maxWidth: 900, textAlign: "center" }}>

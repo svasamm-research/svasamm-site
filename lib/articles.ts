@@ -2499,7 +2499,7 @@ export const ARTICLES: Article[] = [
         href: "Guide-BestSoftware.dc.html",
       },
       {
-        title: "Millingo — rice-mill ERP",
+        title: "Millingo — milling ERP for rice mills",
         href: "Millingo.dc.html",
       },
     ],
@@ -3970,6 +3970,7 @@ export const ARTICLES: Article[] = [
       },
     ],
     related: [
+      { title: "Three-way matching in accounts payable", href: "/pages/three-way-match-po-grn-bill.html" },
       {
         title: "ERP for manufacturing businesses",
         href: "ERP-Manufacturing.dc.html",
@@ -4135,6 +4136,8 @@ export const ARTICLES: Article[] = [
       },
     ],
     related: [
+      { title: "Reorder level: the formula and how to set it", href: "/pages/reorder-level-formula.html" },
+      { title: "Physical verification of stock: process and report format", href: "/pages/physical-stock-verification.html" },
       {
         title: "ERP for the food industry",
         href: "ERP-Food.dc.html",

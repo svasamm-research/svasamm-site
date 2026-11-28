@@ -11,4 +11,7 @@ export const SITE = {
   // Native <select>s render a pixel up or down between identical runs (seen 8 Oct 2026 on
   // the contact form, 401 px); masked so the tight 100-px allowance stays honest.
   mask: ["select"] as string[],
+  // The home hero's product stage moves on when its progress line finishes (HeroStage.tsx).
+  // With the line still, the stage stays on its first product, so the picture is repeatable.
+  css: ".hs-fill{animation:none!important}",
 };
